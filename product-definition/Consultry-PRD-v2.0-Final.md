@@ -12,7 +12,7 @@
 
 ## Überblick: Was sich in v2.0 ändert
 
-v1.0 war ein Lean PRD mit 12 MVP-Modulen. v2.0 ist das **vollständige Produkt-PRD** für Consultry mit 14 Modulen, Querschnittsthemen, und kritisch geprüftem Scope. Alle Module gehören zum Produkt — die Reihenfolge folgt Abhängigkeiten und Value-Delivery.
+v1.0 war ein Lean PRD mit 12 MVP-Modulen. v2.0 ist das **vollständige Produkt-PRD** für Consultry mit 15 Modulen, Querschnittsthemen, und kritisch geprüftem Scope. Alle Module gehören zum Produkt — die Reihenfolge folgt Abhängigkeiten und Value-Delivery.
 
 **Kernänderungen gegenüber v1.0:**
 - **Neues Modul: Market & Signal Intelligence** — Proaktive Marktbeobachtung, Discovery-Engine und Signal-Feed. Schließt die kritische Lücke "Consultry ist rein reaktiv" und ermöglicht Outbound-Geschäftsentwicklung.
@@ -22,6 +22,7 @@ v1.0 war ein Lean PRD mit 12 MVP-Modulen. v2.0 ist das **vollständige Produkt-P
 - **Landing-Page-Generierung** in Events & Outreach integriert — kampagnenspezifische Landing-Pages mit Berater-Profilen und Case Studies.
 - **DSGVO Consent-State-Machine** als konkretes Modell im Compliance-Querschnittsthema — UNKNOWN → OPT-IN PENDING → OPTED-IN → SUPPRESSED.
 - **Skills-Normalisierungs-Pipeline** vertieft im Consultant Knowledge Graph — Agentic AI für Synonym-Erkennung, Hierarchie-Mapping, firmenweites Taxonomie-Modell.
+- **Neues Modul: Workforce & Team Management** — Operatives Team-Management im Foundation Layer: Organisationsstruktur, Verfügbarkeits- und Abwesenheitsmanagement, Kapazitätsplanung, Workload-Monitoring, Performance-/Entwicklungszyklen, Mentoring. Schließt die strukturelle Lücke zwischen dem Berater als Kompetenzträger (Knowledge Graph) und als verwaltete Ressource innerhalb einer Organisation. Kritischer Daten-Provider für Staffing, Financial Intelligence und RBAC.
 - **Umbenennung:** ConsultryOS → Consultry.
 - Technische Architekturdetails bewusst ausgelagert — dieses PRD fokussiert auf Produkt und Funktionalität.
 
@@ -110,7 +111,7 @@ Consultry schließt diese Lücken in einer Plattform: **Marktintelligenz** (wer 
 |---|---|
 | Eigene Zeiterfassung | DACH-rechtliche Bedenken (BetrVG §87, DSGVO Beschäftigtendatenschutz). Integration mit bestehenden Tools statt eigener Erfassung. |
 | Vollwertiges ERP (Rechnungsstellung, Mahnwesen) | Integration mit DATEV, Bexio, BMD statt Build. |
-| Vollständiges HR-System | Integration mit Personio, SAP SuccessFactors etc. |
+| Vollständiges HR-System | Integration mit Personio, SAP SuccessFactors etc. Consultry deckt operatives Team-Management (Org-Struktur, Verfügbarkeit, Kapazitätsplanung, Entwicklung) ab — aber keine Gehaltsplanung, disziplinarische Workflows, Krankenakten oder formale HR-Prozesse. |
 | Rechtsberatung | System unterstützt bei Vertragserstellung, berät nicht. RDG-Konformität sicherstellen. |
 | Event-Plattform | Consultry ist kein Eventbrite/Grip-Konkurrent. Integration ja, eigene Event-Plattform nein. |
 | LinkedIn-/XING-API-Integration | LinkedIn API ist für Sales-Intelligence gesperrt. XING hat keine öffentliche API. Stattdessen: öffentlich verfügbare Daten + Enrichment über Dealfront. |
@@ -218,8 +219,8 @@ Consultry deckt den vollständigen Lifecycle ab — von der proaktiven Markterke
 │   Talent Acquisition & Onboarding                                    │
 ├─────────────────────────────────────────────────────────────────────┤
 │                       FOUNDATION LAYER                               │
-│   Consultant Knowledge Graph  │  Client & Account Management         │
-│   Methodology & IP Asset Management                                  │
+│   Consultant Knowledge Graph  │  Workforce & Team Management         │
+│   Client & Account Management │  Methodology & IP Asset Management   │
 ├─────────────────────────────────────────────────────────────────────┤
 │                     CROSS-CUTTING CONCERNS                           │
 │   Multi-Entity & Governance  │  DSGVO & Compliance                   │
@@ -305,7 +306,76 @@ Die Skills-Normalisierung ist Consultry's Kern-Differenzierung — keine Beratun
 
 ---
 
-### 7.3 Methodology & IP Asset Management
+### 7.3 Workforce & Team Management
+
+**Problem:** Der Consultant Knowledge Graph modelliert Berater als Kompetenzträger, Financial Intelligence als Umsatzquelle — aber die dritte, operative Perspektive fehlt: der Berater als verwaltete Ressource innerhalb einer Organisation. Heute existiert Teamzugehörigkeit in Excel-Listen, Verfügbarkeitsdaten sind im Outlook-Kalender des Partners verstreut, Karrierepfade sind informelle Absprachen, und Kapazitätsplanung ist Bauchgefühl. Gleichzeitig ist dieses Modul ein kritischer Daten-Provider: Verfügbarkeitsdaten fließen ins Staffing, Kapazitätsprognosen in Financial Intelligence, Org-Strukturen definieren die Scope-Grenzen für Role-Based Access.
+
+**Lösung:** Operatives Team-Management für Beratungsunternehmen — Organisationsstruktur, Verfügbarkeit, Kapazitätsplanung, Workload-Monitoring, Entwicklung und Mentoring. Explizit kein vollständiges HR-System: keine Gehaltsplanung, keine disziplinarischen Workflows, keine Krankenakten. Für alles jenseits dieser Grenze integriert Consultry mit Personio, SAP SuccessFactors & Co.
+
+**Organisationsstruktur & Hierarchien:**
+
+- **Org-Einheiten:** Practices, Teams, Standorte, Competence Centers als verwaltbare Einheiten mit zugeordneten Leads (Practice Lead, Teamlead, Standortleiter)
+- **Berichtslinien:** Fachliche und disziplinarische Zuordnung (Matrix-Organisation abbildbar — ein Berater kann fachlich zur Practice „SAP" und disziplinarisch zum Standort München gehören)
+- **Dynamische Zugehörigkeit:** Berater können mehreren Teams/Practices zugeordnet sein, mit primärer und sekundärer Zugehörigkeit
+- **Org-Baum-Visualisierung:** Interaktive Darstellung der Organisationsstruktur mit Drill-Down auf Teamebene
+- **Team-Dashboards:** Aggregierte Sicht pro Team/Practice: Kapazität, Auslastung, Skill-Landschaft, Pipeline-Exposure
+
+**Verfügbarkeits- & Abwesenheitsmanagement:**
+
+- **Verfügbarkeits-Datenquelle:** Zentrale Wahrheit für alle Verfügbarkeitsdaten im System — das Staffing-Modul konsumiert diese Daten, erstellt sie nicht
+- **Abwesenheitstypen:** Urlaub, Weiterbildung, interne Projekte, Elternzeit, Sabbatical, Krankheit (nur Zeitraum, keine Diagnosen — Scope-Grenze HR)
+- **Kalender-Sync:** Bidirektionaler Sync mit Outlook/Google Calendar für Abwesenheiten
+- **Verfügbarkeits-Forecast:** Vorausschau auf Berater-Verfügbarkeit unter Berücksichtigung von laufenden Projekten (Restverlauf), geplanten Abwesenheiten, Vertragsverlängerungs-Wahrscheinlichkeiten und Pipeline-gewichteten Staffing-Szenarien
+- **Team-Kalender:** Aggregierte Verfügbarkeitssicht pro Team/Practice mit Engpass-Frühwarnung: „Practice Cloud hat in KW 22–26 nur 2 von 8 Beratern verfügbar"
+
+**Kapazitätsplanung (Team- & Practice-Ebene):**
+
+- **Strategische Kapazitätsplanung:** Nicht nur „wer ist frei", sondern: wie viele Seniors braucht Practice X in Q3? Wo bauen wir Kapazität auf, wo ab?
+- **Demand-Supply-Matching:** Pipeline-gewichteter Bedarf vs. verfügbare Kapazität pro Skill-Cluster, Senioritätslevel, Practice
+- **Gap-Analyse:** „Wir haben 3 Cloud-Architekten, aber die Pipeline zeigt Bedarf für 5 in den nächsten 6 Monaten" → automatischer Trigger an Talent Acquisition
+- **Szenario-Modelle:** Best Case / Expected / Worst Case Kapazitätsauslastung — integriert mit dem Revenue Forecasting aus Financial Intelligence
+- **Saisonale Muster:** Berücksichtigung von DACH-spezifischen Mustern (Sommerloch, Jahresendgeschäft, Budgetzyklen)
+
+**Workload-Monitoring & Balance:**
+
+- **Auslastungs-Tracking:** Aktuelle und historische Auslastung pro Berater mit Zielkorridor (z.B. 75–85% fakturierbar)
+- **Workload-Balance-Score:** Gleichmäßigkeit der Verteilung innerhalb eines Teams — Frühwarnung bei systematischer Über-/Unterlastung einzelner Berater
+- **Reisebelastungs-Tracking:** Reisetage pro Monat/Quartal, Entfernung zum Einsatzort — „Berater X hatte in den letzten 3 Monaten 45 Reisetage, Teamdurchschnitt ist 20"
+- **Burnout-Prävention:** Konfigurierbare Schwellenwerte für Kombination aus Auslastung, Reisetagen und fehlenden Urlaubstagen → Alerts an Teamlead
+- **Team-Vergleich:** Anonymisierte Vergleichsdaten über Teams hinweg — welche Practices sind systematisch überlastet?
+
+> **Compliance-Hinweis:** Workload-Monitoring und Auslastungs-Tracking fallen unter **BetrVG §87 Abs. 1 Nr. 6** (technische Einrichtungen zur Überwachung von Verhalten/Leistung). Eine **Betriebsvereinbarung ist zwingend erforderlich** vor Aktivierung dieses Feature-Bereichs. Consultry implementiert dies als **opt-in Feature-Gate**, das erst nach dokumentierter Betriebsvereinbarung freigeschaltet wird. Aggregierte Team-Daten ohne Personenbezug sind unkritisch; personenbezogene Auswertungen (Auslastung pro Berater, Reisebelastung) erfordern BR-Zustimmung.
+
+**Performance- & Entwicklungszyklen:**
+
+- **Zielvereinbarungen:** Strukturierte Erfassung von Jahres-/Halbjahreszielen pro Berater — nicht als Bewertungstool, sondern als Entwicklungskompass
+- **Karrierepfade:** Definierbare Karrierestufen pro Practice (z.B. Junior → Consultant → Senior → Manager → Partner) mit zugeordneten Kompetenzerwartungen
+- **Skill-Entwicklungspläne:** Soll-/Ist-Abgleich gegen Karrierestufen-Anforderungen — „Für den nächsten Karriereschritt fehlen Dir: Projektleitungserfahrung in der Finanzbranche und eine PRINCE2-Zertifizierung"
+- **Feedback-Integration:** Kundenfeedback und Peer-Reviews fließen aus dem Knowledge Graph ein, Performance-Ziele und Entwicklungspläne leben hier
+- **Entwicklungs-Dashboard (Berater-Self-Service):** Eigener Fortschritt, nächste Karrierestufe, offene Skill-Gaps, empfohlene Weiterbildungen
+
+> **Scope-Abgrenzung:** Keine Leistungsbeurteilungen mit disziplinarischer Konsequenz, kein Performance-Ranking, keine Gehaltsempfehlungen. Die Grenze zu „echtem HR" ist hart: Consultry unterstützt Entwicklung, nicht Bewertung. Integration mit Personio/SAP SuccessFactors für formale HR-Prozesse (Gehaltsplanung, Vertragsverwaltung, disziplinarische Workflows, Krankenakten).
+
+**Mentoring & Wissenstransfer:**
+
+- **Systematische Mentoring-Zuordnung:** Matching basierend auf Expertise-Overlap, Karrierestufen-Differenz, Teamstruktur und Präferenzen — nicht zufällig, sondern datengetrieben
+- **Mentoring-Zyklen:** Strukturierte Programme mit definierten Laufzeiten, Zielen und Check-in-Rhythmen
+- **Wissenstransfer-Tracking:** Welche Senior-Berater geben Wissen an wen weiter? Wo entstehen Wissensinseln (Single Points of Knowledge)?
+- **Cross-Team-Mentoring:** Förderung von Practice-übergreifendem Wissenstransfer — „Sarah (SAP-Practice) mentored Tim (Cloud-Practice) für hybride SAP-Cloud-Migrationen"
+- **Alumni-Mentoring:** Ehemalige Berater als Mentoren einbinden (verknüpft mit Alumni-Netzwerk in Phase 5+)
+
+**Integrationen:**
+
+- **Personio / SAP SuccessFactors:** Bidirektionaler Sync für Stammdaten, Org-Zugehörigkeit, Abwesenheiten. HR-System bleibt führend für Vertrags- und Gehaltsdaten.
+- **Outlook / Google Calendar:** Abwesenheits-Sync
+- **Consultant Knowledge Graph:** Skills und Projekterfahrung kommen aus dem Knowledge Graph; Entwicklungsziele und Karrierepfade leben im Workforce-Modul
+- **Staffing & Matching:** Verfügbarkeitsdaten und Org-Constraints als Input für das Staffing
+- **Financial Intelligence:** Kapazitätsdaten als Input für Utilization Management und Revenue Forecasting
+- **Talent Acquisition:** Gap-Analyse triggert Recruiting-Bedarf
+
+---
+
+### 7.4 Methodology & IP Asset Management
 
 **Problem:** Eigene Frameworks, Assessment-Tools und Vorgehensmodelle liegen verstreut auf File-Shares und in den Köpfen einzelner Berater. Im Proposal-Prozess wird das Rad neu erfunden.
 
@@ -794,6 +864,7 @@ Jede Outreach-Aktion ist an das DSGVO-Consent-Modell gebunden (siehe Querschnitt
 | Bereich | Regelung | Relevanz für Consultry |
 |---|---|---|
 | Berater-Profiling | BetrVG §87 Abs. 1 Nr. 6 | Betriebsrat-Zustimmung bei systematischer Leistungserfassung |
+| Workforce-Monitoring | BetrVG §87 Abs. 1 Nr. 6 | Workload-Tracking, Auslastungs- und Reisebelastungsdaten pro Berater erfordern Betriebsvereinbarung. Feature-Gate: opt-in nach dokumentierter BR-Zustimmung. |
 | Datenschutz | DSGVO, BDSG | Consent-Modell, Erasure, Audit-Trail |
 | Arbeitnehmerüberlassung | AÜG | ANÜ-Compliance bei Freelancer-Einsatz, Scheinselbständigkeit |
 | Vertragsrecht DE | BGB, HGB | Dienstvertrag vs. Werkvertrag Abgrenzung |
@@ -825,6 +896,12 @@ Jede Outreach-Aktion ist an das DSGVO-Consent-Modell gebunden (siehe Querschnitt
       │                   │ evidenced_by
       │                   ▼
       ├──worked_on──▶ [Project] ◀──for──── [Client]
+      ├──belongs_to─▶ [Team/Practice] ──led_by──▶ [Consultant] (Lead)
+      │                   │
+      │                   └──part_of──▶ [Location/Entity]
+      ├──has_absence─▶ [Absence] (Urlaub, Weiterbildung, etc.)
+      ├──has_career──▶ [CareerPath] ──targets──▶ [CareerLevel]
+      ├──mentored_by─▶ [Consultant] (Mentoring-Beziehung)
       │                   │                    │
       │                   │ produced           │ has
       │                   ▼                    ▼
@@ -973,6 +1050,7 @@ Jede Outreach-Aktion ist an das DSGVO-Consent-Modell gebunden (siehe Querschnitt
 **Ziel:** Arbeitsfähige Plattform mit den Datenfundamenten und erstem Werthebel.
 
 - Consultant Knowledge Graph (strukturierte Profile, CV-Import, KI-basierte Skills-Normalisierung)
+- Workforce & Team Management (Org-Struktur, Verfügbarkeits-/Abwesenheitsmanagement, Basis-Kapazitätsplanung, Personio-Integration)
 - Client & Account Management (Stammdaten, Stakeholder, Beziehungshistorie)
 - Opportunity Intelligence (Intake, Auto-Extraktion, Pipeline, Basis-Engagement-Briefs)
 - Intelligent Staffing & Matching (Multi-Faktor, Team-Komposition)
@@ -980,7 +1058,7 @@ Jede Outreach-Aktion ist an das DSGVO-Consent-Modell gebunden (siehe Querschnitt
 - Auth, Multi-Tenancy, RBAC, DSGVO-Consent-Modell, Basis-Dashboard
 - Core-Integrationen: Kalender, E-Mail, Dokumenten-Storage
 
-**Meilenstein:** Beratung ongeboardet, Berater normalisiert profiliert, erste Opportunities getracked, CVs generiert.
+**Meilenstein:** Beratung ongeboardet, Berater normalisiert profiliert, Org-Struktur und Verfügbarkeiten abgebildet, erste Opportunities getracked, CVs generiert.
 
 ### Phase 2 — Full Deal Machine (Wochen 7–14)
 **Ziel:** Komplette Wertschöpfungskette vom Signal bis zum Vertrag.
@@ -1000,10 +1078,11 @@ Jede Outreach-Aktion ist an das DSGVO-Consent-Modell gebunden (siehe Querschnitt
 
 - Project Execution & Delivery (Milestones, Risk Monitoring, Kundenfeedback, Scope-Change)
 - Financial Intelligence (DB-Rechnung, Utilization, Forecasting, Rate-Cards, Pricing Intelligence)
+- Workforce & Team Management erweitert (Workload-Monitoring, Burnout-Prävention, Performance-/Entwicklungszyklen, Mentoring — Feature-Gate für BetrVG-pflichtige Funktionen)
 - Knowledge-Engine voll aktiv (Wissensgenerierung aus Projekten, Q/A-Agent, Playbooks)
 - Erweiterte Integrationen: Zeiterfassung, Buchhaltung
 
-**Meilenstein:** Echtzeit-Profitabilität sichtbar, Projekte überwacht, Wissen fließt zurück.
+**Meilenstein:** Echtzeit-Profitabilität sichtbar, Projekte überwacht, Wissen fließt zurück, Berater-Entwicklung datengestützt.
 
 ### Phase 4 — Growth Engine (Wochen 23–30)
 **Ziel:** Netzwerk- und Wachstumsmodule.
@@ -1031,7 +1110,7 @@ Jede Outreach-Aktion ist an das DSGVO-Consent-Modell gebunden (siehe Querschnitt
 
 | Risiko | Impact | Mitigation |
 |---|---|---|
-| **Scope-Ambition** (14 Module) | Hoch | Strikte Phasenplanung, iterative Tiefe pro Modul. MVP-Kern in Phase 1 ist schlank genug für schnelle Validierung. |
+| **Scope-Ambition** (15 Module) | Hoch | Strikte Phasenplanung, iterative Tiefe pro Modul. MVP-Kern in Phase 1 ist schlank genug für schnelle Validierung. Workforce & Team Management ist Foundation-kritisch und kein Scope-Creep — es ist Daten-Provider für Staffing, Financial Intelligence und RBAC. |
 | **DACH-Compliance-Komplexität** (BetrVG, DSGVO, RDG, AÜG) | Hoch | Frühzeitige juristische Beratung, Privacy-by-Design, Consent-State-Machine ab Tag 1. |
 | **Datenqualität bei Erstbefüllung** | Mittel | AI-gestützter Import, geführte Onboarding-Prozesse, Skill-Normalisierung reduziert Chaos. |
 | **Konkurrenz** (Salesforce + Kimble, Productive.io, MOCO) | Mittel | AI-native Differenzierung + DACH-Spezialisierung + Lifecycle-Breite. Kein Wettbewerber deckt den vollen Lifecycle ab. |
@@ -1040,6 +1119,8 @@ Jede Outreach-Aktion ist an das DSGVO-Consent-Modell gebunden (siehe Querschnitt
 | **Event-App-Integration** | Mittel | Realistische Erwartungen: APIs für Organizer gebaut. Partnerschaften verhandeln, manueller Import als Fallback. |
 | **Enterprise-Readiness** (Skalierung, SLA) | Mittel | Cloud-native Architektur, frühes Performance-Testing. |
 | **Skills-Normalisierungs-Genauigkeit** | Mittel | Iteratives Training, Human-in-the-Loop bei Unklarheiten, Feedback-Loops. |
+| **BetrVG-Blockade bei Workforce-Features** | Mittel | Workload-Monitoring und Performance-Tracking erfordern Betriebsvereinbarung (§87 Abs. 1 Nr. 6). Feature-Gate-Architektur: personenbezogene Auswertungen erst nach dokumentierter BR-Zustimmung. Aggregierte Team-Daten ohne Personenbezug als Fallback. |
+| **Scope-Creep Richtung HR** | Mittel | Harte Scope-Grenze: keine Gehaltsplanung, keine disziplinarischen Workflows, keine Krankenakten. Integration mit Personio/SAP SuccessFactors für formale HR-Prozesse. Regelmäßige Scope-Reviews. |
 
 ---
 
@@ -1076,19 +1157,20 @@ Jede Outreach-Aktion ist an das DSGVO-Consent-Modell gebunden (siehe Querschnitt
 | # | Modul | Layer | Kern-Wert |
 |---|---|---|---|
 | 1 | Consultant Knowledge Graph | Foundation | Lebendes Berater-Profil mit normalisierter Skill-Taxonomie |
-| 2 | Client & Account Management | Foundation | Strukturiertes Kundenbeziehungs-Management |
-| 3 | Methodology & IP Asset Management | Foundation | Firmenwissen querybar und wiederverwendbar |
-| 4 | Market & Signal Intelligence | Growth | Proaktive Marktbeobachtung und Discovery |
-| 5 | Events & Network Intelligence | Growth | End-to-End Event-Lifecycle mit ROI |
-| 6 | Talent Acquisition & Onboarding | Growth | Datengetriebenes Recruiting und nahtloses Onboarding |
-| 7 | Opportunity Intelligence & Tracking | Deal | Intelligentes Opportunity-Management mit Engagement-Briefs |
-| 8 | Intelligent Staffing & Matching | Deal | Semantisches Team-Matching |
-| 9 | Smart Service Offer Composition | Deal | Maßgeschneiderte Angebote mit Varianten |
-| 10 | Client-Facing Intelligence | Deal | CVs, Proposals, Case Studies auf Knopfdruck |
-| 11 | Contract Intelligence & Legal Automation | Deal | AI-gestützter Vertrags-Lifecycle |
-| 12 | Outreach & Campaign Engine | Deal | DSGVO-konforme Erstansprache und Kampagnen |
-| 13 | Project Execution & Delivery Intelligence | Delivery | Projekt-Monitoring mit Risiko-Frühwarnung |
-| 14 | Financial Intelligence & Controlling | Delivery | Echtzeit-Profitabilität und Forecasting |
+| 2 | Workforce & Team Management | Foundation | Operatives Team-Management, Verfügbarkeit, Kapazitätsplanung, Entwicklung |
+| 3 | Client & Account Management | Foundation | Strukturiertes Kundenbeziehungs-Management |
+| 4 | Methodology & IP Asset Management | Foundation | Firmenwissen querybar und wiederverwendbar |
+| 5 | Market & Signal Intelligence | Growth | Proaktive Marktbeobachtung und Discovery |
+| 6 | Events & Network Intelligence | Growth | End-to-End Event-Lifecycle mit ROI |
+| 7 | Talent Acquisition & Onboarding | Growth | Datengetriebenes Recruiting und nahtloses Onboarding |
+| 8 | Opportunity Intelligence & Tracking | Deal | Intelligentes Opportunity-Management mit Engagement-Briefs |
+| 9 | Intelligent Staffing & Matching | Deal | Semantisches Team-Matching |
+| 10 | Smart Service Offer Composition | Deal | Maßgeschneiderte Angebote mit Varianten |
+| 11 | Client-Facing Intelligence | Deal | CVs, Proposals, Case Studies auf Knopfdruck |
+| 12 | Contract Intelligence & Legal Automation | Deal | AI-gestützter Vertrags-Lifecycle |
+| 13 | Outreach & Campaign Engine | Deal | DSGVO-konforme Erstansprache und Kampagnen |
+| 14 | Project Execution & Delivery Intelligence | Delivery | Projekt-Monitoring mit Risiko-Frühwarnung |
+| 15 | Financial Intelligence & Controlling | Delivery | Echtzeit-Profitabilität und Forecasting |
 
 **Cross-Cutting:** Multi-Entity & Governance, DSGVO & Compliance, DACH Regulatory, Reporting & Executive Dashboards
 

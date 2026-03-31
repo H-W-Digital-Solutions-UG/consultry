@@ -1,0 +1,297 @@
+{
+  "project": "Consultry-Inspiration",
+  "projectId": "9527822144861630979",
+  "totalScreens": 42,
+  "screens": [
+    {
+      "name": "projects/9527822144861630979/screens/7087e82624704879ad70587d198773d5",
+      "title": "Account Plan & Stakeholder Map",
+      "width": "2560",
+      "height": "2048",
+      "screenshotFile": "01_Account_Plan__Stakeholder_Map.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/b644235616be4fa3bfda1178a022ae6f",
+      "title": "Mentoring & Wissenstransfer",
+      "width": "2560",
+      "height": "2602",
+      "screenshotFile": "02_Mentoring__Wissenstransfer.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/42009021295b456882b8a471159c6b64",
+      "title": "Matching View / Team Composer",
+      "width": "2560",
+      "height": "2574",
+      "screenshotFile": "03_Matching_View___Team_Composer.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/d37671c4c04f4501851baf44fd786c6e",
+      "title": "Skill-Gap Analysis",
+      "width": "2560",
+      "height": "3518",
+      "screenshotFile": "04_Skill-Gap_Analysis.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/fefc3405abb54351b2eeb9aafc6c9147",
+      "title": "Consultry PRD v2.1 (Updated)",
+      "screenshotFile": null,
+      "note": "No screenshot"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/33ace5139e194a05a389ffc1f702ab38",
+      "title": "Kapazitäts-Szenario-Planer",
+      "width": "2560",
+      "height": "2454",
+      "screenshotFile": "05_Kapazitaets-Szenario-Planer.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/f51e96fffd134027b0e1e4a6c5f7a19a",
+      "title": "Berater-Profil-Anpassung (CV Generator)",
+      "width": "2560",
+      "height": "2688",
+      "screenshotFile": "06_Berater-Profil-Anpassung_(CV_Generator).png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/e58d19c6e8934bcb85601850f5f89d32",
+      "title": "Financial Dashboard",
+      "width": "2560",
+      "height": "2114",
+      "screenshotFile": "07_Financial_Dashboard.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/47983662932c4ebda2ac7051aa05e6ff",
+      "title": "Workload & Burnout Prävention Heatmap",
+      "width": "2560",
+      "height": "3254",
+      "screenshotFile": "08_Workload__Burnout_Praevention_Heatmap.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/345df5e3ab3f40f6bdb2fe328a5fe6a9",
+      "title": "Knowledge Q/A Interface (Theme Fix)",
+      "width": "2560",
+      "height": "2842",
+      "screenshotFile": "09_Knowledge_QA_Interface_(Theme_Fix).png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/d0116d801a82408e9b2d0df814bfda48",
+      "title": "Signal Feed (Amber Theme)",
+      "width": "2560",
+      "height": "2748",
+      "screenshotFile": "10_Signal_Feed_(Amber_Theme).png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/277a3b50df754aa5a680125b3b5e2686",
+      "title": "Recruiting Pipeline",
+      "width": "2560",
+      "height": "2500",
+      "screenshotFile": "11_Recruiting_Pipeline.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/5f0e1e23578d44c785eccec7fb517d37",
+      "title": "Partner & Practice Lead Dashboard",
+      "width": "2560",
+      "height": "2798",
+      "screenshotFile": "12_Partner__Practice_Lead_Dashboard.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/1b190f04fa7f4c30a283efcfc7cd9641",
+      "title": "Angebots-Vorschau & Case Studies",
+      "width": "2560",
+      "height": "3038",
+      "screenshotFile": "13_Angebots-Vorschau__Case_Studies.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/6841634525316466400",
+      "title": "consultry_final_weblogo.png",
+      "width": "1536",
+      "height": "1024",
+      "screenshotFile": "14_consultry_final_weblogo.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/6daa18fe8cc5439bb00039e053c6347f",
+      "title": "Consultry Module Gap Analysis",
+      "screenshotFile": null,
+      "note": "No screenshot"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/770f2964a9f046fe9a36b4ed2a49cc1e",
+      "title": "Karrierepfad & Personalentwicklung",
+      "width": "2560",
+      "height": "2412",
+      "screenshotFile": "15_Karrierepfad__Personalentwicklung.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/caf0c3abb7c949dd847613fbf9de12cc",
+      "title": "Discovery Dashboard",
+      "width": "2560",
+      "height": "2048",
+      "screenshotFile": "16_Discovery_Dashboard.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/8425304793941650317",
+      "title": "design_system.md",
+      "screenshotFile": null,
+      "note": "Text document"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/219597428f0444a7bb952a62036bc3a9",
+      "title": "Opportunity Detail Dashboard",
+      "width": "2560",
+      "height": "2048",
+      "screenshotFile": "17_Opportunity_Detail_Dashboard.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/aa90c66b710a47be8aa2ff0b7b70af78",
+      "title": "Opportunitäts-Aufnahme (Intake)",
+      "width": "2560",
+      "height": "2430",
+      "screenshotFile": "18_Opportunitaets-Aufnahme_(Intake).png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/8ce72b9a6d0946fc88b3a5c3edd5e62a",
+      "title": "Approval Manager Dashboard",
+      "width": "2560",
+      "height": "2616",
+      "screenshotFile": "19_Approval_Manager_Dashboard.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/d1ca73de43fc49c9b0fb929778f49625",
+      "title": "Cockpit (Dashboard)",
+      "width": "2560",
+      "height": "2582",
+      "screenshotFile": "20_Cockpit_(Dashboard).png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/18a5f8c226054a7589fade787a74c073",
+      "title": "Approval Detail View",
+      "width": "2560",
+      "height": "4176",
+      "screenshotFile": "21_Approval_Detail_View.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/84767003b45f4ceea2ec69814ce5b6d0",
+      "title": "Berater-Onboarding (Wizard)",
+      "width": "2560",
+      "height": "3034",
+      "screenshotFile": "22_Berater-Onboarding_(Wizard).png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/c1e5ed3e17b242e39ca05d25ef654a6f",
+      "title": "Admin Panel",
+      "width": "2560",
+      "height": "2582",
+      "screenshotFile": "23_Admin_Panel.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/a9855c0cd9064fe4a59c507f6588ca92",
+      "title": "Warm Path & Relationship Detail",
+      "width": "3072",
+      "height": "2048",
+      "screenshotFile": "24_Warm_Path__Relationship_Detail.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/7531928171229838841",
+      "title": "Consultry-Prototype-Feed.md",
+      "screenshotFile": null,
+      "note": "Text document"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/9e68b7b6876f45cea6404f31377cb0a2",
+      "title": "Discovery Dashboard (2)",
+      "width": "2560",
+      "height": "4654",
+      "screenshotFile": "25_Discovery_Dashboard_2.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/aeda2ad558b9482096f1e59145c88fa8",
+      "title": "Contract Editor",
+      "width": "2560",
+      "height": "2720",
+      "screenshotFile": "26_Contract_Editor.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/a3e9a35fe45844068b48118d2172e3fe",
+      "title": "Skill Normalization Dialog",
+      "width": "2560",
+      "height": "2048",
+      "screenshotFile": "27_Skill_Normalization_Dialog.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/a74551d1d4054332a9f4dd6a65e93330",
+      "title": "Project Dashboard",
+      "width": "2560",
+      "height": "2048",
+      "screenshotFile": "28_Project_Dashboard.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/9f859f6bb40742809c9c84716e39d22a",
+      "title": "Event Manager",
+      "width": "2560",
+      "height": "2832",
+      "screenshotFile": "29_Event_Manager.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/cf634d454eca42ec88767318e43d5112",
+      "title": "Opportunitäts-Aufnahme (Intake) 2",
+      "width": "2560",
+      "height": "2048",
+      "screenshotFile": "30_Opportunitaets-Aufnahme_(Intake)_2.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/449cfbc2fbde41bcb831106c4840ec2e",
+      "title": "Workforce & Consulting Management Flow",
+      "width": "1280",
+      "height": "1024",
+      "screenshotFile": null,
+      "note": "No screenshot"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/6a284fa2597a497092af8a9ac089c898",
+      "title": "Consultant Profile Editor",
+      "width": "2560",
+      "height": "4750",
+      "screenshotFile": "31_Consultant_Profile_Editor.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/f932d455d8b445aa86e4e46f4ae21898",
+      "title": "Matching View / Team Composer (2)",
+      "width": "2560",
+      "height": "2132",
+      "screenshotFile": "32_Matching_View___Team_Composer_2.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/da595c3520bf4c6f87951d0508852144",
+      "title": "Outreach Editor",
+      "width": "2560",
+      "height": "2176",
+      "screenshotFile": "33_Outreach_Editor.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/24a9aaa802a647d794be8d05a6dfeaf8",
+      "title": "Team & Availability Management Dashboard",
+      "width": "2560",
+      "height": "2714",
+      "screenshotFile": "34_Team__Availability_Management_Dashboard.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/75326598169c49beb579c1433d2b7476",
+      "title": "Berater-Onboarding (Wizard) 2",
+      "width": "2560",
+      "height": "2048",
+      "screenshotFile": "35_Berater-Onboarding_(Wizard)_2.png"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/7ec804d7b5f248ac895d40fc1930e99f",
+      "title": "User Flow & Activity Map (PRD Extension)",
+      "screenshotFile": null,
+      "note": "No screenshot"
+    },
+    {
+      "name": "projects/9527822144861630979/screens/4883abe4cc6c4b8489a235337bbbde0d",
+      "title": "Offer Composer",
+      "width": "2560",
+      "height": "3286",
+      "screenshotFile": "36_Offer_Composer.png"
+    }
+  ]
+}
