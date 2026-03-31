@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Consultry Marketing — Hero Section
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  background-color: var(--mktg-surface-hero);
+  padding: 160px var(--mktg-page-padding) var(--mktg-space-3xl);
+  overflow: hidden;
+}
+
+.inner {
+  max-width: var(--mktg-content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-warm);
+  margin-bottom: var(--mktg-space-sm);
+}
+
+.headline {
+  font-size: clamp(40px, 5vw, 76px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--mktg-text-on-dark);
+  margin-bottom: var(--mktg-space-md);
+  max-width: 860px;
+}
+
+.headlineGradient {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subheadline {
+  font-size: clamp(18px, 2vw, 21px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--mktg-text-on-dark-muted);
+  max-width: 600px;
+  margin-bottom: var(--mktg-space-xl);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--mktg-space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 14px 36px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--neutral-0);
+  background: var(--brand-primary);
+  border: none;
+  border-radius: var(--mktg-radius-full);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--mktg-duration-fast) var(--mktg-ease-default),
+    transform var(--mktg-duration-fast) var(--mktg-ease-default),
+    box-shadow var(--mktg-duration-fast) var(--mktg-ease-default);
+  box-shadow: 0 2px 12px rgba(191, 83, 71, 0.25);
+}
+
+.btnPrimary:hover {
+  background-color: var(--brand-primary-light);
+  box-shadow: 0 4px 20px rgba(191, 83, 71, 0.35);
+}
+
+.btnPrimary:active {
+  transform: scale(0.98);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 14px 36px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--mktg-text-on-dark);
+  background-color: transparent;
+  border: 1px solid rgba(250, 250, 249, 0.2);
+  border-radius: var(--mktg-radius-full);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--mktg-duration-fast) var(--mktg-ease-default),
+    border-color var(--mktg-duration-fast) var(--mktg-ease-default),
+    transform var(--mktg-duration-fast) var(--mktg-ease-default);
+}
+
+.btnSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.btnSecondary:active {
+  transform: scale(0.98);
+}
+
+.screenshot {
+  margin-top: var(--mktg-space-2xl);
+  max-width: 1040px;
+  width: 100%;
+  border-radius: var(--mktg-radius-xl);
+  box-shadow: var(--mktg-shadow-hero);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.screenshot img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ambient gradient background effect */
+.bgGlow {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1100px;
+  height: 700px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(232, 145, 58, 0.1) 0%,
+    rgba(232, 101, 90, 0.06) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding: 120px var(--mktg-page-padding) var(--mktg-space-2xl);
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btnPrimary,
+  .btnSecondary {
+    width: 100%;
+  }
+}

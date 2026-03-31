@@ -1,0 +1,48 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Consultry — Careers
+  screenshotPath: ../assets/images/template-careers.png
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# ── Hero ── #}
+  {% module "hero" path="../components/modules/HeroPrimary",
+    eyebrow="Karriere",
+    headline="Bauen Sie die Zukunft der",
+    headline_gradient_text="Beratungstechnologie",
+    subheadline="Werden Sie Teil unseres Teams und gestalten Sie die Art und Weise, wie Beratungsunternehmen im DACH-Raum arbeiten.",
+    show_screenshot=false
+  %}
+
+  {# ── Stats: Team Metrics ── #}
+  {% module "stats" path="../components/modules/StatsCounter" %}
+
+  {# ── Feature Grid: Our Values ── #}
+  {% module "values" path="../components/modules/FeatureGrid",
+    eyebrow="Unsere Werte",
+    headline="Was uns antreibt",
+    columns="3"
+  %}
+
+  {# ── Team Grid ── #}
+  {% module "team" path="../components/modules/TeamGrid" %}
+
+  {# ── Video: Office Tour ── #}
+  {% module "video" path="../components/modules/VideoEmbed",
+    eyebrow="Unser Office",
+    headline="Ein Blick hinter die Kulissen"
+  %}
+
+  {# ── Testimonials: Team Quotes ── #}
+  {% module "testimonials" path="../components/modules/Testimonials",
+    eyebrow="Das Team sagt",
+    headline="Warum wir gerne bei Consultry arbeiten"
+  %}
+
+  {# ── CTA Band ── #}
+  {% module "cta" path="../components/modules/RichCTABand" %}
+
+{% endblock body %}

@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Consultry Marketing — Video Embed Island
+   ========================================================================== */
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.posterContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--neutral-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.posterContainer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+  pointer-events: none;
+}
+
+.playButton {
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--neutral-0);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-primary);
+  cursor: pointer;
+  transition: all var(--mktg-duration-normal) var(--mktg-ease-default);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.playButton:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  background-color: var(--neutral-0);
+}
+
+.playButton:active {
+  transform: scale(0.98);
+}
+
+.iframeContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 300ms var(--mktg-ease-enter) forwards;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .playButton {
+    width: 56px;
+    height: 56px;
+  }
+
+  .playButton svg {
+    width: 18px;
+    height: 18px;
+  }
+}

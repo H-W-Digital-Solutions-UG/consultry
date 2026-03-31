@@ -1,0 +1,47 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Consultry — Customer Story
+  screenshotPath: ../assets/images/template-customer-story.png
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# ── Hero ── #}
+  {% module "hero" path="../components/modules/HeroMinimal",
+    eyebrow="KUNDENSTORY",
+    headline="Wie Strategos Consulting die Beratungseffizienz um 40% steigerte",
+    subtitle="Mit Consultry hat Strategos Consulting seine Prozesse automatisiert, die Mandantenzufriedenheit erhöht und den Verwaltungsaufwand halbiert.",
+    background="warm"
+  %}
+
+  {# ── Stats: Key Results ── #}
+  {% module "stats" path="../components/modules/StatsCounter" %}
+
+  {# ── Challenge ── #}
+  {% module "challenge" path="../components/modules/FeatureDetail",
+    eyebrow="Die Herausforderung",
+    headline="Manuelle Prozesse bremsten das Wachstum",
+    description="Strategos Consulting verwaltete 200+ aktive Mandate mit Excel, E-Mail und getrennten Tools. Die Partner verbrachten mehr Zeit mit Administration als mit Beratung. Die fehlende Integration zwischen Zeiterfassung, CRM und DATEV führte zu Abrechnungsfehlern und verzögerten Rechnungen.",
+    image_position="right"
+  %}
+
+  {# ── Solution ── #}
+  {% module "solution" path="../components/modules/FeatureDetail",
+    eyebrow="Die Lösung",
+    headline="Ein zentrales System für alle Beratungsprozesse",
+    description="Mit Consultry hat Strategos alle Workflows zentralisiert: CRM, Projektmanagement, Zeiterfassung und Abrechnung in einer Plattform. Die KI-gestützten Meeting-Zusammenfassungen und automatische DATEV-Exporte haben den Verwaltungsaufwand dramatisch reduziert.",
+    image_position="left"
+  %}
+
+  {# ── Testimonial ── #}
+  {% module "testimonial" path="../components/modules/Testimonials",
+    eyebrow="",
+    headline=""
+  %}
+
+  {# ── CTA Band ── #}
+  {% module "cta" path="../components/modules/RichCTABand" %}
+
+{% endblock body %}

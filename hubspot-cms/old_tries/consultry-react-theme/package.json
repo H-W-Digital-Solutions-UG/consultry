@@ -1,0 +1,24 @@
+{
+  "name": "consultry-marketing-site",
+  "description": "Consultry AI-native Consultancy CRM — Marketing Website (React + HubL)",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@hubspot/cli": "^7.11.3",
+    "@hubspot/prettier-plugin-hubl": "latest",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^2.8.0"
+  },
+  "scripts": {
+    "start": "cd src/consultry-theme && npm start",
+    "postinstall": "cd src/consultry-theme && npm install",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier . --check",
+    "deploy": "hs project upload"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

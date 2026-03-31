@@ -1,0 +1,237 @@
+.section {
+  padding: var(--mktg-space-3xl) var(--mktg-page-padding);
+  background: var(--neutral-0);
+  color: var(--neutral-900);
+}
+
+.inner {
+  max-width: var(--mktg-content-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--mktg-space-2xl);
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brand-primary);
+  margin-bottom: var(--mktg-space-xs);
+}
+
+.headline {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--neutral-900);
+  margin: var(--mktg-space-sm) 0;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--neutral-600);
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 48px;
+}
+
+/* Vertical timeline line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--neutral-200);
+}
+
+.step {
+  position: relative;
+  padding-bottom: var(--mktg-space-xl);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+/* Timeline dot */
+.stepDot {
+  position: absolute;
+  left: -48px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--neutral-0);
+  border: 2px solid var(--neutral-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition:
+    border-color var(--mktg-duration-normal) var(--mktg-ease-default),
+    box-shadow var(--mktg-duration-normal) var(--mktg-ease-default);
+}
+
+.stepDotInner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+}
+
+.stepDotInnerActive {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+}
+
+.stepActive .stepDot {
+  border-color: var(--brand-primary);
+  box-shadow: var(--mktg-shadow-glow);
+}
+
+.stepContent {
+  padding-top: var(--mktg-space-sm);
+}
+
+.stepDate {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--brand-primary);
+  margin-bottom: var(--mktg-space-xs);
+}
+
+.stepBadge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  background: var(--ai-surface);
+  color: var(--brand-primary);
+  border-radius: var(--mktg-radius-sm);
+  margin-bottom: var(--mktg-space-xs);
+}
+
+.stepTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin-bottom: var(--mktg-space-sm);
+  line-height: 1.2;
+}
+
+.stepDescription {
+  font-size: 16px;
+  color: var(--neutral-700);
+  line-height: 1.6;
+  margin-bottom: var(--mktg-space-md);
+}
+
+.stepImage {
+  border-radius: var(--mktg-radius-md);
+  margin-top: var(--mktg-space-sm);
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Dark mode */
+.sectionDark {
+  background: var(--mktg-surface-dark);
+  color: var(--mktg-text-on-dark);
+}
+
+.sectionDark .eyebrow {
+  color: var(--brand-warm);
+}
+
+.sectionDark .headline {
+  color: var(--mktg-text-on-dark);
+}
+
+.sectionDark .subtitle {
+  color: var(--mktg-text-on-dark-muted);
+}
+
+.sectionDark .timeline::before {
+  background: var(--neutral-700);
+}
+
+.sectionDark .stepDot {
+  background: var(--mktg-surface-dark);
+  border-color: var(--neutral-600);
+}
+
+.sectionDark .stepDate {
+  color: var(--brand-warm);
+}
+
+.sectionDark .stepBadge {
+  background: rgba(232, 145, 58, 0.1);
+  color: var(--brand-warm);
+}
+
+.sectionDark .stepTitle {
+  color: var(--mktg-text-on-dark);
+}
+
+.sectionDark .stepDescription {
+  color: var(--mktg-text-on-dark-muted);
+}
+
+.sectionDark .stepActive .stepDot {
+  border-color: var(--brand-warm);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .section {
+    padding: var(--mktg-space-2xl) var(--mktg-page-padding);
+  }
+
+  .header {
+    margin-bottom: var(--mktg-space-xl);
+  }
+
+  .timeline {
+    padding-left: 40px;
+  }
+
+  .timeline::before {
+    left: 11px;
+  }
+
+  .stepDot {
+    left: -40px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .stepDate {
+    font-size: 12px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
+
+  .stepDescription {
+    font-size: 15px;
+  }
+}

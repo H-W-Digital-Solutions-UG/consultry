@@ -1,0 +1,30 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Consultry — Changelog
+  screenshotPath: ../assets/images/template-changelog.png
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# ── Hero ── #}
+  {% module "hero" path="../components/modules/HeroMinimal",
+    eyebrow="CHANGELOG",
+    headline="Was gibt's Neues bei Consultry?",
+    subtitle="Verfolgen Sie die neuesten Produktupdates, Features und Verbesserungen.",
+    background="light"
+  %}
+
+  {# ── Timeline ── #}
+  {% module "timeline" path="../components/modules/TimelineSteps" %}
+
+  {# ── Inline Email Capture: Update Notifications ── #}
+  {% module "email_capture" path="../components/modules/InlineEmailCapture",
+    headline="Produkt-Updates erhalten",
+    subtitle="Abonnieren Sie unseren Newsletter und verpassen Sie kein Update.",
+    button_text="Abonnieren",
+    theme="dark"
+  %}
+
+{% endblock body %}

@@ -1,0 +1,21 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: false
+  label: Consultry — Email Preferences
+-->
+{% extends "../layouts/base.hubl.html" %}
+
+{% block body %}
+  <section style="padding: calc(72px + var(--mktg-space-2xl)) var(--mktg-page-padding) var(--mktg-space-3xl);">
+    <div style="max-width: 640px; margin: 0 auto;">
+      <h1 class="display-sm" style="text-align: center; margin-bottom: var(--mktg-space-lg);">E-Mail-Einstellungen</h1>
+      {% email_subscriptions "email_subscriptions"
+        resubscribe_button_text="Ja, bitte erneut abonnieren",
+        unsubscribe_single_text="Abmelden von:",
+        unsubscribe_all_text="Von allen E-Mails abmelden",
+        unsubscribe_all_unsubbed_text="Sie sind von allen E-Mails abgemeldet.",
+        button_text="Einstellungen aktualisieren"
+      %}
+    </div>
+  </section>
+{% endblock body %}

@@ -3,8 +3,11 @@
 **Persona:** Katrin Engel, Head of Business Development
 **Unternehmen:** mpl Consulting GmbH
 **Consultry-Zeit:** 4–6 Stunden/Tag (Power User)
-**Version:** 1.0
+**Version:** 1.1
 **Datum:** 31. März 2026
+**Design System:** [Consultry Design System v1.3](../../design/Consultry-Design-System-v1.3.md)
+**Screen Specs:** [Screen Spec Index](../../design/screen-specs/_SCREEN-SPEC-INDEX.md)
+**Companion:** [PRD v3.1](../Consultry-PRD-v3.0-Final.md), [User Journeys v1.1](../Consultry-User-Journeys-v1.0.md)
 
 **Kontext:** Dieses Dokument konzentriert sich vollständig auf die Journeys und Workflows von Katrin Engel — die Person, die für Consultry unbedingterreichbar sein muss. Katrin sitzt zwischen Signal-Erkennung (Morgens, mobil) und der Angebotsvergabe (Nachmittags, Desktop). Sie ist die primäre Datennutzerin und Entscheidungsträgerin in Journeys 1, 2 und 4. Ihre Frustrationen treiben das Produktdesign.
 
@@ -816,6 +819,137 @@
 
 ---
 
+# AI-Interface-Routing: Command Bar vs. Canvas vs. Copilot vs. Chat
+
+Diese Sektion definiert GENAU, wann Katrin welche AI-Schnittstelle nutzt und wie sie ineinander übergehen.
+
+## Command Bar (10–15x/Tag): Der schnelle Eingang
+
+**Typische Kommandos:**
+- Navigation: "Geh zu RetailCorp", "Pipeline", "Alle offenen Approvals"
+- Schnelle Abfragen: "Verfügbare SAP-MM-Berater ab Juni", "DB1 MedTech", "Verfügbare Berater Mai"
+- Aktions-Auslösung: "Erstell Opportunity für MedTech", "Erstell Engagement-Brief für RetailCorp"
+
+**Response-Verhalten:**
+- Navigation → Inline-Navigation zu Entity oder Screen
+- Schnelle Fakten → Inline-Antwort mit Drill-Down-Option ("Markus (Senior), €250/Tag, SAP-Retail-Experte, verfügbar ab 15. Juni")
+- Aktionen → Öffnet Canvas oder Zielscreen
+
+**Latenz-Anforderung:** <200ms
+
+## Eskalation: Wann Command Bar zu Canvas wird
+
+**Trigger:** Befehle, die Iteration erfordern
+
+Beispiel: "Erstell Angebot für RetailCorp"
+- Command Bar parst den Befehl
+- Öffnet Angebots-Canvas mit initialer Generierung
+- Canvas ist jetzt der Workspace — Katrin iteriert 5–10 Mal
+
+Das ist NICHT "Command Bar erzeugt Angebot". Sondern: "Command Bar ist ENTRY POINT, Canvas ist WORKSPACE."
+
+## Eskalation: Wann Command Bar zu Chat wird
+
+**Trigger:** Explorative Fragen ohne klare, einzelne Antwort
+
+Beispiel: "Wie haben wir bei Retail-Deals abgeschnitten?"
+- Command Bar erkennt: Das ist eine analytische Frage, nicht navigativ oder aktional
+- Delegiert an Analytics-Agent (Chat-Interface)
+- Analytics-Agent öffnet als Modal oder Sidebar
+- Chat ermöglicht Multi-Turn ("Was war die durchschnittliche Margin?" → "Welche Berater waren beteiligt?" → "Wer war Account Owner?")
+
+## Copilot: Der "Colleague Over Your Shoulder"
+
+**Präsenz:** Sidebar, immer präsent, auf jeder Opportunity
+
+**Verhalten:** Proaktiv, nicht reaktiv
+- Katrin öffnet Opportunity → Copilot analysiert sofort und schlägt vor
+- "Match-Score: 94. Warum?" → Erklärt in 1 Klick
+- "Interessanter Berater: Markus. Retail-SAP-Experte, letztes Jahr bei fashion-group-x"
+- "Team-Variante 2: Günstiger (Margin +3%), Risiko Lieferzeit"
+
+**Kritisch:** Copilot reaktiert auf KONTEXT. Katrin ruft ihn nicht an — er schaut der Katrin über die Schulter und flüstert Hinweise.
+
+## Chat (Knowledge/Analytics Agent): Multi-Turn Exploration
+
+**Verwendung:** Nur wenn echte Exploration nötig ist
+
+Beispiele:
+- "Welche Skills braucht man für SAP-HCM Migrationen?"
+- "Wie haben wir bei MedTech Deals abgeschnitten?"
+- "Welche SAP-Module sind für Retail am komplexesten?"
+
+**Katrin nutzt das SELTEN.** Sie bevorzugt Command Bar + Canvas. Chat ist der "letzte Ausweg" für Fragen, die komplexer sind als ein schneller Befehl.
+
+---
+
+## Entscheidungsbaum: Katrins mentales Modell
+
+Wenn Katrin etwas eingeben möchte, denkt sie (unbewusst) so:
+
+```
+Katrin tippt...
+
+├── Navigation/Entity-Suche ("RetailCorp", "Pipeline")
+│   → Command Bar: Inline-Navigation zu Entity oder List
+│   → Latenz: <200ms
+│
+├── Einfache Fakten-Abfrage ("DB1 MedTech", "Verfügbare Berater Mai")
+│   → Command Bar: Inline-Antwort mit Daten-Card
+│   → Struktur: [Fakten] + [Drill-Down-Option] + [Aktion-Button]
+│   → Latenz: <200ms
+│
+├── Aktions-Auslösung ("Erstell Angebot", "Starte Outreach")
+│   → Command Bar öffnet → Canvas oder Outreach-Screen
+│   → Katrin arbeitet iterativ weiter
+│
+├── Explorative Analyse ("Wie war unsere Win-Rate bei Retail?")
+│   → Command Bar erkennt: zu komplex für Inline
+│   → Command Bar delegiert → Analytics-Agent (Chat)
+│   → Chat öffnet als Modal/Sidebar
+│   → Multi-Turn möglich
+│
+└── Iterative Erstellung (Angebot bearbeiten, Team anpassen)
+    → AI Canvas mit Prompt Bar
+    → Undo/Redo unterstützt
+    → Keine "Accept/Reject"-Semantik
+    → Lebendige Iteration, nicht Generierung+Approval
+```
+
+---
+
+## Implementation: Routing-Logik im Backend
+
+Für Engineers:
+
+```
+Command Bar Input → Klassifikation:
+
+IF input matches navigation pattern (Entität-Name, Entität-ID)
+  → NavigationRouter → Entity Detail oder List Screen
+  LATENCY: <50ms (Fuzzy-Match im Index)
+
+ELSE IF input matches fact-query pattern ("Berater XYZ", "Verfügbar", "Margin")
+  → FactQueryRouter → Knowledge Graph / DB Query
+  RESPONSE: Inline Card mit Fakten + Drill-Down
+  LATENCY: <150ms (mit Caching)
+
+ELSE IF input matches action pattern ("Erstell", "Starte", "Sende")
+  → ActionRouter → Canvas / Screen Opener
+  RESPONSE: Opens Workspace
+  NOTE: Der Canvas wird mit Initials generiert, dann Iteration
+
+ELSE IF input matches analytical pattern ("Wie", "Analyse", "Vergleich")
+  → AnalyticsRouter → Chat-Agent
+  NOTE: Agent antwortet mit Multi-Turn-Chat, nicht Inline
+  LATENCY: <500ms für First Response
+
+ELSE
+  → Fallback: Fuzzy-Suche über alle Oberflächen
+```
+
+---
+
 # Fehlende Journeys für Katrin (Sollte es geben, aber noch nicht definiert)
 
 Diese Workflows sind für Katrins Tagesarbeit kritisch, aber nicht in den 17 initialen Journeys abgedeckt:
@@ -868,6 +1002,57 @@ Diese Workflows sind für Katrins Tagesarbeit kritisch, aber nicht in den 17 ini
 - "Wer aus meiner Pipeline geht zur BITKOM 2026?"
 - Pre-Meeting Briefings
 - Post-Event Follow-up
+
+---
+
+## Explainability & Trust für Katrin
+
+**Grundprinzip:** Katrin vertraut AI, wenn sie schnell und nachvollziehbar ist. Wenn AI eine Entscheidung trifft, muss Katrin in 1 Klick verstehen WARUM.
+
+### Match-Score Erklärbarkeit
+
+Bei jedem AI-generierten Match-Score (z.B. "Markus: 94% Match für RetailCorp"):
+- **Primary Question:** "Warum 94?"
+- **Answer:** Copilot erklärt in 1 Klick
+- **Struktur:** "94% because: SAP-Retail-Experte (✓), 8 Jahre Erfahrung (✓), aktuell verfügbar (✓), ähnliche Branchengröße (✓), Sprachbarriere: Französisch/Englisch (✓). Risiko: Nie für Fintech-Klient gearbeitet."
+
+### Quellenangabe in generierten Inhalten
+
+Bei Canvas-generierten Texten (Engagement-Brief, Proposal):
+- **Anforderung:** Jeder generierte Satz muss eine Quelle haben
+- **Struktur:** "Basierend auf MedTech-Projekt Q3/2025 (Projektabschlussbericht) und FashionGroup Q4/2024 (Erfolgsbericht)"
+- **Implementation:** Mouse-Over über generierten Text zeigt Quelle: "Diese Methodik stammt aus MedTech-Projekt (Dr. Sarah Müller, 2025-09-15)"
+- **UI:** Faint Citation-Icons (z.B. »), auf Hover oder Click expandierbar
+
+### Feedback-Mechanismus für Verbesserung
+
+Wenn Katrin einen Vorschlag für falsch hält:
+- **Button:** "Dieser Berater-Vorschlag war falsch" (auf Match-Card)
+- **Flow:** Katrin gibt Feedback → System lernt → Zukünftige Vorschläge verbessern sich
+- **Transparenz:** "Du hast 12x Feedback gegeben. System verbessert sich."
+
+### Confidence-Indikatoren bei AI-Vorschlägen
+
+Jeder AI-Vorschlag braucht einen klaren Confidence-Level:
+
+```
+Hoch (≥3 Datenpunkte): ★★★
+- "Markus: SAP-Retail-Experte" 
+- Basis: ✓ Zertifikat, ✓ Projekt-Historie (5x), ✓ aktuell verfügbar
+
+Mittel (1-2 Datenpunkte): ★★
+- "Alex: SAP-Retail-Kandidat"
+- Basis: ✓ Zertifikat, ✗ Projekt-Historia leer, ✓ gerade verfügbar
+
+Niedrig (<1, wenig Daten): ★
+- "Jonas: Möglicher SAP-Retail-Fit"
+- Markiert als: "Wenig Daten — basiert auf Skills, keine Projekt-Referenzen"
+```
+
+**UI-Implementation:**
+- Confidence-Stars auf jeder Match-Card oder AI-Empfehlung sichtbar
+- Hover zeigt: "Warum nur ★★? Weil: keine aktuellen Retail-Referenzen. Letzter Retail-Einsatz: 2023."
+- Low-Confidence-Vorschläge grau oder mit Warnung markiert
 
 ---
 
@@ -956,6 +1141,81 @@ Diese Workflows sind für Katrins Tagesarbeit kritisch, aber nicht in den 17 ini
 
 ---
 
+# Phase-1-Abdeckung: Katrin
+
+Mapping, welche Katrins Screens in Phase 1 (Wochen 1–8) abgedeckt sind.
+
+## Journey 1: Signal → Opportunity → Angebot → Freigabe → Outreach
+
+| Screen | Journey | Phase | Notiz |
+|---|---|---|---|
+| **J1-S1** Signal-Feed (Mobile) | Signal-Erkennung | Phase 2 | Market Intelligence — noch nicht in Phase 1 |
+| **J1-S2** Signal → Opportunity Conversion | Signal-Konvertierung | Phase 1 | Opportunity Intelligence — Core Feature |
+| **J1-S3** Opportunity Detail + Engagement-Brief | Opportunity Qualifizierung | Phase 1 (Basis) / Phase 2 (Canvas-erweitert) | Basis: Read-only, Phase 2: Canvas integration |
+| **J1-S4** Staffing & Matching | Team-Zusammenstellung | Phase 1 | Workforce + Matching-Engine |
+| **J1-S5** Angebots-Canvas | Proposal-Erstellung | Phase 2 | AI Canvasses — komplexe Komponenten |
+| **J1-S6** Approval Card | Freigabe-Flow | Phase 1 (Basis) | Notification Basis — einfache Card |
+| **J1-S7** Outreach Composer | Outreach senden | Phase 2 | Outreach Engine — separate Modul |
+
+## Journey 2: Staffing-Anfrage → Antwort → Team-Bestätigung
+
+| Screen | Journey | Phase | Notiz |
+|---|---|---|---|
+| **J2-S1** Staffing-Anfrage | Staffing-Prozess | Phase 1 | Workflow Basis |
+| **J2-S4** Staffing-Status Übersicht | Staffing-Tracking | Phase 1 | Status-Komponenten |
+
+## Journey 4: Berater-Onboarding → Profil → Erstes Matching
+
+| Screen | Journey | Phase | Notiz |
+|---|---|---|---|
+| **J4-S4** Tim taucht im Matching auf | Matching nach Onboarding | Phase 1 | Knowledge Graph + Matching |
+
+---
+
+## Phase-1-Realität für Katrin
+
+**Was Katrin in Phase 1 kann:**
+1. Opportunities qualifizieren (J1-S3: Read)
+2. Berater matchen (J1-S4)
+3. Basis-CVs generieren (einfache Generierung, keine Iteration)
+4. Staffing-Anfragen stellen (J2-S1)
+5. Staffing-Status prüfen (J2-S4)
+6. Approval-Notifications erhalten (J1-S6)
+7. Neue Berater ins Matching sehen (J4-S4)
+
+**Was Katrin in Phase 1 NICHT kann:**
+- Signal-Feed nutzen (Market Intelligence in Phase 2)
+- Opportunities aus Signalen konvertieren (J1-S2: braucht Signal-Feed)
+- AI-Angebote iterativ erstellen (J1-S5: Canvas in Phase 2)
+- Personalisierte Outreach senden (J1-S7: Outreach Engine in Phase 2)
+- AI-gesteuerte Discovery-Suche (Discovery Engine in Phase 2)
+
+---
+
+## Konsequenz für Katrin: Der "WOW-Moment" kommt in Phase 2
+
+**Phase 1 (Wochen 1–8):**
+- Katrin kann das System nutzen, wird aber merken: Das ist eine Qualifizierungs- und Matching-Lösung, nicht die vollständige Opportunity-Mastering-Plattform
+- Signal-Feed fehlt → Sie muss weiterhin externe Tools für Signale nutzen
+- Canvas fehlt → Sie kann nicht iterativ Angebote bauen (nur einfache Generierung)
+- Outreach fehlt → Sie sendet E-Mails weiterhin manuell oder extern
+
+**Phase 2 (Wochen 9+):**
+- Signal-Feed kommt → Market Intelligence aktiv
+- Canvas kommt → Iterative Proposal-Erstellung mit AI
+- Outreach kommt → Kampagnen-Verwaltung mit Tracking
+- Discovery-Engine kommt → Proaktive Suche
+- Jetzt funktioniert der gesamte Flow: Signal → Opportunity → Angebot → Outreach
+- **Das ist Katrins "WOW-Moment":** Ein durchgängiger, AI-gestützter Workflow vom Signal zur Outreach
+
+**Implikation für Marketing/Go-Live:**
+- Phase 1 ist "Proof of Concept" für Matching und Opportunity-Management
+- Katrin wird Phase 1 nutzen, aber nicht lieben
+- Phase 2 ist, wenn Katrin sagt: "Das ist game-changing"
+- Erwartung setzen: "Phase 1 ist der Anfang. Der wahre Wert kommt in Phase 2."
+
+---
+
 # Design-Token & Komponenten-Referenzen
 
 Alle Komponenten in Katrins Journeys verwenden folgende Design-Token:
@@ -998,3 +1258,31 @@ Dieses Dokument definiert **Katrin Engels kritische Workflows** in Consultry. Si
 
 **Stand:** 31. März 2026
 **Nächste Überprüfung:** Nach erstem produktivem Einsatz mit echten Katrins
+
+---
+
+## Design-Anbindung (v1.1)
+
+**Katrins Screen Specs (erstellt):**
+
+| Journey-Screen | Screen Spec | Status |
+|---------------|-------------|--------|
+| [J1-S1] Signal-Feed (Mobile) | `screen-specs/growth/signal-feed.md` + `screen-specs/mobile/mobile-signal-feed.md` | ✅ Erstellt |
+| [J1-S2] Signal → Opportunity | `screen-specs/deal/opportunity-intake.md` | ✅ Erstellt |
+| [J1-S3] Opportunity Detail | `screen-specs/deal/opportunity-detail.md` | ✅ Erstellt |
+| [J1-S4] Staffing & Matching | `screen-specs/deal/staffing-matching.md` | ✅ Erstellt |
+| [J1-S5] Angebots-Canvas | `screen-specs/ai-experience/angebots-canvas.md` | Ausstehend (Tier 6) |
+| [J1-S6] Approval Card | `screen-specs/mobile/mobile-approval-card.md` (Thomas) | ✅ Erstellt |
+| [J1-S7] Outreach Composer | `screen-specs/deal/outreach-editor.md` | Ausstehend (Tier 7) |
+
+**Katrins Kern-Komponenten:**
+
+| Komponente | Spec | Katrins Nutzung |
+|-----------|------|----------------|
+| Command Palette | `component-specs/navigation/command-palette.md` | 10-15x/Tag, primaere Navigation |
+| Data Tables | `component-specs/data-display/data-tables.md` | Pipeline, Matching-Ergebnisse |
+| Score Displays | `component-specs/data-display/score-displays.md` | Match-Scores, Signal-Scores |
+| Cards (Signal) | `component-specs/data-display/cards.md` | Signal Feed, Pipeline |
+| Bottom Nav Bar | `component-specs/navigation/bottom-navigation-bar.md` | Mobile: Signale, Pipeline, Matching, Copilot |
+
+**v1.1 Changelog:** Design System Referenz v1.2→v1.3. Screen Spec + Component Spec Links hinzugefuegt. Stitch-Referenzen als "NUR Inspiration" markiert.

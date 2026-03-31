@@ -1,0 +1,57 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  border-radius: var(--mktg-radius-full);
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.sm {
+  padding: 2px 8px;
+  font-size: 11px;
+}
+
+.md {
+  padding: 4px 12px;
+  font-size: 13px;
+}
+
+.default {
+  background: var(--neutral-100);
+  color: var(--neutral-700);
+}
+
+.accent {
+  background: var(--brand-primary);
+  color: white;
+}
+
+.success {
+  background: var(--semantic-success-light);
+  color: var(--semantic-success);
+}
+
+.warning {
+  background: var(--semantic-warning-light);
+  color: var(--semantic-warning);
+}
+
+.new {
+  background: #FDE8EF;
+  color: var(--brand-primary);
+}
+
+.beta {
+  background: var(--semantic-info-light);
+  color: var(--semantic-info);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--mktg-radius-full);
+  background: currentColor;
+  flex-shrink: 0;
+}

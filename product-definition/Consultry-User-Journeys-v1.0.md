@@ -2,12 +2,14 @@
 
 ## Persona-getriebene Flows mit UI-Empfehlungen und Handoff-Points
 
-**Version:** 1.0
+**Version:** 1.1
 **Datum:** 31. März 2026
-**Companion:** [Target Personas v1.0](./Consultry-Target-Personas-v1.0.md), [PRD v3.0](./Consultry-PRD-v3.0-Final.md)
+**Companion:** [Target Personas v1.0](./Consultry-Target-Personas-v1.0.md), [PRD v3.1](./Consultry-PRD-v3.0-Final.md)
 **Kontext:** IT-/SAP-Beratung, DACH, 85 Berater
-**Design System:** [Consultry Design System](../design/Consultry-Design-System-v1.2.md)
-**Stitch Inspiration Board:** [Consultry Board](https://stitch.withgoogle.com/projects/9527822144861630979)
+**Design System:** [Consultry Design System v1.3](../design/Consultry-Design-System-v1.3.md)
+**Screen Specs:** [Screen Spec Index](../design/screen-specs/_SCREEN-SPEC-INDEX.md)
+**Component Specs:** [Component Spec Index](../design/component-specs/_COMPONENT-SPEC-INDEX.md)
+**Stitch Inspiration Board:** [Consultry Board](https://stitch.withgoogle.com/projects/9527822144861630979) (NUR Inspiration, Dark/Amber Theme ist NICHT kanonisch)
 
 ---
 
@@ -2144,28 +2146,42 @@ Follow-up-Workflows werden automatisch generiert, personalisiert mit Event-Konte
 
 # Komplett-Übersicht: 17 Journeys × Personas × Screens
 
-| # | Journey | Primary Persona | Screens | Modul(e) |
-|---|---------|----------------|---------|----------|
-| 1 | Signal → Angebot → Outreach | Katrin + Thomas | 7 | Signal, Opp, Staffing, Offer, Outreach |
-| 2 | Staffing-Anfrage → Team-Lock | Katrin + Stefan + Lisa | 4 | Staffing, Workforce |
-| 3 | Projekt-Risiko → Eskalation | Stefan + Thomas + Dr. Müller | 3 | Project Exec, Client Portal |
-| 4 | Berater-Onboarding | Martina + Lisa | 4 | Knowledge Graph, Workforce |
-| 5 | Projektabschluss → Knowledge | Stefan + Lisa + Katrin | 4 | Knowledge, Methodology |
-| 6 | Practice-Lead Kapazität | Maria + Thomas | 2 | Workforce, Capacity Planner |
-| 7 | Account Review & Beziehung | Thomas + Katrin | 1 | Client & Account |
-| 8 | E-Mail → Opportunity | Katrin | 1 | Opportunity Intelligence |
-| 9 | Offer Composition Canvas | Katrin + Thomas + Martina | 2 | Offer Composition, Client-Facing |
-| 10 | Vertragsverhandlung Canvas | Thomas + Martina | 1 | Contract Intelligence |
-| 11 | Event-Lifecycle | Katrin + Stefan | 3 | Events & Network |
-| 12 | Thomas' Morgen-Briefing | Thomas | 2 | Dashboard, AI Copilot |
-| 13 | Financial Review | Thomas + Martina | 1 | Financial Intelligence |
-| 14 | Skill-Gap → Recruiting | Maria + Martina | 1 | Workforce, Talent Acquisition |
-| 15 | Ausschreibungs-Intelligence | Katrin | 1 | Market Intelligence |
-| 16 | Knowledge-Canvas Playbook | Stefan | 1 | Methodology & IP |
-| 17 | Client Feedback-Loop | Dr. Müller + Stefan | 1 | Client Portal, Project Exec |
+| # | Journey | Primary Persona | Screens | Modul(e) | Screen Specs |
+|---|---------|----------------|---------|----------|-------------|
+| 1 | Signal → Angebot → Outreach | Katrin + Thomas | 7 | Signal, Opp, Staffing, Offer, Outreach | ✅ signal-feed, opportunity-detail, opportunity-intake, staffing-matching + Mobile Signal Feed |
+| 2 | Staffing-Anfrage → Team-Lock | Katrin + Stefan + Lisa | 4 | Staffing, Workforce | ✅ staffing-matching, Mobile Staffing Card |
+| 3 | Projekt-Risiko → Eskalation | Stefan + Thomas + Dr. Müller | 3 | Project Exec, Client Portal | ✅ Mobile Alert Detail |
+| 4 | Berater-Onboarding | Martina + Lisa | 4 | Knowledge Graph, Workforce | ✅ admin-panel, consultant-profile-editor |
+| 5 | Projektabschluss → Knowledge | Stefan + Lisa + Katrin | 4 | Knowledge, Methodology | ✅ consultant-profile-view |
+| 6 | Practice-Lead Kapazität | Maria + Thomas | 2 | Workforce, Capacity Planner | Ausstehend |
+| 7 | Account Review & Beziehung | Thomas + Katrin | 1 | Client & Account | ✅ account-plan-stakeholder-map |
+| 8 | E-Mail → Opportunity | Katrin | 1 | Opportunity Intelligence | ✅ opportunity-intake |
+| 9 | Offer Composition Canvas | Katrin + Thomas + Martina | 2 | Offer Composition, Client-Facing | Ausstehend (Tier 6) |
+| 10 | Vertragsverhandlung Canvas | Thomas + Martina | 1 | Contract Intelligence | Ausstehend (Tier 6) |
+| 11 | Event-Lifecycle | Katrin + Stefan | 3 | Events & Network | Ausstehend (Tier 7) |
+| 12 | Thomas' Morgen-Briefing | Thomas | 2 | Dashboard, AI Copilot | ✅ cockpit-dashboard, copilot-sidebar, Mobile Copilot Briefing |
+| 13 | Financial Review | Thomas + Martina | 1 | Financial Intelligence | Ausstehend (Tier 7) |
+| 14 | Skill-Gap → Recruiting | Maria + Martina | 1 | Workforce, Talent Acquisition | Ausstehend (Tier 7) |
+| 15 | Ausschreibungs-Intelligence | Katrin | 1 | Market Intelligence | ✅ signal-feed |
+| 16 | Knowledge-Canvas Playbook | Stefan | 1 | Methodology & IP | Ausstehend (Tier 7) |
+| 17 | Client Feedback-Loop | Dr. Müller + Stefan | 1 | Client Portal, Project Exec | Ausstehend (Tier 7) |
 
 **Gesamt: 17 Journeys, 39 Screens, 7 Personas (inkl. Maria als neue Persona)**
+**Design Coverage: 18/49 Screen Specs erstellt (37%)**
 
 ---
 
-*Consultry User Journeys v1.0 — Vollständige Journey Map für alle 18 Module + AI Experience Layer*
+## Design-Anbindung (v1.1)
+
+| Ressource | Pfad | Beschreibung |
+|-----------|------|-------------|
+| Design System v1.3 | `design/Consultry-Design-System-v1.3.md` | Token-Quelle, 2026-Philosophie |
+| Component Specs (35) | `design/component-specs/` | 16 erstellt, 19 ausstehend |
+| Screen Specs (49) | `design/screen-specs/` | 18 erstellt, 31 ausstehend |
+| Stitch Board Mapping | `design/google-stitch/STITCH_BOARD_MAPPING.md` | Inspiration only |
+
+**Hinweis (v1.1):** Alle Screen-IDs [J#-S#] in diesem Dokument verweisen auf die entsprechenden Screen Specs unter `design/screen-specs/`. Beispiel: [J1-S1] Signal-Feed → `design/screen-specs/growth/signal-feed.md`. Vollständige Zuordnung: siehe [Screen Spec Index](../design/screen-specs/_SCREEN-SPEC-INDEX.md).
+
+---
+
+*Consultry User Journeys v1.1 — Vollständige Journey Map für alle 18 Module + AI Experience Layer*

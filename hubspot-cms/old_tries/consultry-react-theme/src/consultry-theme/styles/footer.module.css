@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Consultry Marketing — Footer
+   ========================================================================== */
+
+.footer {
+  background-color: var(--mktg-surface-hero);
+  padding: var(--mktg-space-3xl) var(--mktg-page-padding) var(--mktg-space-xl);
+}
+
+.inner {
+  max-width: var(--mktg-content-max);
+  margin: 0 auto;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--mktg-space-xl);
+  padding-bottom: var(--mktg-space-2xl);
+  border-bottom: var(--mktg-border-on-dark);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mktg-space-md);
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--mktg-text-on-dark);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.logoMark {
+  height: 32px;
+  width: auto;
+}
+
+.brandDescription {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mktg-text-on-dark-muted);
+  max-width: 280px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mktg-space-sm);
+}
+
+.columnTitle {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mktg-text-on-dark-muted);
+  margin-bottom: var(--mktg-space-xs);
+}
+
+.columnLink {
+  font-size: 15px;
+  color: var(--mktg-text-on-dark);
+  text-decoration: none;
+  transition: color var(--mktg-duration-fast) var(--mktg-ease-default);
+}
+
+.columnLink:hover {
+  color: var(--brand-warm);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--mktg-space-lg);
+}
+
+.legal {
+  font-size: 14px;
+  color: var(--mktg-text-on-dark-muted);
+}
+
+.legalLinks {
+  display: flex;
+  gap: var(--mktg-space-md);
+}
+
+.legalLink {
+  font-size: 14px;
+  color: var(--mktg-text-on-dark-muted);
+  text-decoration: none;
+  transition: color var(--mktg-duration-fast) var(--mktg-ease-default);
+}
+
+.legalLink:hover {
+  color: var(--mktg-text-on-dark);
+}
+
+@media (max-width: 1023px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: var(--mktg-space-lg);
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: var(--mktg-space-sm);
+    text-align: center;
+  }
+}

@@ -1,0 +1,121 @@
+.section {
+  padding: var(--mktg-space-2xl) var(--mktg-page-padding);
+}
+
+.inner {
+  max-width: var(--mktg-content-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--mktg-space-xl);
+}
+
+.eyebrow {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--brand-primary);
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  margin-bottom: var(--mktg-space-sm);
+}
+
+.headline {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: var(--mktg-space-sm);
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--neutral-600);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.screenshotContainer {
+  position: relative;
+  border-radius: var(--mktg-radius-xl);
+  overflow: hidden;
+  background-color: var(--mktg-surface-dark-elevated);
+  box-shadow: var(--mktg-shadow-hero);
+  padding: 24px;
+  margin-top: var(--mktg-space-2xl);
+}
+
+.screenshotContainerDark {
+  background-color: var(--mktg-surface-hero);
+}
+
+.screenshotContainerFull {
+  padding: 0;
+  max-width: none;
+}
+
+.image {
+  width: 100%;
+  border-radius: var(--mktg-radius-lg);
+  display: block;
+}
+
+.imageFull {
+  border-radius: 0;
+}
+
+.caption {
+  text-align: center;
+  font-size: 14px;
+  color: var(--neutral-600);
+  margin-top: var(--mktg-space-md);
+}
+
+.overlayCard {
+  position: absolute;
+  background-color: white;
+  border-radius: var(--mktg-radius-md);
+  padding: 12px 16px;
+  box-shadow: var(--mktg-shadow-md);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: float 3s var(--mktg-ease-default) infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: var(--mktg-space-xl) var(--mktg-page-padding);
+  }
+
+  .header {
+    margin-bottom: var(--mktg-space-lg);
+  }
+
+  .headline {
+    font-size: clamp(24px, 3vw, 32px);
+  }
+
+  .screenshotContainer {
+    padding: 12px;
+  }
+
+  .overlayCard {
+    display: none;
+  }
+}

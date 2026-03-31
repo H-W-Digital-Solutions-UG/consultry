@@ -1,4 +1,4 @@
-# Consultry — Product Requirements Document v3.0
+# Consultry — Product Requirements Document v3.1
 
 ## AI-Native Consultancy CRM für den DACH-Markt
 
@@ -6,15 +6,28 @@
 **Datum:** 31. März 2026
 **Produkt:** Consultry (eigenständiges Produkt)
 **Autor:** Jules
-**Ersetzt:** Consultry PRD v2.0
+**Ersetzt:** Consultry PRD v3.0
+
+**Design Companions:**
+- [Design System v1.3](../design/Consultry-Design-System-v1.3.md)
+- [Component Specs](../design/component-specs/_COMPONENT-SPEC-INDEX.md)
+- [Screen Specs](../design/screen-specs/_SCREEN-SPEC-INDEX.md)
+- [User Journeys v1.1](./Consultry-User-Journeys-v1.0.md)
+- [Stitch Board Mapping](../design/google-stitch/STITCH_BOARD_MAPPING.md)
 
 ---
 
-## Überblick: Was sich in v3.0 ändert
+## Überblick: Was sich in v3.1 ändert
 
-v2.0 definierte 15 Module mit gestaffelter Roadmap. v3.0 ist das **vollständige Launch-PRD**: alle Module sind Launch-Scope, nicht Zukunftsvision. Jedes Feature wird in-depth spezifiziert — was es tut, warum es gebraucht wird, wie der Nutzer es erlebt.
+v2.0 definierte 15 Module mit gestaffelter Roadmap. v3.0 war das **vollständige Launch-PRD**. v3.1 ergänzt die **Design-Anbindung**: Screen Inventory mit Design-Coverage-Status, Verweise auf Component Specs und Screen Specs, 2026-Design-Philosophie-Alignment.
 
-**Kernänderungen gegenüber v2.0:**
+**Kernänderungen v3.0 → v3.1:**
+
+- **Screen Inventory (neu)** — Vollständige Auflistung aller 49 Screens mit Design-Coverage-Status, Layout-Typ-Entscheidung (Bento Grid vs. Progressive Disclosure) und Verweisen zu Screen Specs.
+- **Design Companion Dokumente** — Bidirektionale Verweise zu Design System v1.3, Component Specs (35 Dokumente), Screen Specs (49 Dokumente).
+- **2026 Design Philosophy** — Bestätigung: Light Theme Default (nicht Stitch Dark), Voice Input (kein Voice Output), Adaptive Bento Grids (nur Dashboards), Bottom Navigation Bar (Mobile), Kinetic Typography, Preview Panels.
+
+**Kernänderungen v2.0 → v3.0 (Referenz):**
 
 - **Alle Module sind Launch-Scope.** Es gibt keine "Phase 5+"-Features mehr. Was im PRD steht, wird gebaut. Die Phasen-Roadmap definiert die Build-Reihenfolge, nicht den Produktumfang.
 - **Neues Querschnittsthema: AI Experience Layer** — Consultry ist nicht "ein Tool mit AI-Features", sondern eine AI-native Plattform. Das AI Experience Layer definiert die Interaktionsschichten: kontextueller Copilot, Command Bar, AI Canvasses, Chat-Interfaces und Planning-Tools. AI durchdringt jeden Workflow — nicht als Feature-Flag, sondern als Interaktionsparadigma.
@@ -1493,4 +1506,121 @@ Alle Module sind Launch-Scope. Die Phasen definieren die Build-Reihenfolge basie
 
 ---
 
-*Consultry — PRD v3.0 — Final Draft — 31. März 2026*
+## Screen Inventory & Design Coverage
+
+Vollständige Auflistung aller identifizierten Screens mit Design-Status. Quelle: [Cross-Analyse Design vs. Product v1.0](../design/Kritische-Analyse-Design-vs-Product-v1.0.md), [Screen Spec Index](../design/screen-specs/_SCREEN-SPEC-INDEX.md).
+
+### AI Experience Layer
+
+| Screen | PRD-Modul | Layout-Typ | Screen Spec | Design-Status |
+|--------|-----------|-----------|-------------|---------------|
+| Copilot Sidebar | 7.1 | Progressive Disclosure | `ai-experience/copilot-sidebar.md` | ✅ Erstellt |
+| Command Bar | 7.2 | Overlay | `ai-experience/command-bar.md` | ✅ Erstellt |
+| Angebots-Canvas | 10.3 | Progressive Disclosure | `ai-experience/angebots-canvas.md` | Ausstehend (Tier 6) |
+| Vertrags-Canvas | 10.5 | Progressive Disclosure | `ai-experience/vertrags-canvas.md` | Ausstehend (Tier 6) |
+| Engagement-Brief-Canvas | 10.1 | Progressive Disclosure | `ai-experience/engagement-brief-canvas.md` | Ausstehend (Tier 6) |
+| Knowledge Canvas | 8.4 | Progressive Disclosure | `ai-experience/knowledge-canvas.md` | Ausstehend (Tier 7) |
+| Kapazitätsplanungs-Canvas | 8.2 | Progressive Disclosure | `ai-experience/kapazitaetsplanungs-canvas.md` | Ausstehend (Tier 7) |
+| Knowledge Agent Chat | 8.4 | Chat | `ai-experience/knowledge-agent-chat.md` | Ausstehend (Tier 6) |
+| Onboarding-Agent Dialog | 9.3 | Dialog | `ai-experience/onboarding-agent-dialog.md` | Ausstehend (Tier 7) |
+
+### Foundation Layer
+
+| Screen | PRD-Modul | Layout-Typ | Screen Spec | Design-Status |
+|--------|-----------|-----------|-------------|---------------|
+| Consultant Profile Editor | 8.1 | Progressive Disclosure | `foundation/consultant-profile-editor.md` | ✅ Erstellt |
+| Consultant Profile View | 8.1, 10.4 | Progressive Disclosure | `foundation/consultant-profile-view.md` | ✅ Erstellt |
+| Skill Normalization Dialog | 8.1 | Modal | `foundation/skill-normalization-dialog.md` | Ausstehend (Tier 7) |
+| Team & Availability Dashboard | 8.2 | Bento Grid | `foundation/team-availability-dashboard.md` | Ausstehend (Tier 7) |
+| Verfügbarkeit Update Dialog | 8.2 | Modal | `foundation/verfuegbarkeit-update-dialog.md` | Ausstehend (Tier 7) |
+| Account Plan & Stakeholder Map | 8.3 | Progressive Disclosure | `foundation/account-plan-stakeholder-map.md` | ✅ Erstellt |
+| Warm Path & Relationship Detail | 8.1 | Progressive Disclosure | `foundation/warm-path-relationship-detail.md` | Ausstehend (Tier 7) |
+
+### Growth Layer
+
+| Screen | PRD-Modul | Layout-Typ | Screen Spec | Design-Status |
+|--------|-----------|-----------|-------------|---------------|
+| Signal Feed | 9.1 | Progressive Disclosure | `growth/signal-feed.md` | ✅ Erstellt |
+| Discovery Dashboard | 9.1 | Bento Grid | `growth/discovery-dashboard.md` | Ausstehend (Tier 7) |
+| Ausschreibungs-Feed | 9.1 | Progressive Disclosure | `growth/ausschreibungs-feed.md` | Ausstehend (Tier 7) |
+| Event Manager | 9.2 | Progressive Disclosure | `growth/event-manager.md` | Ausstehend (Tier 7) |
+| Live Event Mobile | 9.2 | Stack (Mobile) | `growth/live-event-mobile.md` | Ausstehend (Tier 7) |
+| Recruiting Pipeline | 9.3 | Progressive Disclosure | `growth/recruiting-pipeline.md` | Ausstehend (Tier 7) |
+| Skill-Gap Analysis | 9.3 | Bento Grid | `growth/skill-gap-analysis.md` | Ausstehend (Tier 7) |
+| Berater-Onboarding Wizard | 9.3 | Progressive Disclosure | `growth/berater-onboarding-wizard.md` | Ausstehend (Tier 7) |
+
+### Deal Layer
+
+| Screen | PRD-Modul | Layout-Typ | Screen Spec | Design-Status |
+|--------|-----------|-----------|-------------|---------------|
+| Opportunity Detail | 10.1 | Progressive Disclosure | `deal/opportunity-detail.md` | ✅ Erstellt |
+| Opportunity Intake | 10.1 | Bottom Sheet / Modal | `deal/opportunity-intake.md` | ✅ Erstellt |
+| Staffing & Matching | 10.2 | Progressive Disclosure | `deal/staffing-matching.md` | ✅ Erstellt |
+| Offer Composer | 10.3 | Progressive Disclosure | `deal/offer-composer.md` | Ausstehend (Tier 7) |
+| CV Generator | 10.4 | Progressive Disclosure | `deal/cv-generator.md` | Ausstehend (Tier 7) |
+| CV Extraktion Review | 10.4 | Progressive Disclosure | `deal/cv-extraktion-review.md` | Ausstehend (Tier 7) |
+| Contract Editor | 10.5 | Progressive Disclosure | `deal/contract-editor.md` | Ausstehend (Tier 7) |
+| Outreach Editor | 10.6 | Progressive Disclosure | `deal/outreach-editor.md` | Ausstehend (Tier 7) |
+
+### Delivery & Performance Layer
+
+| Screen | PRD-Modul | Layout-Typ | Screen Spec | Design-Status |
+|--------|-----------|-----------|-------------|---------------|
+| Project Dashboard | 11.1 | Bento Grid | `delivery/project-dashboard.md` | Ausstehend (Tier 7) |
+| Projekt-Abschluss | 11.1 | Progressive Disclosure | `delivery/projekt-abschluss.md` | Ausstehend (Tier 7) |
+| Financial Dashboard | 11.2 | Bento Grid | `delivery/financial-dashboard.md` | Ausstehend (Tier 7) |
+
+### Platform Layer
+
+| Screen | PRD-Modul | Layout-Typ | Screen Spec | Design-Status |
+|--------|-----------|-----------|-------------|---------------|
+| Cockpit Dashboard | 13.5 | Bento Grid | `platform/cockpit-dashboard.md` | ✅ Erstellt |
+| Notification Center | 12.3 | Progressive Disclosure | `platform/notification-center.md` | ✅ Erstellt |
+| Admin Panel | 13.2 | Progressive Disclosure | `platform/admin-panel.md` | ✅ Erstellt |
+| Client Portal Dashboard | 12.2 | Progressive Disclosure | `platform/client-portal-dashboard.md` | Ausstehend (Tier 7) |
+| Client Portal Pulse-Check | 12.2 | Progressive Disclosure | `platform/client-portal-pulse-check.md` | Ausstehend (Tier 7) |
+| Magic Link Email | 12.2 | Email Template | `platform/magic-link-email.md` | Ausstehend (Tier 7) |
+| Approval Manager | 12.1 | Progressive Disclosure | `platform/approval-manager.md` | Ausstehend (Tier 7) |
+
+### Mobile-Only Screens
+
+| Screen | Persona | Layout-Typ | Screen Spec | Design-Status |
+|--------|---------|-----------|-------------|---------------|
+| Mobile Signal Feed | Katrin | Stack + Bottom Nav | `mobile/mobile-signal-feed.md` | ✅ Erstellt |
+| Mobile Approval Card | Thomas | Stack + Bottom Nav | `mobile/mobile-approval-card.md` | ✅ Erstellt |
+| Mobile Staffing Card | Stefan, Lisa | Stack + Bottom Nav | `mobile/mobile-staffing-card.md` | ✅ Erstellt |
+| Mobile Alert Detail | Thomas | Stack + Bottom Nav | `mobile/mobile-alert-detail.md` | ✅ Erstellt |
+| Mobile Copilot Briefing | Thomas | Stack + Bottom Nav | `mobile/mobile-copilot-briefing.md` | ✅ Erstellt |
+| Mobile Profil-Update Nudge | Lisa | Stack + Bottom Nav | `mobile/mobile-profil-update-nudge.md` | ✅ Erstellt |
+| Mobile Kommentar-Thread | Alle | Stack + Bottom Nav | `mobile/mobile-kommentar-thread.md` | Ausstehend (Tier 7) |
+
+### Coverage Summary
+
+| Layer | Screens | Design Specs | Coverage |
+|-------|---------|-------------|----------|
+| AI Experience | 9 | 2 | 22% |
+| Foundation | 7 | 3 | 43% |
+| Growth | 8 | 1 | 13% |
+| Deal | 8 | 3 | 38% |
+| Delivery | 3 | 0 | 0% |
+| Platform | 7 | 3 | 43% |
+| Mobile | 7 | 6 | 86% |
+| **Gesamt** | **49** | **18** | **37%** |
+
+### Design Philosophy Decisions (v3.1)
+
+| Entscheidung | Festlegung | Begründung |
+|-------------|-----------|------------|
+| Theme | Light = Default, Dark = Toggle | DS v1.3 Warm Coral Light Mode ist kanonisch. Stitch Dark/Amber ist NUR Inspiration. |
+| Primary Color | `brand-primary` (#BF5347) Warm Coral | DACH-professionell, vertrauenswürdig, kein Corporate-Blue. |
+| Layout: Dashboards | Adaptive Bento Grid (4→2→1 Spalten) | Mehrere gleichwertige KPI-Blöcke — Grid ideal. |
+| Layout: Workflows | Progressive Disclosure (L0-L3) | Lineare Hierarchie — Grid würde fragmentieren. |
+| Mobile Navigation | Bottom Navigation Bar (56px + Safe Area) | 2026-Standard. Ersetzt Hamburger-Menüs. Persona-adaptive Items. |
+| Voice | Input only (Speech-to-Text) | Microphone Button in Command Bar, Copilot, Search. Kein Voice Output (TTS). |
+| AI Content | `ai-surface` Background + `ktype-ai-reveal` | Kinetic Typography für AI-Responses. Klar unterscheidbar von User-Content. |
+| Dokument-Vorschau | Preview Panel (5 Varianten) | Inline, Slide-Over, Tooltip, Fullscreen, Split-View. Kein externer Viewer. |
+| Emoji | Professional, kontextbezogen | Badges, Notifications, Empty States: erlaubt. Body Text, Labels, Buttons: verboten. |
+
+---
+
+*Consultry — PRD v3.1 — Final Draft — 31. März 2026*

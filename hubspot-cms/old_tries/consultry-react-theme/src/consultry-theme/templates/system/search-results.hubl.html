@@ -1,0 +1,42 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: false
+  label: Consultry — Search Results
+-->
+{% extends "../layouts/base.hubl.html" %}
+
+{% block body %}
+  <section style="padding: calc(72px + var(--mktg-space-2xl)) var(--mktg-page-padding) var(--mktg-space-3xl);">
+    <div style="max-width: 760px; margin: 0 auto;">
+      <h1 class="display-sm" style="margin-bottom: var(--mktg-space-lg);">
+        Suchergebnisse für "{{ request.query_dict.term }}"
+      </h1>
+
+      {% set search_results = search_results(request.query_dict.term, request.query_dict.type) %}
+
+      {% if search_results.total > 0 %}
+        <p class="body-md" style="color: var(--neutral-600); margin-bottom: var(--mktg-space-xl);">
+          {{ search_results.total }} Ergebnis{{ search_results.total != 1 ? 'se' : '' }} gefunden
+        </p>
+
+        {% for result in search_results.results %}
+          <article style="padding: var(--mktg-space-md) 0; border-bottom: var(--mktg-border-subtle);">
+            <a href="{{ result.url }}" style="text-decoration: none;">
+              <h2 class="heading-md" style="color: var(--brand-primary); margin-bottom: 4px;">
+                {{ result.title }}
+              </h2>
+            </a>
+            <p class="body-sm" style="color: var(--neutral-600); margin-bottom: 4px;">{{ result.url }}</p>
+            {% if result.description %}
+              <p class="body-md" style="color: var(--neutral-700);">{{ result.description|truncatehtml(200) }}</p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      {% else %}
+        <p class="body-lg" style="color: var(--neutral-700);">
+          Keine Ergebnisse für "{{ request.query_dict.term }}" gefunden. Bitte versuchen Sie einen anderen Suchbegriff.
+        </p>
+      {% endif %}
+    </div>
+  </section>
+{% endblock body %}

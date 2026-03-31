@@ -1,0 +1,173 @@
+/* ==========================================================================
+   Consultry Marketing — Navigation
+   ========================================================================== */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--mktg-duration-fast) var(--mktg-ease-default),
+    border-color var(--mktg-duration-fast) var(--mktg-ease-default),
+    box-shadow var(--mktg-duration-fast) var(--mktg-ease-default);
+}
+
+.navScrolled {
+  background-color: rgba(255, 255, 255, 0.97);
+  border-bottom-color: rgba(62, 60, 58, 0.08);
+  box-shadow: var(--mktg-shadow-sm);
+}
+
+.navDark {
+  background-color: rgba(30, 27, 24, 0.85);
+}
+
+.navDark.navScrolled {
+  background-color: rgba(30, 27, 24, 0.97);
+  border-bottom-color: rgba(250, 250, 249, 0.1);
+}
+
+.inner {
+  max-width: var(--mktg-content-max);
+  margin: 0 auto;
+  padding: 0 var(--mktg-page-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--neutral-900);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.logoDark {
+  color: var(--mktg-text-on-dark);
+}
+
+.logoMark {
+  height: 32px;
+  width: auto;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--mktg-space-lg);
+  list-style: none;
+}
+
+.link {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--neutral-700);
+  text-decoration: none;
+  transition: color var(--mktg-duration-fast) var(--mktg-ease-default);
+}
+
+.link:hover {
+  color: var(--neutral-900);
+}
+
+.linkDark {
+  color: var(--mktg-text-on-dark-muted);
+}
+
+.linkDark:hover {
+  color: var(--mktg-text-on-dark);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--neutral-0);
+  background-color: var(--brand-primary);
+  border: none;
+  border-radius: var(--mktg-radius-full);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--mktg-duration-fast) var(--mktg-ease-default),
+    transform var(--mktg-duration-fast) var(--mktg-ease-default);
+}
+
+.cta:hover {
+  background-color: var(--brand-primary-light);
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+/* Mobile nav toggle */
+.mobileToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--neutral-700);
+}
+
+.mobileToggleDark {
+  color: var(--mktg-text-on-dark);
+}
+
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .links {
+    display: none;
+  }
+
+  .mobileToggle {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: var(--neutral-0);
+    border-top: var(--mktg-border-subtle);
+    box-shadow: var(--mktg-shadow-lg);
+    padding: var(--mktg-space-md) var(--mktg-page-padding);
+    flex-direction: column;
+    gap: var(--mktg-space-sm);
+  }
+
+  .mobileMenuOpen {
+    display: flex;
+  }
+
+  .mobileLink {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--neutral-700);
+    text-decoration: none;
+    padding: var(--mktg-space-xs) 0;
+  }
+}

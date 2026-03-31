@@ -1,0 +1,43 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Consultry — About
+  screenshotPath: ../assets/images/template-about.png
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# ── Hero ── #}
+  {% module "hero" path="../components/modules/HeroPrimary",
+    eyebrow="Über uns",
+    headline="Wir bauen die Zukunft der",
+    headline_gradient_text="Beratungstechnologie",
+    subheadline="Consultry wurde von Beratern für Berater entwickelt. Unser Team versteht die Herausforderungen moderner Beratungsunternehmen im DACH-Raum — und löst sie mit KI.",
+    show_screenshot=false
+  %}
+
+  {# ── Stats ── #}
+  {% module "stats" path="../components/modules/StatsCounter" %}
+
+  {# ── Feature Detail: Mission ── #}
+  {% module "mission" path="../components/modules/FeatureDetail",
+    eyebrow="Unsere Mission",
+    headline="Beratung menschlicher machen — durch Technologie",
+    description="Wir glauben, dass die besten Berater mehr Zeit mit ihren Mandanten verbringen sollten — nicht mit Administration. Consultry automatisiert die Routine, damit Sie sich auf das Wesentliche konzentrieren können.",
+    image_position="right"
+  %}
+
+  {# ── Testimonials ── #}
+  {% module "testimonials" path="../components/modules/Testimonials",
+    eyebrow="Unser Team",
+    headline="Von Beratern gebaut, für Berater"
+  %}
+
+  {# ── CTA Band ── #}
+  {% module "cta" path="../components/modules/CTABand",
+    headline="Werden Sie Teil der Consultry-Community",
+    subheadline="Tausende Beratungsunternehmen vertrauen bereits auf Consultry."
+  %}
+
+{% endblock body %}

@@ -1,0 +1,21 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: false
+  label: Consultry — 404
+-->
+{% extends "../layouts/base.hubl.html" %}
+
+{% block body %}
+  <section style="padding: calc(72px + var(--mktg-space-3xl)) var(--mktg-page-padding) var(--mktg-space-3xl); text-align: center; min-height: 60vh; display: flex; align-items: center; justify-content: center;">
+    <div style="max-width: 520px;">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: clamp(64px, 10vw, 120px); font-weight: 800; line-height: 1; color: var(--neutral-200); margin-bottom: var(--mktg-space-md);">404</p>
+      <h1 style="font-size: clamp(24px, 3vw, 36px); font-weight: 600; color: var(--neutral-900); margin-bottom: var(--mktg-space-sm);">Seite nicht gefunden</h1>
+      <p style="font-size: 18px; color: var(--neutral-700); line-height: 1.6; margin-bottom: var(--mktg-space-lg);">
+        Die Seite, die Sie suchen, existiert nicht oder wurde verschoben.
+      </p>
+      <a href="/" class="mktg-btn mktg-btn--md mktg-btn--primary">
+        Zur Startseite
+      </a>
+    </div>
+  </section>
+{% endblock body %}

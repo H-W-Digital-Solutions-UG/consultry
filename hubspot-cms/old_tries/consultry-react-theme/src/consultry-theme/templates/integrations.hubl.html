@@ -1,0 +1,56 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Consultry — Integrations
+  screenshotPath: ../assets/images/template-integrations.png
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# ── Hero ── #}
+  {% module "hero"
+    path="../components/modules/HeroMinimal",
+    eyebrow="INTEGRATIONEN",
+    headline="Verbinden Sie Ihre bestehenden Tools",
+    subtitle="Consultry integriert sich nahtlos mit über 50 Tools, die Sie bereits nutzen — von DATEV über Microsoft 365 bis Slack.",
+    background="warm"
+  %}
+
+  {# ── Tab Filter ── #}
+  {% module "tab_filter"
+    path="../components/modules/TabFilter"
+  %}
+
+  {# ── Integration Grid ── #}
+  {% module "integration_grid"
+    path="../components/modules/IntegrationGrid"
+  %}
+
+  {# ── Feature Detail: DATEV ── #}
+  {% module "fd_datev" path="../components/modules/FeatureDetail",
+    eyebrow="Highlight-Integration",
+    headline="Nahtlose DATEV-Anbindung",
+    description="Automatische Rechnungsstellung, Buchungsexport und Mandantenverwaltung — direkt aus Consultry heraus. Keine manuelle Datenübertragung mehr.",
+    image_position="left"
+  %}
+
+  {# ── Feature Detail: Microsoft 365 ── #}
+  {% module "fd_microsoft" path="../components/modules/FeatureDetail",
+    eyebrow="Produktivität",
+    headline="Microsoft 365 Integration",
+    description="Outlook-Kalender, Teams-Meetings und OneDrive-Dokumente synchronisieren sich automatisch mit Ihren Projekten und Kontakten.",
+    image_position="right"
+  %}
+
+  {# ── Feature List Sidebar ── #}
+  {% module "feature_list"
+    path="../components/modules/FeatureListSidebar"
+  %}
+
+  {# ── CTA Band ── #}
+  {% module "cta"
+    path="../components/modules/RichCTABand"
+  %}
+
+{% endblock body %}

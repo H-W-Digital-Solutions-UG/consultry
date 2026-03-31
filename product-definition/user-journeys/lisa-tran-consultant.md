@@ -3,9 +3,11 @@
 
 **Header:** Lisa Tran, Consultant SAP Change Management, 15–30 Min/Tag (Leichtnutzerin)
 
-**Version:** 1.0
+**Version:** 1.1
 **Datum:** 31. März 2026
-**Companion:** [Consultry PRD v3.0](../Consultry-PRD-v3.0-Final.md), [Target Personas v1.0](../../uploads/Consultry-Target-Personas-v1.0.md)
+**Companion:** [Consultry PRD v3.1](../Consultry-PRD-v3.0-Final.md), [Target Personas v1.0](../../uploads/Consultry-Target-Personas-v1.0.md)
+**Design System:** [Consultry Design System v1.3](../../design/Consultry-Design-System-v1.3.md)
+**Screen Specs:** [Screen Spec Index](../../design/screen-specs/_SCREEN-SPEC-INDEX.md)
 
 ---
 
@@ -457,6 +459,44 @@ System matched Lisa auf Basis aktualisiertes Profil + Entwicklungsziel
 
 ---
 
+## AI-Interface-Routing: Profil-Agent vs. Knowledge-Agent
+
+```
+Lisa interagiert...
+├── Profil aktualisieren ("Füge PROSCI-Zertifikat hinzu")
+│   → Profil-Agent: Dialog-basiert, nicht Formular
+│   → System fragt nach: Datum, Aussteller, Kontext
+├── Wissen suchen ("Workshop-Format SAP-Rollout")
+│   → Knowledge-Agent: Synthese-Antwort mit Template-Vorschlag
+├── Karriere-Check ("Was fehlt mir für Senior?")
+│   → Entwicklungs-Dashboard: Soll/Ist-Vergleich
+│   → Copilot: "Dir fehlt ein Retail-Projekt. RetailCorp sucht Change Management."
+└── Staffing-Anfrage
+    → Notification Card: self-contained, 1-Tap-Entscheidung
+```
+
+### Proaktive Nudges statt Pflege-Pflicht — Konkret
+
+Nach Projektabschluss (System erkennt automatisch): "Dein MedTech-Projekt ist abgeschlossen. Möchtest du dein Profil aktualisieren?" → Dialog, nicht Formular
+
+Bei Skill-Gaps vs. Karrierestufe: "Dir fehlt noch ein Retail-Projekt für Senior. RetailCorp sucht Change Management." → Direkter Link zur Staffing-Anfrage
+
+Zertifizierungs-Erinnerung: "Dein ITIL-Zertifikat läuft in 3 Monaten ab. Verlängerung planen?"
+
+KEINE negativen Nudges: Nie "Dein Profil ist unvollständig" (Martina-Stil). Immer positiv: "Dein Profil ist zu 85% — mit dem PROSCI-Zertifikat wärst du bei 92%."
+
+### Phase-1-Abdeckung: Lisa
+
+- ✅ Berater-Profil → Phase 1
+- ✅ Staffing-Anfrage → Phase 1
+- ⚠️ Entwicklungs-Dashboard → Phase 3 (Workforce erweitert)
+- ⚠️ Knowledge-Agent → Phase 2
+- ⚠️ Proaktive Nudges → Phase 3
+
+**Konsequenz:** Lisa kann in Phase 1: Profil anlegen, Staffing beantworten. Aber der Karriere-Kompass und die Knowledge-Nutzung kommen erst später. Für eine 15-Min/Day-Nutzerin bedeutet das: Phase 1 bietet ihr ~5 Min/Woche Nutzen. Risiko: "Noch ein Tool das ich nicht brauche."
+
+---
+
 ## Design-Implikationen für Lisas Workflows
 
 ### 1. Proaktive Nudges statt Pflege-Pflicht
@@ -774,4 +814,29 @@ Desktop sollte keine Anforderung sein.
 - Knowledge-Abrufe: 2–3x pro Woche (vs. 0 vorher)
 - Staffing-Acceptance-Rate: >80% weil Anfragen sind qualitativ+karriere-matched
 - Time-to-Senior: Q1 2027 (auf Plan)
+
+---
+
+## Design-Anbindung (v1.1)
+
+**Lisas Screen Specs (erstellt):**
+
+| Journey-Screen | Screen Spec | Status |
+|---------------|-------------|--------|
+| [LISA-J2-S3] Staffing-Anfrage (Mobile) | `screen-specs/mobile/mobile-staffing-card.md` | ✅ Erstellt |
+| [LISA-J1-S1] Profil-Update Nudge (Mobile) | `screen-specs/mobile/mobile-profil-update-nudge.md` | ✅ Erstellt |
+| [J4-S3] Onboarding-Dialog | `screen-specs/ai-experience/onboarding-agent-dialog.md` | Ausstehend (Tier 7) |
+| [J5-S3] Knowledge-Agent | `screen-specs/ai-experience/knowledge-agent-chat.md` | Ausstehend (Tier 6) |
+| Consultant Profile Editor | `screen-specs/foundation/consultant-profile-editor.md` | ✅ Erstellt |
+
+**Lisas Kern-Komponenten:**
+
+| Komponente | Spec | Lisas Nutzung |
+|-----------|------|--------------|
+| Bottom Nav Bar | `component-specs/navigation/bottom-navigation-bar.md` | Mobile: Profil, Aufgaben, Wissen |
+| Bottom Sheet | `component-specs/composition/bottom-sheet.md` | Staffing-Anfrage, Profil-Update |
+| Score Displays | `component-specs/data-display/score-displays.md` | Persoenlicher Match-Score |
+| Inputs | `component-specs/primitives/inputs.md` | Profil-Felder, AI Pre-Fill |
+
+**v1.1 Changelog:** Design System Referenz v1.2→v1.3. Screen Spec + Component Spec Links hinzugefuegt.
 

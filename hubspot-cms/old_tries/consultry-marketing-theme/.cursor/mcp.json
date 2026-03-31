@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "ConsultryMarketingStorybook": {
+      "url": "http://localhost:6006/mcp"
+    }
+  }
+}

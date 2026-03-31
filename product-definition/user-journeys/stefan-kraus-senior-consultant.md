@@ -8,9 +8,11 @@
 **Berichtet an:** Practice Lead SAP (fachlich), Standortleiter München (disziplinarisch)
 **Leitet aktuell:** 2 Projekte (4 bzw. 3 Berater)
 
-**Version:** 1.0
+**Version:** 1.1
 **Datum:** 31. März 2026
-**Companion:** [Target Personas v1.0](../Consultry-Target-Personas-v1.0.md), [User Journeys v1.0](../Consultry-User-Journeys-v1.0.md), [PRD v3.0](./Consultry-PRD-v3.0-Final.md)
+**Companion:** [Target Personas v1.0](../Consultry-Target-Personas-v1.0.md), [User Journeys v1.1](../Consultry-User-Journeys-v1.0.md), [PRD v3.1](../Consultry-PRD-v3.0-Final.md)
+**Design System:** [Consultry Design System v1.3](../../design/Consultry-Design-System-v1.3.md)
+**Screen Specs:** [Screen Spec Index](../../design/screen-specs/_SCREEN-SPEC-INDEX.md)
 
 ---
 
@@ -1613,6 +1615,43 @@ Command Bar: "Wer hat Erfahrung mit SD-MM?"
 
 ---
 
+## AI-Interface-Routing: Knowledge-Agent vs. Command Bar vs. Copilot
+
+```
+Stefan interagiert...
+├── Konkretes Wissen gesucht ("SAP Datenmigration Checkliste")
+│   → Command Bar → Knowledge-Agent antwortet inline (Synthese, nicht Links)
+│   → Bei komplexer Antwort: Expandiert in Chat-View
+├── Projekt-Navigation ("MedTech Budget", "Milestone 3 Status")
+│   → Command Bar: direkte Navigation zum Projekt-Dashboard
+├── Proaktive Empfehlung
+│   → Copilot auf Projekt-Dashboard: "Scope-Creep erkannt, Change Request?"
+├── Explorative Recherche ("Wie haben wir Cutover bei Retail gemacht?")
+│   → Knowledge-Agent Chat (Multi-Turn)
+└── Quick-Action ("Verfügbarkeit updaten")
+    → Command Bar: Dialog-Flow (2 Felder, 10 Sekunden)
+```
+
+### Explainability & Trust für Stefan
+
+Stefan vertraut der Knowledge-Engine nur wenn sie synthetisiert, nicht nur sucht.
+
+- Jede Knowledge-Antwort braucht: Quellen (welche Projekte), Experten-Hinweis (wer hat es gemacht), Confidence (wie viele Datenpunkte)
+- Falsche Antworten: "Das stimmt nicht" → Feedback-Button → Agent lernt
+- Matching-Transparenz bei Staffing: "Warum werde ich vorgeschlagen?" muss für Stefan sichtbar sein (Karriere-Fit-Erklärung)
+
+### Phase-1-Abdeckung: Stefan
+
+- ✅ Berater-Profil → Phase 1 (Knowledge Graph)
+- ✅ Staffing-Anfrage empfangen → Phase 1 (Staffing)
+- ⚠️ Projekt-Dashboard → Phase 3 (Project Execution)
+- ⚠️ Knowledge-Agent → Phase 2 (Methodology & IP)
+- ⚠️ Wissens-Rückfluss → Phase 2
+
+**Konsequenz:** Stefan kann in Phase 1: Profil pflegen, Staffing beantworten, Collaboration nutzen. Aber seine Kern-Workflows (Projekt-Monitoring, Knowledge-Suche) kommen erst in Phase 2-3. Das bedeutet: Stefan hat in Phase 1 wenig Grund, das System täglich zu öffnen. Risiko: Adoption-Gap.
+
+---
+
 ---
 
 # Design-Implikationen für Stefans Workflows
@@ -1958,7 +1997,33 @@ Abends         Projekt-Dashboard, Dokumentation
 
 ---
 
-**Dokument abgeschlossen: 31. März 2026**
+**Dokument abgeschlossen: 31. März 2026 (v1.1)**
 **Autor:** Design & Product Team, Consultry
 **Nächste Schritte:** Wireframe-Verfeinerung, Usability-Testing mit Stefan-ähnlichen Personas
+
+---
+
+## Design-Anbindung (v1.1)
+
+**Stefans Screen Specs (erstellt):**
+
+| Journey-Screen | Screen Spec | Status |
+|---------------|-------------|--------|
+| [J2-S2] Staffing-Anfrage (Mobile) | `screen-specs/mobile/mobile-staffing-card.md` | ✅ Erstellt |
+| [J3-S1] Projekt-Dashboard | `screen-specs/delivery/project-dashboard.md` | Ausstehend (Tier 7) |
+| [J5-S1] Projekt-Abschluss | `screen-specs/delivery/projekt-abschluss.md` | Ausstehend (Tier 7) |
+| [J5-S2] Profil-Update | `screen-specs/foundation/consultant-profile-view.md` | ✅ Erstellt |
+| [J5-S3] Knowledge-Agent | `screen-specs/ai-experience/knowledge-agent-chat.md` | Ausstehend (Tier 6) |
+| [J-Daily-S1] Tages-Dashboard | `screen-specs/delivery/project-dashboard.md` | Ausstehend (Tier 7) |
+
+**Stefans Kern-Komponenten:**
+
+| Komponente | Spec | Stefans Nutzung |
+|-----------|------|----------------|
+| Bottom Nav Bar | `component-specs/navigation/bottom-navigation-bar.md` | Mobile: Projekte, Wissen, Profil, Team |
+| Bottom Sheet | `component-specs/composition/bottom-sheet.md` | Mobile Staffing-Anfrage Detail |
+| Cards | `component-specs/data-display/cards.md` | Projekt-Status, Knowledge Assets |
+| Slide-Over Panel | `component-specs/composition/slide-over-panel.md` | Berater-Profil, Knowledge Detail |
+
+**v1.1 Changelog:** Design System Referenz v1.2→v1.3. Screen Spec + Component Spec Links hinzugefuegt. PRD-Verweis v3.0→v3.1.
 

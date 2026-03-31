@@ -1,0 +1,29 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Consultry — Contact
+  screenshotPath: ../assets/images/template-contact.png
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# ── Hero ── #}
+  {% module "hero" path="../components/modules/HeroPrimary",
+    eyebrow="Kontakt",
+    headline="Lassen Sie uns",
+    headline_gradient_text="ins Gespräch kommen",
+    subheadline="Ob Demo, Partnerschaft oder allgemeine Fragen — unser Team freut sich auf Ihre Nachricht.",
+    show_screenshot=false
+  %}
+
+  {# ── Contact Form ── #}
+  {% module "contact_form" path="../components/modules/ContactForm" %}
+
+  {# ── FAQ ── #}
+  {% module "faq" path="../components/modules/FAQ",
+    eyebrow="FAQ",
+    headline="Häufig gestellte Fragen"
+  %}
+
+{% endblock body %}

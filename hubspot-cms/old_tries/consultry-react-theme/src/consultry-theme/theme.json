@@ -1,0 +1,22 @@
+{
+  "label": "Consultry Marketing Theme",
+  "preview_path": "./templates/home.hubl.html",
+  "screenshot_path": "./assets/images/theme-preview.png",
+  "author": {
+    "name": "Consultry GmbH",
+    "email": "dev@consultry.com",
+    "url": "https://consultry.com"
+  },
+  "documentation_url": "https://docs.consultry.com",
+  "example_url": "https://consultry.com",
+  "enable_domain_stylesheets": false,
+  "version": "1.0.0",
+  "responsive": true,
+  "responsive_breakpoints": [
+    {
+      "name": "mobile",
+      "mediaQuery": "@media (max-width: 767px)",
+      "previewWidth": { "value": 375 }
+    }
+  ]
+}

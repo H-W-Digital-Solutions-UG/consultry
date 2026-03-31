@@ -5,9 +5,11 @@
 **Consultry-Zeit:** 1–2 Stunden/Tag (Entscheider, nicht Operator)
 **Rolle:** Kundenportfolio, strategische Entscheidungen, finale Angebotsfreigaben, Risiko-Management
 
-**Version:** 1.0
+**Version:** 1.1
 **Datum:** 31. März 2026
-**Companion:** [Consultry Target Personas v1.0](../Consultry-Target-Personas-v1.0.md), [Consultry User Journeys v1.0](../Consultry-User-Journeys-v1.0.md), [PRD v3.0](./Consultry-PRD-v3.0-Final.md)
+**Companion:** [Consultry Target Personas v1.0](../Consultry-Target-Personas-v1.0.md), [Consultry User Journeys v1.1](../Consultry-User-Journeys-v1.0.md), [PRD v3.1](../Consultry-PRD-v3.0-Final.md)
+**Design System:** [Consultry Design System v1.3](../../design/Consultry-Design-System-v1.3.md)
+**Screen Specs:** [Screen Spec Index](../../design/screen-specs/_SCREEN-SPEC-INDEX.md)
 
 ---
 
@@ -57,6 +59,68 @@ Abends       Zuhause     │ Tablet       │ Forecast-Review vor Board-Meetings
 - **Sekundär: Dashboard** — Er scannt, nicht sucht. Anomalien müssen ihm ins Auge springen.
 - **Command Bar** selten — er tippt ungern, klickt lieber auf vorbereitete Aktionen.
 - **Canvas** nur als Reviewer — er generiert nicht selbst, sondern kommentiert und gibt frei.
+
+---
+
+## AI-Interface-Routing: Copilot vs. Dashboard vs. Notifications
+
+Thomas' AI-Interaktion ist fundamental anders als Katrins:
+
+- **Copilot ist PRIMARY** — Thomas fragt, er sucht nicht. "Was muss ich zu RetailCorp wissen?" ist sein Modus.
+- **Command Bar ist SELTEN** — Er klickt, tippt nicht. Pre-built Actions auf Dashboard-Karten sind sein Einstiegspunkt.
+- **Canvas ist REVIEW-ONLY** — Er generiert nie. Er kommentiert und genehmigt.
+- **Chat: Niemals** — Zu langsam, zu exploratif für sein 1-2-Stunden/Tag-Budget.
+
+**Decision Tree:**
+
+```
+Thomas interagiert...
+├── Morgen-Scan (07:00–08:30)
+│   → Dashboard/Cockpit: KPI-Karten scannen, Anomalien erkennen
+│   → Notification Center: P0/P1 abarbeiten (self-contained cards)
+├── Freigabe-Entscheidung
+│   → Approval Card (in Notification): Kontext + Aktion in einem Screen
+│   → NICHT: Canvas öffnen, dann suchen, dann freigeben
+├── Vor Kundengespräch
+│   → Copilot-Briefing: "Briefing RetailCorp" → 30-Sekunden-Summary
+│   → Auslöser: Kalender-Integration erkennt Meeting → Copilot bereitet vor
+├── Strategische Frage ("Liegen wir im Quartalsziel?")
+│   → Copilot auf Dashboard: Inline-Antwort mit Forecast-Referenz
+└── Eskalation/Konflikt
+    → P0-Alert → Detail-View → Aktion (delegieren, genehmigen, eskalieren)
+```
+
+---
+
+## Explainability & Trust für Thomas
+
+Thomas' Vertrauen ist die kritischste Produkthypothese. Wenn die Zahlen im Dashboard nicht stimmen, geht er zurück zu Excel.
+
+- **Jede KPI-Karte braucht einen Drill-Down-Pfad.** "Auslastung 78%" → Klick → zeigt: pro Practice, pro Team, Top-5-Berater. Nie eine Zahl ohne Erklärung.
+
+- **Forecast muss Berechnungslogik offenlegen.** "Revenue Forecast Q3: 2.4M€" → Klick → zeigt: laufende Projekte (1.8M€ gesichert) + Pipeline gewichtet (600K€ bei 60% Wahrscheinlichkeit) + Kapazitäts-Constraint.
+
+- **Vergleich mit externen Quellen.** "Stimmt das mit meinem Excel?" → Export-Funktion die exakt die gleichen Zahlen reproduziert. Rounding-Differenzen zerstören Vertrauen.
+
+- **AI-Empfehlungen im Copilot immer mit Quelle.** "Empfehle Change Request" → "Basierend auf: Budget 68% verbraucht bei 55% Fortschritt. Historischer Vergleich: 3 von 4 ähnlichen Projekten brauchten Change Request."
+
+- **Anomalie-Erklärung.** Rote KPI-Karte nicht nur "78% Auslastung (Ziel: 80%)" sondern "78% — Ursache: 3 Berater auf Bench seit KW 14 (Cloud-Practice). Pipeline zeigt 2 passende Opportunities."
+
+---
+
+## Mobile-Push-Strategie für Thomas
+
+Thomas' P0-Alert-Flow (07:00, iPhone) ist kritisch. PWA-Push auf iOS ist eingeschränkt.
+
+- **Primärer Kanal: E-Mail für P0.** Sofortige E-Mail mit Deep-Link ins System. Thomas hat E-Mail-Push immer an.
+
+- **Sekundärer Kanal: PWA-Push** wenn installiert. Anleitung beim Onboarding: "Füge Consultry zum Home-Screen hinzu für Push-Notifications."
+
+- **Fallback: Slack/Teams-Bot.** P0-Alerts als DM im bestehenden Messaging-Tool.
+
+- **Eskalation:** Wenn P0-Alert nach 30 Min nicht gelesen: SMS (nur für P0, konfigurierbar).
+
+- **Nie:** Telefonanruf. Thomas will keine Überraschungen — er will kontrollierte Sofort-Information.
 
 ---
 
@@ -1407,6 +1471,39 @@ Thomas hat jeden Morgen um 09:00 ein kurzes Partner-Standup (15 Min). Er möchte
 
 ---
 
+## Phase-1-Abdeckung: Thomas
+
+Thomas' Produkterlebnis ist direkt an die Phasen gekoppelt. In Phase 1 funktioniert sein "Scan-Entscheider"-Modus. Sein "Strategie-Modus" braucht Phase 3+.
+
+- ✅ **Cockpit/Dashboard** → Phase 1 (Basis-Dashboard)
+- ✅ **Notification Center (P0/P1)** → Phase 1 (Notification Basis)
+- ✅ **Opportunity Detail / Approval** → Phase 1 (Opportunity Intelligence)
+- ⚠️ **Financial Intelligence** → Phase 3
+- ⚠️ **Vertrags-Canvas** → Phase 2
+- ⚠️ **Copilot-Briefing** → Phase 1 (Basis) / Phase 2 (voll)
+- ⚠️ **Capacity Planner** → Phase 4
+
+**Konsequenz:** Thomas kann in Phase 1 folgende Aufgaben durchführen:
+- Cockpit scannen (KPIs, Anomalien)
+- Alerts bearbeiten (P0/P1 abarbeiten)
+- Opportunities freigeben (Approval Cards)
+- Kommentare schreiben (in Canvas und Opportunities)
+
+Was Thomas in Phase 1 NICHT kann:
+- Database-Analyse (Financial Intelligence erst Phase 3)
+- Vertrags-Review und Redlining (Contract Canvas erst Phase 2)
+- Forecast-Modellierung und Szenario-Analysen (Financial Planning Phase 3)
+- Capacity Planning und Workforce-Optimierung (Capacity Planner Phase 4)
+
+**Implication:** Thomas' "Scan-Entscheider"-Modus funktioniert in Phase 1. Sein "Strategie-Modus" (Forecast, Financial Analysis, Capacity Planning) beginnt erst in Phase 3. Das ist ein kritisches Timing-Risiko: Wenn Thomas in den ersten 8 Wochen nicht die strategischen Werkzeuge bekommt, geht er zurück zu Excel und PowerBI — und testet Consultry nur auf "Approval-Card-Ebene", nicht auf "Strategie-Ebene".
+
+**Risiko-Mitigation:**
+- Phase 1: Mockups der kommenden Financial Intelligence und Contract Canvas zeigen (um Thomas' Vertrauen in die Roadmap zu aufzubauen)
+- Phase 2: Earliest möglicher Go-Live für Contract Canvas (Thomas braucht das 1x/Woche)
+- Phase 3: Financial Intelligence als "Unlock" — wenn das nicht exzellent ist, verliert Thomas Vertrauen in die ganze Dateninfrastruktur
+
+---
+
 ---
 
 ## Cross-References zu anderen Personas
@@ -1456,6 +1553,34 @@ Thomas hat jeden Morgen um 09:00 ein kurzes Partner-Standup (15 Min). Er möchte
 
 ---
 
-**Version 1.0**
+**Version 1.1**
 31. März 2026
-*Companion: [Consultry Target Personas v1.0](../Consultry-Target-Personas-v1.0.md), [Consultry Design System v1.2](../../design/Consultry-Design-System-v1.2.md)*
+*Companion: [Consultry Target Personas v1.0](../Consultry-Target-Personas-v1.0.md), [Consultry Design System v1.3](../../design/Consultry-Design-System-v1.3.md)*
+
+---
+
+## Design-Anbindung (v1.1)
+
+**Thomas' Screen Specs (erstellt):**
+
+| Journey-Screen | Screen Spec | Status |
+|---------------|-------------|--------|
+| [J12-S1] Cockpit Dashboard | `screen-specs/platform/cockpit-dashboard.md` | ✅ Erstellt |
+| [J12-S2] Copilot Briefing | `screen-specs/ai-experience/copilot-sidebar.md` + `screen-specs/mobile/mobile-copilot-briefing.md` | ✅ Erstellt |
+| [J1-S6] Approval (Mobile) | `screen-specs/mobile/mobile-approval-card.md` | ✅ Erstellt |
+| [J3-S2] Alert (Mobile) | `screen-specs/mobile/mobile-alert-detail.md` | ✅ Erstellt |
+| [J1-S3a] Kommentar | `screen-specs/deal/opportunity-detail.md` | ✅ Erstellt |
+| [J13-S1] Financial Dashboard | `screen-specs/delivery/financial-dashboard.md` | Ausstehend (Tier 7) |
+| [J10-S1] Vertrags-Canvas | `screen-specs/ai-experience/vertrags-canvas.md` | Ausstehend (Tier 6) |
+
+**Thomas' Kern-Komponenten:**
+
+| Komponente | Spec | Thomas' Nutzung |
+|-----------|------|----------------|
+| Copilot Panel | `component-specs/ai-interaction/copilot-panel.md` | Morgen-Briefing, Ad-hoc-Fragen |
+| Bento Grid | `component-specs/composition/bento-grid.md` | Cockpit Dashboard (4-col) |
+| Score Displays | `component-specs/data-display/score-displays.md` | Match-Review, Pipeline-Scores |
+| Bottom Nav Bar | `component-specs/navigation/bottom-navigation-bar.md` | Mobile: Cockpit, Approvals, Pipeline, AI |
+| Bottom Sheet | `component-specs/composition/bottom-sheet.md` | Mobile Approval Detail |
+
+**v1.1 Changelog:** Design System Referenz v1.2→v1.3. Screen Spec + Component Spec Links hinzugefuegt.

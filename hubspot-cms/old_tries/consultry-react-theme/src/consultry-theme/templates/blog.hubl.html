@@ -1,0 +1,32 @@
+<!--
+  templateType: blog_listing
+  isAvailableForNewContent: true
+  label: Consultry — Blog Listing
+  screenshotPath: ../assets/images/template-blog.png
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# ── Blog Header ── #}
+  {% module "blog_header" path="../components/modules/HeroPrimary",
+    eyebrow="Blog",
+    headline="Insights für",
+    headline_gradient_text="moderne Berater",
+    subheadline="Expertenwissen zu KI, CRM, Beratungsmanagement und mehr — direkt von unserem Team.",
+    show_screenshot=false
+  %}
+
+  {# ── Blog Card Grid (populated from HubSpot blog data) ── #}
+  {% module "blog_listing" path="../components/modules/BlogCards",
+    eyebrow="",
+    headline="Aktuelle Beiträge"
+  %}
+
+  {# ── CTA Band ── #}
+  {% module "cta" path="../components/modules/CTABand",
+    headline="Bereit für den nächsten Schritt?",
+    subheadline="Testen Sie Consultry 14 Tage kostenlos."
+  %}
+
+{% endblock body %}

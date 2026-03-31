@@ -1,0 +1,68 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Consultry — Homepage
+  screenshotPath: ../assets/images/template-home.png
+-->
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {# ── Announcement Bar ── #}
+  {% module "announcement_bar" path="../components/modules/AnnouncementBar" %}
+
+  {# ── Hero ── #}
+  {% module "hero" path="../components/modules/HeroPrimary" %}
+
+  {# ── Marquee Logo Strip ── #}
+  {% module "marquee_logo_strip" path="../components/modules/MarqueeLogoStrip" %}
+
+  {# ── Logo Strip (legacy) ── #}
+  {% module "logo_strip" path="../components/modules/LogoStrip",
+    dark_mode=false
+  %}
+
+  {# ── Feature Grid ── #}
+  {% module "features" path="../components/modules/FeatureGrid" %}
+
+  {# ── Product Screenshot ── #}
+  {% module "product_screenshot" path="../components/modules/ProductScreenshot" %}
+
+  {# ── Feature Detail: AI #}
+  {% module "feature_ai" path="../components/modules/FeatureDetail",
+    eyebrow="KI-Power",
+    headline="Intelligente Zusammenfassungen nach jedem Meeting",
+    description="Consultry analysiert Ihre Meetings automatisch und erstellt präzise Zusammenfassungen, Action Items und Follow-ups — direkt im CRM.",
+    image_position="left"
+  %}
+
+  {# ── Feature Detail: Pipeline #}
+  {% module "feature_pipeline" path="../components/modules/FeatureDetail",
+    eyebrow="Pipeline Management",
+    headline="Visualisieren Sie Ihre gesamte Deal-Pipeline",
+    description="Konfigurierbare Stages, automatische Prognosen und KI-gestützte Empfehlungen helfen Ihnen, mehr Deals abzuschließen.",
+    image_position="right"
+  %}
+
+  {# ── Numbered Steps ── #}
+  {% module "numbered_steps" path="../components/modules/NumberedSteps" %}
+
+  {# ── Stats Counter ── #}
+  {% module "stats" path="../components/modules/StatsCounter" %}
+
+  {# ── Testimonials ── #}
+  {% module "testimonials" path="../components/modules/Testimonials" %}
+
+  {# ── Testimonial Carousel ── #}
+  {% module "testimonial_carousel" path="../components/modules/TestimonialCarousel" %}
+
+  {# ── Trust Badges ── #}
+  {% module "trust_badges" path="../components/modules/TrustBadges" %}
+
+  {# ── Rich CTA Band ── #}
+  {% module "cta_band" path="../components/modules/RichCTABand" %}
+
+  {# ── Blog Cards ── #}
+  {% module "blog_cards" path="../components/modules/BlogCards" %}
+
+{% endblock body %}

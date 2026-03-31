@@ -3,9 +3,11 @@
 
 **Header:** Martina Hofer, Office Managerin, 2–4h/Tag (Desktop-only)
 
-**Version:** 1.0
+**Version:** 1.1
 **Datum:** 31. März 2026
-**Companion:** [Consultry PRD v3.0](../Consultry-PRD-v3.0-Final.md), [Target Personas v1.0](../../uploads/Consultry-Target-Personas-v1.0.md)
+**Companion:** [Consultry PRD v3.1](../Consultry-PRD-v3.0-Final.md), [Target Personas v1.0](../../uploads/Consultry-Target-Personas-v1.0.md)
+**Design System:** [Consultry Design System v1.3](../../design/Consultry-Design-System-v1.3.md)
+**Screen Specs:** [Screen Spec Index](../../design/screen-specs/_SCREEN-SPEC-INDEX.md)
 
 ---
 
@@ -65,6 +67,36 @@
 - **Keine bewusste AI-Nutzung** — Sie denkt nicht in "AI-Features". Consultry muss zuverlässig sein, nicht intelligent.
 - **AI kann unterstützen wo:** Auto-Extraktion von CVs (mit ihrer Validierung), Daten-Qualitäts-Alerts
 - **AI MUSS NICHT:** bei Bulk-Operationen, Exports, Vertrags-Management (zu riskant)
+
+---
+
+## AI-Interface-Routing: Admin-Modus
+
+Martina nutzt KEINE AI-Interfaces aktiv. Ihre Interaktion:
+- AI ist unsichtbar: CV-Extraktion passiert, Martina sieht das Ergebnis und bestätigt/korrigiert
+- Formulare statt Prompts: Bulk-Edit über Tabellen-UI, nicht über Command Bar
+- Export über Menü: "Exportiere → Format → Filter → Download", nicht "Hey AI, exportiere..."
+- Einzige AI-Sichtbarkeit: Skill-Extraktion bei Onboarding (J4-S2), mit Erklärung pro Skill
+
+### Explainability & Trust für Martina — KRITISCH
+
+Martina ist die Persona mit dem höchsten Misstrauen gegenüber AI.
+
+- **Jede AI-Extraktion muss erklärbar sein.** "Warum wurde 'SAP MM' als Senior eingestuft?" → "3 Projekte mit SAP MM als Hauptrolle in den letzten 4 Jahren"
+- **Bulk-Aktionen brauchen Preview + Undo.** "12 Profile aktualisieren" → Preview zeigt alle Änderungen → Bestätigung → Undo innerhalb 30 Min
+- **Import-Feedback muss sofort und vollständig sein.** "12/12 importiert, 0 Fehler" oder "10/12 importiert, 2 Fehler: Zeile 7 (E-Mail ungültig), Zeile 11 (Duplikat erkannt)"
+- **Reports müssen reproduzierbar sein.** Gleicher Report, gleiche Parameter = gleiche Zahlen. Immer. Timestamp + Parameter im Report-Header.
+
+### Phase-1-Abdeckung: Martina
+
+- ✅ Berater anlegen / Admin → Phase 1
+- ✅ CV-Import + AI-Extraktion → Phase 1 (Knowledge Graph)
+- ✅ Onboarding-Checkliste → Phase 1
+- ⚠️ Bulk-Edit → Phase 1 (muss explizit als Feature priorisiert werden!)
+- ⚠️ Report-Export → Phase 1 (Basis) / Phase 3 (voll)
+- ⚠️ Vertragsverwaltung → Phase 2
+
+**Konsequenz:** Martina kann in Phase 1: Berater anlegen, Profile prüfen, Basis-Reports ziehen. ABER: Ohne Bulk-Edit und sauberen Export ist sie langsamer als mit Excel. **Bulk-Edit und Tabellen-Export müssen explizit in Phase 1 priorisiert werden**, sonst verliert Consultry Martina in Woche 1.
 
 ---
 
@@ -1259,4 +1291,31 @@ Diese 6 Flows sind essentiell für Martinas tägliche Arbeit aber fehlen noch in
 - Report-Accuracy: 100% (vs. 70% vorher)
 - Contract-Compliance: 0 missed deadlines (vs. 2–3/Jahr vorher)
 - User-Satisfaction: sehr hoch (Martina liebt Bulk-Ops und Tabellen)
+
+---
+
+## Design-Anbindung (v1.1)
+
+**Martinas Screen Specs (erstellt):**
+
+| Journey-Screen | Screen Spec | Status |
+|---------------|-------------|--------|
+| [J4-S1] Admin Panel (Berater anlegen) | `screen-specs/platform/admin-panel.md` | ✅ Erstellt |
+| [J4-S2] CV-Extraktion Review | `screen-specs/deal/cv-extraktion-review.md` | Ausstehend (Tier 7) |
+| [MARTINA-MJ1-S1] Data Hygiene Dashboard | — (nicht im Screen Inventory) | Ausstehend |
+| [MARTINA-MJ2-S1] Bulk-Edit | — (Funktion innerhalb Admin Panel) | Teilw. abgedeckt |
+| [MARTINA-MJ3-S1] Report-Builder | — (nicht im Screen Inventory) | Ausstehend |
+
+**Martinas Kern-Komponenten:**
+
+| Komponente | Spec | Martinas Nutzung |
+|-----------|------|-----------------|
+| Data Tables | `component-specs/data-display/data-tables.md` | Berater-Listen, Compliance, Bulk-Selection |
+| Preview Panel | `component-specs/data-display/preview-panel.md` | CV-Vorschau, Split-View |
+| Badges & Tags | `component-specs/primitives/badges-tags.md` | DSGVO-Consent-Status, Skill-Tags |
+| Inputs | `component-specs/primitives/inputs.md` | Formular-Felder, Bulk-Edit |
+
+**Hinweis:** Martina nutzt ausschliesslich Desktop — keine Bottom Nav Bar, keine Bottom Sheets, kein Mobile.
+
+**v1.1 Changelog:** Design System Referenz v1.2→v1.3. Screen Spec + Component Spec Links hinzugefuegt. Fehlende Martina-Journeys als Gap markiert.
 

@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Consultry Marketing — Brand Tokens (inherited from App DS v1.3)
+   ========================================================================== */
+
+:root {
+  /* Brand Colors */
+  --brand-primary: #BF5347;
+  --brand-primary-light: #CA7168;
+  --brand-primary-dark: #A2463C;
+  --brand-warm: #E8913A;
+  --brand-warm-light: #F0A85E;
+  --brand-gradient-start: #E8913A;
+  --brand-gradient-mid: #E8655A;
+  --brand-gradient-end: #9B59B6;
+  --brand-gradient: linear-gradient(135deg, #E8913A, #E8655A, #9B59B6);
+
+  /* Neutral Palette (Warm Stone) */
+  --neutral-900: #3E3C3A;
+  --neutral-800: #494645;
+  --neutral-700: #605D59;
+  --neutral-600: #7B7671;
+  --neutral-500: #B5B0AD;
+  --neutral-400: #DCDAD8;
+  --neutral-300: #DDDAD5;
+  --neutral-200: #EBE9E8;
+  --neutral-100: #F6F6F6;
+  --neutral-50: #FBFBFA;
+  --neutral-0: #FFFFFF;
+
+  /* Semantic Colors */
+  --semantic-success: #16A34A;
+  --semantic-success-light: #E8F5ED;
+  --semantic-warning: #D97706;
+  --semantic-warning-light: #FEF3E0;
+  --semantic-danger: #DC2626;
+  --semantic-danger-light: #FEE2E2;
+  --semantic-info: #3A5DAE;
+  --semantic-info-light: #EEF2FF;
+
+  /* AI */
+  --ai-surface: #FFF8F5;
+  --ai-border: #F0D4C8;
+  --ai-accent: #BF5347;
+}
