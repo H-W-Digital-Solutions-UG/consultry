@@ -1,0 +1,14 @@
+[     142ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[     185ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[   55425ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=3AhkBRqqeQCShTlLknPNu' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/09q._next_dist_client_0slhn09._.js:13299
+[   56431ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[   56752ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[   56763ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[  124336ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[  124744ms] [LOG] [Fast Refresh] done in 463ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[  130431ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[  130502ms] [LOG] [Fast Refresh] done in 68ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[  142948ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[  142996ms] [LOG] [Fast Refresh] done in 46ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[  152014ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[  152060ms] [LOG] [Fast Refresh] done in 80ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431

@@ -1,0 +1,313 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Consultry Logo Consultry" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Consultry Logo" [ref=e6]
+        - generic [ref=e7]: Consultry
+      - navigation "Hauptnavigation" [ref=e8]:
+        - link "Produkt" [ref=e9] [cursor=pointer]:
+          - /url: /produkt
+        - link "Funktionen" [ref=e10] [cursor=pointer]:
+          - /url: /produkt#architecture
+        - link "Preise" [ref=e11] [cursor=pointer]:
+          - /url: /#waitlist
+        - link "Unternehmen" [ref=e12] [cursor=pointer]:
+          - /url: /unternehmen
+      - link "Demo anfragen" [ref=e14] [cursor=pointer]:
+        - /url: /#waitlist
+        - text: Demo anfragen
+        - generic [ref=e15]: →
+  - main [ref=e16]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: DIE PLATTFORM
+        - heading "Alles, was Ihre Beratung braucht. In einem System." [level=1] [ref=e23]
+        - paragraph [ref=e24]: Consultry ersetzt nicht einzelne Tools - es schliesst die Lücke dazwischen. Ein AI-natives operatives System, das Marktintelligenz, Kompetenz-Matching, Deal Execution, Delivery-Steuerung und Wissensmanagement in einem durchgängigen Workflow vereint. Kein Kontext-Wechsel. Kein Copy-Paste. Kein Excel-Artisanship. Kein umfunktioniertes Vertriebs-Tool.
+        - generic [ref=e25]:
+          - link "Demo anfragen" [ref=e26] [cursor=pointer]:
+            - /url: /#waitlist
+            - text: Demo anfragen
+            - img [ref=e27]
+          - link "Module entdecken" [ref=e30] [cursor=pointer]:
+            - /url: /produkt#architecture
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - paragraph [ref=e33]: "-70%"
+            - paragraph [ref=e34]: Recherchezeit
+          - generic [ref=e35]:
+            - paragraph [ref=e36]: +35%
+            - paragraph [ref=e37]: Win-Rate
+          - generic [ref=e38]:
+            - paragraph [ref=e39]: 85%
+            - paragraph [ref=e40]: Berater-Auslastung
+          - generic [ref=e41]:
+            - paragraph [ref=e42]: < 2 Wo.
+            - paragraph [ref=e43]: Onboarding
+        - paragraph [ref=e44]: DSGVO-konform. Entwickelt für Beratungen im DACH-Raum.
+      - generic [ref=e48]:
+        - generic [ref=e53]: consultry.app/pipeline
+        - img "Consultry Dashboard mit Beratungs-Workflow und Kennzahlen" [ref=e54]
+    - generic [ref=e60]:
+      - generic [ref=e63]:
+        - img "Consultry Produkt-Demo mit Signal-Feed und kollaborativer Arbeitsoberfläche" [ref=e64]
+        - generic [ref=e67]:
+          - img [ref=e69]
+          - text: Demo-Vorschau laden
+        - paragraph [ref=e74]: Produktdemo
+      - generic [ref=e75]:
+        - paragraph [ref=e76]: VIDEO DEMO
+        - heading "Sehen Sie Consultry in Aktion." [level=2] [ref=e77]
+        - paragraph [ref=e78]: "Sehen Sie Consultry in Aktion: Von der Signal-Erkennung zum maßgeschneiderten Angebot in unter 4 Minuten."
+        - paragraph [ref=e79]: "Die Demo führt durch denselben operativen Ablauf, den Ihr Team später im Live-System nutzt: Signal aufnehmen, Team vorschlagen, Angebot strukturieren."
+    - generic [ref=e81]:
+      - generic [ref=e82]:
+        - generic [ref=e84]:
+          - paragraph [ref=e85]: "[01]"
+          - heading "AI, die Ihren Kontext versteht. Nicht nur Ihre Daten." [level=3] [ref=e86]
+          - paragraph [ref=e87]: "Der kontextuelle Copilot passt sich an: Auf einer Opportunity zeigt er Engagement-Briefs und Berater-Vorschlaege. Auf einem Projekt analysiert er Risiken. Vor einem Kundenanruf liefert er ein 30-Sekunden-Briefing. Sie muessen nicht wissen, welche AI-Features existieren - das System erkennt, was Sie gerade brauchen."
+          - link "Details ansehen" [ref=e88] [cursor=pointer]:
+            - /url: "#video"
+            - text: Details ansehen
+            - img [ref=e89]
+        - generic [ref=e94]:
+          - paragraph [ref=e96]: Produktansicht
+          - img "Consultry Plattformansicht mit Kontextkarten und operativen Daten" [ref=e98]
+      - generic [ref=e99]:
+        - generic [ref=e101]:
+          - paragraph [ref=e102]: "[02]"
+          - 'heading "Command Bar: Denken Sie schneller als Sie klicken." [level=3] [ref=e103]'
+          - paragraph [ref=e104]: "Cmd+K und los: \"Zeig mir alle verfuegbaren SAP-Berater ab Mai.\" \"Was ist der DB1 vom MedTech-Projekt?\" \"Erstell ein Angebot fuer RetailCorp.\" Natuerliche Sprache, moduluebergreifend, kontextbewusst. Power-User lieben es. Alle anderen auch."
+          - link "Details ansehen" [ref=e105] [cursor=pointer]:
+            - /url: "#video"
+            - text: Details ansehen
+            - img [ref=e106]
+        - generic [ref=e111]:
+          - paragraph [ref=e113]: Produktansicht
+          - img "Consultry Command-Bar-Ansicht mit Such- und Aktionsbefehlen" [ref=e115]
+      - generic [ref=e116]:
+        - generic [ref=e118]:
+          - paragraph [ref=e119]: "[03]"
+          - heading "Zusammenarbeit dort, wo die Arbeit passiert." [level=3] [ref=e120]
+          - paragraph [ref=e121]: Kommentare, @Mentions und Aktivitaets-Feeds direkt auf Opportunities, Angeboten und Projekten. Kein Slack-Thread ohne Kontext. Kein E-Mail-Ping-Pong mit Word-Redlines. Thomas fragt 'Status RetailCorp?' - und die Antwort ist schon da.
+          - link "Details ansehen" [ref=e122] [cursor=pointer]:
+            - /url: "#video"
+            - text: Details ansehen
+            - img [ref=e123]
+        - generic [ref=e128]:
+          - paragraph [ref=e130]: Produktansicht
+          - img "Consultry Kollaborationsansicht mit Kommentaren und Aktivitaetsfeed" [ref=e132]
+    - generic [ref=e135]:
+      - generic [ref=e136]:
+        - paragraph [ref=e137]: PLATTFORM-ARCHITEKTUR
+        - heading "Vier Schichten. Ein durchgängiger Workflow." [level=2] [ref=e138]
+        - paragraph [ref=e139]: Consultry ist in vier Schichten aufgebaut - vom Markt bis zum Wissen. Jede Schicht ist AI-durchdrungen und mit den anderen verknuepft. Keine Datensilos. Kein manuelles Uebertragen.
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - article [ref=e143]:
+            - paragraph [ref=e144]: Market Intelligence
+            - paragraph [ref=e145]: Signale aus dem DACH-Markt erkennen, priorisieren und als qualifizierte Chancen in Ihren operativen Workflow überführen.
+            - paragraph [ref=e146]: Signal-Feed · DACH-Enrichment · Ausschreibungs-Matching · Discovery-Engine
+          - article [ref=e147]:
+            - paragraph [ref=e148]: Workforce & Matching
+            - paragraph [ref=e149]: Verfügbarkeiten, Skills und Teamvarianten in einem Modell statt in Kalendern, Tabellen und Bauchgefühl.
+            - paragraph [ref=e150]: Skill-Graph · Verfügbarkeits-Forecast · Kapazitätsplanung · Team-Dashboards
+          - article [ref=e151]:
+            - paragraph [ref=e152]: Deal Execution
+            - paragraph [ref=e153]: Vom Engagement-Brief bis zum AI-Canvas-Angebot mit Varianten, Pricing und Kontext für jeden Pitch-Moment.
+            - paragraph [ref=e154]: Engagement-Briefs · Semantisches Matching · AI-Canvas-Angebote · Vertragsautomatisierung
+          - article [ref=e155]:
+            - paragraph [ref=e156]: Delivery & Knowledge
+            - paragraph [ref=e157]: Profitabilität, Wissensrückfluss und Delivery-Steuerung bleiben in derselben Arbeitsebene wie Markt und Angebot.
+            - paragraph [ref=e158]: Milestone-Tracking · Risk-Monitoring · Knowledge Engine · Wissensrückfluss
+        - generic [ref=e159]:
+          - paragraph [ref=e160]: DER WORKFLOW
+          - heading "Vom Signal zum Projekt in drei Schritten" [level=3] [ref=e161]
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e164]: Marktveraenderung erkennen
+              - generic [ref=e165]: "01"
+            - generic [ref=e166]:
+              - generic [ref=e167]: Team und Angebot erstellen
+              - generic [ref=e168]: "02"
+            - generic [ref=e169]:
+              - generic [ref=e170]: Profitabel liefern und lernen
+              - generic [ref=e171]: "03"
+          - paragraph [ref=e173]: Einheitliche Arbeitsebene fuer Markt, Team, Angebot und Delivery - ohne Toolwechsel zwischen den Phasen.
+    - generic [ref=e175]:
+      - generic [ref=e176]:
+        - paragraph [ref=e177]: CONSULTRY VS. STANDARD-CRM
+        - heading "Warum Beratungen kein generisches CRM brauchen" [level=2] [ref=e178]
+        - paragraph [ref=e179]: Consultry ist das erste AI-native operative System, das speziell fuer die Wertschoepfungslogik von Unternehmensberatungen im DACH-Raum entwickelt wurde.
+      - table [ref=e181]:
+        - rowgroup [ref=e182]:
+          - row "FUNKTIONEN CONSULTRY STANDARD CRM" [ref=e183]:
+            - columnheader "FUNKTIONEN" [ref=e184]
+            - columnheader "CONSULTRY" [ref=e185]
+            - columnheader "STANDARD CRM" [ref=e186]
+        - rowgroup [ref=e187]:
+          - row "KI-gestuetzte Signal-Erkennung (DACH-Markt) ✓ ✕" [ref=e188]:
+            - cell "KI-gestuetzte Signal-Erkennung (DACH-Markt)" [ref=e189]
+            - cell "✓" [ref=e190]
+            - cell "✕" [ref=e191]
+          - row "Automatisches Berater-Matching & Staffing ✓ ✕" [ref=e192]:
+            - cell "Automatisches Berater-Matching & Staffing" [ref=e193]
+            - cell "✓" [ref=e194]
+            - cell "✕" [ref=e195]
+          - row "Pipeline-Dashboard & Deal-Tracking ✓ ✓" [ref=e196]:
+            - cell "Pipeline-Dashboard & Deal-Tracking" [ref=e197]
+            - cell "✓" [ref=e198]
+            - cell "✓" [ref=e199]
+          - row "Automatische Angebots- & Report-Erstellung ✓ Teilweise" [ref=e200]:
+            - cell "Automatische Angebots- & Report-Erstellung" [ref=e201]
+            - cell "✓" [ref=e202]
+            - cell "Teilweise" [ref=e203]
+          - row "Berater-Auslastung & Kapazitaetsplanung ✓ ✕" [ref=e204]:
+            - cell "Berater-Auslastung & Kapazitaetsplanung" [ref=e205]
+            - cell "✓" [ref=e206]
+            - cell "✕" [ref=e207]
+          - row "Echtzeit-Deckungsbeitrag-Analyse ✓ ✕" [ref=e208]:
+            - cell "Echtzeit-Deckungsbeitrag-Analyse" [ref=e209]
+            - cell "✓" [ref=e210]
+            - cell "✕" [ref=e211]
+          - row "DSGVO-konform mit EU-Hosting ✓ Teilweise" [ref=e212]:
+            - cell "DSGVO-konform mit EU-Hosting" [ref=e213]
+            - cell "✓" [ref=e214]
+            - cell "Teilweise" [ref=e215]
+          - row "Integriertes Wissensmanagement & IP-Sicherung ✓ ✕" [ref=e216]:
+            - cell "Integriertes Wissensmanagement & IP-Sicherung" [ref=e217]
+            - cell "✓" [ref=e218]
+            - cell "✕" [ref=e219]
+          - row "Kontextueller AI-Copilot fuer Beratungsprozesse ✓ ✕" [ref=e220]:
+            - cell "Kontextueller AI-Copilot fuer Beratungsprozesse" [ref=e221]
+            - cell "✓" [ref=e222]
+            - cell "✕" [ref=e223]
+    - generic [ref=e226]:
+      - generic [ref=e227]:
+        - paragraph [ref=e228]: HÄUFIG GESTELLTE FRAGEN
+        - heading "Noch Fragen? Hier sind Antworten." [level=2] [ref=e229]
+        - paragraph [ref=e230]: Falls Sie die Antwort hier nicht finden, kontaktieren Sie unser Team jederzeit.
+      - generic [ref=e232]:
+        - generic [ref=e233]:
+          - button "Was unterscheidet Consultry von einem Standard-CRM?" [expanded] [ref=e234] [cursor=pointer]:
+            - generic [ref=e235]: Was unterscheidet Consultry von einem Standard-CRM?
+            - img [ref=e236]
+          - paragraph [ref=e240]: Consultry ist kein generisches CRM, sondern ein AI-natives operatives System für Beratungen. Statt nur Pipeline-Daten zu pflegen, verbindet die Plattform Marktintelligenz, Berater-Matching, Angebotserstellung, Delivery-Steuerung und Wissensrückfluss in einem durchgängigen Workflow.
+        - generic [ref=e241]:
+          - button "Ist Consultry DSGVO-konform?" [ref=e242] [cursor=pointer]:
+            - generic [ref=e243]: Ist Consultry DSGVO-konform?
+            - img [ref=e244]
+          - paragraph [ref=e246]: Ja. Consultry wird in der EU gehostet, verarbeitet keine Daten ausserhalb der EU und implementiert Privacy-by-Design. Consent-Management fuer Outreach-Kontakte ist integriert. Fuer Berater-Profiling bieten wir Feature-Gates, die erst nach dokumentierter Betriebsvereinbarung freigeschaltet werden.
+        - generic [ref=e247]:
+          - button "Wie lange dauert das Onboarding?" [ref=e248] [cursor=pointer]:
+            - generic [ref=e249]: Wie lange dauert das Onboarding?
+            - img [ref=e250]
+          - paragraph [ref=e252]: Starter-Kunden sind in unter 2 Wochen produktiv. Professional-Kunden in 2 bis 4 Wochen. Enterprise-Onboarding umfasst Datenimport, Konfiguration und Schulung und dauert 4 bis 8 Wochen.
+        - generic [ref=e253]:
+          - button "Welche Tools kann Consultry ersetzen?" [ref=e254] [cursor=pointer]:
+            - generic [ref=e255]: Welche Tools kann Consultry ersetzen?
+            - img [ref=e256]
+          - paragraph [ref=e258]: Consultry ersetzt nicht blind jedes bestehende System. Die Plattform übernimmt aber genau die Lücken zwischen Markt, Team, Angebot, Delivery und Wissen, die heute oft über CRM, Excel, Dokumente und Chat-Threads verteilt sind.
+        - generic [ref=e259]:
+          - button "Gibt es eine kostenlose Testversion?" [ref=e260] [cursor=pointer]:
+            - generic [ref=e261]: Gibt es eine kostenlose Testversion?
+            - img [ref=e262]
+          - paragraph [ref=e264]: Wir bieten eine gefuehrte Pilotphase statt einer anonymen Testversion. In 2 bis 4 Wochen arbeiten Sie mit Ihren echten Daten und sehen den Wert in Ihrer Beratung. Ohne Risiko - wenn es nicht passt, kein Vertrag.
+        - generic [ref=e265]:
+          - button "Wie funktioniert das KI-gestuetzte Berater-Matching?" [ref=e266] [cursor=pointer]:
+            - generic [ref=e267]: Wie funktioniert das KI-gestuetzte Berater-Matching?
+            - img [ref=e268]
+          - paragraph [ref=e270]: Consultry kombiniert Projektanforderungen mit Skills, Branchenerfahrung, Verfuegbarkeit, Standort und Teamkontext. Dadurch entstehen belastbare Vorschlaege fuer passende Besetzungen und nicht nur einfache Keyword-Treffer.
+        - generic [ref=e271]:
+          - button "Koennen wir Consultry mit bestehenden Tools integrieren?" [ref=e272] [cursor=pointer]:
+            - generic [ref=e273]: Koennen wir Consultry mit bestehenden Tools integrieren?
+            - img [ref=e274]
+          - paragraph [ref=e276]: Ja. Standard-Integrationen decken Outlook, Gmail, Slack, Teams, Google Calendar, Personio und DATEV ab. Fuer komplexere Umgebungen stehen Webhooks, APIs und SSO-Optionen bereit.
+        - generic [ref=e277]:
+          - button "Fuer welche Unternehmensgroesse ist Consultry geeignet?" [ref=e278] [cursor=pointer]:
+            - generic [ref=e279]: Fuer welche Unternehmensgroesse ist Consultry geeignet?
+            - img [ref=e280]
+          - paragraph [ref=e282]: Der aktuelle Fokus liegt auf Beratungen mit etwa 30 bis 200 Mitarbeitenden, die Bestandskunden, Staffing, Angebot und Delivery sauber in einem System zusammenziehen wollen.
+        - generic [ref=e283]:
+          - button "Was passiert mit unseren bestehenden CVs und Daten?" [ref=e284] [cursor=pointer]:
+            - generic [ref=e285]: Was passiert mit unseren bestehenden CVs und Daten?
+            - img [ref=e286]
+          - paragraph [ref=e288]: Im Onboarding importiert Consultry Ihre bestehenden CVs, Kundendaten und Projekthistorie. Die AI extrahiert und normalisiert Skills automatisch. Kein manuelles Abtippen.
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - paragraph [ref=e294]: BEREIT FUER DAS SYSTEM?
+        - heading "Schluss mit 47 offenen Tabs." [level=2] [ref=e295]
+        - paragraph [ref=e296]: In 30 Minuten zeigen wir Ihnen, wie Consultry Ihren Beratungsalltag veraendert. Mit Ihren Daten. Mit Ihrem Team. Mit Ihren Prozessen.
+      - link "Demo vereinbaren" [ref=e298] [cursor=pointer]:
+        - /url: /#waitlist
+        - text: Demo vereinbaren
+        - img [ref=e299]
+  - contentinfo [ref=e302]:
+    - generic [ref=e305]:
+      - generic [ref=e306]:
+        - generic [ref=e307]:
+          - img "Consultry Logo" [ref=e309]
+          - generic [ref=e310]:
+            - paragraph [ref=e311]: Consultry
+            - paragraph [ref=e312]: Das operative System für Beratungen.
+            - generic [ref=e315]: DSGVO KONFORM
+        - generic [ref=e316]:
+          - generic [ref=e317]:
+            - paragraph [ref=e318]: PLATTFORM
+            - list [ref=e319]:
+              - listitem [ref=e320]:
+                - link "Funktionen" [ref=e321] [cursor=pointer]:
+                  - /url: /produkt#architecture
+              - listitem [ref=e322]:
+                - link "Preise" [ref=e323] [cursor=pointer]:
+                  - /url: /#waitlist
+              - listitem [ref=e324]:
+                - link "Integrationen" [ref=e325] [cursor=pointer]:
+                  - /url: /produkt#demo
+              - listitem [ref=e326]:
+                - link "Sicherheit" [ref=e327] [cursor=pointer]:
+                  - /url: /produkt
+          - generic [ref=e328]:
+            - paragraph [ref=e329]: UNTERNEHMEN
+            - list [ref=e330]:
+              - listitem [ref=e331]:
+                - link "Über uns" [ref=e332] [cursor=pointer]:
+                  - /url: /unternehmen
+              - listitem [ref=e333]:
+                - link "Karriere" [ref=e334] [cursor=pointer]:
+                  - /url: /unternehmen
+              - listitem [ref=e335]:
+                - link "Blog" [ref=e336] [cursor=pointer]:
+                  - /url: /unternehmen
+              - listitem [ref=e337]:
+                - link "Kontakt" [ref=e338] [cursor=pointer]:
+                  - /url: /kontakt
+          - generic [ref=e339]:
+            - paragraph [ref=e340]: RECHTLICHES
+            - list [ref=e341]:
+              - listitem [ref=e342]:
+                - link "Impressum" [ref=e343] [cursor=pointer]:
+                  - /url: /impressum
+              - listitem [ref=e344]:
+                - link "Datenschutz" [ref=e345] [cursor=pointer]:
+                  - /url: /datenschutz
+              - listitem [ref=e346]:
+                - link "AGB" [ref=e347] [cursor=pointer]:
+                  - /url: /agb
+              - listitem [ref=e348]:
+                - link "Cookies" [ref=e349] [cursor=pointer]:
+                  - /url: /cookies
+      - generic [ref=e351]:
+        - paragraph [ref=e352]: © 2026 Consultry GmbH
+        - generic [ref=e353]:
+          - link "LinkedIn" [ref=e354] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/consultry
+            - text: in
+          - link "XING" [ref=e355] [cursor=pointer]:
+            - /url: https://www.xing.com/pages/consultry
+            - text: X
+          - link "Email" [ref=e356] [cursor=pointer]:
+            - /url: mailto:kontakt@consultry.com
+            - text: "@"
+  - button "Open Next.js Dev Tools" [ref=e362] [cursor=pointer]:
+    - img [ref=e363]

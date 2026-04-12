@@ -1,0 +1,16 @@
+[     125ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[     137ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1472399ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1472588ms] [LOG] [Fast Refresh] done in 91ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1486219ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1486240ms] [LOG] [Fast Refresh] done in 58ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1505843ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1505900ms] [LOG] [Fast Refresh] done in 88ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1537161ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1537221ms] [LOG] [Fast Refresh] done in 81ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1645199ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1645282ms] [LOG] [Fast Refresh] done in 98ms @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1741870ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=OEJ2psxKb6fgjEzxbY6uf' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/09q._next_dist_client_0slhn09._.js:13299
+[ 1742950ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1743522ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431
+[ 1743537ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/09q._next_dist_0hjurs0._.js:2431

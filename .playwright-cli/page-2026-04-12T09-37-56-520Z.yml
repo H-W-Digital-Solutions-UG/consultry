@@ -1,0 +1,131 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "Exklusiver Frühzugang für DACH-Beratungen Jetzt Platz sichern →" [ref=e4] [cursor=pointer]:
+      - /url: /#waitlist
+      - generic [ref=e5]: Exklusiver Frühzugang für DACH-Beratungen
+      - generic [ref=e6]: Jetzt Platz sichern →
+    - button "Hinweis schließen" [ref=e7] [cursor=pointer]:
+      - img [ref=e8]
+  - banner [ref=e11]:
+    - generic [ref=e13]:
+      - link "Consultry Logo Consultry" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - img "Consultry Logo" [ref=e15]
+        - generic [ref=e16]: Consultry
+      - navigation "Hauptnavigation" [ref=e17]:
+        - link "Produkt" [ref=e18] [cursor=pointer]:
+          - /url: /produkt
+        - link "Funktionen" [ref=e19] [cursor=pointer]:
+          - /url: /produkt#architecture
+        - link "Preise" [ref=e20] [cursor=pointer]:
+          - /url: /#waitlist
+        - link "Unternehmen" [ref=e21] [cursor=pointer]:
+          - /url: /unternehmen
+      - link "Demo anfragen" [ref=e23] [cursor=pointer]:
+        - /url: /#waitlist
+        - text: Demo anfragen
+        - generic [ref=e24]: →
+  - main [ref=e25]:
+    - generic [ref=e28]:
+      - paragraph [ref=e29]: ÜBER CONSULTRY
+      - heading "Wir bauen das Betriebssystem für moderne Beratungshaeuser" [level=1] [ref=e30]
+      - paragraph [ref=e31]: Drei Gruender aus Consulting, Cybersecurity und Programm-Management vereinten ihre Erfahrung in einer KI-nativen Plattform - entwickelt in Berlin, gebaut fuer den DACH-Markt.
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - paragraph [ref=e35]: DAS TEAM
+        - heading "Gebaut von Praktikern, nicht von Theoretikern" [level=2] [ref=e36]
+        - paragraph [ref=e37]: Hinter Consultry steht ein Team, das Unternehmensberatung, Deep Tech und die Entwicklung von KI-Agenten zusammenbringt.
+      - generic [ref=e38]:
+        - article [ref=e39]:
+          - generic [ref=e40]:
+            - img "Portraet von Julian Weber" [ref=e42]
+            - heading "Julian Weber" [level=3] [ref=e43]
+            - paragraph [ref=e44]: Co-Founder & CTO/CISO
+            - generic [ref=e45]: in
+          - paragraph [ref=e46]: AI-native Architektur, Security-by-Design und Plattformstabilität für Beratungen mit hohen Anforderungen.
+        - article [ref=e47]:
+          - generic [ref=e48]:
+            - img "Portraet von Caspar Hertel" [ref=e50]
+            - heading "Caspar Hertel" [level=3] [ref=e51]
+            - paragraph [ref=e52]: Co-Founder & CEO
+            - generic [ref=e53]: in
+          - paragraph [ref=e54]: Positionierung, Go-to-Market und Kundengespräche mit Beratungen im DACH-Markt.
+        - article [ref=e55]:
+          - generic [ref=e56]:
+            - img "Portraet von Paul Hannemann" [ref=e58]
+            - heading "Paul Hannemann" [level=3] [ref=e59]
+            - paragraph [ref=e60]: Co-Founder & CPO
+            - generic [ref=e61]: in
+          - paragraph [ref=e62]: Produkt, UX und Workflow-Design, damit Consultry die Beratungslogik wirklich abbildet.
+    - generic [ref=e65]:
+      - generic [ref=e66]:
+        - paragraph [ref=e67]: UNSERE GESCHICHTE
+        - heading "Beratungen verdienen ein System, das ihre Logik versteht." [level=2] [ref=e68]
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: "Consultry entstand aus einer simplen Beobachtung: Beratungen koordinieren hochkomplexe Arbeit mit Werkzeugen, die nie fuer Beratungslogik gebaut wurden. Marktsignale landen in Newslettern, Staffing in Tabellen, Angebote in PowerPoints und Delivery-Wissen in verstreuten Dokumenten."
+          - paragraph [ref=e71]: Was in der Praxis fehlt, ist kein weiteres Feature und kein neues Add-on fuer ein generisches CRM. Es fehlt eine gemeinsame operative Ebene, die erkennt, was der Markt verlangt, welches Team wirklich passt, wie ein Angebot schneller belastbar wird und wie Projektwissen wieder ins naechste Mandat zurueckfliesst.
+          - paragraph [ref=e72]: Deshalb haben wir Consultry als AI-natives operatives System konzipiert. Nicht AI-angeflanscht, sondern von Grund auf auf Kontext, Zusammenarbeit und Beratungsprozesse ausgelegt. Das System versteht Signale, Teamkonstellationen, Delivery-Risiken und Wissensbausteine als zusammenhaengenden Workflow.
+          - paragraph [ref=e73]: "Unser Ziel ist kein lauter Software-Layer ueber bestehenden Prozessen, sondern ein ruhigeres, klareres Betriebssystem fuer moderne Beratungshaeuser im DACH-Raum: weniger Kontextwechsel, bessere operative Entscheidungen und ein Setup, das die Realitaet von Beratung respektiert."
+      - generic [ref=e74]:
+        - article [ref=e75]:
+          - paragraph [ref=e76]: 15+
+          - heading "Module" [level=3] [ref=e77]
+          - paragraph [ref=e78]: für den gesamten Beratungs-Lifecycle
+        - article [ref=e79]:
+          - paragraph [ref=e80]: 100 %
+          - heading "DACH-Fokus" [level=3] [ref=e81]
+          - paragraph [ref=e82]: Daten, Compliance und Sprache
+        - article [ref=e83]:
+          - paragraph [ref=e84]: EU
+          - heading "Hosting" [level=3] [ref=e85]
+          - paragraph [ref=e86]: in Frankfurt. Keine Daten außerhalb der EU.
+        - article [ref=e87]:
+          - paragraph [ref=e88]: < 2 Wochen
+          - heading "Onboarding" [level=3] [ref=e89]
+          - paragraph [ref=e90]: bis zum produktiven Einsatz
+    - generic [ref=e94]:
+      - generic [ref=e95]:
+        - paragraph [ref=e96]: NÄCHSTER SCHRITT
+        - heading "Bereit, Teil der Geschichte zu werden?" [level=2] [ref=e97]
+        - paragraph [ref=e98]: Wir suchen Beratungsunternehmen, die mit uns die nächste Generation operativer Werkzeuge gestalten. Werden Sie Pilotpartner.
+      - link "Pilotpartner werden" [ref=e100] [cursor=pointer]:
+        - /url: /#waitlist
+        - text: Pilotpartner werden
+        - img [ref=e101]
+  - contentinfo [ref=e104]:
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - img "Consultry Logo" [ref=e111]
+          - generic [ref=e112]:
+            - paragraph [ref=e113]: Consultry
+            - paragraph [ref=e114]: Das operative System für Beratungen.
+            - generic [ref=e117]: DSGVO KONFORM
+        - generic [ref=e118]:
+          - paragraph [ref=e120]: PRODUKT
+          - generic [ref=e121]:
+            - paragraph [ref=e122]: UNTERNEHMEN
+            - list [ref=e123]:
+              - listitem [ref=e124]:
+                - link "Über uns" [ref=e125] [cursor=pointer]:
+                  - /url: /unternehmen
+              - listitem [ref=e126]: Kontakt
+          - generic [ref=e127]:
+            - paragraph [ref=e128]: RECHTLICHES
+            - list [ref=e129]:
+              - listitem [ref=e130]: Datenschutz
+              - listitem [ref=e131]: Nutzungsbedingungen
+              - listitem [ref=e132]: Impressum
+              - listitem [ref=e133]: Copyright
+              - listitem [ref=e134]: Trademark
+              - listitem [ref=e135]: Cookie-Erklärung
+              - listitem [ref=e136]: Cookie-Einstellungen
+      - generic [ref=e138]:
+        - paragraph [ref=e139]: © 2026 Consultry GmbH
+        - generic [ref=e140]:
+          - generic "LinkedIn" [ref=e141]: in
+          - generic "YouTube" [ref=e142]: ▶
+          - generic "Email" [ref=e143]: "@"
+  - button "Open Next.js Dev Tools" [ref=e149] [cursor=pointer]:
+    - img [ref=e150]
+  - alert [ref=e153]

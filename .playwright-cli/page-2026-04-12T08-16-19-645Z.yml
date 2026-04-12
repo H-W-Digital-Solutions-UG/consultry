@@ -1,0 +1,204 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "Exklusiver Frühzugang für DACH-Beratungen Jetzt Platz sichern" [ref=e4] [cursor=pointer]:
+      - /url: /#waitlist
+      - generic [ref=e5]: Exklusiver Frühzugang für DACH-Beratungen
+      - generic [ref=e6]: Jetzt Platz sichern
+    - button "Hinweis schließen" [ref=e7] [cursor=pointer]:
+      - img [ref=e8]
+  - banner [ref=e11]:
+    - generic [ref=e13]:
+      - link "Consultry Logo" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - img "Consultry Logo" [ref=e15]
+      - navigation "Hauptnavigation" [ref=e16]:
+        - link "Start" [ref=e17] [cursor=pointer]:
+          - /url: /
+        - link "Produkt" [ref=e18] [cursor=pointer]:
+          - /url: /produkt
+        - link "Unternehmen" [ref=e19] [cursor=pointer]:
+          - /url: /unternehmen
+      - link "Frühzugang sichern" [ref=e21] [cursor=pointer]:
+        - /url: /#waitlist
+  - main [ref=e22]:
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - paragraph [ref=e28]: DAS AI-NATIVE BERATUNGS-OPERATING-SYSTEM
+        - heading "Vom Signal zum Projekt - in einer Plattform." [level=1] [ref=e29]:
+          - generic [ref=e30]: Vom Signal
+          - generic [ref=e31]: zum Projekt - in
+          - generic [ref=e32]: einer Plattform.
+        - paragraph [ref=e33]: Consultry ersetzt Salesforce, Excel und LinkedIn-Recherche durch einen AI-nativen Workspace - gebaut fuer DACH-Beratungen mit 30 bis 200 Consultants.
+        - generic [ref=e34]:
+          - link "Fruehzugang sichern" [ref=e35] [cursor=pointer]:
+            - /url: "#waitlist"
+          - link "Demo ansehen" [ref=e36] [cursor=pointer]:
+            - /url: /produkt#video
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - generic [ref=e39]: "42"
+            - generic [ref=e40]: Opportunities
+          - generic [ref=e41]:
+            - generic [ref=e42]: 1.8M EUR
+            - generic [ref=e43]: Pipeline-Wert
+          - generic [ref=e44]:
+            - generic [ref=e45]: +26%
+            - generic [ref=e46]: vs. Vorquartal
+          - generic [ref=e47]:
+            - generic [ref=e48]: "8"
+            - generic [ref=e49]: Hot Leads
+        - paragraph [ref=e50]: Eine Plattform. Vier Workflows. Null Datensilos.
+      - generic [ref=e51]:
+        - img "Dashboard von Consultry mit Pipeline, Matching und Delivery-Uebersicht" [ref=e53]
+        - generic [ref=e55]:
+          - article [ref=e56]:
+            - paragraph [ref=e57]: Ein Workspace. Null Silos.
+            - paragraph [ref=e58]: Pipeline, Matching, Delivery und Knowledge laufen in einem durchgaengigen System zusammen.
+          - article [ref=e59]:
+            - paragraph [ref=e60]: KI, die Beratung versteht
+            - paragraph [ref=e61]: Von der Signal-Erkennung bis zur Angebotserstellung uebernimmt KI die operative Schwerstarbeit.
+      - generic [ref=e62]:
+        - article [ref=e63]:
+          - paragraph [ref=e64]: WORKSPACE
+          - paragraph [ref=e65]: 42 Opportunities
+          - paragraph [ref=e66]: Ein priorisierter Arbeitsmodus fuer BD, Staffing und Delivery statt verstreuter Tool-Ansichten.
+        - article [ref=e67]:
+          - paragraph [ref=e68]: AI-NATIVE
+          - paragraph [ref=e69]: Vom Signal zur naechsten Entscheidung.
+          - paragraph [ref=e70]: Kontext bleibt erhalten, Empfehlungen entstehen im System und Teams arbeiten konsistenter zusammen.
+        - link "Live-Flow ansehen" [ref=e71] [cursor=pointer]:
+          - /url: /produkt#video
+          - text: Live-Flow ansehen
+          - img [ref=e72]
+    - generic [ref=e77]:
+      - paragraph [ref=e78]: PLATTFORM
+      - heading "Vom Signal zum Projekt - nahtlos" [level=2] [ref=e79]
+      - paragraph [ref=e80]: Consultry verbindet Marktintelligenz, Matching, Delivery und Knowledge in einer durchgaengigen Plattform. Kein Tool-Wechsel, keine Datensilos.
+    - generic [ref=e81]:
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - paragraph [ref=e86]: "[01]"
+          - paragraph [ref=e87]: SIGNAL INTELLIGENCE
+          - heading "Marktchancen erkennen, bevor der Wettbewerb anruft" [level=3] [ref=e88]
+          - paragraph [ref=e89]: Consultry scannt den DACH-Markt rund um die Uhr, priorisiert Signale automatisch und startet Ihr Team mit einem qualifizierten Feed statt mit stundenlanger Recherche in fuenf verschiedenen Tools.
+          - paragraph [ref=e90]:
+            - text: Signal-Feed mit Priorisierung, Match-Score und 1-Klick-Opportunity-Erstellung.
+            - img [ref=e91]
+        - generic [ref=e94]:
+          - img "Consultry Signal-Feed mit priorisierten Marktsignalen und Opportunity-Scoring" [ref=e95]
+          - generic [ref=e98]:
+            - paragraph [ref=e99]: SIGNAL INTELLIGENCE
+            - paragraph [ref=e100]: Signal-Feed mit Priorisierung, Match-Score und 1-Klick-Opportunity-Erstellung.
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - paragraph [ref=e105]: "[02]"
+          - paragraph [ref=e106]: SMART MATCHING
+          - heading "Das perfekte Team - zusammengestellt in Sekunden" [level=3] [ref=e107]
+          - paragraph [ref=e108]: Die Plattform matcht Anforderungen semantisch gegen Skills, Verfuegbarkeit, Kundenpraeferenzen und Projektkontext - inklusive Margin-Sicht und Alternativ-Szenarien.
+          - paragraph [ref=e109]:
+            - text: Team-Konstellation mit Match-Score, Verfuegbarkeit und Margin-Sicht.
+            - img [ref=e110]
+        - generic [ref=e113]:
+          - img "Team-Matching-Ansicht in Consultry mit passenden Beraterprofilen und Scores" [ref=e114]
+          - generic [ref=e117]:
+            - paragraph [ref=e118]: SMART MATCHING
+            - paragraph [ref=e119]: Team-Konstellation mit Match-Score, Verfuegbarkeit und Margin-Sicht.
+      - generic [ref=e122]:
+        - generic [ref=e123]:
+          - paragraph [ref=e124]: "[03]"
+          - paragraph [ref=e125]: DELIVERY ANALYTICS
+          - heading "Echtzeit-Einblick in jedes Projekt" [level=3] [ref=e126]
+          - paragraph [ref=e127]: Dashboards fuer Auslastung, Deckungsbeitrag und Projektfortschritt geben Partnern und Teams dieselbe Sicht auf Profitabilitaet - bevor Probleme teuer werden.
+          - paragraph [ref=e128]:
+            - text: Projekt-Dashboard mit Health-Score, Budget-Tracking und Risikoanalyse.
+            - img [ref=e129]
+        - generic [ref=e132]:
+          - img "Delivery-Ansicht von Consultry mit Echtzeit-KPIs fuer Projekte und Auslastung" [ref=e133]
+          - generic [ref=e136]:
+            - paragraph [ref=e137]: DELIVERY ANALYTICS
+            - paragraph [ref=e138]: Projekt-Dashboard mit Health-Score, Budget-Tracking und Risikoanalyse.
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - paragraph [ref=e143]: "[04]"
+          - paragraph [ref=e144]: KNOWLEDGE HUB
+          - heading "Wissen bewahren. Wissen nutzen. Wissen monetarisieren." [level=3] [ref=e145]
+          - paragraph [ref=e146]: Ergebnisse, Templates und Expertise bleiben im System erhalten. So wird Projektwissen querybar, wiederverwendbar und direkt fuer naechste Angebote nutzbar.
+          - paragraph [ref=e147]:
+            - text: Wissensbausteine, Benchmarks und Referenzen im operativen Zugriff.
+            - img [ref=e148]
+        - generic [ref=e151]:
+          - img "Knowledge-Hub-Ansicht von Consultry mit wiederverwendbarem Beratungswissen" [ref=e152]
+          - generic [ref=e155]:
+            - paragraph [ref=e156]: KNOWLEDGE HUB
+            - paragraph [ref=e157]: Wissensbausteine, Benchmarks und Referenzen im operativen Zugriff.
+    - generic [ref=e159]:
+      - generic [ref=e160]:
+        - paragraph [ref=e161]: ERGEBNISSE, DIE ZAEHLEN
+        - heading "Beratungen, die mit Consultry arbeiten, transformieren ihre operative Performance." [level=2] [ref=e162]
+        - paragraph [ref=e163]: Beratungen, die mit Consultry arbeiten, reduzieren Reibung im Alltag und gewinnen operative Geschwindigkeit.
+      - generic [ref=e164]:
+        - generic [ref=e165]:
+          - article [ref=e166]:
+            - paragraph [ref=e167]: BD-Recherchezeit
+            - paragraph [ref=e168]: "-70%"
+            - paragraph [ref=e169]: Von 25 Stunden pro Woche auf unter 5 durch automatisierte Signal-Erkennung.
+          - article [ref=e170]:
+            - paragraph [ref=e171]: statt 5 Tage
+            - paragraph [ref=e172]: 3 Std.
+            - paragraph [ref=e173]: Massgeschneiderte Proposals mit Team-Aufstellung, Pricing und CVs auf Knopfdruck.
+          - article [ref=e174]:
+            - paragraph [ref=e175]: Berater-Auslastung
+            - paragraph [ref=e176]: +15 Pp.
+            - paragraph [ref=e177]: Mehr Transparenz in Verfuegbarkeit und Matching hebt die operative Auslastung sichtbar.
+          - article [ref=e178]:
+            - paragraph [ref=e179]: Kosten pro Lead
+            - paragraph [ref=e180]: "-50%"
+            - paragraph [ref=e181]: Qualifizierte Leads entstehen durch Marktintelligenz statt manueller Recherche.
+        - paragraph [ref=e182]: Basierend auf Pilotdaten und Branchen-Benchmarks fuer mittelstaendige DACH-Beratungen (30-200 Berater).
+    - generic [ref=e186]:
+      - generic [ref=e187]:
+        - paragraph [ref=e188]: WAITLIST
+        - heading "Bereit, Ihre Beratung auf das naechste Level zu bringen?" [level=2] [ref=e189]
+        - paragraph [ref=e190]: Sehen Sie in 30 Minuten, wie Consultry den Weg vom Signal zum profitablen Projekt verkuerzt - mit Ihren echten Daten, Ihrem Team und Ihren Prozessen.
+        - paragraph [ref=e191]: Keine Kreditkarte noetig · Exklusiv fuer DACH-Beratungen · Begrenzte Plaetze
+      - generic [ref=e193]:
+        - generic [ref=e194]:
+          - generic [ref=e195]: Geschaeftliche E-Mail-Adresse
+          - textbox "Geschaeftliche E-Mail-Adresse" [ref=e196]:
+            - /placeholder: Ihre geschaeftliche E-Mail-Adresse
+        - button "Fruehzugang sichern" [ref=e197] [cursor=pointer]:
+          - text: Fruehzugang sichern
+          - img [ref=e198]
+  - contentinfo [ref=e201]:
+    - generic [ref=e202]:
+      - generic [ref=e203]:
+        - paragraph [ref=e204]: Consultry
+        - paragraph [ref=e205]: Das operative System für moderne Beratungen.
+        - paragraph [ref=e206]: Gebaut für DACH-Beratungen, die weniger Tool-Reibung und mehr operative Präzision wollen.
+      - generic [ref=e207]:
+        - paragraph [ref=e208]: Seiten
+        - list [ref=e209]:
+          - listitem [ref=e210]:
+            - link "Homepage" [ref=e211] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e212]:
+            - link "Produkt" [ref=e213] [cursor=pointer]:
+              - /url: /produkt
+          - listitem [ref=e214]:
+            - link "Unternehmen" [ref=e215] [cursor=pointer]:
+              - /url: /unternehmen
+      - generic [ref=e216]:
+        - paragraph [ref=e217]: Nächster Schritt
+        - list [ref=e218]:
+          - listitem [ref=e219]:
+            - link "Frühzugang sichern" [ref=e220] [cursor=pointer]:
+              - /url: /#waitlist
+          - listitem [ref=e221]:
+            - link "Demo ansehen" [ref=e222] [cursor=pointer]:
+              - /url: /produkt#video
+    - generic [ref=e224]:
+      - paragraph [ref=e225]: © 2026 Consultry. Alle Rechte vorbehalten.
+      - paragraph [ref=e226]: Berlin · Gehostet in der EU · Frühzugang für den DACH-Markt
+  - button "Open Next.js Dev Tools" [ref=e232] [cursor=pointer]:
+    - img [ref=e233]
+  - alert [ref=e236]

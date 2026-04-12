@@ -1,0 +1,55 @@
+:root {
+  --consultry-page-bg: #1e1b18;
+  --consultry-surface-hero: #1e1b18;
+  --consultry-surface-dark: #2c2926;
+  --consultry-surface-dark-elevated: #35312d;
+  --consultry-surface-card: #3a3632;
+  --consultry-surface-glass: rgba(30, 27, 24, 0.85);
+  --consultry-surface-soft: rgba(255, 255, 255, 0.03);
+  --consultry-text-primary: #ede8e2;
+  --consultry-text-secondary: #d9d4cf;
+  --consultry-text-muted: rgba(250, 250, 249, 0.65);
+  --consultry-text-faint: rgba(250, 250, 249, 0.4);
+  --consultry-border-soft: rgba(255, 255, 255, 0.08);
+  --consultry-border-strong: rgba(255, 255, 255, 0.16);
+  --consultry-brand-primary: #bf5347;
+  --consultry-brand-primary-hover: #ca7168;
+  --consultry-brand-primary-active: #a2463c;
+  --consultry-brand-coral: #e8655a;
+  --consultry-brand-warm: #f0a85e;
+  --consultry-brand-gradient: linear-gradient(27deg, #e8913a 10%, #e8655a 25%, #9b59b6 60%);
+  --consultry-brand-gradient-hero: linear-gradient(160.96deg, #e8913a 0%, #e8655a 37.59%, #9b59b7 75.19%);
+  --consultry-brand-gradient-hero-alt: linear-gradient(151.8deg, #e8655a 0%, #9b59b7 37.59%, #c084e5 75.19%);
+  --consultry-hero-background: linear-gradient(
+      180deg,
+      rgba(191, 84, 71, 0.15) 0%,
+      rgba(232, 145, 59, 0.08) 50%,
+      rgba(30, 27, 24, 0) 100%
+    ),
+    linear-gradient(180deg, #1f140f 0%, #1e1b18 100%);
+  --consultry-step-progress-gradient: linear-gradient(
+    90deg,
+    #e8913a 0%,
+    rgba(232, 102, 89, 0.75) 45%,
+    #9c59b5 100%
+  );
+  --consultry-card-border-gradient: linear-gradient(
+    135deg,
+    rgba(140, 87, 173, 0.92) 0%,
+    rgba(232, 145, 58, 0.95) 58%,
+    rgba(232, 101, 90, 0.92) 100%
+  );
+  --consultry-success: #16a34a;
+  --consultry-warning: #d97706;
+  --consultry-radius-sm: 8px;
+  --consultry-radius-md: 12px;
+  --consultry-radius-lg: 16px;
+  --consultry-radius-xl: 24px;
+  --consultry-radius-pill: 9999px;
+  --consultry-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --consultry-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --consultry-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.18);
+  --consultry-shadow-hero: 0 20px 60px rgba(0, 0, 0, 0.18);
+  --consultry-shadow-focus: 0 0 0 3px rgba(232, 101, 90, 0.24);
+  --consultry-container-max: 1200px;
+}

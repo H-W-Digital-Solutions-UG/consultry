@@ -1,0 +1,147 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "Exklusiver Frühzugang für DACH-Beratungen Jetzt Platz sichern →" [ref=e4] [cursor=pointer]:
+      - /url: /#waitlist
+      - generic [ref=e5]: Exklusiver Frühzugang für DACH-Beratungen
+      - generic [ref=e6]: Jetzt Platz sichern →
+    - button "Hinweis schließen" [ref=e7] [cursor=pointer]:
+      - img [ref=e8]
+  - banner [ref=e11]:
+    - generic [ref=e13]:
+      - link "Consultry Logo" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - img "Consultry Logo" [ref=e15]
+      - navigation "Hauptnavigation" [ref=e16]:
+        - link "Start" [ref=e17] [cursor=pointer]:
+          - /url: /
+        - link "Produkt" [ref=e18] [cursor=pointer]:
+          - /url: /produkt
+        - link "Unternehmen" [ref=e19] [cursor=pointer]:
+          - /url: /unternehmen
+      - link "Demo anfragen" [ref=e21] [cursor=pointer]:
+        - /url: /#waitlist
+        - text: Demo anfragen
+        - generic [ref=e22]: →
+  - main [ref=e23]:
+    - generic [ref=e27]:
+      - paragraph [ref=e28]: ÜBER CONSULTRY
+      - heading "Wir bauen das Betriebssystem für moderne Beratungen." [level=1] [ref=e29]
+      - paragraph [ref=e30]: Gegründet aus der Überzeugung, dass Beratungsunternehmen im DACH-Raum ein operatives System verdienen, das ihre Logik versteht - statt umfunktionierter Vertriebs-Tools und zusammengeklebter Software-Landschaften.
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - paragraph [ref=e34]: DAS TEAM
+        - heading "Gebaut von Menschen, die Beratung verstehen." [level=2] [ref=e35]
+        - paragraph [ref=e36]: Unser Team vereint Erfahrung aus Consulting, Security, Produkt und Plattformentwicklung. Wir bauen nicht für Beratungen - wir bauen mit Beratungen.
+      - generic [ref=e37]:
+        - article [ref=e38]:
+          - generic [ref=e39]:
+            - generic [ref=e40]: JW
+            - generic [ref=e41]:
+              - heading "Julian Weber" [level=3] [ref=e42]
+              - paragraph [ref=e43]: Co-Founder & CTO/CISO
+          - paragraph [ref=e44]: AI-native Architektur, Security-by-Design und Plattformstabilität für Beratungen mit hohen Anforderungen.
+          - generic [ref=e45]: Team
+        - article [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]: CH
+            - generic [ref=e49]:
+              - heading "Caspar Hertel" [level=3] [ref=e50]
+              - paragraph [ref=e51]: Co-Founder & CEO
+          - paragraph [ref=e52]: Positionierung, Go-to-Market und Kundengespräche mit Beratungen im DACH-Markt.
+          - generic [ref=e53]: Team
+        - article [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]: PH
+            - generic [ref=e57]:
+              - heading "Paul Hannemann" [level=3] [ref=e58]
+              - paragraph [ref=e59]: Co-Founder & CPO
+          - paragraph [ref=e60]: Produkt, UX und Workflow-Design, damit Consultry die Beratungslogik wirklich abbildet.
+          - generic [ref=e61]: Team
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - paragraph [ref=e65]: MISSION & PROOF
+        - heading "Beratungen verdienen ein System, das ihre Logik versteht." [level=2] [ref=e66]
+        - paragraph [ref=e67]: Beratungen schaffen Wert durch Wissen, Beziehungen und die richtigen Menschen zur richtigen Zeit. Consultry macht dieses Zusammenspiel sichtbar, intelligent und skalierbar.
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - paragraph [ref=e72]: UNSERE GESCHICHTE
+              - heading "Timeline & Proof" [level=3] [ref=e73]
+            - generic [ref=e74]: DACH-first
+          - generic [ref=e75]:
+            - article [ref=e76]:
+              - paragraph [ref=e77]: Q1 2025
+              - heading "Das Problem erkennen" [level=4] [ref=e78]
+              - paragraph [ref=e79]: "47 offene Tabs, 5 Tools für eine Antwort, Excel als operatives Rückgrat. So sieht der Alltag in Beratungsunternehmen aus. Wir wussten: Das geht besser."
+            - article [ref=e80]:
+              - paragraph [ref=e81]: Q3 2025
+              - heading "Beratungslogik verstehen" [level=4] [ref=e82]
+              - paragraph [ref=e83]: "Monate intensiver Forschung mit Beratungen im DACH-Raum. Die Erkenntnis: Das Problem ist nicht fehlende Software - sondern Software, die die Dienstleistungslogik nicht versteht."
+            - article [ref=e84]:
+              - paragraph [ref=e85]: Q1 2026
+              - heading "AI-native bauen" [level=4] [ref=e86]
+              - paragraph [ref=e87]: Nicht ein Tool mit AI-Features, sondern eine Plattform, bei der AI das primäre Interaktionsparadigma ist. Berater sprechen mit dem System. Das System lernt aus jeder Interaktion.
+            - article [ref=e88]:
+              - paragraph [ref=e89]: Q2 2026
+              - heading "Launch im DACH-Markt" [level=4] [ref=e90]
+              - paragraph [ref=e91]: Consultry geht live. Die erste AI-native Plattform, die den gesamten Beratungs-Lifecycle abdeckt - von der Markterkennung bis zum Wissensrückfluss.
+        - generic [ref=e92]:
+          - article [ref=e93]:
+            - paragraph [ref=e94]: 15+
+            - heading "Module" [level=4] [ref=e95]
+            - paragraph [ref=e96]: für den gesamten Beratungs-Lifecycle
+          - article [ref=e97]:
+            - paragraph [ref=e98]: 100 %
+            - heading "DACH-Fokus" [level=4] [ref=e99]
+            - paragraph [ref=e100]: Daten, Compliance und Sprache
+          - article [ref=e101]:
+            - paragraph [ref=e102]: EU
+            - heading "Hosting" [level=4] [ref=e103]
+            - paragraph [ref=e104]: in Frankfurt. Keine Daten außerhalb der EU.
+          - article [ref=e105]:
+            - paragraph [ref=e106]: < 2 Wochen
+            - heading "Onboarding" [level=4] [ref=e107]
+            - paragraph [ref=e108]: bis zum produktiven Einsatz
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - paragraph [ref=e114]: NÄCHSTER SCHRITT
+        - heading "Bereit, Teil der Geschichte zu werden?" [level=2] [ref=e115]
+        - paragraph [ref=e116]: Wir suchen Beratungsunternehmen, die mit uns die nächste Generation operativer Werkzeuge gestalten. Werden Sie Pilotpartner.
+      - link "Pilotpartner werden" [ref=e118] [cursor=pointer]:
+        - /url: /#waitlist
+        - text: Pilotpartner werden
+        - img [ref=e119]
+  - contentinfo [ref=e122]:
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - paragraph [ref=e126]: Das operative System für moderne Beratungen.
+        - paragraph [ref=e127]: Gebaut für DACH-Beratungen, die weniger Tool-Reibung und mehr operative Präzision wollen.
+        - generic [ref=e130]: DSGVO konform
+      - generic [ref=e131]:
+        - paragraph [ref=e132]: Seiten
+        - list [ref=e133]:
+          - listitem [ref=e134]:
+            - link "Homepage" [ref=e135] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e136]:
+            - link "Produkt" [ref=e137] [cursor=pointer]:
+              - /url: /produkt
+          - listitem [ref=e138]:
+            - link "Unternehmen" [ref=e139] [cursor=pointer]:
+              - /url: /unternehmen
+      - generic [ref=e140]:
+        - paragraph [ref=e141]: Nächster Schritt
+        - list [ref=e142]:
+          - listitem [ref=e143]:
+            - link "Frühzugang sichern" [ref=e144] [cursor=pointer]:
+              - /url: /#waitlist
+          - listitem [ref=e145]:
+            - link "Demo ansehen" [ref=e146] [cursor=pointer]:
+              - /url: /produkt#video
+    - generic [ref=e148]:
+      - paragraph [ref=e149]: © 2026 Consultry GmbH
+      - paragraph [ref=e150]: Berlin · Gehostet in der EU · Frühzugang für den DACH-Markt
+  - button "Open Next.js Dev Tools" [ref=e156] [cursor=pointer]:
+    - img [ref=e157]
+  - alert [ref=e160]
