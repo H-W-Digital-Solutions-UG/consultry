@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { startTransition, useDeferredValue, useState } from "react";
+import Link from "next/link";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { startTransition, useState } from "react";
 import { MotionReveal } from "@/components/marketing/MotionReveal";
 import type { ProductArchitectureContent } from "@/lib/content/de/product";
 import { cn } from "@/lib/cn";
@@ -12,40 +15,60 @@ type ProductArchitectureProps = {
 
 export function ProductArchitecture({ content }: ProductArchitectureProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const deferredIndex = useDeferredValue(activeIndex);
-  const activeLayer = content.layers[deferredIndex] ?? content.layers[0];
-  const activeWorkflowIndex = Math.min(
-    deferredIndex,
-    Math.max(content.workflowSteps.length - 1, 0),
-  );
+  const shouldReduceMotion = useReducedMotion();
+  const activeLayer = content.layers[activeIndex] ?? content.layers[0];
+
+  const progressWidth =
+    content.layers.length > 1
+      ? `${(activeIndex / (content.layers.length - 1)) * 75}%`
+      : "0%";
 
   return (
     <section className="section-shell-tight" id="architecture">
       <div className="content-shell">
-        <MotionReveal className="mx-auto max-w-4xl text-center" y={18}>
+        {/* Row 1 — Section Header */}
+        <MotionReveal className="mx-auto max-w-3xl text-center" y={18}>
           <p className="eyebrow">{content.overline}</p>
           <h2 className="display-section mt-4 text-balance text-[var(--consultry-text-primary)]">
             {content.title}
           </h2>
-          <p className="body-lg mx-auto mt-5 max-w-3xl">{content.body}</p>
+          <p className="body-lg mx-auto mt-5 max-w-2xl">{content.body}</p>
         </MotionReveal>
 
-        <div className="mt-10 overflow-hidden rounded-[32px] border border-[var(--consultry-border-soft)] bg-[#2c2926] shadow-[var(--consultry-shadow-lg)]">
-          <div className="grid gap-0 lg:grid-cols-[390px_minmax(0,1fr)]">
-            <MotionReveal className="border-b border-[var(--consultry-border-soft)] p-6 lg:border-b-0 lg:border-r lg:p-7" x={-18}>
-              <div className="space-y-3">
+        {/* Row 2 — Horizontal Stepper + Content */}
+        <MotionReveal
+          className="mt-10 overflow-hidden rounded-[12px] bg-[#2c2926] shadow-[0_4px_20px_-2px_rgba(0,0,0,0.2)] ring-1 ring-[rgba(255,255,255,0.06)]"
+          delay={0.06}
+          y={24}
+        >
+          {/* Stepper Bar */}
+          <div className="border-b border-[rgba(255,255,255,0.06)] bg-[rgba(41,38,36,0.82)] px-10 py-7">
+            <div className="relative">
+              {/* Track line */}
+              <div className="absolute left-[12.5%] right-[12.5%] top-[5px] h-[3px] -translate-y-1/2 rounded-full bg-[#4d4a45]" />
+              {/* Progress line */}
+              <motion.div
+                animate={{ width: progressWidth }}
+                className="absolute left-[12.5%] top-[5px] h-[3px] -translate-y-1/2 rounded-full"
+                style={{
+                  background:
+                    "linear-gradient(90deg, #e8913b 0%, rgba(232, 102, 89, 0.75) 45%, #9c59b5 100%)",
+                }}
+                transition={{
+                  duration: shouldReduceMotion ? 0 : 0.35,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Step tabs */}
+              <div className="relative z-10 grid grid-cols-4 gap-4">
                 {content.layers.map((layer, index) => {
                   const isActive = index === activeIndex;
+                  const isComplete = index < activeIndex;
 
                   return (
                     <button
-                      aria-pressed={isActive}
-                      className={cn(
-                        "block w-full rounded-[18px] border px-5 py-5 text-left transition duration-300",
-                        isActive
-                          ? "border-[rgba(232,145,58,0.32)] bg-[rgba(255,255,255,0.06)] shadow-[inset_3px_0_0_0_rgba(232,145,58,0.85)]"
-                          : "border-transparent bg-transparent hover:border-[rgba(255,255,255,0.06)] hover:bg-[rgba(255,255,255,0.025)]",
-                      )}
+                      className="flex flex-col items-center gap-4 text-center"
                       key={layer.id}
                       onClick={() => {
                         startTransition(() => {
@@ -54,94 +77,112 @@ export function ProductArchitecture({ content }: ProductArchitectureProps) {
                       }}
                       type="button"
                     >
-                      <p className="eyebrow text-[var(--consultry-brand-warm)]">{layer.eyebrow}</p>
-                      <p className="mt-2 text-[1.375rem] font-semibold leading-[1.08] tracking-[-0.03em] text-[var(--consultry-text-primary)]">
+                      <div
+                        className={cn(
+                          "relative flex h-[10px] w-[10px] items-center justify-center rounded-full transition-all duration-300",
+                          isActive || isComplete
+                            ? "shadow-[0_0_8px_rgba(232,145,58,0.25)]"
+                            : "",
+                        )}
+                        style={{
+                          background:
+                            isActive || isComplete ? "#bf5347" : "#5b5550",
+                          border:
+                            isActive || isComplete
+                              ? "2px solid rgba(232, 145, 58, 0.92)"
+                              : "none",
+                        }}
+                      />
+                      <p
+                        className={cn(
+                          "transition-colors duration-300",
+                          isActive
+                            ? "text-[13px] font-semibold text-[#fafaf9]"
+                            : isComplete
+                              ? "text-[12px] font-medium text-[#a6a199]"
+                              : "text-[12px] font-medium text-[#736e69]",
+                        )}
+                      >
                         {layer.title}
                       </p>
-                      <p className="mt-3 text-sm leading-6 text-[var(--consultry-text-muted)]">{layer.summary}</p>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {layer.capabilities.slice(0, isActive ? layer.capabilities.length : 2).map((capability) => (
-                          <span
-                            className="rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(19,17,15,0.55)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--consultry-text-faint)]"
-                            key={capability}
-                          >
-                            {capability}
-                          </span>
-                        ))}
-                      </div>
                     </button>
                   );
                 })}
               </div>
-            </MotionReveal>
+            </div>
+          </div>
 
-            <MotionReveal className="p-6 sm:p-7 lg:p-8" delay={0.08} x={18}>
-              <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start">
-                <div className="overflow-hidden rounded-[26px] border border-[rgba(255,255,255,0.08)] bg-[rgba(19,17,15,0.78)]">
-                  <div className="border-b border-[rgba(255,255,255,0.06)] px-6 py-5">
-                    <p className="eyebrow">{activeLayer.eyebrow}</p>
-                    <h3 className="mt-3 text-[clamp(1.9rem,3vw,2.75rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-[var(--consultry-text-primary)]">
-                      {activeLayer.title}
-                    </h3>
-                    <p className="mt-3 max-w-2xl text-[15px] leading-7 text-[var(--consultry-text-muted)]">
-                      {activeLayer.summary}
-                    </p>
-                  </div>
-
-                  <div className="px-6 py-6">
-                    <div className="relative aspect-[16/10] overflow-hidden rounded-[18px] border border-[rgba(255,255,255,0.06)] bg-[#211d1a]">
-                      <Image
-                        alt={activeLayer.preview.alt}
-                        className="object-cover"
-                        fill
-                        sizes="(min-width: 1280px) 46vw, (min-width: 1024px) 52vw, 92vw"
-                        src={activeLayer.preview.src}
-                      />
-                    </div>
-                    <p className="mt-4 text-sm leading-6 text-[var(--consultry-text-faint)]">
-                      {activeLayer.preview.caption}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="rounded-[24px] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(58,56,51,0.92),rgba(26,24,21,0.98))] p-5">
-                  <p className="eyebrow">{content.workflowOverline}</p>
-                  <h3 className="mt-4 text-[32px] font-semibold leading-[1.05] tracking-[-0.03em] text-[var(--consultry-text-primary)]">
-                    {content.workflowTitle}
+          {/* Content area — animated step */}
+          <div className="relative min-h-[28rem] overflow-hidden px-[60px] py-12">
+            <AnimatePresence initial={false} mode="wait">
+              <motion.div
+                animate={{ opacity: 1, y: 0 }}
+                className="grid items-center gap-[60px] lg:grid-cols-[minmax(0,1fr)_minmax(400px,560px)]"
+                exit={{
+                  opacity: 0,
+                  y: shouldReduceMotion ? 0 : -18,
+                }}
+                initial={{
+                  opacity: 0,
+                  y: shouldReduceMotion ? 0 : 18,
+                }}
+                key={activeLayer.id}
+                transition={{
+                  duration: shouldReduceMotion ? 0 : 0.35,
+                  ease: "easeOut",
+                }}
+              >
+                {/* Left: Copy */}
+                <div className="max-w-[36rem]">
+                  <p className="font-[var(--font-mono)] text-[14px] tracking-[0.06em] text-[#f0a85e]">
+                    [{String(activeIndex + 1).padStart(2, "0")}]
+                  </p>
+                  <div className="mt-3 h-px w-10 bg-[rgba(240,168,94,0.4)]" />
+                  <p className="mt-4 text-[13px] font-semibold uppercase tracking-[0.1em] text-[#f0a85e]">
+                    {activeLayer.eyebrow}
+                  </p>
+                  <h3 className="mt-4 text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.12] tracking-[-0.03em] text-[#fafaf9]">
+                    {activeLayer.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-6 text-[var(--consultry-text-muted)]">
-                    {content.workflowBody}
+                  <p className="mt-4 text-[18px] leading-[1.6] text-[rgba(250,250,249,0.65)]">
+                    {activeLayer.summary}
                   </p>
 
-                  <div className="mt-5 space-y-3">
-                    {content.workflowSteps.map((step, index) => (
-                      <div
-                        className={cn(
-                          "flex items-center justify-between rounded-[var(--consultry-radius-md)] border px-4 py-3 text-sm transition-transform duration-300 hover:-translate-y-0.5",
-                          index === activeWorkflowIndex
-                            ? "border-[rgba(232,145,58,0.32)] bg-[rgba(232,145,58,0.1)] text-[var(--consultry-text-primary)]"
-                            : "border-[var(--consultry-border-soft)] bg-white/3 text-[var(--consultry-text-muted)]",
-                        )}
-                        key={step}
+                  {/* Capability tags */}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {activeLayer.capabilities.map((cap) => (
+                      <span
+                        className="rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(19,17,15,0.55)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.08em] text-[var(--consultry-text-faint)]"
+                        key={cap}
                       >
-                        <span>{step}</span>
-                        <span className="text-xs uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      </div>
+                        {cap}
+                      </span>
                     ))}
                   </div>
 
-                  <div className="mt-5 rounded-[var(--consultry-radius-md)] border border-[var(--consultry-border-soft)] bg-[rgba(19,17,15,0.9)] p-4">
-                    <p className="text-sm leading-6 text-[var(--consultry-text-muted)]">
-                      {activeLayer.capabilities.join(" · ")}
-                    </p>
-                  </div>
+                  <Link
+                    className="mt-6 inline-flex items-center gap-2 text-[16px] font-medium text-[#dda49e] transition hover:text-[#fafaf9]"
+                    href="/produkt#video"
+                  >
+                    Mehr zu {activeLayer.title}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
                 </div>
-              </div>
-            </MotionReveal>
+
+                {/* Right: Preview */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[12px] bg-[#211d1a] shadow-[0_8px_40px_rgba(0,0,0,0.18)]">
+                  <Image
+                    alt={activeLayer.preview.alt}
+                    className="object-contain"
+                    fill
+                    sizes="(min-width: 1280px) 46vw, (min-width: 1024px) 52vw, 92vw"
+                    src={activeLayer.preview.src}
+                  />
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </div>
+        </MotionReveal>
       </div>
     </section>
   );
