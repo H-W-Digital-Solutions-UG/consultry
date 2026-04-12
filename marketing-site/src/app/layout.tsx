@@ -54,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html data-theme="dark" lang="de">
+    <html data-scroll-behavior="smooth" data-theme="dark" lang="de">
       <body className={`${inter.variable} ${jetBrainsMono.variable}`}>
         <Nav />
         {children}
