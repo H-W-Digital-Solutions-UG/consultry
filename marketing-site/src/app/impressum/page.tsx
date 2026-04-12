@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StaticContentPage } from "@/components/marketing/StaticContentPage";
+import { LegalPageTemplate } from "@/components/marketing/LegalPageTemplate";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
@@ -12,13 +12,22 @@ export function generateMetadata(): Metadata {
 
 export default function ImpressumPage() {
   return (
-    <StaticContentPage
-      intro="Dies ist eine vorläufige Impressumsseite für die aktuelle Produkt- und Designvalidierung der Marketing-Website."
+    <LegalPageTemplate
+      lastUpdated="April 2026"
       overline="RECHTLICHES"
-      paragraphs={[
-        "Consultry GmbH, Berlin, Deutschland.",
-        "Verantwortlich für diese Website ist das Consultry-Team. Für rechtliche oder geschäftliche Anfragen nutzen Sie bitte kontakt@consultry.com.",
-        "Diese Seite wird im Zuge des Launch-Setups weiter mit den finalen Unternehmens- und Registerdaten ergänzt.",
+      sections={[
+        {
+          title: "1. Unternehmen",
+          body: "Consultry GmbH, Berlin, Deutschland. Diese Seite bildet den vorläufigen Impressumsrahmen für die aktuelle Produkt- und Designvalidierung der Marketing-Website ab.",
+        },
+        {
+          title: "2. Kontakt",
+          body: "Verantwortlich für diese Website ist das Consultry-Team. Für rechtliche oder geschäftliche Anfragen nutzen Sie bitte kontakt@consultry.com.",
+        },
+        {
+          title: "3. Ergänzungen zum Launch",
+          body: "Die Seite wird im Zuge des Launch-Setups um finale Unternehmens-, Register- und vertretungsberechtigte Angaben ergänzt.",
+        },
       ]}
       title="Impressum"
     />

@@ -8,7 +8,7 @@
 **Kontext:** IT-/SAP-Beratung, DACH, 85 Berater
 **Design System:** [Consultry Design System v1.3](../design/Consultry-Design-System-v1.3.md)
 **Screen Specs:** [Screen Spec Index](../design/screen-specs/_SCREEN-SPEC-INDEX.md)
-**Component Specs:** [Component Spec Index](../design/component-specs/_COMPONENT-SPEC-INDEX.md)
+**Component Specs:** [Component Spec Index](../design/prototyping/component-specs/_COMPONENT-SPEC-INDEX.md)
 **Stitch Inspiration Board:** [Consultry Board](https://stitch.withgoogle.com/projects/9527822144861630979) (NUR Inspiration, Dark/Amber Theme ist NICHT kanonisch)
 
 ---

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StaticContentPage } from "@/components/marketing/StaticContentPage";
+import { LegalPageTemplate } from "@/components/marketing/LegalPageTemplate";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
@@ -12,13 +12,22 @@ export function generateMetadata(): Metadata {
 
 export default function DatenschutzPage() {
   return (
-    <StaticContentPage
-      intro="Consultry entwickelt die Plattform für DACH-Beratungen mit EU-Hosting und Privacy-by-Design als Standard."
+    <LegalPageTemplate
+      lastUpdated="April 2026"
       overline="RECHTLICHES"
-      paragraphs={[
-        "Diese Seite beschreibt vorläufig die Datenschutzgrundsätze der Marketing-Website und wird für den Launch noch um die vollständige rechtliche Fassung ergänzt.",
-        "Wir verarbeiten personenbezogene Daten nur im Rahmen der Bereitstellung der Website, der Kommunikation mit Interessenten und der Verwaltung von Pilotanfragen.",
-        "Produkt- und Marketingdaten sollen innerhalb der EU verarbeitet werden. Die finale Datenschutzerklärung wird die eingesetzten Dienste, Speicherfristen und Betroffenenrechte konkret benennen.",
+      sections={[
+        {
+          title: "1. Datenschutzgrundsatz",
+          body: "Consultry entwickelt die Plattform für DACH-Beratungen mit EU-Hosting und Privacy-by-Design als Standard. Diese Seite beschreibt den vorläufigen rechtlichen Rahmen für die Marketing-Website.",
+        },
+        {
+          title: "2. Zweck der Verarbeitung",
+          body: "Personenbezogene Daten werden aktuell nur im Rahmen der Bereitstellung der Website, der Kommunikation mit Interessenten und der Verwaltung von Pilotanfragen verarbeitet.",
+        },
+        {
+          title: "3. Finale Erklärung zum Launch",
+          body: "Die finale Datenschutzerklärung wird eingesetzte Dienste, Speicherfristen, Rechtsgrundlagen und Betroffenenrechte vollständig ausweisen.",
+        },
       ]}
       title="Datenschutz"
     />

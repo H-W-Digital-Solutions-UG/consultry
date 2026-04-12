@@ -38,9 +38,16 @@ export type ProductArchitectureContent = {
   title: string;
   body: string;
   layers: Array<{
+    id: string;
+    eyebrow: string;
     title: string;
     summary: string;
     capabilities: string[];
+    preview: {
+      src: string;
+      alt: string;
+      caption: string;
+    };
   }>;
   workflowOverline: string;
   workflowTitle: string;
@@ -126,6 +133,8 @@ export const productArchitecture: ProductArchitectureContent = {
     "Consultry ist in vier Schichten aufgebaut - vom Markt bis zum Wissen. Jede Schicht ist AI-durchdrungen und mit den anderen verknuepft. Keine Datensilos. Kein manuelles Uebertragen.",
   layers: [
     {
+      id: "market-intelligence",
+      eyebrow: "SIGNAL INTELLIGENCE",
       title: "Market Intelligence",
       summary:
         "Signale aus dem DACH-Markt erkennen, priorisieren und als qualifizierte Chancen in Ihren operativen Workflow überführen.",
@@ -135,8 +144,15 @@ export const productArchitecture: ProductArchitectureContent = {
         "Ausschreibungs-Matching",
         "Discovery-Engine",
       ],
+      preview: {
+        src: "/images/figma/step-signal.png",
+        alt: "Signal Intelligence Feed mit priorisierten Marktchancen",
+        caption: "Signal-Feed mit Priorisierung, Match-Score und 1-Klick-Opportunity-Erstellung.",
+      },
     },
     {
+      id: "workforce-matching",
+      eyebrow: "SMART MATCHING",
       title: "Workforce & Matching",
       summary:
         "Verfügbarkeiten, Skills und Teamvarianten in einem Modell statt in Kalendern, Tabellen und Bauchgefühl.",
@@ -146,8 +162,15 @@ export const productArchitecture: ProductArchitectureContent = {
         "Kapazitätsplanung",
         "Team-Dashboards",
       ],
+      preview: {
+        src: "/images/figma/step-matching.png",
+        alt: "Smart Matching Ansicht mit Team-Vorschlägen",
+        caption: "Team-Konstellation mit Match-Score, Verfügbarkeit und Margin-Sicht.",
+      },
     },
     {
+      id: "deal-execution",
+      eyebrow: "DEAL EXECUTION",
       title: "Deal Execution",
       summary:
         "Vom Engagement-Brief bis zum AI-Canvas-Angebot mit Varianten, Pricing und Kontext für jeden Pitch-Moment.",
@@ -157,8 +180,15 @@ export const productArchitecture: ProductArchitectureContent = {
         "AI-Canvas-Angebote",
         "Vertragsautomatisierung",
       ],
+      preview: {
+        src: "/images/figma/step-delivery.png",
+        alt: "Delivery Analytics Dashboard mit Echtzeit-KPIs",
+        caption: "Engagement-Briefs, Angebotsvarianten und Delivery-Kontext bleiben in einem System.",
+      },
     },
     {
+      id: "delivery-knowledge",
+      eyebrow: "KNOWLEDGE HUB",
       title: "Delivery & Knowledge",
       summary:
         "Profitabilität, Wissensrückfluss und Delivery-Steuerung bleiben in derselben Arbeitsebene wie Markt und Angebot.",
@@ -168,6 +198,11 @@ export const productArchitecture: ProductArchitectureContent = {
         "Knowledge Engine",
         "Wissensrückfluss",
       ],
+      preview: {
+        src: "/images/figma/step-knowledge.png",
+        alt: "Knowledge Hub mit Beratungswissen und Proposals",
+        caption: "Projektwissen, Benchmarks und Delivery-Learnings füttern denselben operativen Graphen.",
+      },
     },
   ],
   workflowOverline: "DER WORKFLOW",

@@ -16,7 +16,7 @@ export type FooterColumn = {
 export type SocialLink = {
   label: string;
   href?: string;
-  kind: "linkedin" | "xing" | "email";
+  kind: "linkedin" | "x" | "email";
 };
 
 export const announcement = {
@@ -61,8 +61,6 @@ export const footerColumns: FooterColumn[] = [
     title: "UNTERNEHMEN",
     links: [
       { label: "Über uns", href: "/unternehmen" },
-      { label: "Karriere", href: "/unternehmen" },
-      { label: "Blog", href: "/unternehmen" },
       { label: "Kontakt", href: "/kontakt" },
     ],
   },
@@ -79,6 +77,6 @@ export const footerColumns: FooterColumn[] = [
 
 export const socialLinks: SocialLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/consultry", kind: "linkedin" },
-  { label: "XING", href: "https://www.xing.com/pages/consultry", kind: "xing" },
+  { label: "X", href: "https://x.com/consultry", kind: "x" },
   { label: "Email", href: "mailto:kontakt@consultry.com", kind: "email" },
 ] as const;
