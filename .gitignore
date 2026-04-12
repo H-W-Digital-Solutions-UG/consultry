@@ -1,2 +1,6 @@
 **node_modules**
 .DS_Store
+/.vscode/
+/.idea/
+/.playwright-cli/
+/marketing-site/_debug_output/

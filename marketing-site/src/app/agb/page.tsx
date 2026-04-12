@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StaticContentPage } from "@/components/marketing/StaticContentPage";
+import { LegalPageTemplate } from "@/components/marketing/LegalPageTemplate";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
@@ -12,13 +12,22 @@ export function generateMetadata(): Metadata {
 
 export default function AgbPage() {
   return (
-    <StaticContentPage
-      intro="Die finalen AGB werden vor dem öffentlichen Launch der Website ergänzt."
+    <LegalPageTemplate
+      lastUpdated="April 2026"
       overline="RECHTLICHES"
-      paragraphs={[
-        "Diese Seite ist ein vorläufiger Platzhalter für die Allgemeinen Geschäftsbedingungen von Consultry.",
-        "Bis zur Finalisierung gelten individuelle Vereinbarungen und Angebotsunterlagen für Pilotprojekte, Workshops und Produktdemos.",
-        "Die veröffentlichte AGB-Fassung wird Leistungsumfang, Nutzungsrechte, Haftung und Supportbedingungen für die Consultry-Plattform konkret regeln.",
+      sections={[
+        {
+          title: "1. Vorläufiger Stand",
+          body: "Diese Seite bildet die Struktur der Allgemeinen Geschäftsbedingungen für die Consultry Marketing-Website und produktnahe Pilotangebote ab.",
+        },
+        {
+          title: "2. Geltung bis zum Launch",
+          body: "Bis zur finalen Veröffentlichung der AGB gelten für Pilotprojekte, Workshops und Produktdemos die jeweils individuell vereinbarten Angebotsunterlagen und Projektvereinbarungen.",
+        },
+        {
+          title: "3. Finale Regelungsbereiche",
+          body: "Die veröffentlichte AGB-Fassung wird Leistungsumfang, Nutzungsrechte, Haftung, Supportbedingungen und vertragsrelevante Rahmenbedingungen für die Consultry-Plattform konkret regeln.",
+        },
       ]}
       title="Allgemeine Geschäftsbedingungen"
     />

@@ -23,17 +23,18 @@ function FooterLink({ href, label }: { href?: string; label: string }) {
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--consultry-surface-hero)] px-0 pb-4 pt-0">
-      <div className="content-shell">
+    <footer className="bg-[var(--consultry-surface-hero)] px-0 pb-8 pt-0">
+      <div className="mx-auto w-[min(100%-2rem,110rem)]">
         <div className="h-[2px] w-full bg-[var(--consultry-brand-gradient)]" />
-        <div className="flex flex-col gap-14 py-14">
-          <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(360px,880px)] xl:items-start">
+        <div className="flex flex-col gap-14 py-12 sm:gap-16 sm:py-14">
+          <div className="grid gap-12 xl:grid-cols-[minmax(340px,1fr)_minmax(620px,860px)] xl:items-start">
             <div className="flex min-w-0 items-start gap-6">
               <div className="relative h-[66px] w-[100px] shrink-0 overflow-hidden rounded-2xl">
                 <Image
                   alt="Consultry Logo"
                   className="object-contain object-left"
                   fill
+                  loading="eager"
                   sizes="100px"
                   src="/images/consultry-logo.png"
                 />
@@ -52,7 +53,7 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="grid gap-10 sm:grid-cols-[148px_132px_132px] sm:justify-end">
+            <div className="grid gap-10 sm:grid-cols-[148px_132px_160px] sm:justify-end">
               {footerColumns.map((column) => (
                 <div key={column.title}>
                   <p className="font-[var(--font-mono)] text-[11px] tracking-[0.14em] text-[rgba(250,250,249,0.4)]">
@@ -76,18 +77,18 @@ export function Footer() {
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-[13px] text-[rgba(250,250,249,0.35)]">© 2026 Consultry GmbH</p>
 
-	              <div className="flex items-center gap-2.5 sm:justify-end">
-	                {socialLinks.map((link) => {
-	                  const baseClass =
-	                    "inline-flex h-[34px] w-[34px] items-center justify-center rounded-[9px] border border-[rgba(255,255,255,0.15)] text-xs font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.2)]";
-	                  const content =
-	                    link.kind === "linkedin" ? "in" : link.kind === "xing" ? "X" : "@";
-	                  const className =
-	                    link.kind === "linkedin"
-	                      ? `${baseClass} bg-[#0a66c2]`
-	                      : link.kind === "xing"
-	                        ? `${baseClass} bg-[rgba(255,255,255,0.08)]`
-	                        : `${baseClass} bg-[linear-gradient(135deg,#e8913a,#e8655a)]`;
+              <div className="flex items-center gap-2.5 sm:justify-end">
+                {socialLinks.map((link) => {
+                  const baseClass =
+                    "inline-flex h-[34px] w-[34px] items-center justify-center rounded-[9px] text-xs font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.2)]";
+                  const content =
+                    link.kind === "linkedin" ? "in" : link.kind === "x" ? "X" : "@";
+                  const className =
+                    link.kind === "linkedin"
+                      ? `${baseClass} bg-[#0a66c2]`
+                      : link.kind === "x"
+                        ? `${baseClass} bg-[#186b6f]`
+                        : `${baseClass} bg-[linear-gradient(135deg,#e8913a,#e8655a)]`;
 
                   if (!link.href) {
                     return (
@@ -98,7 +99,14 @@ export function Footer() {
                   }
 
                   return (
-                    <a aria-label={link.label} className={className} href={link.href} key={link.label}>
+                    <a
+                      aria-label={link.label}
+                      className={className}
+                      href={link.href}
+                      key={link.label}
+                      rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                      target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                    >
                       {content}
                     </a>
                   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { StaticContentPage } from "@/components/marketing/StaticContentPage";
+import { LegalPageTemplate } from "@/components/marketing/LegalPageTemplate";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
@@ -12,13 +12,22 @@ export function generateMetadata(): Metadata {
 
 export default function CookiesPage() {
   return (
-    <StaticContentPage
-      intro="Diese Website verwendet nur die technisch notwendigen Mechanismen für Bereitstellung, Messung und die Verwaltung von Kontaktanfragen."
+    <LegalPageTemplate
+      lastUpdated="April 2026"
       overline="RECHTLICHES"
-      paragraphs={[
-        "Die finale Cookie-Dokumentation wird vor dem Launch mit einer vollständigen Auflistung aller eingesetzten Kategorien, Anbieter und Laufzeiten ergänzt.",
-        "Bis dahin beschränkt sich die Website auf minimale technische Funktionen und eine datensparsame Grundkonfiguration.",
-        "Wenn zusätzliche Analyse- oder Marketingdienste hinzukommen, werden Consent-Mechanismen und Einstellungen entsprechend erweitert.",
+      sections={[
+        {
+          title: "1. Grundsatz",
+          body: "Diese Website verwendet derzeit nur die technischen Mechanismen, die für Bereitstellung, Sicherheit und die Verarbeitung von Kontaktanfragen erforderlich sind.",
+        },
+        {
+          title: "2. Technisch notwendige Funktionen",
+          body: "Zum aktuellen Stand beschränkt sich die Website auf eine datensparsame Grundkonfiguration. Es werden nur diejenigen Speicher- oder Session-Mechanismen genutzt, die für Auslieferung, Navigation und Formulare nötig sind.",
+        },
+        {
+          title: "3. Messung und Erweiterungen",
+          body: "Falls künftig Analyse-, Reichweiten- oder Marketingdienste ergänzt werden, werden Cookie-Kategorien, Anbieter, Laufzeiten und Consent-Mechanismen entsprechend erweitert und transparent dokumentiert.",
+        },
       ]}
       title="Cookies"
     />
