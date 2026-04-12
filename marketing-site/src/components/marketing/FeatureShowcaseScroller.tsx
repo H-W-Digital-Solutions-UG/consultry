@@ -1,7 +1,5 @@
 "use client";
 
-import "@/bones/registry";
-import { Skeleton } from "boneyard-js/react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -188,13 +186,7 @@ export function FeatureShowcaseScroller({ steps }: FeatureShowcaseScrollerProps)
                       </Link>
                     </div>
 
-                    <Skeleton
-                      fallback={
-                        <div className="aspect-[4/3] w-full rounded-[12px] bg-[rgba(33,29,26,0.95)] shadow-[0_8px_40px_rgba(0,0,0,0.18)]" />
-                      }
-                      loading={!isHydrated}
-                      name="homepage-feature-showcase-stage"
-                    >
+                    {isHydrated ? (
                       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[12px] bg-[#211d1a] shadow-[0_8px_40px_rgba(0,0,0,0.18)]">
                         <Image
                           alt={activeStep.image.alt}
@@ -205,7 +197,9 @@ export function FeatureShowcaseScroller({ steps }: FeatureShowcaseScrollerProps)
                           src={activeStep.image.src}
                         />
                       </div>
-                    </Skeleton>
+                    ) : (
+                      <div className="aspect-[4/3] w-full rounded-[12px] bg-[rgba(33,29,26,0.95)] shadow-[0_8px_40px_rgba(0,0,0,0.18)]" />
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>

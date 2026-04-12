@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "boneyard-js": "^1.7.3",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.8.0",
     "next": "16.2.3",

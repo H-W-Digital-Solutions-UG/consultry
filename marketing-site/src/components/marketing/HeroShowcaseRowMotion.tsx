@@ -1,7 +1,5 @@
 "use client";
 
-import "@/bones/registry";
-import { Skeleton } from "boneyard-js/react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -89,75 +87,73 @@ export function HeroShowcaseRowMotion({ hero }: HeroShowcaseRowMotionProps) {
     };
   }, []);
 
+  if (!isHydrated) {
+    return <HeroShowcaseRowFallback />;
+  }
+
   return (
-    <Skeleton
-      fallback={<HeroShowcaseRowFallback />}
-      loading={!isHydrated}
-      name="homepage-hero-showcase-row"
-    >
-      <div className="grid w-full max-w-[1140px] gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-[minmax(260px,1fr)_520px_minmax(260px,1fr)] lg:items-center lg:gap-8">
-        <motion.div
-          animate={{ opacity: 1, x: 0 }}
-          className="order-2 md:order-2 lg:order-1"
-          initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -32 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
-        >
-          <ValueCard
-            accent="primary"
-            body={hero.sideCards[0]?.body ?? ""}
-            title={hero.sideCards[0]?.title ?? ""}
-          />
-        </motion.div>
+    <div className="grid w-full max-w-[1140px] gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-[minmax(260px,1fr)_520px_minmax(260px,1fr)] lg:items-center lg:gap-8">
+      <motion.div
+        animate={{ opacity: 1, x: 0 }}
+        className="order-2 md:order-2 lg:order-1"
+        initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -32 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
+      >
+        <ValueCard
+          accent="primary"
+          body={hero.sideCards[0]?.body ?? ""}
+          title={hero.sideCards[0]?.title ?? ""}
+        />
+      </motion.div>
 
-        <motion.div
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="order-1 mx-auto flex w-full max-w-[520px] flex-col items-center gap-5 md:col-span-2 lg:col-span-1 lg:order-2"
-          initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.985, y: shouldReduceMotion ? 0 : 18 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="relative aspect-[520/380] w-full overflow-visible rounded-[12px] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
-            <Image
-              alt={hero.image.alt}
-              className="object-contain"
-              fill
-              loading="eager"
-              priority
-              sizes="(max-width: 1024px) min(92vw, 520px), 520px"
-              src={hero.image.src}
-            />
-          </div>
-          <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-[14px]">
-            <Button
-              className="w-full max-w-[15.5rem] px-5 py-2.5 text-[15px] sm:w-auto sm:max-w-none sm:px-8 sm:py-3 sm:text-[18px]"
-              href={hero.primaryCta.href}
-              size="lg"
-            >
-              {hero.primaryCta.label}
-            </Button>
-            <Button
-              className="w-full max-w-[15.5rem] border-[rgba(250,250,249,0.2)] bg-transparent px-5 py-2.5 text-[15px] text-[#fafaf9] hover:bg-white/6 sm:w-auto sm:max-w-none sm:px-8 sm:py-3 sm:text-[18px]"
-              href={hero.secondaryCta.href}
-              size="lg"
-              variant="secondary"
-            >
-              {hero.secondaryCta.label}
-            </Button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          animate={{ opacity: 1, x: 0 }}
-          className="order-3"
-          initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 32 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.14 }}
-        >
-          <ValueCard
-            accent="secondary"
-            body={hero.sideCards[1]?.body ?? ""}
-            title={hero.sideCards[1]?.title ?? ""}
+      <motion.div
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        className="order-1 mx-auto flex w-full max-w-[520px] flex-col items-center gap-5 md:col-span-2 lg:col-span-1 lg:order-2"
+        initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.985, y: shouldReduceMotion ? 0 : 18 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="relative aspect-[520/380] w-full overflow-visible rounded-[12px] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+          <Image
+            alt={hero.image.alt}
+            className="object-contain"
+            fill
+            loading="eager"
+            priority
+            sizes="(max-width: 1024px) min(92vw, 520px), 520px"
+            src={hero.image.src}
           />
-        </motion.div>
-      </div>
-    </Skeleton>
+        </div>
+        <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-[14px]">
+          <Button
+            className="w-full max-w-[15.5rem] px-5 py-2.5 text-[15px] sm:w-auto sm:max-w-none sm:px-8 sm:py-3 sm:text-[18px]"
+            href={hero.primaryCta.href}
+            size="lg"
+          >
+            {hero.primaryCta.label}
+          </Button>
+          <Button
+            className="w-full max-w-[15.5rem] border-[rgba(250,250,249,0.2)] bg-transparent px-5 py-2.5 text-[15px] text-[#fafaf9] hover:bg-white/6 sm:w-auto sm:max-w-none sm:px-8 sm:py-3 sm:text-[18px]"
+            href={hero.secondaryCta.href}
+            size="lg"
+            variant="secondary"
+          >
+            {hero.secondaryCta.label}
+          </Button>
+        </div>
+      </motion.div>
+
+      <motion.div
+        animate={{ opacity: 1, x: 0 }}
+        className="order-3"
+        initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 32 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.14 }}
+      >
+        <ValueCard
+          accent="secondary"
+          body={hero.sideCards[1]?.body ?? ""}
+          title={hero.sideCards[1]?.title ?? ""}
+        />
+      </motion.div>
+    </div>
   );
 }
