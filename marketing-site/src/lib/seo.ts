@@ -2,37 +2,83 @@ import type { Metadata } from "next";
 
 export const siteConfig = {
   name: "Consultry",
-  url: "https://consultry.de",
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://consultry.de").replace(/\/$/, ""),
+  primaryDomain: "consultry.de",
   description:
-    "Consultry ist die AI-native Plattform für Beratungen im DACH-Raum – vom ersten Marktsignal bis zum profitablen Projekt.",
+    "Consultry ist das AI-native Operating System fuer DACH-IT- und Digitalisierungsberatungen - von Bestandskundenwachstum ueber Staffing und Wissenswiederverwendung bis Delivery und Commercial Control.",
   ogImage: "/images/hero-dashboard.png",
+  locale: "de_DE",
+  language: "de-DE",
+  email: "kontakt@consultry.com",
+  socialProfiles: [
+    "https://www.linkedin.com/company/consultry",
+    "https://x.com/consultry",
+  ],
 } as const;
 
 type PageMetadataInput = {
   title: string;
   description: string;
   path: string;
+  keywords?: readonly string[];
+  noindex?: boolean;
 };
+
+export const isPreviewBuild = process.env.VERCEL_ENV === "preview";
+
+export function buildAbsoluteUrl(path: string) {
+  if (!path || path === "/") {
+    return siteConfig.url;
+  }
+
+  return `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
+}
 
 export function buildPageMetadata({
   title,
   description,
   path,
+  keywords,
+  noindex = false,
 }: PageMetadataInput): Metadata {
-  const canonical = path === "/" ? siteConfig.url : `${siteConfig.url}${path}`;
+  const canonical = buildAbsoluteUrl(path);
+  const shouldNoindex = noindex || isPreviewBuild;
 
   return {
-    title,
+    title: {
+      absolute: title,
+    },
     description,
+    ...(keywords?.length ? { keywords: [...keywords] } : {}),
     alternates: {
       canonical,
     },
+    robots: shouldNoindex
+      ? {
+          index: false,
+          follow: false,
+          googleBot: {
+            index: false,
+            follow: false,
+          },
+        }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          },
+    },
     openGraph: {
-      title: `${title} | ${siteConfig.name}`,
+      title,
       description,
       url: canonical,
       siteName: siteConfig.name,
-      locale: "de_DE",
+      locale: siteConfig.locale,
       type: "website",
       images: [
         {
@@ -45,7 +91,7 @@ export function buildPageMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${siteConfig.name}`,
+      title,
       description,
       images: [siteConfig.ogImage],
     },

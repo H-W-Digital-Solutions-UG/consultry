@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/Button";
 import { MotionReveal } from "@/components/marketing/MotionReveal";
+import { Button } from "@/components/ui/Button";
 
 type CTABandProps = {
   eyebrow?: string;
@@ -23,45 +23,62 @@ export function CTABand({
   secondaryCta,
 }: CTABandProps) {
   return (
-    <section className="bg-[#1e1b18] py-16 sm:py-20 lg:py-24">
-      <MotionReveal className="content-shell">
-        <div className="relative overflow-hidden rounded-[12px] px-6 py-14 text-center sm:px-10 sm:py-16 lg:px-16 lg:py-24">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-[-8%] top-[-34%] h-[155%] rounded-full opacity-95 blur-2xl"
-            style={{
-              background:
-                "radial-gradient(ellipse at top, rgba(122,64,42,0.62) 0%, rgba(70,42,30,0.3) 38%, rgba(30,27,24,0) 72%)",
-            }}
-          />
+    <section className="relative overflow-hidden border-y border-[rgba(255,255,255,0.06)] bg-[linear-gradient(180deg,rgba(45,34,29,0.96)_0%,rgba(27,21,19,0.98)_38%,rgba(24,19,17,1)_100%)] py-20 sm:py-24 lg:py-28">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+          maskImage:
+            "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.95) 18%, rgba(0,0,0,0.95) 82%, rgba(0,0,0,0.35) 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-[-10%] top-[-42%] h-[170%] opacity-90 blur-3xl"
+        style={{
+          background:
+            "radial-gradient(ellipse at top, rgba(244,183,109,0.24) 0%, rgba(232,101,90,0.18) 34%, rgba(21,17,15,0) 72%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-[-8%] bottom-[-48%] h-[160%] opacity-70 blur-3xl"
+        style={{
+          background:
+            "radial-gradient(ellipse at bottom, rgba(156,89,181,0.12) 0%, rgba(21,17,15,0) 62%)",
+        }}
+      />
 
-          <div className="relative mx-auto flex max-w-[56rem] flex-col items-center gap-5">
-            {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-            <h2 className="max-w-[18ch] text-balance text-[clamp(2rem,3.2vw,2.375rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-white">
-              {title}
-            </h2>
-            <p className="max-w-[56ch] text-[15px] leading-[1.65] text-[rgba(255,255,255,0.65)] sm:text-[17px] lg:text-[18px]">
-              {body}
-            </p>
+      <MotionReveal className="content-shell relative">
+        <div className="mx-auto flex max-w-[68rem] flex-col items-center gap-5 py-2 text-center sm:gap-6">
+          {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
+          <h2 className="max-w-[17ch] text-balance text-[clamp(2.25rem,4vw,3.35rem)] font-semibold leading-[1.04] tracking-[-0.03em] text-white">
+            {title}
+          </h2>
+          <p className="max-w-[64ch] text-[15px] leading-[1.7] text-[rgba(255,255,255,0.7)] sm:text-[17px] lg:text-[19px]">
+            {body}
+          </p>
 
-            <div className="mt-1 flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+          <div className="mt-3 flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+            <Button
+              className="min-w-[13rem] px-9 py-3.5 text-[17px] font-semibold sm:text-[18px]"
+              href={primaryCta.href}
+            >
+              {primaryCta.label}
+            </Button>
+
+            {secondaryCta ? (
               <Button
-                className="bg-white px-9 py-3.5 text-[17px] font-semibold text-[#bf5347] shadow-[0_2px_16px_rgba(255,255,255,0.15)] hover:bg-[#f5f5f4] sm:text-[18px]"
-                href={primaryCta.href}
+                className="min-w-[13rem] px-9 py-3.5 text-[17px] font-semibold sm:text-[18px]"
+                href={secondaryCta.href}
+                variant="secondary"
               >
-                {primaryCta.label}
+                {secondaryCta.label}
               </Button>
-
-              {secondaryCta ? (
-                <Button
-                  className="border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.08)] px-9 py-3.5 text-[17px] font-semibold text-white hover:bg-[rgba(255,255,255,0.12)] sm:text-[18px]"
-                  href={secondaryCta.href}
-                  variant="secondary"
-                >
-                  {secondaryCta.label}
-                </Button>
-              ) : null}
-            </div>
+            ) : null}
           </div>
         </div>
       </MotionReveal>

@@ -7,7 +7,9 @@ html {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #201712 0%, #1e1b18 14%, #1e1b18 100%);
+  background:
+    radial-gradient(circle at top, rgba(244, 183, 109, 0.08) 0%, rgba(23, 19, 17, 0) 26%),
+    linear-gradient(180deg, #191311 0%, #171311 16%, #171311 100%);
   color: var(--consultry-text-primary);
   font-family: var(--font-inter), sans-serif;
   text-rendering: optimizeLegibility;

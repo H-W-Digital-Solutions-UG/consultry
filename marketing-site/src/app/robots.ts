@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/seo";
+import { isPreviewBuild, siteConfig } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
@@ -7,9 +7,10 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
+      allow: isPreviewBuild ? "" : "/",
+      disallow: isPreviewBuild ? "/" : undefined,
     },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
+    sitemap: isPreviewBuild ? undefined : `${siteConfig.url}/sitemap.xml`,
+    host: isPreviewBuild ? undefined : siteConfig.url,
   };
 }

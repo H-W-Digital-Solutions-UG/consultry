@@ -69,10 +69,10 @@ Für deutsche Beratungen stammen laut BDU rund 80 % des Umsatzes aus Bestandskun
 Das bedeutet: Für den Start ist **Account Expansion** wichtiger als breit angelegtes Prospecting.  
 Quellen: [BDU Bestandskunden](https://www.bdu.de/news/consultants-erzielen-80-des-umsatzes-mit-bestandskunden/), [BDU Consultingmarkt 2026](https://www.bdu.de/studien/consulting/)
 
-### 3.2 Wissen ist kein Wiki-Problem, sondern ein Umsatz- und Delivery-Problem
+### 3.2 Wissen ist kein Wiki-Problem, sondern ein Umsatz-, Delivery- und Build-Problem
 
 Beratungswissen geht mit Personen, Projekten und lokalen Dateien verloren. Gleichzeitig wird KI im Consulting heute bereits besonders stark für Wissensmanagement, Recherche und Angebotsarbeit eingesetzt.  
-Für IT- und Tech-nahe Beratungen besteht dieses Wissen nicht nur aus Folien und Texten, sondern auch aus Reports, Analyse-Setups, Skripten, kleinen Tools, Runbooks und kundenähnlichen Demo-/Test-Umgebungen für Vorbereitung, QA und Troubleshooting.  
+Für IT- und Tech-nahe Beratungen besteht dieses Wissen nicht nur aus Folien und Texten, sondern auch aus Reports, Analyse-Setups, Skripten, kleinen Tools, Runbooks, Repository-Templates sowie kundenähnlichen Demo-/Test-Umgebungen für Vorbereitung, QA und Troubleshooting.  
 Quellen: [BDU KI im Consulting](https://www.bdu.de/news/ki-in-consultingunternehmen-schwerpunkt-auf-kundenprojekten/), [CONSULTING.de Know-how bewahren](https://www.consulting.de/artikel/wie-knowhow-im-unternehmen-bewahrt-werden-kann-und-warum/)
 
 ### 3.3 Auslastung, Forecasting, Pricing und Akquisekosten sind Kernökonomie
@@ -186,15 +186,19 @@ Skills, Zertifikate, Projekterfahrung, Availability und Leadership liegen verstr
 
 Angebote, Ausschreibungen, Projektvorbereitung und Onboarding starten zu oft fast von vorn.
 
-### 6.4 Angebots- und Vertragsarbeit ist zu langsam und zu personenabhängig
+### 6.4 AI-native Arbeitsweisen sind nicht operationalisiert
+
+Selbst techniknahe Beratungen haben selten eine saubere Verwaltung von wiederverwendbaren AI-Skills, Workflow-Rezepten, Prompt-/Canvas-Blueprints und persönlichen Arbeitsmustern. Vieles bleibt in Einzelchats, privaten Notizen oder lokalen Setups hängen.
+
+### 6.5 Angebots- und Vertragsarbeit ist zu langsam und zu personenabhängig
 
 Die Brücke von Kundenkontext zu Team, Proposal, Pricing und Contract ist oft manuell, inkonsistent und schlecht nachvollziehbar.
 
-### 6.5 Allocation und Delivery werden zu spät korrigiert
+### 6.6 Allocation und Delivery werden zu spät korrigiert
 
 Konflikte, Leerstände, Doppelbelegungen, Scope-Risiken und kommerzielle Abweichungen werden oft erst erkannt, wenn Marge oder Vertrauen schon gelitten haben.
 
-### 6.6 Commercial Control ist operativ zu schwach angebunden
+### 6.7 Commercial Control ist operativ zu schwach angebunden
 
 Zeit, Spesen, Fremdleistungen, Vertragsbezug, Rebilling und Invoice Prep hängen oft an separaten Tools und Medienbrüchen.
 
@@ -218,10 +222,29 @@ Default:
 
 - Empfehlung
 - Begründung
+
+### 7.2 Skills als steuerbare Arbeitsbausteine
+
+Consultry sollte `Skill` nicht nur als Beraterqualifikation verstehen, sondern auch als wiederverwendbare AI-native Arbeitsfähigkeit.
+
+Dazu gehören zum Beispiel:
+
+- Proposal-Prep-Skills
+- Discovery-/Research-Skills
+- Workshop-Prep-Skills
+- Troubleshooting-/Runbook-Skills
+- Delivery-/QA-Skills
+- kunden- oder themenspezifische Workflow-Blueprints
+
+Diese Skills dürfen nicht als unkontrollierter Prompt-Zoo enden.  
+Sie müssen versionierbar, zuordenbar, wiederverwendbar und mit Kontext, Artefakten und Verantwortlichen verknüpft sein.
+
+Default:
+
 - menschliche Freigabe
 - Audit Trail
 
-### 7.2 Project-Level statt Task-Engine
+### 7.3 Project-Level statt Task-Engine
 
 Consultry plant und steuert auf:
 
@@ -232,7 +255,7 @@ Consultry plant und steuert auf:
 
 Nicht auf atomarer Task-Ebene als generisches Work-Management-System.
 
-### 7.3 Bestandskundenausbau vor generischem Prospecting
+### 7.4 Bestandskundenausbau vor generischem Prospecting
 
 Das Startprodukt optimiert zuerst:
 
@@ -244,7 +267,7 @@ Das Startprodukt optimiert zuerst:
 
 Net-New-Discovery bleibt wichtig, ist aber nicht das primäre Kernnarrativ.
 
-### 7.4 Commercial Control statt ERP
+### 7.5 Commercial Control statt ERP
 
 Consultry steuert kommerzielle Relevanz, ersetzt aber nicht:
 
@@ -254,7 +277,7 @@ Consultry steuert kommerzielle Relevanz, ersetzt aber nicht:
 
 DATEV und ELSTER bleiben Endsysteme für steuer- und buchhaltungsrelevante Verarbeitung.
 
-### 7.5 Native + integrierte Daten, aber mit klarer Führungslogik
+### 7.6 Native + integrierte Daten, aber mit klarer Führungslogik
 
 Consultry darf bestimmte Daten nativ führen, andere integrieren, aber nie ohne klare Regeln.
 
@@ -320,7 +343,7 @@ Typischer Output:
 
 ### 10.2 Wissenstransfer, Reuse & Readiness
 
-`Projektwissen + Delivery-Artefakte -> verdichtete Referenzen/Methoden/Learnings/Blueprints -> schnellere Proposal-, Onboarding- und Projektvorbereitung`
+`Projektwissen + Delivery-Artefakte + wiederverwendbare Repositories -> verdichtete Referenzen/Methoden/Learnings/Blueprints -> schnellere Proposal-, Onboarding- und Projektvorbereitung`
 
 Warum stark:
 
@@ -340,7 +363,9 @@ Typischer Output:
 - auffindbare Methodenbausteine
 - projektbezogene Learnings
 - Onboarding Foundations
+- wiederverwendbare AI-Skills und Workflow-Rezepte für typische Beratungsarbeit
 - wiederverwendbare Reports, Skripte und kleine Tool-Bausteine
+- wiederverwendbare Repository-Templates und Starter-Kits
 - Runbooks und Troubleshooting-Patterns
 - kundennahe Demo-/Test-Blueprints für interne Validierung ohne Eingriff in Kunden-Produktionsumgebungen
 - bessere CV-/Proposal-Readiness
@@ -350,7 +375,9 @@ Was diesen Wedge kaufbar macht:
 - kürzere Proposal-Vorbereitung
 - schnelleres Onboarding in Themen, Kunden und Projektkontexte
 - weniger Wissensverlust bei Projektwechseln und Abgängen
+- weniger Wiederholung in typischen Consultant-Workflows durch wiederverwendbare AI-Skills statt Einzelchats
 - schnellere Demo-, QA- und Troubleshooting-Vorbereitung mit wiederverwendbaren Assets statt Neuanfang pro Projekt
+- schnelleres Aufsetzen von PoCs, Demos und internen Testumgebungen über vorhandene Starter-Repositories und Blueprints
 
 Was ihn noch nicht zum besten Primär-Wedge macht:
 
@@ -359,7 +386,7 @@ Was ihn noch nicht zum besten Primär-Wedge macht:
 
 ### 10.3 Intelligentes Staffing, Matching & Forecasting
 
-`Pipeline + Kundenkontext + Beraterprofil + Skill + Zertifikate + Projekterfahrung + Availability -> belastbarerer Team- und Forecast-Vorschlag`
+`Pipeline + Kundenkontext + Beraterprofil + Skill + Zertifikate + Projekterfahrung + Availability + persönliche Arbeits- und Delivery-Präferenzen -> belastbarerer Team- und Forecast-Vorschlag`
 
 Warum stark:
 
@@ -379,6 +406,8 @@ Typischer Output:
 - belastbarere Teamvorschläge
 - plausiblere Matching-Alternativen
 - sichtbarere Forecast-, Skill- und Kapazitätslücken
+- bessere Zuordnung von passenden AI-Skills und Workflow-Blueprints zu Beratern, Teams und Projektsituationen
+- bessere Zuordnung von Delivery-Artefakten, Topic Ownership und passenden Repository-/Tool-Bausteinen
 - schnelleres internes Staffing
 
 Was diesen Wedge kaufbar macht:
@@ -386,12 +415,14 @@ Was diesen Wedge kaufbar macht:
 - weniger manuelles Suchen nach passenden Beratern
 - höhere Sicherheit vor Angebotsabgabe
 - frühere Sichtbarkeit von Bench-, Überlastungs- und Skill-Risiken
+- bessere Passung zwischen Kundenkontext, Beraterskill, Arbeitsweise und verfügbaren Build-/Delivery-Artefakten
 
 Was ihn noch nicht zum besten Primär-Wedge macht:
 
 - braucht bessere Datenqualität als der Primär-Wedge
 - ist im DACH-Kontext governance- und compliance-sensibler
 - kann schnell nach internem Ressourcenmanagement statt nach externem Geschäftswert klingen
+- darf nicht in verstecktes Mitarbeiter-Scoring oder Verhaltensüberwachung kippen
 
 ### 10.4 Commercial Readiness Light
 
@@ -480,8 +511,11 @@ Die Wedges sind verschieden, teilen aber wenige gemeinsame Enabler:
 
 - Bestandskundenkontext
 - strukturierte Beraterprofile
+- gepflegte Skill-, Zertifikats- und Arbeitsprofil-Daten statt nur CV-Freifeld
 - auffindbares und wiederverwendbares Wissen
+- verwaltete AI-Skills, Workflow-Rezepte und Canvas-/Prompt-Blueprints für wiederkehrende Consultant-Prozesse
 - wiederverwendbare Delivery-Artefakte wie Reports, Skripte, kleine Tools und Runbooks
+- Repository-Anbindung für GitHub/GitLab als Quelle und Ziel für wiederverwendbare technische Assets
 - Teamvorschläge mit nachvollziehbarer Begründung
 - Proposal-/CV-Drafting
 - sichere, vom Kunden-Produktivsystem getrennte Demo-/Test-Setups für Validierung und Troubleshooting
@@ -501,6 +535,8 @@ Sie sind aber **Unterstützung für die Wedges**, nicht schon das volle Produktz
 - tiefes Allocation-Operating-Model
 - breite Integrationstiefe
 - vollwertige DevOps-/Platform-Engineering-Suite für beliebige Kundenumgebungen
+- generisches Git-Hosting oder vollständiger Ersatz für GitHub/GitLab
+- offener Prompt-Marktplatz ohne Governance und Qualitätslogik
 - AT/CH-Sonderlogik
 - Event-/Messe-Betrieb
 - Public-Tender-Vollabdeckung
@@ -597,9 +633,12 @@ Nicht PMF, sondern erste Beweise:
 4. Wie viel Contract-/Pricing-Tiefe braucht der Expansion-/Proposal-Wedge minimal, um glaubwürdig zu sein?
 5. Wie viel Knowledge-Tiefe braucht der Wissensreuse-Wedge minimal, um nicht wie „nur ein Wiki“ zu wirken?
 6. Wie viel Profil-, Availability- und Forecast-Tiefe braucht der Staffing-Wedge minimal, um nicht wie „nur eine Skill-Liste“ zu wirken?
-7. Welche Delivery-Artefakte müssen im Pilot schon als First-Class-Assets behandelbar sein: Reports, Skripte, kleine Tools, Runbooks oder Demo-/Test-Blueprints?
-8. Welche Datenquellen reichen für Pilot und Demo wirklich aus, ohne breite Integrationsarbeit?
-9. Reicht `Germany-first` als Start klar aus, oder erwarten frühe Kunden schon AT/CH-Tiefe?
+7. Welche Delivery-Artefakte müssen im Pilot schon als First-Class-Assets behandelbar sein: Reports, Skripte, kleine Tools, Runbooks, Repository-Templates oder Demo-/Test-Blueprints?
+8. Reicht im Pilot GitHub/GitLab als Quelle für technische Reuse-Artefakte, oder muss Consultry schon Repository-Erstellung aus Blueprints anstoßen können?
+9. Welche Beraterprofil-Daten sind für persönliches Skill- und Arbeitsprofil wirklich nützlich, ohne in Monitoring zu kippen?
+10. Welche AI-Skills und Workflow-Rezepte sind im Pilot first-class: Proposal Prep, Research, Workshop Prep, Troubleshooting, Delivery QA oder Kunden-Demo-Aufbau?
+11. Welche Datenquellen reichen für Pilot und Demo wirklich aus, ohne breite Integrationsarbeit?
+12. Reicht `Germany-first` als Start klar aus, oder erwarten frühe Kunden schon AT/CH-Tiefe?
 
 ---
 

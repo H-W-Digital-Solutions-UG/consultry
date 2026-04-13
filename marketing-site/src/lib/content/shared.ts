@@ -22,7 +22,7 @@ export type SocialLink = {
 export const announcement = {
   text: "Exklusiver Frühzugang für DACH-Beratungen",
   href: "/#waitlist",
-  ctaLabel: "Jetzt Platz sichern",
+  ctaLabel: "Demo anfragen",
 } as const;
 
 export const ctaTargets = {
@@ -35,43 +35,45 @@ export const ctaTargets = {
 } as const;
 
 export const deepDiveCta = {
-  title: "Bereit für eine Pipeline, die sich selbst füllt?",
-  body: "Starten Sie mit einem kostenlosen Beratungsgespräch — wir zeigen Ihnen Consultry mit Ihren eigenen Daten.",
+  title: "Sehen Sie, wie Consultry Folgegeschaeft, Staffing und Wissen verbindet",
+  body: "Starten Sie mit einer persoenlichen Demo. Wir zeigen Ihnen Consultry mit Ihrer Kunden-, Team- und Delivery-Logik statt mit generischen Beispiel-Daten.",
   primaryCta: {
-    label: "Deep Dive anfragen",
+    label: "Demo anfragen",
     href: ctaTargets.nav,
   },
 } as const;
 
 export const richDemoCta = {
-  title: "Bereit, Ihre Beratung auf das nächste Level zu bringen?",
-  body: "Sichern Sie sich frühen Zugang zum ersten KI-nativen CRM für DACH-Beratungen.",
+  title: "Bereit fuer das Operating System fuer DACH-Beratungen?",
+  body: "Sichern Sie sich fruehen Zugang zu einer Plattform, die Bestandskundenwachstum, Staffing, Wissenswiederverwendung und Delivery Control verbindet.",
   placeholder: "Ihre geschäftliche E-Mail-Adresse",
-  buttonLabel: "Deep Dive anfragen",
-  trustLine: "Keine Kreditkarte nötig · Exklusiv für DACH-Beratungen · Begrenzte Plätze",
+  buttonLabel: "Demo anfragen",
+  trustLine: "Keine Kreditkarte noetig · Exklusiv fuer DACH-Beratungen · Begrenzte Pilotplaetze",
   success: "Danke. Wir haben Ihre Anfrage erhalten.",
 } as const;
 
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Produkt", href: "/produkt" },
-  { label: "About Us", href: "/unternehmen" },
+  { label: "Unternehmen", href: "/unternehmen" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 export const footerBrand = {
   title: "Consultry",
-  tagline: "Das operative System für Beratungen.",
-  complianceLabel: "DSGVO KONFORM",
+  tagline: "Das AI-native Operating System fuer DACH-Beratungen.",
+  complianceLabel: "DSGVO ORIENTIERT",
 } as const;
 
 export const footerColumns: FooterColumn[] = [
   {
     title: "PLATTFORM",
     links: [
-      { label: "Funktionen", href: "/produkt#architecture" },
-      { label: "Preise", href: "/#waitlist" },
-      { label: "Integrationen", href: "/produkt#demo" },
-      { label: "Sicherheit", href: "/produkt" },
+      { label: "Produktuebersicht", href: "/produkt" },
+      { label: "Bestandskundenwachstum", href: "/produkt/account-growth" },
+      { label: "Staffing und Forecasting", href: "/produkt/staffing-forecasting" },
+      { label: "Knowledge Reuse", href: "/produkt/knowledge-reuse" },
+      { label: "Commercial Control", href: "/produkt/commercial-control" },
     ],
   },
   {
@@ -95,5 +97,5 @@ export const footerColumns: FooterColumn[] = [
 export const socialLinks: SocialLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/consultry", kind: "linkedin" },
   { label: "X", href: "https://x.com/consultry", kind: "x" },
-  { label: "Email", href: "mailto:kontakt@consultry.com", kind: "email" },
+  { label: "E-Mail", href: "mailto:kontakt@consultry.com", kind: "email" },
 ] as const;

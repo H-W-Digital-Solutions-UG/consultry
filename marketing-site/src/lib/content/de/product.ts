@@ -55,18 +55,6 @@ export type ProductArchitectureContent = {
   workflowSteps: string[];
 };
 
-export type ProductFeatureRowContent = {
-  eyebrow: string;
-  title: string;
-  body: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  linkLabel: string;
-  reverse?: boolean;
-};
-
 export type ComparisonTableRow = {
   feature: string;
   consultry: "yes" | "no" | "partial";
@@ -86,26 +74,55 @@ export type ProductFaqItem = {
   answer: string;
 };
 
+export type ProductAnswer = {
+  question: string;
+  answer: string;
+  href?: string;
+  linkLabel?: string;
+};
+
+export type ProductInternalLink = {
+  href: string;
+  label: string;
+  body: string;
+};
+
+export const productSeo = {
+  title: "Consultry Plattform | Operative Steuerung fuer DACH-Beratungen",
+  description:
+    "Consultry ist das AI-native Operating System fuer DACH-Beratungen. Von Account Growth ueber Staffing und Proposal bis Delivery und Commercial Control.",
+  keywords: [
+    "AI-native Operating System fuer Beratungen",
+    "Software fuer Beratungsunternehmen",
+    "Consulting Plattform DACH",
+    "Staffing Software Beratung",
+    "Forecasting Beratung",
+    "Wissensmanagement Beratung",
+    "Salesforce Alternative Beratung",
+    "Commercial Control Beratung",
+  ],
+} as const;
+
 export const productHero: ProductHeroContent = {
   overline: "DIE PLATTFORM",
-  title: ["Alles, was Ihre", "Beratung braucht.", "In einem System."],
+  title: ["Operative Steuerung", "fuer Beratungen.", "Nicht noch ein CRM."],
   body:
-    "Consultry ersetzt nicht einzelne Tools. Es schliesst die operative Luecke zwischen Markt, Staffing, Angebotsarbeit und Delivery. Ein AI-natives System fuer Beratungen im DACH-Raum.",
+    "Consultry verbindet Marktchancen, Teamlogik, Angebotsarbeit, Delivery und Commercial Control in einem AI-nativen System. Erklaerbar, freigabepflichtig und gebaut fuer DACH-IT- und Digitalisierungsberatungen.",
   primaryCta: {
     label: "Demo anfragen",
     href: "/#waitlist",
   },
   secondaryCta: {
     label: "Module entdecken",
-    href: "/produkt#modules",
+    href: "/produkt#architecture",
   },
   metrics: [
-    { value: "-70%", label: "Recherchezeit" },
-    { value: "+35%", label: "Win-Rate" },
-    { value: "85%", label: "Berater-Auslastung" },
-    { value: "< 2 Wo.", label: "Onboarding" },
+    { value: "Bestand", label: "im Fokus" },
+    { value: "Staffing", label: "mit Kontext" },
+    { value: "Proposals", label: "mit System" },
+    { value: "Delivery", label: "mit Commercial Control" },
   ],
-  proofLine: "DSGVO-konform. Entwickelt für Beratungen im DACH-Raum.",
+  proofLine: "EU-Hosting · DSGVO by design · Erklaerbare AI-Empfehlungen",
   preview: {
     src: "/images/hero-dashboard.png",
     alt: "Consultry Dashboard mit Beratungs-Workflow und Kennzahlen",
@@ -113,196 +130,202 @@ export const productHero: ProductHeroContent = {
 };
 
 export const productDemoModule: ProductDemoModuleContent = {
-  eyebrow: "VIDEO DEMO",
-  title: "Sehen Sie Consultry in Aktion.",
+  eyebrow: "PRODUKT-DEMO",
+  title: "Sehen Sie denselben Ablauf, den Ihr Team spaeter live nutzt.",
   body:
-    "Sehen Sie Consultry in Aktion: Von der Signal-Erkennung zum maßgeschneiderten Angebot in unter 4 Minuten.",
+    "Die Demo zeigt den Kernflow von Consultry: Chance erkennen, Team belastbar vorschlagen, Angebot strukturieren und Delivery sauber weiterfuehren.",
   meta:
-    "Die Demo führt durch denselben operativen Ablauf, den Ihr Team später im Live-System nutzt: Signal aufnehmen, Team vorschlagen, Angebot strukturieren.",
+    "Von Signal-Feed und Engagement Brief ueber Staffing und Proposal bis zur Delivery- und Commercial-Sicht bleibt alles in einer zusammenhaengenden Arbeitsebene.",
   overlayCta: "Demo-Vorschau laden",
   poster: {
     src: "/images/product-row-dashboard.png",
-    alt: "Consultry Produkt-Demo mit Signal-Feed und kollaborativer Arbeitsoberfläche",
+    alt: "Consultry Produkt-Demo mit Signal-Feed und kollaborativer Arbeitsoberflaeche",
   },
 };
 
+export const productAnswers: ProductAnswer[] = [
+  {
+    question: "Was unterscheidet Consultry von einem Standard-CRM?",
+    answer:
+      "Consultry dokumentiert nicht nur Vertrieb, sondern verbindet Chance, Team, Proposal, Delivery und Commercial Control in einer zusammenhaengenden Steuerungslogik.",
+    href: "/produkt/consultry-vs-crm",
+    linkLabel: "Zum Vergleich",
+  },
+  {
+    question: "Welches Problem loest Consultry zuerst?",
+    answer:
+      "Consultry schliesst die operative Luecke zwischen Bestandskundenkontext, Staffing, Angebotsarbeit und Wissenswiederverwendung - genau dort, wo in Beratungen Zeit, Marge und Kontext verloren gehen.",
+    href: "/produkt/account-growth",
+    linkLabel: "Zum Growth-Wedge",
+  },
+  {
+    question: "Fuer wen ist die Plattform gedacht?",
+    answer:
+      "Der Fokus liegt auf DACH-IT- und Digitalisierungsberatungen mit etwa 30 bis 200 Mitarbeitenden, die Folgegeschaeft, Teamsteuerung und Delivery nicht laenger ueber isolierte Tools organisieren wollen.",
+    href: "/kontakt",
+    linkLabel: "Kontakt aufnehmen",
+  },
+];
+
 export const productArchitecture: ProductArchitectureContent = {
   overline: "PLATTFORM-ARCHITEKTUR",
-  title: "Vier Schichten. Ein durchgängiger Workflow.",
+  title: "Fuenf Steuerungsbereiche. Ein System.",
   body:
-    "Consultry ist in vier Schichten aufgebaut - vom Markt bis zum Wissen. Jede Schicht ist AI-durchdrungen und mit den anderen verknuepft. Keine Datensilos. Kein manuelles Uebertragen.",
+    "Consultry verbindet die Steuerungsbereiche, die Beratungen heute meist getrennt organisieren: Bestandskundenwachstum, Team- und Kapazitaetssteuerung, Wissenswiederverwendung, Opportunity und Proposal sowie Delivery und Commercial Control.",
   layers: [
     {
-      id: "market-intelligence",
-      eyebrow: "SIGNAL INTELLIGENCE",
-      title: "Market Intelligence",
+      id: "account-growth",
+      eyebrow: "ACCOUNT GROWTH",
+      title: "Client & Market System",
       summary:
-        "Signale aus dem DACH-Markt erkennen, priorisieren und als qualifizierte Chancen in Ihren operativen Workflow überführen.",
+        "Bestandskunden, Stakeholder, Warm Paths, Trigger und Folgechancen werden zu einem operativen Bild verdichtet. So entsteht aus verstreutem Account-Kontext eine bewertbare Opportunity-Grundlage.",
       capabilities: [
+        "Account-Kontext",
+        "Stakeholder-Mapping",
+        "Warm Paths",
         "Signal-Feed",
-        "DACH-Enrichment",
-        "Ausschreibungs-Matching",
-        "Discovery-Engine",
       ],
       preview: {
         src: "/images/figma/step-signal.png",
         alt: "Signal Intelligence Feed mit priorisierten Marktchancen",
-        caption: "Signal-Feed mit Priorisierung, Match-Score und 1-Klick-Opportunity-Erstellung.",
+        caption:
+          "Priorisierte Signale mit Match-Logik, Warm Paths und direktem Einstieg in die Opportunity.",
       },
     },
     {
-      id: "workforce-matching",
-      eyebrow: "SMART MATCHING",
-      title: "Workforce & Matching",
+      id: "staffing-capacity",
+      eyebrow: "TEAM & CAPACITY",
+      title: "Consultant & Capacity System",
       summary:
-        "Verfügbarkeiten, Skills und Teamvarianten in einem Modell statt in Kalendern, Tabellen und Bauchgefühl.",
+        "Skills, Zertifikate, Projekterfahrung, Verfuegbarkeit und Teamstrukturen werden zu einer belastbaren Grundlage fuer Staffing, Forecasting und Skill-Gap-Sicht.",
       capabilities: [
-        "Skill-Graph",
-        "Verfügbarkeits-Forecast",
-        "Kapazitätsplanung",
-        "Team-Dashboards",
+        "Skill-Normalisierung",
+        "Verfuegbarkeitslogik",
+        "Kapazitaetsplanung",
+        "Forecasting",
       ],
       preview: {
         src: "/images/figma/step-matching.png",
-        alt: "Smart Matching Ansicht mit Team-Vorschlägen",
-        caption: "Team-Konstellation mit Match-Score, Verfügbarkeit und Margin-Sicht.",
+        alt: "Staffing und Forecasting mit Team-Vorschlaegen",
+        caption:
+          "Teamvarianten mit Match-Score, Verfuegbarkeit, Projekterfahrung und Forecast-Kontext.",
       },
     },
     {
-      id: "deal-execution",
-      eyebrow: "DEAL EXECUTION",
-      title: "Deal Execution",
+      id: "knowledge-reuse",
+      eyebrow: "KNOWLEDGE & REUSE",
+      title: "Knowledge System",
       summary:
-        "Vom Engagement-Brief bis zum AI-Canvas-Angebot mit Varianten, Pricing und Kontext für jeden Pitch-Moment.",
+        "Methoden, Referenzen, Assets und Lessons Learned werden nicht nur archiviert, sondern direkt in Angebotsarbeit, Delivery und Onboarding nutzbar gemacht.",
       capabilities: [
-        "Engagement-Briefs",
-        "Semantisches Matching",
-        "AI-Canvas-Angebote",
-        "Vertragsautomatisierung",
-      ],
-      preview: {
-        src: "/images/figma/step-delivery.png",
-        alt: "Delivery Analytics Dashboard mit Echtzeit-KPIs",
-        caption: "Engagement-Briefs, Angebotsvarianten und Delivery-Kontext bleiben in einem System.",
-      },
-    },
-    {
-      id: "delivery-knowledge",
-      eyebrow: "KNOWLEDGE HUB",
-      title: "Delivery & Knowledge",
-      summary:
-        "Profitabilität, Wissensrückfluss und Delivery-Steuerung bleiben in derselben Arbeitsebene wie Markt und Angebot.",
-      capabilities: [
-        "Milestone-Tracking",
-        "Risk-Monitoring",
-        "Knowledge Engine",
-        "Wissensrückfluss",
+        "Referenzbausteine",
+        "Methodenwissen",
+        "Lessons Learned",
+        "Quellengebundene Suche",
       ],
       preview: {
         src: "/images/figma/step-knowledge.png",
-        alt: "Knowledge Hub mit Beratungswissen und Proposals",
-        caption: "Projektwissen, Benchmarks und Delivery-Learnings füttern denselben operativen Graphen.",
+        alt: "Knowledge Hub mit Beratungswissen und Referenzen",
+        caption:
+          "Wissensbausteine, Referenzen und Learnings tauchen dort wieder auf, wo sie Umsatz und Delivery verbessern.",
+      },
+    },
+    {
+      id: "proposal-workflow",
+      eyebrow: "OPPORTUNITY & PROPOSAL",
+      title: "Proposal Workflow",
+      summary:
+        "Von Engagement Brief und Teamvorschlag ueber CVs und Pricing bis zu Proposal-Drafts und Vertragsgrundlagen bleibt alles in einem nachvollziehbaren Freigabeprozess.",
+      capabilities: [
+        "Engagement Briefs",
+        "Teamvorschlaege",
+        "Proposal-Drafts",
+        "Review und Freigaben",
+      ],
+      preview: {
+        src: "/images/figma/step-delivery.png",
+        alt: "Proposal Workflow mit Angebotsentwurf und Teamkontext",
+        caption:
+          "Von der qualifizierten Chance zum belastbaren Angebotsentwurf in einem Workflow.",
+      },
+    },
+    {
+      id: "delivery-control",
+      eyebrow: "DELIVERY & COMMERCIAL CONTROL",
+      title: "Delivery Control System",
+      summary:
+        "Allocation, Delivery Health, Kostenbezug, Invoice Prep und Lernrueckfluss laufen in einer gemeinsamen Steuerungslogik zusammen. So endet Delivery nicht im Datengrab.",
+      capabilities: [
+        "Allocation",
+        "Risk & Health",
+        "Kostenbezug",
+        "Billing Prep",
+      ],
+      preview: {
+        src: "/images/product-row-dashboard.png",
+        alt: "Delivery Control mit Projekt- und Commercial-Sicht",
+        caption:
+          "Delivery, Kostenbezug und Commercial Control bleiben in derselben operativen Sicht.",
       },
     },
   ],
   workflowOverline: "DER WORKFLOW",
-  workflowTitle: "Vom Signal zum Projekt in drei Schritten",
+  workflowTitle: "Aus einer Chance wird ein plausibles Projekt. Nicht nur ein Lead.",
   workflowBody:
-    "Einheitliche Arbeitsebene fuer Markt, Team, Angebot und Delivery - ohne Toolwechsel zwischen den Phasen.",
+    "Der operative Kern von Consultry liegt in der Uebersetzung zwischen Demand und Supply: aus Bedarf wird eine belastbare Opportunity, aus Opportunity ein glaubwuerdiges Team und Angebot, aus Delivery wieder verwertbares Wissen.",
   workflowSteps: [
-    "Marktveraenderung erkennen",
-    "Team und Angebot erstellen",
-    "Profitabel liefern und lernen",
+    "Signal und Bedarf erkennen",
+    "Team und Angebot plausibel machen",
+    "Delivery steuern und Wissen zurueckfuehren",
   ],
 };
 
-export const productFeatureRows: ProductFeatureRowContent[] = [
-  {
-    eyebrow: "[01]",
-    title: "AI, die Ihren Kontext versteht. Nicht nur Ihre Daten.",
-    body:
-      "Der kontextuelle Copilot passt sich an: Auf einer Opportunity zeigt er Engagement-Briefs und Berater-Vorschlaege. Auf einem Projekt analysiert er Risiken. Vor einem Kundenanruf liefert er ein 30-Sekunden-Briefing. Sie muessen nicht wissen, welche AI-Features existieren - das System erkennt, was Sie gerade brauchen.",
-    image: {
-      src: "/images/product-row-dashboard.png",
-      alt: "Consultry Plattformansicht mit Kontextkarten und operativen Daten",
-    },
-    linkLabel: "Details ansehen",
-  },
-  {
-    eyebrow: "[02]",
-    title: "Command Bar: Denken Sie schneller als Sie klicken.",
-    body:
-      'Cmd+K und los: "Zeig mir alle verfuegbaren SAP-Berater ab Mai." "Was ist der DB1 vom MedTech-Projekt?" "Erstell ein Angebot fuer RetailCorp." Natuerliche Sprache, moduluebergreifend, kontextbewusst. Power-User lieben es. Alle anderen auch.',
-    image: {
-      src: "/images/hero-dashboard.png",
-      alt: "Consultry Command-Bar-Ansicht mit Such- und Aktionsbefehlen",
-    },
-    linkLabel: "Details ansehen",
-    reverse: true,
-  },
-  {
-    eyebrow: "[03]",
-    title: "Zusammenarbeit dort, wo die Arbeit passiert.",
-    body:
-      "Kommentare, @Mentions und Aktivitaets-Feeds direkt auf Opportunities, Angeboten und Projekten. Kein Slack-Thread ohne Kontext. Kein E-Mail-Ping-Pong mit Word-Redlines. Thomas fragt 'Status RetailCorp?' - und die Antwort ist schon da.",
-    image: {
-      src: "/images/product-row-dashboard.png",
-      alt: "Consultry Kollaborationsansicht mit Kommentaren und Aktivitaetsfeed",
-    },
-    linkLabel: "Details ansehen",
-  },
-];
-
 export const productComparison: ComparisonTableContent = {
   overline: "CONSULTRY VS. STANDARD-CRM",
-  title: "Warum Beratungen kein generisches CRM brauchen",
-  body: "Consultry ist das erste AI-native operative System, das speziell fuer die Wertschoepfungslogik von Unternehmensberatungen im DACH-Raum entwickelt wurde.",
+  title: "Warum generische CRMs Beratungsarbeit nur zur Haelfte abbilden",
+  body:
+    "CRMs dokumentieren Vertrieb. Consultry verbindet Vertrieb, Teamlogik, Angebotsarbeit, Delivery und Commercial Control in einem System, das auf die Wertschoepfung von Beratungen ausgelegt ist.",
   columnHeaders: ["FUNKTIONEN", "CONSULTRY", "STANDARD CRM"],
   rows: [
     {
-      feature: "KI-gestuetzte Signal-Erkennung (DACH-Markt)",
-      consultry: "yes",
-      competitor: "no",
-    },
-    {
-      feature: "Automatisches Berater-Matching & Staffing",
-      consultry: "yes",
-      competitor: "no",
-    },
-    {
-      feature: "Pipeline-Dashboard & Deal-Tracking",
-      consultry: "yes",
-      competitor: "yes",
-    },
-    {
-      feature: "Automatische Angebots- & Report-Erstellung",
+      feature: "Bestandskunden- und Triggerlogik fuer Account Expansion",
       consultry: "yes",
       competitor: "partial",
     },
     {
-      feature: "Berater-Auslastung & Kapazitaetsplanung",
+      feature: "Berater- und Team-Matching mit Verfuegbarkeit und Projekterfahrung",
       consultry: "yes",
       competitor: "no",
     },
     {
-      feature: "Echtzeit-Deckungsbeitrag-Analyse",
+      feature: "Forecasting auf Team- und Projektbasis",
       consultry: "yes",
       competitor: "no",
     },
     {
-      feature: "DSGVO-konform mit EU-Hosting",
+      feature: "Proposal-Workflow statt nur Opportunity-Pflege",
       consultry: "yes",
       competitor: "partial",
     },
     {
-      feature: "Integriertes Wissensmanagement & IP-Sicherung",
+      feature: "Delivery- und Commercial-Sicht im selben System",
       consultry: "yes",
       competitor: "no",
     },
     {
-      feature: "Kontextueller AI-Copilot fuer Beratungsprozesse",
+      feature: "Wissensrueckfluss aus Delivery in Proposal und Staffing",
       consultry: "yes",
       competitor: "no",
+    },
+    {
+      feature: "Erklaerbare Empfehlungen mit Freigabe und Audit Trail",
+      consultry: "yes",
+      competitor: "partial",
+    },
+    {
+      feature: "DSGVO- und DACH-orientierte Produktlogik",
+      consultry: "yes",
+      competitor: "partial",
     },
   ],
 };
@@ -311,55 +334,78 @@ export const productFaq: ProductFaqItem[] = [
   {
     question: "Was unterscheidet Consultry von einem Standard-CRM?",
     answer:
-      "Consultry ist kein generisches CRM, sondern ein AI-natives operatives System für Beratungen. Statt nur Pipeline-Daten zu pflegen, verbindet die Plattform Marktintelligenz, Berater-Matching, Angebotserstellung, Delivery-Steuerung und Wissensrückfluss in einem durchgängigen Workflow.",
+      "Consultry ist kein umfunktioniertes Vertriebswerkzeug, sondern ein operatives System fuer Beratungen. Die Plattform verbindet Chance, Team, Proposal, Delivery und Wissensrueckfluss in einem durchgaengigen Workflow.",
   },
   {
-    question: "Ist Consultry DSGVO-konform?",
+    question: "Wie geht Consultry mit AI-Risiken um?",
     answer:
-      "Ja. Consultry wird in der EU gehostet, verarbeitet keine Daten ausserhalb der EU und implementiert Privacy-by-Design. Consent-Management fuer Outreach-Kontakte ist integriert. Fuer Berater-Profiling bieten wir Feature-Gates, die erst nach dokumentierter Betriebsvereinbarung freigeschaltet werden.",
+      "Empfehlungen bleiben erklaerbar, editierbar und freigabepflichtig. Entscheidungen werden nicht heimlich automatisiert, sondern mit Begruendung und Audit Trail vorbereitet.",
   },
   {
-    question: "Wie lange dauert das Onboarding?",
+    question: "Ist Consultry fuer DACH-Anforderungen gebaut?",
     answer:
-      "Starter-Kunden sind in unter 2 Wochen produktiv. Professional-Kunden in 2 bis 4 Wochen. Enterprise-Onboarding umfasst Datenimport, Konfiguration und Schulung und dauert 4 bis 8 Wochen.",
+      "Ja. EU-Hosting, DSGVO, kontrollierte Nutzung personenbezogener Daten und sensible People-Analytics-Standards sind Teil der Produktlogik, nicht nur ein spaeteres Add-on.",
   },
   {
-    question: "Welche Tools kann Consultry ersetzen?",
+    question: "Fuer wen ist Consultry gedacht?",
     answer:
-      "Consultry ersetzt nicht blind jedes bestehende System. Die Plattform übernimmt aber genau die Lücken zwischen Markt, Team, Angebot, Delivery und Wissen, die heute oft über CRM, Excel, Dokumente und Chat-Threads verteilt sind.",
+      "Fuer DACH-IT- und Digitalisierungsberatungen mit etwa 30 bis 200 Mitarbeitenden, die Bestandskundengeschaeft, Staffing, Angebotsgeschwindigkeit und Delivery sauber in einem System zusammenziehen wollen.",
   },
   {
-    question: "Gibt es eine kostenlose Testversion?",
+    question: "Muessen wir bestehende Systeme sofort ersetzen?",
     answer:
-      "Wir bieten eine gefuehrte Pilotphase statt einer anonymen Testversion. In 2 bis 4 Wochen arbeiten Sie mit Ihren echten Daten und sehen den Wert in Ihrer Beratung. Ohne Risiko - wenn es nicht passt, kein Vertrag.",
+      "Nein. Consultry integriert dort, wo Ersatz unnoetig oder riskant waere, und schliesst zuerst die operative Luecke zwischen den Systemen, die heute nicht sauber zusammenspielen.",
   },
   {
-    question: "Wie funktioniert das KI-gestuetzte Berater-Matching?",
+    question: "Wie verbessert Consultry Staffing und Forecasting?",
     answer:
-      "Consultry kombiniert Projektanforderungen mit Skills, Branchenerfahrung, Verfuegbarkeit, Standort und Teamkontext. Dadurch entstehen belastbare Vorschlaege fuer passende Besetzungen und nicht nur einfache Keyword-Treffer.",
+      "Consultry verbindet Projektanforderungen, Skills, Verfuegbarkeit, Teamkontext und Delivery-Realitaet. Dadurch werden Engpaesse, Leerstand und bessere Besetzungsoptionen frueher sichtbar.",
   },
   {
-    question: "Koennen wir Consultry mit bestehenden Tools integrieren?",
+    question: "Wie reduziert Consultry Wissensverlust?",
     answer:
-      "Ja. Standard-Integrationen decken Outlook, Gmail, Slack, Teams, Google Calendar, Personio und DATEV ab. Fuer komplexere Umgebungen stehen Webhooks, APIs und SSO-Optionen bereit.",
+      "Referenzen, Methoden, Lessons Learned und Delivery-Kontext bleiben nicht im Archiv. Sie tauchen wieder auf, wenn neue Opportunities qualifiziert, Teams vorgeschlagen oder Angebote erstellt werden.",
+  },
+];
+
+export const productInternalLinks: ProductInternalLink[] = [
+  {
+    href: "/produkt/account-growth",
+    label: "Bestandskundenwachstum",
+    body:
+      "Wie Trigger, Warm Paths und Folgeprojekte in einen operativen Growth-Workflow uebersetzt werden.",
   },
   {
-    question: "Fuer welche Unternehmensgroesse ist Consultry geeignet?",
-    answer:
-      "Der aktuelle Fokus liegt auf Beratungen mit etwa 30 bis 200 Mitarbeitenden, die Bestandskunden, Staffing, Angebot und Delivery sauber in einem System zusammenziehen wollen.",
+    href: "/produkt/staffing-forecasting",
+    label: "Staffing und Forecasting",
+    body:
+      "Wie Skills, Verfuegbarkeit und Delivery-Realitaet zu belastbareren Staffing-Entscheidungen werden.",
   },
   {
-    question: "Was passiert mit unseren bestehenden CVs und Daten?",
-    answer:
-      "Im Onboarding importiert Consultry Ihre bestehenden CVs, Kundendaten und Projekthistorie. Die AI extrahiert und normalisiert Skills automatisch. Kein manuelles Abtippen.",
+    href: "/produkt/knowledge-reuse",
+    label: "Knowledge Reuse",
+    body:
+      "Wie Referenzen, Methoden und Projektwissen wieder nutzbar werden statt verstreut zu bleiben.",
+  },
+  {
+    href: "/produkt/commercial-control",
+    label: "Commercial Control",
+    body:
+      "Wie Delivery, Kostenbezug und Invoice Prep in einer operativen Sicht zusammenlaufen.",
+  },
+  {
+    href: "/produkt/consultry-vs-crm",
+    label: "Consultry vs. CRM",
+    body:
+      "Warum ein Standard-CRM die eigentliche Wertschoepfungslogik von Beratungen nicht sauber abbildet.",
   },
 ];
 
 export const productCta = {
   eyebrow: "BEREIT FUER DAS SYSTEM?",
-  title: "Schluss mit 47 offenen Tabs.",
+  title: "Schluss mit CRM, Excel und Kontextverlust zwischen den Teams",
   body:
-    "In 30 Minuten zeigen wir Ihnen, wie Consultry Ihren Beratungsalltag veraendert. Mit Ihren Daten. Mit Ihrem Team. Mit Ihren Prozessen.",
+    "In einer persoenlichen Demo zeigen wir, wie Consultry Ihre operative Steuerung verdichtet: mit Ihren Daten, Ihrem Team und Ihren realen Prozessen.",
   primaryCta: {
     label: "Demo vereinbaren",
     href: "/#waitlist",

@@ -20,6 +20,10 @@
   --consultry-brand-gradient: linear-gradient(27deg, #e8913a 10%, #e8655a 25%, #9b59b6 60%);
   --consultry-brand-gradient-hero: linear-gradient(160.96deg, #e8913a 0%, #e8655a 37.59%, #9b59b7 75.19%);
   --consultry-brand-gradient-hero-alt: linear-gradient(151.8deg, #e8655a 0%, #9b59b7 37.59%, #c084e5 75.19%);
+  --consultry-cta-surface: linear-gradient(180deg, #df9a58 0%, #d9843f 44%, #cb6153 100%);
+  --consultry-cta-surface-hover: linear-gradient(180deg, #e6a769 0%, #df9050 44%, #d36e60 100%);
+  --consultry-cta-border: rgba(232, 145, 58, 0.26);
+  --consultry-cta-text: #fff8f1;
   --consultry-hero-background: linear-gradient(
       180deg,
       rgba(191, 84, 71, 0.15) 0%,

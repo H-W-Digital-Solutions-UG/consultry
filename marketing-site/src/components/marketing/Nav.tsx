@@ -94,13 +94,14 @@ export function Nav() {
           </nav>
 
           <div className="hidden md:block">
-            <a
-              className="inline-flex items-center gap-1 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] px-5 py-2.5 text-[14px] font-medium tracking-[0.01em] text-white backdrop-blur-[6px] transition hover:bg-[rgba(255,255,255,0.14)]"
+            <Button
+              className="px-5 py-2.5 text-[14px] font-medium tracking-[0.01em]"
               href={ctaTargets.nav}
+              variant="secondary"
             >
-              Deep Dive anfragen
+              Demo anfragen
               <span aria-hidden="true">→</span>
-            </a>
+            </Button>
           </div>
 
           <button
@@ -129,7 +130,7 @@ export function Nav() {
               </Link>
             ))}
             <Button className="mt-2 w-full" href={ctaTargets.nav}>
-              Deep Dive anfragen
+              Demo anfragen
             </Button>
           </div>
         </div>

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Footer } from "@/components/marketing/Footer";
+import { JsonLd } from "@/components/marketing/JsonLd";
 import { Nav } from "@/components/marketing/Nav";
 import { siteConfig } from "@/lib/seo";
+import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
 const inter = Inter({
@@ -56,6 +58,7 @@ export default function RootLayout({
   return (
     <html data-scroll-behavior="smooth" data-theme="dark" lang="de">
       <body className={`${inter.variable} ${jetBrainsMono.variable}`}>
+        <JsonLd data={[buildOrganizationJsonLd(), buildWebsiteJsonLd()]} />
         <Nav />
         {children}
         <Footer />

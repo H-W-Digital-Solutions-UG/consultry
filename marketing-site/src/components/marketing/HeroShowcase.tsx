@@ -1,4 +1,5 @@
-import { HeroShowcaseRowMotion } from "@/components/marketing/HeroShowcaseRowMotion";
+import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 import type { HomepageHero } from "@/lib/content/de/homepage";
 
 type HeroShowcaseProps = {
@@ -38,9 +39,83 @@ export function HeroShowcase({ hero }: HeroShowcaseProps) {
             </div>
           </div>
 
-          <HeroShowcaseRowMotion hero={hero} />
+          <div className="grid w-full max-w-[1140px] gap-4 sm:gap-5 lg:grid-cols-[minmax(260px,1fr)_minmax(360px,520px)_minmax(260px,1fr)] lg:items-center lg:gap-8">
+            <article className="rounded-[12px] border border-[rgba(232,145,58,0.18)] bg-[rgba(44,40,38,0.88)] p-6 shadow-[0_18px_38px_rgba(0,0,0,0.22)]">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[rgba(191,83,71,0.15)]">
+                <div className="h-5 w-5 rounded-[4px] bg-[var(--consultry-brand-primary)]" />
+              </div>
+              <p className="text-[17px] font-semibold leading-[1.35] text-[#fafaf9] sm:text-[18px]">
+                {hero.sideCards[0]?.title}
+              </p>
+              <p className="mt-3 text-[14px] leading-[1.55] text-[#a8a5a0] sm:text-[15px]">
+                {hero.sideCards[0]?.body}
+              </p>
+            </article>
 
-          <p className="px-4 text-center text-[14px] leading-[1.6] text-[rgba(168,165,160,0.75)] sm:text-[15px] md:text-[16px]">
+            <div className="mx-auto flex w-full max-w-[520px] flex-col items-center gap-5">
+              <div className="relative aspect-[520/380] w-full overflow-hidden rounded-[12px] bg-[rgba(33,29,26,0.95)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                <Image
+                  alt={hero.image.alt}
+                  className="object-contain"
+                  fill
+                  loading="eager"
+                  priority
+                  sizes="(max-width: 1024px) min(92vw, 520px), 520px"
+                  src={hero.image.src}
+                />
+              </div>
+
+              <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-[14px]">
+                <Button
+                  className="w-full max-w-[15.5rem] px-5 py-2.5 text-[15px] sm:w-auto sm:max-w-none sm:px-8 sm:py-3 sm:text-[18px]"
+                  href={hero.primaryCta.href}
+                  size="lg"
+                >
+                  {hero.primaryCta.label}
+                </Button>
+                <Button
+                  className="w-full max-w-[15.5rem] px-5 py-2.5 text-[15px] sm:w-auto sm:max-w-none sm:px-8 sm:py-3 sm:text-[18px]"
+                  href={hero.secondaryCta.href}
+                  size="lg"
+                  variant="secondary"
+                >
+                  {hero.secondaryCta.label}
+                </Button>
+              </div>
+
+              {hero.metrics.length ? (
+                <div className="grid w-full grid-cols-2 gap-3">
+                  {hero.metrics.map((metric) => (
+                    <div
+                      className="rounded-[16px] border border-[rgba(71,64,56,0.65)] bg-[rgba(43,38,35,0.96)] px-4 py-3.5"
+                      key={metric.label}
+                    >
+                      <p className="text-[18px] font-extrabold leading-[1.15] text-[#faf7f2] sm:text-[22px]">
+                        {metric.value}
+                      </p>
+                      <p className="mt-1.5 text-[12px] leading-[1.4] text-[rgba(212,207,199,0.55)]">
+                        {metric.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            <article className="rounded-[12px] border border-[rgba(232,145,58,0.18)] bg-[rgba(44,40,38,0.88)] p-6 shadow-[0_18px_38px_rgba(0,0,0,0.22)]">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[rgba(232,145,58,0.15)]">
+                <div className="h-5 w-5 rounded-[4px] bg-[#e8913a]" />
+              </div>
+              <p className="text-[17px] font-semibold leading-[1.35] text-[#fafaf9] sm:text-[18px]">
+                {hero.sideCards[1]?.title}
+              </p>
+              <p className="mt-3 text-[14px] leading-[1.55] text-[#a8a5a0] sm:text-[15px]">
+                {hero.sideCards[1]?.body}
+              </p>
+            </article>
+          </div>
+
+          <p className="px-4 text-center text-[14px] leading-[1.6] text-[rgba(217,212,207,0.7)] sm:text-[15px] md:text-[16px]">
             {hero.proofLine}
           </p>
         </div>

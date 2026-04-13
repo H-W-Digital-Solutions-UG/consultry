@@ -59,153 +59,232 @@ export type HomepageWaitlist = {
   success: string;
 };
 
+export type HomepageAnswer = {
+  question: string;
+  answer: string;
+  href?: string;
+  linkLabel?: string;
+};
+
+export type HomepageLinkCard = {
+  href: string;
+  label: string;
+  body: string;
+};
+
 export const homepageSeo = {
-  title: "KI-native Plattform fuer DACH-Beratungen",
+  title: "Consultry | AI-native Operating System fuer DACH-Beratungen",
   description:
-    "Consultry ersetzt Salesforce, Excel und LinkedIn-Recherche durch eine KI-native Plattform fuer DACH-Beratungen – von Signal Intelligence ueber Smart Matching bis Delivery Analytics und Knowledge Hub.",
+    "Consultry verbindet Bestandskundenwachstum, Staffing, Forecasting, Wissenswiederverwendung und Delivery Control in einem AI-nativen Operating System fuer DACH-IT- und Digitalisierungsberatungen.",
   keywords: [
-    "KI Plattform fuer Beratungen",
-    "Beratungs CRM",
-    "Consulting CRM DACH",
-    "Salesforce Alternative Beratung",
-    "Smart Matching Berater",
-    "Delivery Analytics Beratung",
-    "Signal Intelligence Beratung",
+    "AI-native Operating System fuer Beratungen",
+    "Software fuer Beratungsunternehmen",
+    "Consulting Plattform DACH",
+    "operatives System Beratung",
+    "Consulting Software fuer IT- und Digitalisierungsberatungen",
+    "Bestandskundenwachstum Beratung",
+    "Staffing Software Beratung",
+    "Forecasting Beratung",
+    "Wissensmanagement Beratung",
   ],
 } as const;
 
 export const homepageContent = {
   hero: {
-    eyebrow: "DAS KI-NATIVE BERATUNGS-CRM",
-    title: ["Vom Signal", "zum Projekt — in", "einer Plattform."],
+    eyebrow: "AI-NATIVE OPERATING SYSTEM FUER DACH-BERATUNGEN",
+    title: ["Mehr Folgegeschaeft.", "Besseres Staffing.", "Weniger Wissensverlust."],
     body:
-      "Consultry ersetzt Salesforce, Excel und LinkedIn-Recherche durch einen KI-nativen Workspace — gebaut für DACH-Beratungen.",
+      "Consultry verbindet Bestandskundenwachstum, Team- und Kapazitaetssteuerung, Wissenswiederverwendung, Angebotsarbeit und Delivery Control in einem System. Gebaut fuer DACH-IT- und Digitalisierungsberatungen, die nicht laenger zwischen CRM, Excel, CVs und Einzelloesungen arbeiten wollen.",
     primaryCta: {
-      label: "Frühzugang sichern",
+      label: "Demo anfragen",
       href: ctaTargets.homepagePrimary,
     },
     secondaryCta: {
-      label: "Demo ansehen",
+      label: "Produkt ansehen",
       href: ctaTargets.homepageSecondary,
     },
     image: {
       src: "/images/figma/hero-dashboard.png",
-      alt: "Consultry Produktvorschau mit Pipeline Intelligence Dashboard",
+      alt: "Consultry Produktvorschau mit Opportunity-, Staffing- und Delivery-Kontext",
     },
-    proofLine: "Eine Plattform. Vier Workflows. Null Datensilos.",
+    proofLine: "Erklaerbare Empfehlungen · Menschliche Freigaben · Audit Trail by default",
     sideCards: [
       {
-        title: "Ein Workspace. Null Silos.",
+        title: "Mehr aus Bestandskunden machen",
         body:
-          "Schluss mit CRM, Excel-Listen und E-Mail-Threads. Pipeline, Matching, Delivery und Knowledge an einem Ort.",
+          "Trigger, Warm Paths und Folgeprojekte werden sichtbar, bevor Chancen intern verloren gehen.",
       },
       {
-        title: "KI, die Beratung versteht",
+        title: "Wissen im System halten",
         body:
-          "Von Signal-Erkennung über Kompetenz-Matching bis zur Angebotserstellung — KI übernimmt die operative Schwerstarbeit.",
+          "Referenzen, Methoden und Lessons Learned fliessen zurueck in den naechsten Pitch, das naechste Staffing und das naechste Projekt.",
       },
     ],
     metrics: [
-      { value: "42", label: "Opportunities" },
-      { value: "1.8M EUR", label: "Pipeline-Wert" },
-      { value: "+26%", label: "vs. Vorquartal" },
-      { value: "8", label: "Hot Leads" },
+      { value: "Bestand", label: "als primaerer Wachstumshebel" },
+      { value: "Staffing", label: "mit Forecast- und Teamkontext" },
+      { value: "Wissen", label: "wieder nutzbar statt vergessen" },
+      { value: "Control", label: "von Opportunity bis Delivery" },
     ],
   },
+  answers: [
+    {
+      question: "Was ist Consultry in einem Satz?",
+      answer:
+        "Consultry ist das AI-native Operating System fuer DACH-IT- und Digitalisierungsberatungen, das Bestandskundenwachstum, Staffing, Angebotsarbeit, Wissenswiederverwendung und Delivery Control verbindet.",
+      href: "/produkt",
+      linkLabel: "Zur Produktseite",
+    },
+    {
+      question: "Fuer wen ist Consultry gebaut?",
+      answer:
+        "Der Fokus liegt auf DACH-Beratungen mit etwa 30 bis 200 Mitarbeitenden, die Folgegeschaeft, Teamsteuerung und Projektwissen nicht laenger ueber getrennte Tools organisieren wollen.",
+      href: "/unternehmen",
+      linkLabel: "Mehr zum DACH-Fokus",
+    },
+    {
+      question: "Warum nicht einfach ein Standard-CRM?",
+      answer:
+        "Weil Beratungsarbeit nicht bei Pipeline endet. Das eigentliche Problem liegt zwischen Opportunity, Team, Proposal, Delivery und Commercial Control.",
+      href: "/produkt/consultry-vs-crm",
+      linkLabel: "Zum Vergleich",
+    },
+  ] satisfies HomepageAnswer[],
   steps: [
     {
-      id: "signal-intelligence",
+      id: "account-growth",
       stepLabel: "[01]",
-      stepperLabel: "Signal Intelligence",
-      eyebrow: "SIGNAL INTELLIGENCE",
-      title: "Marktchancen erkennen, bevor der Wettbewerb reagiert",
+      stepperLabel: "Account Growth",
+      eyebrow: "ACCOUNT GROWTH",
+      title: "Relevante Chancen im Bestand erkennen, bevor sie kalt werden",
       body:
-        "Consultry aggregiert Signale aus Ausschreibungsportalen, LinkedIn-Aktivitäten, Branchennews und CRM-Interaktionen — und qualifiziert sie automatisch. Ihr BD-Team startet den Tag mit einem priorisierten Signal-Feed.",
-      ctaLabel: "Mehr zu Signal Intelligence",
+        "Consultry verdichtet Stakeholder-Wechsel, Ausschreibungen, Hiring, Marktbewegungen und bestehenden Account-Kontext zu priorisierten Chancen. Mit Beziehungspfaden, Begruendung und naechster Handlung statt blossem Newsfeed.",
+      ctaLabel: "Mehr zu Bestandskundenwachstum",
       image: {
         src: "/images/figma/step-signal.png",
         alt: "Signal Intelligence Feed mit priorisierten Marktchancen",
       },
-      caption: "Signal-Feed mit Priorisierung, Match-Score und 1-Klick-Opportunity-Erstellung.",
+      caption:
+        "Priorisierte Signale mit Match-Logik, Warm Paths und direktem Einstieg in die Opportunity.",
     },
     {
-      id: "smart-matching",
+      id: "staffing-forecasting",
       stepLabel: "[02]",
-      stepperLabel: "Smart Matching",
-      eyebrow: "SMART MATCHING",
-      title: "Das perfekte Team — zusammengestellt in Sekunden",
+      stepperLabel: "Staffing & Forecasting",
+      eyebrow: "STAFFING & FORECASTING",
+      title: "Das belastbarste Team vorschlagen und Kapazitaeten frueher sehen",
       body:
-        "KI-gestütztes Berater-Matching basierend auf Skills, Verfügbarkeit, Kundenpräferenz und Projektanforderungen. Inklusive Margen-Optimierung und Alternativ-Szenarien.",
-      ctaLabel: "Mehr zu Smart Matching",
+        "Projektanforderungen, Skills, Projekterfahrung, Verfuegbarkeit und Teamkontext fliessen in nachvollziehbare Staffing-Vorschlaege ein. Gleichzeitig entsteht ein realistischeres Bild von Auslastung, Engpaessen und kommendem Leerlauf.",
+      ctaLabel: "Mehr zu Staffing und Forecasting",
       image: {
         src: "/images/figma/step-matching.png",
-        alt: "Smart Matching Ansicht mit Team-Vorschlägen",
+        alt: "Staffing und Forecasting Ansicht mit Team-Vorschlaegen",
       },
-      caption: "Team-Konstellation mit Match-Score, Verfuegbarkeit und Margin-Sicht.",
+      caption:
+        "Teamvarianten mit Match-Score, Verfuegbarkeit, Projekterfahrung und Forecast-Kontext.",
       flipped: true,
     },
     {
-      id: "delivery-analytics",
+      id: "proposal-workflow",
       stepLabel: "[03]",
-      stepperLabel: "Delivery Analytics",
-      eyebrow: "DELIVERY ANALYTICS",
-      title: "Echtzeit-Einblick in jedes Projekt",
+      stepperLabel: "Proposal Workflow",
+      eyebrow: "PROPOSAL WORKFLOW",
+      title: "Angebote schneller erstellen, weil Wissen und Teamlogik schon verbunden sind",
       body:
-        "Dashboards für Auslastung, Deckungsbeitrag und Projektfortschritt — vom Partner bis zum Consultant. Nie wieder Blindflug bei Marge und Kapazität.",
-      ctaLabel: "Mehr zu Delivery Analytics",
+        "Aus Opportunity, Teamvorschlag und vorhandenem Beratungswissen entstehen Engagement Briefs, CVs, Proposal-Drafts und Entscheidungsgrundlagen. Keine Copy-Paste-Kette ueber Dokumente, Postfaecher und Bauchgefuehl.",
+      ctaLabel: "Mehr zum Proposal Workflow",
       image: {
         src: "/images/figma/step-delivery.png",
-        alt: "Delivery Analytics Dashboard mit Echtzeit-KPIs",
+        alt: "Proposal Workflow mit Angebotsentwurf und Teamkontext",
       },
-      caption: "Projekt-Dashboard mit Health-Score, Budget-Tracking und Risikoanalyse.",
+      caption:
+        "Von der qualifizierten Chance zum belastbaren Angebotsentwurf in einem Workflow.",
     },
     {
-      id: "knowledge-hub",
+      id: "knowledge-reuse",
       stepLabel: "[04]",
-      stepperLabel: "Knowledge Hub",
-      eyebrow: "KNOWLEDGE HUB",
-      title: "Wissen bewahren. Wissen nutzen. Wissen monetarisieren.",
+      stepperLabel: "Knowledge Reuse",
+      eyebrow: "KNOWLEDGE REUSE",
+      title: "Projektwissen systematisch zurueck in den naechsten Deal fuehren",
       body:
-        "Ihre Wissensdatenbank mit KI-gestützter Suche: Proposals, Frameworks und Best Practices — immer griffbereit. Jedes Projekt füttert automatisch den Knowledge Graph.",
-      ctaLabel: "Mehr zu Knowledge Hub",
+        "Delivery Health, Scope-Risiken, Kostenbezug und Lessons Learned laufen in derselben Arbeitsebene zusammen. So wird Projektwissen nicht archiviert, sondern im naechsten Deal und in der naechsten Besetzung wieder nutzbar.",
+      ctaLabel: "Mehr zu Wissenswiederverwendung",
       image: {
         src: "/images/figma/step-knowledge.png",
-        alt: "Knowledge Hub mit Beratungswissen und Proposals",
+        alt: "Knowledge Hub mit Beratungswissen und Referenzen",
       },
-      caption: "Wissensbausteine, Benchmarks und Referenzen im operativen Zugriff.",
+      caption:
+        "Wissensbausteine, Referenzen und Learnings tauchen dort wieder auf, wo sie Umsatz und Delivery verbessern.",
       flipped: true,
     },
   ] satisfies HomepageStep[],
+  internalLinks: [
+    {
+      href: "/produkt/account-growth",
+      label: "Bestandskundenwachstum",
+      body:
+        "Wie Consultry Trigger, Warm Paths und Folgeprojekte im DACH-Consulting sichtbar macht.",
+    },
+    {
+      href: "/produkt/staffing-forecasting",
+      label: "Staffing und Forecasting",
+      body:
+        "Wie Skills, Verfuegbarkeit und Teamlogik zu belastbareren Staffing-Entscheidungen werden.",
+    },
+    {
+      href: "/produkt/knowledge-reuse",
+      label: "Knowledge Reuse",
+      body:
+        "Wie Projektwissen wieder im Pitch, Staffing und Delivery auftaucht statt im Archiv zu enden.",
+    },
+    {
+      href: "/produkt/commercial-control",
+      label: "Commercial Control",
+      body:
+        "Wie Delivery, Kostenbezug und Billing Prep in einer operativen Steuerung zusammenlaufen.",
+    },
+    {
+      href: "/produkt/consultry-vs-crm",
+      label: "Consultry vs. Standard-CRM",
+      body:
+        "Warum Beratungen mehr brauchen als ein System fuer Kontakte, Pipeline und Reporting.",
+    },
+  ] satisfies HomepageLinkCard[],
   metrics: [
     {
-      value: "70-80%",
-      label: "Weniger BD-Recherchezeit",
-      body: "Von 25 auf unter 5 Std. pro Woche",
+      value: "Frueher",
+      label: "Folgegeschaeft erkennen",
+      body:
+        "Weil Bestandskunden-Signale, Stakeholder-Kontext und naechste Chancen nicht mehr verstreut liegen.",
     },
     {
-      value: "2x",
-      label: "Schnellere Angebotserstellung",
-      body: "Von Tagen auf wenige Stunden",
+      value: "Belastbarer",
+      label: "Staffing und Forecasting",
+      body:
+        "Weil Verfuegbarkeit, Skills und Projektrealitaet in einer gemeinsamen Steuerungslogik zusammenlaufen.",
     },
     {
-      value: "40-55%",
-      label: "Geringere Akquisekosten",
-      body: "Pro qualifizierter Opportunity",
+      value: "Weniger",
+      label: "Wissensverlust",
+      body:
+        "Weil Referenzen, Methoden und Lessons Learned im operativen Flow wieder auftauchen.",
     },
     {
-      value: "80-90%",
-      label: "Berater-Auslastung",
-      body: "Statt 60-70% Branchenschnitt",
+      value: "Schneller",
+      label: "von Chance zu Angebot",
+      body:
+        "Weil Briefing, Team, CVs und Proposal nicht mehr separat zusammengesucht werden muessen.",
     },
   ] satisfies HomepageMetric[],
   waitlist: {
-    eyebrow: "WAITLIST",
-    title: "Bereit, Ihre Beratung auf das naechste Level zu bringen?",
+    eyebrow: "DEMO",
+    title: "Sehen Sie, wie aus verstreuter Beratungsarbeit ein steuerbarer Workflow wird",
     body:
-      "Sehen Sie in 30 Minuten, wie Consultry den Weg vom Signal zum profitablen Projekt verkürzt — mit Ihren echten Daten, Ihrem Team und Ihren Prozessen.",
-    placeholder: "Ihre geschäftliche E-Mail-Adresse",
-    buttonLabel: "Frühzugang sichern",
-    trustLine: "Keine Kreditkarte nötig · Exklusiv für DACH-Beratungen · Begrenzte Plätze",
-    success: "Danke. Wir haben Ihre Anfrage für den Frühzugang erhalten.",
+      "In 30 Minuten zeigen wir anhand Ihrer echten Kunden- und Teamlogik, wie aus Signalen belastbare Chancen, aus Chancen schnellere Angebote und aus Projekten saubere kommerzielle Steuerung wird.",
+    placeholder: "Ihre geschaeftliche E-Mail-Adresse",
+    buttonLabel: "Demo anfragen",
+    trustLine:
+      "Exklusiv fuer DACH-Beratungen · EU-Hosting · Keine generische Self-Serve-Software",
+    success: "Danke. Wir haben Ihre Anfrage fuer eine Demo erhalten.",
   } satisfies HomepageWaitlist,
 } as const;

@@ -17,8 +17,8 @@ export type ProofStat = {
 export const aboutContent = {
   hero: {
     overline: "ÜBER CONSULTRY",
-    title: "Wir bauen das Betriebssystem für moderne Beratungshaeuser",
-    body: "Drei Gruender aus Consulting, Cybersecurity und Programm-Management vereinten ihre Erfahrung in einer KI-nativen Plattform - entwickelt in Berlin, gebaut fuer den DACH-Markt.",
+    title: "Wir bauen das AI-native Operating System fuer DACH-Beratungen",
+    body: "Drei Gruender aus Consulting, Cybersecurity und Programm-Management vereinen ihre Erfahrung in einem operativen System fuer DACH-IT- und Digitalisierungsberatungen.",
   },
   team: {
     overline: "DAS TEAM",
@@ -65,33 +65,33 @@ export const aboutContent = {
     ],
     proofRail: [
       {
-        value: "15+",
-        label: "Module",
-        detail: "für den gesamten Beratungs-Lifecycle",
+        value: "3",
+        label: "Gruender",
+        detail: "aus Consulting, Produkt und Security",
       },
       {
         value: "100 %",
         label: "DACH-Fokus",
-        detail: "Daten, Compliance und Sprache",
+        detail: "Sprache, Marktlogik und Compliance",
       },
       {
         value: "EU",
         label: "Hosting",
-        detail: "in Frankfurt. Keine Daten außerhalb der EU.",
+        detail: "mit Fokus auf DSGVO und kontrollierte Datenverarbeitung",
       },
       {
-        value: "< 2 Wochen",
-        label: "Onboarding",
-        detail: "bis zum produktiven Einsatz",
+        value: "B2B",
+        label: "Zielgruppe",
+        detail: "IT- und Digitalisierungsberatungen im DACH-Raum",
       },
     ] satisfies ProofStat[],
   },
   cta: {
     eyebrow: "NÄCHSTER SCHRITT",
-    title: "Bereit, Teil der Geschichte zu werden?",
-    body: "Wir suchen Beratungsunternehmen, die mit uns die nächste Generation operativer Werkzeuge gestalten. Werden Sie Pilotpartner.",
+    title: "Bereit fuer eine persoenliche Produktdemo?",
+    body: "Wir sprechen mit Beratungsunternehmen, die Folgegeschaeft, Staffing und Delivery nicht laenger ueber isolierte Tools steuern wollen.",
     primaryCta: {
-      label: "Pilotpartner werden",
+      label: "Demo anfragen",
       href: "/#waitlist",
     },
   },

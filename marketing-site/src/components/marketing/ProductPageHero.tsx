@@ -107,14 +107,11 @@ export function ProductPageHero({ content }: ProductPageHeroProps) {
             </p>
 
             <div className="rise-in rise-in-delay-3 mt-8 flex flex-wrap gap-4">
-              <Button
-                className="bg-white px-9 py-3.5 text-[18px] font-semibold !text-[#1f140f] shadow-none hover:bg-[#f5f1ed]"
-                href={content.primaryCta.href}
-              >
+              <Button className="px-9 py-3.5 text-[18px] font-semibold" href={content.primaryCta.href}>
                 {content.primaryCta.label}
               </Button>
               <Button
-                className="border-white/60 bg-transparent px-9 py-3.5 text-[18px] font-semibold !text-white hover:border-white hover:bg-white/6"
+                className="px-9 py-3.5 text-[18px] font-semibold"
                 href={content.secondaryCta.href}
                 variant="secondary"
               >
@@ -122,7 +119,7 @@ export function ProductPageHero({ content }: ProductPageHeroProps) {
               </Button>
             </div>
 
-            <p className="rise-in rise-in-delay-4 mt-7 text-[14px] leading-[1.5] text-[rgba(255,255,255,0.35)]">
+            <p className="rise-in rise-in-delay-4 mt-7 text-[14px] leading-[1.5] text-[rgba(217,212,207,0.62)]">
               {content.proofLine}
             </p>
           </div>

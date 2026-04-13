@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { HomepageStep } from "@/lib/content/de/homepage";
 
@@ -15,6 +16,14 @@ export function FeatureShowcaseStep({ step }: FeatureShowcaseStepProps) {
   ];
   const activeIndex = Math.max(Number(step.stepLabel.replace(/\D/g, "")) - 1, 0);
   const progressWidth = `${activeIndex * 33.33}%`;
+  const stepHref =
+    step.id === "account-growth"
+      ? "/produkt/account-growth"
+      : step.id === "staffing-forecasting"
+        ? "/produkt/staffing-forecasting"
+        : step.id === "knowledge-reuse"
+          ? "/produkt/knowledge-reuse"
+          : "/produkt#architecture";
 
   return (
     <article className="overflow-hidden rounded-[12px] bg-[#2c2926] shadow-[0_4px_20px_-2px_rgba(0,0,0,0.2)] ring-1 ring-[rgba(255,255,255,0.06)]" id={step.id}>
@@ -106,13 +115,13 @@ export function FeatureShowcaseStep({ step }: FeatureShowcaseStepProps) {
           <p className="mt-3 text-[15px] leading-[1.6] text-[var(--consultry-text-muted)] sm:text-[16px]">
             {step.body}
           </p>
-          <a
+          <Link
             className="mt-4 inline-flex items-center gap-2 text-[15px] font-medium text-[#dda49e] transition hover:text-[var(--consultry-text-primary)] sm:text-[16px]"
-            href="/produkt#video"
+            href={stepHref}
           >
             {step.ctaLabel}
             <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
 
         <div className="relative mx-auto aspect-[4/3] w-full max-w-[560px] overflow-hidden rounded-[12px] bg-[#211d1a] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">

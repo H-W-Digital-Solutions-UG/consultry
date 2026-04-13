@@ -3,7 +3,18 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { MotionReveal } from "@/components/marketing/MotionReveal";
 import { cn } from "@/lib/cn";
-import type { ProductFeatureRowContent } from "@/lib/content/de/product";
+
+type ProductFeatureRowContent = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  linkLabel: string;
+  reverse?: boolean;
+  image: {
+    src: string;
+    alt: string;
+  };
+};
 
 type FeatureShowcaseRowProps = {
   content: ProductFeatureRowContent;
