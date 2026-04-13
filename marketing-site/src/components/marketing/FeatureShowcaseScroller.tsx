@@ -2,8 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { startTransition, useEffect, useRef, useState } from "react";
 import { FeatureShowcaseStep } from "@/components/marketing/FeatureShowcaseStep";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
@@ -18,6 +25,20 @@ export function FeatureShowcaseScroller({ steps }: FeatureShowcaseScrollerProps)
   const shouldReduceMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHydrated, setIsHydrated] = useState(false);
+  const stepCount = steps.length;
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start start", "end end"],
+  });
+  const progressWidth = useTransform(scrollYProgress, (latest) => {
+    if (stepCount <= 1) {
+      return "0%";
+    }
+
+    const boundedProgress = Math.min(Math.max(latest, 0), 1);
+
+    return `${boundedProgress * 75}%`;
+  });
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -29,37 +50,55 @@ export function FeatureShowcaseScroller({ steps }: FeatureShowcaseScrollerProps)
     };
   }, []);
 
-  useEffect(() => {
-    const updateActiveIndex = () => {
-      if (!scrollRef.current) {
-        return;
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (stepCount === 0) {
+      return;
+    }
+
+    const boundedProgress = Math.min(Math.max(latest, 0), 1);
+    let nextIndex = 0;
+
+    if (stepCount > 1) {
+      for (let index = stepCount - 1; index >= 0; index -= 1) {
+        const stepThreshold = index / (stepCount - 1);
+
+        if (boundedProgress >= stepThreshold - 0.001) {
+          nextIndex = index;
+          break;
+        }
       }
+    }
 
-      const rect = scrollRef.current.getBoundingClientRect();
-      const totalScrollableDistance = Math.max(scrollRef.current.offsetHeight - window.innerHeight, 1);
-      const travelledDistance = Math.min(Math.max(-rect.top, 0), totalScrollableDistance);
-      const progress = travelledDistance / totalScrollableDistance;
-      const nextIndex = Math.min(steps.length - 1, Math.floor(progress * steps.length));
+    startTransition(() => {
+      setActiveIndex((current) => (current === nextIndex ? current : nextIndex));
+    });
+  });
 
-      startTransition(() => {
-        setActiveIndex((current) => (current === nextIndex ? current : nextIndex));
-      });
-    };
+  const scrollToStep = (index: number) => {
+    const nextIndex = Math.min(Math.max(index, 0), Math.max(stepCount - 1, 0));
 
-    updateActiveIndex();
+    startTransition(() => {
+      setActiveIndex(nextIndex);
+    });
 
-    window.addEventListener("scroll", updateActiveIndex, { passive: true });
-    window.addEventListener("resize", updateActiveIndex);
+    if (!scrollRef.current || stepCount <= 1) {
+      return;
+    }
 
-    return () => {
-      window.removeEventListener("scroll", updateActiveIndex);
-      window.removeEventListener("resize", updateActiveIndex);
-    };
-  }, [steps.length]);
+    const sectionTop = scrollRef.current.getBoundingClientRect().top + window.scrollY;
+    const maxScrollableDistance = Math.max(
+      scrollRef.current.offsetHeight - window.innerHeight,
+      0,
+    );
+    const progress = nextIndex / (stepCount - 1);
+
+    window.scrollTo({
+      top: sectionTop + progress * maxScrollableDistance,
+      behavior: shouldReduceMotion ? "auto" : "smooth",
+    });
+  };
 
   const activeStep = steps[activeIndex];
-  const progressWidth =
-    steps.length > 1 ? `${(activeIndex / (steps.length - 1)) * 75}%` : "0%";
 
   return (
     <section className="pb-12 pt-10 sm:pb-14 sm:pt-12 lg:pb-16 lg:pt-14">
@@ -88,13 +127,47 @@ export function FeatureShowcaseScroller({ steps }: FeatureShowcaseScrollerProps)
           <div className="w-full">
             <div className="overflow-hidden rounded-[12px] bg-[#2c2926] shadow-[0_4px_20px_-2px_rgba(0,0,0,0.2)] ring-1 ring-[rgba(255,255,255,0.06)]">
               <div className="border-b border-[rgba(255,255,255,0.06)] bg-[rgba(41,38,36,0.82)] px-10 py-7">
+                <div className="mb-6 flex items-center justify-between gap-4">
+                  <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[#8f8882]">
+                    Klicken oder scrollen
+                  </p>
+
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] px-3 py-1 text-[11px] font-medium tracking-[0.16em] text-[#b8b1aa]">
+                      {String(activeIndex + 1).padStart(2, "0")} / {String(stepCount).padStart(2, "0")}
+                    </span>
+
+                    <button
+                      aria-label="Vorherigen Schritt anzeigen"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] text-[#d2cbc5] transition hover:border-[rgba(232,145,58,0.35)] hover:text-[#fafaf9] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-[rgba(255,255,255,0.08)]"
+                      disabled={activeIndex === 0}
+                      onClick={() => scrollToStep(activeIndex - 1)}
+                      type="button"
+                    >
+                      <ArrowLeft className="h-4 w-4" />
+                    </button>
+
+                    <button
+                      aria-label="Naechsten Schritt anzeigen"
+                      className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] text-[#d2cbc5] transition hover:border-[rgba(232,145,58,0.35)] hover:text-[#fafaf9] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-[rgba(255,255,255,0.08)]"
+                      disabled={activeIndex === stepCount - 1}
+                      onClick={() => scrollToStep(activeIndex + 1)}
+                      type="button"
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+
                 <div className="relative">
                   <div className="absolute left-[12.5%] right-[12.5%] top-3.5 h-[3px] -translate-y-1/2 rounded-full bg-[#4d4a45]" />
                   <motion.div
-                    animate={{ width: progressWidth }}
                     className="absolute left-[12.5%] top-3.5 h-[3px] -translate-y-1/2 rounded-full"
-                    style={{ background: "linear-gradient(90deg, #e8913b 0%, rgba(232, 102, 89, 0.75) 45%, #9c59b5 100%)" }}
-                    transition={{ duration: shouldReduceMotion ? 0 : 0.35, ease: "easeInOut" }}
+                    style={{
+                      width: progressWidth,
+                      background:
+                        "linear-gradient(90deg, #e8913b 0%, rgba(232, 102, 89, 0.75) 45%, #9c59b5 100%)",
+                    }}
                   />
 
                   <div className="relative z-10 grid grid-cols-4 gap-4">
@@ -103,7 +176,13 @@ export function FeatureShowcaseScroller({ steps }: FeatureShowcaseScrollerProps)
                       const isComplete = index < activeIndex;
 
                       return (
-                        <div className="flex flex-col items-center gap-5 text-center" key={step.id}>
+                        <button
+                          aria-current={isActive ? "step" : undefined}
+                          className="flex flex-col items-center gap-5 text-center"
+                          key={step.id}
+                          onClick={() => scrollToStep(index)}
+                          type="button"
+                        >
                           <div
                             className={[
                               "relative flex h-7 w-7 items-center justify-center rounded-full border transition-all duration-300",
@@ -137,7 +216,7 @@ export function FeatureShowcaseScroller({ steps }: FeatureShowcaseScrollerProps)
                           >
                             {step.stepperLabel}
                           </p>
-                        </div>
+                        </button>
                       );
                     })}
                   </div>
