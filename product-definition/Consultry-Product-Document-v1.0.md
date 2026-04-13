@@ -18,7 +18,7 @@ Consultry ist ein **AI-native Operating System für DACH IT- und Digitalisierung
 
 - Account-Wachstum im Bestand
 - Berater- und Kapazitätssteuerung
-- Wiederverwendbares Beratungswissen
+- wiederverwendbares Beratungswissen und Delivery-Artefakte
 - Angebots- und Vertragssteuerung
 - Delivery- und Commercial Control
 
@@ -72,6 +72,7 @@ Quellen: [BDU Bestandskunden](https://www.bdu.de/news/consultants-erzielen-80-de
 ### 3.2 Wissen ist kein Wiki-Problem, sondern ein Umsatz- und Delivery-Problem
 
 Beratungswissen geht mit Personen, Projekten und lokalen Dateien verloren. Gleichzeitig wird KI im Consulting heute bereits besonders stark für Wissensmanagement, Recherche und Angebotsarbeit eingesetzt.  
+Für IT- und Tech-nahe Beratungen besteht dieses Wissen nicht nur aus Folien und Texten, sondern auch aus Reports, Analyse-Setups, Skripten, kleinen Tools, Runbooks und kundenähnlichen Demo-/Test-Umgebungen für Vorbereitung, QA und Troubleshooting.  
 Quellen: [BDU KI im Consulting](https://www.bdu.de/news/ki-in-consultingunternehmen-schwerpunkt-auf-kundenprojekten/), [CONSULTING.de Know-how bewahren](https://www.consulting.de/artikel/wie-knowhow-im-unternehmen-bewahrt-werden-kann-und-warum/)
 
 ### 3.3 Auslastung, Forecasting, Pricing und Akquisekosten sind Kernökonomie
@@ -317,38 +318,80 @@ Typischer Output:
 - CV-Paket
 - Pricing-/Commercial-Draft
 
-### 10.2 Berater-Wissenstransfer & Reuse
+### 10.2 Wissenstransfer, Reuse & Readiness
 
-`Projektwissen -> wiederverwendbare Referenzen/Methoden/Nachweise -> schnellere Proposal-, Onboarding- und Projektvorbereitung`
+`Projektwissen + Delivery-Artefakte -> verdichtete Referenzen/Methoden/Learnings/Blueprints -> schnellere Proposal-, Onboarding- und Projektvorbereitung`
 
 Warum stark:
 
-- realer interner Schmerz
-- hoher Hebel auf Proposal-Qualität, Onboarding und Delivery-Readiness
-- gute AI-Fit-Zone
+- realer Schmerz im Beratungsalltag mit wenig Zeit für saubere Dokumentation
+- hoher Hebel auf Proposal-Qualität, Onboarding und Projektvorbereitung
+- gute AI-Fit-Zone für Capture, Verdichtung, Wiederverwendung und Quellenbindung
+
+Warum als Verstärker-Wedge interessant:
+
+- macht vorhandene Erfahrung schneller nutzbar, statt nur neues Wissen zu sammeln
+- erhöht die Qualität des Primär-Wedges direkt über bessere Referenzen, CVs und Methodenbausteine
+- kann in 30 bis 90 Tagen mit echten Projekten und realen Wissensartefakten sichtbar getestet werden
 
 Typischer Output:
 
 - wiederverwendbare Referenzbausteine
 - auffindbare Methodenbausteine
 - projektbezogene Learnings
+- Onboarding Foundations
+- wiederverwendbare Reports, Skripte und kleine Tool-Bausteine
+- Runbooks und Troubleshooting-Patterns
+- kundennahe Demo-/Test-Blueprints für interne Validierung ohne Eingriff in Kunden-Produktionsumgebungen
 - bessere CV-/Proposal-Readiness
 
-### 10.3 Consultant Readiness & Staffing Confidence
+Was diesen Wedge kaufbar macht:
 
-`Beraterprofil + Skill + Zertifikate + Projekterfahrung + grobe Availability -> belastbarerer Teamvorschlag`
+- kürzere Proposal-Vorbereitung
+- schnelleres Onboarding in Themen, Kunden und Projektkontexte
+- weniger Wissensverlust bei Projektwechseln und Abgängen
+- schnellere Demo-, QA- und Troubleshooting-Vorbereitung mit wiederverwendbaren Assets statt Neuanfang pro Projekt
+
+Was ihn noch nicht zum besten Primär-Wedge macht:
+
+- klingt isoliert schnell nach Wiki oder Knowledge Management
+- verkauft sich stärker, wenn er direkt mit Proposal, Projektvorbereitung und Staffing-Readiness verbunden wird
+
+### 10.3 Intelligentes Staffing, Matching & Forecasting
+
+`Pipeline + Kundenkontext + Beraterprofil + Skill + Zertifikate + Projekterfahrung + Availability -> belastbarerer Team- und Forecast-Vorschlag`
 
 Warum stark:
 
 - sehr nah am realen Beratungsbetrieb
-- verbessert Staffing und Angebotsglaubwürdigkeit
+- verbessert Staffing, Matching und Angebotsglaubwürdigkeit
+- hilft, Überlastung, Leerlauf und Skill-Lücken früher sichtbar zu machen
 - gut mit Proposal-Wedge kombinierbar
+
+Warum als Verstärker-Wedge interessant:
+
+- beantwortet eine der härtesten internen Fragen jeder Beratung: `Können wir das glaubwürdig liefern?`
+- stärkt den Primär-Wedge direkt über belastbarere Teamvorschläge
+- gibt Practice Leads und Sales ein gemeinsames Bild auf Verfügbarkeit, Eignung und Risiko
 
 Typischer Output:
 
 - belastbarere Teamvorschläge
-- sichtbarere Skill-Lücken
+- plausiblere Matching-Alternativen
+- sichtbarere Forecast-, Skill- und Kapazitätslücken
 - schnelleres internes Staffing
+
+Was diesen Wedge kaufbar macht:
+
+- weniger manuelles Suchen nach passenden Beratern
+- höhere Sicherheit vor Angebotsabgabe
+- frühere Sichtbarkeit von Bench-, Überlastungs- und Skill-Risiken
+
+Was ihn noch nicht zum besten Primär-Wedge macht:
+
+- braucht bessere Datenqualität als der Primär-Wedge
+- ist im DACH-Kontext governance- und compliance-sensibler
+- kann schnell nach internem Ressourcenmanagement statt nach externem Geschäftswert klingen
 
 ### 10.4 Commercial Readiness Light
 
@@ -389,12 +432,12 @@ Aber sie sollten nicht alle gleichzeitig die primäre Go-to-Market-Story sein.
 
 Das ist der stärkste erste Kaufgrund.
 
-### Sekundäre Wedges
+### Verstärker-Wedges
 
-- **Berater-Wissenstransfer & Reuse**
-- **Consultant Readiness & Staffing Confidence**
+- **Wissenstransfer, Reuse & Readiness**
+- **Intelligentes Staffing, Matching & Forecasting**
 
-Diese beiden stärken den primären Wedge direkt und erhöhen Produktsubstanz und Adoption.
+Diese beiden stärken den primären Wedge direkt. Sie sind nicht bloß Enabler, sondern eigenständige, testbare Problemgeschichten mit starkem Verstärker-Effekt auf Proposal und Delivery-Confidence.
 
 ### Spätere Ausbau-Wedges
 
@@ -406,8 +449,8 @@ Diese beiden stärken den primären Wedge direkt und erhöhen Produktsubstanz un
 | Wedge | Schmerz | Kaufnähe | Datenverfügbarkeit | Demo-Fähigkeit | Compliance-Risiko | Time-to-Value | Vorläufiges Urteil |
 |---|---|---|---|---|---|---|---|
 | **Bestandskunden-Expansion & Proposal** | hoch | hoch | mittel | hoch | mittel | hoch | **primärer Wedge** |
-| **Berater-Wissenstransfer & Reuse** | hoch | mittel | mittel bis hoch | mittel | niedrig bis mittel | mittel bis hoch | **starker sekundärer Wedge** |
-| **Consultant Readiness & Staffing Confidence** | hoch | mittel | mittel | mittel | mittel bis hoch | mittel | **sekundärer Wedge mit höherem Risiko** |
+| **Wissenstransfer, Reuse & Readiness** | hoch | mittel | mittel bis hoch | mittel | niedrig bis mittel | mittel bis hoch | **starker Verstärker-Wedge** |
+| **Intelligentes Staffing, Matching & Forecasting** | hoch | mittel | mittel | mittel | mittel bis hoch | mittel | **starker Verstärker-Wedge mit höherem Risiko** |
 | **Commercial Readiness Light** | hoch | mittel bis hoch | mittel | mittel | mittel | mittel | **späterer Ausbau, selektiv testbar** |
 | **Tender-Readiness** | segmentabhängig hoch | segmentabhängig mittel bis hoch | mittel | mittel | mittel | mittel | **nur für passende Segmente** |
 
@@ -423,8 +466,9 @@ Diese beiden stärken den primären Wedge direkt und erhöhen Produktsubstanz un
 **Vorläufige Schlussfolgerung**
 
 - `Bestandskunden-Expansion & Proposal` gewinnt, weil es die beste Kombination aus Kaufnähe, Demo-Fähigkeit und Time-to-Value hat.
-- `Berater-Wissenstransfer & Reuse` ist kein Nebenthema, sondern ein echter Verstärker für Proposal, Onboarding und Projektvorbereitung.
-- `Consultant Readiness & Staffing Confidence` ist stark, aber daten- und governance-intensiver.
+- `Wissenstransfer, Reuse & Readiness` ist kein Nebenthema, sondern ein echter Verstärker für Proposal, Onboarding und Projektvorbereitung.
+- `Intelligentes Staffing, Matching & Forecasting` ist stark, aber daten- und governance-intensiver.
+- Beide Verstärker-Wedges sollten als direkte Verstärkung des Primär-Wedges gestaltet werden, nicht als separate Backoffice-Suiten.
 - `Commercial Readiness Light` bleibt wertvoll, sollte aber den Erstverkauf nicht in Finance-/ERP-Komplexität ziehen.
 - `Tender-Readiness` sollte bewusst als vertikaler Wedge behandelt werden, nicht als universeller Einstieg.
 
@@ -437,8 +481,10 @@ Die Wedges sind verschieden, teilen aber wenige gemeinsame Enabler:
 - Bestandskundenkontext
 - strukturierte Beraterprofile
 - auffindbares und wiederverwendbares Wissen
+- wiederverwendbare Delivery-Artefakte wie Reports, Skripte, kleine Tools und Runbooks
 - Teamvorschläge mit nachvollziehbarer Begründung
 - Proposal-/CV-Drafting
+- sichere, vom Kunden-Produktivsystem getrennte Demo-/Test-Setups für Validierung und Troubleshooting
 - leichte Commercial-/Contract-Readiness
 - assistive, nicht überautomatisierte Folgeaktionen
 
@@ -454,6 +500,7 @@ Sie sind aber **Unterstützung für die Wedges**, nicht schon das volle Produktz
 - Finance-Ops-Design in voller Breite
 - tiefes Allocation-Operating-Model
 - breite Integrationstiefe
+- vollwertige DevOps-/Platform-Engineering-Suite für beliebige Kundenumgebungen
 - AT/CH-Sonderlogik
 - Event-/Messe-Betrieb
 - Public-Tender-Vollabdeckung
@@ -486,11 +533,11 @@ Die entscheidenden Hypothesen sind nicht technisch, sondern produktstrategisch:
 1. **Primary-Wedge-Hypothese**  
    Bestandskunden-Expansion & Proposal ist der stärkste erste Kaufgrund.
 
-2. **Knowledge-Hypothese**  
-   Berater-Wissenstransfer wird nicht als „Knowledge Management“, sondern als Reuse- und Proposal-Readiness gekauft.
+2. **Wissensreuse-Hypothese**  
+   Wissenstransfer wird nicht als „Knowledge Management“, sondern als Reuse-, Proposal- und Onboarding-Readiness gekauft.
 
-3. **Readiness-Hypothese**  
-   Strukturierte Beraterprofile und bessere Teamvorschläge erhöhen die Glaubwürdigkeit des primären Wedges messbar.
+3. **Staffing-/Forecast-Hypothese**  
+   Intelligentes Staffing, Matching und Consultant Forecasting erhöhen die Glaubwürdigkeit des primären Wedges messbar.
 
 4. **Commercial-Hypothese**  
    Ein Commercial-/Contract-Draft ist im ersten Schritt wertvoll, auch ohne tiefe Finance-Ops-Logik.
@@ -506,7 +553,7 @@ Die nächsten Fragen sind wichtiger als weitere Systemarchitektur:
 
 1. Für welchen Wedge zahlen potenzielle Design Partner tatsächlich zuerst?
 2. Wer spürt den Schmerz am stärksten: Managing Partner, Practice Lead, Account Lead oder Operations?
-3. Welcher Einstieg resoniert am stärksten: `Bestandskunden-Expansion`, `Berater-Wissenstransfer`, `Staffing-Confidence`, `Commercial Readiness` oder `Ausschreibungsqualifizierung`?
+3. Welcher Einstieg resoniert am stärksten: `Bestandskunden-Expansion`, `Wissensreuse`, `intelligentes Staffing/Forecasting`, `Commercial Readiness` oder `Ausschreibungsqualifizierung`?
 4. Welche Daten liegen real vor, und in welcher Qualität?
 5. Wie viel Commercial-/Contract-Tiefe braucht ein Design Partner wirklich im ersten Schritt?
 6. Reicht `assistive Outreach`, oder muss Versand schon aus dem Produkt heraus möglich sein?
@@ -519,7 +566,7 @@ Die nächsten Fragen sind wichtiger als weitere Systemarchitektur:
 
 Für den aktuellen Stand ist die präzisere Beschreibung:
 
-`Consultry ist die AI-native Bestandskunden-Expansion- und Proposal-Engine für DACH IT- und Digitalisierungsberatungen.`
+`Consultry ist die AI-native Bestandskunden-Expansion- und Proposal-Engine für DACH IT- und Digitalisierungsberatungen, verstärkt durch Wissensreuse sowie intelligentes Staffing, Matching und Forecasting.`
 
 Langfristig kann daraus ein Operating System werden.  
 Heute sollte es noch nicht so verkauft werden, als wäre diese Breite schon das Produkt.
@@ -535,6 +582,8 @@ Nicht PMF, sondern erste Beweise:
 - reale Kundenfälle lassen sich mit echten Daten durchspielen
 - Teamvorschläge werden als plausibel wahrgenommen
 - Proposal/CV-Drafts sparen sichtbar Zeit
+- Wissensbausteine verkürzen Proposal- und Onboarding-Vorbereitung messbar
+- Staffing- und Forecast-Vorschläge werden als brauchbare Entscheidungshilfe akzeptiert
 - Commercial Drafts sind brauchbar genug, um intern weiterbearbeitet zu werden
 - Bestandskundenchancen werden früher oder strukturierter sichtbar
 
@@ -547,8 +596,10 @@ Nicht PMF, sondern erste Beweise:
 3. Welcher Design-Partner-Typ reagiert auf welchen Wedge am stärksten: Cloud, SAP, Data/AI, Digital Operations, Public-Sector-nah?
 4. Wie viel Contract-/Pricing-Tiefe braucht der Expansion-/Proposal-Wedge minimal, um glaubwürdig zu sein?
 5. Wie viel Knowledge-Tiefe braucht der Wissensreuse-Wedge minimal, um nicht wie „nur ein Wiki“ zu wirken?
-6. Welche Datenquellen reichen für Pilot und Demo wirklich aus, ohne breite Integrationsarbeit?
-7. Reicht `Germany-first` als Start klar aus, oder erwarten frühe Kunden schon AT/CH-Tiefe?
+6. Wie viel Profil-, Availability- und Forecast-Tiefe braucht der Staffing-Wedge minimal, um nicht wie „nur eine Skill-Liste“ zu wirken?
+7. Welche Delivery-Artefakte müssen im Pilot schon als First-Class-Assets behandelbar sein: Reports, Skripte, kleine Tools, Runbooks oder Demo-/Test-Blueprints?
+8. Welche Datenquellen reichen für Pilot und Demo wirklich aus, ohne breite Integrationsarbeit?
+9. Reicht `Germany-first` als Start klar aus, oder erwarten frühe Kunden schon AT/CH-Tiefe?
 
 ---
 
@@ -613,8 +664,8 @@ Die aktuell präzisere und belastbarere Beschreibung ist:
 
 Gleichzeitig sollten weitere Wedges bewusst mitgedacht werden:
 
-- Berater-Wissenstransfer & Reuse
-- Consultant Readiness & Staffing Confidence
+- Wissenstransfer, Reuse & Readiness
+- Intelligentes Staffing, Matching & Forecasting
 - Commercial Readiness Light
 - segmentabhängig Tender-Readiness
 

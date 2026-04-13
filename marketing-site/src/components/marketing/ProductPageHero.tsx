@@ -95,10 +95,10 @@ export function ProductPageHero({ content }: ProductPageHeroProps) {
             </p>
             <h1 className="rise-in rise-in-delay-1 mt-5 text-[clamp(2.9rem,6vw,3.5rem)] font-extrabold leading-[0.97] tracking-[-0.045em] text-[#faf7f2]">
               <span className="block sm:whitespace-nowrap">{content.title[0] ?? ""}</span>
-              <span className="block bg-[linear-gradient(90deg,#e8913b_0%,#e86659_50%,#bf5447_100%)] bg-clip-text text-transparent sm:whitespace-nowrap">
+              <span className="gradient-text-safe block bg-[linear-gradient(90deg,#e8913b_0%,#e86659_50%,#bf5447_100%)] bg-clip-text text-transparent sm:whitespace-nowrap">
                 {content.title[1] ?? ""}
               </span>
-              <span className="block bg-[linear-gradient(90deg,#bf5447_0%,#e8913b_100%)] bg-clip-text text-transparent sm:whitespace-nowrap">
+              <span className="gradient-text-safe block bg-[linear-gradient(90deg,#bf5447_0%,#e8913b_100%)] bg-clip-text text-transparent sm:whitespace-nowrap">
                 {content.title[2] ?? ""}
               </span>
             </h1>

@@ -107,7 +107,10 @@ button {
   -webkit-text-fill-color: transparent;
   color: transparent;
   display: inline-block;
-  padding-block: 0.04em;
+  line-height: 1.08;
+  padding-top: 0.02em;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.08em;
 }
 
 .gradient-text-hero-alt {
@@ -117,7 +120,18 @@ button {
   -webkit-text-fill-color: transparent;
   color: transparent;
   display: inline-block;
-  padding-block: 0.04em;
+  line-height: 1.08;
+  padding-top: 0.02em;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.08em;
+}
+
+.gradient-text-safe {
+  display: inline-block;
+  line-height: 1.08;
+  padding-top: 0.02em;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.08em;
 }
 
 .grid-lines {
