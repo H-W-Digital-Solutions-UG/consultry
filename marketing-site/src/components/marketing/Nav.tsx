@@ -60,17 +60,17 @@ export function Nav() {
             "border-b border-[var(--consultry-border-soft)] bg-[var(--consultry-surface-glass)] shadow-[var(--consultry-shadow-md)] backdrop-blur-xl",
         )}
       >
-        <div className="content-shell flex min-h-16 items-center justify-between gap-4 py-3">
-          <Link className="inline-flex items-center gap-2.5 sm:gap-3.5" href="/">
+        <div className="content-shell flex min-h-[4.1rem] items-center justify-between gap-4 py-2">
+          <Link className="inline-flex items-center gap-2 sm:gap-3" href="/">
             <Image
               alt="Consultry Logo"
-              className="h-[3rem] w-auto object-contain sm:h-[3.75rem]"
+              className="h-[3.2rem] w-auto object-contain sm:h-[3.55rem]"
               height={74}
               priority
               src="/images/consultry-logo.png"
               width={84}
             />
-            <span className="bg-[linear-gradient(90deg,#e8913a_10%,#e8655a_25%,#9b59b6_60%)] bg-clip-text text-[25px] font-semibold leading-none tracking-[-0.035em] text-transparent">
+            <span className="bg-[linear-gradient(90deg,#e8913a_10%,#e8655a_25%,#9b59b6_60%)] bg-clip-text text-[1.45rem] font-semibold leading-[0.92] tracking-[-0.035em] text-transparent sm:text-[1.75rem]">
               Consultry
             </span>
           </Link>
@@ -94,7 +94,7 @@ export function Nav() {
 
           <div className="hidden md:block">
             <Button
-              className="px-5 py-2.5 text-[14px] font-medium tracking-[0.01em]"
+              className="px-5 py-2 text-[14px] font-medium tracking-[0.01em]"
               href={ctaTargets.nav}
               variant="secondary"
             >
