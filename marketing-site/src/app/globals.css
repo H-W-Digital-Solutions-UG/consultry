@@ -104,14 +104,20 @@ button {
   background: var(--consultry-brand-gradient-hero);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
+  display: inline-block;
+  padding-block: 0.04em;
 }
 
 .gradient-text-hero-alt {
   background: var(--consultry-brand-gradient-hero-alt);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
+  display: inline-block;
+  padding-block: 0.04em;
 }
 
 .grid-lines {

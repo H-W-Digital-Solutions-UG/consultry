@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { CTABand } from "@/components/marketing/CTABand";
 import { HeroShowcase } from "@/components/marketing/HeroShowcase";
 import { HomepageJsonLd } from "@/components/marketing/HomepageJsonLd";
 import { FeatureShowcaseScroller } from "@/components/marketing/FeatureShowcaseScroller";
 import { MetricsBand } from "@/components/marketing/MetricsBand";
 import { RichCTABand } from "@/components/marketing/RichCTABand";
+import { deepDiveCta, richDemoCta } from "@/lib/content/shared";
 import { buildPageMetadata } from "@/lib/seo";
 import { homepageContent, homepageSeo } from "@/lib/content/de/homepage";
 
@@ -32,7 +34,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default function Home() {
-  const { hero, steps, metrics, waitlist } = homepageContent;
+  const { hero, steps, metrics } = homepageContent;
 
   return (
     <>
@@ -40,6 +42,11 @@ export default function Home() {
       <main>
         <HeroShowcase hero={hero} />
         <FeatureShowcaseScroller steps={steps} />
+        <CTABand
+          body={deepDiveCta.body}
+          primaryCta={deepDiveCta.primaryCta}
+          title={deepDiveCta.title}
+        />
 
         <MetricsBand
           body="Zielwerte basierend auf Marktanalyse und Pilotprojekten mit DACH-Beratungen"
@@ -50,13 +57,12 @@ export default function Home() {
         />
 
         <RichCTABand
-          body={waitlist.body}
-          buttonLabel={waitlist.buttonLabel}
-          eyebrow={waitlist.eyebrow}
-          placeholder={waitlist.placeholder}
-          success={waitlist.success}
-          title={waitlist.title}
-          trustLine={waitlist.trustLine}
+          body={richDemoCta.body}
+          buttonLabel={richDemoCta.buttonLabel}
+          placeholder={richDemoCta.placeholder}
+          success={richDemoCta.success}
+          title={richDemoCta.title}
+          trustLine={richDemoCta.trustLine}
         />
       </main>
     </>

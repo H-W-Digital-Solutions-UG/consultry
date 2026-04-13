@@ -27,7 +27,7 @@ export function HeroShowcase({ hero }: HeroShowcaseProps) {
           <div className="mx-auto flex max-w-[48rem] flex-col items-center gap-4 text-center">
             <p className="eyebrow rise-in">{hero.eyebrow}</p>
             <div className="flex flex-col items-center">
-              <h1 className="rise-in rise-in-delay-1 text-balance text-[clamp(2.35rem,9vw,3.5rem)] font-extrabold leading-[0.94] tracking-[-0.05em] text-[#fafaf9]">
+              <h1 className="rise-in rise-in-delay-1 text-balance text-[clamp(2.35rem,9vw,3.5rem)] font-extrabold leading-[1.02] tracking-[-0.05em] text-[#fafaf9]">
                 <span className="block">{hero.title[0]}</span>
                 <span className="gradient-text-hero block">{hero.title[1]}</span>
                 <span className="gradient-text-hero-alt block">{hero.title[2]}</span>

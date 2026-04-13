@@ -34,6 +34,24 @@ export const ctaTargets = {
   aboutPrimary: "/#waitlist",
 } as const;
 
+export const deepDiveCta = {
+  title: "Bereit für eine Pipeline, die sich selbst füllt?",
+  body: "Starten Sie mit einem kostenlosen Beratungsgespräch — wir zeigen Ihnen Consultry mit Ihren eigenen Daten.",
+  primaryCta: {
+    label: "Deep Dive anfragen",
+    href: ctaTargets.nav,
+  },
+} as const;
+
+export const richDemoCta = {
+  title: "Bereit, Ihre Beratung auf das nächste Level zu bringen?",
+  body: "Sichern Sie sich frühen Zugang zum ersten KI-nativen CRM für DACH-Beratungen.",
+  placeholder: "Ihre geschäftliche E-Mail-Adresse",
+  buttonLabel: "Deep Dive anfragen",
+  trustLine: "Keine Kreditkarte nötig · Exklusiv für DACH-Beratungen · Begrenzte Plätze",
+  success: "Danke. Wir haben Ihre Anfrage erhalten.",
+} as const;
+
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Produkt", href: "/produkt" },

@@ -13,12 +13,17 @@ export function Nav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentHash, setCurrentHash] = useState("");
 
   const isActiveLink = (href: string) => {
-    const [basePath] = href.split("#");
+    const [basePath, hash] = href.split("#");
 
     if (basePath === "/") {
-      return pathname === "/";
+      return hash ? pathname === "/" && currentHash === `#${hash}` : pathname === "/";
+    }
+
+    if (hash) {
+      return pathname === basePath && currentHash === `#${hash}`;
     }
 
     return pathname === basePath;
@@ -33,6 +38,17 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const syncHash = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+
+    return () => window.removeEventListener("hashchange", syncHash);
   }, []);
 
   return (
@@ -64,9 +80,11 @@ export function Nav() {
             {navLinks.map((link) => (
               <Link
                 className={cn(
-                  "text-[15px] font-normal text-[var(--consultry-text-secondary)] transition hover:text-[var(--consultry-text-primary)]",
-                  isActiveLink(link.href) && "text-[var(--consultry-text-primary)]",
+                  "relative text-[15px] font-normal text-[var(--consultry-text-secondary)] transition hover:text-[var(--consultry-text-primary)] after:absolute after:-bottom-2.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-[linear-gradient(90deg,#e8913b_0%,rgba(232,102,89,0.78)_46%,#9c59b5_100%)] after:opacity-0 after:scale-x-0 after:transition after:duration-200",
+                  isActiveLink(link.href) &&
+                    "text-[var(--consultry-text-primary)] after:opacity-100 after:scale-x-100",
                 )}
+                aria-current={isActiveLink(link.href) ? "page" : undefined}
                 href={link.href}
                 key={link.href}
               >
@@ -80,7 +98,7 @@ export function Nav() {
               className="inline-flex items-center gap-1 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] px-5 py-2.5 text-[14px] font-medium tracking-[0.01em] text-white backdrop-blur-[6px] transition hover:bg-[rgba(255,255,255,0.14)]"
               href={ctaTargets.nav}
             >
-              Demo anfragen
+              Deep Dive anfragen
               <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -111,7 +129,7 @@ export function Nav() {
               </Link>
             ))}
             <Button className="mt-2 w-full" href={ctaTargets.nav}>
-              Demo anfragen
+              Deep Dive anfragen
             </Button>
           </div>
         </div>
