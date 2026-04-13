@@ -131,7 +131,7 @@ export const productHero: ProductHeroContent = {
 
 export const productDemoModule: ProductDemoModuleContent = {
   eyebrow: "PRODUKT-DEMO",
-  title: "Sehen Sie denselben Ablauf, den Ihr Team spaeter live nutzt.",
+  title: "Sehen Sie den Ablauf spaeter live im Team.",
   body:
     "Die Demo zeigt den Kernflow von Consultry: Chance erkennen, Team belastbar vorschlagen, Angebot strukturieren und Delivery sauber weiterfuehren.",
   meta:
@@ -270,7 +270,7 @@ export const productArchitecture: ProductArchitectureContent = {
     },
   ],
   workflowOverline: "DER WORKFLOW",
-  workflowTitle: "Aus einer Chance wird ein plausibles Projekt. Nicht nur ein Lead.",
+  workflowTitle: "Von der Chance zum Projekt.",
   workflowBody:
     "Der operative Kern von Consultry liegt in der Uebersetzung zwischen Demand und Supply: aus Bedarf wird eine belastbare Opportunity, aus Opportunity ein glaubwuerdiges Team und Angebot, aus Delivery wieder verwertbares Wissen.",
   workflowSteps: [
@@ -282,7 +282,7 @@ export const productArchitecture: ProductArchitectureContent = {
 
 export const productComparison: ComparisonTableContent = {
   overline: "CONSULTRY VS. STANDARD-CRM",
-  title: "Warum generische CRMs Beratungsarbeit nur zur Haelfte abbilden",
+  title: "Warum Standard-CRMs nicht reichen",
   body:
     "CRMs dokumentieren Vertrieb. Consultry verbindet Vertrieb, Teamlogik, Angebotsarbeit, Delivery und Commercial Control in einem System, das auf die Wertschoepfung von Beratungen ausgelegt ist.",
   columnHeaders: ["FUNKTIONEN", "CONSULTRY", "STANDARD CRM"],
@@ -403,7 +403,7 @@ export const productInternalLinks: ProductInternalLink[] = [
 
 export const productCta = {
   eyebrow: "BEREIT FUER DAS SYSTEM?",
-  title: "Schluss mit CRM, Excel und Kontextverlust zwischen den Teams",
+  title: "Weniger Kontextverlust. Mehr Steuerung.",
   body:
     "In einer persoenlichen Demo zeigen wir, wie Consultry Ihre operative Steuerung verdichtet: mit Ihren Daten, Ihrem Team und Ihren realen Prozessen.",
   primaryCta: {

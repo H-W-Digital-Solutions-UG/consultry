@@ -53,32 +53,36 @@ export default function ProductPage() {
       />
       <ProductPageHero content={productHero} />
 
-      <ProductDemoModule {...productDemoModule} />
-
       <AnswerHighlights
         body="Diese drei Aussagen beantworten die haeufigsten Einstiegsfragen direkt im initialen HTML."
         eyebrow="KURZ ERKLAERT"
         items={productAnswers}
-        title="Was die Plattform im Kern leistet"
+        title="Was die Plattform leistet"
       />
 
       <ProductArchitecture content={productArchitecture} />
 
       <ComparisonTable content={productComparison} />
 
-      <InternalLinkGrid
-        body="Die Unterseiten vertiefen die Haupt-Wedges der Plattform und geben Search- und AI-Systemen klarere Antwortziele."
-        eyebrow="VERTIEFEN"
-        links={productInternalLinks}
-        title="Die wichtigsten Produkt-Wedges im Detail"
-      />
+      <ProductDemoModule {...productDemoModule} />
 
-      <section className="section-shell">
+      <section className="relative overflow-hidden border-y border-[rgba(255,255,255,0.06)] bg-[linear-gradient(180deg,rgba(36,29,26,0.96)_0%,rgba(24,20,18,0.98)_100%)] py-16 sm:py-20 lg:py-24">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-45"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+            backgroundSize: "38px 38px",
+            maskImage:
+              "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.95) 18%, rgba(0,0,0,0.95) 82%, rgba(0,0,0,0.35) 100%)",
+          }}
+        />
         <div className="content-shell">
           <MotionReveal>
             <SectionHeader
               overline="HÄUFIG GESTELLTE FRAGEN"
-              title="Noch Fragen? Hier sind Antworten."
+              title="Noch Fragen?"
               body="Falls Sie die Antwort hier nicht finden, kontaktieren Sie unser Team jederzeit."
             />
           </MotionReveal>
@@ -87,6 +91,13 @@ export default function ProductPage() {
           </MotionReveal>
         </div>
       </section>
+
+      <InternalLinkGrid
+        body="Die Unterseiten vertiefen die Haupt-Wedges der Plattform und geben Search- und AI-Systemen klarere Antwortziele."
+        eyebrow="VERTIEFEN"
+        links={productInternalLinks}
+        title="Produkt-Wedges im Detail"
+      />
 
       <CTABand
         eyebrow={productCta.eyebrow}

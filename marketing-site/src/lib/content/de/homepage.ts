@@ -156,7 +156,7 @@ export const homepageContent = {
       stepLabel: "[01]",
       stepperLabel: "Account Growth",
       eyebrow: "ACCOUNT GROWTH",
-      title: "Relevante Chancen im Bestand erkennen, bevor sie kalt werden",
+      title: "Chancen im Bestand frueher erkennen",
       body:
         "Consultry verdichtet Stakeholder-Wechsel, Ausschreibungen, Hiring, Marktbewegungen und bestehenden Account-Kontext zu priorisierten Chancen. Mit Beziehungspfaden, Begruendung und naechster Handlung statt blossem Newsfeed.",
       ctaLabel: "Mehr zu Bestandskundenwachstum",
@@ -172,7 +172,7 @@ export const homepageContent = {
       stepLabel: "[02]",
       stepperLabel: "Staffing & Forecasting",
       eyebrow: "STAFFING & FORECASTING",
-      title: "Das belastbarste Team vorschlagen und Kapazitaeten frueher sehen",
+      title: "Teams besser besetzen und Kapazitaeten frueher sehen",
       body:
         "Projektanforderungen, Skills, Projekterfahrung, Verfuegbarkeit und Teamkontext fliessen in nachvollziehbare Staffing-Vorschlaege ein. Gleichzeitig entsteht ein realistischeres Bild von Auslastung, Engpaessen und kommendem Leerlauf.",
       ctaLabel: "Mehr zu Staffing und Forecasting",
@@ -189,7 +189,7 @@ export const homepageContent = {
       stepLabel: "[03]",
       stepperLabel: "Proposal Workflow",
       eyebrow: "PROPOSAL WORKFLOW",
-      title: "Angebote schneller erstellen, weil Wissen und Teamlogik schon verbunden sind",
+      title: "Angebote schneller erstellen",
       body:
         "Aus Opportunity, Teamvorschlag und vorhandenem Beratungswissen entstehen Engagement Briefs, CVs, Proposal-Drafts und Entscheidungsgrundlagen. Keine Copy-Paste-Kette ueber Dokumente, Postfaecher und Bauchgefuehl.",
       ctaLabel: "Mehr zum Proposal Workflow",
@@ -205,7 +205,7 @@ export const homepageContent = {
       stepLabel: "[04]",
       stepperLabel: "Knowledge Reuse",
       eyebrow: "KNOWLEDGE REUSE",
-      title: "Projektwissen systematisch zurueck in den naechsten Deal fuehren",
+      title: "Projektwissen in den naechsten Deal fuehren",
       body:
         "Delivery Health, Scope-Risiken, Kostenbezug und Lessons Learned laufen in derselben Arbeitsebene zusammen. So wird Projektwissen nicht archiviert, sondern im naechsten Deal und in der naechsten Besetzung wieder nutzbar.",
       ctaLabel: "Mehr zu Wissenswiederverwendung",
@@ -278,7 +278,7 @@ export const homepageContent = {
   ] satisfies HomepageMetric[],
   waitlist: {
     eyebrow: "DEMO",
-    title: "Sehen Sie, wie aus verstreuter Beratungsarbeit ein steuerbarer Workflow wird",
+    title: "Sehen Sie Consultry in Ihrer Beratungslogik",
     body:
       "In 30 Minuten zeigen wir anhand Ihrer echten Kunden- und Teamlogik, wie aus Signalen belastbare Chancen, aus Chancen schnellere Angebote und aus Projekten saubere kommerzielle Steuerung wird.",
     placeholder: "Ihre geschaeftliche E-Mail-Adresse",

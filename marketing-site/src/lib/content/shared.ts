@@ -35,7 +35,7 @@ export const ctaTargets = {
 } as const;
 
 export const deepDiveCta = {
-  title: "Sehen Sie, wie Consultry Folgegeschaeft, Staffing und Wissen verbindet",
+  title: "Sehen Sie, wie Consultry Wachstum, Staffing und Wissen verbindet",
   body: "Starten Sie mit einer persoenlichen Demo. Wir zeigen Ihnen Consultry mit Ihrer Kunden-, Team- und Delivery-Logik statt mit generischen Beispiel-Daten.",
   primaryCta: {
     label: "Demo anfragen",

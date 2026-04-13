@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AboutNarrative } from "@/components/marketing/AboutNarrative";
+import { AnswerHighlights } from "@/components/marketing/AnswerHighlights";
 import { CTABand } from "@/components/marketing/CTABand";
 import { HeroMinimal } from "@/components/marketing/HeroMinimal";
 import { JsonLd } from "@/components/marketing/JsonLd";
@@ -7,6 +8,7 @@ import { MotionReveal } from "@/components/marketing/MotionReveal";
 import { SectionHeader } from "@/components/marketing/SectionHeader";
 import { TeamCard } from "@/components/marketing/TeamCard";
 import { aboutContent } from "@/lib/content/de/about";
+import { homepageContent } from "@/lib/content/de/homepage";
 import { buildPageMetadata } from "@/lib/seo";
 import { buildAboutPageJsonLd } from "@/lib/structured-data";
 
@@ -41,6 +43,13 @@ export default function UnternehmenPage() {
         align="center"
         overline={aboutContent.hero.overline}
         title={aboutContent.hero.title}
+      />
+
+      <AnswerHighlights
+        body="Die wichtigsten Antworten definieren Produkt, Zielgruppe und die Abgrenzung gegen Standard-CRMs vor dem Blick auf Team und Geschichte."
+        eyebrow="KURZ ERKLAERT"
+        items={homepageContent.answers}
+        title="Was Consultry fuer DACH-Beratungen konkret ist"
       />
 
       <section className="section-shell-tight">

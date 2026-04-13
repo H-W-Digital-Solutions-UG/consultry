@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/Button";
 import type { HomepageMetric } from "@/lib/content/de/homepage";
 
 type MetricsBandProps = {
@@ -6,6 +7,10 @@ type MetricsBandProps = {
   body: string;
   metrics: ReadonlyArray<HomepageMetric>;
   footnote: string;
+  cta?: {
+    label: string;
+    href: string;
+  };
 };
 
 const CARD_ACCENTS = [
@@ -15,7 +20,7 @@ const CARD_ACCENTS = [
   { gradient: "linear-gradient(135deg, #9b59b6, #c084e5)", glow: "rgba(155,89,182,0.12)" },
 ];
 
-export function MetricsBand({ eyebrow, title, body, metrics, footnote }: MetricsBandProps) {
+export function MetricsBand({ eyebrow, title, body, metrics, footnote, cta }: MetricsBandProps) {
   return (
     <section className="relative overflow-hidden border-y border-[rgba(255,255,255,0.06)] bg-[linear-gradient(180deg,rgba(37,29,26,0.98)_0%,rgba(28,23,20,0.98)_30%,rgba(23,19,17,1)_100%)] py-16 sm:py-20 lg:py-24">
       <div
@@ -48,6 +53,17 @@ export function MetricsBand({ eyebrow, title, body, metrics, footnote }: Metrics
             <p className="mt-4 max-w-[60ch] text-[15px] leading-[1.72] text-[rgba(255,255,255,0.72)] sm:text-[16px] lg:text-[18px]">
               {body}
             </p>
+            {cta ? (
+              <div className="mt-6 hidden xl:block">
+                <Button
+                  className="min-w-[13rem] px-8 py-3 text-[16px] font-semibold"
+                  href={cta.href}
+                  size="lg"
+                >
+                  {cta.label}
+                </Button>
+              </div>
+            ) : null}
             <p className="mt-6 max-w-[34rem] border-l border-[rgba(255,255,255,0.08)] pl-4 text-[12px] leading-[1.7] text-[var(--consultry-text-faint)] sm:text-[13px]">
               {footnote}
             </p>
@@ -98,6 +114,17 @@ export function MetricsBand({ eyebrow, title, body, metrics, footnote }: Metrics
             })}
           </div>
         </div>
+        {cta ? (
+          <div className="mt-8 flex justify-center xl:hidden">
+            <Button
+              className="min-w-[13rem] px-8 py-3 text-[16px] font-semibold"
+              href={cta.href}
+              size="lg"
+            >
+              {cta.label}
+            </Button>
+          </div>
+        ) : null}
       </div>
     </section>
   );
