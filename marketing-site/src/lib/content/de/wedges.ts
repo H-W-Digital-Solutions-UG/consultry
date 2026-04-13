@@ -28,6 +28,11 @@ export type WedgeContent = {
     href: string;
     label: string;
     body: string;
+    image?: {
+      src: string;
+      alt: string;
+      objectPosition?: string;
+    };
   }>;
   comparisonTable?: ComparisonTableContent;
 };

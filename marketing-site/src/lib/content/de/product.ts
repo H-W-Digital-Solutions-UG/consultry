@@ -85,6 +85,11 @@ export type ProductInternalLink = {
   href: string;
   label: string;
   body: string;
+  image?: {
+    src: string;
+    alt: string;
+    objectPosition?: string;
+  };
 };
 
 export const productSeo = {
