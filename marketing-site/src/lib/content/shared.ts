@@ -55,7 +55,6 @@ export const richDemoCta = {
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Produkt", href: "/produkt" },
-  { label: "Module", href: "/produkt#modules" },
   { label: "About Us", href: "/unternehmen" },
 ];
 

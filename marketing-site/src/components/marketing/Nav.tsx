@@ -71,7 +71,7 @@ export function Nav() {
               style={{ height: "50px", width: "56px" }}
               width={56}
             />
-            <span className="text-lg font-semibold tracking-[-0.02em] text-[var(--consultry-text-primary)]">
+            <span className="bg-[linear-gradient(90deg,#e8913a_10%,#e8655a_25%,#9b59b6_60%)] bg-clip-text text-[18px] font-semibold leading-6 tracking-[-0.017em] text-transparent">
               Consultry
             </span>
           </Link>
@@ -80,7 +80,7 @@ export function Nav() {
             {navLinks.map((link) => (
               <Link
                 className={cn(
-                  "relative text-[15px] font-normal text-[var(--consultry-text-secondary)] transition hover:text-[var(--consultry-text-primary)] after:absolute after:-bottom-2.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-[linear-gradient(90deg,#e8913b_0%,rgba(232,102,89,0.78)_46%,#9c59b5_100%)] after:opacity-0 after:scale-x-0 after:transition after:duration-200",
+                  "relative text-[15px] font-normal text-[var(--consultry-text-secondary)] transition hover:text-[var(--consultry-text-primary)] after:absolute after:-bottom-2.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-[linear-gradient(90deg,#e8913b_0%,rgba(232,102,89,0.78)_46%,#9c59b5_100%)] after:opacity-0 after:scale-x-0 after:transition after:duration-500 after:ease-out",
                   isActiveLink(link.href) &&
                     "text-[var(--consultry-text-primary)] after:opacity-100 after:scale-x-100",
                 )}
