@@ -61,17 +61,16 @@ export function Nav() {
         )}
       >
         <div className="content-shell flex min-h-16 items-center justify-between gap-4 py-3">
-          <Link className="inline-flex items-center gap-3" href="/">
+          <Link className="inline-flex items-center gap-2.5 sm:gap-3.5" href="/">
             <Image
               alt="Consultry Logo"
-              className="object-contain"
-              height={50}
+              className="h-[3rem] w-auto object-contain sm:h-[3.75rem]"
+              height={74}
               priority
               src="/images/consultry-logo.png"
-              style={{ height: "50px", width: "56px" }}
-              width={56}
+              width={84}
             />
-            <span className="bg-[linear-gradient(90deg,#e8913a_10%,#e8655a_25%,#9b59b6_60%)] bg-clip-text text-[18px] font-semibold leading-6 tracking-[-0.017em] text-transparent">
+            <span className="bg-[linear-gradient(90deg,#e8913a_10%,#e8655a_25%,#9b59b6_60%)] bg-clip-text text-[25px] font-semibold leading-none tracking-[-0.035em] text-transparent">
               Consultry
             </span>
           </Link>
