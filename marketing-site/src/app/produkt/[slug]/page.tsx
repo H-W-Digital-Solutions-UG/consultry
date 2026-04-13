@@ -78,11 +78,6 @@ export default async function ProductWedgePage({ params }: WedgePageProps) {
         ]}
       />
       <WedgePageTemplate
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Produkt", href: "/produkt" },
-          { label: content.title },
-        ]}
         comparisonTable={content.comparisonTable}
         cta={{
           eyebrow: "DEMO",

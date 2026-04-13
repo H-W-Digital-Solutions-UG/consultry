@@ -1,7 +1,6 @@
 import { CTABand } from "@/components/marketing/CTABand";
 import { ComparisonTable } from "@/components/marketing/ComparisonTable";
 import { InternalLinkGrid, type InternalLinkCard } from "@/components/marketing/InternalLinkGrid";
-import { PageBreadcrumbs, type BreadcrumbLink } from "@/components/marketing/PageBreadcrumbs";
 import { AnswerHighlights, type AnswerHighlight } from "@/components/marketing/AnswerHighlights";
 import { HeroMinimal } from "@/components/marketing/HeroMinimal";
 import type { ComparisonTableContent } from "@/lib/content/de/product";
@@ -13,7 +12,6 @@ export type WedgeSection = {
 };
 
 type WedgePageTemplateProps = {
-  breadcrumbs: readonly BreadcrumbLink[];
   overline: string;
   title: string;
   introAnswer: string;
@@ -34,7 +32,6 @@ type WedgePageTemplateProps = {
 };
 
 export function WedgePageTemplate({
-  breadcrumbs,
   overline,
   title,
   introAnswer,
@@ -47,8 +44,6 @@ export function WedgePageTemplate({
 }: WedgePageTemplateProps) {
   return (
     <main>
-      <PageBreadcrumbs items={breadcrumbs} />
-
       <HeroMinimal
         align="left"
         body={introAnswer}

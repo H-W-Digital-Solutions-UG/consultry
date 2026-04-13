@@ -94,7 +94,7 @@ export const homepageContent = {
     eyebrow: "AI-NATIVE OPERATING SYSTEM FUER DACH-BERATUNGEN",
     title: ["Mehr Folgegeschaeft.", "Besseres Staffing.", "Weniger Wissensverlust."],
     body:
-      "Consultry verbindet Bestandskundenwachstum, Team- und Kapazitaetssteuerung, Wissenswiederverwendung, Angebotsarbeit und Delivery Control in einem System. Gebaut fuer DACH-IT- und Digitalisierungsberatungen, die nicht laenger zwischen CRM, Excel, CVs und Einzelloesungen arbeiten wollen.",
+      "Consultry verbindet Bestandskundenwachstum, Staffing, Wissenswiederverwendung und Delivery Control in einem System. Gebaut fuer DACH-IT- und Digitalisierungsberatungen.",
     primaryCta: {
       label: "Demo anfragen",
       href: ctaTargets.homepagePrimary,

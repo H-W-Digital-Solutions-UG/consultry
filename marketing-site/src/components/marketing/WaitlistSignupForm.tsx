@@ -68,7 +68,7 @@ export function WaitlistSignupForm({
       </div>
 
       <Button
-        className="h-full shrink-0 px-8 py-3 text-[14px] shadow-[0_6px_20px_rgba(0,0,0,0.26)]"
+        className="h-full shrink-0 transform-gpu px-8 py-3 text-[14px] shadow-[0_6px_20px_rgba(0,0,0,0.26)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0 hover:scale-[1.035] hover:shadow-[0_14px_28px_rgba(0,0,0,0.24)] active:translate-y-0 active:scale-[1.012]"
         type="submit"
       >
         {buttonLabel}

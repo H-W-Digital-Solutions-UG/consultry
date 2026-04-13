@@ -25,7 +25,11 @@ export function Footer() {
   return (
     <footer className="bg-[var(--consultry-surface-hero)] px-0 pb-8 pt-0">
       <div className="mx-auto w-[min(100%-2rem,110rem)]">
-        <div className="h-[2px] w-full bg-[var(--consultry-brand-gradient)]" />
+        <div className="relative h-7 w-full overflow-hidden">
+          <div className="absolute inset-x-0 top-0 h-px bg-[rgba(255,255,255,0.08)]" />
+          <div className="absolute inset-x-[2%] top-[1px] h-[2px] rounded-full bg-[linear-gradient(90deg,rgba(232,145,58,0)_0%,rgba(232,145,58,0.92)_16%,rgba(232,101,90,0.92)_48%,rgba(155,89,182,0.88)_82%,rgba(155,89,182,0)_100%)]" />
+          <div className="absolute inset-x-[6%] top-[4px] h-4 rounded-full bg-[linear-gradient(90deg,rgba(232,145,58,0)_0%,rgba(232,145,58,0.16)_18%,rgba(232,101,90,0.14)_48%,rgba(155,89,182,0.12)_82%,rgba(155,89,182,0)_100%)] blur-md" />
+        </div>
         <div className="flex flex-col gap-14 py-12 sm:gap-16 sm:py-14">
           <div className="grid gap-12 xl:grid-cols-[minmax(340px,1fr)_minmax(620px,860px)] xl:items-start">
             <div className="flex min-w-0 items-start gap-6">

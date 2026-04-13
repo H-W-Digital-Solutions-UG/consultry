@@ -6,7 +6,52 @@ type HeroShowcaseProps = {
   hero: HomepageHero;
 };
 
+const HERO_METRIC_GRADIENTS = [
+  "linear-gradient(145deg, rgba(240,168,94,0.3) 0%, rgba(191,83,71,0.2) 100%)",
+  "linear-gradient(145deg, rgba(232,145,58,0.24) 0%, rgba(232,101,90,0.18) 68%, rgba(155,89,182,0.12) 100%)",
+  "linear-gradient(145deg, rgba(191,83,71,0.22) 0%, rgba(232,101,90,0.16) 60%, rgba(155,89,182,0.14) 100%)",
+  "linear-gradient(145deg, rgba(232,145,58,0.22) 0%, rgba(232,101,90,0.14) 42%, rgba(155,89,182,0.18) 100%)",
+];
+
+function HeroMetricCard({
+  label,
+  value,
+  index,
+}: {
+  label: string;
+  value: string;
+  index: number;
+}) {
+  return (
+    <article
+      className="relative overflow-hidden rounded-[18px] border border-[rgba(255,255,255,0.1)] px-5 py-5 shadow-[0_18px_38px_rgba(0,0,0,0.2)]"
+      style={{
+        background:
+          `${HERO_METRIC_GRADIENTS[index % HERO_METRIC_GRADIENTS.length]}, linear-gradient(180deg, rgba(48,40,36,0.96) 0%, rgba(36,31,28,0.98) 100%)`,
+      }}
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-60"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
+        }}
+      />
+      <p className="text-[1.8rem] font-extrabold leading-[1.05] tracking-[-0.04em] text-[#faf7f2] sm:text-[2.1rem]">
+        {value}
+      </p>
+      <p className="mt-2 max-w-[16ch] text-[13px] leading-[1.45] text-[rgba(233,227,220,0.72)] sm:text-[14px]">
+        {label}
+      </p>
+    </article>
+  );
+}
+
 export function HeroShowcase({ hero }: HeroShowcaseProps) {
+  const leftMetrics = hero.metrics.slice(0, Math.ceil(hero.metrics.length / 2));
+  const rightMetrics = hero.metrics.slice(Math.ceil(hero.metrics.length / 2));
+
   return (
     <section className="relative overflow-hidden bg-[var(--consultry-hero-background)] pb-12 pt-6 sm:pb-14 sm:pt-8 md:pb-16 md:pt-10 lg:pb-20 lg:pt-10 xl:pt-12">
       <div className="absolute inset-x-0 top-[-8rem] flex justify-center">
@@ -40,17 +85,16 @@ export function HeroShowcase({ hero }: HeroShowcaseProps) {
           </div>
 
           <div className="grid w-full max-w-[1140px] gap-4 sm:gap-5 lg:grid-cols-[minmax(260px,1fr)_minmax(360px,520px)_minmax(260px,1fr)] lg:items-center lg:gap-8">
-            <article className="rounded-[12px] border border-[rgba(232,145,58,0.18)] bg-[rgba(44,40,38,0.88)] p-6 shadow-[0_18px_38px_rgba(0,0,0,0.22)]">
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[rgba(191,83,71,0.15)]">
-                <div className="h-5 w-5 rounded-[4px] bg-[var(--consultry-brand-primary)]" />
-              </div>
-              <p className="text-[17px] font-semibold leading-[1.35] text-[#fafaf9] sm:text-[18px]">
-                {hero.sideCards[0]?.title}
-              </p>
-              <p className="mt-3 text-[14px] leading-[1.55] text-[#a8a5a0] sm:text-[15px]">
-                {hero.sideCards[0]?.body}
-              </p>
-            </article>
+            <div className="hidden gap-4 lg:grid">
+              {leftMetrics.map((metric, index) => (
+                <HeroMetricCard
+                  index={index}
+                  key={`${metric.value}-${metric.label}`}
+                  label={metric.label}
+                  value={metric.value}
+                />
+              ))}
+            </div>
 
             <div className="mx-auto flex w-full max-w-[520px] flex-col items-center gap-5">
               <div className="relative aspect-[520/380] w-full overflow-hidden rounded-[12px] bg-[rgba(33,29,26,0.95)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
@@ -84,11 +128,15 @@ export function HeroShowcase({ hero }: HeroShowcaseProps) {
               </div>
 
               {hero.metrics.length ? (
-                <div className="grid w-full grid-cols-2 gap-3">
-                  {hero.metrics.map((metric) => (
+                <div className="grid w-full grid-cols-2 gap-3 lg:hidden">
+                  {hero.metrics.map((metric, index) => (
                     <div
-                      className="rounded-[16px] border border-[rgba(71,64,56,0.65)] bg-[rgba(43,38,35,0.96)] px-4 py-3.5"
+                      className="overflow-hidden rounded-[16px] border border-[rgba(255,255,255,0.08)] px-4 py-3.5"
                       key={metric.label}
+                      style={{
+                        background:
+                          `${HERO_METRIC_GRADIENTS[index % HERO_METRIC_GRADIENTS.length]}, linear-gradient(180deg, rgba(43,38,35,0.96) 0%, rgba(36,31,28,0.98) 100%)`,
+                      }}
                     >
                       <p className="text-[18px] font-extrabold leading-[1.15] text-[#faf7f2] sm:text-[22px]">
                         {metric.value}
@@ -102,17 +150,16 @@ export function HeroShowcase({ hero }: HeroShowcaseProps) {
               ) : null}
             </div>
 
-            <article className="rounded-[12px] border border-[rgba(232,145,58,0.18)] bg-[rgba(44,40,38,0.88)] p-6 shadow-[0_18px_38px_rgba(0,0,0,0.22)]">
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[rgba(232,145,58,0.15)]">
-                <div className="h-5 w-5 rounded-[4px] bg-[#e8913a]" />
-              </div>
-              <p className="text-[17px] font-semibold leading-[1.35] text-[#fafaf9] sm:text-[18px]">
-                {hero.sideCards[1]?.title}
-              </p>
-              <p className="mt-3 text-[14px] leading-[1.55] text-[#a8a5a0] sm:text-[15px]">
-                {hero.sideCards[1]?.body}
-              </p>
-            </article>
+            <div className="hidden gap-4 lg:grid">
+              {rightMetrics.map((metric, index) => (
+                <HeroMetricCard
+                  index={index + leftMetrics.length}
+                  key={`${metric.value}-${metric.label}`}
+                  label={metric.label}
+                  value={metric.value}
+                />
+              ))}
+            </div>
           </div>
 
           <p className="px-4 text-center text-[14px] leading-[1.6] text-[rgba(217,212,207,0.7)] sm:text-[15px] md:text-[16px]">
