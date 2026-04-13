@@ -4,12 +4,16 @@ import { startTransition, useEffect, useEffectEvent, useState } from "react";
 
 type UseActiveSectionOptions = {
   anchorFraction?: number;
+  anchorOffsetPx?: number;
+  switchMode?: "nearest" | "crossed";
 };
 
 export function useActiveSection(
   ids: readonly string[],
   {
     anchorFraction = 0.34,
+    anchorOffsetPx,
+    switchMode = "nearest",
   }: UseActiveSectionOptions = {},
 ) {
   const idsKey = ids.join("|");
@@ -21,17 +25,29 @@ export function useActiveSection(
       return;
     }
 
-    const anchorY = window.innerHeight * anchorFraction;
+    const anchorY = anchorOffsetPx ?? window.innerHeight * anchorFraction;
 
     let nextId = elements[0]?.id ?? "";
-    let nearestDistance = Number.POSITIVE_INFINITY;
 
-    for (const element of elements) {
-      const distance = Math.abs(element.getBoundingClientRect().top - anchorY);
+    if (switchMode === "crossed") {
+      for (const element of elements) {
+        if (element.getBoundingClientRect().top <= anchorY) {
+          nextId = element.id;
+          continue;
+        }
 
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nextId = element.id;
+        break;
+      }
+    } else {
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      for (const element of elements) {
+        const distance = Math.abs(element.getBoundingClientRect().top - anchorY);
+
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nextId = element.id;
+        }
       }
     }
 
@@ -91,7 +107,7 @@ export function useActiveSection(
       window.removeEventListener("scroll", runUpdate);
       window.removeEventListener("resize", runUpdate);
     };
-  }, [anchorFraction, idsKey]);
+  }, [anchorFraction, anchorOffsetPx, idsKey, switchMode]);
 
   return {
     activeId: activeId || ids[0] || "",

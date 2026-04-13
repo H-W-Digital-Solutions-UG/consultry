@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { HeroShowcase } from "@/components/marketing/HeroShowcase";
-import { FeatureShowcaseScroller } from "@/components/marketing/FeatureShowcaseScroller";
+import { FeatureShowcaseEditorialScroller } from "@/components/marketing/FeatureShowcaseEditorialScroller";
 import { InternalLinkGrid } from "@/components/marketing/InternalLinkGrid";
 import { JsonLd } from "@/components/marketing/JsonLd";
 import { MetricsBand } from "@/components/marketing/MetricsBand";
@@ -31,7 +31,7 @@ export default function Home() {
       />
       <main>
         <HeroShowcase hero={hero} />
-        <FeatureShowcaseScroller steps={steps} />
+        <FeatureShowcaseEditorialScroller steps={steps} />
 
         <InternalLinkGrid
           body="Diese Seiten vertiefen die Kern-Wedges und schaffen klare interne Ziele fuer Search, AI Search und Answer Engines."

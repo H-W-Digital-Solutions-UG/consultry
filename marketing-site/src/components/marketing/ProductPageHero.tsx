@@ -93,7 +93,7 @@ export function ProductPageHero({ content }: ProductPageHeroProps) {
             <p className="rise-in text-[14px] font-semibold tracking-[0.14em] text-[#e8913b] sm:text-[15px]">
               {content.overline}
             </p>
-            <h1 className="rise-in rise-in-delay-1 mt-5 text-[clamp(2.9rem,6vw,3.5rem)] font-extrabold leading-[0.97] tracking-[-0.045em] text-[#faf7f2]">
+            <h1 className="rise-in rise-in-delay-1 mt-5 text-[clamp(2.9rem,6vw,3.5rem)] font-bold leading-[1] tracking-[-0.04em] text-[#faf7f2]">
               <span className="block sm:whitespace-nowrap">{content.title[0] ?? ""}</span>
               <span className="gradient-text-safe block bg-[linear-gradient(90deg,#e8913b_0%,#e86659_50%,#bf5447_100%)] bg-clip-text text-transparent sm:whitespace-nowrap">
                 {content.title[1] ?? ""}

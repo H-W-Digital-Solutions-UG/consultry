@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 type LegalPageSection = {
   title: string;
-  body: string;
+  body: ReactNode;
 };
 
 type LegalPageTemplateProps = {
@@ -36,9 +38,15 @@ export function LegalPageTemplate({
                 <h2 className="text-[1.625rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--consultry-text-primary)]">
                   {section.title}
                 </h2>
-                <p className="mt-3 text-[15px] leading-7 text-[var(--consultry-text-muted)]">
-                  {section.body}
-                </p>
+                {typeof section.body === "string" ? (
+                  <p className="mt-3 text-[15px] leading-7 text-[var(--consultry-text-muted)]">
+                    {section.body}
+                  </p>
+                ) : (
+                  <div className="mt-3 space-y-4 text-[15px] leading-7 text-[var(--consultry-text-muted)] [&_a]:text-[var(--consultry-text-primary)] [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-[var(--consultry-brand-warm)] [&_strong]:font-semibold [&_strong]:text-[var(--consultry-text-primary)] [&_ul]:space-y-2 [&_ul]:pl-5 [&_ul]:list-disc">
+                    {section.body}
+                  </div>
+                )}
               </section>
             ))}
           </div>

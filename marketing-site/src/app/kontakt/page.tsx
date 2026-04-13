@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { JsonLd } from "@/components/marketing/JsonLd";
-import { StaticContentPage } from "@/components/marketing/StaticContentPage";
+import { Button } from "@/components/ui/Button";
+import { companyProfile } from "@/lib/company";
 import { buildPageMetadata } from "@/lib/seo";
 import { buildContactPageJsonLd } from "@/lib/structured-data";
 
@@ -18,6 +21,19 @@ export function generateMetadata(): Metadata {
   });
 }
 
+const prepChecklist = [
+  "Teamgroesse und Delivery-Setup",
+  "heutige Toollandschaft fuer CRM, Staffing, Wissen oder Delivery",
+  "welcher operative Engpass zuerst geloest werden soll",
+  "ob Demo, Pilot oder konkretes Angebot gesucht wird",
+] as const;
+
+const contactReasons = [
+  "Produktdemo fuer DACH-IT- und Digitalisierungsberatungen",
+  "Pilotprojekt mit realen Team- und Delivery-Prozessen",
+  "Fragen zu Datenschutz, Hosting oder operativer Produktlogik",
+] as const;
+
 export default function KontaktPage() {
   return (
     <>
@@ -29,16 +45,167 @@ export default function KontaktPage() {
           path: "/kontakt",
         })}
       />
-      <StaticContentPage
-        intro="Wir sprechen mit Beratungshaeusern, die Folgegeschaeft, Staffing, Wissenswiederverwendung und Delivery-Steuerung in einer operativen Plattform verbinden wollen."
-        overline="KONTAKT"
-        paragraphs={[
-          "Fuer Produktdemos, Pilotprojekte und Fragen zur Plattform erreichen Sie uns direkt per E-Mail unter kontakt@consultry.com.",
-          "Wenn Sie Consultry fuer Ihr Beratungshaus evaluieren, schreiben Sie uns kurz, welche Teamgroesse, welche Delivery-Struktur und welche Toollandschaft heute im Einsatz sind. So koennen wir die Demo auf Ihre Realitaet zuschneiden.",
-          "Unser Fokus liegt auf DACH-IT- und Digitalisierungsberatungen mit 30 bis 200 Mitarbeitenden, komplexem Staffing, Angebotsdruck und verstreutem Projektwissen. Genau dort entfaltet das Operating System von Consultry seine groesste Wirkung.",
-        ]}
-        title="Sprechen Sie mit dem Consultry-Team."
-      />
+
+      <main>
+        <section className="section-shell relative overflow-hidden pt-14 sm:pt-18">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(240,168,94,0.18),transparent_28%),radial-gradient(circle_at_76%_10%,rgba(155,89,181,0.12),transparent_24%),linear-gradient(180deg,rgba(191,83,71,0.08),transparent_55%)]" />
+          <div className="content-shell relative">
+            <div className="grid gap-10 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,26rem)] xl:items-start xl:gap-14">
+              <div className="max-w-4xl">
+                <p className="eyebrow">KONTAKT</p>
+                <h1 className="display-section mt-5 max-w-[13ch] text-balance text-[var(--consultry-text-primary)] sm:text-[clamp(3.1rem,5.4vw,4.6rem)]">
+                  Sprechen Sie mit dem Consultry-Team.
+                </h1>
+                <p className="body-lg mt-6 max-w-[42rem]">
+                  Wir sprechen mit Beratungshaeusern, die Folgegeschaeft, Staffing,
+                  Wissenswiederverwendung und Delivery-Steuerung in einer operativen Plattform
+                  verbinden wollen. Fuer Produktdemos, Pilotprojekte und operative Fragen sind Sie
+                  hier richtig.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Button href={`mailto:${companyProfile.productEmail}`}>
+                    Demo anfragen
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Button>
+                  <Button href={`mailto:${companyProfile.legalEmail}`} variant="secondary">
+                    Allgemeine Anfrage
+                  </Button>
+                </div>
+
+                <div className="mt-10 grid gap-10 border-t border-[rgba(255,255,255,0.08)] pt-8 lg:grid-cols-2 lg:gap-12">
+                  <section>
+                    <p className="eyebrow text-[var(--consultry-brand-warm)]">
+                      Wofuer wir die richtige Anlaufstelle sind
+                    </p>
+                    <ul className="mt-5 space-y-3.5">
+                      {contactReasons.map((item) => (
+                        <li
+                          className="flex items-start gap-3 text-[15px] leading-[1.65] text-[var(--consultry-text-secondary)]"
+                          key={item}
+                        >
+                          <span className="mt-[0.42rem] h-1.5 w-1.5 rounded-full bg-[var(--consultry-brand-warm)]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+
+                  <section>
+                    <p className="eyebrow text-[var(--consultry-brand-warm)]">
+                      Fuer eine gute Erstnachricht
+                    </p>
+                    <ul className="mt-5 space-y-3.5">
+                      {prepChecklist.map((item) => (
+                        <li
+                          className="flex items-start gap-3 text-[15px] leading-[1.65] text-[var(--consultry-text-secondary)]"
+                          key={item}
+                        >
+                          <span className="mt-[0.42rem] h-1.5 w-1.5 rounded-full bg-[var(--consultry-brand-coral)]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                </div>
+              </div>
+
+              <aside className="surface-panel rounded-[28px] px-6 py-6 sm:px-7 xl:sticky xl:top-28">
+                <p className="eyebrow">Direkter Kontakt</p>
+                <p className="mt-4 text-[15px] leading-[1.7] text-[var(--consultry-text-muted)]">
+                  {companyProfile.brandName} ist ein Angebot der {companyProfile.legalName}. Hier
+                  finden Sie die schnellsten Wege fuer Produkt- und Unternehmensanfragen.
+                </p>
+
+                <div className="mt-7 space-y-4">
+                  <div className="flex items-start gap-3">
+                    <Mail className="mt-0.5 h-4.5 w-4.5 text-[var(--consultry-brand-warm)]" />
+                    <div>
+                      <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
+                        Produkt
+                      </p>
+                      <a
+                        className="mt-1 inline-flex text-[15px] text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
+                        href={`mailto:${companyProfile.productEmail}`}
+                      >
+                        {companyProfile.productEmail}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Mail className="mt-0.5 h-4.5 w-4.5 text-[var(--consultry-brand-coral)]" />
+                    <div>
+                      <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
+                        Unternehmen
+                      </p>
+                      <a
+                        className="mt-1 inline-flex text-[15px] text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
+                        href={`mailto:${companyProfile.legalEmail}`}
+                      >
+                        {companyProfile.legalEmail}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <Phone className="mt-0.5 h-4.5 w-4.5 text-[var(--consultry-brand-warm)]" />
+                    <div>
+                      <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
+                        Telefon
+                      </p>
+                      <a
+                        className="mt-1 inline-flex text-[15px] text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
+                        href={companyProfile.phoneHref}
+                      >
+                        {companyProfile.phoneDisplay}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 h-4.5 w-4.5 text-[var(--consultry-brand-coral)]" />
+                    <div>
+                      <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
+                        Adresse
+                      </p>
+                      <p className="mt-1 text-[15px] leading-[1.65] text-[var(--consultry-text-primary)]">
+                        {companyProfile.legalName}
+                        <br />
+                        {companyProfile.address.street}
+                        <br />
+                        {companyProfile.address.postalCode} {companyProfile.address.city}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 border-t border-[rgba(255,255,255,0.08)] pt-6">
+                  <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
+                    Rechtliches
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <Link
+                      className="inline-flex items-center gap-2 text-[14px] font-medium text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
+                      href="/impressum"
+                    >
+                      Impressum
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                    <Link
+                      className="inline-flex items-center gap-2 text-[14px] font-medium text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
+                      href="/datenschutz"
+                    >
+                      Datenschutz
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+      </main>
     </>
   );
 }

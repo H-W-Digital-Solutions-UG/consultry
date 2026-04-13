@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/seo";
+import { companyProfile } from "@/lib/company";
 
 export type JsonLdRecord = Record<string, unknown>;
 
@@ -118,8 +119,17 @@ export function buildContactPageJsonLd({
     inLanguage: siteConfig.language,
     mainEntity: {
       "@type": "Organization",
-      name: siteConfig.name,
-      email: siteConfig.email,
+      name: companyProfile.legalName,
+      alternateName: siteConfig.name,
+      email: companyProfile.productEmail,
+      telephone: companyProfile.phoneDisplay,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: companyProfile.address.street,
+        postalCode: companyProfile.address.postalCode,
+        addressLocality: companyProfile.address.city,
+        addressCountry: "DE",
+      },
       sameAs: [...siteConfig.socialProfiles],
     },
   };

@@ -135,7 +135,7 @@ function CardArtwork({ link }: { link: InternalLinkCard }) {
         <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
           Visual
         </p>
-        <p className="mt-2 text-[1.4rem] font-semibold tracking-[0.04em] text-[var(--consultry-text-primary)]">
+        <p className="mt-2 text-[1.4rem] font-semibold tracking-[-0.02em] text-[var(--consultry-text-primary)]">
           {code}
         </p>
       </div>
