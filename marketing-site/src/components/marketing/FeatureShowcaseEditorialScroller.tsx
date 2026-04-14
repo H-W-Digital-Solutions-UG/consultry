@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, ChevronsDown, ChevronsUp } from "lucide-react";
 import { MotionReveal } from "@/components/marketing/MotionReveal";
-import { useActiveSection } from "@/components/marketing/useActiveSection";
+import { Button } from "@/components/ui/Button";
+import { useActiveSection, useBandActiveSection } from "@/components/marketing/useActiveSection";
 import { cn } from "@/lib/cn";
 import type { HomepageStep } from "@/lib/content/de/homepage";
 
@@ -104,6 +106,25 @@ function getStepTheme(stepId: string): StepTheme {
   );
 }
 
+function getCompactStepTitle(step: HomepageStep) {
+  switch (step.id) {
+    case "account-growth":
+      return "Bestandschancen erkennen";
+    case "staffing-forecasting":
+      return "Teams besser besetzen";
+    case "proposal-workflow":
+      return "Angebote schneller erstellen";
+    case "knowledge-reuse":
+      return "Wissen wieder nutzen";
+    default:
+      return step.title;
+  }
+}
+
+function getStepTriggerId(stepId: string) {
+  return `${stepId}-trigger`;
+}
+
 function EditorialHeadline({
   overline,
   title,
@@ -116,7 +137,7 @@ function EditorialHeadline({
       <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
         {overline}
       </p>
-      <h2 className="mt-3 max-w-[24ch] text-balance text-[clamp(1.85rem,3vw,3.1rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[var(--consultry-text-primary)]">
+      <h2 className="mt-3 max-w-[26ch] text-balance text-[clamp(1.15rem,1.4vw,1.55rem)] font-semibold leading-[1.16] tracking-[-0.02em] text-[var(--consultry-text-primary)]">
         {title}
       </h2>
     </div>
@@ -255,37 +276,31 @@ function StepVisual({
   );
 }
 
-function MobileStepCard({ step, index }: { step: HomepageStep; index: number }) {
+function MobileStepCard({ step }: { step: HomepageStep }) {
   const theme = getStepTheme(step.id);
+  const compactTitle = getCompactStepTitle(step);
 
   return (
-    <article className="rounded-[26px] border border-[var(--consultry-border-soft)] bg-[linear-gradient(180deg,rgba(53,49,45,0.92)_0%,rgba(30,27,24,0.94)_100%)] p-5 shadow-[var(--consultry-shadow-lg)] sm:p-6" key={step.id}>
-      <div className="flex items-center gap-3">
-        <span
-          className="flex h-10 w-10 items-center justify-center rounded-[10px] border bg-[#f4f1ea] font-[var(--font-mono)] text-[16px] text-black"
-        >
-          {getStepNumber(step.stepLabel)}
-        </span>
-        <div>
-          <p className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
-            {step.eyebrow}
-          </p>
-          <p className="mt-1 text-[13px] font-medium text-[var(--consultry-text-secondary)]">
-            {step.stepperLabel}
-          </p>
-        </div>
-      </div>
-
-      <h3 className="mt-5 text-[clamp(2rem,8vw,3rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-[var(--consultry-text-primary)]">
-        {step.title}
+    <article className="rounded-[24px] border border-[var(--consultry-border-soft)] bg-[linear-gradient(180deg,rgba(53,49,45,0.92)_0%,rgba(30,27,24,0.94)_100%)] px-4 py-5 shadow-[var(--consultry-shadow-lg)] sm:px-5 sm:py-6">
+      <p
+        className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em]"
+        style={{ color: theme.accent }}
+      >
+        {step.stepLabel} / {step.stepperLabel}
+      </p>
+      <h3 className="mt-4 max-w-[18ch] text-[clamp(1.25rem,5.2vw,1.7rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-[var(--consultry-text-primary)]">
+        {compactTitle}
       </h3>
-      <p className="mt-4 text-[15px] leading-[1.7] text-[var(--consultry-text-muted)] sm:text-[16px]">
+      <p className="mt-4 text-[15px] leading-[1.68] text-[var(--consultry-text-muted)]">
         {step.body}
       </p>
 
       <ul className="mt-5 space-y-2.5">
         {theme.highlights.map((highlight) => (
-          <li className="flex items-start gap-2.5 text-[14px] leading-[1.55] text-[var(--consultry-text-secondary)]" key={highlight}>
+          <li
+            className="flex items-start gap-2.5 text-[14px] leading-[1.55] text-[var(--consultry-text-secondary)]"
+            key={highlight}
+          >
             <span
               className="mt-[0.42rem] h-1.5 w-1.5 rounded-full"
               style={{ backgroundColor: theme.accent }}
@@ -295,20 +310,13 @@ function MobileStepCard({ step, index }: { step: HomepageStep; index: number }) 
         ))}
       </ul>
 
-      <p className="mt-5 text-[13px] leading-[1.65] text-[var(--consultry-text-faint)]">
-        {step.caption}
-      </p>
       <Link
-        className="mt-6 inline-flex items-center gap-2 rounded-full border border-[var(--consultry-border-strong)] px-4 py-2.5 text-[14px] font-medium text-[var(--consultry-text-primary)] transition hover:border-[rgba(240,168,94,0.3)] hover:bg-[rgba(255,255,255,0.06)]"
+        className="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-[var(--consultry-brand-warm)] transition hover:text-[var(--consultry-text-primary)]"
         href={getStepHref(step.id)}
       >
         {step.ctaLabel}
         <ArrowUpRight className="h-4 w-4" />
       </Link>
-
-      <div className="mt-6">
-        <StepVisual compact priority={index === 0} step={step} />
-      </div>
     </article>
   );
 }
@@ -316,27 +324,104 @@ function MobileStepCard({ step, index }: { step: HomepageStep; index: number }) 
 export function FeatureShowcaseEditorialScroller({
   steps,
 }: FeatureShowcaseEditorialScrollerProps) {
+  const firstStep = steps[0];
+  const firstStepId = firstStep?.id ?? "";
   const stepIds = steps.map((step) => step.id);
-  const lastStepId = stepIds[stepIds.length - 1] ?? "";
-  const endSentinelId = lastStepId ? `${lastStepId}-end-sentinel` : "";
-  const sectionObserverIds = endSentinelId ? [...stepIds, endSentinelId] : stepIds;
-  const { activeId: rawActiveId } = useActiveSection(sectionObserverIds, {
-    anchorOffsetPx: 96,
+  const stepTriggerIds = steps.map((step) => getStepTriggerId(step.id));
+  const progressAnchorOffsetPx = 180;
+  const stepTriggerTop = "clamp(8rem, 18vh, 10rem)";
+  const activeId = useBandActiveSection(stepIds, {
+    rootMargin: "-18% 0px -38% 0px",
+  });
+  const { progress } = useActiveSection(stepTriggerIds, {
+    anchorOffsetPx: progressAnchorOffsetPx,
     switchMode: "crossed",
   });
-  const { progress } = useActiveSection(stepIds, {
-    anchorOffsetPx: 96,
-    switchMode: "crossed",
-  });
-  const activeId = rawActiveId === endSentinelId ? lastStepId : rawActiveId;
   const activeIndex = Math.max(steps.findIndex((step) => step.id === activeId), 0);
   const activeStep = steps[activeIndex] ?? steps[0];
-  const trackInset = 100 / (steps.length * 2);
-  const trackLength = 100 - trackInset * 2;
+  const lastStep = steps[steps.length - 1];
+  const lastStepId = lastStep?.id ?? "";
   const railColumnWidth = "clamp(2.5rem, 3.2vw, 3rem)";
   const railLineLeft = `calc(${railColumnWidth} / 2 - 1.5px)`;
+  const railTrackRef = useRef<HTMLDivElement | null>(null);
+  const railMarkerRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [railMetrics, setRailMetrics] = useState({ top: 0, height: 0 });
 
-  if (!steps.length || !activeStep) {
+  useEffect(() => {
+    const railTrack = railTrackRef.current;
+
+    if (!railTrack || !firstStepId || !lastStepId) {
+      return;
+    }
+
+    let frameId = 0;
+    const viewport = window.visualViewport;
+
+    const updateRailMetrics = () => {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(() => {
+        const firstMarker = railMarkerRefs.current[firstStepId];
+        const lastMarker = railMarkerRefs.current[lastStepId];
+
+        if (!railTrack || !firstMarker || !lastMarker) {
+          return;
+        }
+
+        const trackRect = railTrack.getBoundingClientRect();
+        const firstRect = firstMarker.getBoundingClientRect();
+        const lastRect = lastMarker.getBoundingClientRect();
+        const nextTop = firstRect.top - trackRect.top + firstRect.height / 2;
+        const nextHeight = Math.max(0, lastRect.top - firstRect.top);
+
+        setRailMetrics((current) => {
+          if (
+            Math.abs(current.top - nextTop) < 0.5 &&
+            Math.abs(current.height - nextHeight) < 0.5
+          ) {
+            return current;
+          }
+
+          return {
+            top: nextTop,
+            height: nextHeight,
+          };
+        });
+      });
+    };
+
+    const resizeObserver =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(() => {
+            updateRailMetrics();
+          });
+
+    resizeObserver?.observe(railTrack);
+
+    for (const step of steps) {
+      const marker = railMarkerRefs.current[step.id];
+
+      if (marker) {
+        resizeObserver?.observe(marker);
+      }
+    }
+
+    updateRailMetrics();
+
+    window.addEventListener("resize", updateRailMetrics);
+    window.addEventListener("orientationchange", updateRailMetrics);
+    viewport?.addEventListener("resize", updateRailMetrics);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", updateRailMetrics);
+      window.removeEventListener("orientationchange", updateRailMetrics);
+      viewport?.removeEventListener("resize", updateRailMetrics);
+    };
+  }, [firstStepId, lastStepId, steps]);
+
+  if (!steps.length || !activeStep || !firstStep || !lastStep) {
     return null;
   }
 
@@ -362,134 +447,160 @@ export function FeatureShowcaseEditorialScroller({
             />
           </div>
 
-          <div className="mt-8 space-y-5 xl:hidden">
-            {steps.map((step, index) => (
-              <MobileStepCard index={index} key={step.id} step={step} />
+          <div className="mt-8 grid gap-4 lg:hidden">
+            {steps.map((step) => (
+              <MobileStepCard key={step.id} step={step} />
             ))}
           </div>
 
-          <div className="mt-10 hidden xl:grid xl:grid-cols-[180px_minmax(320px,0.82fr)_minmax(0,1.18fr)] xl:gap-8 2xl:grid-cols-[200px_minmax(340px,0.8fr)_minmax(0,1.2fr)] 2xl:gap-10">
+          <div className="mt-10 hidden lg:grid lg:grid-cols-[168px_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[180px_minmax(320px,0.82fr)_minmax(0,1.18fr)] xl:gap-8 2xl:grid-cols-[200px_minmax(340px,0.8fr)_minmax(0,1.2fr)] 2xl:gap-10">
             <div
-              className="xl:sticky xl:top-24 xl:self-start"
+              className="self-start lg:sticky lg:top-24"
               style={{ gridColumn: "1", gridRow: `1 / span ${steps.length + 1}` }}
             >
               <MotionReveal x={-20}>
-                <aside className="relative min-h-[80vh] pr-4">
+                <aside className="flex min-h-[calc(100vh-9.5rem)] flex-col pr-4 xl:min-h-[calc(100vh-10rem)]">
+                  <div className="relative flex-1" ref={railTrackRef}>
                   <div
-                    className="absolute top-0 z-0 w-[3px] rounded-full bg-[#4d4a45]"
-                    style={{
-                      height: `${trackLength}%`,
-                      left: railLineLeft,
-                      top: `${trackInset}%`,
-                    }}
-                  />
-                  <div
-                    className="absolute z-10 w-[3px] rounded-full"
-                    style={{
-                      background: "var(--consultry-step-progress-gradient)",
-                      height: `${trackLength * progress}%`,
-                      left: railLineLeft,
-                      top: `${trackInset}%`,
-                    }}
-                  />
+                      className="absolute z-0 w-[3px] rounded-full bg-[#4d4a45]"
+                      style={{
+                        height: `${railMetrics.height}px`,
+                        left: railLineLeft,
+                        top: `${railMetrics.top}px`,
+                      }}
+                    />
+                    <div
+                      className="absolute z-10 w-[3px] rounded-full"
+                      style={{
+                        background: "var(--consultry-step-progress-gradient)",
+                        height: `${railMetrics.height * progress}px`,
+                        left: railLineLeft,
+                        top: `${railMetrics.top}px`,
+                      }}
+                    />
 
-                  <ol
-                    className="relative z-20 grid min-h-[80vh]"
-                    style={{
-                      gridTemplateRows: `repeat(${steps.length}, minmax(0, 1fr))`,
-                    }}
-                  >
-                    {steps.map((step, index) => {
-                      const isActive = step.id === activeStep.id;
-                      const isComplete = index < activeIndex;
+                    <ol
+                      className="relative z-20 grid h-full gap-y-6 py-5 lg:gap-y-7 lg:py-6"
+                      style={{
+                        gridTemplateRows: `repeat(${steps.length}, minmax(5.5rem, 1fr))`,
+                      }}
+                    >
+                      {steps.map((step, index) => {
+                        const isActive = step.id === activeStep.id;
+                        const isComplete = index < activeIndex;
 
-                      return (
-                        <li className="flex items-center" key={step.id}>
-                          <Link
-                            aria-current={isActive ? "step" : undefined}
-                            className="group grid w-full items-center gap-x-4"
-                            href={`#${step.id}`}
-                            style={{
-                              gridTemplateColumns: `${railColumnWidth} minmax(0, 1fr)`,
-                            }}
-                          >
-                            <div
-                              className={cn(
-                                "relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
-                                isActive || isComplete
-                                  ? "border-[rgba(232,145,58,0.8)]"
-                                  : "border-[#5b5550]",
-                              )}
+                        return (
+                          <li className="flex items-center" key={step.id}>
+                            <Link
+                              aria-current={isActive ? "step" : undefined}
+                              className="group grid w-full items-center gap-x-4"
+                              href={`#${step.id}`}
                               style={{
-                                backgroundColor:
-                                  isComplete || isActive ? "rgba(255,255,255,0.02)" : "#2f2b27",
-                                justifySelf: "center",
+                                gridTemplateColumns: `${railColumnWidth} minmax(0, 1fr)`,
                               }}
                             >
                               <div
+                                ref={(node) => {
+                                  railMarkerRefs.current[step.id] = node;
+                                }}
                                 className={cn(
-                                  "absolute inset-0 rounded-full transition-opacity duration-300",
-                                  isActive ? "opacity-100" : "opacity-0",
+                                  "relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all duration-300",
+                                  isActive || isComplete
+                                    ? "border-[rgba(232,145,58,0.8)]"
+                                    : "border-[#5b5550]",
                                 )}
                                 style={{
-                                  background:
-                                    isActive || isComplete
-                                      ? "radial-gradient(circle, rgba(232,145,58,0.22) 0%, rgba(232,101,90,0.14) 50%, rgba(44,41,38,0.98) 100%)"
-                                      : "#2f2b27",
+                                  backgroundColor:
+                                    isComplete || isActive ? "rgba(255,255,255,0.02)" : "#2f2b27",
+                                  justifySelf: "center",
                                 }}
-                              />
-                              <span
-                                className={cn(
-                                  "relative z-10 rounded-full transition-all duration-300",
-                                  isActive
-                                    ? "h-[11px] w-[11px] bg-[#bf5347]"
-                                    : isComplete
-                                      ? "h-2.5 w-2.5 bg-[#bf5347]"
-                                      : "h-2.5 w-2.5 bg-[#5b5550]",
-                                )}
-                              />
-                            </div>
+                              >
+                                <div
+                                  className={cn(
+                                    "absolute inset-0 rounded-full transition-opacity duration-300",
+                                    isActive ? "opacity-100" : "opacity-0",
+                                  )}
+                                  style={{
+                                    background:
+                                      isActive || isComplete
+                                        ? "radial-gradient(circle, rgba(232,145,58,0.22) 0%, rgba(232,101,90,0.14) 50%, rgba(44,41,38,0.98) 100%)"
+                                        : "#2f2b27",
+                                  }}
+                                />
+                                <span
+                                  className={cn(
+                                    "relative z-10 rounded-full transition-all duration-300",
+                                    isActive
+                                      ? "h-[11px] w-[11px] bg-[#bf5347]"
+                                      : isComplete
+                                        ? "h-2.5 w-2.5 bg-[#bf5347]"
+                                        : "h-2.5 w-2.5 bg-[#5b5550]",
+                                  )}
+                                />
+                              </div>
 
-                            <div
-                              className={cn(
-                                "min-w-0 rounded-[16px] border px-3 py-3 transition-all duration-300",
-                                isActive
-                                  ? "border-[rgba(240,168,94,0.08)] bg-[rgba(255,255,255,0.02)]"
-                                  : "border-transparent group-hover:border-[rgba(255,255,255,0.06)] group-hover:bg-[rgba(255,255,255,0.02)]",
-                              )}
-                            >
-                              <p
+                              <div
                                 className={cn(
-                                  "text-[11px] uppercase tracking-[0.18em] transition-colors",
+                                  "min-w-0 rounded-[16px] border px-2.5 py-3 transition-all duration-300 sm:px-3 sm:py-3.5",
                                   isActive
-                                    ? "text-[var(--consultry-brand-warm)]"
-                                    : "text-[var(--consultry-text-faint)]",
+                                    ? "border-[rgba(240,168,94,0.08)] bg-[rgba(255,255,255,0.02)]"
+                                    : "border-transparent group-hover:border-[rgba(255,255,255,0.06)] group-hover:bg-[rgba(255,255,255,0.02)]",
                                 )}
                               >
-                                {step.stepLabel}
-                              </p>
-                              <p
-                                className={cn(
-                                  "mt-2 text-[13px] transition",
-                                  isActive
-                                    ? "font-medium text-[var(--consultry-text-primary)]"
-                                    : "text-[var(--consultry-text-muted)] group-hover:text-[var(--consultry-text-primary)]",
-                                )}
-                              >
-                                {step.stepperLabel}
-                              </p>
-                            </div>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ol>
+                                <p
+                                  className={cn(
+                                    "text-[11px] uppercase tracking-[0.18em] transition-colors",
+                                    isActive
+                                      ? "text-[var(--consultry-brand-warm)]"
+                                      : "text-[var(--consultry-text-faint)]",
+                                  )}
+                                >
+                                  {step.stepLabel}
+                                </p>
+                                <p
+                                  className={cn(
+                                    "mt-2 text-[12px] leading-[1.45] transition sm:text-[13px]",
+                                    isActive
+                                      ? "font-medium text-[var(--consultry-text-primary)]"
+                                      : "text-[var(--consultry-text-muted)] group-hover:text-[var(--consultry-text-primary)]",
+                                  )}
+                                >
+                                  {step.stepperLabel}
+                                </p>
+                              </div>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </div>
+
+                  <div className="mt-4 flex flex-col gap-2 sm:mt-5">
+                    <Button
+                      className="justify-start whitespace-nowrap rounded-[14px] border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] px-3 py-2 text-[10px] uppercase tracking-[0.12em] text-[var(--consultry-text-secondary)] hover:border-[rgba(240,168,94,0.18)] hover:bg-[rgba(255,255,255,0.06)] hover:text-[var(--consultry-text-primary)]"
+                      href={`#${firstStepId}`}
+                      size="sm"
+                      variant="ghost"
+                    >
+                      <ChevronsUp className="h-4 w-4" />
+                      Zum ersten
+                    </Button>
+                    <Button
+                      className="justify-start whitespace-nowrap rounded-[14px] border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] px-3 py-2 text-[10px] uppercase tracking-[0.12em] text-[var(--consultry-text-secondary)] hover:border-[rgba(240,168,94,0.18)] hover:bg-[rgba(255,255,255,0.06)] hover:text-[var(--consultry-text-primary)]"
+                      href={`#${lastStepId}`}
+                      size="sm"
+                      variant="ghost"
+                    >
+                      <ChevronsDown className="h-4 w-4" />
+                      Zum letzten
+                    </Button>
+                  </div>
                 </aside>
               </MotionReveal>
             </div>
 
             <div
-              className="xl:sticky xl:top-24 xl:self-start"
+              className="hidden xl:block xl:sticky xl:top-24 xl:self-start"
               style={{ gridColumn: "3", gridRow: `1 / span ${steps.length + 1}` }}
             >
               <MotionReveal key={activeStep.id} y={24}>
@@ -509,27 +620,44 @@ export function FeatureShowcaseEditorialScroller({
               </MotionReveal>
             </div>
 
-            {steps.map((step) => {
+            {steps.map((step, index) => {
               const theme = getStepTheme(step.id);
+              const compactTitle = getCompactStepTitle(step);
+              const isFirstStep = index === 0;
 
               return (
                 <MotionReveal
-                  className="flex min-h-[88vh] items-center pr-4 2xl:pr-6"
+                  className={cn(
+                    "relative flex pr-0 xl:pr-4 2xl:pr-6",
+                    isFirstStep
+                      ? "min-h-[calc(100vh-15rem)] items-start pb-8 pt-0 xl:min-h-[calc(100vh-16rem)] xl:pb-0"
+                      : "min-h-[96vh] items-center py-8 xl:min-h-[106vh] xl:py-0 2xl:min-h-[112vh]",
+                  )}
                   key={step.id}
+                  style={{ gridColumn: "2" }}
                   y={18}
                 >
-                  <article className="scroll-mt-28 w-full py-8 xl:py-10" id={step.id}>
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-0 h-px w-px opacity-0"
+                    id={getStepTriggerId(step.id)}
+                    style={{ top: stepTriggerTop }}
+                  />
+                  <article
+                    className={cn(
+                      "scroll-mt-28 w-full",
+                      isFirstStep ? "pb-8 pt-0 xl:pb-10 xl:pt-0" : "py-8 xl:py-10",
+                    )}
+                    id={step.id}
+                  >
                     <p
                       className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em]"
                       style={{ color: theme.accent }}
                     >
                       {step.stepLabel} / {step.stepperLabel}
                     </p>
-                    <p className="mt-5 font-[var(--font-mono)] text-[12px] uppercase tracking-[0.16em] text-[var(--consultry-brand-warm)]">
-                      {step.eyebrow}
-                    </p>
-                    <h2 className="mt-5 max-w-[13ch] text-[clamp(2.8rem,4vw,4.3rem)] font-semibold leading-[1.01] tracking-[-0.03em] text-[var(--consultry-text-primary)]">
-                      {step.title}
+                    <h2 className="mt-4 max-w-[18ch] text-[clamp(1.4rem,1.8vw,2rem)] font-semibold leading-[1.14] tracking-[-0.02em] text-[var(--consultry-text-primary)]">
+                      {compactTitle}
                     </h2>
                     <p className="mt-6 max-w-[30rem] text-[17px] leading-[1.72] text-[var(--consultry-text-secondary)] xl:text-[18px]">
                       {step.body}
@@ -568,7 +696,6 @@ export function FeatureShowcaseEditorialScroller({
             <div
               aria-hidden="true"
               className="min-h-[52vh] xl:min-h-[58vh]"
-              id={endSentinelId || undefined}
             />
           </div>
         </div>
