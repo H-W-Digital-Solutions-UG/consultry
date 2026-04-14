@@ -104,6 +104,25 @@ function getStepTheme(stepId: string): StepTheme {
   );
 }
 
+function EditorialHeadline({
+  overline,
+  title,
+}: {
+  overline: string;
+  title: string;
+}) {
+  return (
+    <div className="max-w-[42rem]">
+      <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
+        {overline}
+      </p>
+      <h2 className="mt-3 max-w-[24ch] text-balance text-[clamp(1.85rem,3vw,3.1rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[var(--consultry-text-primary)]">
+        {title}
+      </h2>
+    </div>
+  );
+}
+
 function StepVisual({
   step,
   priority,
@@ -336,13 +355,11 @@ export function FeatureShowcaseEditorialScroller({
             />
           </div>
 
-          <div className="relative max-w-[38rem]">
-            <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
-              DIE WEDGES
-            </p>
-            <p className="mt-3 max-w-[34rem] text-[14px] leading-[1.7] text-[var(--consultry-text-muted)] sm:text-[15px]">
-              Consultry verbindet Bestandskundenwachstum, Staffing, Wissenswiederverwendung und Delivery Control in einer durchgaengigen Arbeitsoberflaeche.
-            </p>
+          <div className="relative">
+            <EditorialHeadline
+              overline="DIE WEDGES"
+              title="Wachstum, Staffing, Wissen und Delivery in einem System."
+            />
           </div>
 
           <div className="mt-8 space-y-5 xl:hidden">
