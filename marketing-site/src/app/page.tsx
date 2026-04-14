@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HeroShowcase } from "@/components/marketing/HeroShowcase";
+import { HeroShowcaseHomepage } from "@/components/marketing/HeroShowCaseHomepage";
 import { FeatureShowcaseEditorialScroller } from "@/components/marketing/FeatureShowcaseEditorialScroller";
 import { InternalLinkGrid } from "@/components/marketing/InternalLinkGrid";
 import { JsonLd } from "@/components/marketing/JsonLd";
@@ -30,7 +30,7 @@ export default function Home() {
         })}
       />
       <main>
-        <HeroShowcase hero={hero} />
+        <HeroShowcaseHomepage hero={hero} />
         <FeatureShowcaseEditorialScroller steps={steps} />
 
         <InternalLinkGrid
