@@ -9,13 +9,13 @@ import { buildContactPageJsonLd } from "@/lib/structured-data";
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
-    title: "Kontakt | Demo und Pilotprojekt fuer DACH-Beratungen",
+    title: "Kontakt | Pilot, Partnerschaft und Rueckfragen",
     description:
-      "Kontaktieren Sie Consultry fuer Produktfragen, Pilotprojekte und Demo-Anfragen fuer DACH-IT- und Digitalisierungsberatungen.",
+      "Kontaktieren Sie Consultry fuer Pilotprojekte, Partnerschaften, Produktfragen und direkte Rueckfragen aus DACH-IT- und Digitalisierungsberatungen.",
     path: "/kontakt",
     keywords: [
       "Consultry Kontakt",
-      "Demo Beratungssoftware",
+      "Pilotprojekt Beratungssoftware",
       "Pilotprojekt DACH Beratungen",
     ],
   });
@@ -25,13 +25,13 @@ const prepChecklist = [
   "Teamgroesse und Delivery-Setup",
   "heutige Toollandschaft fuer CRM, Staffing, Wissen oder Delivery",
   "welcher operative Engpass zuerst geloest werden soll",
-  "ob Demo, Pilot oder konkretes Angebot gesucht wird",
+  "ob Pilot, Partnerschaft oder direkte Rueckfrage im Vordergrund steht",
 ] as const;
 
 const contactReasons = [
-  "Produktdemo fuer DACH-IT- und Digitalisierungsberatungen",
   "Pilotprojekt mit realen Team- und Delivery-Prozessen",
   "Fragen zu Datenschutz, Hosting oder operativer Produktlogik",
+  "Partnerschaften, Presse oder direkte organisatorische Rueckfragen",
 ] as const;
 
 export default function KontaktPage() {
@@ -41,13 +41,13 @@ export default function KontaktPage() {
         data={buildContactPageJsonLd({
           title: "Kontakt",
           description:
-            "Kontakt fuer Produktdemos, Pilotprojekte und Fragen zu Consultry fuer DACH-Beratungen.",
+            "Kontakt fuer Pilotprojekte, Partnerschaften und Fragen zu Consultry fuer DACH-Beratungen.",
           path: "/kontakt",
         })}
       />
 
       <main>
-        <section className="section-shell relative overflow-hidden pt-14 sm:pt-18">
+        <section className="section-shell relative overflow-hidden pt-8 sm:pt-10">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(240,168,94,0.18),transparent_28%),radial-gradient(circle_at_76%_10%,rgba(155,89,181,0.12),transparent_24%),linear-gradient(180deg,rgba(191,83,71,0.08),transparent_55%)]" />
           <div className="content-shell relative">
             <div className="grid gap-10 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,26rem)] xl:items-start xl:gap-14">
@@ -59,14 +59,13 @@ export default function KontaktPage() {
                 <p className="body-lg mt-6 max-w-[42rem]">
                   Wir sprechen mit Beratungshaeusern, die Folgegeschaeft, Staffing,
                   Wissenswiederverwendung und Delivery-Steuerung in einer operativen Plattform
-                  verbinden wollen. Fuer Produktdemos, Pilotprojekte und operative Fragen sind Sie
+                  verbinden wollen. Fuer Pilotprojekte, Partnerschaften und operative Fragen sind Sie
                   hier richtig.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Button href={`mailto:${companyProfile.productEmail}`}>
-                    Demo anfragen
-                    <ArrowUpRight className="h-4 w-4" />
+                  <Button href="/warteliste">
+                    Auf die Warteliste
                   </Button>
                   <Button href={`mailto:${companyProfile.legalEmail}`} variant="secondary">
                     Allgemeine Anfrage
@@ -114,25 +113,11 @@ export default function KontaktPage() {
                 <p className="eyebrow">Direkter Kontakt</p>
                 <p className="mt-4 text-[15px] leading-[1.7] text-[var(--consultry-text-muted)]">
                   {companyProfile.brandName} ist ein Angebot der {companyProfile.legalName}. Hier
-                  finden Sie die schnellsten Wege fuer Produkt- und Unternehmensanfragen.
+                  finden Sie die schnellsten Wege fuer Warteliste, Unternehmensanfragen und direkte
+                  Rueckfragen.
                 </p>
 
                 <div className="mt-7 space-y-4">
-                  <div className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-4.5 w-4.5 text-[var(--consultry-brand-warm)]" />
-                    <div>
-                      <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
-                        Produkt
-                      </p>
-                      <a
-                        className="mt-1 inline-flex text-[15px] text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
-                        href={`mailto:${companyProfile.productEmail}`}
-                      >
-                        {companyProfile.productEmail}
-                      </a>
-                    </div>
-                  </div>
-
                   <div className="flex items-start gap-3">
                     <Mail className="mt-0.5 h-4.5 w-4.5 text-[var(--consultry-brand-coral)]" />
                     <div>

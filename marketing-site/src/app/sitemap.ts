@@ -31,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${siteConfig.url}/warteliste`,
+      lastModified: new Date("2026-04-15T00:00:00.000Z"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${siteConfig.url}/impressum`,
       lastModified: new Date("2026-04-13T00:00:00.000Z"),
       changeFrequency: "yearly",

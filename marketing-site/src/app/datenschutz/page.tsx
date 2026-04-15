@@ -29,8 +29,9 @@ export default function DatenschutzPage() {
               </p>
               <p>
                 Diese Website dient derzeit der Information über das Produkt <strong>Consultry</strong>,
-                der Kontaktaufnahme per E-Mail sowie der Vorbereitung von Demo- und Pilotanfragen.
-                Es werden aktuell keine Analyse- oder Marketing-Tracker eingesetzt.
+                der Kontaktaufnahme per E-Mail, der Wartelisten-Anmeldung sowie der Vorbereitung von
+                Pilotanfragen. Zur Messung technischer Nutzungssignale verwenden wir Vercel Analytics
+                und Vercel Speed Insights.
               </p>
             </>
           ),
@@ -76,23 +77,25 @@ export default function DatenschutzPage() {
               <p>
                 Eingesetzter Hosting-Anbieter:
                 <br />
-                <strong>Hostinger International Ltd.</strong>
+                <strong>Vercel Inc.</strong>
                 <br />
-                61 Lordou Vironos Str. 6023
+                440 N Barranca Avenue #4133
                 <br />
-                Larnaca, Zypern
+                Covina, CA 91723
+                <br />
+                USA
               </p>
             </>
           ),
         },
         {
-          title: "4. Kontaktaufnahme und Demo-Anfragen",
+          title: "4. Kontaktaufnahme, Warteliste und Pilotanfragen",
           body: (
             <>
               <p>
                 Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen übermittelten
                 Angaben ausschließlich zur Bearbeitung Ihrer Anfrage, zur Kommunikation im Rahmen
-                von Demo-, Pilot- oder Produktgesprächen und, falls erforderlich, zur
+                von Wartelisten-, Pilot- oder Produktgesprächen und, falls erforderlich, zur
                 Vertragsanbahnung.
               </p>
               <p>
@@ -102,21 +105,32 @@ export default function DatenschutzPage() {
                 Anfragen.
               </p>
               <p>
-                Das auf der Website sichtbare Waitlist-/Demo-Formular validiert E-Mail-Adressen im
-                aktuellen Stand ausschließlich lokal im Browser. Über dieses Formular werden derzeit
-                keine Daten serverseitig an uns übertragen oder dauerhaft gespeichert.
+                Wenn Sie sich über das Wartelistenformular anmelden, verarbeiten wir Ihre
+                E-Mail-Adresse zur Verwaltung der Warteliste, zur Versendung der
+                Double-Opt-in-Bestätigung und für spätere produktbezogene Wartelisten-Updates.
+                Nachgelagerte freiwillige Angaben zur Einordnung, etwa zu Teamgröße, Beratungsfokus
+                oder Interesse an Pilotplätzen, werden nur verarbeitet, wenn Sie diese aktiv
+                absenden.
+              </p>
+              <p>
+                Für die technische Abwicklung der Wartelisten-Anmeldung und des E-Mail-Versands
+                nutzen wir <strong>Loops</strong> als E-Mail- und Marketing-Automation-Dienst.
+                Dabei werden die von Ihnen übermittelten Formulardaten an Loops übertragen und dort
+                verarbeitet.
               </p>
             </>
           ),
         },
         {
-          title: "5. Cookies, lokale Speichermechanismen und externe Links",
+          title: "5. Analyse, lokale Speichermechanismen und externe Links",
           body: (
             <>
               <p>
-                Diese Website verwendet derzeit keine Analyse- oder Marketing-Cookies. Es können
-                jedoch technisch notwendige Mechanismen eingesetzt werden, damit die Website und
-                ihre Grundfunktionen korrekt dargestellt werden.
+                Diese Website nutzt Vercel Analytics und Vercel Speed Insights, um aggregierte
+                Nutzungs- und Performance-Daten zu erfassen und die technische Qualität der Website
+                zu verbessern. Dabei können unter anderem Informationen zu aufgerufenen Seiten,
+                Browsertyp, Gerät und Performance-Metriken verarbeitet werden. Laut Anbieter werden
+                bei Web Analytics anonymisierte Daten verarbeitet und keine Cookies eingesetzt.
               </p>
               <p>
                 Zusätzlich speichert die Hinweisleiste im Kopfbereich lokal im Browser, ob Sie den

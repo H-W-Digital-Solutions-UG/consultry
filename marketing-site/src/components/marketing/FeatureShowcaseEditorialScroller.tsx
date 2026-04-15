@@ -428,7 +428,7 @@ export function FeatureShowcaseEditorialScroller({
   }
 
   return (
-    <section className="relative -mt-12 pb-12 pt-14 sm:-mt-14 sm:pb-14 sm:pt-16 lg:-mt-16 lg:pb-16 lg:pt-18">
+    <section className="relative pb-12 pt-10 sm:pb-14 sm:pt-12 lg:-mt-16 lg:pb-16 lg:pt-18">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-36 sm:h-44 lg:h-52"

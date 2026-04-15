@@ -101,7 +101,7 @@ export const homepageContent = {
     body:
       "Erkennen Sie Chancen frueher, besetzen Sie Teams sicherer und halten Sie Delivery in einem System steuerbar.",
     primaryCta: {
-      label: "Demo anfragen",
+      label: "Auf die Warteliste",
       href: ctaTargets.homepagePrimary,
     },
     secondaryCta: {
@@ -282,14 +282,14 @@ export const homepageContent = {
     },
   ] satisfies HomepageMetric[],
   waitlist: {
-    eyebrow: "DEMO",
-    title: "Sehen Sie Consultry in Ihrer Beratungslogik",
+    eyebrow: "WARTELISTE",
+    title: "Sichern Sie sich fruehen Zugang zu Consultry",
     body:
-      "In 30 Minuten zeigen wir anhand Ihrer echten Kunden- und Teamlogik, wie aus Signalen belastbare Chancen, aus Chancen schnellere Angebote und aus Projekten saubere kommerzielle Steuerung wird.",
+      "Tragen Sie sich ein, wenn Sie Bestandskundenwachstum, Staffing, Wissen und Angebote nicht mehr ueber Excel und isolierte Tools steuern wollen.",
     placeholder: "Ihre geschaeftliche E-Mail-Adresse",
-    buttonLabel: "Demo anfragen",
+    buttonLabel: "Auf die Warteliste",
     trustLine:
-      "Exklusiv fuer DACH-Beratungen · EU-Hosting · Keine generische Self-Serve-Software",
-    success: "Danke. Wir haben Ihre Anfrage fuer eine Demo erhalten.",
+      "Double-Opt-in · Exklusiv fuer DACH-Beratungen · Begrenzte Pilotplaetze",
+    success: "Danke. Bitte bestaetigen Sie jetzt noch Ihre Anmeldung per E-Mail.",
   } satisfies HomepageWaitlist,
 } as const;

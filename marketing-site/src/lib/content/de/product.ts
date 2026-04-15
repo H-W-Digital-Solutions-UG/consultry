@@ -114,8 +114,8 @@ export const productHero: ProductHeroContent = {
   body:
     "Consultry verbindet Marktchancen, Teamlogik, Angebotsarbeit, Delivery und Commercial Control in einem AI-nativen System. Erklaerbar, freigabepflichtig und gebaut fuer DACH-IT- und Digitalisierungsberatungen.",
   primaryCta: {
-    label: "Demo anfragen",
-    href: "/#waitlist",
+    label: "Fruehen Zugang sichern",
+    href: "/warteliste",
   },
   secondaryCta: {
     label: "Module entdecken",
@@ -135,16 +135,16 @@ export const productHero: ProductHeroContent = {
 };
 
 export const productDemoModule: ProductDemoModuleContent = {
-  eyebrow: "PRODUKT-DEMO",
-  title: "Sehen Sie den Ablauf spaeter live im Team.",
+  eyebrow: "PRODUKT-VORSCHAU",
+  title: "So fuehlt sich der Kernflow von Consultry an.",
   body:
-    "Die Demo zeigt den Kernflow von Consultry: Chance erkennen, Team belastbar vorschlagen, Angebot strukturieren und Delivery sauber weiterfuehren.",
+    "Die Vorschau zeigt den Kernflow von Consultry: Chance erkennen, Team belastbar vorschlagen, Angebot strukturieren und Delivery sauber weiterfuehren.",
   meta:
     "Von Signal-Feed und Engagement Brief ueber Staffing und Proposal bis zur Delivery- und Commercial-Sicht bleibt alles in einer zusammenhaengenden Arbeitsebene.",
-  overlayCta: "Demo-Vorschau laden",
+  overlayCta: "Preview ansehen",
   poster: {
     src: "/images/product-row-dashboard.png",
-    alt: "Consultry Produkt-Demo mit Signal-Feed und kollaborativer Arbeitsoberflaeche",
+    alt: "Consultry Produktvorschau mit Signal-Feed und kollaborativer Arbeitsoberflaeche",
   },
 };
 
@@ -407,12 +407,12 @@ export const productInternalLinks: ProductInternalLink[] = [
 ];
 
 export const productCta = {
-  eyebrow: "BEREIT FUER DAS SYSTEM?",
+  eyebrow: "BEREIT FUER FRUEHEN ZUGANG?",
   title: "Weniger Kontextverlust. Mehr Steuerung.",
   body:
-    "In einer persoenlichen Demo zeigen wir, wie Consultry Ihre operative Steuerung verdichtet: mit Ihren Daten, Ihrem Team und Ihren realen Prozessen.",
+    "Tragen Sie sich auf die Warteliste ein, wenn Sie operative Steuerung fuer Ihre Beratung frueher, konsistenter und mit weniger Kontextverlust aufbauen wollen.",
   primaryCta: {
-    label: "Demo vereinbaren",
-    href: "/#waitlist",
+    label: "Auf die Warteliste",
+    href: "/warteliste",
   },
 } as const;

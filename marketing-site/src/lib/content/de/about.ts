@@ -88,11 +88,11 @@ export const aboutContent = {
   },
   cta: {
     eyebrow: "NÄCHSTER SCHRITT",
-    title: "Bereit fuer eine persoenliche Produktdemo?",
-    body: "Wir sprechen mit Beratungsunternehmen, die Folgegeschaeft, Staffing und Delivery nicht laenger ueber isolierte Tools steuern wollen.",
+    title: "Bereit fuer fruehen Zugang zu Consultry?",
+    body: "Tragen Sie sich auf die Warteliste ein, wenn Sie Folgegeschaeft, Staffing und Delivery nicht laenger ueber isolierte Tools steuern wollen.",
     primaryCta: {
-      label: "Demo anfragen",
-      href: "/#waitlist",
+      label: "Auf die Warteliste",
+      href: "/warteliste",
     },
   },
 } as const;

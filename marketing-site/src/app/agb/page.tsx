@@ -22,7 +22,7 @@ export default function AgbPage() {
         },
         {
           title: "2. Geltung bis zum Launch",
-          body: "Bis zur finalen Veröffentlichung der AGB gelten für Pilotprojekte, Workshops und Produktdemos die jeweils individuell vereinbarten Angebotsunterlagen und Projektvereinbarungen.",
+          body: "Bis zur finalen Veröffentlichung der AGB gelten für Pilotprojekte, Workshops und Produktvorschauen die jeweils individuell vereinbarten Angebotsunterlagen und Projektvereinbarungen.",
         },
         {
           title: "3. Finale Regelungsbereiche",

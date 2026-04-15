@@ -21,7 +21,7 @@ export function HeroMinimal({
   const centered = align === "center";
 
   return (
-    <section className="section-shell relative overflow-hidden pt-14 sm:pt-18">
+    <section className="section-shell relative overflow-hidden pt-8 sm:pt-10">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(232,145,58,0.22),transparent_32%),linear-gradient(180deg,rgba(191,83,71,0.12),transparent_55%)]" />
       <div className="content-shell">
         <div className={centered ? "mx-auto max-w-4xl text-center" : "max-w-3xl"}>

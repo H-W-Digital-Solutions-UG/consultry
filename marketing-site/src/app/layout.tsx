@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/components/marketing/Footer";
 import { JsonLd } from "@/components/marketing/JsonLd";
 import { Nav } from "@/components/marketing/Nav";
-import { siteConfig } from "@/lib/seo";
+import { isPreviewBuild, siteConfig } from "@/lib/seo";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
@@ -28,6 +28,26 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  robots: isPreviewBuild
+    ? {
+        index: false,
+        follow: false,
+        googleBot: {
+          index: false,
+          follow: false,
+        },
+      }
+    : {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+          "max-video-preview": -1,
+        },
+      },
   manifest: "/site.webmanifest",
   icons: {
     shortcut: "/favicon.ico",

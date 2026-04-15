@@ -1,23 +1,22 @@
-import { WaitlistSignupForm } from "@/components/marketing/WaitlistSignupForm";
+import { Button } from "@/components/ui/Button";
 
 type RichCTABandProps = {
   eyebrow?: string;
   title: string;
   body: string;
-  placeholder: string;
-  buttonLabel: string;
+  primaryCta: {
+    label: string;
+    href: string;
+  };
   trustLine: string;
-  success: string;
 };
 
 export function RichCTABand({
   eyebrow,
   title,
   body,
-  placeholder,
-  buttonLabel,
+  primaryCta,
   trustLine,
-  success,
 }: RichCTABandProps) {
   return (
     <section
@@ -67,12 +66,13 @@ export function RichCTABand({
             {body}
           </p>
 
-          <div className="mt-8 w-full max-w-[35.5rem] rounded-[24px] border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.92)] p-[5px] shadow-[0_16px_40px_rgba(0,0,0,0.18)] backdrop-blur-[2px] sm:rounded-full">
-            <WaitlistSignupForm
-              buttonLabel={buttonLabel}
-              placeholder={placeholder}
-              success={success}
-            />
+          <div className="mt-8">
+            <Button
+              className="min-w-[13rem] px-8 py-3.5 text-[16px] font-semibold sm:text-[17px]"
+              href={primaryCta.href}
+            >
+              {primaryCta.label}
+            </Button>
           </div>
 
           <p className="mt-7 max-w-[44rem] text-center text-[11px] text-white/58 sm:text-[13px]">

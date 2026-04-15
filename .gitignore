@@ -6,3 +6,6 @@
 **/marketing-site/_debug_output**
 **/.archive_old_docs**
 /output/
+/.codex-artifacts/lighthouse/desktop.json
+/.codex-artifacts/lighthouse/mobile.json
+/.codex-artifacts/lighthouse/tablet.json

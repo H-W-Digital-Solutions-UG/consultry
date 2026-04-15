@@ -63,7 +63,7 @@ export function ProductArchitecture({ content }: ProductArchitectureProps) {
           </p>
 
           <div className="mt-10 grid gap-5 md:hidden">
-            {content.layers.map((layer, index) => (
+            {content.layers.map((layer) => (
               <article
                 className="overflow-hidden rounded-[20px] border border-[rgba(255,255,255,0.08)] bg-[#332f2c]"
                 key={layer.id}
@@ -89,21 +89,6 @@ export function ProductArchitecture({ content }: ProductArchitectureProps) {
                   </ul>
                 </div>
 
-                <div className="border-t border-[rgba(255,255,255,0.06)] bg-[#2c2926] p-5">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[16px] bg-[#211d1a]">
-                    <Image
-                      alt={layer.preview.alt}
-                      className="object-contain"
-                      fill
-                      priority={index === 0}
-                      sizes="(max-width: 1024px) 92vw, 44vw"
-                      src={layer.preview.src}
-                    />
-                  </div>
-                  <p className="mt-4 text-[13px] leading-[1.6] text-[#a8a29e]">
-                    {layer.preview.caption}
-                  </p>
-                </div>
               </article>
             ))}
           </div>

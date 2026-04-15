@@ -80,12 +80,12 @@ export default async function ProductWedgePage({ params }: WedgePageProps) {
       <WedgePageTemplate
         comparisonTable={content.comparisonTable}
         cta={{
-          eyebrow: "DEMO",
-          title: "Sehen Sie den Workflow in Ihrer eigenen Beratungslogik",
-          body: "In einer persoenlichen Demo zeigen wir, wie Consultry den beschriebenen Wedge in Ihren Kunden-, Team- und Delivery-Kontext uebersetzt.",
+          eyebrow: "FRUEHER ZUGANG",
+          title: "Sichern Sie sich fruehen Zugang fuer Ihre Beratungslogik",
+          body: "Tragen Sie sich auf die Warteliste ein, wenn Sie den beschriebenen Wedge nicht laenger ueber getrennte Tools und manuelle Workarounds steuern wollen.",
           primaryCta: {
-            label: "Demo anfragen",
-            href: "/#waitlist",
+            label: "Auf die Warteliste",
+            href: "/warteliste",
           },
         }}
         faqBlocks={content.faqBlocks}

@@ -21,39 +21,39 @@ export type SocialLink = {
 
 export const announcement = {
   text: "Exklusiver Frühzugang für DACH-Beratungen",
-  href: "/#waitlist",
-  ctaLabel: "Demo anfragen",
+  href: "/warteliste",
+  ctaLabel: "Zur Warteliste",
 } as const;
 
 export const ctaTargets = {
-  nav: "/#waitlist",
-  homepagePrimary: "#waitlist",
+  nav: "/warteliste",
+  homepagePrimary: "/warteliste",
   homepageSecondary: "/produkt#demo",
-  productPrimary: "/#waitlist",
+  productPrimary: "/warteliste",
   productSecondary: "/produkt#architecture",
-  aboutPrimary: "/#waitlist",
+  aboutPrimary: "/warteliste",
 } as const;
 
 export const deepDiveCta = {
-  title: "Sehen Sie, wie Consultry Wachstum, Staffing und Wissen verbindet",
-  body: "Starten Sie mit einer persoenlichen Demo. Wir zeigen Ihnen Consultry mit Ihrer Kunden-, Team- und Delivery-Logik statt mit generischen Beispiel-Daten.",
+  title: "Sichern Sie sich fruehen Zugang zu Consultry",
+  body: "Tragen Sie sich auf die Warteliste ein, wenn Sie Bestandskundenwachstum, Staffing und Wissen nicht laenger ueber getrennte Tools steuern wollen.",
   primaryCta: {
-    label: "Demo anfragen",
+    label: "Auf die Warteliste",
     href: ctaTargets.nav,
   },
 } as const;
 
 export const richDemoCta = {
-  title: "Bereit fuer das Operating System fuer DACH-Beratungen?",
-  body: "Sichern Sie sich fruehen Zugang zu einer Plattform, die Bestandskundenwachstum, Staffing, Wissenswiederverwendung und Delivery Control verbindet.",
-  placeholder: "Ihre geschäftliche E-Mail-Adresse",
-  buttonLabel: "Demo anfragen",
-  trustLine: "Keine Kreditkarte noetig · Exklusiv fuer DACH-Beratungen · Begrenzte Pilotplaetze",
-  success: "Danke. Wir haben Ihre Anfrage erhalten.",
+  title: "Bereit fuer fruehen Zugang zu Consultry?",
+  body: "Tragen Sie sich auf die Warteliste fuer eine Plattform ein, die Bestandskundenwachstum, Staffing, Wissenswiederverwendung und Delivery Control verbindet.",
+  primaryCta: {
+    label: "Auf die Warteliste",
+    href: ctaTargets.nav,
+  },
+  trustLine: "Double-Opt-in · Exklusiv fuer DACH-Beratungen · Begrenzte Pilotplaetze",
 } as const;
 
 export const navLinks: NavLink[] = [
-  { label: "Home", href: "/" },
   { label: "Produkt", href: "/produkt" },
   { label: "Unternehmen", href: "/unternehmen" },
   { label: "Kontakt", href: "/kontakt" },

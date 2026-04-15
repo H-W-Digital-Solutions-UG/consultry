@@ -4,11 +4,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ctaTargets, navLinks } from "@/lib/content/shared";
 import { cn } from "@/lib/cn";
+
+function NavCtaContent() {
+  return (
+    <span className="inline-flex items-center gap-3">
+      <span className="whitespace-nowrap">Auf die Warteliste</span>
+      <span
+        aria-hidden="true"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[rgba(255,255,255,0.14)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] text-[var(--consultry-text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition duration-200 group-hover:translate-x-0.5 group-hover:border-[rgba(244,183,109,0.24)] group-hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.08))]"
+      >
+        <ArrowUpRight className="h-4 w-4" strokeWidth={2.1} />
+      </span>
+    </span>
+  );
+}
 
 export function Nav() {
   const pathname = usePathname();
@@ -62,19 +76,19 @@ export function Nav() {
             "border-b border-[var(--consultry-border-soft)] bg-[var(--consultry-surface-glass)] shadow-[var(--consultry-shadow-md)] backdrop-blur-xl",
         )}
       >
-        <div className="flex h-[4.45rem] w-full items-center justify-between gap-4 px-3 sm:px-4 lg:px-6 xl:px-7">
-          <Link className="inline-flex items-center gap-0 overflow-visible" href="/">
-            <span className="relative block h-[4.45rem] w-[clamp(8.75rem,11vw,10rem)] shrink-0 overflow-visible">
+        <div className="flex h-16 w-full items-center justify-between gap-4 px-3 sm:h-[4.45rem] sm:px-4 lg:px-6 xl:px-7">
+          <Link className="inline-flex items-center gap-1.5 overflow-visible sm:gap-2" href="/">
+            <span className="relative block h-16 w-[4.35rem] shrink-0 overflow-visible sm:h-[4.45rem] sm:w-[clamp(4.9rem,6.2vw,5.7rem)]">
               <Image
                 alt="Consultry Logo"
-                className="absolute left-0 top-1/2 h-[clamp(5.5rem,7vw,6.75rem)] w-auto -translate-y-1/2 object-contain"
+                className="absolute left-0 top-1/2 h-[3.1rem] w-auto -translate-y-1/2 object-contain sm:h-[clamp(3.85rem,4.9vw,4.7rem)]"
                 height={100}
                 priority
                 src="/images/consultry-logo.png"
                 width={150}
               />
             </span>
-            <span className="-ml-2 text-[clamp(0.98rem,1.08vw,1.14rem)] font-medium leading-[0.96] tracking-[-0.024em] text-[rgba(237,232,226,0.9)] sm:-ml-2.5">
+            <span className="translate-y-[1px] text-[1rem] font-bold leading-[0.94] tracking-[-0.045em] text-[rgba(246,239,232,0.99)] sm:text-[clamp(1.04rem,1.16vw,1.24rem)]">
               Consultry
             </span>
           </Link>
@@ -126,12 +140,11 @@ export function Nav() {
 
           <div className="hidden md:block">
             <Button
-              className="px-5 py-2 text-[14px] font-medium tracking-[0.01em]"
+              className="group h-[3.2rem] px-2 pl-5 pr-2 text-[14px] font-semibold tracking-[-0.01em] shadow-[0_14px_30px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)]"
               href={ctaTargets.nav}
               variant="secondary"
             >
-              Demo anfragen
-              <span aria-hidden="true">→</span>
+              <NavCtaContent />
             </Button>
           </div>
 
@@ -160,8 +173,12 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
-            <Button className="mt-2 w-full" href={ctaTargets.nav}>
-              Demo anfragen
+            <Button
+              className="group mt-2 w-full px-2 pl-4 pr-2 text-[15px] font-semibold tracking-[-0.01em]"
+              href={ctaTargets.nav}
+              variant="secondary"
+            >
+              <NavCtaContent />
             </Button>
           </div>
         </div>
