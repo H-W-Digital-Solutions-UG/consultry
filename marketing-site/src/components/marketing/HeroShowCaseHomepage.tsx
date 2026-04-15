@@ -12,10 +12,10 @@ export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
     <section className="relative isolate -mt-[4.45rem] overflow-hidden bg-[#050507]">
       <div
         aria-hidden="true"
-        className="absolute inset-0 md:hidden bg-[radial-gradient(circle_at_78%_22%,rgba(232,101,90,0.22)_0%,rgba(232,101,90,0.1)_18%,transparent_40%),radial-gradient(circle_at_68%_58%,rgba(155,89,182,0.18)_0%,rgba(155,89,182,0.08)_22%,transparent_46%),linear-gradient(180deg,#060608_0%,#0a0b10_46%,#08070a_100%)]"
+        className="absolute inset-0 lg:hidden bg-[radial-gradient(circle_at_78%_22%,rgba(232,101,90,0.22)_0%,rgba(232,101,90,0.1)_18%,transparent_40%),radial-gradient(circle_at_68%_58%,rgba(155,89,182,0.18)_0%,rgba(155,89,182,0.08)_22%,transparent_46%),linear-gradient(180deg,#060608_0%,#0a0b10_46%,#08070a_100%)]"
       />
 
-      <div className="absolute inset-0 hidden md:block">
+      <div className="absolute inset-0 hidden lg:block">
         <video
           aria-hidden="true"
           autoPlay
@@ -25,7 +25,7 @@ export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
           playsInline
           preload="auto"
         >
-          <source media="(min-width: 768px)" src="/videos/final_hero_noaudio_compressed.mp4" type="video/mp4" />
+          <source media="(min-width: 1024px)" src="/videos/final_hero_noaudio_compressed.mp4" type="video/mp4" />
         </video>
       </div>
 
