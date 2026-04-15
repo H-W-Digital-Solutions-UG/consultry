@@ -338,6 +338,8 @@ export function FeatureShowcaseEditorialScroller({
     switchMode: "crossed",
   });
   const activeIndex = Math.max(steps.findIndex((step) => step.id === activeId), 0);
+  const progressSegments = Math.max(steps.length - 1, 1);
+  const resolvedProgress = Math.max(progress, activeIndex / progressSegments);
   const activeStep = steps[activeIndex] ?? steps[0];
   const lastStep = steps[steps.length - 1];
   const lastStepId = lastStep?.id ?? "";
@@ -426,16 +428,43 @@ export function FeatureShowcaseEditorialScroller({
   }
 
   return (
-    <section className="pb-12 pt-10 sm:pb-14 sm:pt-12 lg:pb-16 lg:pt-14">
+    <section className="relative -mt-12 pb-12 pt-14 sm:-mt-14 sm:pb-14 sm:pt-16 lg:-mt-16 lg:pb-16 lg:pt-18">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-36 sm:h-44 lg:h-52"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(23,19,17,0) 0%, rgba(30,24,21,0.42) 34%, rgba(33,26,23,0.78) 68%, rgba(37,29,26,0.96) 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-[10%] top-[-4rem] h-28 opacity-60 blur-3xl sm:h-32 lg:h-36"
+        style={{
+          background:
+            "radial-gradient(50% 100% at 50% 50%, rgba(244,183,109,0.18) 0%, rgba(232,101,90,0.12) 42%, rgba(23,19,17,0) 82%)",
+        }}
+      />
       <div className="mx-auto w-[min(100%-1rem,92rem)] sm:w-[min(100%-1.5rem,94rem)]">
-        <div className="relative rounded-[28px] border border-[var(--consultry-border-soft)] bg-[linear-gradient(180deg,rgba(44,41,38,0.96)_0%,rgba(30,27,24,0.96)_100%)] px-5 py-6 shadow-[var(--consultry-shadow-lg)] sm:px-7 sm:py-8 lg:px-10 lg:py-10">
+        <div className="relative rounded-[28px] border border-[rgba(255,255,255,0.06)] bg-[linear-gradient(180deg,rgba(37,29,26,0.98)_0%,rgba(28,23,20,0.98)_30%,rgba(23,19,17,1)_100%)] px-5 py-6 shadow-[var(--consultry-shadow-lg)] sm:px-7 sm:py-8 lg:px-10 lg:py-10">
           <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px]">
             <div
               aria-hidden="true"
-              className="absolute inset-0 opacity-70"
+              className="absolute inset-0 opacity-55"
               style={{
                 background:
-                  "radial-gradient(circle at top left, rgba(240,168,94,0.12) 0%, rgba(240,168,94,0) 28%), radial-gradient(circle at 78% 16%, rgba(232,101,90,0.1) 0%, rgba(232,101,90,0) 24%), radial-gradient(circle at bottom right, rgba(155,89,183,0.1) 0%, rgba(0,0,0,0) 36%)",
+                  "linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+                backgroundSize: "36px 36px",
+                maskImage:
+                  "linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.92) 16%, rgba(0,0,0,0.92) 84%, rgba(0,0,0,0.28) 100%)",
+              }}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-[-8%] top-[-30%] h-[155%] opacity-80 blur-3xl"
+              style={{
+                background:
+                  "radial-gradient(ellipse at top, rgba(244,183,109,0.18) 0%, rgba(232,101,90,0.12) 36%, rgba(20,17,15,0) 72%)",
               }}
             />
           </div>
@@ -473,7 +502,7 @@ export function FeatureShowcaseEditorialScroller({
                       className="absolute z-10 w-[3px] rounded-full"
                       style={{
                         background: "var(--consultry-step-progress-gradient)",
-                        height: `${railMetrics.height * progress}px`,
+                        height: `${railMetrics.height * resolvedProgress}px`,
                         left: railLineLeft,
                         top: `${railMetrics.top}px`,
                       }}

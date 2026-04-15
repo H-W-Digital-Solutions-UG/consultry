@@ -1,12 +1,13 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 type MotionRevealProps = {
   children: ReactNode;
   className?: string;
+  style?: CSSProperties;
   delay?: number;
   duration?: number;
   x?: number;
@@ -21,6 +22,7 @@ const revealEase = [0.22, 1, 0.36, 1] as const;
 export function MotionReveal({
   children,
   className,
+  style,
   delay = 0,
   duration = 0.58,
   x = 0,
@@ -35,6 +37,7 @@ export function MotionReveal({
     <motion.div
       className={cn(className)}
       initial={shouldReduceMotion ? false : { opacity: 0, x, y, scale }}
+      style={style}
       transition={
         shouldReduceMotion
           ? { duration: 0 }

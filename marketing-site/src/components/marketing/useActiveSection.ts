@@ -64,16 +64,33 @@ export function useActiveSection(
       });
     }
 
-    const firstTop = elements[0]?.getBoundingClientRect().top ?? 0;
-    const lastTop = elements[elements.length - 1]?.getBoundingClientRect().top ?? 0;
-    const distance = lastTop - firstTop;
+    const triggerTops = elements.map((element) => element.getBoundingClientRect().top);
+    const segmentCount = Math.max(triggerTops.length - 1, 0);
+    let nextProgress = 0;
 
-    const nextProgress =
-      distance <= 0
-        ? firstTop <= anchorY
-          ? 1
-          : 0
-        : Math.min(1, Math.max(0, (anchorY - firstTop) / distance));
+    if (!segmentCount) {
+      nextProgress = triggerTops[0] !== undefined && triggerTops[0] <= anchorY ? 1 : 0;
+    } else if (anchorY <= triggerTops[0]) {
+      nextProgress = 0;
+    } else if (anchorY >= triggerTops[segmentCount]) {
+      nextProgress = 1;
+    } else {
+      for (let index = 0; index < segmentCount; index += 1) {
+        const segmentStart = triggerTops[index];
+        const segmentEnd = triggerTops[index + 1];
+
+        if (anchorY > segmentEnd) {
+          continue;
+        }
+
+        const segmentDistance = segmentEnd - segmentStart;
+        const localProgress =
+          segmentDistance <= 0 ? 0 : (anchorY - segmentStart) / segmentDistance;
+
+        nextProgress = (index + Math.min(1, Math.max(0, localProgress))) / segmentCount;
+        break;
+      }
+    }
 
     setProgress((current) =>
       Math.abs(current - nextProgress) > 0.002 ? nextProgress : current,

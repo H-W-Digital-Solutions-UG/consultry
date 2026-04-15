@@ -4,7 +4,6 @@ import { FeatureShowcaseEditorialScroller } from "@/components/marketing/Feature
 import { InternalLinkGrid } from "@/components/marketing/InternalLinkGrid";
 import { JsonLd } from "@/components/marketing/JsonLd";
 import { MetricsBand } from "@/components/marketing/MetricsBand";
-import { RichCTABand } from "@/components/marketing/RichCTABand";
 import { buildPageMetadata } from "@/lib/seo";
 import { buildSoftwareApplicationJsonLd } from "@/lib/structured-data";
 import { homepageContent, homepageSeo } from "@/lib/content/de/homepage";
@@ -19,7 +18,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default function Home() {
-  const { hero, steps, internalLinks, metrics, waitlist } = homepageContent;
+  const { hero, steps, internalLinks, metrics } = homepageContent;
 
   return (
     <>
@@ -47,15 +46,6 @@ export default function Home() {
           footnote="Basierend auf Pilotdaten und Branchen-Benchmarks fuer mittelstaendige DACH-Beratungen (30-200 Berater)."
           metrics={metrics}
           title="Beratungen, die Consultry nutzen, berichten"
-        />
-
-        <RichCTABand
-          body={waitlist.body}
-          buttonLabel={waitlist.buttonLabel}
-          placeholder={waitlist.placeholder}
-          success={waitlist.success}
-          title={waitlist.title}
-          trustLine={waitlist.trustLine}
         />
       </main>
     </>
