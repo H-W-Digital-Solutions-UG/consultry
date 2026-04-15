@@ -9,7 +9,7 @@ export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
   const headline = hero.title.join(" ");
 
   return (
-    <section className="relative isolate -mt-[4.45rem] overflow-hidden">
+    <section className="relative isolate -mt-[4.45rem] overflow-hidden bg-[#050507]">
       <div className="absolute inset-0">
         <video
           aria-hidden="true"
@@ -18,7 +18,6 @@ export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
           loop
           muted
           playsInline
-          poster={hero.image.src}
           preload="auto"
         >
           <source src="/videos/final_hero_noaudio_compressed.mp4" type="video/mp4" />
