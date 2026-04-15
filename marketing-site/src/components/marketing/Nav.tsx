@@ -12,8 +12,8 @@ import { cn } from "@/lib/cn";
 
 function NavCtaContent() {
   return (
-    <span className="inline-flex items-center gap-3">
-      <span className="whitespace-nowrap">Auf die Warteliste</span>
+    <span className="flex w-full items-center justify-between gap-3">
+      <span className="min-w-0 whitespace-nowrap pr-1">Auf die Warteliste</span>
       <span
         aria-hidden="true"
         className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[rgba(255,255,255,0.14)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] text-[var(--consultry-text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition duration-200 group-hover:translate-x-0.5 group-hover:border-[rgba(244,183,109,0.24)] group-hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.08))]"
@@ -140,7 +140,7 @@ export function Nav() {
 
           <div className="hidden md:block">
             <Button
-              className="group h-[3.2rem] px-2 pl-5 pr-2 text-[14px] font-semibold tracking-[-0.01em] shadow-[0_14px_30px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)]"
+              className="group h-[3.2rem] min-w-[15rem] px-2 pl-5 pr-2 text-[14px] font-semibold tracking-[-0.01em] shadow-[0_14px_30px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)]"
               href={ctaTargets.nav}
               variant="secondary"
             >
@@ -176,6 +176,7 @@ export function Nav() {
             <Button
               className="group mt-2 w-full px-2 pl-4 pr-2 text-[15px] font-semibold tracking-[-0.01em]"
               href={ctaTargets.nav}
+              onClick={() => setMenuOpen(false)}
               variant="secondary"
             >
               <NavCtaContent />

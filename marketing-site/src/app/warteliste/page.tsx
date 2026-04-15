@@ -19,11 +19,9 @@ export function generateMetadata(): Metadata {
 }
 
 export default function WaitlistPage() {
-  const qualificationEnabled = Boolean(process.env.LOOPS_API_KEY?.trim());
-
   return (
     <main>
-      <WaitlistSignupFlow qualificationEnabled={qualificationEnabled} />
+      <WaitlistSignupFlow />
     </main>
   );
 }

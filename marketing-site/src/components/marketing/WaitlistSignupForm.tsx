@@ -19,8 +19,6 @@ type WaitlistSignupFormProps = {
 type SubmitState = "idle" | "submitting" | "success";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const loopsFormEndpoint = process.env.NEXT_PUBLIC_LOOPS_FORM_ENDPOINT?.trim();
-const loopsWaitlistListId = process.env.NEXT_PUBLIC_LOOPS_WAITLIST_LIST_ID?.trim();
 const revealEase = [0.22, 1, 0.36, 1] as const;
 const minimumSubmitFeedbackMs = 520;
 
@@ -91,11 +89,6 @@ export function WaitlistSignupForm({
       return;
     }
 
-    if (!loopsFormEndpoint || !loopsWaitlistListId) {
-      setError("Die Warteliste ist gerade nicht verfuegbar. Bitte versuchen Sie es spaeter noch einmal.");
-      return;
-    }
-
     setError(null);
     setSubmitState("submitting");
     const submitStartedAt = performance.now();
@@ -104,41 +97,29 @@ export function WaitlistSignupForm({
 
     try {
       const searchParams = new URLSearchParams(window.location.search);
-      const payload = new URLSearchParams({
+      const payload = {
         email: value,
-        mailingLists: loopsWaitlistListId,
-        source: "consultry_waitlist",
-        userGroup: "warteliste",
         signupPageUrl: window.location.href,
         countryDomain: window.location.hostname,
-      });
+        utmSource: searchParams.get("utm_source") ?? undefined,
+        utmMedium: searchParams.get("utm_medium") ?? undefined,
+        utmCampaign: searchParams.get("utm_campaign") ?? undefined,
+      };
 
-      const utmSource = searchParams.get("utm_source");
-      const utmMedium = searchParams.get("utm_medium");
-      const utmCampaign = searchParams.get("utm_campaign");
-
-      if (utmSource) {
-        payload.set("utmSource", utmSource);
-      }
-
-      if (utmMedium) {
-        payload.set("utmMedium", utmMedium);
-      }
-
-      if (utmCampaign) {
-        payload.set("utmCampaign", utmCampaign);
-      }
-
-      const response = await fetch(loopsFormEndpoint, {
+      const response = await fetch("/api/waitlist/signup", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
-        body: payload.toString(),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
         const responseMessage = (await readResponseMessage(response)).toLowerCase();
+
+        if (responseMessage.includes("waitlist_not_configured")) {
+          throw new Error("waitlist_not_configured");
+        }
 
         if (
           response.status === 429 ||
@@ -175,7 +156,10 @@ export function WaitlistSignupForm({
       submitted = true;
     } catch (submitError) {
       if (submitError instanceof Error) {
-        if (submitError.message === "rate_limited") {
+        if (submitError.message === "waitlist_not_configured") {
+          nextError =
+            "Die Warteliste ist gerade nicht verfuegbar. Bitte versuchen Sie es spaeter noch einmal.";
+        } else if (submitError.message === "rate_limited") {
           nextError =
             "Zu viele Anmeldungen in kurzer Zeit. Bitte versuchen Sie es in ein paar Minuten erneut.";
         } else if (submitError.message === "already_joined") {
@@ -278,7 +262,7 @@ export function WaitlistSignupForm({
 
             <Button
               className="w-full justify-center px-7 py-3.5 text-[15px] shadow-[0_10px_24px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_26px_rgba(0,0,0,0.2)] active:translate-y-0 active:scale-[1.005] sm:py-3.5 sm:text-[15.5px]"
-              disabled={isSubmitting || !loopsFormEndpoint || !loopsWaitlistListId}
+              disabled={isSubmitting}
               type="submit"
             >
               {isSubmitting ? (
