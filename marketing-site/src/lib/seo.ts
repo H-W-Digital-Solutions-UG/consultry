@@ -11,7 +11,7 @@ export const siteConfig = {
   language: "de-DE",
   email: "kontakt@consultry.com",
   socialProfiles: [
-    "https://www.linkedin.com/company/consultry",
+    "https://www.linkedin.com/company/100302158/",
     "https://x.com/consultry",
   ],
 } as const;

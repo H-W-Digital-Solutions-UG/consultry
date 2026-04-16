@@ -95,7 +95,7 @@ export const footerColumns: FooterColumn[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/consultry", kind: "linkedin" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/100302158/", kind: "linkedin" },
   { label: "X", href: "https://x.com/consultry", kind: "x" },
   { label: "E-Mail", href: "mailto:kontakt@consultry.com", kind: "email" },
 ] as const;
