@@ -40,7 +40,7 @@ export function WaitlistQualifierForm({
   const [error, setError] = useState<string | null>(null);
   const isWide = layout === "wide";
   const panelClassName = isWide
-    ? "surface-panel rounded-[30px] px-5 py-5 sm:px-7 sm:py-7 lg:px-8 lg:py-8"
+    ? "surface-panel rounded-[30px] px-5 py-5 sm:px-7 sm:py-7 lg:px-10 lg:py-10"
     : embedded
       ? "rounded-[24px] border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] px-5 py-5 sm:px-6 sm:py-6"
       : "surface-panel rounded-[28px] px-6 py-6 sm:px-8 sm:py-8";
@@ -158,18 +158,24 @@ export function WaitlistQualifierForm({
 
   return (
     <section className={panelClassName}>
-      <p className="eyebrow">OPTIONALE EINORDNUNG</p>
-      <h2 className="mt-4 text-[1.6rem] font-semibold leading-[1.15] text-[var(--consultry-text-primary)]">
-        Helfen Sie uns, die Warteliste besser zu priorisieren
-      </h2>
-      <p className="mt-4 text-[15px] leading-[1.72] text-[var(--consultry-text-secondary)]">
-        Diese vier Angaben sind optional. Sie helfen uns, Pilotplaetze passend zu vergeben und die
-        ersten Inhalte auf Ihre Beratungsrealitaet auszurichten.
+      <p
+        className={cn(
+          "text-[15px] leading-[1.72] text-[var(--consultry-text-secondary)]",
+          isWide && "max-w-[48rem] text-[15.5px]",
+        )}
+      >
+        Vier kurze Angaben, mit denen wir Ihren Bedarf besser einordnen und Pilotplaetze passender
+        priorisieren koennen.
       </p>
       <p className="mt-3 text-sm text-[var(--consultry-text-muted)]">{storedEmail}</p>
 
       {submitState === "success" ? (
-        <div className="mt-6 rounded-[20px] border border-[rgba(244,183,109,0.22)] bg-[rgba(255,255,255,0.03)] px-5 py-5">
+        <div
+          className={cn(
+            "mt-6 rounded-[20px] border border-[rgba(244,183,109,0.22)] bg-[rgba(255,255,255,0.03)] px-5 py-5",
+            isWide && "max-w-[48rem]",
+          )}
+        >
           <p className="text-[15px] font-semibold text-[var(--consultry-text-primary)]">
             Danke. Ihre Angaben wurden gespeichert.
           </p>
@@ -182,7 +188,7 @@ export function WaitlistQualifierForm({
         <form
           className={cn(
             "mt-6 space-y-5",
-            isWide && "lg:grid lg:grid-cols-2 lg:gap-x-5 lg:gap-y-5 lg:space-y-0",
+            isWide && "lg:grid lg:grid-cols-2 lg:gap-x-6 lg:gap-y-6 lg:space-y-0",
           )}
           onSubmit={handleSubmit}
         >

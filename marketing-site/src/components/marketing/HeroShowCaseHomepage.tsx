@@ -39,7 +39,7 @@ export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
               {hero.body}
             </p>
 
-            <div className="hero-cta-focus relative mt-8 inline-flex">
+            <div className="rise-in rise-in-delay-3 relative mt-8 inline-flex">
               <div className="relative flex">
                 <Button
                   data-analytics-destination-path={hero.primaryCta.href}
