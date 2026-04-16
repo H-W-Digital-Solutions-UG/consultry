@@ -53,7 +53,10 @@ const connectorAnimate = {
 
 function WaitlistStepTimeline({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   return (
-    <div className="rounded-[20px] border border-[rgba(255,255,255,0.05)] bg-[linear-gradient(180deg,rgba(255,255,255,0.018),rgba(255,255,255,0.008))] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02),0_6px_14px_rgba(0,0,0,0.06)] sm:px-3.5 sm:py-2.5 lg:px-4 lg:py-2.5">
+    <div className="relative overflow-hidden rounded-[20px] border border-[rgba(255,255,255,0.05)] bg-[linear-gradient(135deg,rgba(31,25,23,0.94)_0%,rgba(39,30,27,0.9)_48%,rgba(32,25,29,0.94)_100%)] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02),0_6px_14px_rgba(0,0,0,0.06)] sm:px-3.5 sm:py-2.5 lg:px-4 lg:py-2.5">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_50%,rgba(240,168,94,0.16),transparent_26%),radial-gradient(circle_at_86%_18%,rgba(147,86,170,0.11),transparent_24%),linear-gradient(90deg,rgba(255,255,255,0.02),transparent_18%,transparent_82%,rgba(255,255,255,0.015))]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.18] bg-[repeating-linear-gradient(115deg,transparent_0_22px,rgba(255,255,255,0.03)_22px_23px,transparent_23px_54px)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(240,168,94,0.16),rgba(255,255,255,0.08),transparent)]" />
       <p className="font-[var(--font-mono)] text-[8px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)] sm:text-[8.5px]">
         SO LAEUFT ES AB
       </p>
