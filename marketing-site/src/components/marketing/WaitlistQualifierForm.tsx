@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { trackQualifyLead } from "@/lib/analytics";
 import {
   consultingFocusOptions,
   pilotInterestOptions,
@@ -88,6 +89,7 @@ export function WaitlistQualifierForm({
       }
 
       setSubmitState("success");
+      trackQualifyLead();
     } catch (submitError) {
       const message =
         submitError instanceof Error && submitError.message === "contact_not_found"

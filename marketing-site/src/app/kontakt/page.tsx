@@ -64,10 +64,23 @@ export default function KontaktPage() {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Button href="/warteliste">
+                  <Button
+                    data-analytics-destination-path="/warteliste"
+                    data-analytics-destination-type="internal_waitlist"
+                    data-analytics-event="cta_click"
+                    data-analytics-label="Auf die Warteliste"
+                    data-analytics-location="contact_hero_waitlist"
+                    href="/warteliste"
+                  >
                     Auf die Warteliste
                   </Button>
-                  <Button href={`mailto:${companyProfile.legalEmail}`} variant="secondary">
+                  <Button
+                    data-analytics-event="contact_click"
+                    data-analytics-location="contact_hero_email"
+                    data-analytics-method="email"
+                    href={`mailto:${companyProfile.legalEmail}`}
+                    variant="secondary"
+                  >
                     Allgemeine Anfrage
                   </Button>
                 </div>
@@ -126,6 +139,9 @@ export default function KontaktPage() {
                       </p>
                       <a
                         className="mt-1 inline-flex text-[15px] text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
+                        data-analytics-event="contact_click"
+                        data-analytics-location="contact_sidebar_email"
+                        data-analytics-method="email"
                         href={`mailto:${companyProfile.legalEmail}`}
                       >
                         {companyProfile.legalEmail}
@@ -141,6 +157,9 @@ export default function KontaktPage() {
                       </p>
                       <a
                         className="mt-1 inline-flex text-[15px] text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
+                        data-analytics-event="contact_click"
+                        data-analytics-location="contact_sidebar_phone"
+                        data-analytics-method="phone"
                         href={companyProfile.phoneHref}
                       >
                         {companyProfile.phoneDisplay}

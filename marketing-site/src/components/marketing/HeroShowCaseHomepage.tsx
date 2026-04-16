@@ -49,6 +49,11 @@ export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
             <div className="hero-cta-focus relative mt-8 inline-flex">
               <div className="relative flex">
                 <Button
+                  data-analytics-destination-path={hero.primaryCta.href}
+                  data-analytics-destination-type="internal_waitlist"
+                  data-analytics-event="cta_click"
+                  data-analytics-label={hero.primaryCta.label}
+                  data-analytics-location="home_hero"
                   className="min-w-[15.5rem] px-8 py-4 text-[16px] font-semibold tracking-[0.01em] shadow-[0_18px_42px_rgba(0,0,0,0.3),0_0_0_1px_rgba(244,183,109,0.12)] sm:min-w-[16.5rem] sm:text-[17px]"
                   href={hero.primaryCta.href}
                   size="lg"

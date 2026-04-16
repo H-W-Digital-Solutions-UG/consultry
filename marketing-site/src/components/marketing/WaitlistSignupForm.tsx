@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { startTransition, useEffect, useRef, useState, type FormEvent } from "react";
+import { trackGenerateLead } from "@/lib/analytics";
 import { Button } from "@/components/ui/Button";
 import { WaitlistSuccessBadge } from "@/components/marketing/WaitlistSuccessBadge";
 import { waitlistSessionKey } from "@/lib/waitlist";
@@ -105,6 +106,7 @@ export function WaitlistSignupForm({
       const searchParams = new URLSearchParams(window.location.search);
       const payload = {
         email: value,
+        newsletterConsent,
         signupPageUrl: window.location.href,
         countryDomain: window.location.hostname,
         utmSource: searchParams.get("utm_source") ?? undefined,
@@ -145,10 +147,15 @@ export function WaitlistSignupForm({
 
         if (
           response.status === 400 ||
+          responseMessage.includes("missing_newsletter_consent") ||
           responseMessage.includes("valid email") ||
           responseMessage.includes("invalid email")
         ) {
-          throw new Error("invalid_email");
+          throw new Error(
+            responseMessage.includes("missing_newsletter_consent")
+              ? "missing_newsletter_consent"
+              : "invalid_email",
+          );
         }
 
         throw new Error("submit_failed");
@@ -159,6 +166,7 @@ export function WaitlistSignupForm({
       } catch {
         // Ignore session storage failures and still continue to the thank-you page.
       }
+      trackGenerateLead();
       submitted = true;
     } catch (submitError) {
       if (submitError instanceof Error) {
@@ -172,6 +180,9 @@ export function WaitlistSignupForm({
           nextError = "Diese E-Mail-Adresse steht bereits auf der Warteliste.";
         } else if (submitError.message === "invalid_email") {
           nextError = "Bitte geben Sie eine gueltige E-Mail-Adresse ein.";
+        } else if (submitError.message === "missing_newsletter_consent") {
+          nextError =
+            "Bitte bestaetigen Sie die Einwilligung fuer Wartelisten- und Produkt-Updates.";
         } else {
           nextError =
             "Ihre Anmeldung konnte gerade nicht gespeichert werden. Bitte versuchen Sie es spaeter noch einmal.";
@@ -267,30 +278,27 @@ export function WaitlistSignupForm({
             </div>
 
             <div className="rounded-[18px] border border-[rgba(21,18,17,0.07)] bg-[rgba(255,255,255,0.72)] px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] sm:rounded-[20px] sm:px-5">
-              <label className="flex items-start gap-3 text-[12px] leading-[1.6] text-[rgba(34,29,26,0.78)] sm:text-[12.5px]">
+              <label className="grid grid-cols-[1.1rem_minmax(0,1fr)] items-start gap-x-3 text-[11px] leading-[1.58] text-[rgba(34,29,26,0.78)] sm:text-[11.5px]">
                 <input
                   checked={newsletterConsent}
-                  className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--consultry-brand-coral)]"
+                  className="mt-0.5 h-[1.1rem] w-[1.1rem] shrink-0 accent-[var(--consultry-brand-coral)]"
                   name="newsletterConsent"
                   onChange={(event) => setNewsletterConsent(event.target.checked)}
                   type="checkbox"
                 />
                 <span>
-                  Ich moechte E-Mails von Consultry zu Produkt-Updates, fruehem Zugang und passenden
-                  Pilotplaetzen erhalten. Fuer Versand und Verwaltung nutzen wir Loops (Astrodon
-                  Corporation, USA). Dabei kann es zu einer Uebermittlung personenbezogener Daten in
-                  die USA kommen. Weitere Informationen zur Verarbeitung, zu internationalen
-                  Datentransfers und zu meinen Rechten finde ich in der Datenschutzerklaerung. Meine
-                  Einwilligung kann ich jederzeit mit Wirkung fuer die Zukunft ueber den
-                  Abmeldelink in jeder E-Mail widerrufen.
+                  Ich moechte E-Mails von Consultry zu Produkt-Updates, fruehem Zugang und
+                  Pilotplaetzen erhalten. Versand und Verwaltung erfolgen ueber Loops (USA).
+                  Hinweise zur Verarbeitung, zu Datentransfers und meinen Rechten stehen in der
+                  Datenschutzerklaerung. Ich kann meine Einwilligung jederzeit ueber den
+                  Abmeldelink widerrufen.
                 </span>
               </label>
 
-              <p className="mt-3 text-[11px] leading-[1.55] text-[rgba(34,29,26,0.58)] sm:text-[12px]">
-                Nach dem Absenden erhalten Sie eine E-Mail mit einem Bestaetigungslink. Erst nach
-                dieser Bestaetigung ist Ihre Anmeldung abgeschlossen.
+              <p className="mt-3 text-[10.5px] leading-[1.5] text-[rgba(34,29,26,0.58)] sm:text-[11px]">
+                Double-Opt-in: Sie erhalten zunaechst eine Bestaetigungs-E-Mail.
               </p>
-              <p className="mt-2 text-[11px] leading-[1.55] text-[rgba(34,29,26,0.66)] sm:text-[12px]">
+              <p className="mt-2 text-[10.5px] leading-[1.5] text-[rgba(34,29,26,0.66)] sm:text-[11px]">
                 <a
                   className="underline decoration-[rgba(34,29,26,0.26)] underline-offset-4 transition hover:text-[var(--consultry-surface-dark)]"
                   href="/datenschutz"

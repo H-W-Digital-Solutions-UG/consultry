@@ -7,7 +7,7 @@ export function generateMetadata(): Metadata {
   return buildPageMetadata({
     title: "Datenschutz",
     description:
-      "Datenschutzhinweise der Consultry Website mit Angaben zu Hosting, Kontaktanfragen, lokalen Speichermechanismen und Betroffenenrechten.",
+      "Datenschutzhinweise der Consultry Website mit Angaben zu Hosting, Cookie-Einwilligung, Webanalyse, Warteliste und Betroffenenrechten.",
     path: "/datenschutz",
   });
 }
@@ -30,8 +30,9 @@ export default function DatenschutzPage() {
               <p>
                 Diese Website dient derzeit der Information über das Produkt <strong>Consultry</strong>,
                 der Kontaktaufnahme per E-Mail, der Wartelisten-Anmeldung sowie der Vorbereitung von
-                Pilotanfragen. Zur Messung technischer Nutzungssignale verwenden wir Vercel Analytics
-                und Vercel Speed Insights.
+                Pilotanfragen. Fuer die Verwaltung optionaler Statistik-Einwilligungen setzen wir
+                CookieScript ein. Nur wenn Sie Statistik erlauben, laden wir Google Tag Manager und
+                Google Analytics 4 fuer eine datensparsame Reichweiten- und Funnel-Messung.
               </p>
             </>
           ),
@@ -161,30 +162,49 @@ export default function DatenschutzPage() {
           ),
         },
         {
-          title: "6. Analyse, lokale Speichermechanismen und externe Links",
+          title: "6. Einwilligungsmanagement, Webanalyse, lokale Speichermechanismen und externe Links",
           body: (
             <>
               <p>
-                Diese Website nutzt Vercel Analytics und Vercel Speed Insights, um aggregierte
-                Nutzungs- und Performance-Daten zu erfassen und die technische Qualität der Website
-                zu verbessern. Dabei können unter anderem Informationen zu aufgerufenen Seiten,
-                Browsertyp, Gerät und Performance-Metriken verarbeitet werden. Laut Anbieter werden
-                bei Web Analytics anonymisierte Daten verarbeitet und keine Cookies eingesetzt.
+                Diese Website nutzt <strong>CookieScript</strong> als Consent-Management-Plattform,
+                um Ihre Einwilligung fuer technisch notwendige und optionale Statistik-Dienste zu
+                verwalten. Anbieter ist <strong>Objectis, UAB</strong>, Laisves st. 60, LT-05120
+                Vilnius, Litauen. CookieScript speichert Ihre Consent-Auswahl in einem
+                First-Party-Cookie, damit die Banner- und Kategorie-Einstellungen bei weiteren
+                Seitenaufrufen beruecksichtigt werden.
               </p>
               <p>
-                Zusätzlich speichert die Hinweisleiste im Kopfbereich lokal im Browser, ob Sie den
-                Hinweis bereits geschlossen haben. Hierfür wird ein Eintrag im <strong>localStorage</strong>{" "}
-                Ihres Browsers gesetzt. Diese Information verbleibt auf Ihrem Endgerät und wird
-                nicht an uns übertragen.
+                Wenn Sie Statistik erlauben, laden wir <strong>Google Tag Manager</strong> und
+                <strong> Google Analytics 4</strong>. Dabei koennen insbesondere Informationen zu
+                Seitenaufrufen, Browser, Geraet, Referrer sowie gemessenen Interaktionen auf
+                unserer Website verarbeitet werden. Rechtsgrundlage ist Ihre Einwilligung gemaess
+                Art. 6 Abs. 1 lit. a DSGVO.
               </p>
               <p>
-                Die verwendeten Schriften werden über <strong>next/font</strong> in die Anwendung
+                Verantwortliche Anbieter fuer die genannten Google-Dienste ist grundsaetzlich
+                <strong> Google Ireland Limited</strong>, Gordon House, Barrow Street, Dublin 4,
+                Irland. Eine Uebermittlung personenbezogener Daten an <strong>Google LLC</strong> in
+                den USA kann dabei nicht ausgeschlossen werden. Google verweist fuer bestimmte
+                internationale Datenuebermittlungen auf seine Zertifizierung nach dem EU-U.S. Data
+                Privacy Framework sowie ergaenzende vertragliche Garantien.
+              </p>
+              <p>
+                Zusaetzlich speichert die Hinweisleiste im Kopfbereich lokal im Browser, ob Sie den
+                Hinweis bereits geschlossen haben. Hierfuer wird ein Eintrag im
+                <strong> localStorage</strong> Ihres Browsers gesetzt. Nach einer erfolgreichen
+                Wartelisten-Anmeldung speichern wir ausserdem die verwendete E-Mail-Adresse kurzzeitig
+                im <strong>sessionStorage</strong>, damit die optionale Qualifizierungsseite dieselbe
+                Anmeldung demselben Browser zuordnen kann. Diese Informationen verbleiben auf Ihrem
+                Endgeraet und werden nicht fuer seitenuebergreifendes Tracking genutzt.
+              </p>
+              <p>
+                Die verwendeten Schriften werden ueber <strong>next/font</strong> in die Anwendung
                 eingebunden und von der Website selbst ausgeliefert. Beim Aufruf der Seite wird
                 daher keine direkte Verbindung zu Google Fonts durch Ihren Browser aufgebaut.
               </p>
               <p>
                 Wenn Sie externe Links, z. B. zu LinkedIn oder X, anklicken, verlassen Sie unsere
-                Website. Für die Datenverarbeitung auf den Zielseiten sind ausschließlich die
+                Website. Fuer die Datenverarbeitung auf den Zielseiten sind ausschliesslich die
                 jeweiligen Betreiber verantwortlich.
               </p>
             </>
@@ -196,9 +216,10 @@ export default function DatenschutzPage() {
             <>
               <p>
                 Sofern Sie uns aktiv kontaktieren, verarbeiten wir Ihre Daten auf Grundlage von
-                Art. 6 Abs. 1 lit. b DSGVO oder Art. 6 Abs. 1 lit. f DSGVO. Soweit gesetzliche
-                Aufbewahrungspflichten bestehen, erfolgt die Verarbeitung zusätzlich auf Grundlage
-                von Art. 6 Abs. 1 lit. c DSGVO.
+                Art. 6 Abs. 1 lit. b DSGVO oder Art. 6 Abs. 1 lit. f DSGVO. Optionale Statistik- und
+                Messdienste verarbeiten wir nur auf Grundlage Ihrer Einwilligung gemaess Art. 6
+                Abs. 1 lit. a DSGVO. Soweit gesetzliche Aufbewahrungspflichten bestehen, erfolgt die
+                Verarbeitung zusaetzlich auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO.
               </p>
               <p>
                 Personenbezogene Daten speichern wir nur so lange, wie dies zur Bearbeitung Ihrer

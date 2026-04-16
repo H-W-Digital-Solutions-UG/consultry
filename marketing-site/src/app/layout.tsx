@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Suspense } from "react";
+import { AnalyticsBootstrap } from "@/components/analytics/AnalyticsBootstrap";
 import { Footer } from "@/components/marketing/Footer";
 import { JsonLd } from "@/components/marketing/JsonLd";
 import { Nav } from "@/components/marketing/Nav";
@@ -86,15 +87,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieScriptSrc = process.env.NEXT_PUBLIC_COOKIESCRIPT_SRC?.trim();
+
   return (
     <html data-scroll-behavior="smooth" data-theme="dark" lang="de">
       <body className={`${inter.variable} ${jetBrainsMono.variable}`}>
+        {cookieScriptSrc ? (
+          <Script
+            data-cs-ignore-read-crossdomain="true"
+            id="consultry-cookie-script"
+            src={cookieScriptSrc}
+            strategy="beforeInteractive"
+          />
+        ) : null}
         <JsonLd data={[buildOrganizationJsonLd(), buildWebsiteJsonLd()]} />
         <Nav />
         {children}
         <Footer />
-        <Analytics />
-        <SpeedInsights />
+        <Suspense fallback={null}>
+          <AnalyticsBootstrap />
+        </Suspense>
       </body>
     </html>
   );

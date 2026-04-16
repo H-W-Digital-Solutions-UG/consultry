@@ -140,6 +140,11 @@ export function Nav() {
 
           <div className="hidden md:block">
             <Button
+              data-analytics-destination-path={ctaTargets.nav}
+              data-analytics-destination-type="internal_waitlist"
+              data-analytics-event="cta_click"
+              data-analytics-label="Auf die Warteliste"
+              data-analytics-location="nav_desktop"
               className="group h-[3.2rem] min-w-[15rem] px-2 pl-5 pr-2 text-[14px] font-semibold tracking-[-0.01em] shadow-[0_14px_30px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)]"
               href={ctaTargets.nav}
               variant="secondary"
@@ -174,6 +179,11 @@ export function Nav() {
               </Link>
             ))}
             <Button
+              data-analytics-destination-path={ctaTargets.nav}
+              data-analytics-destination-type="internal_waitlist"
+              data-analytics-event="cta_click"
+              data-analytics-label="Auf die Warteliste"
+              data-analytics-location="nav_mobile"
               className="group mt-2 w-full px-2 pl-4 pr-2 text-[15px] font-semibold tracking-[-0.01em]"
               href={ctaTargets.nav}
               onClick={() => setMenuOpen(false)}

@@ -195,36 +195,18 @@ export function WaitlistSignupFlow() {
 
             <WaitlistStepTimeline shouldReduceMotion={shouldReduceMotion} />
 
-            <div className="surface-panel relative overflow-hidden rounded-[30px] px-5 py-5 shadow-[0_26px_56px_rgba(0,0,0,0.16)] sm:px-6 sm:py-6 lg:px-7 lg:py-6">
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent)]" />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-10 top-6 h-24 w-44 rounded-full bg-[radial-gradient(circle,rgba(240,168,94,0.16)_0%,rgba(240,168,94,0.06)_42%,transparent_76%)] blur-3xl"
-              />
-              <div className="relative grid gap-5 lg:grid-cols-[minmax(0,15rem)_minmax(26rem,1fr)] lg:items-center lg:gap-7">
-                <div className="max-w-[15rem] lg:pl-1">
-                  <p className="eyebrow">AUF DIE WARTELISTE</p>
-                  <p className="mt-2.5 text-[13px] leading-[1.62] text-[var(--consultry-text-muted)] sm:text-[13.5px]">
-                    Double-Opt-in, relevante Updates und priorisierte Pilotplaetze fuer passende
-                    Beratungen.
-                  </p>
-                </div>
-
-                <div className="w-full">
-                  <div className="grid-lines rounded-[25px] border border-[rgba(255,255,255,0.16)] bg-[linear-gradient(180deg,rgba(249,248,247,0.98),rgba(232,237,244,0.94))] p-2.5 shadow-[0_18px_34px_rgba(0,0,0,0.14)] backdrop-blur-[2px] sm:rounded-[27px] sm:p-3.5">
-                    <WaitlistSignupForm
-                      buttonLabel="Auf die Warteliste"
-                      placeholder="Ihre E-Mail-Adresse"
-                      successDelayMs={shouldReduceMotion ? 140 : 720}
-                    />
-                  </div>
-
-                  <p className="mt-3.5 text-[12px] leading-[1.6] text-[var(--consultry-text-muted)]">
-                    Double-Opt-in erforderlich · Exklusiv fuer DACH-Beratungen · Keine aggressive
-                    Sales-Automation
-                  </p>
-                </div>
+            <div className="mx-auto w-full max-w-[64rem]">
+              <div className="grid-lines rounded-[26px] border border-[rgba(255,255,255,0.16)] bg-[linear-gradient(180deg,rgba(249,248,247,0.98),rgba(232,237,244,0.94))] p-2.5 shadow-[0_22px_42px_rgba(0,0,0,0.16)] backdrop-blur-[2px] sm:rounded-[28px] sm:p-3.5">
+                <WaitlistSignupForm
+                  buttonLabel="Auf die Warteliste"
+                  placeholder="Ihre E-Mail-Adresse"
+                  successDelayMs={shouldReduceMotion ? 140 : 720}
+                />
               </div>
+
+              <p className="mt-3 text-center text-[12px] leading-[1.6] text-[var(--consultry-text-muted)]">
+                Double-Opt-in erforderlich · Exklusiv fuer DACH-Beratungen
+              </p>
             </div>
           </div>
         </div>

@@ -1,8 +1,15 @@
+import {
+  waitlistConsentSource,
+  waitlistConsentTextVersion,
+  waitlistConsentVersion,
+} from "@/lib/waitlist";
+
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type WaitlistSignupBody = {
   email?: unknown;
   countryDomain?: unknown;
+  newsletterConsent?: unknown;
   signupPageUrl?: unknown;
   utmCampaign?: unknown;
   utmMedium?: unknown;
@@ -54,11 +61,21 @@ export async function POST(request: Request) {
     return Response.json({ error: "invalid_email" }, { status: 400 });
   }
 
+  if (body.newsletterConsent !== true) {
+    return Response.json({ error: "missing_newsletter_consent" }, { status: 400 });
+  }
+
+  const consentCapturedAt = new Date().toISOString();
   const payload = new URLSearchParams({
     email,
     mailingLists: waitlistListId,
     source: "consultry_waitlist",
     userGroup: "warteliste",
+    waitlistConsentAt: consentCapturedAt,
+    waitlistConsentSource,
+    waitlistConsentTextVersion,
+    waitlistConsentVersion,
+    waitlistTrackingConsent: "false",
   });
 
   if (isNonEmptyString(body.signupPageUrl)) {
