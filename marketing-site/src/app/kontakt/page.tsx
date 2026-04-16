@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { JsonLd } from "@/components/marketing/JsonLd";
+import { MarketingCtaButton } from "@/components/marketing/MarketingCtaButton";
 import { Button } from "@/components/ui/Button";
 import { companyProfile } from "@/lib/company";
 import { buildPageMetadata } from "@/lib/seo";
@@ -64,16 +65,16 @@ export default function KontaktPage() {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Button
-                    data-analytics-destination-path="/warteliste"
-                    data-analytics-destination-type="internal_waitlist"
-                    data-analytics-event="cta_click"
-                    data-analytics-label="Auf die Warteliste"
-                    data-analytics-location="contact_hero_waitlist"
+                  <MarketingCtaButton
                     href="/warteliste"
+                    tracking={{
+                      ctaId: "contact_hero_waitlist",
+                      label: "Auf die Warteliste",
+                      location: "contact_hero_waitlist",
+                    }}
                   >
                     Auf die Warteliste
-                  </Button>
+                  </MarketingCtaButton>
                   <Button
                     data-analytics-event="contact_click"
                     data-analytics-location="contact_hero_email"

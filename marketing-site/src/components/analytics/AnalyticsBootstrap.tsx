@@ -52,6 +52,7 @@ function AnalyticsDelegator({ enabled }: { enabled: boolean }) {
       }
 
       const {
+        analyticsCtaId,
         analyticsDestinationPath,
         analyticsDestinationType,
         analyticsEvent,
@@ -60,8 +61,15 @@ function AnalyticsDelegator({ enabled }: { enabled: boolean }) {
         analyticsMethod,
       } = trackedElement.dataset;
 
-      if (analyticsEvent === "cta_click" && analyticsLabel && analyticsLocation && analyticsDestinationType) {
+      if (
+        analyticsEvent === "cta_click" &&
+        analyticsCtaId &&
+        analyticsLabel &&
+        analyticsLocation &&
+        analyticsDestinationType
+      ) {
         trackCtaClick({
+          ctaId: analyticsCtaId,
           ctaLabel: analyticsLabel,
           ctaLocation: analyticsLocation,
           destinationPath: analyticsDestinationPath,

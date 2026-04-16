@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
+import { MarketingCtaButton } from "@/components/marketing/MarketingCtaButton";
 import { ctaTargets, navLinks } from "@/lib/content/shared";
 import { cn } from "@/lib/cn";
 
@@ -140,18 +140,18 @@ export function Nav() {
           </nav>
 
           <div className="hidden md:block">
-            <Button
-              data-analytics-destination-path={ctaTargets.nav}
-              data-analytics-destination-type="internal_waitlist"
-              data-analytics-event="cta_click"
-              data-analytics-label="Auf die Warteliste"
-              data-analytics-location="nav_desktop"
+            <MarketingCtaButton
               className="group h-[3.2rem] min-w-[15rem] px-2 pl-5 pr-2 text-[14px] font-semibold tracking-[-0.01em] shadow-[0_14px_30px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)]"
               href={ctaTargets.nav}
+              tracking={{
+                ctaId: "nav_desktop_waitlist",
+                label: "Auf die Warteliste",
+                location: "nav_desktop",
+              }}
               variant="secondary"
             >
               <NavCtaContent />
-            </Button>
+            </MarketingCtaButton>
           </div>
 
           <button
@@ -179,19 +179,19 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
-            <Button
-              data-analytics-destination-path={ctaTargets.nav}
-              data-analytics-destination-type="internal_waitlist"
-              data-analytics-event="cta_click"
-              data-analytics-label="Auf die Warteliste"
-              data-analytics-location="nav_mobile"
+            <MarketingCtaButton
               className="group mt-2 w-full px-2 pl-4 pr-2 text-[15px] font-semibold tracking-[-0.01em]"
               href={ctaTargets.nav}
               onClick={() => setMenuOpen(false)}
+              tracking={{
+                ctaId: "nav_mobile_waitlist",
+                label: "Auf die Warteliste",
+                location: "nav_mobile",
+              }}
               variant="secondary"
             >
               <NavCtaContent />
-            </Button>
+            </MarketingCtaButton>
           </div>
         </div>
       ) : null}

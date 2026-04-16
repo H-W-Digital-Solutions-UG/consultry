@@ -20,6 +20,7 @@ type ConsentState = {
 };
 
 type CtaClickParams = {
+  ctaId: string;
   ctaLabel: string;
   ctaLocation: string;
   destinationPath?: string;
@@ -164,16 +165,19 @@ export function trackPageView(pathname: string, search: string) {
 }
 
 export function trackCtaClick({
+  ctaId,
   ctaLabel,
   ctaLocation,
   destinationPath,
   destinationType,
 }: CtaClickParams) {
   return pushAnalyticsEvent("cta_click", {
+    cta_id: ctaId,
     cta_label: ctaLabel,
     cta_location: ctaLocation,
     destination_path: destinationPath,
     destination_type: destinationType,
+    page_path: typeof window === "undefined" ? undefined : window.location.pathname,
   });
 }
 
