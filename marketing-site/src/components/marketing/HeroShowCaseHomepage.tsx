@@ -7,27 +7,27 @@ type HeroShowcaseProps = {
 
 export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
   const headline = hero.title.join(" ");
+  const heroVideoSrc = "/videos/compressed/simple_vid_consultry_compressed.mp4";
 
   return (
     <section className="relative isolate -mt-[4.45rem] overflow-hidden bg-[#050507]">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 lg:hidden bg-[radial-gradient(circle_at_78%_22%,rgba(232,101,90,0.22)_0%,rgba(232,101,90,0.1)_18%,transparent_40%),radial-gradient(circle_at_68%_58%,rgba(155,89,182,0.18)_0%,rgba(155,89,182,0.08)_22%,transparent_46%),linear-gradient(180deg,#060608_0%,#0a0b10_46%,#08070a_100%)]"
-      />
-
-      <div className="absolute inset-0 hidden lg:block">
+      <div className="absolute inset-0">
         <video
           aria-hidden="true"
           autoPlay
-          className="h-full w-full object-cover object-center scale-[1.015]"
+          className="h-full w-full object-cover object-center"
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
         >
-          <source media="(min-width: 1024px)" src="/videos/final_hero_noaudio_compressed.mp4" type="video/mp4" />
+          <source src={heroVideoSrc} type="video/mp4" />
         </video>
       </div>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,7,0.76)_0%,rgba(5,5,7,0.44)_26%,rgba(5,5,7,0.14)_48%,rgba(5,5,7,0.06)_72%,rgba(5,5,7,0.12)_100%),linear-gradient(180deg,rgba(6,6,8,0.28)_0%,rgba(10,11,16,0.06)_42%,rgba(8,7,10,0.34)_100%)]"
+      />
 
       <div className="relative mx-auto w-[min(100%-1.75rem,1440px)] sm:w-[min(100%-2.5rem,1440px)]">
         <div className="flex min-h-[99.5svh] items-center pb-8 pt-[calc(4.45rem+1.6rem)] sm:pb-10 sm:pt-[calc(4.45rem+1.9rem)] lg:min-h-[99.5svh] lg:pb-10 lg:pt-[calc(4.45rem+1.2rem)] xl:min-h-[99.5svh]">
