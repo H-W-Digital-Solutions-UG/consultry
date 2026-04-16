@@ -78,14 +78,15 @@ export function Nav() {
       >
         <div className="flex h-16 w-full items-center justify-between gap-4 px-3 sm:h-[4.45rem] sm:px-4 lg:px-6 xl:px-7">
           <Link className="inline-flex items-center gap-1.5 overflow-visible sm:gap-2" href="/">
-            <span className="relative block h-16 w-[4.35rem] shrink-0 overflow-visible sm:h-[4.45rem] sm:w-[clamp(4.9rem,6.2vw,5.7rem)]">
+            <span className="block w-[60px] shrink-0 min-[375px]:w-[64px] min-[420px]:w-[68px] sm:w-[76px]">
               <Image
                 alt="Consultry Logo"
-                className="absolute left-0 top-1/2 h-[3.1rem] w-auto -translate-y-1/2 object-contain sm:h-[clamp(3.85rem,4.9vw,4.7rem)]"
-                height={100}
+                className="block h-auto w-full object-contain"
+                height={379}
                 priority
+                sizes="(min-width: 640px) 76px, (min-width: 420px) 68px, (min-width: 375px) 64px, 60px"
                 src="/images/consultry-logo.png"
-                width={150}
+                width={385}
               />
             </span>
             <span className="translate-y-[1px] text-[1rem] font-bold leading-[0.94] tracking-[-0.045em] text-[rgba(246,239,232,0.99)] sm:text-[clamp(1.04rem,1.16vw,1.24rem)]">

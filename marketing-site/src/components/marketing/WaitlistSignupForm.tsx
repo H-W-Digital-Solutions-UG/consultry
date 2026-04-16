@@ -61,6 +61,7 @@ export function WaitlistSignupForm({
   const redirectTimeoutRef = useRef<number | null>(null);
   const isSubmitting = submitState === "submitting";
   const isSuccess = submitState === "success";
+  const showSubmitButton = newsletterConsent || isSubmitting;
   const successHint = onSuccess
     ? "Optionalen Kontext laden ..."
     : "Weiterleitung zur Bestaetigungsseite ...";
@@ -315,41 +316,62 @@ export function WaitlistSignupForm({
               </p>
             </div>
 
-            <Button
-              className="w-full justify-center px-7 py-3.5 text-[15px] shadow-[0_10px_24px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_26px_rgba(0,0,0,0.2)] active:translate-y-0 active:scale-[1.005] sm:py-3.5 sm:text-[15.5px]"
-              disabled={isSubmitting}
-              type="submit"
-            >
-              {isSubmitting ? (
-                <span className="inline-flex items-center gap-2.5">
-                  <svg
-                    aria-hidden="true"
-                    className="h-4 w-4 animate-spin"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      fill="none"
-                      opacity="0.28"
-                      r="9"
-                      stroke="currentColor"
-                      strokeWidth="2.4"
-                    />
-                    <path
-                      d="M12 3a9 9 0 0 1 9 9"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeWidth="2.4"
-                    />
-                  </svg>
-                  <span>{buttonLabel}</span>
-                </span>
-              ) : (
-                buttonLabel
-              )}
-            </Button>
+            <AnimatePresence initial={false}>
+              {showSubmitButton ? (
+                <motion.div
+                  key="submit-button"
+                  animate={{ opacity: 1, y: 0, height: "auto" }}
+                  className="overflow-hidden"
+                  exit={shouldReduceMotion ? { opacity: 0, height: 0 } : { opacity: 0, y: -8, height: 0 }}
+                  initial={
+                    shouldReduceMotion ? false : { opacity: 0, y: 12, height: 0 }
+                  }
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : { duration: 0.34, ease: revealEase }
+                  }
+                >
+                  <div className="pt-0.5">
+                    <Button
+                      className="w-full justify-center px-7 py-3.5 text-[15px] shadow-[0_10px_24px_rgba(0,0,0,0.18)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_14px_26px_rgba(0,0,0,0.2)] active:translate-y-0 active:scale-[1.005] sm:py-3.5 sm:text-[15.5px]"
+                      disabled={isSubmitting}
+                      type="submit"
+                    >
+                      {isSubmitting ? (
+                        <span className="inline-flex items-center gap-2.5">
+                          <svg
+                            aria-hidden="true"
+                            className="h-4 w-4 animate-spin"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              cx="12"
+                              cy="12"
+                              fill="none"
+                              opacity="0.28"
+                              r="9"
+                              stroke="currentColor"
+                              strokeWidth="2.4"
+                            />
+                            <path
+                              d="M12 3a9 9 0 0 1 9 9"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeWidth="2.4"
+                            />
+                          </svg>
+                          <span>{buttonLabel}</span>
+                        </span>
+                      ) : (
+                        buttonLabel
+                      )}
+                    </Button>
+                  </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>

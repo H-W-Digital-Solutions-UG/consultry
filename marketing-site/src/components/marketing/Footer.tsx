@@ -33,15 +33,17 @@ export function Footer() {
         <div className="flex flex-col gap-14 py-12 sm:gap-16 sm:py-14">
           <div className="grid gap-14 xl:grid-cols-[minmax(19rem,24rem)_minmax(0,1fr)] xl:items-start xl:gap-20">
             <div className="flex min-w-0 max-w-[24rem] items-start gap-6">
-              <div className="relative h-[66px] w-[100px] shrink-0 overflow-hidden rounded-2xl">
-                <Image
-                  alt="Consultry Logo"
-                  className="object-contain object-left"
-                  fill
-                  loading="eager"
-                  sizes="100px"
-                  src="/images/consultry-logo.png"
-                />
+              <div className="h-[68px] w-[76px] shrink-0 overflow-hidden rounded-2xl">
+                <div className="relative h-full w-full py-[5px] pr-[4px]">
+                  <Image
+                    alt="Consultry Logo"
+                    className="object-contain object-left"
+                    fill
+                    loading="eager"
+                    sizes="76px"
+                    src="/images/consultry-logo.png"
+                  />
+                </div>
               </div>
               <div className="min-w-0">
                 <p className="gradient-text text-[1.05rem] font-medium tracking-[-0.025em] sm:text-[1.12rem]">
