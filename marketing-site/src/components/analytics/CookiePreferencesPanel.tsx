@@ -3,9 +3,20 @@
 import { ShieldCheck, SlidersHorizontal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { isAnalyticsEnvironmentEnabled } from "@/lib/analytics-config";
 import { getCookieConsentState, hasPerformanceConsent } from "@/lib/analytics";
 
-function describeConsentState(categories: string[]) {
+function describeConsentState({
+  analyticsEnvironmentEnabled,
+  categories,
+}: {
+  analyticsEnvironmentEnabled: boolean;
+  categories: string[];
+}) {
+  if (!analyticsEnvironmentEnabled) {
+    return "In dieser Umgebung bleibt Tracking standardmaessig deaktiviert.";
+  }
+
   if (categories.includes("performance")) {
     return "Statistik-Cookies und Messskripte sind derzeit aktiviert.";
   }
@@ -14,7 +25,9 @@ function describeConsentState(categories: string[]) {
 }
 
 export function CookiePreferencesPanel() {
-  const cookieScriptConfigured = Boolean(process.env.NEXT_PUBLIC_COOKIESCRIPT_SRC?.trim());
+  const analyticsEnvironmentEnabled = isAnalyticsEnvironmentEnabled();
+  const cookieScriptConfigured =
+    analyticsEnvironmentEnabled && Boolean(process.env.NEXT_PUBLIC_COOKIESCRIPT_SRC?.trim());
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
@@ -59,7 +72,7 @@ export function CookiePreferencesPanel() {
     };
   }, []);
 
-  const performanceEnabled = hasPerformanceConsent();
+  const performanceEnabled = analyticsEnvironmentEnabled && hasPerformanceConsent();
 
   return (
     <div className="surface-panel grid gap-5 rounded-[30px] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,rgba(26,22,30,0.98)_0%,rgba(20,18,24,0.98)_100%)] px-5 py-5 shadow-[0_24px_60px_rgba(0,0,0,0.28)] sm:px-7 sm:py-7">
@@ -70,11 +83,12 @@ export function CookiePreferencesPanel() {
             Consent-Status
           </div>
           <p className="mt-4 text-[1.15rem] font-semibold leading-[1.35] text-[rgba(250,250,249,0.96)]">
-            {describeConsentState(categories)}
+            {describeConsentState({ analyticsEnvironmentEnabled, categories })}
           </p>
           <p className="mt-3 text-[14px] leading-[1.75] text-[rgba(236,232,245,0.72)]">
-            Wir nutzen CookieScript, um Ihre Auswahl für technisch notwendige und optionale
-            Statistik-Cookies zu verwalten. Sie können Ihre Entscheidung jederzeit anpassen.
+            {analyticsEnvironmentEnabled
+              ? "Wir nutzen CookieScript, um Ihre Auswahl fuer technisch notwendige und optionale Statistik-Cookies zu verwalten. Sie koennen Ihre Entscheidung jederzeit anpassen."
+              : "CookieScript, GTM und GA4 bleiben in dieser Umgebung ausgeschaltet. Das verhindert versehentliche Messdaten aus Entwicklung und Preview."}
           </p>
         </div>
 
@@ -84,7 +98,11 @@ export function CookiePreferencesPanel() {
               performanceEnabled ? "bg-[var(--consultry-brand-coral)]" : "bg-[rgba(255,255,255,0.34)]"
             }`}
           />
-          {performanceEnabled ? "Statistik aktiv" : "Nur notwendig"}
+          {analyticsEnvironmentEnabled
+            ? performanceEnabled
+              ? "Statistik aktiv"
+              : "Nur notwendig"
+            : "Tracking deaktiviert"}
         </div>
       </div>
 
@@ -124,11 +142,23 @@ export function CookiePreferencesPanel() {
 
       {!cookieScriptConfigured ? (
         <p className="text-[13px] leading-[1.7] text-[rgba(255,255,255,0.56)]">
-          CookieScript ist in dieser Umgebung noch nicht konfiguriert. Hinterlegen Sie
-          <code className="ml-1 rounded bg-[rgba(255,255,255,0.06)] px-1.5 py-0.5 text-[12px]">
-            NEXT_PUBLIC_COOKIESCRIPT_SRC
-          </code>
-          , um die Präferenzsteuerung zu aktivieren.
+          {analyticsEnvironmentEnabled ? (
+            <>
+              CookieScript ist in dieser Umgebung noch nicht konfiguriert. Hinterlegen Sie
+              <code className="ml-1 rounded bg-[rgba(255,255,255,0.06)] px-1.5 py-0.5 text-[12px]">
+                NEXT_PUBLIC_COOKIESCRIPT_SRC
+              </code>
+              , um die Praeferenzsteuerung zu aktivieren.
+            </>
+          ) : (
+            <>
+              Setzen Sie
+              <code className="ml-1 rounded bg-[rgba(255,255,255,0.06)] px-1.5 py-0.5 text-[12px]">
+                NEXT_PUBLIC_ANALYTICS_ENABLED=true
+              </code>
+              , wenn Sie CookieScript und GTM in dieser Umgebung bewusst einschalten wollen.
+            </>
+          )}
         </p>
       ) : null}
     </div>

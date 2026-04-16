@@ -34,8 +34,12 @@ function RouteTracker({ enabled }: { enabled: boolean }) {
   return null;
 }
 
-function AnalyticsDelegator() {
+function AnalyticsDelegator({ enabled }: { enabled: boolean }) {
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     const handleClick = (event: MouseEvent) => {
       if (!(event.target instanceof Element)) {
         return;
@@ -78,17 +82,27 @@ function AnalyticsDelegator() {
     return () => {
       document.removeEventListener("click", handleClick, true);
     };
-  }, []);
+  }, [enabled]);
 
   return null;
 }
 
-export function AnalyticsBootstrap() {
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
-  const [performanceConsent, setPerformanceConsent] = useState(() => hasPerformanceConsent());
+export function AnalyticsBootstrap({
+  analyticsEnvironmentEnabled,
+}: {
+  analyticsEnvironmentEnabled: boolean;
+}) {
+  const gtmId = analyticsEnvironmentEnabled ? process.env.NEXT_PUBLIC_GTM_ID?.trim() : undefined;
+  const [performanceConsent, setPerformanceConsent] = useState(
+    () => analyticsEnvironmentEnabled && hasPerformanceConsent(),
+  );
   const [gtmLoaded, setGtmLoaded] = useState(false);
 
   useEffect(() => {
+    if (!analyticsEnvironmentEnabled) {
+      return;
+    }
+
     const syncConsentState = () => {
       setPerformanceConsent(hasPerformanceConsent());
     };
@@ -104,7 +118,7 @@ export function AnalyticsBootstrap() {
         window.removeEventListener(eventName, syncConsentState);
       }
     };
-  }, []);
+  }, [analyticsEnvironmentEnabled]);
 
   const gtmEnabled = Boolean(gtmId && performanceConsent);
   const analyticsEnabled = gtmEnabled && gtmLoaded;
@@ -124,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${gtmId}');`}
         </Script>
       ) : null}
-      <AnalyticsDelegator />
+      <AnalyticsDelegator enabled={analyticsEnvironmentEnabled} />
       <RouteTracker enabled={analyticsEnabled} />
     </>
   );

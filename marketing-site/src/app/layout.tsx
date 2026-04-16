@@ -6,6 +6,7 @@ import { AnalyticsBootstrap } from "@/components/analytics/AnalyticsBootstrap";
 import { Footer } from "@/components/marketing/Footer";
 import { JsonLd } from "@/components/marketing/JsonLd";
 import { Nav } from "@/components/marketing/Nav";
+import { isAnalyticsEnvironmentEnabled } from "@/lib/analytics-config";
 import { isPreviewBuild, siteConfig } from "@/lib/seo";
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/structured-data";
 import "./globals.css";
@@ -87,14 +88,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieScriptSrc = process.env.NEXT_PUBLIC_COOKIESCRIPT_SRC?.trim();
+  const analyticsEnvironmentEnabled = isAnalyticsEnvironmentEnabled();
+  const cookieScriptSrc = analyticsEnvironmentEnabled
+    ? process.env.NEXT_PUBLIC_COOKIESCRIPT_SRC?.trim()
+    : undefined;
 
   return (
-    <html data-scroll-behavior="smooth" data-theme="dark" lang="de">
+    <html
+      data-analytics-enabled={analyticsEnvironmentEnabled ? "true" : "false"}
+      data-scroll-behavior="smooth"
+      data-theme="dark"
+      lang="de"
+    >
       <body className={`${inter.variable} ${jetBrainsMono.variable}`}>
         {cookieScriptSrc ? (
           <Script
-            data-cs-ignore-read-crossdomain="true"
             id="consultry-cookie-script"
             src={cookieScriptSrc}
             strategy="beforeInteractive"
@@ -105,7 +113,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Suspense fallback={null}>
-          <AnalyticsBootstrap />
+          <AnalyticsBootstrap analyticsEnvironmentEnabled={analyticsEnvironmentEnabled} />
         </Suspense>
       </body>
     </html>

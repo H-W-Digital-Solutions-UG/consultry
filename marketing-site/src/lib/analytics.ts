@@ -1,3 +1,5 @@
+import { isAnalyticsEnvironmentEnabled } from "@/lib/analytics-config";
+
 export type AnalyticsContentGroup =
   | "about"
   | "contact"
@@ -73,6 +75,10 @@ function getAllowedConsentCategories(consentState: ConsentState | null) {
 }
 
 export function hasPerformanceConsent() {
+  if (!isAnalyticsEnvironmentEnabled()) {
+    return false;
+  }
+
   const consentState = getCookieConsentState();
   return getAllowedConsentCategories(consentState).includes("performance");
 }
@@ -114,7 +120,11 @@ export function getContentGroup(pathname: string): AnalyticsContentGroup {
 }
 
 export function pushAnalyticsEvent(event: string, payload: AnalyticsPayload = {}) {
-  if (typeof window === "undefined" || !hasPerformanceConsent()) {
+  if (
+    typeof window === "undefined" ||
+    !isAnalyticsEnvironmentEnabled() ||
+    !hasPerformanceConsent()
+  ) {
     return false;
   }
 
@@ -133,7 +143,7 @@ export function pushAnalyticsEvent(event: string, payload: AnalyticsPayload = {}
 }
 
 export function trackPageView(pathname: string, search: string) {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || !isAnalyticsEnvironmentEnabled()) {
     return false;
   }
 
@@ -178,7 +188,7 @@ export function trackContactClick({
 }
 
 export function trackGenerateLead() {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || !isAnalyticsEnvironmentEnabled()) {
     return false;
   }
 
@@ -189,7 +199,7 @@ export function trackGenerateLead() {
 }
 
 export function trackQualifyLead() {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || !isAnalyticsEnvironmentEnabled()) {
     return false;
   }
 
