@@ -86,6 +86,7 @@ function AnalyticsDelegator() {
 export function AnalyticsBootstrap() {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
   const [performanceConsent, setPerformanceConsent] = useState(() => hasPerformanceConsent());
+  const [gtmLoaded, setGtmLoaded] = useState(false);
 
   useEffect(() => {
     const syncConsentState = () => {
@@ -106,11 +107,16 @@ export function AnalyticsBootstrap() {
   }, []);
 
   const gtmEnabled = Boolean(gtmId && performanceConsent);
+  const analyticsEnabled = gtmEnabled && gtmLoaded;
 
   return (
     <>
       {gtmEnabled && gtmId ? (
-        <Script id="consultry-gtm" strategy="afterInteractive">
+        <Script
+          id="consultry-gtm"
+          onLoad={() => setGtmLoaded(true)}
+          strategy="afterInteractive"
+        >
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -119,7 +125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       ) : null}
       <AnalyticsDelegator />
-      <RouteTracker enabled={gtmEnabled} />
+      <RouteTracker enabled={analyticsEnabled} />
     </>
   );
 }
