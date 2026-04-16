@@ -89,7 +89,7 @@ export default function DatenschutzPage() {
           ),
         },
         {
-          title: "4. Kontaktaufnahme, Warteliste und Pilotanfragen",
+          title: "4. Kontaktaufnahme und Produktgespraeche",
           body: (
             <>
               <p>
@@ -104,25 +104,64 @@ export default function DatenschutzPage() {
                 hilfsweise Art. 6 Abs. 1 lit. f DSGVO für die effiziente Bearbeitung allgemeiner
                 Anfragen.
               </p>
+            </>
+          ),
+        },
+        {
+          title: "5. Warteliste, Produkt-Updates und Double-Opt-In",
+          body: (
+            <>
               <p>
                 Wenn Sie sich über das Wartelistenformular anmelden, verarbeiten wir Ihre
-                E-Mail-Adresse zur Verwaltung der Warteliste, zur Versendung der
-                Double-Opt-in-Bestätigung und für spätere produktbezogene Wartelisten-Updates.
-                Nachgelagerte freiwillige Angaben zur Einordnung, etwa zu Teamgröße, Beratungsfokus
-                oder Interesse an Pilotplätzen, werden nur verarbeitet, wenn Sie diese aktiv
-                absenden.
+                E-Mail-Adresse sowie die für Anmeldung, Bestaetigung und Dokumentation Ihrer
+                Einwilligung erforderlichen Protokolldaten. Sofern Sie uns nachgelagert freiwillig
+                weitere Angaben uebermitteln, etwa zu Teamgroesse, Beratungsfokus, groessten
+                operativen Engpaessen oder Interesse an Pilotplaetzen, verarbeiten wir auch diese
+                Angaben zur Einordnung Ihrer Wartelisten-Anmeldung.
               </p>
               <p>
-                Für die technische Abwicklung der Wartelisten-Anmeldung und des E-Mail-Versands
-                nutzen wir <strong>Loops</strong> als E-Mail- und Marketing-Automation-Dienst.
-                Dabei werden die von Ihnen übermittelten Formulardaten an Loops übertragen und dort
-                verarbeitet.
+                Zweck der Verarbeitung ist die Verwaltung der Warteliste, die Versendung der
+                Double-Opt-In-Bestaetigung, spaetere Produkt- und Wartelisten-Updates sowie die
+                Priorisierung frueher Pilotgespraeche fuer passende Beratungen. Rechtsgrundlage ist
+                Ihre Einwilligung gemaess Art. 6 Abs. 1 lit. a DSGVO.
+              </p>
+              <p>
+                Die Anmeldung erfolgt im Double-Opt-In-Verfahren. Nach Ihrer Anmeldung erhalten Sie
+                eine E-Mail, in der Sie Ihre Anmeldung bestaetigen muessen. Erst nach dieser
+                Bestaetigung wird Ihre Wartelisten-Anmeldung aktiv.
+              </p>
+              <p>
+                Fuer die technische Abwicklung der Wartelisten-Anmeldung sowie fuer Versand und
+                Verwaltung unserer E-Mails nutzen wir <strong>Loops</strong>, einen Dienst der
+                <strong> Astrodon Corporation, USA</strong>. Dabei werden die von Ihnen
+                uebermittelten Formulardaten an Loops uebertragen und dort verarbeitet.
+              </p>
+              <p>
+                Dabei kann es zu einer Uebermittlung personenbezogener Daten in die USA kommen.
+                Nach Angaben von Loops erfolgt eine solche Drittlandsverarbeitung unter Nutzung der
+                jeweils anwendbaren Uebermittlungsmechanismen, insbesondere unter Berufung auf das
+                EU-U.S. Data Privacy Framework sowie, soweit erforderlich, Standardvertragsklauseln
+                oder andere gesetzlich zulaessige Garantien. Weitere Informationen zu den
+                eingesetzten Garantien koennen Sie unter{" "}
+                <a href={`mailto:${companyProfile.legalEmail}`}>{companyProfile.legalEmail}</a>{" "}
+                anfordern.
+              </p>
+              <p>
+                Wir speichern Ihre Daten fuer die Dauer Ihrer Wartelisten-Anmeldung oder bis Sie
+                Ihre Einwilligung widerrufen. Daten, die wir zum Nachweis Ihrer Einwilligung oder
+                zur Geltendmachung, Ausuebung oder Verteidigung von Rechtsanspruechen benoetigen,
+                speichern wir nur so lange, wie dies hierfuer erforderlich ist.
+              </p>
+              <p>
+                Sie koennen Ihre Einwilligung jederzeit mit Wirkung fuer die Zukunft widerrufen,
+                insbesondere ueber den Abmeldelink in jeder E-Mail oder durch Nachricht an{" "}
+                <a href={`mailto:${companyProfile.legalEmail}`}>{companyProfile.legalEmail}</a>.
               </p>
             </>
           ),
         },
         {
-          title: "5. Analyse, lokale Speichermechanismen und externe Links",
+          title: "6. Analyse, lokale Speichermechanismen und externe Links",
           body: (
             <>
               <p>
@@ -152,7 +191,7 @@ export default function DatenschutzPage() {
           ),
         },
         {
-          title: "6. Rechtsgrundlagen und Speicherdauer",
+          title: "7. Rechtsgrundlagen und Speicherdauer",
           body: (
             <>
               <p>
@@ -170,7 +209,7 @@ export default function DatenschutzPage() {
           ),
         },
         {
-          title: "7. Ihre Rechte",
+          title: "8. Ihre Rechte",
           body: (
             <>
               <p>Sie haben nach Maßgabe der gesetzlichen Vorschriften insbesondere folgende Rechte:</p>

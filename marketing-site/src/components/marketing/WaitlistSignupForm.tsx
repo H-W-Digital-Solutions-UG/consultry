@@ -54,6 +54,7 @@ export function WaitlistSignupForm({
   const router = useRouter();
   const shouldReduceMotion = useReducedMotion();
   const [email, setEmail] = useState("");
+  const [newsletterConsent, setNewsletterConsent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const redirectTimeoutRef = useRef<number | null>(null);
@@ -86,6 +87,11 @@ export function WaitlistSignupForm({
 
     if (!emailPattern.test(value)) {
       setError("Bitte geben Sie eine gueltige E-Mail-Adresse ein.");
+      return;
+    }
+
+    if (!newsletterConsent) {
+      setError("Bitte bestaetigen Sie die Einwilligung fuer Wartelisten- und Produkt-Updates.");
       return;
     }
 
@@ -257,6 +263,47 @@ export function WaitlistSignupForm({
               />
               <p className="mt-1 text-[11px] leading-[1.55] text-[rgba(34,29,26,0.58)] sm:text-[12px]">
                 Nutzen Sie am besten Ihre geschaeftliche Adresse.
+              </p>
+            </div>
+
+            <div className="rounded-[18px] border border-[rgba(21,18,17,0.07)] bg-[rgba(255,255,255,0.72)] px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] sm:rounded-[20px] sm:px-5">
+              <label className="flex items-start gap-3 text-[12px] leading-[1.6] text-[rgba(34,29,26,0.78)] sm:text-[12.5px]">
+                <input
+                  checked={newsletterConsent}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--consultry-brand-coral)]"
+                  name="newsletterConsent"
+                  onChange={(event) => setNewsletterConsent(event.target.checked)}
+                  type="checkbox"
+                />
+                <span>
+                  Ich moechte E-Mails von Consultry zu Produkt-Updates, fruehem Zugang und passenden
+                  Pilotplaetzen erhalten. Fuer Versand und Verwaltung nutzen wir Loops (Astrodon
+                  Corporation, USA). Dabei kann es zu einer Uebermittlung personenbezogener Daten in
+                  die USA kommen. Weitere Informationen zur Verarbeitung, zu internationalen
+                  Datentransfers und zu meinen Rechten finde ich in der Datenschutzerklaerung. Meine
+                  Einwilligung kann ich jederzeit mit Wirkung fuer die Zukunft ueber den
+                  Abmeldelink in jeder E-Mail widerrufen.
+                </span>
+              </label>
+
+              <p className="mt-3 text-[11px] leading-[1.55] text-[rgba(34,29,26,0.58)] sm:text-[12px]">
+                Nach dem Absenden erhalten Sie eine E-Mail mit einem Bestaetigungslink. Erst nach
+                dieser Bestaetigung ist Ihre Anmeldung abgeschlossen.
+              </p>
+              <p className="mt-2 text-[11px] leading-[1.55] text-[rgba(34,29,26,0.66)] sm:text-[12px]">
+                <a
+                  className="underline decoration-[rgba(34,29,26,0.26)] underline-offset-4 transition hover:text-[var(--consultry-surface-dark)]"
+                  href="/datenschutz"
+                >
+                  Datenschutzerklaerung
+                </a>{" "}
+                ·{" "}
+                <a
+                  className="underline decoration-[rgba(34,29,26,0.26)] underline-offset-4 transition hover:text-[var(--consultry-surface-dark)]"
+                  href="/impressum"
+                >
+                  Impressum
+                </a>
               </p>
             </div>
 

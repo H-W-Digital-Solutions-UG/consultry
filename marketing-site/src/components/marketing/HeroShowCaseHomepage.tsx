@@ -29,9 +29,9 @@ export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
         </video>
       </div>
 
-      <div className="content-shell relative">
-        <div className="flex min-h-[99.5svh] items-end pb-10 pt-[calc(4.45rem+2.5rem)] sm:pb-12 sm:pt-[calc(4.45rem+3rem)] lg:min-h-[99.5svh] lg:pb-14 lg:pt-[calc(4.45rem+3.5rem)] xl:min-h-[99.5svh]">
-          <div className="relative z-10 max-w-[50rem]">
+      <div className="relative mx-auto w-[min(100%-1.75rem,1440px)] sm:w-[min(100%-2.5rem,1440px)]">
+        <div className="flex min-h-[99.5svh] items-center pb-8 pt-[calc(4.45rem+1.6rem)] sm:pb-10 sm:pt-[calc(4.45rem+1.9rem)] lg:min-h-[99.5svh] lg:pb-10 lg:pt-[calc(4.45rem+1.2rem)] xl:min-h-[99.5svh]">
+          <div className="relative z-10 max-w-[48rem]">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute -left-7 -top-1 h-[19.75rem] w-[min(40.5rem,94vw)] rounded-[2.9rem] bg-[radial-gradient(circle_at_22%_30%,rgba(7,7,10,0.88)_0%,rgba(7,7,10,0.76)_26%,rgba(7,7,10,0.48)_54%,rgba(7,7,10,0.2)_76%,transparent_100%)] blur-[22px] sm:-left-8 sm:top-0 sm:h-[21rem] sm:w-[min(42.5rem,90vw)] sm:blur-[26px] lg:-left-9 lg:-top-2 lg:h-[22.5rem] lg:w-[43.5rem] lg:blur-[30px]"

@@ -1,4 +1,14 @@
 export const waitlistSessionKey = "consultry:waitlist-email:v1";
+export const waitlistConsentVersion = "consultry_waitlist_v1_2026-04-16";
+export const waitlistConsentTextVersion = "de_waitlist_checkbox_v1";
+export const waitlistConsentSource = "website_warteliste";
+export const waitlistConsentPropertyDefinitions = [
+  { name: "waitlistConsentVersion", type: "string" },
+  { name: "waitlistConsentTextVersion", type: "string" },
+  { name: "waitlistConsentSource", type: "string" },
+  { name: "waitlistConsentAt", type: "date" },
+  { name: "waitlistTrackingConsent", type: "boolean" },
+] as const;
 
 export const teamSizeOptions = [
   { label: "1-10 Mitarbeitende", value: "1-10" },
