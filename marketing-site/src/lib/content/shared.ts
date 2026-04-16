@@ -16,7 +16,7 @@ export type FooterColumn = {
 export type SocialLink = {
   label: string;
   href?: string;
-  kind: "linkedin" | "x" | "email";
+  kind: "linkedin" | "xing";
 };
 
 export const announcement = {
@@ -96,6 +96,5 @@ export const footerColumns: FooterColumn[] = [
 
 export const socialLinks: SocialLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/100302158/", kind: "linkedin" },
-  { label: "X", href: "https://x.com/consultry", kind: "x" },
-  { label: "E-Mail", href: "mailto:kontakt@consultry.com", kind: "email" },
+  { label: "XING", kind: "xing" },
 ] as const;

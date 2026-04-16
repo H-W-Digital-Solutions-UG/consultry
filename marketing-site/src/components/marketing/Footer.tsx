@@ -86,15 +86,12 @@ export function Footer() {
               <div className="flex items-center gap-2.5 md:justify-end">
                 {socialLinks.map((link) => {
                   const baseClass =
-                    "inline-flex h-[34px] w-[34px] items-center justify-center rounded-[9px] text-xs font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.2)]";
-                  const content =
-                    link.kind === "linkedin" ? "in" : link.kind === "x" ? "X" : "@";
+                    "inline-flex h-[34px] items-center justify-center rounded-[9px] font-bold text-white shadow-[0_1px_3px_rgba(0,0,0,0.2)]";
+                  const content = link.kind === "linkedin" ? "in" : "XING";
                   const className =
                     link.kind === "linkedin"
-                      ? `${baseClass} bg-[#0a66c2]`
-                      : link.kind === "x"
-                        ? `${baseClass} bg-[#186b6f]`
-                        : `${baseClass} bg-[linear-gradient(135deg,#e8913a,#e8655a)]`;
+                      ? `${baseClass} w-[34px] text-xs bg-[#0a66c2]`
+                      : `${baseClass} min-w-[52px] px-2 text-[10px] tracking-[0.08em] bg-[#126567]`;
 
                   if (!link.href) {
                     return (
