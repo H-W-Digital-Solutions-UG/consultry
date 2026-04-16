@@ -208,26 +208,29 @@ Important:
 - do not turn on unrelated auto-measurement features here
 - do not add another direct analytics snippet outside GTM
 
-### 5.2 Create the Data Layer Variables
+### 5.2 Enable the right built-in variables and create only the custom Data Layer Variables
 
-Create these variables under `Variables` → `User-Defined Variables` → `New` → `Data Layer Variable`.
+In GTM, first enable these built-in variables:
 
-Use the exact mapping below.
+- `Page URL`
+- `Page Title`
 
-| Variable name | Data Layer Variable Name |
-|---|---|
-| `DLV - page_path` | `page_path` |
-| `DLV - page_location` | `page_location` |
-| `DLV - page_title` | `page_title` |
-| `DLV - content_group` | `content_group` |
-| `DLV - cta_label` | `cta_label` |
-| `DLV - cta_location` | `cta_location` |
-| `DLV - destination_type` | `destination_type` |
-| `DLV - destination_path` | `destination_path` |
-| `DLV - contact_method` | `contact_method` |
-| `DLV - contact_location` | `contact_location` |
-| `DLV - lead_source` | `lead_source` |
-| `DLV - qualification_source` | `qualification_source` |
+The app already sends `page_location` and `page_title`, but GTM’s built-in values are sufficient for those and avoid unnecessary duplication.
+
+Then create only these user-defined `Data Layer Variable`s under `Variables` → `User-Defined Variables` → `New` → `Data Layer Variable`.
+
+| Variable name | Data Layer Variable Name | Why it exists |
+|---|---|---|
+| `DLV - page_path` | `page_path` | Keeps the app-defined path value, including query string when present |
+| `DLV - content_group` | `content_group` | Comes from the app’s route mapping |
+| `DLV - cta_label` | `cta_label` | Custom CTA metadata |
+| `DLV - cta_location` | `cta_location` | Custom CTA metadata |
+| `DLV - destination_type` | `destination_type` | Custom CTA metadata |
+| `DLV - destination_path` | `destination_path` | Custom CTA metadata |
+| `DLV - contact_method` | `contact_method` | Custom contact metadata |
+| `DLV - contact_location` | `contact_location` | Custom contact metadata |
+| `DLV - lead_source` | `lead_source` | Custom lead metadata |
+| `DLV - qualification_source` | `qualification_source` | Custom qualification metadata |
 
 ### 5.3 Create the Custom Event Triggers
 
@@ -256,8 +259,8 @@ Create one GA4 event tag per event.
 Parameters:
 
 - `page_path` = `{{DLV - page_path}}`
-- `page_location` = `{{DLV - page_location}}`
-- `page_title` = `{{DLV - page_title}}`
+- `page_location` = `{{Page URL}}`
+- `page_title` = `{{Page Title}}`
 - `content_group` = `{{DLV - content_group}}`
 
 #### Tag 2
@@ -331,26 +334,32 @@ Optional:
 
 ### 6.3 Custom dimensions
 
-Create event-scoped custom dimensions for:
+Create event-scoped custom dimensions only for parameters that are not already covered by GA4’s default dimensions or reports:
 
-- `content_group`
-- `cta_location`
 - `cta_label`
+- `cta_location`
 - `destination_type`
 - `contact_method`
+- `contact_location`
 
 Optional:
 
-- `lead_source`
-- `qualification_source`
+- `destination_path`
+- `content_group`
 
 Do **not** create custom dimensions for:
 
 - `page_path`
 - `page_location`
 - `page_title`
+- `lead_source`
+- `qualification_source`
 
-GA4 already provides built-in page reporting for those.
+Rationale:
+
+- `page_path`, `page_location`, and `page_title` are already covered by GA4/GTM page reporting.
+- `lead_source` and `qualification_source` are currently constant in this implementation, so they add little reporting value in v1.
+- `content_group` is already sent by the app and may be useful later, but it should not be the first custom definition you consume unless you actually need the breakdown.
 
 ---
 

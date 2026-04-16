@@ -36,12 +36,12 @@ async function readLoopsError(response: Response) {
 }
 
 export async function POST(request: Request) {
+  const loopsFormId = process.env.LOOPS_FORM_ID?.trim();
   const formEndpoint =
+    process.env.LOOPS_FORM_ENDPOINT?.trim() ??
     process.env.LOOPS_WAITLIST_FORM_ID?.trim() ??
-    process.env.NEXT_PUBLIC_LOOPS_FORM_ENDPOINT?.trim();
-  const waitlistListId =
-    process.env.LOOPS_WAITLIST_LIST_ID?.trim() ??
-    process.env.NEXT_PUBLIC_LOOPS_WAITLIST_LIST_ID?.trim();
+    (loopsFormId ? `https://app.loops.so/api/newsletter-form/${loopsFormId}` : undefined);
+  const waitlistListId = process.env.LOOPS_WAITLIST_LIST_ID?.trim();
 
   if (!formEndpoint || !waitlistListId) {
     return Response.json({ error: "waitlist_not_configured" }, { status: 500 });

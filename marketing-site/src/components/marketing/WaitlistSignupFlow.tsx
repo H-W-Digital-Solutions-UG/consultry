@@ -6,31 +6,24 @@ import { WaitlistSignupForm } from "@/components/marketing/WaitlistSignupForm";
 const nextSteps = [
   {
     title: "1. Anmeldung bestaetigen",
-    body: "Nach dem Absenden erhalten Sie eine Double-Opt-in-Mail. Erst nach der Bestaetigung ist Ihre Wartelisten-Anmeldung aktiv.",
   },
   {
     title: "2. Produkt-Updates erhalten",
-    body: "Wir schicken nur relevante Updates: Produktfortschritt, erste Inhalte und Hinweise zum Fruehzugang.",
   },
   {
     title: "3. Pilotplaetze priorisieren",
-    body: "Qualifizierte Beratungen mit passendem ICP-Fit laden wir zuerst zu fruehen Pilotgespraechen ein.",
   },
 ] as const;
 
 const revealEase = [0.22, 1, 0.36, 1] as const;
-const timelineItemVariants = {
-  hidden: { opacity: 0, y: 6 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.44,
-      delay: 0.06 + index * 0.07,
-      ease: revealEase,
-    },
-  }),
-};
+const timelineItemAnimate = (shouldReduceMotion: boolean) =>
+  shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: [0.82, 1], y: [3, 0] };
+
+const timelineItemTransition = (index: number) => ({
+  duration: 0.42,
+  delay: 0.04 + index * 0.07,
+  ease: revealEase,
+});
 
 const markerTransition = (index: number) => ({
   duration: 0.92,
@@ -60,24 +53,23 @@ const connectorAnimate = {
 
 function WaitlistStepTimeline({ shouldReduceMotion }: { shouldReduceMotion: boolean }) {
   return (
-    <div className="rounded-[24px] border border-[rgba(255,255,255,0.06)] bg-[linear-gradient(180deg,rgba(255,255,255,0.024),rgba(255,255,255,0.012))] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.028),0_10px_24px_rgba(0,0,0,0.08)] sm:px-5 sm:py-4.5 lg:px-6">
-      <p className="font-[var(--font-mono)] text-[9px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)] sm:text-[10px]">
+    <div className="rounded-[20px] border border-[rgba(255,255,255,0.05)] bg-[linear-gradient(180deg,rgba(255,255,255,0.018),rgba(255,255,255,0.008))] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.02),0_6px_14px_rgba(0,0,0,0.06)] sm:px-3.5 sm:py-2.5 lg:px-4 lg:py-2.5">
+      <p className="font-[var(--font-mono)] text-[8px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)] sm:text-[8.5px]">
         SO LAEUFT ES AB
       </p>
-      <ol className="mt-3 grid gap-3 md:hidden">
+      <ol className="mt-2 grid gap-2 md:hidden">
         {nextSteps.map((step, index) => (
           <motion.li
-            animate="visible"
-            className="grid grid-cols-[1.8rem_minmax(0,1fr)] gap-x-2.5"
-            custom={index}
-            initial={shouldReduceMotion ? false : "hidden"}
+            animate={timelineItemAnimate(shouldReduceMotion)}
+            className="grid grid-cols-[1.45rem_minmax(0,1fr)] gap-x-2"
+            initial={false}
             key={step.title}
-            variants={timelineItemVariants}
+            transition={timelineItemTransition(index)}
           >
             <div className="flex flex-col items-center">
               <motion.span
                 animate={shouldReduceMotion ? { opacity: 1, scale: 1, y: 0 } : markerAnimate}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[rgba(240,168,94,0.2)] bg-[rgba(240,168,94,0.11)] text-[10px] font-semibold text-[var(--consultry-brand-warm)] shadow-[0_0_0_rgba(240,168,94,0)]"
+                className="inline-flex h-[1.38rem] w-[1.38rem] items-center justify-center rounded-full border border-[rgba(240,168,94,0.18)] bg-[rgba(240,168,94,0.1)] text-[8.5px] font-semibold text-[var(--consultry-brand-warm)]"
                 transition={shouldReduceMotion ? { duration: 0 } : markerTransition(index)}
               >
                 {String(index + 1).padStart(2, "0")}
@@ -90,26 +82,23 @@ function WaitlistStepTimeline({ shouldReduceMotion }: { shouldReduceMotion: bool
                 />
               ) : null}
             </div>
-            <div className="min-w-0 pb-1">
-              <p className="pt-0.5 text-[12.5px] font-medium leading-[1.25] text-[var(--consultry-text-primary)]">
+            <div className="min-w-0">
+              <p className="pt-[1px] text-[11.5px] font-medium leading-[1.2] text-[var(--consultry-text-primary)]">
                 {step.title.replace(/^\d+\.\s*/, "")}
-              </p>
-              <p className="mt-1 hidden text-[11.5px] leading-[1.45] text-[var(--consultry-text-muted)] md:block">
-                {step.body}
               </p>
             </div>
           </motion.li>
         ))}
       </ol>
 
-      <div className="relative mt-4 hidden md:block">
+      <div className="relative mt-2 hidden md:block">
         <motion.div
           animate={
             shouldReduceMotion
               ? { opacity: 1, scaleX: 1 }
               : { opacity: [0.58, 0.9, 0.62], scaleX: [0.985, 1, 0.992] }
           }
-          className="pointer-events-none absolute left-[calc(16.666%-0.75rem)] right-[calc(16.666%-0.75rem)] top-[0.82rem] h-px origin-left bg-[linear-gradient(90deg,rgba(240,168,94,0.42),rgba(255,255,255,0.12),rgba(240,168,94,0.42))]"
+          className="pointer-events-none absolute left-[calc(16.666%-0.44rem)] right-[calc(16.666%-0.44rem)] top-[0.56rem] h-px origin-left bg-[linear-gradient(90deg,rgba(240,168,94,0.3),rgba(255,255,255,0.08),rgba(240,168,94,0.3))]"
           initial={shouldReduceMotion ? false : { opacity: 0, scaleX: 0.88 }}
           transition={
             shouldReduceMotion
@@ -120,34 +109,30 @@ function WaitlistStepTimeline({ shouldReduceMotion }: { shouldReduceMotion: bool
                   ease: revealEase,
                   repeat: Number.POSITIVE_INFINITY,
                   repeatDelay: 2.9,
-                }
+              }
           }
         />
-        <ol className="grid gap-5 md:grid-cols-3 md:gap-4 lg:gap-5">
+        <ol className="grid gap-2 md:grid-cols-3 md:gap-2.5 lg:gap-3">
           {nextSteps.map((step, index) => (
             <motion.li
-              animate="visible"
+              animate={timelineItemAnimate(shouldReduceMotion)}
               className="relative min-w-0"
-              custom={index}
-              initial={shouldReduceMotion ? false : "hidden"}
+              initial={false}
               key={step.title}
-            variants={timelineItemVariants}
-          >
-            <div className="flex items-center gap-2.5">
+              transition={timelineItemTransition(index)}
+            >
+              <div className="flex items-center gap-2">
               <motion.span
                 animate={shouldReduceMotion ? { opacity: 1, scale: 1, y: 0 } : markerAnimate}
-                className="relative z-10 inline-flex h-7 w-7 items-center justify-center rounded-full border border-[rgba(240,168,94,0.2)] bg-[rgba(34,29,26,0.95)] text-[10px] font-semibold text-[var(--consultry-brand-warm)] shadow-[0_0_0_4px_rgba(31,27,24,0.92)]"
+                className="relative z-10 inline-flex h-[1.38rem] w-[1.38rem] items-center justify-center rounded-full border border-[rgba(240,168,94,0.16)] bg-[rgba(34,29,26,0.94)] text-[8.5px] font-semibold text-[var(--consultry-brand-warm)] shadow-[0_0_0_2px_rgba(31,27,24,0.88)]"
                 transition={shouldReduceMotion ? { duration: 0 } : markerTransition(index)}
               >
                 {String(index + 1).padStart(2, "0")}
               </motion.span>
-              <p className="text-[13px] font-medium leading-[1.28] text-[var(--consultry-text-primary)] lg:text-[13.5px]">
+                <p className="text-[11.25px] font-medium leading-[1.16] text-[var(--consultry-text-primary)] lg:text-[11.75px]">
                 {step.title.replace(/^\d+\.\s*/, "")}
               </p>
               </div>
-              <p className="mt-2 pl-[2.45rem] text-[11.5px] leading-[1.48] text-[var(--consultry-text-muted)] lg:text-[12px]">
-                {step.body}
-              </p>
             </motion.li>
           ))}
         </ol>
@@ -160,7 +145,7 @@ export function WaitlistSignupFlow() {
   const shouldReduceMotion = useReducedMotion() ?? false;
 
   return (
-    <section className="section-shell relative overflow-hidden pb-14 pt-5 sm:pb-16 sm:pt-9 lg:pb-20 lg:pt-11">
+    <section className="section-shell relative overflow-hidden pb-12 pt-3 sm:pb-14 sm:pt-6 lg:pb-16 lg:pt-7">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(240,168,94,0.18),transparent_28%),radial-gradient(circle_at_76%_10%,rgba(155,89,181,0.12),transparent_24%),linear-gradient(180deg,rgba(191,83,71,0.08),transparent_55%)]" />
       <div
         aria-hidden="true"
@@ -177,7 +162,7 @@ export function WaitlistSignupFlow() {
       </div>
       <div className="content-shell relative">
         <div className="mx-auto max-w-[84rem]">
-          <div className="space-y-8 sm:space-y-9 lg:space-y-10">
+          <div className="space-y-5 sm:space-y-6 lg:space-y-7">
             <div className="relative max-w-[46rem]">
               <div
                 aria-hidden="true"
@@ -187,13 +172,15 @@ export function WaitlistSignupFlow() {
               <h1 className="rise-in rise-in-delay-1 relative z-10 mt-3 max-w-[12.8ch] text-balance text-[clamp(2.7rem,7vw,4.1rem)] font-[750] leading-[0.92] tracking-[-0.05em] text-[var(--consultry-text-primary)] xl:text-[clamp(3.1rem,4.15vw,4.5rem)]">
                 Frueher Zugang zu Consultry
               </h1>
-              <p className="rise-in rise-in-delay-2 relative z-10 mt-5 max-w-[33rem] text-[0.98rem] leading-[1.68] text-[var(--consultry-text-secondary)] sm:text-[1.05rem] xl:text-[1.1rem]">
+              <p className="rise-in rise-in-delay-2 relative z-10 mt-4 max-w-[33rem] text-[0.97rem] leading-[1.64] text-[var(--consultry-text-secondary)] sm:text-[1.02rem] xl:text-[1.08rem]">
                 Tragen Sie sich fuer Produkt-Updates, priorisierte Pilotplaetze und den ersten
                 Zugang zur Plattform ein.
               </p>
             </div>
 
-            <WaitlistStepTimeline shouldReduceMotion={shouldReduceMotion} />
+            <div className="mx-auto w-full max-w-[58rem] lg:max-w-[54rem]">
+              <WaitlistStepTimeline shouldReduceMotion={shouldReduceMotion} />
+            </div>
 
             <div className="mx-auto w-full max-w-[64rem]">
               <div className="grid-lines rounded-[26px] border border-[rgba(255,255,255,0.16)] bg-[linear-gradient(180deg,rgba(249,248,247,0.98),rgba(232,237,244,0.94))] p-2.5 shadow-[0_22px_42px_rgba(0,0,0,0.16)] backdrop-blur-[2px] sm:rounded-[28px] sm:p-3.5">
