@@ -4,7 +4,12 @@ import { LegalDocumentNav } from "@/components/marketing/LegalDocumentNav";
 export default function LegalLayout({ children }: { children: ReactNode }) {
   return (
     <main>
-      <section className="relative overflow-hidden pb-20 pt-16 sm:pb-24 sm:pt-20">
+      <section
+        className="relative -mt-[4.45rem] overflow-hidden pb-20 pt-[calc(4.45rem+4rem)] sm:pb-24 sm:pt-[calc(4.45rem+5rem)]"
+        style={{
+          background: "var(--consultry-hero-background)",
+        }}
+      >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-[linear-gradient(180deg,rgba(232,145,58,0.16),rgba(191,83,71,0.08),transparent)]" />
         <div className="mx-auto w-[min(100%-2rem,90rem)]">
           <div className="max-w-[62rem]">

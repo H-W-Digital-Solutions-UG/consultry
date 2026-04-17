@@ -49,7 +49,12 @@ export default function KontaktPage() {
       />
 
       <main>
-        <section className="section-shell relative overflow-hidden pt-8 sm:pt-10">
+        <section
+          className="section-shell relative -mt-[4.45rem] overflow-hidden pt-[calc(4.45rem+2rem)] sm:pt-[calc(4.45rem+2.5rem)]"
+          style={{
+            background: "var(--consultry-hero-background)",
+          }}
+        >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(240,168,94,0.18),transparent_28%),radial-gradient(circle_at_76%_10%,rgba(155,89,181,0.12),transparent_24%),linear-gradient(180deg,rgba(191,83,71,0.08),transparent_55%)]" />
           <div className="content-shell relative">
             <div className="grid gap-10 xl:grid-cols-[minmax(0,1.08fr)_minmax(22rem,26rem)] xl:items-start xl:gap-14">
