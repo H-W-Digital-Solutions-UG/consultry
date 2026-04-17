@@ -113,7 +113,11 @@ export function getContentGroup(pathname: string): AnalyticsContentGroup {
     return "waitlist_thank_you";
   }
 
-  if (["/agb", "/cookies", "/datenschutz", "/impressum", "/rechtliches"].includes(pathname)) {
+  if (
+    pathname === "/legal" ||
+    pathname.startsWith("/legal/") ||
+    ["/agb", "/cookies", "/datenschutz", "/impressum", "/rechtliches"].includes(pathname)
+  ) {
     return "legal";
   }
 

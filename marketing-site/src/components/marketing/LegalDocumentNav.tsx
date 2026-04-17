@@ -1,17 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { legalNavigationItems } from "@/lib/legal-documents";
 
-type LegalDocumentNavProps = {
-  currentHref?: string;
-};
+export function LegalDocumentNav() {
+  const pathname = usePathname();
 
-export function LegalDocumentNav({ currentHref }: LegalDocumentNavProps) {
   return (
     <nav aria-label="Rechtliche Dokumente" className="mt-8">
       <ul className="flex flex-wrap gap-2.5">
         {legalNavigationItems.map((item) => {
-          const isActive = item.href === currentHref;
+          const isActive = item.href === pathname;
 
           return (
             <li key={item.href}>

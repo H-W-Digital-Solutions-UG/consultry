@@ -8,13 +8,13 @@ export function generateMetadata(): Metadata {
     description:
       "Datenschutzrichtlinie von Consultry mit Informationen zu erhobenen Daten, Rechtsgrundlagen, Betroffenenrechten und Kontaktwegen.",
     path: "/datenschutz",
+    noindex: true,
   });
 }
 
 export default function DatenschutzPage() {
   return (
     <LegalPageTemplate
-      currentDocumentHref="/datenschutz"
       intro={
         <>
           <p>
@@ -39,7 +39,6 @@ export default function DatenschutzPage() {
         { label: "Gültig ab", value: "16-April-2026" },
         { label: "Aktualisiert am", value: "17-April-2026" },
       ]}
-      overline="RECHTLICHES"
       sections={[
         {
           title: "Welche Informationen wir erheben, zu welchen Zwecken und auf welcher Rechtsgrundlage",

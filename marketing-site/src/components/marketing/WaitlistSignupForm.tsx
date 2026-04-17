@@ -302,14 +302,14 @@ export function WaitlistSignupForm({
               <p className="mt-2 text-[10.5px] leading-[1.5] text-[rgba(34,29,26,0.66)] sm:text-[11px]">
                 <a
                   className="underline decoration-[rgba(34,29,26,0.26)] underline-offset-4 transition hover:text-[var(--consultry-surface-dark)]"
-                  href="/datenschutz"
+                  href="/legal/datenschutz"
                 >
                   Datenschutzerklärung
                 </a>{" "}
                 ·{" "}
                 <a
                   className="underline decoration-[rgba(34,29,26,0.26)] underline-offset-4 transition hover:text-[var(--consultry-surface-dark)]"
-                  href="/impressum"
+                  href="/legal/impressum"
                 >
                   Impressum
                 </a>

@@ -10,7 +10,7 @@ export const legalHub = {
   description:
     "Zentrale Uebersicht aller rechtlichen Dokumente von Consultry mit schnellen Einstiegen in Datenschutz, Impressum, Cookies und AGB.",
   footerLabel: "Uebersicht",
-  href: "/rechtliches",
+  href: "/legal",
   navLabel: "Uebersicht",
   title: "Rechtliches",
 } as const satisfies LegalDocumentMeta;
@@ -20,7 +20,7 @@ export const legalDocuments = [
     description:
       "Datenschutzrichtlinie mit Angaben zu verarbeiteten Daten, Rechtsgrundlagen, Betroffenenrechten und Kontakt.",
     footerLabel: "Datenschutz",
-    href: "/datenschutz",
+    href: "/legal/datenschutz",
     navLabel: "Datenschutz",
     title: "Datenschutzrichtlinie",
   },
@@ -28,7 +28,7 @@ export const legalDocuments = [
     description:
       "Anbieterkennzeichnung mit Kontakt, Registerdaten und Informationen zur Streitbeilegung.",
     footerLabel: "Impressum",
-    href: "/impressum",
+    href: "/legal/impressum",
     navLabel: "Impressum",
     title: "Impressum",
   },
@@ -36,7 +36,7 @@ export const legalDocuments = [
     description:
       "Informationen zu Consent-Steuerung, technisch notwendigen Mechanismen und optionalen Statistik-Diensten.",
     footerLabel: "Cookies",
-    href: "/cookies",
+    href: "/legal/cookies",
     navLabel: "Cookies",
     title: "Cookies",
   },
@@ -44,7 +44,7 @@ export const legalDocuments = [
     description:
       "Vorlaeufige AGB-Struktur fuer Pilotangebote, Produktvorschauen und kuenftige Plattformbedingungen.",
     footerLabel: "AGB",
-    href: "/agb",
+    href: "/legal/agb",
     navLabel: "AGB",
     title: "Allgemeine Geschaeftsbedingungen",
   },
