@@ -7,8 +7,8 @@ type WaitlistThankYouViewProps = {
 };
 
 const qualifierReasons = [
-  "Wir priorisieren Pilotplätze gezielter und melden uns nur, wenn es wirklich passt.",
-  "Die ersten Inhalte, die Sie erhalten, sind auf Ihre Beratungsrealität zugeschnitten.",
+  "Wir priorisieren Pilotplätze gezielter. Und melden uns nur, wenn es wirklich passt.",
+  "Die ersten Inhalte, die Sie erhalten, passen auf Ihre Beratungsrealität.",
   "Die Angaben sind freiwillig und in unter einer Minute erledigt.",
 ] as const;
 
@@ -29,9 +29,9 @@ export function WaitlistThankYouView({
                 Willkommen auf der Warteliste.
               </h1>
               <p className="body-lg mt-5 max-w-[44rem]">
-                Ihr Platz ist reserviert. Wenn Sie uns noch ein paar kurze Angaben zu Ihrer Beratung
-                geben, etwa Größe, Fokus und größter operativer Engpass, ordnen wir Ihre Anfrage
-                gezielter ein. Und wenn Sie Pilotkunde werden wollen, melden wir uns binnen 48
+                Ihr Platz ist reserviert. Geben Sie uns noch ein paar kurze Angaben zu Ihrer
+                Beratung. Größe, Fokus, größter operativer Engpass. Damit wir Ihre Anfrage
+                gezielter einordnen. Wenn Sie Pilotkunde werden wollen, melden wir uns binnen 48
                 Stunden direkt.
               </p>
             </div>

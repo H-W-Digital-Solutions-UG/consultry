@@ -33,7 +33,7 @@ export default function Home() {
         <FeatureShowcaseEditorialScroller steps={steps} />
 
         <InternalLinkGrid
-          body="Jede dieser Seiten vertieft einen der Bereiche, mit konkreten Zahlen, Szenarien und Vergleichen."
+          body="Jede dieser Seiten vertieft einen der Bereiche. Mit konkreten Zahlen, Szenarien und Vergleichen."
           eyebrow="VERTIEFEN"
           links={internalLinks}
           title="Die wichtigsten Themen im Detail."
@@ -43,7 +43,7 @@ export default function Home() {
           body="Zielwerte aus Marktanalyse und Gesprächen mit Pilotkunden im DACH-Raum."
           cta={hero.primaryCta}
           eyebrow="ERGEBNISSE"
-          footnote="Basis: Branchen-Benchmarks und Gespräche mit Beratungen zwischen 30 und 200 Beratern. Consultry ist im Pre-Launch. Werte sind Zielkorridore, keine Versprechen."
+          footnote="Basis: Branchen-Benchmarks und Gespräche mit Beratungen zwischen 30 und 200 Beratern. Consultry ist im Pre-Launch. Werte sind Zielkorridore. Keine Versprechen."
           metrics={metrics}
           title="Was sich operativ verschiebt."
         />

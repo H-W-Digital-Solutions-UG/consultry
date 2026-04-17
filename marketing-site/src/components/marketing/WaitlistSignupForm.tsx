@@ -48,7 +48,7 @@ export function WaitlistSignupForm({
   buttonLabel,
   onSuccess,
   placeholder,
-  success = "E-Mail gesendet",
+  success = "Anmeldung erhalten.",
   successDelayMs,
   redirectPath = "/warteliste/danke",
 }: WaitlistSignupFormProps) {
@@ -63,8 +63,8 @@ export function WaitlistSignupForm({
   const isSuccess = submitState === "success";
   const showSubmitButton = newsletterConsent || isSubmitting;
   const successHint = onSuccess
-    ? "Optionalen Kontext laden …"
-    : "Weiterleitung zur Bestätigungsseite …";
+    ? "Kurze Folgefragen werden geladen."
+    : "Weiterleitung zur Bestätigung läuft.";
 
   useEffect(() => {
     if (redirectPath) {

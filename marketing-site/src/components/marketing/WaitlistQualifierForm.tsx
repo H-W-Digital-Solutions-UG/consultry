@@ -106,7 +106,7 @@ export function WaitlistQualifierForm({
     return (
       <section className={panelClassName}>
         <p className="text-sm text-[var(--consultry-text-secondary)]">
-          Wir laden Ihre Wartelisten-Details.
+          Anmeldedaten werden geladen.
         </p>
       </section>
     );
@@ -120,8 +120,8 @@ export function WaitlistQualifierForm({
           Einordnung nur nach Anmeldung möglich.
         </h2>
         <p className="mt-4 text-[15px] leading-[1.72] text-[var(--consultry-text-secondary)]">
-          Wir konnten in diesem Browser keine frische Wartelisten-Anmeldung finden. Wenn Sie uns
-          direkt etwas mitgeben wollen, schreiben Sie uns über die Kontaktseite.
+          In diesem Browser liegt keine aktuelle Wartelisten-Anmeldung. Wenn Sie uns direkt etwas
+          mitgeben wollen, schreiben Sie uns über die Kontaktseite.
         </p>
         <div className="mt-6">
           <Button href="/kontakt" variant="secondary">
@@ -140,8 +140,8 @@ export function WaitlistQualifierForm({
           Ihre Anmeldung ist aktiv.
         </h2>
         <p className="mt-4 text-[15px] leading-[1.72] text-[var(--consultry-text-secondary)]">
-          Die zusätzliche Einordnung ist für die nächste Ausbaustufe vorgesehen. Sobald Sie Ihre
-          Anmeldung bestätigt haben, erhalten Sie die ersten Wartelisten-Updates direkt per E-Mail.
+          Die zusätzliche Einordnung folgt in der nächsten Ausbaustufe. Sobald Ihre Anmeldung
+          bestätigt ist, erhalten Sie die ersten Wartelisten-Updates direkt per E-Mail.
         </p>
         <p className="mt-3 text-sm text-[var(--consultry-text-muted)]">{storedEmail}</p>
         <div className="mt-6">
@@ -164,8 +164,7 @@ export function WaitlistQualifierForm({
           isWide && "max-w-[48rem] text-[15.5px]",
         )}
       >
-        Vier kurze Angaben, mit denen wir Ihren Bedarf einordnen und Pilotplätze passend
-        priorisieren.
+        Vier kurze Angaben. Damit wir Ihren Bedarf einordnen und Pilotplätze passend priorisieren.
       </p>
       <p className="mt-3 text-sm text-[var(--consultry-text-muted)]">{storedEmail}</p>
 

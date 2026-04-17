@@ -80,7 +80,7 @@ export type HomepageLinkCard = {
 export const homepageSeo = {
   title: "Consultry · Der operative AI-Begleiter für IT-Beratungen",
   description:
-    "Consultry verbindet Marktsignal, Staffing, Angebot, Delivery und Wissensrückfluss in einem System für IT- und Digitalisierungsberatungen im DACH-Raum. Pre-Launch. Warteliste offen.",
+    "Consultry führt Signal, Staffing, Angebot und Delivery in einer Arbeitsebene zusammen. Für IT- und Digitalisierungsberatungen mit 30 bis 200 Beratern im DACH-Raum. Pre-Launch, Warteliste offen.",
   keywords: [
     "operativer AI-Begleiter",
     "Consulting Software DACH",
@@ -96,14 +96,14 @@ export const homepageSeo = {
 
 export const homepageContent = {
   hero: {
-    eyebrow: "DER OPERATIVE AI-BEGLEITER FÜR BERATUNGEN",
+    eyebrow: "OPERATIVE AI FÜR DACH-BERATUNGEN",
     title: [
       "Sie kennen Ihr Team.",
       "Consultry kennt",
       "den Markt.",
     ],
     body:
-      "Consultry verbindet Marktsignal, Staffing, Angebot, Delivery und Wissensrückfluss in einem System. Gebaut für IT- und Digitalisierungsberatungen mit 30 bis 200 Beratern im DACH-Raum.",
+      "Eine Arbeitsebene für Signal, Staffing, Angebot und Delivery. Für Beratungen mit 30 bis 200 Beratern.",
     primaryCta: {
       label: "Auf die Warteliste",
       href: ctaTargets.homepagePrimary,
@@ -114,48 +114,48 @@ export const homepageContent = {
     },
     image: {
       src: "/images/figma/hero-dashboard.png",
-      alt: "Consultry Arbeitsfläche mit Opportunity, Team und Delivery in einer Ansicht",
+      alt: "Consultry Arbeitsebene mit Opportunity, Team und Delivery in einer Ansicht",
     },
     proofLine:
-      "Pre-Launch · Erklärbare Empfehlungen mit menschlicher Freigabe · EU-Hosting",
+      "Pre-Launch · Sie entscheiden, Consultry bereitet vor · Tenant-isoliert, EU-Hosting",
     sideCards: [
       {
-        title: "Ihre nächste Chance steht meist schon im Haus",
+        title: "Ein Bestandskunde wechselt den CTO. Sie wissen es zuerst.",
         body:
-          "Stakeholder-Wechsel, Ausschreibungen, Hiring. Consultry zieht die Signale zusammen und zeigt Ihnen über Nacht, wo eine Opportunity entsteht, bevor sie jemand anders sieht.",
+          "Consultry liest Stakeholder-Wechsel, Hiring und Ausschreibungen über Nacht. Morgens liegt ein Engagement-Brief mit warmem Pfad bereit.",
       },
       {
-        title: "Wissen, das nicht im Archiv endet",
+        title: "Die SAP-Migration von damals. Im nächsten Pitch wieder da.",
         body:
-          "Referenzen, Methoden und Lessons Learned tauchen genau dort wieder auf, wo sie Umsatz bringen: im nächsten Pitch, im nächsten Staffing, im nächsten Projekt.",
+          "Methoden, Referenzen und Lessons Learned fließen nach Projektende zurück. Im nächsten Pitch sind sie nicht im Archiv, sondern im Canvas.",
       },
     ],
     metrics: [
-      { value: "Signal", label: "Marktchancen, bevor sie jemand anders sieht" },
-      { value: "Match", label: "Team-Vorschlag mit Begründung" },
-      { value: "Offer", label: "Angebot in Stunden, nicht in Tagen" },
-      { value: "Learn", label: "Wissen fließt aus dem Projekt zurück" },
+      { value: "Signal", label: "Chancen, bevor andere sie sehen" },
+      { value: "Match", label: "Drei Teams mit Begründung" },
+      { value: "Offer", label: "Angebot in drei Stunden" },
+      { value: "Learn", label: "Wissen, das zurückfließt" },
     ],
   },
   answers: [
     {
-      question: "Was ist Consultry in einem Satz?",
+      question: "Ist Consultry ein weiteres Tool neben den sieben, die wir haben?",
       answer:
-        "Consultry ist der erste operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum: vom ersten Marktsignal bis zum Wissensrückfluss in einem System.",
+        "Nein, im Gegenteil. Consultry ersetzt die Steuerungs-Ebene, die heute auf CRM, PSA, Spreadsheet und Slack verteilt ist. Signal, Staffing, Angebot und Delivery laufen wieder in einer Ansicht zusammen.",
       href: "/produkt",
-      linkLabel: "Zur Produktseite",
+      linkLabel: "Zur Produktübersicht",
     },
     {
-      question: "Für wen ist Consultry gebaut?",
+      question: "Was heißt operative AI bei Consultry konkret?",
       answer:
-        "Für IT- und Digitalisierungsberatungen mit 30 bis 200 Beratern im DACH-Raum, die Bestandskunden-Wachstum, Staffing und Delivery nicht länger über sieben Tools steuern wollen.",
+        "Die AI bereitet vor, Sie entscheiden. Jeder Vorschlag kommt mit Begründung, jeder geht nur mit Freigabe raus. Das System lernt mit Ihren Daten, aber ausschließlich für Sie. Tenant-isoliert, in der EU.",
       href: "/unternehmen",
-      linkLabel: "Mehr zum DACH-Fokus",
+      linkLabel: "Zum Gründungs-Warum",
     },
     {
-      question: "Warum reicht ein CRM nicht aus?",
+      question: "Warum reicht ein CRM nicht?",
       answer:
-        "Ein CRM kennt die Pipeline, aber nicht Ihre Berater. PSA-Tools tracken Delivery, aber nicht die Akquise. Consultry verbindet beide Welten und das Firmenwissen dazwischen.",
+        "Ein CRM kennt Ihre Pipeline. Es kennt nicht Ihre Berater, Ihr Firmenwissen oder Ihre Delivery-Realität. Consultry verbindet alles, vom Signal bis zum Learning.",
       href: "/produkt/consultry-vs-crm",
       linkLabel: "Zum Vergleich",
     },
@@ -165,66 +165,66 @@ export const homepageContent = {
       id: "account-growth",
       stepLabel: "[01]",
       stepperLabel: "Signal",
-      eyebrow: "MARKT & SIGNAL INTELLIGENCE",
-      title: "Sie sehen die Chance, bevor sie jemand anders sieht.",
+      eyebrow: "BESTANDSKUNDEN UND SIGNALE",
+      title: "Ein CTO wechselt. Sie wissen es als Erste.",
       body:
-        "Über Nacht erkennt Consultry, was passiert: CTO-Wechsel bei einem Bestandskunden, eine passende Ausschreibung, Hiring-Signale bei einem Prospect. Morgens um 8 haben Sie drei priorisierte Chancen auf dem Tisch, mit Kontext, Beziehungspfad und erstem Briefing, nicht mit 30 ungelesenen Newslettern.",
-      ctaLabel: "Mehr zu Marktsignalen und Bestandskunden",
+        "Über Nacht zieht Consultry Stakeholder-Wechsel, Hiring und Ausschreibungen zusammen. Morgens liegen drei priorisierte Chancen auf dem Tisch, mit warmem Pfad und erstem Briefing. Keine 30 ungelesenen Newsletter, keine fünf offenen Tabs.",
+      ctaLabel: "Zur Seite Bestandskunden-Wachstum",
       image: {
         src: "/images/figma/step-signal.png",
         alt: "Priorisierte Marktsignale mit Match-Logik und Warm Paths",
       },
       caption:
-        "Signale, Warm Paths und der direkte Einstieg in die Opportunity, in einer Ansicht.",
+        "Signale, warmer Pfad und der direkte Einstieg in die Opportunity. In einer Ansicht.",
     },
     {
       id: "staffing-forecasting",
       stepLabel: "[02]",
       stepperLabel: "Match",
-      eyebrow: "PEOPLE & CAPACITY",
-      title: "Sie schlagen drei Teams vor, nicht eines aus Verlegenheit.",
+      eyebrow: "BERATER UND KAPAZITÄT",
+      title: "Drei Teams mit Begründung. Sie geben frei.",
       body:
-        "Consultry kennt Skills, Projekterfahrung, Verfügbarkeit und Teamchemie. Für jede Opportunity entstehen drei belastbare Team-Varianten mit Margin-Blick und Begründung. Sie entscheiden, welches Team gewinnt. Skill-Lücken und Unterauslastung werden früh sichtbar, nicht erst im nächsten Forecast.",
-      ctaLabel: "Mehr zu Staffing und Forecasting",
+        "Consultry kennt Skills, Projekthistorie und Verfügbarkeit. Für jede Opportunity entstehen drei belastbare Varianten, mit Margin und Matching-Score. Sie wählen, ändern, ergänzen. Skill-Lücken und Unterauslastung werden früh sichtbar, nicht erst im nächsten Forecast.",
+      ctaLabel: "Zur Seite Staffing und Forecasting",
       image: {
         src: "/images/figma/step-matching.png",
         alt: "Drei Team-Varianten mit Match-Score, Verfügbarkeit und Forecast",
       },
       caption:
-        "Drei Team-Varianten, Margin inklusive, Verfügbarkeit geprüft. In Minuten statt Tagen.",
+        "Drei Varianten, Margin inklusive, Verfügbarkeit geprüft. In Minuten statt Tagen.",
       flipped: true,
     },
     {
       id: "proposal-workflow",
       stepLabel: "[03]",
       stepperLabel: "Offer",
-      eyebrow: "DEAL EXECUTION",
-      title: "Aus der qualifizierten Chance wird ein Angebot in Stunden.",
+      eyebrow: "ANGEBOT UND VERTRAG",
+      title: "Angebot in drei Stunden, nicht in Tagen.",
       body:
-        "Engagement Brief, passende CVs, Referenzen und Pricing-Logik kommen aus demselben Kontext wie die Opportunity selbst. Kein Copy-Paste zwischen PowerPoint, Word und Inbox. Das Angebot steht in Stunden statt in Tagen: freigegeben, versioniert, nachvollziehbar.",
-      ctaLabel: "Mehr zum Angebotsprozess",
+        "Engagement-Brief, CVs, Referenzen und Pricing entstehen aus demselben Kontext wie die Opportunity. Kein Copy-Paste zwischen PowerPoint, Word und Inbox. Consultry baut die erste Version. Sie verfeinern in Sätzen, bis es passt.",
+      ctaLabel: "Zum Angebots-Workflow",
       image: {
         src: "/images/figma/step-delivery.png",
         alt: "Angebots-Canvas mit Varianten, CVs und Freigabeprozess",
       },
       caption:
-        "Von der qualifizierten Chance zum belastbaren Angebotsentwurf, in einem Workflow.",
+        "Von der qualifizierten Chance zum belastbaren Angebot. In einem Workflow, nicht in sieben.",
     },
     {
       id: "knowledge-reuse",
       stepLabel: "[04]",
       stepperLabel: "Learn",
-      eyebrow: "WISSENSBASIS & DELIVERY",
-      title: "Das Wissen aus dem letzten Projekt hilft im nächsten Pitch.",
+      eyebrow: "WISSEN UND DELIVERY",
+      title: "Das Wissen von damals. Im nächsten Pitch wieder da.",
       body:
-        "Delivery Health, Scope-Risiken, Deckungsbeiträge und Lessons Learned laufen in derselben Arbeitsebene zusammen. Methoden, Referenzen und Erfahrungen fließen nach Projektende zurück. Sie tauchen beim nächsten Pitch, Staffing oder Projektstart wieder auf. Genau dann, wenn sie Wert erzeugen.",
-      ctaLabel: "Mehr zu Wissen und Delivery",
+        "Delivery Health, Scope-Risiken und Deckungsbeiträge laufen in derselben Arbeitsebene. Methoden und Referenzen fließen nach Projektende zurück. Eine Frage wie \u201eSAP-Datenmigration Retail\u201c liefert eine Antwort in Sekunden, nicht eine Dokumentliste.",
+      ctaLabel: "Zur Seite Wissen und Delivery",
       image: {
         src: "/images/figma/step-knowledge.png",
         alt: "Wissensbausteine und Referenzen im Delivery-Kontext",
       },
       caption:
-        "Wissensbausteine, Referenzen und Learnings, verfügbar dort, wo sie Umsatz bringen.",
+        "Wissensbausteine, Referenzen und Learnings. Dort, wo sie Umsatz bringen.",
       flipped: true,
     },
   ] satisfies HomepageStep[],
@@ -233,31 +233,31 @@ export const homepageContent = {
       href: "/produkt/account-growth",
       label: "Bestandskunden-Wachstum",
       body:
-        "Wie aus Stakeholder-Wechseln, Hiring-Signalen und Ausschreibungen priorisierte Opportunities werden.",
+        "Signale aus dem Bestandskundenbuch. Stakeholder-Wechsel, Hiring, Ausschreibungen, priorisiert und mit warmem Pfad.",
     },
     {
       href: "/produkt/staffing-forecasting",
       label: "Staffing und Forecasting",
       body:
-        "Wie Skills, Verfügbarkeit und Teamchemie zu drei belastbaren Team-Varianten pro Opportunity werden.",
+        "Drei Team-Varianten pro Opportunity, mit Margin und Begründung. Auslastung und Skill-Lücken werden früh sichtbar.",
     },
     {
       href: "/produkt/knowledge-reuse",
       label: "Wissen, das wieder auftaucht",
       body:
-        "Wie Methoden, Referenzen und Lessons Learned im nächsten Pitch, Staffing und Projekt erscheinen.",
+        "Methoden, Referenzen und Lessons Learned erscheinen dort, wo Sie sie brauchen. Nicht im Archiv.",
     },
     {
       href: "/produkt/commercial-control",
       label: "Delivery und Marge",
       body:
-        "Wie Projekt, Deckungsbeitrag und Invoice-Ready-Übergabe an DATEV in einer Sicht zusammenlaufen.",
+        "Projekt-Health, Deckungsbeitrag und Invoice-Ready-Übergabe an DATEV. In einer Sicht.",
     },
     {
       href: "/produkt/consultry-vs-crm",
       label: "Consultry vs. Standard-CRM",
       body:
-        "Warum ein CRM Ihre Pipeline kennt, aber nicht Ihre Berater, Ihr Firmenwissen und Ihre Delivery-Realität.",
+        "Ein CRM kennt die Pipeline. Consultry kennt Ihre Berater, Ihr Wissen und Ihre Delivery-Realität.",
     },
   ] satisfies HomepageLinkCard[],
   metrics: [
@@ -265,37 +265,37 @@ export const homepageContent = {
       value: "15h → 3h",
       label: "BD-Recherche pro Woche",
       body:
-        "Statt 15 bis 25 Stunden pro Woche über fünf bis acht Tools. Consultry bündelt Recherche und Stakeholder-Kontext in einer Arbeitsebene.",
+        "Heute: 15 bis 25 Stunden über fünf bis acht Tools. Mit Consultry: Signal, Stakeholder-Kontext und Briefing in einer Ansicht.",
     },
     {
-      value: "Tage → Stunden",
+      value: "3h statt 2–4 Tage",
       label: "Vom Brief zum Angebot",
       body:
-        "Engagement Brief, Team-Variante, CVs und Proposal-Draft entstehen aus einem gemeinsamen Kontext, nicht aus sieben Dokumenten.",
+        "Engagement-Brief, CVs, Referenzen und Pricing aus einem Kontext. Nicht aus sieben Dokumenten.",
     },
     {
       value: "60–70% → 80–90%",
       label: "Ziel-Utilization pro Berater",
       body:
-        "Weil Pipeline, Skills und Verfügbarkeit in einer Steuerungslogik zusammenlaufen. Bench-Kosten werden früher sichtbar.",
+        "Pipeline, Skills und Verfügbarkeit in einer Steuerungslogik. Bench-Kosten werden früher sichtbar.",
     },
     {
-      value: "+25–40%",
-      label: "Ziel-Steigerung Win-Rate",
+      value: "15 Sek statt 3h",
+      label: "Antwort aus der Wissensbasis",
       body:
-        "Passende Referenzen, realistisches Team und belastbare Begründung, im Angebot selbst, nicht in der Nacharbeit.",
+        "Eine Query statt einer Dokumentliste. Methoden und Referenzen finden Sie in Sekunden, nicht in Meetings.",
     },
   ] satisfies HomepageMetric[],
   waitlist: {
     eyebrow: "WARTELISTE",
-    title: "Sie wollen dabei sein, wenn Consultry live geht?",
+    title: "Als Erste dabei, wenn Consultry live geht.",
     body:
-      "Tragen Sie sich ein. Zum Launch hören Sie als Erste. Wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen wir binnen 48 Stunden direkt miteinander.",
-    placeholder: "Ihre geschäftliche E-Mail-Adresse",
+      "E-Mail eintragen. Zum Launch hören Sie zuerst. Wer Pilotkunde werden will, kreuzt das im nächsten Schritt an. Wir melden uns binnen 48 Stunden.",
+    placeholder: "Geschäftliche E-Mail-Adresse",
     buttonLabel: "Auf die Warteliste",
     trustLine:
-      "Double-Opt-in · Exklusiv für DACH-Beratungen · Pilotplätze werden kuratiert",
+      "Double-Opt-in · Für DACH-Beratungen · Pilotplätze werden kuratiert",
     success:
-      "Danke. Bitte bestätigen Sie jetzt noch Ihre Anmeldung über den Link in Ihrer E-Mail.",
+      "Danke. Bitte bestätigen Sie den Link in Ihrer E-Mail.",
   } satisfies HomepageWaitlist,
 } as const;

@@ -39,7 +39,7 @@ export function WaitlistCapturedPopup() {
             transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.34, ease: revealEase }}
           >
             <button
-              aria-label="Popup schliessen"
+              aria-label="Popup schließen"
               className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--consultry-border-soft)] bg-[rgba(255,255,255,0.04)] text-[var(--consultry-text-secondary)] transition hover:border-[rgba(244,183,109,0.26)] hover:text-[var(--consultry-text-primary)]"
               onClick={dismiss}
               type="button"
@@ -58,12 +58,12 @@ export function WaitlistCapturedPopup() {
                   className="mt-4 text-[clamp(2rem,4vw,3.15rem)] font-semibold leading-[0.98] tracking-[-0.035em] text-[var(--consultry-text-primary)]"
                   id="waitlist-captured-title"
                 >
-                  E-Mail bestaetigen
+                  E-Mail bestätigen.
                 </h2>
                 <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
                   <p className="max-w-[34rem] text-[16px] leading-[1.7] text-[var(--consultry-text-secondary)] sm:text-[17px]">
-                    Bitte bestaetigen Sie jetzt die E-Mail in Ihrem Postfach. Ohne Double-Opt-in
-                    koennen wir Sie nicht in die Warteliste aufnehmen.
+                    Bitte bestätigen Sie jetzt die E-Mail in Ihrem Postfach. Ohne Double-Opt-in
+                    können wir Sie nicht in die Warteliste aufnehmen.
                   </p>
                   <Button className="min-w-[12rem] self-start lg:self-auto" onClick={dismiss} size="lg">
                     Verstanden

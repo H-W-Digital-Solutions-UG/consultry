@@ -22,7 +22,7 @@ export type SocialLink = {
 };
 
 export const announcement = {
-  text: "Pre-Launch: Warteliste offen für DACH-Beratungen",
+  text: "Pre-Launch. Warteliste offen für DACH-Beratungen.",
   href: "/warteliste",
   ctaLabel: "Zur Warteliste",
 } as const;
@@ -39,7 +39,7 @@ export const ctaTargets = {
 export const deepDiveCta = {
   title: "Consultry, sobald es live geht.",
   body:
-    "Sie sind als Erste dabei, wenn Consultry startet. Bestandskunden-Signale, Staffing, Wissen und Angebote laufen dann in einem System zusammen, nicht mehr in sieben.",
+    "Sie sind als Erste dabei, wenn Consultry startet. Bestandskunden-Signale, Staffing, Wissen und Angebote laufen dann in einem System zusammen. Nicht mehr in sieben.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: ctaTargets.nav,
@@ -67,7 +67,7 @@ export const navLinks: NavLink[] = [
 export const footerBrand = {
   title: "Consultry",
   tagline:
-    "Der operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum.",
+    "Der operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum. Tenant-isoliert, EU-Hosting.",
   complianceLabel: "DSGVO · EU-HOSTING",
 } as const;
 

@@ -20,19 +20,19 @@ export const aboutContent = {
     title:
       "Wir bauen den operativen AI-Begleiter für Beratungen, den wir selbst gebraucht hätten.",
     body:
-      "Drei Gründer aus Berlin. Consulting, Security, Produkt. Wir kennen die Schmerzpunkte aus der Praxis und bauen das System, das Beratungen wirklich steuert, nicht noch ein Tool daneben.",
+      "Drei Gründer aus Berlin. Consulting, Security, Produkt. Wir kennen die Schmerzpunkte aus der Praxis und bauen das System, das Beratungen wirklich steuert. Nicht noch ein Tool daneben.",
   },
   team: {
     overline: "DAS TEAM",
     title: "Drei Gründer. Ein Betriebsverständnis.",
     body:
-      "Hinter Consultry steht ein Team, das Beratung, AI-Architektur und Produktarbeit zusammenbringt. Seit Jahren erleben wir selbst, wo die Lücke zwischen Tool und Alltag liegt.",
+      "Hinter Consultry steht ein Team, das Beratung, AI-Architektur und Produktarbeit zusammenbringt. Wir erleben selbst seit Jahren, wo die Lücke zwischen Tool und Alltag liegt.",
     members: [
       {
         name: "Julian Weber",
         role: "Co-Founder · CTO/CISO",
         focus:
-          "Baut die AI-native Architektur. Security by Design, erklärbare Empfehlungen und eine Plattform, die auch bei 200 Beratern stabil bleibt.",
+          "Baut die AI-native Architektur. Security by Design, erklärbare Empfehlungen, tenant-isolierte Datenhaltung. Eine Plattform, die auch bei 200 Beratern stabil bleibt.",
         image: {
           src: "/images/team-julian.png",
           alt: "Porträt von Julian Weber",
@@ -52,7 +52,7 @@ export const aboutContent = {
         name: "Paul Hannemann",
         role: "Co-Founder · CPO",
         focus:
-          "Übersetzt Beratungslogik in Produkt. Sorgt dafür, dass Consultry nach Beratung denkt, nicht nach CRM, Ticket-System oder Tabellenkalkulation.",
+          "Übersetzt Beratungslogik in Produkt. Sorgt dafür, dass Consultry nach Beratung denkt. Nicht nach CRM, Ticket-System oder Tabellenkalkulation.",
         image: {
           src: "/images/team-paul.png",
           alt: "Porträt von Paul Hannemann",
@@ -64,9 +64,9 @@ export const aboutContent = {
     overline: "UNSERE GESCHICHTE",
     title: "Beratungen verdienen ein System, das ihre Logik kennt.",
     paragraphs: [
-      "Wir haben Consultry begonnen, weil wir die gleiche Szene zu oft gesehen haben: Freitagnachmittag, Managing Partner, 14 offene Tabs. Salesforce für die Pipeline. Excel für das Staffing. PowerPoint für das Angebot. Confluence für die Methodik. Und am Ende entscheidet das Bauchgefühl, weil niemand mehr alles zusammenbringt.",
-      "In DACH-Beratungen zwischen 30 und 200 Beratern liegen die größten Hebel nicht in mehr Software, sondern in weniger Brüchen. 80 % des Umsatzes kommt aus Bestandskunden. Aber die stärksten Signale dazu stehen in Newslettern, im Postfach eines Partners und in einer Ausschreibung, die niemand rechtzeitig gesehen hat.",
-      "Consultry ist die operative Ebene, die wir uns selbst gewünscht haben: Sie verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss. AI ist dabei kein Knopf, sondern das Interaktionsprinzip. Sie sprechen mit dem System, das System bereitet vor. Sie entscheiden.",
+      "Wir haben Consultry begonnen, weil wir die gleiche Szene zu oft gesehen haben. Freitagnachmittag, Managing Partner, 14 offene Tabs. Salesforce für die Pipeline. Excel für das Staffing. PowerPoint für das Angebot. Confluence für die Methodik. Und am Ende entscheidet das Bauchgefühl, weil niemand mehr alles zusammenbringt.",
+      "In DACH-Beratungen zwischen 30 und 200 Beratern liegen die größten Hebel nicht in mehr Software. Sondern in weniger Brüchen. Rund 80 % des Umsatzes kommen aus Bestandskunden. Aber die stärksten Signale dazu stehen in Newslettern, im Postfach eines Partners und in einer Ausschreibung, die niemand rechtzeitig gesehen hat.",
+      "Consultry ist die operative Ebene, die wir uns selbst gewünscht haben. Sie verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss. AI ist dabei kein Knopf, sondern das Interaktionsprinzip. Sie sagen dem System, was Sie brauchen. Das System bereitet vor. Sie entscheiden.",
       "Wir sind im Pre-Launch. Wir bauen gemeinsam mit einer kleinen Zahl Pilotkunden aus dem DACH-Raum. Wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen Sie mit uns.",
     ],
     proofRail: [
@@ -83,12 +83,12 @@ export const aboutContent = {
       {
         value: "EU",
         label: "Hosting",
-        detail: "Alle Kundendaten bleiben in der EU, kein Workaround nötig",
+        detail: "Tenant-isoliert in der EU. Kein Workaround, keine Umwege über die USA.",
       },
       {
         value: "Pre-Launch",
         label: "Status",
-        detail: "Pilotkunden werden aktuell kuratiert, Warteliste ist offen",
+        detail: "Pilotkunden werden aktuell kuratiert. Warteliste ist offen.",
       },
     ] satisfies ProofStat[],
   },

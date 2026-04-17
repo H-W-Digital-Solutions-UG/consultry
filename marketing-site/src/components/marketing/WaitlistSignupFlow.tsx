@@ -11,7 +11,7 @@ const nextSteps = [
     title: "2. Launch-Info als Erste erhalten",
   },
   {
-    title: "3. Pilotkunden werden, wenn Sie wollen",
+    title: "3. Pilotplatz auf Wunsch",
   },
 ] as const;
 
@@ -176,9 +176,8 @@ export function WaitlistSignupFlow() {
                 Als Erste dabei, wenn Consultry live geht.
               </h1>
               <p className="rise-in rise-in-delay-2 relative z-10 mt-4 max-w-[33rem] text-[0.97rem] leading-[1.64] text-[var(--consultry-text-secondary)] sm:text-[1.02rem] xl:text-[1.08rem]">
-                Consultry ist im Pre-Launch. Tragen Sie sich ein. Sie hören als Erste zum Launch.
-                Wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns
-                binnen 48 Stunden.
+                Pre-Launch. Zum Launch hören Sie als Erste. Pilotkunde werden? Im Formular
+                ankreuzen. Wir melden uns binnen 48 Stunden.
               </p>
             </div>
 

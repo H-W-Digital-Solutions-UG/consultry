@@ -54,7 +54,7 @@ export default function ProductPage() {
       <ProductPageHero content={productHero} />
 
       <AnswerHighlights
-        body="Drei Antworten, die die häufigsten Fragen direkt klären, bevor Sie tiefer einsteigen."
+        body="Drei Antworten, die die häufigsten Fragen direkt klären. Bevor Sie tiefer einsteigen."
         eyebrow="KURZ ERKLÄRT"
         items={productAnswers}
         title="Was Consultry für Ihre Beratung tut."
@@ -93,7 +93,7 @@ export default function ProductPage() {
       </section>
 
       <InternalLinkGrid
-        body="Jede dieser Seiten vertieft einen der Bereiche, mit konkreten Zahlen, Szenarien und Vergleichen."
+        body="Jede dieser Seiten vertieft einen der Bereiche. Mit konkreten Zahlen, Szenarien und Vergleichen."
         eyebrow="VERTIEFEN"
         links={productInternalLinks}
         title="Die Bereiche im Detail."
