@@ -4,16 +4,16 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
-    title: "Warteliste | Frueher Zugang fuer DACH-Beratungen",
+    title: "Warteliste · Consultry",
     description:
-      "Sichern Sie sich fruehen Zugang zu Consultry, Produkt-Updates und priorisierten Zugang zu Pilotplaetzen fuer DACH-Beratungen.",
+      "Consultry ist im Pre-Launch. Tragen Sie sich ein — als Erste zum Launch, und wenn Sie Pilotkunde werden wollen, direkt ins Gespräch mit dem Gründerteam.",
     path: "/warteliste",
     noindex: true,
     keywords: [
       "Consultry Warteliste",
-      "Frueher Zugang Beratungssoftware",
-      "AI-native Steuerungsplattform Beratungen",
-      "Software fuer IT- und Digitalisierungsberatungen",
+      "Pilotkunden DACH Beratungen",
+      "Operativer AI-Begleiter Consulting",
+      "Pre-Launch IT-Beratung",
     ],
   });
 }

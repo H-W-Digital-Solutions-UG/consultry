@@ -17,79 +17,86 @@ export type ProofStat = {
 export const aboutContent = {
   hero: {
     overline: "ÜBER CONSULTRY",
-    title: "Wir bauen das AI-native Operating System fuer DACH-Beratungen",
-    body: "Drei Gruender aus Consulting, Cybersecurity und Programm-Management vereinen ihre Erfahrung in einem operativen System fuer DACH-IT- und Digitalisierungsberatungen.",
+    title:
+      "Wir bauen den operativen AI-Begleiter für Beratungen, den wir selbst gebraucht hätten.",
+    body:
+      "Drei Gründer aus Berlin. Consulting, Security, Produkt. Wir kennen die Schmerzpunkte aus der Praxis — und wir bauen das System, das Beratungen wirklich steuert, nicht noch ein Tool daneben.",
   },
   team: {
     overline: "DAS TEAM",
-    title: "Gebaut von Praktikern, nicht von Theoretikern",
-    body: "Hinter Consultry steht ein Team, das Unternehmensberatung, Deep Tech und die Entwicklung von KI-Agenten zusammenbringt.",
+    title: "Drei Gründer. Ein Betriebsverständnis.",
+    body:
+      "Hinter Consultry steht ein Team, das Beratung, AI-Architektur und Produktarbeit zusammenbringt — und seit Jahren selbst erlebt, wo die Lücke zwischen Tool und Alltag liegt.",
     members: [
       {
         name: "Julian Weber",
-        role: "Co-Founder & CTO/CISO",
-        focus: "AI-native Architektur, Security-by-Design und Plattformstabilität für Beratungen mit hohen Anforderungen.",
+        role: "Co-Founder · CTO/CISO",
+        focus:
+          "Baut die AI-native Architektur. Security by Design, erklärbare Empfehlungen und eine Plattform, die auch bei 200 Beratern stabil bleibt.",
         image: {
           src: "/images/team-julian.png",
-          alt: "Portraet von Julian Weber",
+          alt: "Porträt von Julian Weber",
         },
       },
       {
         name: "Caspar Hertel",
-        role: "Co-Founder & CEO",
-        focus: "Positionierung, Go-to-Market und Kundengespräche mit Beratungen im DACH-Markt.",
+        role: "Co-Founder · CEO",
+        focus:
+          "Spricht täglich mit Managing Partnern und BD-Leitern. Verantwortet Positionierung, Go-to-Market und die Gespräche, aus denen Pilotkunden werden.",
         image: {
           src: "/images/team-caspar.png",
-          alt: "Portraet von Caspar Hertel",
+          alt: "Porträt von Caspar Hertel",
         },
       },
       {
         name: "Paul Hannemann",
-        role: "Co-Founder & CPO",
-        focus: "Produkt, UX und Workflow-Design, damit Consultry die Beratungslogik wirklich abbildet.",
+        role: "Co-Founder · CPO",
+        focus:
+          "Übersetzt Beratungslogik in Produkt. Sorgt dafür, dass Consultry nach Beratung denkt — nicht nach CRM, Ticket-System oder Tabellenkalkulation.",
         image: {
           src: "/images/team-paul.png",
-          alt: "Portraet von Paul Hannemann",
+          alt: "Porträt von Paul Hannemann",
         },
       },
     ] satisfies Founder[],
   },
   narrative: {
     overline: "UNSERE GESCHICHTE",
-    title: "Beratungen verdienen ein System, das ihre Logik versteht.",
+    title: "Beratungen verdienen ein System, das ihre Logik kennt.",
     paragraphs: [
-      "Consultry entstand aus einer simplen Beobachtung: Beratungen koordinieren hochkomplexe Arbeit mit Werkzeugen, die nie fuer Beratungslogik gebaut wurden. Marktsignale landen in Newslettern, Staffing in Tabellen, Angebote in PowerPoints und Delivery-Wissen in verstreuten Dokumenten.",
-      "Was in der Praxis fehlt, ist kein weiteres Feature und kein neues Add-on fuer ein generisches CRM. Es fehlt eine gemeinsame operative Ebene, die erkennt, was der Markt verlangt, welches Team wirklich passt, wie ein Angebot schneller belastbar wird und wie Projektwissen wieder ins naechste Mandat zurueckfliesst.",
-      "Deshalb haben wir Consultry als AI-natives operatives System konzipiert. Nicht AI-angeflanscht, sondern von Grund auf auf Kontext, Zusammenarbeit und Beratungsprozesse ausgelegt. Das System versteht Signale, Teamkonstellationen, Delivery-Risiken und Wissensbausteine als zusammenhaengenden Workflow.",
-      "Unser Ziel ist kein lauter Software-Layer ueber bestehenden Prozessen, sondern ein ruhigeres, klareres Betriebssystem fuer moderne Beratungshaeuser im DACH-Raum: weniger Kontextwechsel, bessere operative Entscheidungen und ein Setup, das die Realitaet von Beratung respektiert.",
+      "Wir haben Consultry begonnen, weil wir die gleiche Szene zu oft gesehen haben: Freitagnachmittag, Managing Partner, 14 offene Tabs. Salesforce für die Pipeline. Excel für das Staffing. PowerPoint für das Angebot. Confluence für die Methodik. Und am Ende entscheidet das Bauchgefühl, weil niemand mehr alles zusammenbringt.",
+      "In DACH-Beratungen zwischen 30 und 200 Beratern liegen die größten Hebel nicht in mehr Software, sondern in weniger Brüchen. 80 % des Umsatzes kommt aus Bestandskunden — aber die stärksten Signale dazu stehen in Newslettern, im Postfach eines Partners und in einer Ausschreibung, die niemand rechtzeitig gesehen hat.",
+      "Consultry ist die operative Ebene, die wir uns selbst gewünscht haben: Sie verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss. AI ist dabei kein Knopf, sondern das Interaktionsprinzip. Sie sprechen mit dem System, das System bereitet vor — und Sie entscheiden.",
+      "Wir sind im Pre-Launch. Wir bauen gemeinsam mit einer kleinen Zahl Pilotkunden aus dem DACH-Raum. Wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen Sie mit uns.",
     ],
     proofRail: [
       {
         value: "3",
-        label: "Gruender",
-        detail: "aus Consulting, Produkt und Security",
+        label: "Gründer aus Berlin",
+        detail: "Consulting, Security und Produkt in einer Gründungsstory",
       },
       {
-        value: "100 %",
-        label: "DACH-Fokus",
-        detail: "Sprache, Marktlogik und Compliance",
+        value: "DACH",
+        label: "Fokus",
+        detail: "Sprache, Marktlogik, BetrVG, DSGVO und AI Act von Anfang an",
       },
       {
         value: "EU",
         label: "Hosting",
-        detail: "mit Fokus auf DSGVO und kontrollierte Datenverarbeitung",
+        detail: "Alle Kundendaten bleiben in der EU, kein Workaround nötig",
       },
       {
-        value: "B2B",
-        label: "Zielgruppe",
-        detail: "IT- und Digitalisierungsberatungen im DACH-Raum",
+        value: "Pre-Launch",
+        label: "Status",
+        detail: "Pilotkunden werden aktuell kuratiert, Warteliste ist offen",
       },
     ] satisfies ProofStat[],
   },
   cta: {
     eyebrow: "NÄCHSTER SCHRITT",
-    title: "Bereit fuer fruehen Zugang zu Consultry?",
-    body: "Tragen Sie sich auf die Warteliste ein, wenn Sie Folgegeschaeft, Staffing und Delivery nicht laenger ueber isolierte Tools steuern wollen.",
+    title: "Sie wollen dabei sein, wenn Consultry live geht?",
+    body:
+      "Tragen Sie sich auf die Warteliste ein. Sie hören als Erste zum Launch — und wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden direkt.",
     primaryCta: {
       label: "Auf die Warteliste",
       href: "/warteliste",

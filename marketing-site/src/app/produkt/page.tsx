@@ -54,10 +54,10 @@ export default function ProductPage() {
       <ProductPageHero content={productHero} />
 
       <AnswerHighlights
-        body="Diese drei Aussagen beantworten die haeufigsten Einstiegsfragen direkt im initialen HTML."
-        eyebrow="KURZ ERKLAERT"
+        body="Drei Antworten, die die häufigsten Fragen direkt klären — bevor Sie tiefer einsteigen."
+        eyebrow="KURZ ERKLÄRT"
         items={productAnswers}
-        title="Was die Plattform leistet"
+        title="Was Consultry für Ihre Beratung tut."
       />
 
       <ProductArchitecture content={productArchitecture} />
@@ -82,8 +82,8 @@ export default function ProductPage() {
           <MotionReveal>
             <SectionHeader
               overline="HÄUFIG GESTELLTE FRAGEN"
-              title="Noch Fragen?"
-              body="Falls Sie die Antwort hier nicht finden, kontaktieren Sie unser Team jederzeit."
+              title="Noch offen?"
+              body="Was hier fehlt, beantworten wir im direkten Gespräch. Schreiben Sie uns — wir melden uns binnen 48 Stunden."
             />
           </MotionReveal>
           <MotionReveal className="mt-8" delay={0.06}>
@@ -93,10 +93,10 @@ export default function ProductPage() {
       </section>
 
       <InternalLinkGrid
-        body="Die Unterseiten vertiefen die Haupt-Wedges der Plattform und geben Search- und AI-Systemen klarere Antwortziele."
+        body="Jede dieser Seiten vertieft einen der Bereiche — mit konkreten Zahlen, Szenarien und Vergleichen."
         eyebrow="VERTIEFEN"
         links={productInternalLinks}
-        title="Produkt-Wedges im Detail"
+        title="Die Bereiche im Detail."
       />
 
       <CTABand

@@ -5,13 +5,13 @@ import { WaitlistSignupForm } from "@/components/marketing/WaitlistSignupForm";
 
 const nextSteps = [
   {
-    title: "1. Anmeldung bestaetigen",
+    title: "1. Anmeldung bestätigen",
   },
   {
-    title: "2. Produkt-Updates erhalten",
+    title: "2. Launch-Info als Erste erhalten",
   },
   {
-    title: "3. Pilotplaetze priorisieren",
+    title: "3. Pilotkunden werden, wenn Sie wollen",
   },
 ] as const;
 
@@ -58,7 +58,7 @@ function WaitlistStepTimeline({ shouldReduceMotion }: { shouldReduceMotion: bool
       <div className="pointer-events-none absolute inset-0 opacity-[0.18] bg-[repeating-linear-gradient(115deg,transparent_0_22px,rgba(255,255,255,0.03)_22px_23px,transparent_23px_54px)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(240,168,94,0.16),rgba(255,255,255,0.08),transparent)]" />
       <p className="font-[var(--font-mono)] text-[8px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)] sm:text-[8.5px]">
-        SO LAEUFT ES AB
+        SO LÄUFT ES AB
       </p>
       <ol className="mt-2 grid gap-2 md:hidden">
         {nextSteps.map((step, index) => (
@@ -171,13 +171,14 @@ export function WaitlistSignupFlow() {
                 aria-hidden="true"
                 className="pointer-events-none absolute -left-10 top-1 h-[18rem] w-[min(30rem,78vw)] rounded-[2.4rem] bg-[radial-gradient(circle_at_18%_28%,rgba(19,17,16,0.92)_0%,rgba(19,17,16,0.72)_30%,rgba(19,17,16,0.18)_72%,transparent_100%)] blur-[24px]"
               />
-              <p className="eyebrow rise-in relative z-10">FRUEHER ZUGANG</p>
+              <p className="eyebrow rise-in relative z-10">AUF DIE WARTELISTE</p>
               <h1 className="rise-in rise-in-delay-1 relative z-10 mt-3 max-w-[12.8ch] text-balance text-[clamp(2.7rem,7vw,4.1rem)] font-[750] leading-[0.92] tracking-[-0.05em] text-[var(--consultry-text-primary)] xl:text-[clamp(3.1rem,4.15vw,4.5rem)]">
-                Frueher Zugang zu Consultry
+                Als Erste dabei, wenn Consultry live geht.
               </h1>
               <p className="rise-in rise-in-delay-2 relative z-10 mt-4 max-w-[33rem] text-[0.97rem] leading-[1.64] text-[var(--consultry-text-secondary)] sm:text-[1.02rem] xl:text-[1.08rem]">
-                Tragen Sie sich fuer Produkt-Updates, priorisierte Pilotplaetze und den ersten
-                Zugang zur Plattform ein.
+                Consultry ist im Pre-Launch. Tragen Sie sich ein — Sie hören als Erste zum Launch.
+                Wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns
+                binnen 48 Stunden.
               </p>
             </div>
 
@@ -195,7 +196,7 @@ export function WaitlistSignupFlow() {
               </div>
 
               <p className="mt-3 text-center text-[12px] leading-[1.6] text-[var(--consultry-text-muted)]">
-                Double-Opt-in erforderlich · Exklusiv fuer DACH-Beratungen
+                Double-Opt-in · Exklusiv für DACH-Beratungen · Pilotplätze auf Anfrage
               </p>
             </div>
           </div>

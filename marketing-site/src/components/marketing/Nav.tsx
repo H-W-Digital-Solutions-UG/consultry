@@ -70,7 +70,7 @@ export function Nav() {
     <header className="sticky top-0 z-40 px-2 pt-0 sm:px-3 sm:pt-0 lg:px-4">
       <div
         className={cn(
-          "translate-y-2 rounded-[var(--consultry-radius-xl)] border border-[rgba(255,255,255,0.07)] bg-[rgba(36,30,29,0.18)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-[14px] transition duration-300 sm:translate-y-3",
+          "translate-y-2 overflow-hidden rounded-[var(--consultry-radius-xl)] border border-[rgba(255,255,255,0.07)] bg-[rgba(36,30,29,0.18)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-[14px] transition duration-300 sm:translate-y-3",
           scrolled &&
             "border-[rgba(255,255,255,0.1)] bg-[rgba(30,27,24,0.72)] shadow-[var(--consultry-shadow-md)] backdrop-blur-xl",
         )}
@@ -160,44 +160,70 @@ export function Nav() {
           <button
             aria-expanded={menuOpen}
             aria-label="Navigation öffnen"
-            className="inline-flex rounded-full border border-[var(--consultry-border-soft)] bg-white/5 p-2 text-[var(--consultry-text-primary)] md:hidden"
+            className={cn(
+              "inline-flex rounded-full border p-2 text-[var(--consultry-text-primary)] transition duration-300 md:hidden",
+              menuOpen
+                ? "border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+                : "border-[var(--consultry-border-soft)] bg-white/5",
+            )}
             onClick={() => setMenuOpen((current) => !current)}
             type="button"
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
-      </div>
+        {menuOpen ? (
+          <div className="border-t border-[rgba(255,255,255,0.07)] px-3 pb-3 pt-2 md:hidden sm:px-4">
+            <div className="rounded-[calc(var(--consultry-radius-xl)-0.3rem)] border border-[rgba(255,255,255,0.05)] bg-[rgba(24,20,19,0.18)] p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04),0_14px_36px_rgba(0,0,0,0.12)] backdrop-blur-[18px]">
+              <div className="flex flex-col gap-2">
+                {navLinks.map((link) => {
+                  const isActive = isActiveLink(link.href);
 
-      {menuOpen ? (
-        <div className="border-b border-[var(--consultry-border-soft)] bg-[rgba(26,24,21,0.98)] px-4 py-5 backdrop-blur-xl md:hidden">
-          <div className="content-shell flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                className="rounded-full border border-transparent px-4 py-2 text-base font-medium text-[var(--consultry-text-secondary)] transition hover:border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,255,255,0.04)] hover:text-[var(--consultry-text-primary)]"
-                href={link.href}
-                key={link.href}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <MarketingCtaButton
-              className="group mt-2 w-full border-[rgba(240,168,94,0.2)] bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)),linear-gradient(180deg,rgba(240,168,94,0.14),rgba(232,101,90,0.08))] px-2 pl-4 pr-2 text-[15px] font-semibold tracking-[-0.01em] text-[rgba(255,248,241,0.98)] shadow-[0_16px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.08)]"
-              href={ctaTargets.nav}
-              onClick={() => setMenuOpen(false)}
-              tracking={{
-                ctaId: "nav_mobile_waitlist",
-                label: "Auf die Warteliste",
-                location: "nav_mobile",
-              }}
-              variant="secondary"
-            >
-              <NavCtaContent />
-            </MarketingCtaButton>
+                  return (
+                    <Link
+                      className="block"
+                      href={link.href}
+                      key={link.href}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      <span
+                        className={cn(
+                          "flex rounded-full p-px transition-all duration-300",
+                          isActive ? "[background:var(--consultry-brand-gradient)]" : "bg-transparent",
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            "flex w-full items-center rounded-full px-4 py-3 text-[15px] font-semibold transition-all duration-300",
+                            isActive
+                              ? "bg-[rgba(44,37,34,0.92)] text-[#EBE9E8]"
+                              : "bg-[rgba(255,255,255,0.02)] text-[rgba(237,232,226,0.78)] hover:bg-[rgba(44,37,34,0.72)] hover:text-[var(--consultry-text-primary)]",
+                          )}
+                        >
+                          {link.label}
+                        </span>
+                      </span>
+                    </Link>
+                  );
+                })}
+                <MarketingCtaButton
+                  className="group mt-1 w-full border-[rgba(240,168,94,0.2)] bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)),linear-gradient(180deg,rgba(240,168,94,0.14),rgba(232,101,90,0.08))] px-2 pl-4 pr-2 text-[15px] font-semibold tracking-[-0.01em] text-[rgba(255,248,241,0.98)] shadow-[0_16px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.08)]"
+                  href={ctaTargets.nav}
+                  onClick={() => setMenuOpen(false)}
+                  tracking={{
+                    ctaId: "nav_mobile_waitlist",
+                    label: "Auf die Warteliste",
+                    location: "nav_mobile",
+                  }}
+                  variant="secondary"
+                >
+                  <NavCtaContent />
+                </MarketingCtaButton>
+              </div>
+            </div>
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </header>
   );
 }

@@ -20,7 +20,7 @@ export type SocialLink = {
 };
 
 export const announcement = {
-  text: "Exklusiver Frühzugang für DACH-Beratungen",
+  text: "Pre-Launch: Warteliste offen für DACH-Beratungen",
   href: "/warteliste",
   ctaLabel: "Zur Warteliste",
 } as const;
@@ -35,8 +35,9 @@ export const ctaTargets = {
 } as const;
 
 export const deepDiveCta = {
-  title: "Sichern Sie sich fruehen Zugang zu Consultry",
-  body: "Tragen Sie sich auf die Warteliste ein, wenn Sie Bestandskundenwachstum, Staffing und Wissen nicht laenger ueber getrennte Tools steuern wollen.",
+  title: "Consultry, sobald es live geht.",
+  body:
+    "Sie sind als Erste dabei, wenn Consultry startet. Bestandskunden-Signale, Staffing, Wissen und Angebote laufen dann in einem System zusammen — und nicht mehr in sieben.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: ctaTargets.nav,
@@ -44,13 +45,15 @@ export const deepDiveCta = {
 } as const;
 
 export const richDemoCta = {
-  title: "Bereit fuer fruehen Zugang zu Consultry?",
-  body: "Tragen Sie sich auf die Warteliste fuer eine Plattform ein, die Bestandskundenwachstum, Staffing, Wissenswiederverwendung und Delivery Control verbindet.",
+  title: "Sie wollen das Ganze aus der Nähe sehen?",
+  body:
+    "Tragen Sie sich ein. Zum Launch zeigen wir Ihnen als Erstes, wie Consultry Bestandskunden-Wachstum, Staffing, Wissen und Delivery in einer Arbeitsebene verbindet.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: ctaTargets.nav,
   },
-  trustLine: "Double-Opt-in · Exklusiv fuer DACH-Beratungen · Begrenzte Pilotplaetze",
+  trustLine:
+    "Double-Opt-in · Exklusiv für DACH-Beratungen · Pilotplätze auf Anfrage",
 } as const;
 
 export const navLinks: NavLink[] = [
@@ -61,19 +64,20 @@ export const navLinks: NavLink[] = [
 
 export const footerBrand = {
   title: "Consultry",
-  tagline: "Das AI-native Operating System fuer DACH-Beratungen.",
-  complianceLabel: "DSGVO ORIENTIERT",
+  tagline:
+    "Der operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum.",
+  complianceLabel: "DSGVO · EU-HOSTING",
 } as const;
 
 export const footerColumns: FooterColumn[] = [
   {
     title: "PLATTFORM",
     links: [
-      { label: "Produktuebersicht", href: "/produkt" },
-      { label: "Bestandskundenwachstum", href: "/produkt/account-growth" },
+      { label: "Produktübersicht", href: "/produkt" },
+      { label: "Bestandskunden-Wachstum", href: "/produkt/account-growth" },
       { label: "Staffing und Forecasting", href: "/produkt/staffing-forecasting" },
-      { label: "Knowledge Reuse", href: "/produkt/knowledge-reuse" },
-      { label: "Commercial Control", href: "/produkt/commercial-control" },
+      { label: "Wissen, das wieder auftaucht", href: "/produkt/knowledge-reuse" },
+      { label: "Delivery und Marge", href: "/produkt/commercial-control" },
     ],
   },
   {

@@ -14,15 +14,15 @@ import { buildAboutPageJsonLd } from "@/lib/structured-data";
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
-    title: "Ueber Consultry | Team und DACH-Fokus",
+    title: "Über Consultry · Team und DACH-Fokus",
     description:
-      "Consultry baut das AI-native Operating System fuer DACH-IT- und Digitalisierungsberatungen - mit Fokus auf Consulting-Workflows, Security und operative Steuerung.",
+      "Drei Gründer aus Berlin. Consulting, Security, Produkt. Wir bauen den operativen AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum.",
     path: "/unternehmen",
     keywords: [
       "Consultry Team",
-      "Software fuer Beratungsunternehmen",
-      "DACH Beratungen",
-      "Operating System Beratung",
+      "Gründer Berlin Consulting",
+      "DACH Beratungen AI",
+      "Operativer AI-Begleiter Beratung",
     ],
   });
 }
@@ -32,9 +32,9 @@ export default function UnternehmenPage() {
     <main>
       <JsonLd
         data={buildAboutPageJsonLd({
-          title: "Ueber Consultry",
+          title: "Über Consultry",
           description:
-            "Consultry baut das AI-native Operating System fuer DACH-IT- und Digitalisierungsberatungen.",
+            "Consultry ist der operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum.",
           path: "/unternehmen",
         })}
       />
@@ -46,10 +46,10 @@ export default function UnternehmenPage() {
       />
 
       <AnswerHighlights
-        body="Die wichtigsten Antworten definieren Produkt, Zielgruppe und die Abgrenzung gegen Standard-CRMs vor dem Blick auf Team und Geschichte."
-        eyebrow="KURZ ERKLAERT"
+        body="Drei Antworten — Produkt, Zielgruppe und Abgrenzung — bevor wir auf Team und Geschichte schauen."
+        eyebrow="KURZ ERKLÄRT"
         items={homepageContent.answers}
-        title="Was Consultry fuer DACH-Beratungen konkret ist"
+        title="Was Consultry ist — und was nicht."
       />
 
       <section className="section-shell-tight">

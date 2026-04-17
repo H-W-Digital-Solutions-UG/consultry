@@ -33,19 +33,19 @@ export default function Home() {
         <FeatureShowcaseEditorialScroller steps={steps} />
 
         <InternalLinkGrid
-          body="Diese Seiten vertiefen die Kern-Wedges und schaffen klare interne Ziele fuer Search, AI Search und Answer Engines."
+          body="Jede dieser Seiten vertieft einen der Bereiche — mit konkreten Zahlen, Szenarien und Vergleichen."
           eyebrow="VERTIEFEN"
           links={internalLinks}
-          title="Die wichtigsten Themen im Detail"
+          title="Die wichtigsten Themen im Detail."
         />
 
         <MetricsBand
-          body="Zielwerte basierend auf Marktanalyse und Pilotprojekten mit DACH-Beratungen"
+          body="Zielwerte aus Marktanalyse und Gesprächen mit Pilotkunden im DACH-Raum."
           cta={hero.primaryCta}
           eyebrow="ERGEBNISSE"
-          footnote="Basierend auf Pilotdaten und Branchen-Benchmarks fuer mittelstaendige DACH-Beratungen (30-200 Berater)."
+          footnote="Basis: Branchen-Benchmarks und Gespräche mit Beratungen zwischen 30 und 200 Beratern. Consultry ist im Pre-Launch — Werte sind Zielkorridore, keine Versprechen."
           metrics={metrics}
-          title="Beratungen, die Consultry nutzen, berichten"
+          title="Was sich operativ verschiebt."
         />
       </main>
     </>

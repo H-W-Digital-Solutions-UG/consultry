@@ -7,8 +7,8 @@ type WaitlistThankYouViewProps = {
 };
 
 const qualifierReasons = [
-  "Wir priorisieren Pilotplaetze gezielter.",
-  "Erste Inhalte werden besser auf Ihre Beratungsrealitaet zugeschnitten.",
+  "Wir priorisieren Pilotplätze gezielter und melden uns nur, wenn es wirklich passt.",
+  "Die ersten Inhalte, die Sie erhalten, sind auf Ihre Beratungsrealität zugeschnitten.",
   "Die Angaben sind freiwillig und in unter einer Minute erledigt.",
 ] as const;
 
@@ -26,13 +26,12 @@ export function WaitlistThankYouView({
             <div className="max-w-4xl">
               <p className="eyebrow">FAST GESCHAFFT</p>
               <h1 className="display-section mt-5 text-balance text-[var(--consultry-text-primary)] sm:text-[clamp(3rem,5vw,4.5rem)]">
-                Early Access sichern
+                Willkommen auf der Warteliste.
               </h1>
               <p className="body-lg mt-5 max-w-[44rem]">
-                Mit Ihrer Bestaetigung aktivieren Sie Ihren Platz auf der Warteliste. Wenn Sie uns
-                anschliessend noch ein paar kurze Angaben zu Team, Fokus und groesstem Engpass
-                mitgeben, koennen wir Ihre Anfrage gezielter einordnen und passende Pilotplaetze
-                frueher priorisieren.
+                Ihr Platz ist reserviert. Wenn Sie uns noch ein paar kurze Angaben zu Ihrer Beratung
+                geben — Größe, Fokus, größter operativer Engpass — ordnen wir Ihre Anfrage gezielter
+                ein. Und wenn Sie Pilotkunde werden wollen, melden wir uns binnen 48 Stunden direkt.
               </p>
             </div>
           </MotionReveal>
@@ -47,6 +46,7 @@ export function WaitlistThankYouView({
                 <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
                   WARUM DIE OPTIONALEN ANGABEN HELFEN
                 </p>
+
                 <ul className="mt-4 grid gap-3 md:grid-cols-3 md:gap-5">
                   {qualifierReasons.map((reason) => (
                     <li
