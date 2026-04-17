@@ -68,12 +68,12 @@ export function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40">
+    <header className="sticky top-0 z-40 px-2 pt-0 sm:px-3 sm:pt-0 lg:px-4">
       <div
         className={cn(
-          "border-b border-[rgba(255,255,255,0.045)] bg-[rgba(18,16,16,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] backdrop-blur-[8px] transition duration-300",
+          "translate-y-2 rounded-[var(--consultry-radius-xl)] border border-[rgba(255,255,255,0.07)] bg-[rgba(36,30,29,0.18)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-[14px] transition duration-300 sm:translate-y-3",
           scrolled &&
-            "border-b border-[var(--consultry-border-soft)] bg-[var(--consultry-surface-glass)] shadow-[var(--consultry-shadow-md)] backdrop-blur-xl",
+            "border-[rgba(255,255,255,0.1)] bg-[rgba(30,27,24,0.72)] shadow-[var(--consultry-shadow-md)] backdrop-blur-xl",
         )}
       >
         <div className="flex h-16 w-full items-center justify-between gap-4 pl-4 pr-3 sm:h-[4.45rem] sm:pl-5 sm:pr-4 lg:pl-7 lg:pr-6 xl:pl-8 xl:pr-7">
