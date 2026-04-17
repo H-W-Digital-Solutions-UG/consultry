@@ -192,14 +192,14 @@ export default function KontaktPage() {
                   <div className="mt-4 flex flex-wrap gap-3">
                     <Link
                       className="inline-flex items-center gap-2 text-[14px] font-medium text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
-                      href="/impressum"
+                      href="/legal/impressum"
                     >
                       Impressum
                       <ArrowUpRight className="h-4 w-4" />
                     </Link>
                     <Link
                       className="inline-flex items-center gap-2 text-[14px] font-medium text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
-                      href="/datenschutz"
+                      href="/legal/datenschutz"
                     >
                       Datenschutz
                       <ArrowUpRight className="h-4 w-4" />
