@@ -106,7 +106,7 @@ function ProductHeroDashboardPreview({
 export function ProductPageHero({ content }: ProductPageHeroProps) {
   return (
     <section
-      className="relative overflow-hidden py-10 sm:py-20 lg:py-16"
+      className="relative -mt-[4.45rem] overflow-hidden pb-10 pt-[calc(4.45rem+2.5rem)] sm:pb-20 sm:pt-[calc(4.45rem+5rem)] lg:pb-16 lg:pt-[calc(4.45rem+4rem)]"
       style={{
         background: "var(--consultry-hero-background)",
       }}
