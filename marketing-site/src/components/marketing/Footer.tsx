@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { companyProfile } from "@/lib/company";
 import {
   footerBrand,
   footerColumns,
@@ -81,7 +82,9 @@ export function Footer() {
 
           <div className="border-t border-[rgba(255,255,255,0.06)] pt-8">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-              <p className="text-[13px] text-[rgba(250,250,249,0.35)]">© 2026 Consultry GmbH</p>
+              <p className="text-[13px] text-[rgba(250,250,249,0.35)]">
+                © 2026 {companyProfile.legalName}
+              </p>
 
               <div className="flex items-center gap-2.5 md:justify-end">
                 {socialLinks.map((link) => {

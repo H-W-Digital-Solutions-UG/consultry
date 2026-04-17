@@ -15,6 +15,7 @@ export function generateMetadata(): Metadata {
 export default function ImpressumPage() {
   return (
     <LegalPageTemplate
+      currentDocumentHref="/impressum"
       lastUpdated="April 2026"
       overline="RECHTLICHES"
       sections={[

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, ChartLine, Database, ShieldCheck } from "lucide-react";
 import { CookiePreferencesPanel } from "@/components/analytics/CookiePreferencesPanel";
+import { LegalDocumentNav } from "@/components/marketing/LegalDocumentNav";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
@@ -87,6 +88,7 @@ export default function CookiesPage() {
               <h1 className="mt-5 max-w-[11ch] text-balance text-[clamp(2.7rem,6vw,5rem)] font-semibold leading-[0.95] tracking-[-0.05em] text-[rgba(250,250,249,0.98)]">
                 Ihre Einwilligung soll klar, knapp und reversibel bleiben.
               </h1>
+              <LegalDocumentNav currentHref="/cookies" />
               <p className="mt-5 max-w-[39rem] text-[15px] leading-[1.8] text-[rgba(232,228,238,0.74)] sm:text-[16px]">
                 Auf consultry.de trennen wir strikt zwischen technisch notwendigen Mechanismen und
                 optionaler Statistik. Google Tag Manager und Google Analytics 4 bleiben blockiert,

@@ -43,8 +43,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
+      url: `${siteConfig.url}/rechtliches`,
+      lastModified: new Date("2026-04-17T00:00:00.000Z"),
+      changeFrequency: "monthly",
+      priority: 0.35,
+    },
+    {
       url: `${siteConfig.url}/datenschutz`,
-      lastModified: new Date("2026-04-13T00:00:00.000Z"),
+      lastModified: new Date("2026-04-17T00:00:00.000Z"),
       changeFrequency: "yearly",
       priority: 0.3,
     },

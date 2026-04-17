@@ -13,6 +13,7 @@ export function generateMetadata(): Metadata {
 export default function AgbPage() {
   return (
     <LegalPageTemplate
+      currentDocumentHref="/agb"
       lastUpdated="April 2026"
       overline="RECHTLICHES"
       sections={[

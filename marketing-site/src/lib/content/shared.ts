@@ -1,3 +1,5 @@
+import { legalNavigationItems } from "@/lib/legal-documents";
+
 export type NavLink = {
   label: string;
   href: string;
@@ -89,12 +91,10 @@ export const footerColumns: FooterColumn[] = [
   },
   {
     title: "RECHTLICHES",
-    links: [
-      { label: "Impressum", href: "/impressum" },
-      { label: "Datenschutz", href: "/datenschutz" },
-      { label: "AGB", href: "/agb" },
-      { label: "Cookies", href: "/cookies" },
-    ],
+    links: legalNavigationItems.map((item) => ({
+      label: item.footerLabel,
+      href: item.href,
+    })),
   },
 ];
 

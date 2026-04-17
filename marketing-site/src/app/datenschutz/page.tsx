@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { LegalPageTemplate } from "@/components/marketing/LegalPageTemplate";
-import { companyProfile } from "@/lib/company";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
-    title: "Datenschutz",
+    title: "Datenschutzrichtlinie",
     description:
-      "Datenschutzhinweise der Consultry Website mit Angaben zu Hosting, Cookie-Einwilligung, Webanalyse, Warteliste und Betroffenenrechten.",
+      "Datenschutzrichtlinie von Consultry mit Informationen zu erhobenen Daten, Rechtsgrundlagen, Betroffenenrechten und Kontaktwegen.",
     path: "/datenschutz",
   });
 }
@@ -15,244 +14,424 @@ export function generateMetadata(): Metadata {
 export default function DatenschutzPage() {
   return (
     <LegalPageTemplate
-      lastUpdated="April 2026"
+      currentDocumentHref="/datenschutz"
+      intro={
+        <>
+          <p>
+            Diese Datenschutzerklärung erläutert die Richtlinien von https://consultry.de
+            hinsichtlich der Erhebung, Verwendung, Offenlegung und dem Schutz personenbezogener
+            Daten, die wir erheben, wenn Sie auf https://consultry.de (den „Dienst“) zugreifen.
+            Diese Datenschutzerklärung definiert und beschreibt Ihre Datenschutzrechte sowie den
+            Schutz, den Sie nach den geltenden Datenschutzgesetzen genießen.
+          </p>
+          <p>
+            Durch die Nutzung unseres Dienstes stimmen Sie der Erhebung und Verwendung Ihrer
+            personenbezogenen Daten gemäß dieser Datenschutzerklärung zu. Bitte greifen Sie nicht
+            auf unseren Dienst zu und nutzen Sie ihn nicht, wenn Sie der Erhebung und Verwendung
+            Ihrer Informationen, wie in dieser Datenschutzerklärung beschrieben, nicht zustimmen.
+            Diese Datenschutzerklärung wurde mit Hilfe des CookieScript Generator für
+            Datenschutzerklärungen erstellt.
+          </p>
+        </>
+      }
+      lastUpdated="17-April-2026"
+      metaItems={[
+        { label: "Gültig ab", value: "16-April-2026" },
+        { label: "Aktualisiert am", value: "17-April-2026" },
+      ]}
       overline="RECHTLICHES"
       sections={[
         {
-          title: "1. Datenschutz auf einen Blick",
+          title: "Welche Informationen wir erheben, zu welchen Zwecken und auf welcher Rechtsgrundlage",
           body: (
             <>
+              <p>Die nachstehenden Definitionen der Rechtsgrundlagen sind wie folgt zu verstehen:</p>
               <p>
-                Die folgenden Hinweise geben einen Überblick darüber, was mit Ihren personenbezogenen
-                Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle
-                Daten, mit denen Sie persönlich identifiziert werden können.
+                <strong>Berechtigtes Interesse:</strong> Interesse des Unternehmens oder eines
+                Dritten, sofern Ihre Interessen oder Grundrechte und -freiheiten nicht überwiegen
+                und deren Nutzung Ihrer personenbezogenen Daten in einem angemessenen Verhältnis zu
+                Ihren Rechten und Freiheiten steht.
               </p>
               <p>
-                Diese Website dient derzeit der Information über das Produkt <strong>Consultry</strong>,
-                der Kontaktaufnahme per E-Mail, der Wartelisten-Anmeldung sowie der Vorbereitung von
-                Pilotanfragen. Fuer die Verwaltung optionaler Statistik-Einwilligungen setzen wir
-                CookieScript ein. Nur wenn Sie Statistik erlauben, laden wir Google Tag Manager und
-                Google Analytics 4 fuer eine datensparsame Reichweiten- und Funnel-Messung.
+                <strong>Vertragserfüllung:</strong> Verarbeitung Ihrer personenbezogenen Daten, wenn
+                dies für die Erfüllung eines Vertrags, dessen Vertragspartei Sie sind, oder zur
+                Durchführung vorvertraglicher Maßnahmen erforderlich ist.
+              </p>
+              <p>
+                <strong>Rechtliche Verpflichtungen:</strong> Verarbeitung Ihrer personenbezogenen
+                Daten, wenn dies für die Erfüllung einer rechtlichen oder regulatorischen
+                Verpflichtung erforderlich ist, der wir unterliegen.
+              </p>
+              <p>
+                <strong>Einwilligung:</strong> Ihre Einwilligung bedeutet jede freiwillig erteilte,
+                spezifische, informierte und unmissverständliche Willensbekundung, mit der Sie
+                durch eine Erklärung oder eine eindeutige bestätigende Handlung Ihr Einverständnis
+                mit der Verarbeitung personenbezogener Daten, die Sie betreffen, signalisieren. Wir
+                können Ihre Einwilligung einholen, wenn wir keine andere Rechtsgrundlage für die
+                Verarbeitung Ihrer Daten haben.
+              </p>
+              <p>
+                <strong>Nutzungsdaten</strong>
+                <br />
+                Was wir erheben: Informationen darüber, wie Nutzer mit unserer Website oder
+                Anwendung interagieren, einschließlich besuchter Seiten, Verweildauer auf Seiten,
+                Klickpfade und Browserdetails.
+                <br />
+                Zweck: Analyse des Nutzerverhaltens, Optimierung der Leistung und Verbesserung der
+                Benutzererfahrung.
+                <br />
+                Aufbewahrungsfrist: 365 Tage
+                <br />
+                Rechtsgrundlage: Legitimate Interests
+              </p>
+              <p>
+                <strong>Persönliche Identifikationsinformationen</strong>
+                <br />
+                Was wir erheben: E-Mail-Adresse, Telefonnummer (mobil)
+                <br />
+                Zweck: Verwaltung von Benutzerkonten, Gewährleistung eines sicheren Zugangs und
+                Bereitstellung personalisierter Inhalte.
+                <br />
+                Aufbewahrungsfrist: 730 Tage
+                <br />
+                Rechtsgrundlage: Consent
+              </p>
+              <p>
+                <strong>Kontaktinformationen</strong>
+                <br />
+                Was wir erheben: Work Phone Number, Work E-Mail
+                <br />
+                Zweck: Sicherstellung einer korrekten Leistungserbringung und Unterstützung bei
+                kontobezogenen Mitteilungen.
+                <br />
+                Aufbewahrungsfrist: 730 Tage
+                <br />
+                Rechtsgrundlage: Consent
+              </p>
+              <p>
+                <strong>Online-Kennungen &amp; Geräteinformationen</strong>
+                <br />
+                Was wir erheben: IP-Adresse, Browsertyp und -version, Betriebssystem
+                <br />
+                Zweck: Absicherung unserer Plattform, Optimierung der Leistung und Verständnis der
+                technischen Nutzung.
+                <br />
+                Aufbewahrungsfrist: 365 Tage
+                <br />
+                Rechtsgrundlage: Consent
+              </p>
+              <p>
+                <strong>Standortdaten</strong>
+                <br />
+                Was wir erheben: Geolocation (GPS-Koordinaten, Ort basierend auf IP-Adresse)
+                <br />
+                Zweck: Personalisierung von Erlebnissen und Diensten basierend auf Ihrem Standort.
+                <br />
+                Aufbewahrungsfrist: 365 Tage
+                <br />
+                Rechtsgrundlage: Consent
+              </p>
+              <p>
+                <strong>Kommunikationsdaten</strong>
+                <br />
+                Was wir erheben: E-Mail-Korrespondenz
+                <br />
+                Zweck: Bereitstellung von Kundensupport und Aufrechterhaltung einer
+                Korrespondenzhistorie.
+                <br />
+                Aufbewahrungsfrist: 730 Tage
+                <br />
+                Rechtsgrundlage: Legitimate Interests
+              </p>
+              <p>
+                <strong>Präferenz- und Verhaltensdaten</strong>
+                <br />
+                Was wir erheben: Interessen und Präferenzen der Nutzer, Interaktionsverlauf mit
+                Inhalten oder Produkten
+                <br />
+                Zweck: Personalisierung von Empfehlungen, Werbung und Inhalten.
+                <br />
+                Aufbewahrungsfrist: 730 Tage
+                <br />
+                Rechtsgrundlage: Consent
+              </p>
+              <p>
+                <strong>Berufliche Informationen</strong>
+                <br />
+                Was wir erheben: Firmenname, Geschäftliche E-Mail-Adresse, Team Size, Industry,
+                Industry Focus
+                <br />
+                Zweck: Unterstützung von Geschäftsbeziehungen und Anpassung von Inhalten für
+                berufliche Nutzer.
+                <br />
+                Aufbewahrungsfrist: 730 Tage
+                <br />
+                Rechtsgrundlage: Consent
+              </p>
+              <p>
+                <strong>Einwilligungs- und Rechtsdokumente</strong>
+                <br />
+                Was wir erheben: Einwilligungsformulare
+                <br />
+                Zweck: Erfüllung rechtlicher und regulatorischer Verpflichtungen.
+                <br />
+                Aufbewahrungsfrist: 730 Tage
+                <br />
+                Rechtsgrundlage: Consent
               </p>
             </>
           ),
         },
         {
-          title: "2. Verantwortliche Stelle",
+          title: "Wie wir Ihre personenbezogenen Daten erhalten",
           body: (
             <>
-              <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
-              <p>
-                <strong>{companyProfile.legalName}</strong>
-                <br />
-                {companyProfile.address.street}
-                <br />
-                {companyProfile.address.postalCode} {companyProfile.address.city}
-                <br />
-                {companyProfile.address.country}
-              </p>
-              <p>
-                <strong>Telefon:</strong> {companyProfile.phoneDisplay}
-                <br />
-                <strong>E-Mail:</strong>{" "}
-                <a href={`mailto:${companyProfile.legalEmail}`}>{companyProfile.legalEmail}</a>
-              </p>
-            </>
-          ),
-        },
-        {
-          title: "3. Hosting und technische Bereitstellung",
-          body: (
-            <>
-              <p>
-                Die Website wird extern gehostet. Beim Aufruf der Website können technisch
-                erforderliche Daten wie IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene
-                Seiten, Referrer, Browsertyp und Betriebssystem verarbeitet werden, um die Website
-                sicher und stabil auszuliefern.
-              </p>
-              <p>
-                Das Hosting erfolgt zum Zweck der sicheren Bereitstellung unseres Online-Angebots
-                sowie auf Grundlage unseres berechtigten Interesses an einem zuverlässigen
-                technischen Betrieb gemäß Art. 6 Abs. 1 lit. f DSGVO.
-              </p>
-              <p>
-                Eingesetzter Hosting-Anbieter:
-                <br />
-                <strong>Vercel Inc.</strong>
-                <br />
-                440 N Barranca Avenue #4133
-                <br />
-                Covina, CA 91723
-                <br />
-                USA
-              </p>
-            </>
-          ),
-        },
-        {
-          title: "4. Kontaktaufnahme und Produktgespraeche",
-          body: (
-            <>
-              <p>
-                Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen übermittelten
-                Angaben ausschließlich zur Bearbeitung Ihrer Anfrage, zur Kommunikation im Rahmen
-                von Wartelisten-, Pilot- oder Produktgesprächen und, falls erforderlich, zur
-                Vertragsanbahnung.
-              </p>
-              <p>
-                Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage auf den
-                Abschluss eines Vertrags oder vorvertragliche Maßnahmen gerichtet ist, sowie
-                hilfsweise Art. 6 Abs. 1 lit. f DSGVO für die effiziente Bearbeitung allgemeiner
-                Anfragen.
-              </p>
-            </>
-          ),
-        },
-        {
-          title: "5. Warteliste, Produkt-Updates und Double-Opt-In",
-          body: (
-            <>
-              <p>
-                Wenn Sie sich über das Wartelistenformular anmelden, verarbeiten wir Ihre
-                E-Mail-Adresse sowie die für Anmeldung, Bestaetigung und Dokumentation Ihrer
-                Einwilligung erforderlichen Protokolldaten. Sofern Sie uns nachgelagert freiwillig
-                weitere Angaben uebermitteln, etwa zu Teamgroesse, Beratungsfokus, groessten
-                operativen Engpaessen oder Interesse an Pilotplaetzen, verarbeiten wir auch diese
-                Angaben zur Einordnung Ihrer Wartelisten-Anmeldung.
-              </p>
-              <p>
-                Zweck der Verarbeitung ist die Verwaltung der Warteliste, die Versendung der
-                Double-Opt-In-Bestaetigung, spaetere Produkt- und Wartelisten-Updates sowie die
-                Priorisierung frueher Pilotgespraeche fuer passende Beratungen. Rechtsgrundlage ist
-                Ihre Einwilligung gemaess Art. 6 Abs. 1 lit. a DSGVO.
-              </p>
-              <p>
-                Die Anmeldung erfolgt im Double-Opt-In-Verfahren. Nach Ihrer Anmeldung erhalten Sie
-                eine E-Mail, in der Sie Ihre Anmeldung bestaetigen muessen. Erst nach dieser
-                Bestaetigung wird Ihre Wartelisten-Anmeldung aktiv.
-              </p>
-              <p>
-                Fuer die technische Abwicklung der Wartelisten-Anmeldung sowie fuer Versand und
-                Verwaltung unserer E-Mails nutzen wir <strong>Loops</strong>, einen Dienst der
-                <strong> Astrodon Corporation, USA</strong>. Dabei werden die von Ihnen
-                uebermittelten Formulardaten an Loops uebertragen und dort verarbeitet.
-              </p>
-              <p>
-                Dabei kann es zu einer Uebermittlung personenbezogener Daten in die USA kommen.
-                Nach Angaben von Loops erfolgt eine solche Drittlandsverarbeitung unter Nutzung der
-                jeweils anwendbaren Uebermittlungsmechanismen, insbesondere unter Berufung auf das
-                EU-U.S. Data Privacy Framework sowie, soweit erforderlich, Standardvertragsklauseln
-                oder andere gesetzlich zulaessige Garantien. Weitere Informationen zu den
-                eingesetzten Garantien koennen Sie unter{" "}
-                <a href={`mailto:${companyProfile.legalEmail}`}>{companyProfile.legalEmail}</a>{" "}
-                anfordern.
-              </p>
-              <p>
-                Wir speichern Ihre Daten fuer die Dauer Ihrer Wartelisten-Anmeldung oder bis Sie
-                Ihre Einwilligung widerrufen. Daten, die wir zum Nachweis Ihrer Einwilligung oder
-                zur Geltendmachung, Ausuebung oder Verteidigung von Rechtsanspruechen benoetigen,
-                speichern wir nur so lange, wie dies hierfuer erforderlich ist.
-              </p>
-              <p>
-                Sie koennen Ihre Einwilligung jederzeit mit Wirkung fuer die Zukunft widerrufen,
-                insbesondere ueber den Abmeldelink in jeder E-Mail oder durch Nachricht an{" "}
-                <a href={`mailto:${companyProfile.legalEmail}`}>{companyProfile.legalEmail}</a>.
-              </p>
-            </>
-          ),
-        },
-        {
-          title: "6. Einwilligungsmanagement, Webanalyse, lokale Speichermechanismen und externe Links",
-          body: (
-            <>
-              <p>
-                Diese Website nutzt <strong>CookieScript</strong> als Consent-Management-Plattform,
-                um Ihre Einwilligung fuer technisch notwendige und optionale Statistik-Dienste zu
-                verwalten. Anbieter ist <strong>Objectis, UAB</strong>, Laisves st. 60, LT-05120
-                Vilnius, Litauen. CookieScript speichert Ihre Consent-Auswahl in einem
-                First-Party-Cookie, damit die Banner- und Kategorie-Einstellungen bei weiteren
-                Seitenaufrufen beruecksichtigt werden.
-              </p>
-              <p>
-                Wenn Sie Statistik erlauben, laden wir <strong>Google Tag Manager</strong> und
-                <strong> Google Analytics 4</strong>. Dabei koennen insbesondere Informationen zu
-                Seitenaufrufen, Browser, Geraet, Referrer sowie gemessenen Interaktionen auf
-                unserer Website verarbeitet werden. Rechtsgrundlage ist Ihre Einwilligung gemaess
-                Art. 6 Abs. 1 lit. a DSGVO.
-              </p>
-              <p>
-                Verantwortliche Anbieter fuer die genannten Google-Dienste ist grundsaetzlich
-                <strong> Google Ireland Limited</strong>, Gordon House, Barrow Street, Dublin 4,
-                Irland. Eine Uebermittlung personenbezogener Daten an <strong>Google LLC</strong> in
-                den USA kann dabei nicht ausgeschlossen werden. Google verweist fuer bestimmte
-                internationale Datenuebermittlungen auf seine Zertifizierung nach dem EU-U.S. Data
-                Privacy Framework sowie ergaenzende vertragliche Garantien.
-              </p>
-              <p>
-                Zusaetzlich speichert die Hinweisleiste im Kopfbereich lokal im Browser, ob Sie den
-                Hinweis bereits geschlossen haben. Hierfuer wird ein Eintrag im
-                <strong> localStorage</strong> Ihres Browsers gesetzt. Nach einer erfolgreichen
-                Wartelisten-Anmeldung speichern wir ausserdem die verwendete E-Mail-Adresse kurzzeitig
-                im <strong>sessionStorage</strong>, damit die optionale Qualifizierungsseite dieselbe
-                Anmeldung demselben Browser zuordnen kann. Diese Informationen verbleiben auf Ihrem
-                Endgeraet und werden nicht fuer seitenuebergreifendes Tracking genutzt.
-              </p>
-              <p>
-                Die verwendeten Schriften werden ueber <strong>next/font</strong> in die Anwendung
-                eingebunden und von der Website selbst ausgeliefert. Beim Aufruf der Seite wird
-                daher keine direkte Verbindung zu Google Fonts durch Ihren Browser aufgebaut.
-              </p>
-              <p>
-                Wenn Sie externe Links, z. B. zu LinkedIn oder X, anklicken, verlassen Sie unsere
-                Website. Fuer die Datenverarbeitung auf den Zielseiten sind ausschliesslich die
-                jeweiligen Betreiber verantwortlich.
-              </p>
-            </>
-          ),
-        },
-        {
-          title: "7. Rechtsgrundlagen und Speicherdauer",
-          body: (
-            <>
-              <p>
-                Sofern Sie uns aktiv kontaktieren, verarbeiten wir Ihre Daten auf Grundlage von
-                Art. 6 Abs. 1 lit. b DSGVO oder Art. 6 Abs. 1 lit. f DSGVO. Optionale Statistik- und
-                Messdienste verarbeiten wir nur auf Grundlage Ihrer Einwilligung gemaess Art. 6
-                Abs. 1 lit. a DSGVO. Soweit gesetzliche Aufbewahrungspflichten bestehen, erfolgt die
-                Verarbeitung zusaetzlich auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO.
-              </p>
-              <p>
-                Personenbezogene Daten speichern wir nur so lange, wie dies zur Bearbeitung Ihrer
-                Anfrage, zur Dokumentation geschäftlicher Kommunikation oder zur Erfüllung
-                gesetzlicher Pflichten erforderlich ist.
-              </p>
-            </>
-          ),
-        },
-        {
-          title: "8. Ihre Rechte",
-          body: (
-            <>
-              <p>Sie haben nach Maßgabe der gesetzlichen Vorschriften insbesondere folgende Rechte:</p>
+              <p>Wir erheben Informationen, die Sie uns direkt bereitstellen, wenn Sie:</p>
               <ul>
-                <li>Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten,</li>
-                <li>Berichtigung unrichtiger oder Vervollständigung unvollständiger Daten,</li>
-                <li>Löschung Ihrer Daten, soweit keine gesetzlichen Pflichten entgegenstehen,</li>
-                <li>Einschränkung der Verarbeitung,</li>
-                <li>Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen,</li>
-                <li>Datenübertragbarkeit bei automatisierter Verarbeitung,</li>
-                <li>Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft.</li>
+                <li>Formulare ausfüllen</li>
+                <li>Unsere Dienste nutzen</li>
+                <li>Mit uns korrespondieren</li>
+                <li>Uns aus anderen Gründen kontaktieren</li>
               </ul>
               <p>
-                Zudem steht Ihnen ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu,
-                insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthalts, Ihres
-                Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.
+                Through cookies, consent tools, and analytics technologies on our website, where
+                required only with your consent.
+              </p>
+              <p>Wir können Ihre personenbezogenen Daten auch aus anderen legitimen Quellen beziehen:</p>
+              <ul>
+                <li>Wir können personenbezogene Daten von Partnern und Kooperationsunternehmen erhalten</li>
+              </ul>
+            </>
+          ),
+        },
+        {
+          title: "Pflicht zur Bereitstellung personenbezogener Daten",
+          body: (
+            <>
+              <p>
+                In bestimmten Fällen ist die Bereitstellung personenbezogener Daten gesetzlich oder
+                vertraglich vorgeschrieben oder zur Durchführung eines Vertrags erforderlich.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Wie wir Ihre Informationen teilen",
+          body: (
+            <>
+              <p>
+                H&amp;W Digital Solutions UG kann Ihre personenbezogenen Daten den Empfängern der
+                folgenden Kategorien offenlegen:
+              </p>
+              <p>
+                Mit Ihrer Einwilligung. H&amp;W Digital Solutions UG wird Ihre Daten für jeden
+                Zweck mit Ihrer ausdrücklichen Zustimmung teilen.
+              </p>
+              <p>
+                Bei Unternehmensübertragungen. Ihre Daten werden im Falle einer Fusion, Übernahme,
+                Verhandlung, eines Verkaufs von Geschäftsanteilen oder einer Finanzierung an Dritte
+                übertragen.
+              </p>
+              <p>
+                Wir übermitteln personenbezogene Daten in folgende Drittstaaten: Vereinigte
+                Staaten. Dieses Land, Gebiet oder die angegebenen Sektoren wurden von der
+                Europäischen Kommission als mit angemessenem Datenschutzniveau anerkannt.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Konkret eingesetzte Dienstleister und Systeme",
+          body: (
+            <>
+              <p>
+                Zur technischen Bereitstellung und zum Hosting unseres Dienstes nutzen wir derzeit
+                insbesondere <strong>Vercel</strong>.
+              </p>
+              <p>
+                Für das Consent-Management und die Steuerung von Einwilligungen verwenden wir
+                <strong> CookieScript</strong>, einen Dienst von <strong>Objectis Ltd.</strong>,
+                Laisves st. 60, LT-05120 Vilnius, Litauen.
+              </p>
+              <p>
+                Für optionale Statistik und Reichweitenmessung verwenden wir nach Ihrer
+                Einwilligung <strong>Google Tag Manager</strong> und <strong>Google Analytics 4</strong>.
+              </p>
+              <p>
+                Für Wartelisten-Anmeldungen, Double-Opt-In-Kommunikation und die Speicherung
+                optionaler Angaben zur Lead-Qualifizierung verwenden wir <strong>Loops</strong>
+                (loops.so), einen Dienst der <strong>Astrodon Corporation</strong>, USA.
+              </p>
+              <p>
+                Soweit bei der Nutzung dieser Dienste personenbezogene Daten in Drittländer,
+                insbesondere in die Vereinigten Staaten, übermittelt werden, erfolgt dies nach den
+                jeweils von den Anbietern vorgesehenen Datenschutz- und
+                Übermittlungsmechanismen.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Rechte der betroffenen Person",
+          body: (
+            <>
+              <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+              <ul>
+                <li>
+                  Recht auf Auskunft: Sie können eine Kopie der personenbezogenen Daten, die wir
+                  über Sie speichern, anfordern.
+                </li>
+                <li>
+                  Recht auf Berichtigung: Sie können die Berichtigung unrichtiger oder
+                  unvollständiger Informationen verlangen.
+                </li>
+                <li>
+                  Recht auf Löschung (Recht auf Vergessenwerden): Unter bestimmten Voraussetzungen
+                  können Sie die Löschung Ihrer personenbezogenen Daten verlangen.
+                </li>
+                <li>
+                  Recht auf Einschränkung der Verarbeitung: Sie können die Einschränkung der
+                  Verarbeitung Ihrer personenbezogenen Daten unter bestimmten Umständen verlangen.
+                </li>
+                <li>
+                  Recht auf Datenübertragbarkeit: Sie haben das Recht, Ihre personenbezogenen Daten
+                  in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten und
+                  diese Daten einem anderen Verantwortlichen zu übermitteln.
+                </li>
+                <li>
+                  Widerspruchsrecht: In bestimmten Fällen können Sie der Verarbeitung Ihrer
+                  personenbezogenen Daten widersprechen.
+                </li>
+                <li>
+                  Recht auf transparente Information: Sie haben das Recht, klare, transparente und
+                  leicht verständliche Informationen darüber zu erhalten, wie wir Ihre
+                  personenbezogenen Daten verarbeiten.
+                </li>
+              </ul>
+              <p>
+                <strong>Widerruf der Einwilligung:</strong>
+                <br />
+                Gemäß Artikel 13 Absatz 2 Buchstabe c der DSGVO haben Sie das Recht, Ihre
+                Einwilligung zur Verarbeitung Ihrer personenbezogenen Daten jederzeit zu widerrufen.
+                Als Besucher dieser Website können Sie Ihre Einwilligung direkt über das auf der
+                Website bereitgestellte Consent-Banner ganz einfach anpassen oder widerrufen.
+                Alternativ können Sie sich auch an den Websitebetreiber wenden, dessen Kontaktdaten
+                in dieser Datenschutzerklärung angegeben sind. Bitte beachten Sie, dass der
+                Widerruf Ihrer Einwilligung die Rechtmäßigkeit der Verarbeitung, die vor dem
+                Widerruf erfolgte, nicht berührt.
+              </p>
+              <p>
+                Um diese Rechte auszuüben, kontaktieren Sie uns bitte unter{" "}
+                <a href="mailto:contact@hw-digitalsolutions.de">contact@hw-digitalsolutions.de</a>.
+              </p>
+              <p>
+                Wir werden Ihre Rechte nur ausüben, nachdem wir Ihren schriftlichen Antrag zum
+                Ausüben eines bestimmten Rechts erhalten und Ihre Identität verifiziert haben.
+              </p>
+              <p>
+                Ihre Anträge werden innerhalb eines Monats ab dem Eingang des Antrags, der unseren
+                internen Regelungen und der DSGVO entspricht, erfüllt oder eine Ablehnung mit
+                Angabe der Gründe mitgeteilt. Diese Frist kann um zwei weitere Monate verlängert
+                werden, wenn der Antrag aufgrund des Umfangs der personenbezogenen Daten oder
+                weiterer gleichzeitig bearbeiteter Anträge besonders aufwendig ist. Wir werden Sie
+                innerhalb eines Monats nach Eingang des Antrags über eine Verlängerung und die
+                Gründe dafür informieren. Die Antwort erfolgt in der von Ihnen gewünschten Form.
+              </p>
+              <p>
+                Wir können die Erfüllung Ihres Antrags verweigern, wenn die in der DSGVO
+                vorgesehenen Ausnahmen und/oder Einschränkungen der Rechte der betroffenen Person
+                Anwendung finden oder wenn Ihr Antrag offensichtlich unbegründet oder
+                unverhältnismäßig ist. Im Falle einer Ablehnung werden wir Ihnen die Gründe dafür
+                schriftlich mitteilen.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Beschwerderecht bei einer Aufsichtsbehörde",
+          body: (
+            <>
+              <p>
+                Sie haben das Recht, bei einer zuständigen Aufsichtsbehörde Beschwerde einzureichen,
+                wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen
+                geltendes Recht und Ihre Rechte und berechtigten Interessen verstößt. Sie können
+                gemäß den für Bundesbeauftragte für den Datenschutz und die Informationsfreiheit
+                (BfDI) der Bundesrepublik Deutschland festgelegten Verfahren vorgehen, die unter
+                folgendem Link zu finden sind:{" "}
+                <a href="https://www.bfdi.bund.de/anschriften" rel="noreferrer" target="_blank">
+                  https://www.bfdi.bund.de/anschriften
+                </a>
+                .
+              </p>
+              <p>
+                Bitte beachten Sie, dass trotz aller Bemühungen kein System vollständig sicher ist.
+                Wir haben jedoch angemessene Sicherheitsmaßnahmen implementiert, um die Risiken
+                unbefugten Zugriffs auf oder unsachgemäßen Verwendung Ihrer personenbezogenen Daten
+                zu minimieren.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Sicherheit",
+          body: (
+            <>
+              <p>
+                Wir und unsere Drittanbieter, die im Auftrag der oben genannten Zwecke
+                personenbezogene Daten verarbeiten können, sind vertraglich verpflichtet, die
+                Vertraulichkeit dieser Daten zu wahren.
+              </p>
+              <p>
+                Wir setzen angemessene Sicherheitspraktiken und -verfahren ein, um die
+                Vertraulichkeit und Sicherheit Ihrer Informationen, einschließlich aller nicht
+                öffentlichen personenbezogenen Daten, zu schützen.
+              </p>
+              <p>
+                Wir schützen Ihre Daten durch angemessene physische, technische und administrative
+                Sicherheitsmaßnahmen, einschließlich der Beschränkung des Zugriffs auf Ihre
+                Informationen auf Mitarbeiter, die diese Informationen kennen müssen.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Änderungen dieser Richtlinie",
+          body: (
+            <>
+              <p>
+                Wir überprüfen diese Datenschutzerklärung regelmäßig und behalten uns das Recht vor,
+                sie jederzeit in Übereinstimmung mit geltenden Gesetzen und Vorschriften zu ändern.
+                Änderungen treten mit ihrer Veröffentlichung auf unserer Website sofort in Kraft.
+              </p>
+              <p>
+                Bitte überprüfen Sie diese Datenschutzerklärung von Zeit zu Zeit, um über etwaige
+                Änderungen informiert zu bleiben.
+              </p>
+            </>
+          ),
+        },
+        {
+          title: "Kontakt",
+          body: (
+            <>
+              <p>Für Fragen kontaktieren Sie uns bitte über folgende Methoden:</p>
+              <p>
+                Name: H&amp;W Digital Solutions UG
+                <br />
+                Adresse: Greifswalder Straße 13D, 10405 Berlin
+                <br />
+                E-Mail:{" "}
+                <a href="mailto:contact@hw-digitalsolutions.de">contact@hw-digitalsolutions.de</a>
+                <br />
+                Website: <a href="https://consultry.de">https://consultry.de</a>
+                <br />
+                Telefon: +4917670937993
               </p>
             </>
           ),
         },
       ]}
-      title="Datenschutz"
+      title="Datenschutzrichtlinie"
     />
   );
 }

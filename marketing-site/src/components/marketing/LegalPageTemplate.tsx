@@ -1,11 +1,20 @@
 import type { ReactNode } from "react";
+import { LegalDocumentNav } from "@/components/marketing/LegalDocumentNav";
 
 type LegalPageSection = {
   title: string;
   body: ReactNode;
 };
 
+type LegalPageMetaItem = {
+  label: string;
+  value: string;
+};
+
 type LegalPageTemplateProps = {
+  currentDocumentHref?: string;
+  intro?: ReactNode;
+  metaItems?: LegalPageMetaItem[];
   overline: string;
   title: string;
   sections: LegalPageSection[];
@@ -13,6 +22,9 @@ type LegalPageTemplateProps = {
 };
 
 export function LegalPageTemplate({
+  currentDocumentHref,
+  intro,
+  metaItems,
   overline,
   title,
   sections,
@@ -28,6 +40,29 @@ export function LegalPageTemplate({
             <h1 className="mt-6 text-[clamp(2.6rem,6vw,4.25rem)] font-extrabold leading-[0.96] tracking-[-0.045em] text-[var(--consultry-text-primary)]">
               {title}
             </h1>
+            {currentDocumentHref ? <LegalDocumentNav currentHref={currentDocumentHref} /> : null}
+            {metaItems?.length ? (
+              <dl className="mt-8 grid gap-3 sm:grid-cols-2">
+                {metaItems.map((item) => (
+                  <div
+                    className="rounded-[22px] border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] px-4 py-3.5"
+                    key={`${item.label}-${item.value}`}
+                  >
+                    <dt className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--consultry-text-faint)]">
+                      {item.label}
+                    </dt>
+                    <dd className="mt-2 text-[14px] font-medium text-[var(--consultry-text-primary)]">
+                      {item.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            ) : null}
+            {intro ? (
+              <div className="mt-8 max-w-[58rem] space-y-4 text-[15px] leading-7 text-[var(--consultry-text-muted)] [&_a]:text-[var(--consultry-text-primary)] [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-[var(--consultry-brand-warm)] [&_strong]:font-semibold [&_strong]:text-[var(--consultry-text-primary)]">
+                {intro}
+              </div>
+            ) : null}
           </div>
 
           <div className="mt-8 h-px w-full bg-[rgba(255,255,255,0.1)]" />
