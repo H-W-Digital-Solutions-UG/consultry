@@ -20,13 +20,13 @@ export const aboutContent = {
     title:
       "Wir bauen den operativen AI-Begleiter für Beratungen, den wir selbst gebraucht hätten.",
     body:
-      "Drei Gründer aus Berlin. Consulting, Security, Produkt. Wir kennen die Schmerzpunkte aus der Praxis — und wir bauen das System, das Beratungen wirklich steuert, nicht noch ein Tool daneben.",
+      "Drei Gründer aus Berlin. Consulting, Security, Produkt. Wir kennen die Schmerzpunkte aus der Praxis und bauen das System, das Beratungen wirklich steuert, nicht noch ein Tool daneben.",
   },
   team: {
     overline: "DAS TEAM",
     title: "Drei Gründer. Ein Betriebsverständnis.",
     body:
-      "Hinter Consultry steht ein Team, das Beratung, AI-Architektur und Produktarbeit zusammenbringt — und seit Jahren selbst erlebt, wo die Lücke zwischen Tool und Alltag liegt.",
+      "Hinter Consultry steht ein Team, das Beratung, AI-Architektur und Produktarbeit zusammenbringt. Seit Jahren erleben wir selbst, wo die Lücke zwischen Tool und Alltag liegt.",
     members: [
       {
         name: "Julian Weber",
@@ -52,7 +52,7 @@ export const aboutContent = {
         name: "Paul Hannemann",
         role: "Co-Founder · CPO",
         focus:
-          "Übersetzt Beratungslogik in Produkt. Sorgt dafür, dass Consultry nach Beratung denkt — nicht nach CRM, Ticket-System oder Tabellenkalkulation.",
+          "Übersetzt Beratungslogik in Produkt. Sorgt dafür, dass Consultry nach Beratung denkt, nicht nach CRM, Ticket-System oder Tabellenkalkulation.",
         image: {
           src: "/images/team-paul.png",
           alt: "Porträt von Paul Hannemann",
@@ -65,8 +65,8 @@ export const aboutContent = {
     title: "Beratungen verdienen ein System, das ihre Logik kennt.",
     paragraphs: [
       "Wir haben Consultry begonnen, weil wir die gleiche Szene zu oft gesehen haben: Freitagnachmittag, Managing Partner, 14 offene Tabs. Salesforce für die Pipeline. Excel für das Staffing. PowerPoint für das Angebot. Confluence für die Methodik. Und am Ende entscheidet das Bauchgefühl, weil niemand mehr alles zusammenbringt.",
-      "In DACH-Beratungen zwischen 30 und 200 Beratern liegen die größten Hebel nicht in mehr Software, sondern in weniger Brüchen. 80 % des Umsatzes kommt aus Bestandskunden — aber die stärksten Signale dazu stehen in Newslettern, im Postfach eines Partners und in einer Ausschreibung, die niemand rechtzeitig gesehen hat.",
-      "Consultry ist die operative Ebene, die wir uns selbst gewünscht haben: Sie verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss. AI ist dabei kein Knopf, sondern das Interaktionsprinzip. Sie sprechen mit dem System, das System bereitet vor — und Sie entscheiden.",
+      "In DACH-Beratungen zwischen 30 und 200 Beratern liegen die größten Hebel nicht in mehr Software, sondern in weniger Brüchen. 80 % des Umsatzes kommt aus Bestandskunden. Aber die stärksten Signale dazu stehen in Newslettern, im Postfach eines Partners und in einer Ausschreibung, die niemand rechtzeitig gesehen hat.",
+      "Consultry ist die operative Ebene, die wir uns selbst gewünscht haben: Sie verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss. AI ist dabei kein Knopf, sondern das Interaktionsprinzip. Sie sprechen mit dem System, das System bereitet vor. Sie entscheiden.",
       "Wir sind im Pre-Launch. Wir bauen gemeinsam mit einer kleinen Zahl Pilotkunden aus dem DACH-Raum. Wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen Sie mit uns.",
     ],
     proofRail: [
@@ -96,7 +96,7 @@ export const aboutContent = {
     eyebrow: "NÄCHSTER SCHRITT",
     title: "Sie wollen dabei sein, wenn Consultry live geht?",
     body:
-      "Tragen Sie sich auf die Warteliste ein. Sie hören als Erste zum Launch — und wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden direkt.",
+      "Tragen Sie sich auf die Warteliste ein. Sie hören als Erste zum Launch. Wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden direkt.",
     primaryCta: {
       label: "Auf die Warteliste",
       href: "/warteliste",

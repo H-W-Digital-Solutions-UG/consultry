@@ -39,7 +39,7 @@ export const ctaTargets = {
 export const deepDiveCta = {
   title: "Consultry, sobald es live geht.",
   body:
-    "Sie sind als Erste dabei, wenn Consultry startet. Bestandskunden-Signale, Staffing, Wissen und Angebote laufen dann in einem System zusammen — und nicht mehr in sieben.",
+    "Sie sind als Erste dabei, wenn Consultry startet. Bestandskunden-Signale, Staffing, Wissen und Angebote laufen dann in einem System zusammen, nicht mehr in sieben.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: ctaTargets.nav,
