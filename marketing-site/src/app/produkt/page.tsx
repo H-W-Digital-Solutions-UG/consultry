@@ -54,7 +54,7 @@ export default function ProductPage() {
       <ProductPageHero content={productHero} />
 
       <AnswerHighlights
-        body="Drei Antworten, die die häufigsten Fragen direkt klären — bevor Sie tiefer einsteigen."
+        body="Drei Antworten, die die häufigsten Fragen direkt klären, bevor Sie tiefer einsteigen."
         eyebrow="KURZ ERKLÄRT"
         items={productAnswers}
         title="Was Consultry für Ihre Beratung tut."
@@ -83,7 +83,7 @@ export default function ProductPage() {
             <SectionHeader
               overline="HÄUFIG GESTELLTE FRAGEN"
               title="Noch offen?"
-              body="Was hier fehlt, beantworten wir im direkten Gespräch. Schreiben Sie uns — wir melden uns binnen 48 Stunden."
+              body="Was hier fehlt, beantworten wir im direkten Gespräch. Schreiben Sie uns. Wir melden uns binnen 48 Stunden."
             />
           </MotionReveal>
           <MotionReveal className="mt-8" delay={0.06}>
@@ -93,7 +93,7 @@ export default function ProductPage() {
       </section>
 
       <InternalLinkGrid
-        body="Jede dieser Seiten vertieft einen der Bereiche — mit konkreten Zahlen, Szenarien und Vergleichen."
+        body="Jede dieser Seiten vertieft einen der Bereiche, mit konkreten Zahlen, Szenarien und Vergleichen."
         eyebrow="VERTIEFEN"
         links={productInternalLinks}
         title="Die Bereiche im Detail."

@@ -46,10 +46,10 @@ export default function UnternehmenPage() {
       />
 
       <AnswerHighlights
-        body="Drei Antworten — Produkt, Zielgruppe und Abgrenzung — bevor wir auf Team und Geschichte schauen."
+        body="Drei Antworten zu Produkt, Zielgruppe und Abgrenzung, bevor wir auf Team und Geschichte schauen."
         eyebrow="KURZ ERKLÄRT"
         items={homepageContent.answers}
-        title="Was Consultry ist — und was nicht."
+        title="Was Consultry ist, und was nicht."
       />
 
       <section className="section-shell-tight">

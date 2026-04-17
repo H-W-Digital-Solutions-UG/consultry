@@ -30,8 +30,9 @@ export function WaitlistThankYouView({
               </h1>
               <p className="body-lg mt-5 max-w-[44rem]">
                 Ihr Platz ist reserviert. Wenn Sie uns noch ein paar kurze Angaben zu Ihrer Beratung
-                geben — Größe, Fokus, größter operativer Engpass — ordnen wir Ihre Anfrage gezielter
-                ein. Und wenn Sie Pilotkunde werden wollen, melden wir uns binnen 48 Stunden direkt.
+                geben, etwa Größe, Fokus und größter operativer Engpass, ordnen wir Ihre Anfrage
+                gezielter ein. Und wenn Sie Pilotkunde werden wollen, melden wir uns binnen 48
+                Stunden direkt.
               </p>
             </div>
           </MotionReveal>
