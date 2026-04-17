@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
 import { MarketingCtaButton } from "@/components/marketing/MarketingCtaButton";
 import { ctaTargets, navLinks } from "@/lib/content/shared";
 import { cn } from "@/lib/cn";
@@ -16,7 +15,7 @@ function NavCtaContent() {
       <span className="min-w-0 whitespace-nowrap pr-1">Auf die Warteliste</span>
       <span
         aria-hidden="true"
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[rgba(255,255,255,0.14)] bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.05))] text-[var(--consultry-text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] transition duration-200 group-hover:translate-x-0.5 group-hover:border-[rgba(244,183,109,0.24)] group-hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.08))]"
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[rgba(240,168,94,0.18)] bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05)),linear-gradient(180deg,rgba(240,168,94,0.08),rgba(232,101,90,0.08))] text-[var(--consultry-text-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] transition duration-200 group-hover:translate-x-0.5 group-hover:border-[rgba(240,168,94,0.34)] group-hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.2),rgba(255,255,255,0.08)),linear-gradient(180deg,rgba(240,168,94,0.14),rgba(232,101,90,0.12))]"
       >
         <ArrowUpRight className="h-4 w-4" strokeWidth={2.1} />
       </span>
@@ -94,19 +93,14 @@ export function Nav() {
             </span>
           </Link>
 
-          <nav aria-label="Hauptnavigation" className="hidden flex-1 items-center justify-center gap-8 md:flex">
+          <nav aria-label="Hauptnavigation" className="hidden flex-1 items-center justify-center gap-6 md:flex lg:gap-7">
             {navLinks.map((link) => {
               const isActive = isActiveLink(link.href);
               const isHovered = hoveredHref === link.href;
 
               return (
                 <Link
-                  className={cn(
-                    "relative inline-flex items-center py-1 text-[15px] font-normal transition-colors duration-300",
-                    isActive || isHovered
-                      ? "text-[var(--consultry-text-primary)]"
-                      : "text-[var(--consultry-text-secondary)] hover:text-[var(--consultry-text-primary)]",
-                  )}
+                  className="relative inline-flex items-center"
                   aria-current={isActive ? "page" : undefined}
                   href={link.href}
                   key={link.href}
@@ -115,24 +109,33 @@ export function Nav() {
                   onMouseEnter={() => setHoveredHref(link.href)}
                   onMouseLeave={() => setHoveredHref(null)}
                 >
-                  <span className="relative inline-flex items-center">
-                    {link.label}
-                    {isActive ? (
-                      <span className="pointer-events-none absolute -bottom-2.5 left-0 h-[2px] w-full rounded-full bg-[linear-gradient(90deg,rgba(232,145,59,0.92)_0%,rgba(232,102,89,0.7)_46%,rgba(156,89,181,0.88)_100%)] opacity-90" />
-                    ) : null}
-                    {isHovered ? (
-                      <motion.span
-                        animate={{ opacity: 1, scaleX: 1 }}
-                        className="pointer-events-none absolute -bottom-2.5 left-0 h-[2px] w-full origin-left rounded-full bg-[linear-gradient(90deg,rgba(237,232,226,0.34)_0%,rgba(205,189,219,0.56)_52%,rgba(156,89,181,0.76)_100%)] shadow-[0_0_8px_rgba(156,89,181,0.12)]"
-                        initial={{ opacity: 0, scaleX: 0.72 }}
-                        layoutId="nav-link-hover-indicator"
-                        transition={{
-                          layout: { duration: 0.34, ease: [0.22, 1, 0.36, 1] },
-                          opacity: { duration: 0.18, ease: "easeOut" },
-                          scaleX: { duration: 0.24, ease: [0.22, 1, 0.36, 1] },
-                        }}
-                      />
-                    ) : null}
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "pointer-events-none absolute inset-0 rounded-full transition-[opacity,transform] duration-300 ease-out",
+                      isHovered && !isActive
+                        ? "[background:var(--consultry-brand-gradient)] opacity-100 scale-[1.075]"
+                        : "opacity-0 scale-[0.96]",
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "relative inline-flex rounded-full p-px transition-all duration-300",
+                      isActive ? "[background:var(--consultry-brand-gradient)]" : "bg-transparent",
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        "relative inline-flex items-center rounded-full px-3.5 py-1.5 text-[15px] font-semibold transition-all duration-300",
+                        isActive
+                          ? "bg-[rgba(44,37,34,0.92)] text-[#EBE9E8]"
+                          : isHovered
+                            ? "bg-[rgba(44,37,34,0.84)] text-[var(--consultry-text-primary)]"
+                            : "bg-transparent text-[rgba(237,232,226,0.76)] hover:text-[var(--consultry-text-primary)]",
+                      )}
+                    >
+                      {link.label}
+                    </span>
                   </span>
                 </Link>
               );
@@ -141,7 +144,7 @@ export function Nav() {
 
           <div className="hidden md:block">
             <MarketingCtaButton
-              className="group h-[3.2rem] min-w-[15rem] px-2 pl-5 pr-2 text-[14px] font-semibold tracking-[-0.01em] shadow-[0_14px_30px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.05)]"
+              className="group h-[3.2rem] min-w-[15rem] border-[rgba(240,168,94,0.2)] bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)),linear-gradient(180deg,rgba(240,168,94,0.14),rgba(232,101,90,0.08))] px-2 pl-5 pr-2 text-[14px] font-semibold tracking-[-0.01em] text-[rgba(255,248,241,0.98)] shadow-[0_16px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.08)] hover:border-[rgba(240,168,94,0.34)] hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.04)),linear-gradient(180deg,rgba(240,168,94,0.2),rgba(232,101,90,0.12))] hover:shadow-[0_18px_36px_rgba(0,0,0,0.22),0_0_0_1px_rgba(240,168,94,0.08)]"
               href={ctaTargets.nav}
               tracking={{
                 ctaId: "nav_desktop_waitlist",
@@ -171,7 +174,7 @@ export function Nav() {
           <div className="content-shell flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
-                className="text-base font-medium text-[var(--consultry-text-secondary)]"
+                className="rounded-full border border-transparent px-4 py-2 text-base font-medium text-[var(--consultry-text-secondary)] transition hover:border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,255,255,0.04)] hover:text-[var(--consultry-text-primary)]"
                 href={link.href}
                 key={link.href}
                 onClick={() => setMenuOpen(false)}
@@ -180,7 +183,7 @@ export function Nav() {
               </Link>
             ))}
             <MarketingCtaButton
-              className="group mt-2 w-full px-2 pl-4 pr-2 text-[15px] font-semibold tracking-[-0.01em]"
+              className="group mt-2 w-full border-[rgba(240,168,94,0.2)] bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03)),linear-gradient(180deg,rgba(240,168,94,0.14),rgba(232,101,90,0.08))] px-2 pl-4 pr-2 text-[15px] font-semibold tracking-[-0.01em] text-[rgba(255,248,241,0.98)] shadow-[0_16px_32px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.08)]"
               href={ctaTargets.nav}
               onClick={() => setMenuOpen(false)}
               tracking={{
