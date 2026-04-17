@@ -71,17 +71,17 @@ export function Nav() {
     <header className="sticky top-0 z-40">
       <div
         className={cn(
-          "transition duration-300",
+          "border-b border-[rgba(255,255,255,0.045)] bg-[rgba(18,16,16,0.08)] shadow-[inset_0_1px_0_rgba(255,255,255,0.025)] backdrop-blur-[8px] transition duration-300",
           scrolled &&
             "border-b border-[var(--consultry-border-soft)] bg-[var(--consultry-surface-glass)] shadow-[var(--consultry-shadow-md)] backdrop-blur-xl",
         )}
       >
-        <div className="flex h-16 w-full items-center justify-between gap-4 px-3 sm:h-[4.45rem] sm:px-4 lg:px-6 xl:px-7">
+        <div className="flex h-16 w-full items-center justify-between gap-4 pl-4 pr-3 sm:h-[4.45rem] sm:pl-5 sm:pr-4 lg:pl-7 lg:pr-6 xl:pl-8 xl:pr-7">
           <Link className="inline-flex items-center gap-1.5 overflow-visible sm:gap-2" href="/">
-            <span className="block w-[60px] shrink-0 min-[375px]:w-[64px] min-[420px]:w-[68px] sm:w-[76px]">
+            <span className="inline-flex shrink-0">
               <Image
                 alt="Consultry Logo"
-                className="block h-auto w-full object-contain"
+                className="block h-auto max-h-[24px] w-auto max-w-full object-contain sm:max-h-[28px]"
                 height={379}
                 priority
                 sizes="(min-width: 640px) 76px, (min-width: 420px) 68px, (min-width: 375px) 64px, 60px"
@@ -89,7 +89,7 @@ export function Nav() {
                 width={385}
               />
             </span>
-            <span className="translate-y-[1px] text-[1rem] font-bold leading-[0.94] tracking-[-0.045em] text-[rgba(246,239,232,0.99)] sm:text-[clamp(1.04rem,1.16vw,1.24rem)]">
+            <span className="flex items-center text-[1rem] font-bold leading-none tracking-[-0.045em] text-[rgba(246,239,232,0.99)] sm:text-[clamp(1.04rem,1.16vw,1.24rem)]">
               Consultry
             </span>
           </Link>
