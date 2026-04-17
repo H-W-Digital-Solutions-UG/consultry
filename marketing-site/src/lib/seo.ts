@@ -5,7 +5,7 @@ export const siteConfig = {
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://consultry.de").replace(/\/$/, ""),
   primaryDomain: "consultry.de",
   description:
-    "Consultry ist das AI-native Operating System fuer DACH-IT- und Digitalisierungsberatungen - von Bestandskundenwachstum ueber Staffing und Wissenswiederverwendung bis Delivery und Commercial Control.",
+    "Consultry ist der operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum. Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer Arbeitsebene.",
   ogImage: "/images/hero-dashboard.png",
   locale: "de_DE",
   language: "de-DE",

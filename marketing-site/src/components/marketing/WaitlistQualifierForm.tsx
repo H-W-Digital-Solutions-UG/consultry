@@ -63,6 +63,7 @@ export function WaitlistQualifierForm({
       return;
     }
 
+
     setSubmitState("submitting");
     setError(null);
 
@@ -93,8 +94,8 @@ export function WaitlistQualifierForm({
     } catch (submitError) {
       const message =
         submitError instanceof Error && submitError.message === "contact_not_found"
-          ? "Die Wartelisten-Anmeldung wurde nicht gefunden. Bitte melden Sie sich zuerst ueber die Warteliste an."
-          : "Ihre Antworten konnten gerade nicht gespeichert werden. Versuchen Sie es bitte spaeter noch einmal.";
+          ? "Die Wartelisten-Anmeldung wurde nicht gefunden. Bitte melden Sie sich zuerst über die Warteliste an."
+          : "Ihre Antworten konnten gerade nicht gespeichert werden. Versuchen Sie es bitte später noch einmal.";
 
       setSubmitState("error");
       setError(message);
@@ -116,11 +117,11 @@ export function WaitlistQualifierForm({
       <section className={panelClassName}>
         <p className="eyebrow">OPTIONALE EINORDNUNG</p>
         <h2 className="mt-4 text-[1.6rem] font-semibold leading-[1.15] text-[var(--consultry-text-primary)]">
-          Qualifizierung nur nach echter Anmeldung
+          Einordnung nur nach Anmeldung möglich.
         </h2>
         <p className="mt-4 text-[15px] leading-[1.72] text-[var(--consultry-text-secondary)]">
           Wir konnten in diesem Browser keine frische Wartelisten-Anmeldung finden. Wenn Sie uns
-          direkt etwas mitgeben wollen, schreiben Sie uns gern ueber die Kontaktseite.
+          direkt etwas mitgeben wollen, schreiben Sie uns über die Kontaktseite.
         </p>
         <div className="mt-6">
           <Button href="/kontakt" variant="secondary">
@@ -136,12 +137,11 @@ export function WaitlistQualifierForm({
       <section className={panelClassName}>
         <p className="eyebrow">OPTIONALE EINORDNUNG</p>
         <h2 className="mt-4 text-[1.6rem] font-semibold leading-[1.15] text-[var(--consultry-text-primary)]">
-          Die Wartelisten-Anmeldung ist aktiv
+          Ihre Anmeldung ist aktiv.
         </h2>
         <p className="mt-4 text-[15px] leading-[1.72] text-[var(--consultry-text-secondary)]">
-          Die zusaetzliche Qualifizierung ist fuer die naechste Ausbaustufe vorgesehen. Sobald Sie
-          Ihre Anmeldung bestaetigt haben, erhalten Sie die ersten Wartelisten-Updates direkt per
-          E-Mail.
+          Die zusätzliche Einordnung ist für die nächste Ausbaustufe vorgesehen. Sobald Sie Ihre
+          Anmeldung bestätigt haben, erhalten Sie die ersten Wartelisten-Updates direkt per E-Mail.
         </p>
         <p className="mt-3 text-sm text-[var(--consultry-text-muted)]">{storedEmail}</p>
         <div className="mt-6">
@@ -149,7 +149,7 @@ export function WaitlistQualifierForm({
             className="text-sm text-[var(--consultry-text-secondary)] transition hover:text-[var(--consultry-text-primary)]"
             href="/kontakt"
           >
-            Wenn Sie frueher mit uns sprechen wollen, schreiben Sie uns direkt
+            Wenn Sie früher mit uns sprechen wollen, schreiben Sie uns direkt
           </Link>
         </div>
       </section>
@@ -164,8 +164,8 @@ export function WaitlistQualifierForm({
           isWide && "max-w-[48rem] text-[15.5px]",
         )}
       >
-        Vier kurze Angaben, mit denen wir Ihren Bedarf besser einordnen und Pilotplaetze passender
-        priorisieren koennen.
+        Vier kurze Angaben, mit denen wir Ihren Bedarf einordnen und Pilotplätze passend
+        priorisieren.
       </p>
       <p className="mt-3 text-sm text-[var(--consultry-text-muted)]">{storedEmail}</p>
 
@@ -177,11 +177,11 @@ export function WaitlistQualifierForm({
           )}
         >
           <p className="text-[15px] font-semibold text-[var(--consultry-text-primary)]">
-            Danke. Ihre Angaben wurden gespeichert.
+            Danke. Ihre Angaben sind gespeichert.
           </p>
           <p className="mt-2 text-[14px] leading-[1.65] text-[var(--consultry-text-secondary)]">
-            Sobald wir erste Pilotplaetze und Wartelisten-Updates verschicken, koennen wir Ihre
-            Anmeldung besser einordnen.
+            Wenn Sie Pilot-Interesse angekreuzt haben, melden wir uns binnen 48 Stunden. Sonst
+            hören Sie als Erste zum Launch.
           </p>
         </div>
       ) : (
@@ -197,7 +197,7 @@ export function WaitlistQualifierForm({
               className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]"
               htmlFor="waitlist-team-size"
             >
-              Teamgroesse
+              Größe Ihrer Beratung
             </label>
             <select
               className="mt-2 w-full rounded-[16px] border border-[var(--consultry-border-soft)] bg-[rgba(255,255,255,0.03)] px-4 py-3 text-[15px] text-[var(--consultry-text-primary)] outline-none transition focus:border-[rgba(244,183,109,0.35)]"
@@ -205,7 +205,7 @@ export function WaitlistQualifierForm({
               onChange={(event) => setTeamSize(event.target.value as TeamSizeValue | "")}
               value={teamSize}
             >
-              <option value="">Bitte auswaehlen</option>
+              <option value="">Bitte auswählen</option>
               {teamSizeOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -229,7 +229,7 @@ export function WaitlistQualifierForm({
               }
               value={consultingFocus}
             >
-              <option value="">Bitte auswaehlen</option>
+              <option value="">Bitte auswählen</option>
               {consultingFocusOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -243,7 +243,7 @@ export function WaitlistQualifierForm({
               className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]"
               htmlFor="waitlist-pain"
             >
-              Groesstes Problem
+              Größter operativer Engpass
             </label>
             <select
               className="mt-2 w-full rounded-[16px] border border-[var(--consultry-border-soft)] bg-[rgba(255,255,255,0.03)] px-4 py-3 text-[15px] text-[var(--consultry-text-primary)] outline-none transition focus:border-[rgba(244,183,109,0.35)]"
@@ -251,7 +251,7 @@ export function WaitlistQualifierForm({
               onChange={(event) => setPrimaryPain(event.target.value as PrimaryPainValue | "")}
               value={primaryPain}
             >
-              <option value="">Bitte auswaehlen</option>
+              <option value="">Bitte auswählen</option>
               {primaryPainOptions.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -262,7 +262,7 @@ export function WaitlistQualifierForm({
 
           <fieldset className={cn(isWide && "lg:col-span-2")}>
             <legend className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--consultry-text-faint)]">
-              Interesse an fruehem Pilotzugang
+              Interesse an der Pilotphase
             </legend>
             <label className="mt-3 flex cursor-pointer items-start gap-3 rounded-[16px] border border-[var(--consultry-border-soft)] bg-[rgba(255,255,255,0.03)] px-4 py-4 text-[14px] text-[var(--consultry-text-primary)] transition hover:border-[rgba(244,183,109,0.28)]">
               <input
@@ -298,7 +298,7 @@ export function WaitlistQualifierForm({
             )}
           >
             <Button disabled={submitState === "submitting"} type="submit">
-              {submitState === "submitting" ? "Speichern..." : "Antworten uebermitteln"}
+              {submitState === "submitting" ? "Speichern …" : "Antworten senden"}
             </Button>
           </div>
         </form>

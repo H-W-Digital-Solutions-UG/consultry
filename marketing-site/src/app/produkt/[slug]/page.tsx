@@ -37,7 +37,7 @@ export async function generateMetadata({
   if (!isWedgeSlug(slug)) {
     return buildPageMetadata({
       title: "Produkt",
-      description: "Consultry Produktseite fuer DACH-Beratungen.",
+      description: "Consultry · Operativer AI-Begleiter für Beratungen im DACH-Raum.",
       path: "/produkt",
       noindex: true,
     });
@@ -80,9 +80,9 @@ export default async function ProductWedgePage({ params }: WedgePageProps) {
       <WedgePageTemplate
         comparisonTable={content.comparisonTable}
         cta={{
-          eyebrow: "FRUEHER ZUGANG",
-          title: "Sichern Sie sich fruehen Zugang fuer Ihre Beratungslogik",
-          body: "Tragen Sie sich auf die Warteliste ein, wenn Sie den beschriebenen Wedge nicht laenger ueber getrennte Tools und manuelle Workarounds steuern wollen.",
+          eyebrow: "NÄCHSTER SCHRITT",
+          title: "Sie wollen Consultry in Ihrer Beratung sehen?",
+          body: "Tragen Sie sich auf die Warteliste ein. Zum Launch sind Sie als Erste dabei — und wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden.",
           primaryCta: {
             label: "Auf die Warteliste",
             href: "/warteliste",

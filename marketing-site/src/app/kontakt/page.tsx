@@ -10,29 +10,30 @@ import { buildContactPageJsonLd } from "@/lib/structured-data";
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
-    title: "Kontakt | Pilot, Partnerschaft und Rueckfragen",
+    title: "Kontakt · Consultry",
     description:
-      "Kontaktieren Sie Consultry fuer Pilotprojekte, Partnerschaften, Produktfragen und direkte Rueckfragen aus DACH-IT- und Digitalisierungsberatungen.",
+      "Sprechen Sie mit dem Consultry-Team. Für Pilotkunden aus DACH-Beratungen, Investoren, Presse und direkte Rückfragen.",
     path: "/kontakt",
     keywords: [
       "Consultry Kontakt",
-      "Pilotprojekt Beratungssoftware",
-      "Pilotprojekt DACH Beratungen",
+      "Pilotkunden DACH Beratungen",
+      "Investoren Consultry",
     ],
   });
 }
 
 const prepChecklist = [
-  "Teamgroesse und Delivery-Setup",
-  "heutige Toollandschaft fuer CRM, Staffing, Wissen oder Delivery",
-  "welcher operative Engpass zuerst geloest werden soll",
-  "ob Pilot, Partnerschaft oder direkte Rueckfrage im Vordergrund steht",
+  "Größe Ihrer Beratung und aktuelles Delivery-Setup",
+  "Welche Tools Sie heute für Pipeline, Staffing, Wissen und Delivery nutzen",
+  "Welcher operative Engpass Sie zuerst ins Stolpern bringt",
+  "Ob Pilotkunde, Investor-Gespräch oder inhaltliche Rückfrage im Vordergrund steht",
 ] as const;
 
 const contactReasons = [
-  "Pilotprojekt mit realen Team- und Delivery-Prozessen",
-  "Fragen zu Datenschutz, Hosting oder operativer Produktlogik",
-  "Partnerschaften, Presse oder direkte organisatorische Rueckfragen",
+  "Pilotkunde werden und Consultry aktiv mitgestalten",
+  "Investor-Gespräch oder One-Pager anfordern",
+  "Fragen zu DSGVO, EU-Hosting, AI Act oder BetrVG",
+  "Presse, Partnerschaften und organisatorische Rückfragen",
 ] as const;
 
 export default function KontaktPage() {
@@ -42,7 +43,7 @@ export default function KontaktPage() {
         data={buildContactPageJsonLd({
           title: "Kontakt",
           description:
-            "Kontakt fuer Pilotprojekte, Partnerschaften und Fragen zu Consultry fuer DACH-Beratungen.",
+            "Kontakt für Pilotkunden, Investoren, Presse und Fragen zu Consultry.",
           path: "/kontakt",
         })}
       />
@@ -58,10 +59,9 @@ export default function KontaktPage() {
                   Sprechen Sie mit dem Consultry-Team.
                 </h1>
                 <p className="body-lg mt-6 max-w-[42rem]">
-                  Wir sprechen mit Beratungshaeusern, die Folgegeschaeft, Staffing,
-                  Wissenswiederverwendung und Delivery-Steuerung in einer operativen Plattform
-                  verbinden wollen. Fuer Pilotprojekte, Partnerschaften und operative Fragen sind Sie
-                  hier richtig.
+                  Wir sprechen mit Managing Partnern, BD- und Delivery-Leads aus IT- und
+                  Digitalisierungsberatungen im DACH-Raum — und mit Investoren, die Consultry aus
+                  der Nähe sehen wollen. Schreiben Sie uns. Wir melden uns binnen 48 Stunden.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -89,7 +89,7 @@ export default function KontaktPage() {
                 <div className="mt-10 grid gap-10 border-t border-[rgba(255,255,255,0.08)] pt-8 lg:grid-cols-2 lg:gap-12">
                   <section>
                     <p className="eyebrow text-[var(--consultry-brand-warm)]">
-                      Wofuer wir die richtige Anlaufstelle sind
+                      Wofür wir die richtige Anlaufstelle sind
                     </p>
                     <ul className="mt-5 space-y-3.5">
                       {contactReasons.map((item) => (

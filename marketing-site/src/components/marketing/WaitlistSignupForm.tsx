@@ -63,8 +63,8 @@ export function WaitlistSignupForm({
   const isSuccess = submitState === "success";
   const showSubmitButton = newsletterConsent || isSubmitting;
   const successHint = onSuccess
-    ? "Optionalen Kontext laden ..."
-    : "Weiterleitung zur Bestaetigungsseite ...";
+    ? "Optionalen Kontext laden …"
+    : "Weiterleitung zur Bestätigungsseite …";
 
   useEffect(() => {
     if (redirectPath) {
@@ -88,12 +88,12 @@ export function WaitlistSignupForm({
     const value = email.trim();
 
     if (!emailPattern.test(value)) {
-      setError("Bitte geben Sie eine gueltige E-Mail-Adresse ein.");
+      setError("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
       return;
     }
 
     if (!newsletterConsent) {
-      setError("Bitte bestaetigen Sie die Einwilligung fuer Wartelisten- und Produkt-Updates.");
+      setError("Bitte bestätigen Sie die Einwilligung für Wartelisten- und Produkt-Updates.");
       return;
     }
 
@@ -173,24 +173,24 @@ export function WaitlistSignupForm({
       if (submitError instanceof Error) {
         if (submitError.message === "waitlist_not_configured") {
           nextError =
-            "Die Warteliste ist gerade nicht verfuegbar. Bitte versuchen Sie es spaeter noch einmal.";
+            "Die Warteliste ist gerade nicht verfügbar. Bitte versuchen Sie es später noch einmal.";
         } else if (submitError.message === "rate_limited") {
           nextError =
             "Zu viele Anmeldungen in kurzer Zeit. Bitte versuchen Sie es in ein paar Minuten erneut.";
         } else if (submitError.message === "already_joined") {
           nextError = "Diese E-Mail-Adresse steht bereits auf der Warteliste.";
         } else if (submitError.message === "invalid_email") {
-          nextError = "Bitte geben Sie eine gueltige E-Mail-Adresse ein.";
+          nextError = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
         } else if (submitError.message === "missing_newsletter_consent") {
           nextError =
-            "Bitte bestaetigen Sie die Einwilligung fuer Wartelisten- und Produkt-Updates.";
+            "Bitte bestätigen Sie die Einwilligung für Wartelisten- und Produkt-Updates.";
         } else {
           nextError =
-            "Ihre Anmeldung konnte gerade nicht gespeichert werden. Bitte versuchen Sie es spaeter noch einmal.";
+            "Ihre Anmeldung konnte gerade nicht gespeichert werden. Bitte versuchen Sie es später noch einmal.";
         }
       } else {
         nextError =
-          "Ihre Anmeldung konnte gerade nicht gespeichert werden. Bitte versuchen Sie es spaeter noch einmal.";
+          "Ihre Anmeldung konnte gerade nicht gespeichert werden. Bitte versuchen Sie es später noch einmal.";
       }
     }
 
@@ -260,7 +260,7 @@ export function WaitlistSignupForm({
                 className="font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-[rgba(34,29,26,0.52)] sm:text-[11px]"
                 htmlFor="waitlist-email"
               >
-                Geschaeftliche E-Mail-Adresse
+                Geschäftliche E-Mail-Adresse
               </label>
               <input
                 autoComplete="email"
@@ -274,7 +274,7 @@ export function WaitlistSignupForm({
                 value={email}
               />
               <p className="mt-1 text-[11px] leading-[1.55] text-[rgba(34,29,26,0.58)] sm:text-[12px]">
-                Nutzen Sie am besten Ihre geschaeftliche Adresse.
+                Nutzen Sie am besten Ihre geschäftliche Adresse.
               </p>
             </div>
 
@@ -288,23 +288,23 @@ export function WaitlistSignupForm({
                   type="checkbox"
                 />
                 <span>
-                  Ich moechte E-Mails von Consultry zu Produkt-Updates, fruehem Zugang und
-                  Pilotplaetzen erhalten. Versand und Verwaltung erfolgen ueber Loops (USA).
+                  Ich möchte E-Mails von Consultry zu Launch-Info, Produkt-Updates und
+                  Pilotplätzen erhalten. Versand und Verwaltung erfolgen über Loops (USA).
                   Hinweise zur Verarbeitung, zu Datentransfers und meinen Rechten stehen in der
-                  Datenschutzerklaerung. Ich kann meine Einwilligung jederzeit ueber den
+                  Datenschutzerklärung. Ich kann meine Einwilligung jederzeit über den
                   Abmeldelink widerrufen.
                 </span>
               </label>
 
               <p className="mt-3 text-[10.5px] leading-[1.5] text-[rgba(34,29,26,0.58)] sm:text-[11px]">
-                Double-Opt-in: Sie erhalten zunaechst eine Bestaetigungs-E-Mail.
+                Double-Opt-in: Sie erhalten zunächst eine Bestätigungs-E-Mail.
               </p>
               <p className="mt-2 text-[10.5px] leading-[1.5] text-[rgba(34,29,26,0.66)] sm:text-[11px]">
                 <a
                   className="underline decoration-[rgba(34,29,26,0.26)] underline-offset-4 transition hover:text-[var(--consultry-surface-dark)]"
                   href="/datenschutz"
                 >
-                  Datenschutzerklaerung
+                  Datenschutzerklärung
                 </a>{" "}
                 ·{" "}
                 <a

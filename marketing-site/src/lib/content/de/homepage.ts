@@ -78,28 +78,32 @@ export type HomepageLinkCard = {
 };
 
 export const homepageSeo = {
-  title: "Consultry | AI-native Operating System fuer DACH-Beratungen",
+  title: "Consultry · Der operative AI-Begleiter für IT-Beratungen",
   description:
-    "Consultry verbindet Bestandskundenwachstum, Staffing, Forecasting, Wissenswiederverwendung und Delivery Control in einem AI-nativen Operating System fuer DACH-IT- und Digitalisierungsberatungen.",
+    "Consultry verbindet Marktsignal, Staffing, Angebot, Delivery und Wissensrückfluss in einem System für IT- und Digitalisierungsberatungen im DACH-Raum. Pre-Launch. Warteliste offen.",
   keywords: [
-    "AI-native Operating System fuer Beratungen",
-    "Software fuer Beratungsunternehmen",
-    "Consulting Plattform DACH",
-    "operatives System Beratung",
-    "Consulting Software fuer IT- und Digitalisierungsberatungen",
-    "Bestandskundenwachstum Beratung",
+    "operativer AI-Begleiter",
+    "Consulting Software DACH",
+    "Software für Beratungsunternehmen",
+    "PSA Software Beratung",
     "Staffing Software Beratung",
-    "Forecasting Beratung",
-    "Wissensmanagement Beratung",
+    "AI-native Plattform Consulting",
+    "Auslastungssteuerung Consultants",
+    "Angebotserstellung Beratung Software",
+    "Wissensmanagement Consulting",
   ],
 } as const;
 
 export const homepageContent = {
   hero: {
-    eyebrow: "AI-NATIVE OPERATING SYSTEM FUER DACH-BERATUNGEN",
-    title: ["Steuern Sie", "Bestand, Staffing", "und Delivery."],
+    eyebrow: "DER OPERATIVE AI-BEGLEITER FÜR BERATUNGEN",
+    title: [
+      "Sie kennen Ihr Team.",
+      "Consultry kennt",
+      "den Markt.",
+    ],
     body:
-      "Erkennen Sie Chancen frueher, besetzen Sie Teams sicherer und halten Sie Delivery in einem System steuerbar.",
+      "Consultry verbindet Marktsignal, Staffing, Angebot, Delivery und Wissensrückfluss in einem System — gebaut für IT- und Digitalisierungsberatungen mit 30 bis 200 Beratern im DACH-Raum.",
     primaryCta: {
       label: "Auf die Warteliste",
       href: ctaTargets.homepagePrimary,
@@ -110,47 +114,48 @@ export const homepageContent = {
     },
     image: {
       src: "/images/figma/hero-dashboard.png",
-      alt: "Consultry Produktvorschau mit Opportunity-, Staffing- und Delivery-Kontext",
+      alt: "Consultry Arbeitsfläche mit Opportunity, Team und Delivery in einer Ansicht",
     },
-    proofLine: "Erklaerbare Empfehlungen · Menschliche Freigaben · Audit Trail by default",
+    proofLine:
+      "Pre-Launch · Erklärbare Empfehlungen mit menschlicher Freigabe · EU-Hosting",
     sideCards: [
       {
-        title: "Mehr aus Bestandskunden machen",
+        title: "Ihre nächste Chance steht meist schon im Haus",
         body:
-          "Trigger, Warm Paths und Folgeprojekte werden sichtbar, bevor Chancen intern verloren gehen.",
+          "Stakeholder-Wechsel, Ausschreibungen, Hiring — Consultry zieht die Signale zusammen und zeigt Ihnen über Nacht, wo eine Opportunity entsteht, bevor sie jemand anders sieht.",
       },
       {
-        title: "Wissen im System halten",
+        title: "Wissen, das nicht im Archiv endet",
         body:
-          "Referenzen, Methoden und Lessons Learned fliessen zurueck in den naechsten Pitch, das naechste Staffing und das naechste Projekt.",
+          "Referenzen, Methoden und Lessons Learned tauchen genau dort wieder auf, wo sie Umsatz bringen: im nächsten Pitch, im nächsten Staffing, im nächsten Projekt.",
       },
     ],
     metrics: [
-      { value: "Bestand", label: "als primaerer Wachstumshebel" },
-      { value: "Staffing", label: "mit Forecast- und Teamkontext" },
-      { value: "Wissen", label: "wieder nutzbar statt vergessen" },
-      { value: "Control", label: "von Opportunity bis Delivery" },
+      { value: "Signal", label: "Marktchancen, bevor sie jemand anders sieht" },
+      { value: "Match", label: "Team-Vorschlag mit Begründung" },
+      { value: "Offer", label: "Angebot in Stunden, nicht in Tagen" },
+      { value: "Learn", label: "Wissen fließt aus dem Projekt zurück" },
     ],
   },
   answers: [
     {
       question: "Was ist Consultry in einem Satz?",
       answer:
-        "Consultry ist das AI-native Operating System fuer DACH-IT- und Digitalisierungsberatungen, das Bestandskundenwachstum, Staffing, Angebotsarbeit, Wissenswiederverwendung und Delivery Control verbindet.",
+        "Consultry ist der erste operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum — vom ersten Marktsignal bis zum Wissensrückfluss in einem System.",
       href: "/produkt",
       linkLabel: "Zur Produktseite",
     },
     {
-      question: "Fuer wen ist Consultry gebaut?",
+      question: "Für wen ist Consultry gebaut?",
       answer:
-        "Der Fokus liegt auf DACH-Beratungen mit etwa 30 bis 200 Mitarbeitenden, die Folgegeschaeft, Teamsteuerung und Projektwissen nicht laenger ueber getrennte Tools organisieren wollen.",
+        "Für IT- und Digitalisierungsberatungen mit 30 bis 200 Beratern im DACH-Raum, die Bestandskunden-Wachstum, Staffing und Delivery nicht länger über sieben Tools steuern wollen.",
       href: "/unternehmen",
       linkLabel: "Mehr zum DACH-Fokus",
     },
     {
-      question: "Warum nicht einfach ein Standard-CRM?",
+      question: "Warum reicht ein CRM nicht aus?",
       answer:
-        "Weil Beratungsarbeit nicht bei Pipeline endet. Das eigentliche Problem liegt zwischen Opportunity, Team, Proposal, Delivery und Commercial Control.",
+        "Ein CRM kennt die Pipeline, aber nicht Ihre Berater. PSA-Tools tracken Delivery, aber nicht die Akquise. Consultry verbindet beide Welten — und das Firmenwissen dazwischen.",
       href: "/produkt/consultry-vs-crm",
       linkLabel: "Zum Vergleich",
     },
@@ -159,137 +164,138 @@ export const homepageContent = {
     {
       id: "account-growth",
       stepLabel: "[01]",
-      stepperLabel: "Account Growth",
-      eyebrow: "ACCOUNT GROWTH",
-      title: "Chancen im Bestand frueher erkennen",
+      stepperLabel: "Signal",
+      eyebrow: "MARKT & SIGNAL INTELLIGENCE",
+      title: "Sie sehen die Chance, bevor sie jemand anders sieht.",
       body:
-        "Consultry verdichtet Stakeholder-Wechsel, Ausschreibungen, Hiring, Marktbewegungen und bestehenden Account-Kontext zu priorisierten Chancen. Mit Beziehungspfaden, Begruendung und naechster Handlung statt blossem Newsfeed.",
-      ctaLabel: "Mehr zu Bestandskundenwachstum",
+        "Über Nacht erkennt Consultry, was passiert: CTO-Wechsel bei einem Bestandskunden, eine passende Ausschreibung, Hiring-Signale bei einem Prospect. Morgens um 8 haben Sie drei priorisierte Chancen auf dem Tisch — mit Kontext, Beziehungspfad und erstem Briefing, nicht mit 30 ungelesenen Newslettern.",
+      ctaLabel: "Mehr zu Marktsignalen und Bestandskunden",
       image: {
         src: "/images/figma/step-signal.png",
-        alt: "Signal Intelligence Feed mit priorisierten Marktchancen",
+        alt: "Priorisierte Marktsignale mit Match-Logik und Warm Paths",
       },
       caption:
-        "Priorisierte Signale mit Match-Logik, Warm Paths und direktem Einstieg in die Opportunity.",
+        "Signale, Warm Paths und der direkte Einstieg in die Opportunity — in einer Ansicht.",
     },
     {
       id: "staffing-forecasting",
       stepLabel: "[02]",
-      stepperLabel: "Staffing & Forecasting",
-      eyebrow: "STAFFING & FORECASTING",
-      title: "Teams besser besetzen und Kapazitaeten frueher sehen",
+      stepperLabel: "Match",
+      eyebrow: "PEOPLE & CAPACITY",
+      title: "Sie schlagen drei Teams vor, nicht eines aus Verlegenheit.",
       body:
-        "Projektanforderungen, Skills, Projekterfahrung, Verfuegbarkeit und Teamkontext fliessen in nachvollziehbare Staffing-Vorschlaege ein. Gleichzeitig entsteht ein realistischeres Bild von Auslastung, Engpaessen und kommendem Leerlauf.",
+        "Consultry kennt Skills, Projekterfahrung, Verfügbarkeit und Teamchemie. Für jede Opportunity entstehen drei belastbare Team-Varianten mit Margin-Blick und Begründung — Sie entscheiden, welches Team gewinnt. Skill-Lücken und Unterauslastung werden früh sichtbar, nicht erst im nächsten Forecast.",
       ctaLabel: "Mehr zu Staffing und Forecasting",
       image: {
         src: "/images/figma/step-matching.png",
-        alt: "Staffing und Forecasting Ansicht mit Team-Vorschlaegen",
+        alt: "Drei Team-Varianten mit Match-Score, Verfügbarkeit und Forecast",
       },
       caption:
-        "Teamvarianten mit Match-Score, Verfuegbarkeit, Projekterfahrung und Forecast-Kontext.",
+        "Drei Team-Varianten, Margin inklusive, Verfügbarkeit geprüft — in Minuten statt Tagen.",
       flipped: true,
     },
     {
       id: "proposal-workflow",
       stepLabel: "[03]",
-      stepperLabel: "Proposal Workflow",
-      eyebrow: "PROPOSAL WORKFLOW",
-      title: "Angebote schneller erstellen",
+      stepperLabel: "Offer",
+      eyebrow: "DEAL EXECUTION",
+      title: "Aus der qualifizierten Chance wird ein Angebot — in Stunden.",
       body:
-        "Aus Opportunity, Teamvorschlag und vorhandenem Beratungswissen entstehen Engagement Briefs, CVs, Proposal-Drafts und Entscheidungsgrundlagen. Keine Copy-Paste-Kette ueber Dokumente, Postfaecher und Bauchgefuehl.",
-      ctaLabel: "Mehr zum Proposal Workflow",
+        "Engagement Brief, passende CVs, Referenzen und Pricing-Logik kommen aus demselben Kontext wie die Opportunity selbst. Kein Copy-Paste zwischen PowerPoint, Word und Inbox. Das Angebot steht in Stunden statt in Tagen — freigegeben, versioniert, nachvollziehbar.",
+      ctaLabel: "Mehr zum Angebotsprozess",
       image: {
         src: "/images/figma/step-delivery.png",
-        alt: "Proposal Workflow mit Angebotsentwurf und Teamkontext",
+        alt: "Angebots-Canvas mit Varianten, CVs und Freigabeprozess",
       },
       caption:
-        "Von der qualifizierten Chance zum belastbaren Angebotsentwurf in einem Workflow.",
+        "Von der qualifizierten Chance zum belastbaren Angebotsentwurf — in einem Workflow.",
     },
     {
       id: "knowledge-reuse",
       stepLabel: "[04]",
-      stepperLabel: "Knowledge Reuse",
-      eyebrow: "KNOWLEDGE REUSE",
-      title: "Projektwissen in den naechsten Deal fuehren",
+      stepperLabel: "Learn",
+      eyebrow: "WISSENSBASIS & DELIVERY",
+      title: "Das Wissen aus dem letzten Projekt hilft im nächsten Pitch.",
       body:
-        "Delivery Health, Scope-Risiken, Kostenbezug und Lessons Learned laufen in derselben Arbeitsebene zusammen. So wird Projektwissen nicht archiviert, sondern im naechsten Deal und in der naechsten Besetzung wieder nutzbar.",
-      ctaLabel: "Mehr zu Wissenswiederverwendung",
+        "Delivery Health, Scope-Risiken, Deckungsbeiträge und Lessons Learned laufen in derselben Arbeitsebene zusammen. Methoden, Referenzen und Erfahrungen fließen nach Projektende zurück — und tauchen beim nächsten Pitch, Staffing oder Projektstart wieder auf. Genau dann, wenn sie Wert erzeugen.",
+      ctaLabel: "Mehr zu Wissen und Delivery",
       image: {
         src: "/images/figma/step-knowledge.png",
-        alt: "Knowledge Hub mit Beratungswissen und Referenzen",
+        alt: "Wissensbausteine und Referenzen im Delivery-Kontext",
       },
       caption:
-        "Wissensbausteine, Referenzen und Learnings tauchen dort wieder auf, wo sie Umsatz und Delivery verbessern.",
+        "Wissensbausteine, Referenzen und Learnings — verfügbar dort, wo sie Umsatz bringen.",
       flipped: true,
     },
   ] satisfies HomepageStep[],
   internalLinks: [
     {
       href: "/produkt/account-growth",
-      label: "Bestandskundenwachstum",
+      label: "Bestandskunden-Wachstum",
       body:
-        "Wie Consultry Trigger, Warm Paths und Folgeprojekte im DACH-Consulting sichtbar macht.",
+        "Wie aus Stakeholder-Wechseln, Hiring-Signalen und Ausschreibungen priorisierte Opportunities werden.",
     },
     {
       href: "/produkt/staffing-forecasting",
       label: "Staffing und Forecasting",
       body:
-        "Wie Skills, Verfuegbarkeit und Teamlogik zu belastbareren Staffing-Entscheidungen werden.",
+        "Wie Skills, Verfügbarkeit und Teamchemie zu drei belastbaren Team-Varianten pro Opportunity werden.",
     },
     {
       href: "/produkt/knowledge-reuse",
-      label: "Knowledge Reuse",
+      label: "Wissen, das wieder auftaucht",
       body:
-        "Wie Projektwissen wieder im Pitch, Staffing und Delivery auftaucht statt im Archiv zu enden.",
+        "Wie Methoden, Referenzen und Lessons Learned im nächsten Pitch, Staffing und Projekt erscheinen.",
     },
     {
       href: "/produkt/commercial-control",
-      label: "Commercial Control",
+      label: "Delivery und Marge",
       body:
-        "Wie Delivery, Kostenbezug und Billing Prep in einer operativen Steuerung zusammenlaufen.",
+        "Wie Projekt, Deckungsbeitrag und Invoice-Ready-Übergabe an DATEV in einer Sicht zusammenlaufen.",
     },
     {
       href: "/produkt/consultry-vs-crm",
       label: "Consultry vs. Standard-CRM",
       body:
-        "Warum Beratungen mehr brauchen als ein System fuer Kontakte, Pipeline und Reporting.",
+        "Warum ein CRM Ihre Pipeline kennt, aber nicht Ihre Berater, Ihr Firmenwissen und Ihre Delivery-Realität.",
     },
   ] satisfies HomepageLinkCard[],
   metrics: [
     {
-      value: "Frueher",
-      label: "Folgegeschaeft erkennen",
+      value: "15h → 3h",
+      label: "BD-Recherche pro Woche",
       body:
-        "Weil Bestandskunden-Signale, Stakeholder-Kontext und naechste Chancen nicht mehr verstreut liegen.",
+        "Statt 15 bis 25 Stunden pro Woche über fünf bis acht Tools — Consultry bündelt Recherche und Stakeholder-Kontext in einer Arbeitsebene.",
     },
     {
-      value: "Belastbarer",
-      label: "Staffing und Forecasting",
+      value: "Tage → Stunden",
+      label: "Vom Brief zum Angebot",
       body:
-        "Weil Verfuegbarkeit, Skills und Projektrealitaet in einer gemeinsamen Steuerungslogik zusammenlaufen.",
+        "Engagement Brief, Team-Variante, CVs und Proposal-Draft entstehen aus einem gemeinsamen Kontext — nicht aus sieben Dokumenten.",
     },
     {
-      value: "Weniger",
-      label: "Wissensverlust",
+      value: "60–70% → 80–90%",
+      label: "Ziel-Utilization pro Berater",
       body:
-        "Weil Referenzen, Methoden und Lessons Learned im operativen Flow wieder auftauchen.",
+        "Weil Pipeline, Skills und Verfügbarkeit in einer Steuerungslogik zusammenlaufen — Bench-Kosten werden früher sichtbar.",
     },
     {
-      value: "Schneller",
-      label: "von Chance zu Angebot",
+      value: "+25–40%",
+      label: "Ziel-Steigerung Win-Rate",
       body:
-        "Weil Briefing, Team, CVs und Proposal nicht mehr separat zusammengesucht werden muessen.",
+        "Passende Referenzen, realistisches Team und belastbare Begründung — im Angebot selbst, nicht in der Nacharbeit.",
     },
   ] satisfies HomepageMetric[],
   waitlist: {
     eyebrow: "WARTELISTE",
-    title: "Sichern Sie sich fruehen Zugang zu Consultry",
+    title: "Sie wollen dabei sein, wenn Consultry live geht?",
     body:
-      "Tragen Sie sich ein, wenn Sie Bestandskundenwachstum, Staffing, Wissen und Angebote nicht mehr ueber Excel und isolierte Tools steuern wollen.",
-    placeholder: "Ihre geschaeftliche E-Mail-Adresse",
+      "Tragen Sie sich ein. Zum Launch hören Sie als Erste — und wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen wir binnen 48 Stunden direkt miteinander.",
+    placeholder: "Ihre geschäftliche E-Mail-Adresse",
     buttonLabel: "Auf die Warteliste",
     trustLine:
-      "Double-Opt-in · Exklusiv fuer DACH-Beratungen · Begrenzte Pilotplaetze",
-    success: "Danke. Bitte bestaetigen Sie jetzt noch Ihre Anmeldung per E-Mail.",
+      "Double-Opt-in · Exklusiv für DACH-Beratungen · Pilotplätze werden kuratiert",
+    success:
+      "Danke. Bitte bestätigen Sie jetzt noch Ihre Anmeldung über den Link in Ihrer E-Mail.",
   } satisfies HomepageWaitlist,
 } as const;

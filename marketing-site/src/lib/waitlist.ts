@@ -11,10 +11,10 @@ export const waitlistConsentPropertyDefinitions = [
 ] as const;
 
 export const teamSizeOptions = [
-  { label: "1-10 Mitarbeitende", value: "1-10" },
-  { label: "11-30 Mitarbeitende", value: "11-30" },
-  { label: "31-100 Mitarbeitende", value: "31-100" },
-  { label: "100+ Mitarbeitende", value: "100+" },
+  { label: "1–10 Berater", value: "1-10" },
+  { label: "11–30 Berater", value: "11-30" },
+  { label: "31–100 Berater", value: "31-100" },
+  { label: "100+ Berater", value: "100+" },
 ] as const;
 
 export const consultingFocusOptions = [
@@ -25,15 +25,15 @@ export const consultingFocusOptions = [
 ] as const;
 
 export const primaryPainOptions = [
-  { label: "Staffing", value: "staffing" },
-  { label: "Bestandskundenwachstum", value: "bestandskundenwachstum" },
-  { label: "Angebote", value: "angebote" },
-  { label: "Wissensmanagement", value: "wissensmanagement" },
-  { label: "Projektcontrolling", value: "projektcontrolling" },
+  { label: "Staffing und Forecasting", value: "staffing" },
+  { label: "Bestandskunden-Wachstum", value: "bestandskundenwachstum" },
+  { label: "Angebote und Proposals", value: "angebote" },
+  { label: "Wissen, das wieder auftaucht", value: "wissensmanagement" },
+  { label: "Delivery und Marge", value: "projektcontrolling" },
 ] as const;
 
 export const pilotInterestOptions = [
-  { label: "Ja, ich moechte fruehen Pilotzugang erhalten", value: "yes" },
+  { label: "Ja, ich möchte Pilotkunde werden und Consultry mitgestalten.", value: "yes" },
 ] as const;
 
 export type TeamSizeValue = (typeof teamSizeOptions)[number]["value"];
