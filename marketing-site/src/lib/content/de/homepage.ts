@@ -103,7 +103,7 @@ export const homepageContent = {
       "den Markt.",
     ],
     body:
-      "Consultry verbindet Marktsignal, Staffing, Angebot, Delivery und Wissensrückfluss in einem System — gebaut für IT- und Digitalisierungsberatungen mit 30 bis 200 Beratern im DACH-Raum.",
+      "Consultry verbindet Marktsignal, Staffing, Angebot, Delivery und Wissensrückfluss in einem System. Gebaut für IT- und Digitalisierungsberatungen mit 30 bis 200 Beratern im DACH-Raum.",
     primaryCta: {
       label: "Auf die Warteliste",
       href: ctaTargets.homepagePrimary,
@@ -122,7 +122,7 @@ export const homepageContent = {
       {
         title: "Ihre nächste Chance steht meist schon im Haus",
         body:
-          "Stakeholder-Wechsel, Ausschreibungen, Hiring — Consultry zieht die Signale zusammen und zeigt Ihnen über Nacht, wo eine Opportunity entsteht, bevor sie jemand anders sieht.",
+          "Stakeholder-Wechsel, Ausschreibungen, Hiring. Consultry zieht die Signale zusammen und zeigt Ihnen über Nacht, wo eine Opportunity entsteht, bevor sie jemand anders sieht.",
       },
       {
         title: "Wissen, das nicht im Archiv endet",
@@ -141,7 +141,7 @@ export const homepageContent = {
     {
       question: "Was ist Consultry in einem Satz?",
       answer:
-        "Consultry ist der erste operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum — vom ersten Marktsignal bis zum Wissensrückfluss in einem System.",
+        "Consultry ist der erste operative AI-Begleiter für IT- und Digitalisierungsberatungen im DACH-Raum: vom ersten Marktsignal bis zum Wissensrückfluss in einem System.",
       href: "/produkt",
       linkLabel: "Zur Produktseite",
     },
@@ -155,7 +155,7 @@ export const homepageContent = {
     {
       question: "Warum reicht ein CRM nicht aus?",
       answer:
-        "Ein CRM kennt die Pipeline, aber nicht Ihre Berater. PSA-Tools tracken Delivery, aber nicht die Akquise. Consultry verbindet beide Welten — und das Firmenwissen dazwischen.",
+        "Ein CRM kennt die Pipeline, aber nicht Ihre Berater. PSA-Tools tracken Delivery, aber nicht die Akquise. Consultry verbindet beide Welten und das Firmenwissen dazwischen.",
       href: "/produkt/consultry-vs-crm",
       linkLabel: "Zum Vergleich",
     },
@@ -168,14 +168,14 @@ export const homepageContent = {
       eyebrow: "MARKT & SIGNAL INTELLIGENCE",
       title: "Sie sehen die Chance, bevor sie jemand anders sieht.",
       body:
-        "Über Nacht erkennt Consultry, was passiert: CTO-Wechsel bei einem Bestandskunden, eine passende Ausschreibung, Hiring-Signale bei einem Prospect. Morgens um 8 haben Sie drei priorisierte Chancen auf dem Tisch — mit Kontext, Beziehungspfad und erstem Briefing, nicht mit 30 ungelesenen Newslettern.",
+        "Über Nacht erkennt Consultry, was passiert: CTO-Wechsel bei einem Bestandskunden, eine passende Ausschreibung, Hiring-Signale bei einem Prospect. Morgens um 8 haben Sie drei priorisierte Chancen auf dem Tisch, mit Kontext, Beziehungspfad und erstem Briefing, nicht mit 30 ungelesenen Newslettern.",
       ctaLabel: "Mehr zu Marktsignalen und Bestandskunden",
       image: {
         src: "/images/figma/step-signal.png",
         alt: "Priorisierte Marktsignale mit Match-Logik und Warm Paths",
       },
       caption:
-        "Signale, Warm Paths und der direkte Einstieg in die Opportunity — in einer Ansicht.",
+        "Signale, Warm Paths und der direkte Einstieg in die Opportunity, in einer Ansicht.",
     },
     {
       id: "staffing-forecasting",
@@ -184,14 +184,14 @@ export const homepageContent = {
       eyebrow: "PEOPLE & CAPACITY",
       title: "Sie schlagen drei Teams vor, nicht eines aus Verlegenheit.",
       body:
-        "Consultry kennt Skills, Projekterfahrung, Verfügbarkeit und Teamchemie. Für jede Opportunity entstehen drei belastbare Team-Varianten mit Margin-Blick und Begründung — Sie entscheiden, welches Team gewinnt. Skill-Lücken und Unterauslastung werden früh sichtbar, nicht erst im nächsten Forecast.",
+        "Consultry kennt Skills, Projekterfahrung, Verfügbarkeit und Teamchemie. Für jede Opportunity entstehen drei belastbare Team-Varianten mit Margin-Blick und Begründung. Sie entscheiden, welches Team gewinnt. Skill-Lücken und Unterauslastung werden früh sichtbar, nicht erst im nächsten Forecast.",
       ctaLabel: "Mehr zu Staffing und Forecasting",
       image: {
         src: "/images/figma/step-matching.png",
         alt: "Drei Team-Varianten mit Match-Score, Verfügbarkeit und Forecast",
       },
       caption:
-        "Drei Team-Varianten, Margin inklusive, Verfügbarkeit geprüft — in Minuten statt Tagen.",
+        "Drei Team-Varianten, Margin inklusive, Verfügbarkeit geprüft. In Minuten statt Tagen.",
       flipped: true,
     },
     {
@@ -199,16 +199,16 @@ export const homepageContent = {
       stepLabel: "[03]",
       stepperLabel: "Offer",
       eyebrow: "DEAL EXECUTION",
-      title: "Aus der qualifizierten Chance wird ein Angebot — in Stunden.",
+      title: "Aus der qualifizierten Chance wird ein Angebot in Stunden.",
       body:
-        "Engagement Brief, passende CVs, Referenzen und Pricing-Logik kommen aus demselben Kontext wie die Opportunity selbst. Kein Copy-Paste zwischen PowerPoint, Word und Inbox. Das Angebot steht in Stunden statt in Tagen — freigegeben, versioniert, nachvollziehbar.",
+        "Engagement Brief, passende CVs, Referenzen und Pricing-Logik kommen aus demselben Kontext wie die Opportunity selbst. Kein Copy-Paste zwischen PowerPoint, Word und Inbox. Das Angebot steht in Stunden statt in Tagen: freigegeben, versioniert, nachvollziehbar.",
       ctaLabel: "Mehr zum Angebotsprozess",
       image: {
         src: "/images/figma/step-delivery.png",
         alt: "Angebots-Canvas mit Varianten, CVs und Freigabeprozess",
       },
       caption:
-        "Von der qualifizierten Chance zum belastbaren Angebotsentwurf — in einem Workflow.",
+        "Von der qualifizierten Chance zum belastbaren Angebotsentwurf, in einem Workflow.",
     },
     {
       id: "knowledge-reuse",
@@ -217,14 +217,14 @@ export const homepageContent = {
       eyebrow: "WISSENSBASIS & DELIVERY",
       title: "Das Wissen aus dem letzten Projekt hilft im nächsten Pitch.",
       body:
-        "Delivery Health, Scope-Risiken, Deckungsbeiträge und Lessons Learned laufen in derselben Arbeitsebene zusammen. Methoden, Referenzen und Erfahrungen fließen nach Projektende zurück — und tauchen beim nächsten Pitch, Staffing oder Projektstart wieder auf. Genau dann, wenn sie Wert erzeugen.",
+        "Delivery Health, Scope-Risiken, Deckungsbeiträge und Lessons Learned laufen in derselben Arbeitsebene zusammen. Methoden, Referenzen und Erfahrungen fließen nach Projektende zurück. Sie tauchen beim nächsten Pitch, Staffing oder Projektstart wieder auf. Genau dann, wenn sie Wert erzeugen.",
       ctaLabel: "Mehr zu Wissen und Delivery",
       image: {
         src: "/images/figma/step-knowledge.png",
         alt: "Wissensbausteine und Referenzen im Delivery-Kontext",
       },
       caption:
-        "Wissensbausteine, Referenzen und Learnings — verfügbar dort, wo sie Umsatz bringen.",
+        "Wissensbausteine, Referenzen und Learnings, verfügbar dort, wo sie Umsatz bringen.",
       flipped: true,
     },
   ] satisfies HomepageStep[],
@@ -265,32 +265,32 @@ export const homepageContent = {
       value: "15h → 3h",
       label: "BD-Recherche pro Woche",
       body:
-        "Statt 15 bis 25 Stunden pro Woche über fünf bis acht Tools — Consultry bündelt Recherche und Stakeholder-Kontext in einer Arbeitsebene.",
+        "Statt 15 bis 25 Stunden pro Woche über fünf bis acht Tools. Consultry bündelt Recherche und Stakeholder-Kontext in einer Arbeitsebene.",
     },
     {
       value: "Tage → Stunden",
       label: "Vom Brief zum Angebot",
       body:
-        "Engagement Brief, Team-Variante, CVs und Proposal-Draft entstehen aus einem gemeinsamen Kontext — nicht aus sieben Dokumenten.",
+        "Engagement Brief, Team-Variante, CVs und Proposal-Draft entstehen aus einem gemeinsamen Kontext, nicht aus sieben Dokumenten.",
     },
     {
       value: "60–70% → 80–90%",
       label: "Ziel-Utilization pro Berater",
       body:
-        "Weil Pipeline, Skills und Verfügbarkeit in einer Steuerungslogik zusammenlaufen — Bench-Kosten werden früher sichtbar.",
+        "Weil Pipeline, Skills und Verfügbarkeit in einer Steuerungslogik zusammenlaufen. Bench-Kosten werden früher sichtbar.",
     },
     {
       value: "+25–40%",
       label: "Ziel-Steigerung Win-Rate",
       body:
-        "Passende Referenzen, realistisches Team und belastbare Begründung — im Angebot selbst, nicht in der Nacharbeit.",
+        "Passende Referenzen, realistisches Team und belastbare Begründung, im Angebot selbst, nicht in der Nacharbeit.",
     },
   ] satisfies HomepageMetric[],
   waitlist: {
     eyebrow: "WARTELISTE",
     title: "Sie wollen dabei sein, wenn Consultry live geht?",
     body:
-      "Tragen Sie sich ein. Zum Launch hören Sie als Erste — und wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen wir binnen 48 Stunden direkt miteinander.",
+      "Tragen Sie sich ein. Zum Launch hören Sie als Erste. Wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen wir binnen 48 Stunden direkt miteinander.",
     placeholder: "Ihre geschäftliche E-Mail-Adresse",
     buttonLabel: "Auf die Warteliste",
     trustLine:

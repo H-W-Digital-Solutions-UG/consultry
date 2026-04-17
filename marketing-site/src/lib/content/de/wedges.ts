@@ -48,7 +48,7 @@ const sharedInternalLinks = {
     href: "/produkt/staffing-forecasting",
     label: "Staffing und Forecasting",
     body:
-      "Wie Skills, Verfügbarkeit und Delivery-Realität drei Team-Varianten mit Begründung liefern — statt Excel und Bauchgefühl.",
+      "Wie Skills, Verfügbarkeit und Delivery-Realität drei Team-Varianten mit Begründung liefern. Statt Excel und Bauchgefühl.",
   },
   knowledge: {
     href: "/produkt/knowledge-reuse",
@@ -66,7 +66,7 @@ const sharedInternalLinks = {
     href: "/produkt/consultry-vs-crm",
     label: "Consultry vs. CRM",
     body:
-      "Warum ein CRM die Wertschöpfungslogik einer Beratung nicht abbilden kann — und was stattdessen gebraucht wird.",
+      "Warum ein CRM die Wertschöpfungslogik einer Beratung nicht abbilden kann. Und was stattdessen gebraucht wird.",
   },
 } as const;
 
@@ -76,7 +76,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
     overline: "BESTANDSKUNDEN-WACHSTUM",
     title: "Wie macht Consultry aus 80 % Ihrer Umsatzquelle einen steuerbaren Wachstumspfad?",
     description:
-      "Consultry verbindet Marktsignale, Stakeholder-Kontext und Warm Paths zu priorisierten Opportunities — aus der Umsatzquelle, die in DACH-Beratungen am stärksten wirkt: dem Bestandskunden.",
+      "Consultry verbindet Marktsignale, Stakeholder-Kontext und Warm Paths zu priorisierten Opportunities aus der Umsatzquelle, die in DACH-Beratungen am stärksten wirkt: dem Bestandskunden.",
     keywords: [
       "Bestandskunden-Wachstum Beratung",
       "Account Expansion DACH",
@@ -86,21 +86,21 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
     introAnswer:
       "In DACH-Beratungen kommen rund 80 % des Umsatzes aus Bestandskunden. Die stärksten Signale dafür stehen in Newslettern, im Postfach eines Partners und in Ausschreibungen, die niemand rechtzeitig sieht. Consultry liest sie mit, verbindet sie mit Ihrem Netzwerk und übersetzt sie in priorisierte Opportunities mit Engagement-Brief und Warm Path.",
     keyTakeaways: [
-      "80 % Ihres Umsatzes kommen aus Bestandskunden — aber 80 % Ihrer Aufmerksamkeit geht in Neukunden-Recherche.",
+      "80 % Ihres Umsatzes kommen aus Bestandskunden. Aber 80 % Ihrer Aufmerksamkeit geht in Neukunden-Recherche.",
       "Ein Signal ohne Kontext ist ein weiterer To-do-Eintrag. Ein Signal mit Warm Path, Bedarfshypothese und Team-Vorschlag ist eine Opportunity.",
-      "CTO-Wechsel, Budgetentscheidungen und Ausschreibungen werden früher sichtbar — Sie reagieren in Tagen statt Wochen.",
+      "CTO-Wechsel, Budgetentscheidungen und Ausschreibungen werden früher sichtbar. Sie reagieren in Tagen statt Wochen.",
       "BD-Recherche fällt typischerweise von 15 bis 25 Stunden pro Woche auf 3 bis 5 Stunden.",
     ],
     sections: [
       {
         title: "Warum Bestandskunden Ihr stärkster Hebel sind.",
         body:
-          "In IT- und Digitalisierungsberatungen zwischen 30 und 200 Beratern entsteht der Großteil des Umsatzes aus Folgegeschäft. Jeder Managing Partner weiß das — trotzdem verpufft der Hebel in der Praxis, weil Signale, Zuständigkeiten und Kontext in verschiedenen Postfächern, CRMs und Köpfen liegen. Consultry bringt sie zusammen.",
+          "In IT- und Digitalisierungsberatungen zwischen 30 und 200 Beratern entsteht der Großteil des Umsatzes aus Folgegeschäft. Jeder Managing Partner weiß das. Trotzdem verpufft der Hebel in der Praxis, weil Signale, Zuständigkeiten und Kontext in verschiedenen Postfächern, CRMs und Köpfen liegen. Consultry bringt sie zusammen.",
       },
       {
         title: "Welche Signale Consultry für Sie mitliest.",
         body:
-          "Das System verdichtet die Signale, die im Alltag einer Beratung wirklich Handlung auslösen — ohne dass Ihre Partner ihre LinkedIn-Feeds jeden Morgen selbst scannen müssen.",
+          "Das System verdichtet die Signale, die im Alltag einer Beratung wirklich Handlung auslösen, ohne dass Ihre Partner ihre LinkedIn-Feeds jeden Morgen selbst scannen müssen.",
         bullets: [
           "Stakeholder-Wechsel auf C-Level oder in Projektverantwortung",
           "Hiring-Signale, die auf neue Initiativen hinweisen",
@@ -116,7 +116,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         title: "Der Unterschied zu Market Intelligence.",
         body:
-          "Monitoring-Tools zeigen Ihnen, was passiert. Consultry zeigt Ihnen, was Sie tun können — mit Ihrem Team, Ihrem Wissen und Ihren Beziehungen. Genau dort, wo CRM- und Intel-Tools aufhören.",
+          "Monitoring-Tools zeigen Ihnen, was passiert. Consultry zeigt Ihnen, was Sie tun können, mit Ihrem Team, Ihrem Wissen und Ihren Beziehungen. Genau dort, wo CRM- und Intel-Tools aufhören.",
       },
     ],
     faqBlocks: [
@@ -133,7 +133,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         question: "Warum ist das für DACH-Beratungen besonders relevant?",
         answer:
-          "Weil Beziehungsgeschäft, Referenzlogik und Folgeprojekte im DACH-Raum stärker wirken als generischer Outbound. Consultry baut genau auf dieser Logik auf — mit EU-Hosting und DSGVO von Anfang an.",
+          "Weil Beziehungsgeschäft, Referenzlogik und Folgeprojekte im DACH-Raum stärker wirken als generischer Outbound. Consultry baut genau auf dieser Logik auf, mit EU-Hosting und DSGVO von Anfang an.",
       },
     ],
     internalLinks: [
@@ -147,7 +147,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
     overline: "STAFFING UND FORECASTING",
     title: "Wie macht Consultry aus Excel-Staffing drei Team-Varianten mit Begründung?",
     description:
-      "Consultry verbindet Skills, Projekterfahrung, Verfügbarkeit und Delivery-Realität zu belastbaren Staffing- und Forecast-Entscheidungen — mit Match-Score, Begründung und Freigabe.",
+      "Consultry verbindet Skills, Projekterfahrung, Verfügbarkeit und Delivery-Realität zu belastbaren Staffing- und Forecast-Entscheidungen. Mit Match-Score, Begründung und Freigabe.",
     keywords: [
       "Staffing Software Beratung",
       "Berater-Matching DACH",
@@ -155,23 +155,23 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       "Kapazitätsplanung Beratung",
     ],
     introAnswer:
-      "Staffing scheitert in Beratungen selten an fehlenden CVs. Es scheitert daran, dass Skills, Zertifikate, Verfügbarkeit, Projekterfahrung und Delivery-Risiko in fünf Systemen liegen. Consultry führt diese Dimensionen zusammen und schlägt für jede Opportunity drei Team-Varianten vor — mit Begründung, Match-Score und Forecast-Kontext. Auslastung steigt typischerweise von 60 bis 70 % auf 80 bis 90 %.",
+      "Staffing scheitert in Beratungen selten an fehlenden CVs. Es scheitert daran, dass Skills, Zertifikate, Verfügbarkeit, Projekterfahrung und Delivery-Risiko in fünf Systemen liegen. Consultry führt diese Dimensionen zusammen und schlägt für jede Opportunity drei Team-Varianten vor: mit Begründung, Match-Score und Forecast-Kontext. Auslastung steigt typischerweise von 60 bis 70 % auf 80 bis 90 %.",
     keyTakeaways: [
-      "Staffing bedeutet nicht, einen freien Kalenderplatz zu finden — sondern den passenden Berater mit echtem Projektfit.",
+      "Staffing bedeutet nicht, einen freien Kalenderplatz zu finden, sondern den passenden Berater mit echtem Projektfit.",
       "Drei Varianten, jede mit Begründung. Sie sehen, warum wer vorgeschlagen wird, und Sie entscheiden.",
       "Forecasting wird belastbar, wenn Pipeline, Kapazität und Delivery-Realität in einer Logik zusammenlaufen.",
-      "Engpässe, Bench-Situationen und Skill-Gaps werden früher sichtbar — oft Wochen vor dem nächsten Staffing-Meeting.",
+      "Engpässe, Bench-Situationen und Skill-Gaps werden früher sichtbar, oft Wochen vor dem nächsten Staffing-Meeting.",
     ],
     sections: [
       {
         title: "Warum Staffing heute reaktiv bleibt.",
         body:
-          "Skills liegen in CVs. Verfügbarkeit im Kalender. Delivery-Risiken im Kopf des Projektleiters. Pipeline-Wahrscheinlichkeiten im CRM. Solange diese Ebenen nicht verbunden sind, entscheidet Staffing auf Bauchgefühl — und die Bench kostet typischerweise 5 bis 10 Tausend Euro pro Berater und Monat.",
+          "Skills liegen in CVs. Verfügbarkeit im Kalender. Delivery-Risiken im Kopf des Projektleiters. Pipeline-Wahrscheinlichkeiten im CRM. Solange diese Ebenen nicht verbunden sind, entscheidet Staffing auf Bauchgefühl. Und die Bench kostet typischerweise 5 bis 10 Tausend Euro pro Berater und Monat.",
       },
       {
         title: "Was in das Matching einfließt.",
         body:
-          "Consultry bewertet nicht nach Keywords. Das System verbindet fachliche Tiefe, Erfahrung, Teamkontext und operative Plausibilität — und begründet jede Empfehlung.",
+          "Consultry bewertet nicht nach Keywords. Das System verbindet fachliche Tiefe, Erfahrung, Teamkontext und operative Plausibilität. Und begründet jede Empfehlung.",
         bullets: [
           "Skill-Niveau mit branchenrelevanter Projekterfahrung",
           "Verfügbarkeit mit Projekt- und Urlaubs-Überschneidungen",
@@ -182,29 +182,29 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         title: "Was Forecasting im Produktkontext heißt.",
         body:
-          "Das System verbindet Pipeline-Signale mit realer Teamkapazität. Sie sehen vier Wochen im Voraus, ob Sie eine Deal-Welle bedienen können — oder ob Sie früher in Hiring, Nearshoring oder Partnering gehen sollten.",
+          "Das System verbindet Pipeline-Signale mit realer Teamkapazität. Sie sehen vier Wochen im Voraus, ob Sie eine Deal-Welle bedienen können, oder ob Sie früher in Hiring, Nearshoring oder Partnering gehen sollten.",
       },
       {
         title: "DACH-konform, nicht intransparent.",
         body:
-          "Jede Empfehlung ist erklärbar. People-Analytics bleiben auf operativer Ebene — aggregierte Sichten, keine heimlichen Bewertungen. BetrVG, DSGVO und AI Act sind eingebaut, nicht später angeschraubt.",
+          "Jede Empfehlung ist erklärbar. People-Analytics bleiben auf operativer Ebene: aggregierte Sichten, keine heimlichen Bewertungen. BetrVG, DSGVO und AI Act sind eingebaut, nicht später angeschraubt.",
       },
     ],
     faqBlocks: [
       {
         question: "Ist das einfach ein Skill-Matching-Tool?",
         answer:
-          "Nein. Ein Skill-Matcher zeigt Treffer. Consultry verbindet Skills mit Verfügbarkeit, Teamkontext, Pipeline und Delivery-Realität — und begründet, warum ein Berater besser passt als ein anderer.",
+          "Nein. Ein Skill-Matcher zeigt Treffer. Consultry verbindet Skills mit Verfügbarkeit, Teamkontext, Pipeline und Delivery-Realität. Und begründet, warum ein Berater besser passt als ein anderer.",
       },
       {
         question: "Hilft das nur beim Staffing oder auch im Forecast?",
         answer:
-          "Beides. Dieselben Datenpunkte treiben Staffing-Vorschläge und Forecasting-Sichten. Sie sehen Engpässe und Bench-Risiken früher — und steuern gezielter.",
+          "Beides. Dieselben Datenpunkte treiben Staffing-Vorschläge und Forecasting-Sichten. Sie sehen Engpässe und Bench-Risiken früher und steuern gezielter.",
       },
       {
         question: "Was heißt das für unsere Auslastung konkret?",
         answer:
-          "Pilotkunden erreichen typischerweise eine Auslastung von 80 bis 90 % statt 60 bis 70 %. Der Hebel liegt weniger im Drücken einzelner Berater — sondern darin, Leerlauf und Engpässe überhaupt früh zu sehen.",
+          "Pilotkunden erreichen typischerweise eine Auslastung von 80 bis 90 % statt 60 bis 70 %. Der Hebel liegt weniger im Drücken einzelner Berater, sondern darin, Leerlauf und Engpässe überhaupt früh zu sehen.",
       },
     ],
     internalLinks: [
@@ -218,7 +218,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
     overline: "WISSENSBASIS",
     title: "Wie sorgt Consultry dafür, dass Projektwissen wieder auftaucht statt in Confluence zu versanden?",
     description:
-      "Consultry macht Referenzen, Methodik, Lessons Learned und Delivery-Artefakte in Angebot, Staffing und Delivery wieder nutzbar — quellengebunden, versioniert und tenant-isoliert.",
+      "Consultry macht Referenzen, Methodik, Lessons Learned und Delivery-Artefakte in Angebot, Staffing und Delivery wieder nutzbar: quellengebunden, versioniert und tenant-isoliert.",
     keywords: [
       "Wissensmanagement Beratung",
       "Knowledge Reuse Consulting",
@@ -226,18 +226,18 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       "Projektwissen DACH",
     ],
     introAnswer:
-      "Beratungen haben selten ein Dokumentations-Problem. Sie haben ein Wiederverwendungs-Problem. Methodik, Referenzen und Lessons Learned liegen in Confluence, SharePoint und Laufwerken — sichtbar, aber nicht mehr auffindbar. Consultry bringt das Wissen dorthin zurück, wo es Wert erzeugt: in den Engagement-Brief, ins Angebot, ins Onboarding, in die Delivery. Antwortzeit sinkt von Stunden auf Sekunden.",
+      "Beratungen haben selten ein Dokumentations-Problem. Sie haben ein Wiederverwendungs-Problem. Methodik, Referenzen und Lessons Learned liegen in Confluence, SharePoint und Laufwerken. Sichtbar, aber nicht mehr auffindbar. Consultry bringt das Wissen dorthin zurück, wo es Wert erzeugt: in den Engagement-Brief, ins Angebot, ins Onboarding, in die Delivery. Antwortzeit sinkt von Stunden auf Sekunden.",
     keyTakeaways: [
-      "Wissen in Beratungen entsteht im Projekt — aber es wirkt erst, wenn es im nächsten Projekt wieder auftaucht.",
+      "Wissen in Beratungen entsteht im Projekt. Aber es wirkt erst, wenn es im nächsten Projekt wieder auftaucht.",
       "Consultry verknüpft Inhalte quellengebunden: Sie sehen immer, wo eine Methode herkommt und welcher Kollege sie zuletzt angewendet hat.",
-      "Referenzen und Case Studies erscheinen automatisch im Angebots-Canvas — Sie müssen sie nicht mehr suchen.",
+      "Referenzen und Case Studies erscheinen automatisch im Angebots-Canvas. Sie müssen sie nicht mehr suchen.",
       "Onboarding-Zeit für neue Berater sinkt typischerweise um die Hälfte.",
     ],
     sections: [
       {
         title: "Warum ein Wiki nicht reicht.",
         body:
-          "Ein Wiki ist ein Archiv. Archive funktionieren, wenn Menschen wissen, wonach sie suchen. Im Beratungsalltag weiß niemand, was der Kollege vor zwei Jahren bei einem ähnlichen Projekt gelernt hat. Consultry holt das Wissen heraus — ohne dass jemand danach gefragt haben muss.",
+          "Ein Wiki ist ein Archiv. Archive funktionieren, wenn Menschen wissen, wonach sie suchen. Im Beratungsalltag weiß niemand, was der Kollege vor zwei Jahren bei einem ähnlichen Projekt gelernt hat. Consultry holt das Wissen heraus, ohne dass jemand danach gefragt haben muss.",
       },
       {
         title: "Was Consultry wiederverwendbar macht.",
@@ -253,7 +253,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         title: "Wann Wissen wieder auftaucht.",
         body:
-          "Im Engagement-Brief erscheinen passende Referenzen. Im Staffing-Vorschlag erscheint relevante Projekterfahrung. Im Angebots-Canvas erscheinen Methodik und Case Studies. In der Delivery erscheinen Risikoindikatoren aus vergleichbaren Projekten — bevor Sie sie selbst suchen.",
+          "Im Engagement-Brief erscheinen passende Referenzen. Im Staffing-Vorschlag erscheint relevante Projekterfahrung. Im Angebots-Canvas erscheinen Methodik und Case Studies. In der Delivery erscheinen Risikoindikatoren aus vergleichbaren Projekten, bevor Sie sie selbst suchen.",
       },
       {
         title: "Vertrauen durch Quellenbindung.",
@@ -270,7 +270,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         question: "Welche Rolle spielen Quellen?",
         answer:
-          "Zentrale Rolle. Inhalte sind quellengebunden, tenant-isoliert und versioniert. Sie sehen immer, wo eine Aussage herkommt — und können sie nachvollziehen.",
+          "Zentrale Rolle. Inhalte sind quellengebunden, tenant-isoliert und versioniert. Sie sehen immer, wo eine Aussage herkommt, und können sie nachvollziehen.",
       },
       {
         question: "Hilft das auch beim Onboarding neuer Berater?",
@@ -287,7 +287,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
   "commercial-control": {
     slug: "commercial-control",
     overline: "DELIVERY UND MARGE",
-    title: "Wie verbindet Consultry Delivery mit Marge — bevor Abweichungen teuer werden?",
+    title: "Wie verbindet Consultry Delivery mit Marge, bevor Abweichungen teuer werden?",
     description:
       "Consultry führt Delivery Health, Allocation, Kostenbezug und Invoice-Ready-Übergabe in einer operativen Sicht zusammen. Sie sehen Marge und Risiko, bevor der Monatsabschluss sie zeigt.",
     keywords: [
@@ -297,12 +297,12 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       "Commercial Control DACH",
     ],
     introAnswer:
-      "Wenn Delivery und kommerzielle Sicht getrennt laufen, sehen Sie Probleme im Monatsabschluss — zu spät. Consultry verbindet Projekt-Allocation, Risiko-Indikatoren, Kostenbezug und Invoice-Ready-Übergabe in derselben Arbeitsebene. Partner und Projektleiter sehen Marge und Abweichung in Echtzeit, nicht im Reporting vier Wochen später.",
+      "Wenn Delivery und kommerzielle Sicht getrennt laufen, sehen Sie Probleme im Monatsabschluss. Zu spät. Consultry verbindet Projekt-Allocation, Risiko-Indikatoren, Kostenbezug und Invoice-Ready-Übergabe in derselben Arbeitsebene. Partner und Projektleiter sehen Marge und Abweichung in Echtzeit, nicht im Reporting vier Wochen später.",
     keyTakeaways: [
       "Delivery-Risiken zeigen sich früh, wenn Scope, Auslastung und Kostenbezug in einer Sicht zusammenkommen.",
-      "Invoice-Ready-Übergabe an DATEV oder Bexio ersetzt keine Buchhaltung — sie beseitigt den Medienbruch zwischen Projekt und Rechnung.",
+      "Invoice-Ready-Übergabe an DATEV oder Bexio ersetzt keine Buchhaltung. Sie beseitigt den Medienbruch zwischen Projekt und Rechnung.",
       "Margen-Steuerung wird vom Monats-Reporting zur täglichen Steuerungsgröße.",
-      "Partner sehen ohne Excel-Export, wo Aufwand oder Scope aus dem Ruder laufen — und können gegensteuern, bevor die Marge kippt.",
+      "Partner sehen ohne Excel-Export, wo Aufwand oder Scope aus dem Ruder laufen, und können gegensteuern, bevor die Marge kippt.",
     ],
     sections: [
       {
@@ -313,7 +313,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         title: "Was Consultry in einer Sicht zusammenbringt.",
         body:
-          "Der Schwerpunkt liegt auf operativer Transparenz — nah am Projekt, nicht im Backoffice.",
+          "Der Schwerpunkt liegt auf operativer Transparenz. Nah am Projekt, nicht im Backoffice.",
         bullets: [
           "Allocation mit Echtzeit-Sicht auf Auslastung und Bench",
           "Delivery Health mit Risiko-Indikatoren aus vergleichbaren Projekten",
@@ -324,12 +324,12 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         title: "Vom Reporting zur Steuerung.",
         body:
-          "Wenn Projektleiter früh sehen, wo Scope oder Aufwand kippen, wird Commercial Control zur Steuerungsgröße — nicht zum Bericht, der nachträglich erklärt, warum eine Marge gefallen ist.",
+          "Wenn Projektleiter früh sehen, wo Scope oder Aufwand kippen, wird Commercial Control zur Steuerungsgröße, nicht zum Bericht, der nachträglich erklärt, warum eine Marge gefallen ist.",
       },
       {
         title: "Klare Abgrenzung zu ERP und Buchhaltung.",
         body:
-          "Consultry ist kein ERP. Rechnungsstellung, Buchhaltung und Jahresabschluss bleiben in Ihren etablierten Systemen. Consultry schließt die Lücke davor — zwischen Opportunity, Staffing, Delivery und invoice-naher Vorbereitung.",
+          "Consultry ist kein ERP. Rechnungsstellung, Buchhaltung und Jahresabschluss bleiben in Ihren etablierten Systemen. Consultry schließt die Lücke davor: zwischen Opportunity, Staffing, Delivery und invoice-naher Vorbereitung.",
       },
     ],
     faqBlocks: [
@@ -341,7 +341,7 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         question: "Warum ist Delivery und Marge ein eigener Bereich?",
         answer:
-          "Weil Marge selten daran verloren geht, dass eine Rechnung falsch ist — sondern daran, dass Scope-Abweichungen und Auslastungs-Probleme zu spät sichtbar werden.",
+          "Weil Marge selten daran verloren geht, dass eine Rechnung falsch ist, sondern daran, dass Scope-Abweichungen und Auslastungs-Probleme zu spät sichtbar werden.",
       },
       {
         question: "Spielt das mit unseren Bestandssystemen zusammen?",
@@ -368,28 +368,28 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       "PSA Alternative Consulting",
     ],
     introAnswer:
-      "CRMs kennen Ihre Pipeline, aber nicht Ihre Berater. Workforce-Tools kennen Ihre Berater, aber nicht den Markt. PSA-Tools tracken Delivery, aber nicht die Akquise. Consultry ist das verbindende System dazwischen — gebaut für die Wertschöpfungslogik einer Beratung, nicht für den Vertriebsprozess eines Software-Vendors.",
+      "CRMs kennen Ihre Pipeline, aber nicht Ihre Berater. Workforce-Tools kennen Ihre Berater, aber nicht den Markt. PSA-Tools tracken Delivery, aber nicht die Akquise. Consultry ist das verbindende System dazwischen. Gebaut für die Wertschöpfungslogik einer Beratung, nicht für den Vertriebsprozess eines Software-Vendors.",
     keyTakeaways: [
-      "Ein CRM ist ein Vertriebswerkzeug. Eine Beratung verkauft aber Team, Methodik und Delivery — nicht nur Abschlüsse.",
+      "Ein CRM ist ein Vertriebswerkzeug. Eine Beratung verkauft aber Team, Methodik und Delivery. Nicht nur Abschlüsse.",
       "Die eigentliche Arbeit einer Beratung beginnt nach dem Deal: Staffing, Delivery, Wissensrückfluss.",
       "Consultry verbindet Signal, Team, Angebot, Delivery und Wissen in einer Logik. Ein CRM bildet davon höchstens einen Ausschnitt ab.",
-      "Die Migration erfolgt nicht als Big Bang: Consultry integriert, wo Ersatz unnötig wäre — und schließt die Lücken, die bisher niemand schließt.",
+      "Die Migration erfolgt nicht als Big Bang. Consultry integriert, wo Ersatz unnötig wäre, und schließt die Lücken, die bisher niemand schließt.",
     ],
     sections: [
       {
         title: "Was ein CRM nicht abbildet.",
         body:
-          "Kontakte, Deals, Aktivitäten — ja. Aber nicht: Welcher Berater kennt diesen Kunden aus einem vergleichbaren Projekt. Welche Methodik passt. Welches Delivery-Risiko entstand beim letzten Mal. Was fließt aus der Delivery zurück in den nächsten Deal. Genau dort lebt eine Beratung.",
+          "Kontakte, Deals, Aktivitäten. Ja. Aber nicht: Welcher Berater kennt diesen Kunden aus einem vergleichbaren Projekt. Welche Methodik passt. Welches Delivery-Risiko entstand beim letzten Mal. Was fließt aus der Delivery zurück in den nächsten Deal. Genau dort lebt eine Beratung.",
       },
       {
         title: "Warum das für eine Beratung teuer ist.",
         body:
-          "Eine Beratung verkauft mehrere Dimensionen gleichzeitig: Expertise, Team, Methodik, Delivery-Sicherheit, kommerzielle Plausibilität. Wenn diese Dimensionen in sieben Tools liegen, verliert jeder Partner pro Woche mehrere Stunden daran, sie zusammenzubringen — und jeder Deal wird langsamer, ungenauer oder beides.",
+          "Eine Beratung verkauft mehrere Dimensionen gleichzeitig: Expertise, Team, Methodik, Delivery-Sicherheit, kommerzielle Plausibilität. Wenn diese Dimensionen in sieben Tools liegen, verliert jeder Partner pro Woche mehrere Stunden daran, sie zusammenzubringen. Und jeder Deal wird langsamer, ungenauer oder beides.",
       },
       {
         title: "Wie sich Consultry positioniert.",
         body:
-          "Consultry ist kein CRM. Kein PSA. Kein ERP. Consultry ist der operative AI-Begleiter für Beratungen — die Ebene, die Marktsignal, Team, Angebot, Delivery und Wissensrückfluss zusammenführt. CRM-Funktionalität ist enthalten, wo sie gebraucht wird. Sie ist aber nicht die Hauptstory.",
+          "Consultry ist kein CRM. Kein PSA. Kein ERP. Consultry ist der operative AI-Begleiter für Beratungen. Die Ebene, die Marktsignal, Team, Angebot, Delivery und Wissensrückfluss zusammenführt. CRM-Funktionalität ist enthalten, wo sie gebraucht wird. Sie ist aber nicht die Hauptstory.",
       },
       {
         title: "Wann ein Vergleich besonders relevant wird.",
@@ -406,12 +406,12 @@ export const wedgeContent: Record<WedgeSlug, WedgeContent> = {
       {
         question: "Ist Consultry eher CRM, PSA oder Wissenssystem?",
         answer:
-          "Keines davon isoliert. Die Plattform verbindet diese Logiken in einer Arbeitsebene — dort, wo Beratungen heute sieben Tools parallel nutzen.",
+          "Keines davon isoliert. Die Plattform verbindet diese Logiken in einer Arbeitsebene. Dort, wo Beratungen heute sieben Tools parallel nutzen.",
       },
       {
         question: "Warum ist das für DACH-Beratungen besonders relevant?",
         answer:
-          "Weil Bestandskundengeschäft, Staffing-Druck, Delivery-Risiken und Compliance-Anforderungen in DACH anders wirken als in den USA. Consultry ist in Berlin gebaut — für IT- und Digitalisierungsberatungen im DACH-Raum, mit EU-Hosting, DSGVO, AI Act und BetrVG von Anfang an.",
+          "Weil Bestandskundengeschäft, Staffing-Druck, Delivery-Risiken und Compliance-Anforderungen in DACH anders wirken als in den USA. Consultry ist in Berlin gebaut, für IT- und Digitalisierungsberatungen im DACH-Raum, mit EU-Hosting, DSGVO, AI Act und BetrVG von Anfang an.",
       },
     ],
     internalLinks: [

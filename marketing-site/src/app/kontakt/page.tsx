@@ -60,7 +60,7 @@ export default function KontaktPage() {
                 </h1>
                 <p className="body-lg mt-6 max-w-[42rem]">
                   Wir sprechen mit Managing Partnern, BD- und Delivery-Leads aus IT- und
-                  Digitalisierungsberatungen im DACH-Raum — und mit Investoren, die Consultry aus
+                  Digitalisierungsberatungen im DACH-Raum. Und mit Investoren, die Consultry aus
                   der Nähe sehen wollen. Schreiben Sie uns. Wir melden uns binnen 48 Stunden.
                 </p>
 
@@ -106,7 +106,7 @@ export default function KontaktPage() {
 
                   <section>
                     <p className="eyebrow text-[var(--consultry-brand-warm)]">
-                      Fuer eine gute Erstnachricht
+                      Für eine gute Erstnachricht
                     </p>
                     <ul className="mt-5 space-y-3.5">
                       {prepChecklist.map((item) => (
@@ -127,8 +127,8 @@ export default function KontaktPage() {
                 <p className="eyebrow">Direkter Kontakt</p>
                 <p className="mt-4 text-[15px] leading-[1.7] text-[var(--consultry-text-muted)]">
                   {companyProfile.brandName} ist ein Angebot der {companyProfile.legalName}. Hier
-                  finden Sie die schnellsten Wege fuer Warteliste, Unternehmensanfragen und direkte
-                  Rueckfragen.
+                  finden Sie die schnellsten Wege für Warteliste, Unternehmensanfragen und direkte
+                  Rückfragen.
                 </p>
 
                 <div className="mt-7 space-y-4">
@@ -192,14 +192,14 @@ export default function KontaktPage() {
                   <div className="mt-4 flex flex-wrap gap-3">
                     <Link
                       className="inline-flex items-center gap-2 text-[14px] font-medium text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
-                      href="/impressum"
+                      href="/legal/impressum"
                     >
                       Impressum
                       <ArrowUpRight className="h-4 w-4" />
                     </Link>
                     <Link
                       className="inline-flex items-center gap-2 text-[14px] font-medium text-[var(--consultry-text-primary)] transition hover:text-[var(--consultry-brand-warm)]"
-                      href="/datenschutz"
+                      href="/legal/datenschutz"
                     >
                       Datenschutz
                       <ArrowUpRight className="h-4 w-4" />

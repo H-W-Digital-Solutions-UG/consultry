@@ -82,7 +82,7 @@ export default async function ProductWedgePage({ params }: WedgePageProps) {
         cta={{
           eyebrow: "NÄCHSTER SCHRITT",
           title: "Sie wollen Consultry in Ihrer Beratung sehen?",
-          body: "Tragen Sie sich auf die Warteliste ein. Zum Launch sind Sie als Erste dabei — und wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden.",
+          body: "Tragen Sie sich auf die Warteliste ein. Zum Launch sind Sie als Erste dabei. Wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden.",
           primaryCta: {
             label: "Auf die Warteliste",
             href: "/warteliste",

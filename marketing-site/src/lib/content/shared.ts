@@ -1,3 +1,5 @@
+import { legalNavigationItems } from "@/lib/legal-documents";
+
 export type NavLink = {
   label: string;
   href: string;
@@ -37,7 +39,7 @@ export const ctaTargets = {
 export const deepDiveCta = {
   title: "Consultry, sobald es live geht.",
   body:
-    "Sie sind als Erste dabei, wenn Consultry startet. Bestandskunden-Signale, Staffing, Wissen und Angebote laufen dann in einem System zusammen — und nicht mehr in sieben.",
+    "Sie sind als Erste dabei, wenn Consultry startet. Bestandskunden-Signale, Staffing, Wissen und Angebote laufen dann in einem System zusammen, nicht mehr in sieben.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: ctaTargets.nav,
@@ -89,12 +91,10 @@ export const footerColumns: FooterColumn[] = [
   },
   {
     title: "RECHTLICHES",
-    links: [
-      { label: "Impressum", href: "/impressum" },
-      { label: "Datenschutz", href: "/datenschutz" },
-      { label: "AGB", href: "/agb" },
-      { label: "Cookies", href: "/cookies" },
-    ],
+    links: legalNavigationItems.map((item) => ({
+      label: item.footerLabel,
+      href: item.href,
+    })),
   },
 ];
 

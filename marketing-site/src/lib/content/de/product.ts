@@ -116,7 +116,7 @@ export const productHero: ProductHeroContent = {
     "steuert.",
   ],
   body:
-    "Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer Arbeitsebene. Sie sprechen mit dem System, das System bereitet vor — und Sie entscheiden.",
+    "Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer Arbeitsebene. Sie sprechen mit dem System, das System bereitet vor. Sie entscheiden.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: "/warteliste",
@@ -143,7 +143,7 @@ export const productDemoModule: ProductDemoModuleContent = {
   eyebrow: "PRODUKT-VORSCHAU",
   title: "So sieht der Alltag mit Consultry aus.",
   body:
-    "Ein Marktsignal kommt herein. Das System schlägt drei Team-Varianten vor, mit Begründung. Sie wählen eine — das Angebot ist in Stunden statt Tagen fertig. Nach Projektabschluss fließt das, was Sie gelernt haben, automatisch zurück ins System.",
+    "Ein Marktsignal kommt herein. Das System schlägt drei Team-Varianten vor, mit Begründung. Sie wählen eine. Das Angebot ist in Stunden statt Tagen fertig. Nach Projektabschluss fließt das, was Sie gelernt haben, automatisch zurück ins System.",
   meta:
     "Signal-Feed, Engagement-Brief, Team-Matching, Angebot, Delivery und Wissensrückfluss laufen in derselben Arbeitsebene.",
   overlayCta: "Vorschau ansehen",
@@ -157,14 +157,14 @@ export const productAnswers: ProductAnswer[] = [
   {
     question: "Was unterscheidet Consultry von einem CRM?",
     answer:
-      "Ein CRM kennt Ihre Pipeline, aber nicht Ihre Berater. Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer Logik — nicht in sieben Tools.",
+      "Ein CRM kennt Ihre Pipeline, aber nicht Ihre Berater. Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer Logik, nicht in sieben Tools.",
     href: "/produkt/consultry-vs-crm",
     linkLabel: "Zum Vergleich",
   },
   {
     question: "Wo setzt Consultry zuerst an?",
     answer:
-      "Beim Bestandskunden-Wachstum. 80 % des Umsatzes kommen dort — aber die stärksten Signale stehen in Newslettern, im Postfach eines Partners und in Ausschreibungen, die niemand rechtzeitig sieht. Consultry bringt sie zusammen.",
+      "Beim Bestandskunden-Wachstum. 80 % des Umsatzes kommen dort. Aber die stärksten Signale stehen in Newslettern, im Postfach eines Partners und in Ausschreibungen, die niemand rechtzeitig sieht. Consultry bringt sie zusammen.",
     href: "/produkt/account-growth",
     linkLabel: "Zu Bestandskunden-Wachstum",
   },
@@ -181,14 +181,14 @@ export const productArchitecture: ProductArchitectureContent = {
   overline: "DIE ARCHITEKTUR",
   title: "Fünf Bereiche. Eine Arbeitsebene.",
   body:
-    "Beratungen arbeiten heute mit sieben Systemen parallel. Consultry verbindet die fünf Bereiche, in denen Ihre Wertschöpfung wirklich entsteht — vom ersten Marktsignal bis zum Wissen, das aus abgeschlossenen Projekten wieder auftaucht.",
+    "Beratungen arbeiten heute mit sieben Systemen parallel. Consultry verbindet die fünf Bereiche, in denen Ihre Wertschöpfung wirklich entsteht: vom ersten Marktsignal bis zum Wissen, das aus abgeschlossenen Projekten wieder auftaucht.",
   layers: [
     {
       id: "account-growth",
       eyebrow: "MARKET & SIGNAL INTELLIGENCE",
       title: "Bestandskunden-Wachstum",
       summary:
-        "Das System liest Newsletter, Ausschreibungen, Stellenanzeigen, Presse und Partner-Updates mit. CTO-Wechsel, Budgetentscheidungen, neue Initiativen bei Ihren Bestandskunden — alles wird zu einem priorisierten Signal-Feed mit Warm Paths und Engagement-Brief.",
+        "Das System liest Newsletter, Ausschreibungen, Stellenanzeigen, Presse und Partner-Updates mit. CTO-Wechsel, Budgetentscheidungen, neue Initiativen bei Ihren Bestandskunden. Alles wird zu einem priorisierten Signal-Feed mit Warm Paths und Engagement-Brief.",
       capabilities: [
         "Signal-Feed mit Priorisierung",
         "Stakeholder-Mapping",
@@ -199,7 +199,7 @@ export const productArchitecture: ProductArchitectureContent = {
         src: "/images/figma/step-signal.png",
         alt: "Signal-Feed mit priorisierten Bestandskunden-Signalen",
         caption:
-          "Signale werden nicht nur gesammelt — sie werden mit Ihrem Netzwerk, Ihrer Methodik und Ihrem Team verknüpft.",
+          "Signale werden nicht nur gesammelt. Sie werden mit Ihrem Netzwerk, Ihrer Methodik und Ihrem Team verknüpft.",
       },
     },
     {
@@ -207,7 +207,7 @@ export const productArchitecture: ProductArchitectureContent = {
       eyebrow: "PEOPLE & CAPACITY",
       title: "Staffing und Forecasting",
       summary:
-        "Skills, Zertifikate, Projekterfahrung und Verfügbarkeit werden zu einem lebendigen Knowledge Graph. Das System schlägt drei Team-Varianten vor, mit Begründung, Auslastungs-Logik und Forecast — Sie wählen und geben frei.",
+        "Skills, Zertifikate, Projekterfahrung und Verfügbarkeit werden zu einem lebendigen Knowledge Graph. Das System schlägt drei Team-Varianten vor, mit Begründung, Auslastungs-Logik und Forecast. Sie wählen und geben frei.",
       capabilities: [
         "Skill-Normalisierung über die ganze Beratung",
         "Team-Varianten mit Match-Score",
@@ -218,7 +218,7 @@ export const productArchitecture: ProductArchitectureContent = {
         src: "/images/figma/step-matching.png",
         alt: "Team-Vorschläge mit Match-Score und Verfügbarkeit",
         caption:
-          "Drei Varianten, jede mit Begründung. Sie sehen, warum wer vorgeschlagen wird — und entscheiden.",
+          "Drei Varianten, jede mit Begründung. Sie sehen, warum wer vorgeschlagen wird, und entscheiden.",
       },
     },
     {
@@ -226,7 +226,7 @@ export const productArchitecture: ProductArchitectureContent = {
       eyebrow: "WISSENSBASIS",
       title: "Wissen, das wieder auftaucht",
       summary:
-        "Methodik, Referenzen, Delivery-Artefakte und Lessons Learned bleiben nicht in Confluence begraben. Sie tauchen wieder auf — im Engagement-Brief, im Angebot, beim Onboarding eines neuen Beraters.",
+        "Methodik, Referenzen, Delivery-Artefakte und Lessons Learned bleiben nicht in Confluence begraben. Sie tauchen wieder auf: im Engagement-Brief, im Angebot, beim Onboarding eines neuen Beraters.",
       capabilities: [
         "Quellengebundene Antworten",
         "Referenz-Bausteine pro Branche",
@@ -245,7 +245,7 @@ export const productArchitecture: ProductArchitectureContent = {
       eyebrow: "DEAL EXECUTION",
       title: "Angebot in Stunden statt Tagen",
       summary:
-        "Aus Engagement-Brief, Team-Vorschlag, CVs, Referenzen und Pricing-Logik entsteht ein Angebotsentwurf im Canvas. Ihre Partner reviewen, das System dokumentiert — bis zur Vertragsgrundlage mit Audit Trail.",
+        "Aus Engagement-Brief, Team-Vorschlag, CVs, Referenzen und Pricing-Logik entsteht ein Angebotsentwurf im Canvas. Ihre Partner reviewen, das System dokumentiert. Bis zur Vertragsgrundlage mit Audit Trail.",
       capabilities: [
         "Canvas für kollaborative Angebotsarbeit",
         "Automatische CVs und Referenzen",
@@ -264,7 +264,7 @@ export const productArchitecture: ProductArchitectureContent = {
       eyebrow: "DELIVERY & COMMERCIALS",
       title: "Delivery und Marge",
       summary:
-        "Allocation, Delivery Health, Kostenbezug und Invoice-Ready-Übergabe laufen in derselben Steuerungslogik. Sie sehen Marge, Risiko und Abweichung in Echtzeit — und das Wissen aus der Delivery fließt automatisch zurück.",
+        "Allocation, Delivery Health, Kostenbezug und Invoice-Ready-Übergabe laufen in derselben Steuerungslogik. Sie sehen Marge, Risiko und Abweichung in Echtzeit. Das Wissen aus der Delivery fließt automatisch zurück.",
       capabilities: [
         "Allocation mit Echtzeit-Sicht",
         "Risk und Health pro Projekt",
@@ -282,7 +282,7 @@ export const productArchitecture: ProductArchitectureContent = {
   workflowOverline: "DER LIFECYCLE",
   workflowTitle: "Vom Marktsignal bis zum Wissensrückfluss.",
   workflowBody:
-    "Jede Beratung lebt vom gleichen Zyklus: Signale erkennen, qualifizieren, das richtige Team matchen, Angebot und Vertrag abschließen, liefern, steuern, lernen und weiterwachsen. Consultry macht diesen Zyklus sichtbar — und schließt ihn.",
+    "Jede Beratung lebt vom gleichen Zyklus: Signale erkennen, qualifizieren, das richtige Team matchen, Angebot und Vertrag abschließen, liefern, steuern, lernen und weiterwachsen. Consultry macht diesen Zyklus sichtbar und schließt ihn.",
   workflowSteps: [
     "Signal erkennen und qualifizieren",
     "Team matchen und Angebot schnüren",
@@ -294,7 +294,7 @@ export const productComparison: ComparisonTableContent = {
   overline: "CONSULTRY VS. STANDARD-CRM",
   title: "Warum ein CRM nicht reicht.",
   body:
-    "CRMs kennen Ihre Pipeline, aber nicht Ihre Berater. Workforce-Tools kennen Ihre Berater, aber nicht den Markt. PSA-Tools tracken Delivery, aber nicht die Akquise. Consultry ist das verbindende System dazwischen — und es handelt aktiv mit.",
+    "CRMs kennen Ihre Pipeline, aber nicht Ihre Berater. Workforce-Tools kennen Ihre Berater, aber nicht den Markt. PSA-Tools tracken Delivery, aber nicht die Akquise. Consultry ist das verbindende System dazwischen. Und es handelt aktiv mit.",
   columnHeaders: ["FUNKTIONEN", "CONSULTRY", "STANDARD-CRM"],
   rows: [
     {
@@ -344,7 +344,7 @@ export const productFaq: ProductFaqItem[] = [
   {
     question: "Was unterscheidet Consultry von einem CRM?",
     answer:
-      "Ein CRM dokumentiert Vertrieb. Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer einzigen Arbeitsebene. Sie sprechen mit dem System, das System bereitet vor — und Sie entscheiden.",
+      "Ein CRM dokumentiert Vertrieb. Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer einzigen Arbeitsebene. Sie sprechen mit dem System, das System bereitet vor. Sie entscheiden.",
   },
   {
     question: "Wie behalten wir die Kontrolle über AI-Empfehlungen?",
@@ -354,7 +354,7 @@ export const productFaq: ProductFaqItem[] = [
   {
     question: "Ist Consultry für DACH-Anforderungen gebaut?",
     answer:
-      "Ja. EU-Hosting, DSGVO, AI Act, BetrVG und sensible People-Analytics sind Teil der Produktlogik — nicht ein Add-on, das später nachgereicht wird. Wir sind drei Gründer aus Berlin und bauen für den DACH-Raum.",
+      "Ja. EU-Hosting, DSGVO, AI Act, BetrVG und sensible People-Analytics sind Teil der Produktlogik. Kein Add-on, das später nachgereicht wird. Wir sind drei Gründer aus Berlin und bauen für den DACH-Raum.",
   },
   {
     question: "Für wen ist Consultry gedacht?",
@@ -364,7 +364,7 @@ export const productFaq: ProductFaqItem[] = [
   {
     question: "Müssen wir bestehende Systeme sofort ersetzen?",
     answer:
-      "Nein. Consultry integriert dort, wo Ersatz unnötig wäre — DATEV, Bexio, bestehende HR-Systeme. Wir schließen zuerst die Lücke zwischen den Systemen, die heute nicht sauber zusammenspielen.",
+      "Nein. Consultry integriert dort, wo Ersatz unnötig wäre: DATEV, Bexio, bestehende HR-Systeme. Wir schließen zuerst die Lücke zwischen den Systemen, die heute nicht sauber zusammenspielen.",
   },
   {
     question: "Was ändert sich beim Staffing konkret?",
@@ -389,7 +389,7 @@ export const productInternalLinks: ProductInternalLink[] = [
     href: "/produkt/staffing-forecasting",
     label: "Staffing und Forecasting",
     body:
-      "Wie Skills, Verfügbarkeit und Delivery-Realität drei Team-Varianten mit Begründung liefern — statt Excel und Bauchgefühl.",
+      "Wie Skills, Verfügbarkeit und Delivery-Realität drei Team-Varianten mit Begründung liefern, statt Excel und Bauchgefühl.",
   },
   {
     href: "/produkt/knowledge-reuse",
@@ -407,7 +407,7 @@ export const productInternalLinks: ProductInternalLink[] = [
     href: "/produkt/consultry-vs-crm",
     label: "Consultry vs. CRM",
     body:
-      "Warum ein CRM die Wertschöpfungslogik einer Beratung nicht abbilden kann — und was stattdessen gebraucht wird.",
+      "Warum ein CRM die Wertschöpfungslogik einer Beratung nicht abbilden kann, und was stattdessen gebraucht wird.",
   },
 ];
 
@@ -415,7 +415,7 @@ export const productCta = {
   eyebrow: "NÄCHSTER SCHRITT",
   title: "Sie wollen Consultry in Ihrer Beratung sehen?",
   body:
-    "Tragen Sie sich auf die Warteliste ein. Zum Launch sind Sie als Erste dabei — und wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden.",
+    "Tragen Sie sich auf die Warteliste ein. Zum Launch sind Sie als Erste dabei. Wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: "/warteliste",

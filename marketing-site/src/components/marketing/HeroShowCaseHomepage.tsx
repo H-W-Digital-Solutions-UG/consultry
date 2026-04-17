@@ -1,4 +1,4 @@
-import { HeroBackgroundVideo } from "@/components/marketing/HeroBackgroundVideo";
+import { HeroBackgroundMotion } from "@/components/marketing/HeroBackgroundMotion";
 import { MarketingCtaButton } from "@/components/marketing/MarketingCtaButton";
 import type { HomepageHero } from "@/lib/content/de/homepage";
 
@@ -8,22 +8,21 @@ type HeroShowcaseProps = {
 
 export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
   const headline = hero.title.join(" ");
-  const heroVideoSrc = "/videos/compressed/simple_vid_consultry_compressed.mp4";
 
   return (
     <section className="relative isolate -mt-[4.45rem] overflow-hidden bg-[#050507]">
       <div
         aria-hidden="true"
-        className="absolute inset-0 md:hidden bg-[radial-gradient(circle_at_72%_24%,rgba(232,101,90,0.14)_0%,rgba(232,101,90,0.04)_22%,transparent_44%),radial-gradient(circle_at_74%_60%,rgba(155,89,182,0.12)_0%,rgba(155,89,182,0.03)_20%,transparent_44%),linear-gradient(180deg,#050507_0%,#090a0f_48%,#08070a_100%)]"
+        className="absolute inset-0 md:hidden bg-[radial-gradient(circle_at_72%_24%,rgba(232,101,90,0.026)_0%,rgba(232,101,90,0.008)_16%,transparent_36%),radial-gradient(circle_at_74%_60%,rgba(155,89,182,0.022)_0%,rgba(155,89,182,0.006)_14%,transparent_36%),linear-gradient(180deg,#010102_0%,#030407_48%,#020205_100%)]"
       />
-      <HeroBackgroundVideo src={heroVideoSrc} />
+      <HeroBackgroundMotion />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,7,0.76)_0%,rgba(5,5,7,0.44)_26%,rgba(5,5,7,0.14)_48%,rgba(5,5,7,0.06)_72%,rgba(5,5,7,0.12)_100%),linear-gradient(180deg,rgba(6,6,8,0.28)_0%,rgba(10,11,16,0.06)_42%,rgba(8,7,10,0.34)_100%)]"
+        className="absolute inset-y-0 left-0 w-[68%] bg-[linear-gradient(90deg,rgba(2,2,4,0.92)_0%,rgba(2,2,4,0.8)_18%,rgba(2,2,4,0.54)_36%,rgba(2,2,4,0.2)_56%,rgba(2,2,4,0)_100%)]"
       />
 
-      <div className="relative mx-auto w-[min(100%-1.75rem,1440px)] sm:w-[min(100%-2.5rem,1440px)]">
-        <div className="flex min-h-[99.5svh] items-center pb-8 pt-[calc(4.45rem+1.6rem)] sm:pb-10 sm:pt-[calc(4.45rem+1.9rem)] lg:min-h-[99.5svh] lg:pb-10 lg:pt-[calc(4.45rem+1.2rem)] xl:min-h-[99.5svh]">
+      <div className="relative mx-auto w-[min(100%-1.75rem,1440px)] sm:w-[min(100%-2.5rem,1440px)] lg:w-[min(100%-3.75rem,1440px)] xl:w-[min(100%-5rem,1440px)]">
+        <div className="flex min-h-[99.5svh] items-center pb-8 pt-[calc(4.45rem+1.6rem)] sm:pb-10 sm:pt-[calc(4.45rem+1.9rem)] lg:min-h-[99.5svh] lg:pl-8 lg:pb-10 lg:pt-[calc(4.45rem+1.2rem)] xl:min-h-[99.5svh] xl:pl-12">
           <div className="relative z-10 max-w-[48rem]">
             <div
               aria-hidden="true"
