@@ -4,22 +4,12 @@ import { useAnimationFrame, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 type NodeTone = "neutral" | "warm" | "coral" | "violet";
+type NodeShape = "circle" | "square" | "triangle";
 
 type Rgb = {
   r: number;
   g: number;
   b: number;
-};
-
-type AmbientGlow = {
-  className: string;
-  xAmplitude: number;
-  yAmplitude: number;
-  scaleAmplitude: number;
-  opacityBase: number;
-  opacityAmplitude: number;
-  speed: number;
-  phase: number;
 };
 
 type OrbitalLane = {
@@ -68,10 +58,15 @@ type PositionedNode = BaseNode & {
   yPos: number;
   pulse: number;
   depthOpacity: number;
+  appearanceOpacity: number;
+  appearanceScale: number;
   layer: "front" | "back";
   renderedRadius: number;
   laneIndex: number;
   orbitAngle: number;
+  toneFrom: NodeTone;
+  toneTo: NodeTone;
+  toneMix: number;
 };
 
 type LinkEndpoint = {
@@ -93,6 +88,10 @@ type ActiveLink = {
   layer: "front" | "back";
   energyOffset: number;
   energySpeed: number;
+  revealProgress: number;
+  connectionOpacity: number;
+  accentOpacity: number;
+  packetOpacityFactor: number;
   energyGradientId: string;
   energyGradientX1: number;
   energyGradientY1: number;
@@ -108,10 +107,15 @@ type ActiveLink = {
   energyGradientPeakEnd: number;
   energyGradientEnd: number;
   energyStroke: string;
+  packetShape: NodeShape;
   packetFill: string;
   packetGlow: string;
   packetForward: { x: number; y: number };
   packetReverse: { x: number; y: number } | null;
+  pingFill: string;
+  pingGlow: string;
+  pingPosition: { x: number; y: number } | null;
+  pingOpacityFactor: number;
   packetScale: number;
   arrivalPulse: number;
   baseOpacity: number;
@@ -120,20 +124,74 @@ type ActiveLink = {
   energyWidth: number;
 };
 
+type ConnectionAnimationState = {
+  cycleDuration: number;
+  cycleIndex: number;
+  cycleProgress: number;
+  activeLaneIndex: number;
+  activeOrbitStartAngle: number;
+  tone: NodeTone;
+  fromNodeToneFrom: NodeTone;
+  fromNodeToneTo: NodeTone;
+  toNodeToneFrom: NodeTone;
+  toNodeToneTo: NodeTone;
+  nodeToneProgress: number;
+  nodeOpacity: number;
+  nodeScale: number;
+  packetProgress: number;
+  revealProgress: number;
+  connectionOpacity: number;
+  accentOpacity: number;
+  packetOpacityFactor: number;
+  dashProgress: number;
+  rotationProgress: number;
+  pingProgress: number;
+  pingOpacityFactor: number;
+};
+
+type PairPhase = "travel" | "fade" | "waiting" | "reconnect";
+
+type ConnectionCycleTimings = {
+  travelDuration: number;
+  fadeDuration: number;
+  hiddenDuration: number;
+  reconnectDuration: number;
+  cycleDuration: number;
+};
+
+type PairSimulation = {
+  pairIndex: number;
+  candidate: CandidateLink;
+  linkId: string;
+  cycleIndex: number;
+  phase: PairPhase;
+  phaseStartTime: number;
+  timings: ConnectionCycleTimings;
+  currentTone: NodeTone;
+  currentFromNodeTone: NodeTone;
+  currentToNodeTone: NodeTone;
+  currentLaneIndex: number;
+  currentOrbitStartAngle: number;
+  nextTone: NodeTone;
+  nextFromNodeTone: NodeTone;
+  nextToNodeTone: NodeTone;
+  nextLaneIndex: number;
+  nextOrbitStartAngle: number;
+};
+
 const DESKTOP_MEDIA_QUERY = "(min-width: 768px)";
 const SCENE_MOUNT_DELAY_MS = 180;
 const FRAME_INTERVAL_MS = 1000 / 30;
+const PACKET_SEND_DEBOUNCE_SECONDS = 0.25;
+const MAX_ACTIVE_PAIRS = 2;
 const CONTROL_NODE_ANCHOR = { x: 1344, y: 432 };
 const CONTROL_NODE_X_BIAS = 24;
 const CONTROL_SHELL_OUTER_OFFSET = 18;
 const CONTROL_SHELL_INNER_OFFSET = 8;
 const NODE_ORBITAL_SPEED = 0.085;
+const CONNECTION_ROTATION_STEP = 0.24;
 const ORBITAL_Y_PROJECTION_SCALE = 0.58;
 const NODE_Y_DEPTH_OFFSET = 3.2;
-const NODE_ORBITAL_SLOT_ANGLES = [
-  0,
-  Math.PI,
-];
 const ORBITAL_LANES: OrbitalLane[] = [
   {
     radius: 206,
@@ -252,110 +310,22 @@ const ORBITAL_ACCENT_RINGS: OrbitalLane[] = [
   },
 ];
 
-const ambientGlows: AmbientGlow[] = [
-  {
-    className:
-      "absolute -right-[12rem] -top-[10rem] h-[50rem] w-[50rem] rounded-full bg-[radial-gradient(circle,rgba(240,168,94,0.18)_0%,rgba(232,101,90,0.12)_22%,rgba(5,5,7,0)_70%)] blur-[128px]",
-    xAmplitude: 18,
-    yAmplitude: 14,
-    scaleAmplitude: 0.045,
-    opacityBase: 0.12,
-    opacityAmplitude: 0.035,
-    speed: 0.22,
-    phase: 0.3,
-  },
-  {
-    className:
-      "absolute right-[8%] top-[42%] h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(155,89,182,0.18)_0%,rgba(155,89,182,0.08)_34%,rgba(5,5,7,0)_74%)] blur-[108px]",
-    xAmplitude: 16,
-    yAmplitude: 18,
-    scaleAmplitude: 0.05,
-    opacityBase: 0.08,
-    opacityAmplitude: 0.028,
-    speed: 0.18,
-    phase: 1.1,
-  },
-  {
-    className:
-      "absolute right-[18%] top-[16%] h-[28rem] w-[14rem] rotate-[-18deg] rounded-full bg-[linear-gradient(180deg,rgba(191,83,71,0.12)_0%,rgba(232,101,90,0.05)_38%,rgba(5,5,7,0)_100%)] blur-[86px]",
-    xAmplitude: 8,
-    yAmplitude: 20,
-    scaleAmplitude: 0.06,
-    opacityBase: 0.05,
-    opacityAmplitude: 0.022,
-    speed: 0.24,
-    phase: 2.4,
-  },
-];
-
 const baseNodes: BaseNode[] = [
   { id: "n0", x: 1050, y: 212, ampX: 18, ampY: 16, speed: 0.88, phase: 0.1, radius: 5.8, tone: "warm", depth: -0.56 },
   { id: "n1", x: 1230, y: 244, ampX: 22, ampY: 18, speed: 0.82, phase: 0.6, radius: 6.3, tone: "coral", depth: -0.32 },
   { id: "n2", x: 1450, y: 258, ampX: 18, ampY: 18, speed: 0.78, phase: 1.4, radius: 6.1, tone: "violet", depth: -0.16 },
-  { id: "n3", x: 1098, y: 396, ampX: 24, ampY: 18, speed: 0.7, phase: 2.4, radius: 5.7, tone: "neutral", depth: -0.08 },
   { id: "n4", x: 1262, y: 452, ampX: 20, ampY: 22, speed: 0.8, phase: 3.1, radius: 7.1, tone: "violet", depth: 0.14 },
   { id: "n5", x: 1514, y: 524, ampX: 18, ampY: 20, speed: 0.72, phase: 4.1, radius: 6.4, tone: "neutral", depth: 0.44 },
   { id: "n6", x: 1200, y: 628, ampX: 20, ampY: 18, speed: 0.74, phase: 4.8, radius: 5.8, tone: "warm", depth: 0.12 },
-  { id: "n7", x: 1382, y: 666, ampX: 22, ampY: 16, speed: 0.8, phase: 5.2, radius: 6.8, tone: "coral", depth: 0.34 },
 ];
 
 const candidateLinks: CandidateLink[] = [
-  { from: 0, to: 4, minDistance: 228, maxDistance: 458, curve: 0, energySpeed: 0.18, offset: 0.12, tone: "warm", orbitDirection: "counterclockwise" },
-  { from: 1, to: 5, minDistance: 224, maxDistance: 452, curve: 0, energySpeed: 0.18, offset: 0.34, tone: "coral", orbitDirection: "clockwise" },
-  { from: 2, to: 6, minDistance: 220, maxDistance: 448, curve: 0, energySpeed: 0.18, offset: 0.56, tone: "violet", orbitDirection: "counterclockwise" },
-  { from: 3, to: 7, minDistance: 224, maxDistance: 452, curve: 0, energySpeed: 0.18, offset: 0.78, tone: "neutral", orbitDirection: "clockwise" },
+  { from: 0, to: 3, minDistance: 228, maxDistance: 458, curve: 0, energySpeed: 0.18, offset: 0.12, tone: "warm", orbitDirection: "counterclockwise" },
+  { from: 1, to: 4, minDistance: 224, maxDistance: 452, curve: 0, energySpeed: 0.18, offset: 0.34, tone: "coral", orbitDirection: "clockwise" },
+  { from: 2, to: 5, minDistance: 220, maxDistance: 448, curve: 0, energySpeed: 0.18, offset: 0.56, tone: "violet", orbitDirection: "counterclockwise" },
 ];
 
-const sparkSpecs = [
-  {
-    left: "69%",
-    top: "22%",
-    size: 7,
-    color: "rgba(240,168,94,0.62)",
-    blur: 3,
-    duration: 10.8,
-    delay: 0.2,
-    driftX: [0, 16, -8, 0],
-    driftY: [0, -10, 6, 0],
-    opacity: [0.12, 0.44, 0.18, 0.12],
-  },
-  {
-    left: "81%",
-    top: "34%",
-    size: 8,
-    color: "rgba(232,101,90,0.52)",
-    blur: 4,
-    duration: 12.4,
-    delay: 0.9,
-    driftX: [0, -14, 10, 0],
-    driftY: [0, 10, -8, 0],
-    opacity: [0.1, 0.36, 0.16, 0.1],
-  },
-  {
-    left: "86%",
-    top: "58%",
-    size: 9,
-    color: "rgba(155,89,182,0.48)",
-    blur: 5,
-    duration: 13.8,
-    delay: 1.4,
-    driftX: [0, 12, -12, 0],
-    driftY: [0, -10, 8, 0],
-    opacity: [0.08, 0.3, 0.12, 0.08],
-  },
-  {
-    left: "78%",
-    top: "72%",
-    size: 7,
-    color: "rgba(240,168,94,0.44)",
-    blur: 4,
-    duration: 11.6,
-    delay: 0.55,
-    driftX: [0, -10, 8, 0],
-    driftY: [0, 10, -8, 0],
-    opacity: [0.08, 0.3, 0.12, 0.08],
-  },
-] as const;
+const CONNECTION_TONES: NodeTone[] = ["warm", "coral", "violet", "neutral"];
 
 const NODE_THEME_PALETTES: Record<
   NodeTone,
@@ -545,20 +515,526 @@ function orbitalConnectionDelta(
     : (normalizedDelta <= 0 ? normalizedDelta + Math.PI * 2 : normalizedDelta);
 }
 
-function toneStyles(tone: NodeTone) {
-  const palette = tonePalette(tone);
+function mixedToneStyles(fromTone: NodeTone, toTone: NodeTone, amount: number) {
+  const mixAmount = clamp(amount, 0, 1);
+  const fromPalette = tonePalette(fromTone);
+  const toPalette = tonePalette(toTone);
+  const fillAlpha = mix(fromTone === "warm" ? 0.9 : 0.86, toTone === "warm" ? 0.9 : 0.86, mixAmount);
+  const glowAlpha = mix(fromTone === "neutral" ? 0.2 : 0.22, toTone === "neutral" ? 0.2 : 0.22, mixAmount);
+  const ringAlpha = mix(fromTone === "violet" ? 0.28 : 0.26, toTone === "violet" ? 0.28 : 0.26, mixAmount);
+  const mixedFill = mixRgb(fromPalette.fill, toPalette.fill, mixAmount);
+  const mixedGlow = mixRgb(fromPalette.glow, toPalette.glow, mixAmount);
 
   return {
-    fill: rgbaString(palette.fill, tone === "warm" ? 0.9 : 0.86),
-    glow: rgbaString(palette.fill, tone === "neutral" ? 0.2 : 0.22),
-    ring: rgbaString(palette.glow, tone === "violet" ? 0.28 : 0.26),
-    stroke: `url(#heroEnergy${tone.charAt(0).toUpperCase()}${tone.slice(1)})`,
-    packet: rgbaString(palette.glow, 0.94),
+    fill: rgbaString(mixedFill, fillAlpha),
+    glow: rgbaString(mixedFill, glowAlpha),
+    ring: rgbaString(mixedGlow, ringAlpha),
   };
 }
 
 function formatNumber(value: number) {
   return Number(value.toFixed(2));
+}
+
+function trianglePoints(cx: number, cy: number, radius: number) {
+  return Array.from({ length: 3 }, (_, index) => {
+    const angle = -Math.PI / 2 + (index * Math.PI * 2) / 3;
+
+    return `${formatNumber(cx + Math.cos(angle) * radius)} ${formatNumber(cy + Math.sin(angle) * radius)}`;
+  }).join(" ");
+}
+
+function hashString(value: string) {
+  let hash = 2166136261;
+
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return hash >>> 0;
+}
+
+function hash01(value: string) {
+  return hashString(value) / 4294967295;
+}
+
+function easeInOutCubic(value: number) {
+  const clamped = clamp(value, 0, 1);
+
+  return clamped < 0.5
+    ? 4 * clamped * clamped * clamped
+    : 1 - Math.pow(-2 * clamped + 2, 3) / 2;
+}
+
+function easeOutCubic(value: number) {
+  const clamped = clamp(value, 0, 1);
+
+  return 1 - Math.pow(1 - clamped, 3);
+}
+
+function pickConnectionTone(seed: string): NodeTone {
+  const toneIndex = Math.min(
+    CONNECTION_TONES.length - 1,
+    Math.floor(hash01(seed) * CONNECTION_TONES.length),
+  );
+
+  return CONNECTION_TONES[toneIndex] ?? "warm";
+}
+
+function pickAlternativeConnectionTone(seed: string, exclude: NodeTone): NodeTone {
+  const alternatives = CONNECTION_TONES.filter((tone) => tone !== exclude);
+
+  if (!alternatives.length) {
+    return exclude;
+  }
+
+  const toneIndex = Math.min(
+    alternatives.length - 1,
+    Math.floor(hash01(seed) * alternatives.length),
+  );
+
+  return alternatives[toneIndex] ?? exclude;
+}
+
+function pickDistinctTone(seed: string, exclusions: NodeTone[]): NodeTone {
+  const alternatives = CONNECTION_TONES.filter(
+    (tone) => !exclusions.includes(tone),
+  );
+
+  if (!alternatives.length) {
+    return exclusions[0] ?? "warm";
+  }
+
+  const toneIndex = Math.min(
+    alternatives.length - 1,
+    Math.floor(hash01(seed) * alternatives.length),
+  );
+
+  return alternatives[toneIndex] ?? exclusions[0] ?? "warm";
+}
+
+function pickNodeShape(seed: string): NodeShape {
+  const shapes: NodeShape[] = ["circle", "square", "triangle"];
+  const shapeIndex = Math.min(
+    shapes.length - 1,
+    Math.floor(hash01(seed) * shapes.length),
+  );
+
+  return shapes[shapeIndex] ?? "circle";
+}
+
+function connectionCycleTimings(linkId: string, cycleIndex: number) {
+  const travelDuration = 2.8 + hash01(`${linkId}-travel-${cycleIndex}`) * 3.7;
+  const fadeDuration = 0.4 + hash01(`${linkId}-fade-${cycleIndex}`) * 0.65;
+  const hiddenDuration = 0.28 + hash01(`${linkId}-hidden-${cycleIndex}`) * 0.42;
+  const reconnectDuration = 0.85 + hash01(`${linkId}-reconnect-${cycleIndex}`) * 1.15;
+
+  return {
+    travelDuration,
+    fadeDuration,
+    hiddenDuration,
+    reconnectDuration,
+    cycleDuration:
+      travelDuration + fadeDuration + hiddenDuration + reconnectDuration,
+  };
+}
+
+function pickRespawnLane(
+  linkId: string,
+  cycleIndex: number,
+  currentLaneIndex: number,
+  occupiedLaneIndices: number[],
+) {
+  const alternatives = ORBITAL_LANES.map((_, laneIndex) => laneIndex).filter(
+    (laneIndex) =>
+      laneIndex !== currentLaneIndex && !occupiedLaneIndices.includes(laneIndex),
+  );
+  const fallbackAlternatives = ORBITAL_LANES.map((_, laneIndex) => laneIndex).filter(
+    (laneIndex) => !occupiedLaneIndices.includes(laneIndex),
+  );
+  const lanePool =
+    alternatives.length > 0
+      ? alternatives
+      : fallbackAlternatives.length > 0
+        ? fallbackAlternatives
+        : ORBITAL_LANES.map((_, laneIndex) => laneIndex).filter(
+            (laneIndex) => laneIndex !== currentLaneIndex,
+          );
+  const laneIndex = Math.min(
+    lanePool.length - 1,
+    Math.floor(hash01(`${linkId}-lane-${cycleIndex}`) * lanePool.length),
+  );
+
+  return lanePool[laneIndex] ?? currentLaneIndex;
+}
+
+function pickRespawnOrbitStartAngle(linkId: string, cycleIndex: number) {
+  return hash01(`${linkId}-orbit-start-${cycleIndex}`) * Math.PI * 2;
+}
+
+function buildToneTransitionPlan(
+  linkId: string,
+  cycleIndex: number,
+  currentTone: NodeTone,
+  currentFromNodeTone: NodeTone,
+  currentToNodeTone: NodeTone,
+) {
+  const nextTone = pickAlternativeConnectionTone(
+    `${linkId}-tone-${cycleIndex + 1}`,
+    currentTone,
+  );
+  const nextFromNodeTone = pickDistinctTone(
+    `${linkId}-from-tone-${cycleIndex + 1}`,
+    [currentFromNodeTone, currentToNodeTone],
+  );
+  const nextToNodeTone = pickDistinctTone(
+    `${linkId}-to-tone-${cycleIndex + 1}`,
+    [currentToNodeTone, nextFromNodeTone],
+  );
+
+  return {
+    nextTone,
+    nextFromNodeTone,
+    nextToNodeTone,
+  };
+}
+
+function countActivePairs(simulations: PairSimulation[]) {
+  return simulations.filter(({ phase }) => phase !== "waiting").length;
+}
+
+function startReadyReconnects(
+  simulations: PairSimulation[],
+  currentTime: number,
+) {
+  const readyPairs = simulations
+    .filter(
+      ({ phase, phaseStartTime, timings }) =>
+        phase === "waiting" &&
+        currentTime >= phaseStartTime + timings.hiddenDuration,
+    )
+    .sort(
+      (left, right) =>
+        left.phaseStartTime - right.phaseStartTime ||
+        left.pairIndex - right.pairIndex,
+    );
+
+  for (const pair of readyPairs) {
+    if (countActivePairs(simulations) >= MAX_ACTIVE_PAIRS) {
+      break;
+    }
+
+    const occupiedLaneIndices = simulations
+      .filter(
+        (otherPair) =>
+          otherPair.linkId !== pair.linkId && otherPair.phase !== "waiting",
+      )
+      .map((otherPair) =>
+        otherPair.phase === "reconnect"
+          ? otherPair.nextLaneIndex
+          : otherPair.currentLaneIndex,
+      );
+
+    pair.nextLaneIndex = pickRespawnLane(
+      pair.linkId,
+      pair.cycleIndex + 1,
+      pair.currentLaneIndex,
+      occupiedLaneIndices,
+    );
+    pair.nextOrbitStartAngle = pickRespawnOrbitStartAngle(
+      pair.linkId,
+      pair.cycleIndex + 1,
+    );
+    pair.phase = "reconnect";
+    pair.phaseStartTime = currentTime;
+  }
+}
+
+function buildConnectionAnimationState(
+  pair: PairSimulation,
+  elapsed: number,
+): ConnectionAnimationState {
+  if (pair.phase === "travel") {
+    const phaseElapsed = Math.max(0, elapsed - pair.phaseStartTime);
+    const phaseProgress = phaseElapsed / pair.timings.travelDuration;
+    const packetTravelDuration = Math.max(
+      0.001,
+      pair.timings.travelDuration - PACKET_SEND_DEBOUNCE_SECONDS,
+    );
+    const packetProgress = clamp(
+      (phaseElapsed - PACKET_SEND_DEBOUNCE_SECONDS) / packetTravelDuration,
+      0,
+      1,
+    );
+    const packetOpacityFactor =
+      phaseElapsed >= PACKET_SEND_DEBOUNCE_SECONDS ? 1 : 0;
+
+    return {
+      cycleIndex: pair.cycleIndex,
+      cycleDuration: pair.timings.cycleDuration,
+      cycleProgress: phaseProgress,
+      activeLaneIndex: pair.currentLaneIndex,
+      activeOrbitStartAngle: pair.currentOrbitStartAngle,
+      tone: pair.currentTone,
+      fromNodeToneFrom: pair.currentFromNodeTone,
+      fromNodeToneTo: pair.currentFromNodeTone,
+      toNodeToneFrom: pair.currentToNodeTone,
+      toNodeToneTo: pair.currentToNodeTone,
+      nodeToneProgress: 0,
+      nodeOpacity: 1,
+      nodeScale: 1,
+      packetProgress,
+      revealProgress: 1,
+      connectionOpacity: 1,
+      accentOpacity: 1,
+      packetOpacityFactor,
+      dashProgress: packetProgress,
+      rotationProgress: 0,
+      pingProgress: 0,
+      pingOpacityFactor: 0,
+    };
+  }
+
+  if (pair.phase === "fade") {
+    const phaseProgress = clamp(
+      (elapsed - pair.phaseStartTime) / pair.timings.fadeDuration,
+      0,
+      1,
+    );
+    const fade = 1 - easeInOutCubic(phaseProgress);
+
+    return {
+      cycleIndex: pair.cycleIndex,
+      cycleDuration: pair.timings.cycleDuration,
+      cycleProgress: phaseProgress,
+      activeLaneIndex: pair.currentLaneIndex,
+      activeOrbitStartAngle: pair.currentOrbitStartAngle,
+      tone: pair.currentTone,
+      fromNodeToneFrom: pair.currentFromNodeTone,
+      fromNodeToneTo: pair.nextFromNodeTone,
+      toNodeToneFrom: pair.currentToNodeTone,
+      toNodeToneTo: pair.nextToNodeTone,
+      nodeToneProgress: phaseProgress * 0.34,
+      nodeOpacity: fade,
+      nodeScale: 1 - phaseProgress * 0.08,
+      packetProgress: 1,
+      revealProgress: 1,
+      connectionOpacity: fade,
+      accentOpacity: fade * 0.45,
+      packetOpacityFactor: 0,
+      dashProgress: 1,
+      rotationProgress: 0,
+      pingProgress: easeOutCubic(phaseProgress) * 0.62,
+      pingOpacityFactor: 0.5 - phaseProgress * 0.12,
+    };
+  }
+
+  if (pair.phase === "waiting") {
+    const hiddenProgress = clamp(
+      (elapsed - pair.phaseStartTime) / pair.timings.hiddenDuration,
+      0,
+      1,
+    );
+
+    return {
+      cycleIndex: pair.cycleIndex,
+      cycleDuration: pair.timings.cycleDuration,
+      cycleProgress: hiddenProgress,
+      activeLaneIndex: pair.currentLaneIndex,
+      activeOrbitStartAngle: pair.currentOrbitStartAngle,
+      tone: pair.nextTone,
+      fromNodeToneFrom: pair.currentFromNodeTone,
+      fromNodeToneTo: pair.nextFromNodeTone,
+      toNodeToneFrom: pair.currentToNodeTone,
+      toNodeToneTo: pair.nextToNodeTone,
+      nodeToneProgress: 0.34 + hiddenProgress * 0.16,
+      nodeOpacity: 0,
+      nodeScale: 0.9,
+      packetProgress: 0,
+      revealProgress: 0,
+      connectionOpacity: 0,
+      accentOpacity: 0,
+      packetOpacityFactor: 0,
+      dashProgress: 0,
+      rotationProgress: 0,
+      pingProgress: 1,
+      pingOpacityFactor: 0.2 * (1 - hiddenProgress),
+    };
+  }
+
+  const phaseProgress = clamp(
+    (elapsed - pair.phaseStartTime) / pair.timings.reconnectDuration,
+    0,
+    1,
+  );
+  const revealProgress = easeOutCubic(phaseProgress);
+
+  return {
+    cycleIndex: pair.cycleIndex,
+    cycleDuration: pair.timings.cycleDuration,
+    cycleProgress: phaseProgress,
+    activeLaneIndex: pair.nextLaneIndex,
+    activeOrbitStartAngle: pair.nextOrbitStartAngle,
+    tone: pair.nextTone,
+    fromNodeToneFrom: pair.currentFromNodeTone,
+    fromNodeToneTo: pair.nextFromNodeTone,
+    toNodeToneFrom: pair.currentToNodeTone,
+    toNodeToneTo: pair.nextToNodeTone,
+    nodeToneProgress: 0.5 + revealProgress * 0.5,
+    nodeOpacity: revealProgress,
+    nodeScale: 0.9 + revealProgress * 0.1,
+    packetProgress: 0,
+    revealProgress,
+    connectionOpacity: 0.22 + revealProgress * 0.78,
+    accentOpacity: revealProgress * 0.58,
+    packetOpacityFactor: 0,
+    dashProgress: 0,
+    rotationProgress: revealProgress,
+    pingProgress: 0.62 + easeOutCubic(phaseProgress) * 0.38,
+    pingOpacityFactor: 0.38 * (1 - phaseProgress),
+  };
+}
+
+function resolveConnectionAnimationStates(elapsed: number) {
+  const simulations: PairSimulation[] = candidateLinks.map((candidate, pairIndex) => {
+    const linkId = `${baseNodes[candidate.from].id}-${baseNodes[candidate.to].id}`;
+    const currentTone = pickConnectionTone(`${linkId}-tone-0`);
+    const currentFromNodeTone = baseNodes[candidate.from].tone;
+    const currentToNodeTone = baseNodes[candidate.to].tone;
+    const timings = connectionCycleTimings(linkId, 0);
+    const tonePlan = buildToneTransitionPlan(
+      linkId,
+      0,
+      currentTone,
+      currentFromNodeTone,
+      currentToNodeTone,
+    );
+    const initialLaneIndex = pairIndex % ORBITAL_LANES.length;
+    const initialOrbitStartAngle = pickRespawnOrbitStartAngle(linkId, 0);
+    const phaseSeed = hash01(`${linkId}-phase`);
+    const initiallyActive = pairIndex < MAX_ACTIVE_PAIRS;
+
+    return {
+      pairIndex,
+      candidate,
+      linkId,
+      cycleIndex: 0,
+      phase: initiallyActive ? "travel" : "waiting",
+      phaseStartTime: initiallyActive
+        ? -phaseSeed * timings.travelDuration * 0.72
+        : -(0.35 + phaseSeed * 0.65) * timings.hiddenDuration,
+      timings,
+      currentTone,
+      currentFromNodeTone,
+      currentToNodeTone,
+      currentLaneIndex: initialLaneIndex,
+      currentOrbitStartAngle: initialOrbitStartAngle,
+      nextTone: tonePlan.nextTone,
+      nextFromNodeTone: tonePlan.nextFromNodeTone,
+      nextToNodeTone: tonePlan.nextToNodeTone,
+      nextLaneIndex: initialLaneIndex,
+      nextOrbitStartAngle: initialOrbitStartAngle,
+    };
+  });
+  let simulatedTime = 0;
+  const epsilon = 0.0001;
+  const targetTime = Math.max(0, elapsed);
+
+  while (simulatedTime < targetTime) {
+    let nextEventTime = Number.POSITIVE_INFINITY;
+
+    for (const pair of simulations) {
+      if (pair.phase === "travel") {
+        const eventTime = pair.phaseStartTime + pair.timings.travelDuration;
+
+        if (eventTime > simulatedTime + epsilon) {
+          nextEventTime = Math.min(nextEventTime, eventTime);
+        }
+      } else if (pair.phase === "fade") {
+        const eventTime = pair.phaseStartTime + pair.timings.fadeDuration;
+
+        if (eventTime > simulatedTime + epsilon) {
+          nextEventTime = Math.min(nextEventTime, eventTime);
+        }
+      } else if (pair.phase === "reconnect") {
+        const eventTime = pair.phaseStartTime + pair.timings.reconnectDuration;
+
+        if (eventTime > simulatedTime + epsilon) {
+          nextEventTime = Math.min(nextEventTime, eventTime);
+        }
+      } else {
+        const eventTime = pair.phaseStartTime + pair.timings.hiddenDuration;
+
+        if (eventTime > simulatedTime + epsilon) {
+          nextEventTime = Math.min(nextEventTime, eventTime);
+        }
+      }
+    }
+
+    if (!Number.isFinite(nextEventTime) || nextEventTime > targetTime) {
+      break;
+    }
+
+    simulatedTime = nextEventTime;
+
+    for (const pair of simulations) {
+      if (
+        pair.phase === "travel" &&
+        Math.abs(
+          pair.phaseStartTime + pair.timings.travelDuration - simulatedTime,
+        ) <= epsilon
+      ) {
+        pair.phase = "fade";
+        pair.phaseStartTime = simulatedTime;
+      } else if (
+        pair.phase === "fade" &&
+        Math.abs(
+          pair.phaseStartTime + pair.timings.fadeDuration - simulatedTime,
+        ) <= epsilon
+      ) {
+        pair.phase = "waiting";
+        pair.phaseStartTime = simulatedTime;
+      } else if (
+        pair.phase === "reconnect" &&
+        Math.abs(
+          pair.phaseStartTime + pair.timings.reconnectDuration - simulatedTime,
+        ) <= epsilon
+      ) {
+        pair.currentTone = pair.nextTone;
+        pair.currentFromNodeTone = pair.nextFromNodeTone;
+        pair.currentToNodeTone = pair.nextToNodeTone;
+        pair.currentLaneIndex = pair.nextLaneIndex;
+        pair.currentOrbitStartAngle = pair.nextOrbitStartAngle;
+        pair.cycleIndex += 1;
+        pair.timings = connectionCycleTimings(pair.linkId, pair.cycleIndex);
+
+        const tonePlan = buildToneTransitionPlan(
+          pair.linkId,
+          pair.cycleIndex,
+          pair.currentTone,
+          pair.currentFromNodeTone,
+          pair.currentToNodeTone,
+        );
+
+        pair.nextTone = tonePlan.nextTone;
+        pair.nextFromNodeTone = tonePlan.nextFromNodeTone;
+        pair.nextToNodeTone = tonePlan.nextToNodeTone;
+        pair.nextLaneIndex = pair.currentLaneIndex;
+        pair.nextOrbitStartAngle = pair.currentOrbitStartAngle;
+        pair.phase = "travel";
+        pair.phaseStartTime = simulatedTime;
+      }
+    }
+
+    startReadyReconnects(simulations, simulatedTime);
+  }
+
+  return simulations.map(({ candidate, linkId, ...pair }) => ({
+    candidate,
+    linkId,
+    state: buildConnectionAnimationState({ candidate, linkId, ...pair }, targetTime),
+  }));
 }
 
 function connectionEnergyPalette(
@@ -581,8 +1057,8 @@ function connectionEnergyPalette(
     lead: rgbaString(lead, 0.74 + intensity * 0.1),
     peak: rgbaString(midpointGlow, 0.82 + intensity * 0.1),
     trail: rgbaString(trail, 0.74 + intensity * 0.1),
-    packetFill: rgbaString(midpointGlow, 0.92),
-    packetGlow: rgbaString(midpointCore, 0.28 + intensity * 0.12),
+    packetFill: rgbaString(midpointGlow, 0.98),
+    packetGlow: rgbaString(midpointCore, 0.42 + intensity * 0.16),
   };
 }
 
@@ -604,9 +1080,10 @@ function buildActiveLink(
   start: LinkEndpoint,
   end: LinkEndpoint,
   candidate: Omit<CandidateLink, "from" | "to">,
-  frameTime: number,
+  animationState: ConnectionAnimationState,
   controlNode: { xPos: number; yPos: number },
 ) {
+  const linkId = `${start.id}-${end.id}`;
   const dx = end.xPos - start.xPos;
   const dy = end.yPos - start.yPos;
   const distance = Math.hypot(dx, dy);
@@ -648,30 +1125,49 @@ function buildActiveLink(
           { x: end.xPos, y: end.yPos },
           curve,
         );
-  const loopPosition =
-    ((frameTime * candidate.energySpeed * 0.46 + candidate.offset) % 1 + 1) % 1;
-  const reversePosition = 1 - loopPosition;
-  const energyOffset = -((frameTime * (24 + closeness * 30)) % 176);
-  const gradientCenter =
-    0.22 + ((((frameTime * candidate.energySpeed * 0.34 + candidate.offset) % 1) + 1) % 1) * 0.56;
+  const reversePosition = 1 - animationState.packetProgress;
+  const energyOffset = -(animationState.dashProgress * 88);
+  const gradientCenter = 0.22 + animationState.dashProgress * 0.56;
   const depth = (start.depth + end.depth) / 2;
   const depthVisibility = mix(0.52, 1, clamp((depth + 0.72) / 1.44, 0, 1));
   const energyPalette = connectionEnergyPalette(
-    start.tone ?? candidate.tone,
-    end.tone ?? candidate.tone,
+    animationState.tone,
+    animationState.tone,
     closeness,
   );
   const energyGradientId = `heroEnergy-${start.id}-${end.id}`;
+  const packetShape = pickNodeShape(
+    `${linkId}-packet-${animationState.cycleIndex}`,
+  );
+  const pingCurve = end.yPos < controlNode.yPos ? -42 : 42;
+  const pingPath = connectionPath(
+    { x: end.xPos, y: end.yPos },
+    { x: controlNode.xPos, y: controlNode.yPos },
+    pingCurve,
+  );
+  const pingPosition =
+    animationState.pingOpacityFactor > 0
+      ? quadraticPoint(
+          { x: end.xPos, y: end.yPos },
+          pingPath.control,
+          { x: controlNode.xPos, y: controlNode.yPos },
+          animationState.pingProgress,
+        )
+      : null;
 
   return {
-    id: `${start.id}-${end.id}`,
+    id: linkId,
     d: path.d,
     targetNodeId: end.id,
     closeness,
     depth,
     layer: depth < -0.02 ? "back" : "front",
     energyOffset,
-    energySpeed: candidate.energySpeed,
+    energySpeed: Math.max(candidate.energySpeed * 0.45, 1 / (animationState.cycleDuration * 8.2)),
+    revealProgress: animationState.revealProgress,
+    connectionOpacity: animationState.connectionOpacity,
+    accentOpacity: animationState.accentOpacity,
+    packetOpacityFactor: animationState.packetOpacityFactor,
     energyGradientId,
     energyGradientX1: start.xPos,
     energyGradientY1: start.yPos,
@@ -687,19 +1183,20 @@ function buildActiveLink(
     energyGradientPeakEnd: Math.min(1, gradientCenter + 0.038),
     energyGradientEnd: Math.min(1, gradientCenter + 0.11),
     energyStroke: `url(#${energyGradientId})`,
+    packetShape,
     packetFill: energyPalette.packetFill,
     packetGlow: energyPalette.packetGlow,
     packetForward: usesOrbitalPath
       ? projectOrbitalPoint(
           controlNode,
           start.laneIndex!,
-          start.orbitAngle! + orbitalDelta * loopPosition,
+          start.orbitAngle! + orbitalDelta * animationState.packetProgress,
         )
       : quadraticPoint(
           { x: start.xPos, y: start.yPos },
           path.control,
           { x: end.xPos, y: end.yPos },
-          loopPosition,
+          animationState.packetProgress,
         ),
     packetReverse: candidate.reversePulse
       ? usesOrbitalPath
@@ -715,6 +1212,10 @@ function buildActiveLink(
             reversePosition,
           )
       : null,
+    pingFill: energyPalette.packetFill,
+    pingGlow: energyPalette.packetGlow,
+    pingPosition,
+    pingOpacityFactor: animationState.pingOpacityFactor,
     packetScale: 0.82 + clamp((depth + 1) / 2, 0, 1) * 0.34,
     arrivalPulse: 0,
     baseOpacity: (0.14 + closeness * 0.24) * depthVisibility,
@@ -791,28 +1292,47 @@ export function HeroBackgroundMotion() {
       pulse,
       rotation,
       coreRadius: 58 + pulse * 2.4,
-      logoRadius: 26.5 + pulse * 0.6,
+      logoRadius: 23.6 + pulse * 0.4,
       haloRadius: 104 + pulse * 5.8,
     };
   }, [shouldReduceMotion, time]);
+
+  const linkAnimationStates = useMemo(
+    () => resolveConnectionAnimationStates(shouldReduceMotion ? 0 : time),
+    [shouldReduceMotion, time],
+  );
 
   const positionedNodes = useMemo<PositionedNode[]>(() => {
     const frameTime = shouldReduceMotion ? 0 : time;
 
     return baseNodes.map((node, index) => {
-      const laneIndex = index % ORBITAL_LANES.length;
+      const nodeLinkState = linkAnimationStates.find(
+        ({ candidate }) => candidate.from === index || candidate.to === index,
+      );
+      const isSourceNode = nodeLinkState
+        ? index === nodeLinkState.candidate.from
+        : true;
+      const laneIndex = nodeLinkState?.state.activeLaneIndex ?? index % ORBITAL_LANES.length;
       const lane = ORBITAL_LANES[laneIndex];
-      const laneSlot = Math.floor(index / ORBITAL_LANES.length);
       const laneRotation = (lane.rotation * Math.PI) / 180;
       const laneTilt = (lane.tilt * Math.PI) / 180;
       const pulse = 0.5 + 0.5 * Math.sin(frameTime * (node.speed * 2.2) + node.phase);
       const lanePhase = laneRotation * 0.34;
-      const slotAngle =
-        NODE_ORBITAL_SLOT_ANGLES[laneSlot % NODE_ORBITAL_SLOT_ANGLES.length] ?? 0;
+      const orbitStartAngle = nodeLinkState?.state.activeOrbitStartAngle ?? 0;
+      const slotAngle = isSourceNode ? orbitStartAngle : orbitStartAngle + Math.PI;
+      const rotationDirection =
+        nodeLinkState?.candidate.orbitDirection === "clockwise" ? -1 : 1;
+      const exchangedRotationOffset =
+        nodeLinkState
+          ? rotationDirection *
+            (nodeLinkState.state.cycleIndex + nodeLinkState.state.rotationProgress) *
+            CONNECTION_ROTATION_STEP
+          : 0;
       const orbitAngle =
         frameTime * NODE_ORBITAL_SPEED +
         lanePhase +
-        slotAngle;
+        slotAngle +
+        exchangedRotationOffset;
       const ringRadius = lane.radius;
       const localX = Math.cos(orbitAngle) * ringRadius;
       const localY =
@@ -843,29 +1363,36 @@ export function HeroBackgroundMotion() {
         pulse,
         depth,
         depthOpacity,
+        appearanceOpacity: nodeLinkState?.state.nodeOpacity ?? 1,
+        appearanceScale: nodeLinkState?.state.nodeScale ?? 1,
         layer: depth < -0.02 ? "back" : "front",
         renderedRadius: node.radius * (1 + depth * 0.22),
         laneIndex,
         orbitAngle,
+        toneFrom: isSourceNode
+          ? nodeLinkState?.state.fromNodeToneFrom ?? node.tone
+          : nodeLinkState?.state.toNodeToneFrom ?? node.tone,
+        toneTo: isSourceNode
+          ? nodeLinkState?.state.fromNodeToneTo ?? node.tone
+          : nodeLinkState?.state.toNodeToneTo ?? node.tone,
+        toneMix: nodeLinkState?.state.nodeToneProgress ?? 0,
       };
     });
-  }, [controlNode, shouldReduceMotion, time]);
+  }, [controlNode, linkAnimationStates, shouldReduceMotion, time]);
 
   const activeLinks = useMemo<ActiveLink[]>(() => {
-    const frameTime = shouldReduceMotion ? 0 : time;
-
-    return candidateLinks.flatMap((candidate) => {
+    return linkAnimationStates.flatMap(({ candidate, state }) => {
       const link = buildActiveLink(
         positionedNodes[candidate.from],
         positionedNodes[candidate.to],
         candidate,
-        frameTime,
+        state,
         controlNode,
       );
 
       return link ? [link] : [];
     });
-  }, [controlNode, positionedNodes, shouldReduceMotion, time]);
+  }, [controlNode, linkAnimationStates, positionedNodes]);
 
   const backNodes = useMemo(
     () => positionedNodes.filter((node) => node.layer === "back").sort((left, right) => left.depth - right.depth),
@@ -888,31 +1415,83 @@ export function HeroBackgroundMotion() {
     return null;
   }
 
-  const gridShift = shouldReduceMotion ? 0 : Math.sin(time * 0.12) * 10;
-  const gridOpacity = shouldReduceMotion ? 0.022 : 0.017 + Math.sin(time * 0.18) * 0.004;
   const outerOrbitRx = controlNode.coreRadius + CONTROL_SHELL_OUTER_OFFSET;
   const outerOrbitRy = outerOrbitRx * 0.42;
   const innerOrbitRx = controlNode.coreRadius + CONTROL_SHELL_INNER_OFFSET;
   const innerOrbitRy = innerOrbitRx * 0.3;
   const orbitalTextureOffset = 0;
   const shellRings = [...ORBITAL_LANES, ...ORBITAL_ACCENT_RINGS];
+  const renderParticleShape = ({
+    shape,
+    position,
+    radius,
+    fill,
+    opacity,
+  }: {
+    shape: NodeShape;
+    position: { x: number; y: number };
+    radius: number;
+    fill: string;
+    opacity: number;
+  }) => {
+    if (shape === "square") {
+      const sideLength = radius * Math.SQRT2;
+      const halfSide = sideLength / 2;
+
+      return (
+        <rect
+          fill={fill}
+          height={formatNumber(sideLength)}
+          opacity={formatNumber(opacity)}
+          rx={formatNumber(Math.max(0.6, radius * 0.18))}
+          width={formatNumber(sideLength)}
+          x={formatNumber(position.x - halfSide)}
+          y={formatNumber(position.y - halfSide)}
+        />
+      );
+    }
+
+    if (shape === "triangle") {
+      return (
+        <polygon
+          fill={fill}
+          opacity={formatNumber(opacity)}
+          points={trianglePoints(position.x, position.y, radius)}
+        />
+      );
+    }
+
+    return (
+      <circle
+        cx={formatNumber(position.x)}
+        cy={formatNumber(position.y)}
+        fill={fill}
+        opacity={formatNumber(opacity)}
+        r={formatNumber(radius)}
+      />
+    );
+  };
   const renderLink = (link: ActiveLink) => {
+    const revealedDash = `${formatNumber(Math.max(0.001, link.revealProgress))} 1`;
+    const accentReveal = clamp((link.revealProgress - 0.62) / 0.38, 0, 1);
     const packetPulse = shouldReduceMotion
       ? 0
       : 0.5 +
         0.5 *
           Math.sin(
-            time * (1.9 + link.energySpeed * 0.7) +
+            time * (0.78 + link.energySpeed * 0.24) +
               link.closeness * 2.2 +
-              link.energySpeed * 11,
+              link.energySpeed * 7,
           );
     const packetRadius =
       (1.38 + link.closeness * 0.76) *
       link.packetScale *
       (1 + packetPulse * 0.18);
     const packetOpacity =
-      link.energyOpacity * (0.72 + packetPulse * 0.12);
+      link.energyOpacity * link.packetOpacityFactor * (0.86 + packetPulse * 0.12);
     const packetGlowRadius = packetRadius * (3 + packetPulse * 0.35);
+    const pingRadius = Math.max(packetRadius * 0.96, 3.6);
+    const pingGlowRadius = pingRadius * 3.8;
     const electricalDash = `${formatNumber(4.2 + link.closeness * 2.1)} ${formatNumber(8.8 - link.closeness * 2.2)}`;
     const ionDash = `${formatNumber(1.6 + link.closeness * 0.8)} ${formatNumber(10.8 - link.closeness * 1.6)}`;
 
@@ -920,28 +1499,34 @@ export function HeroBackgroundMotion() {
       <g key={link.id}>
         <path
           d={link.d}
-          opacity={formatNumber(link.baseOpacity)}
+          opacity={formatNumber(link.baseOpacity * link.connectionOpacity)}
+          pathLength={1}
           stroke={link.energyStroke}
+          strokeDasharray={revealedDash}
           strokeWidth={formatNumber(link.baseWidth)}
           strokeLinecap="round"
         />
         <path
           d={link.d}
-          opacity={formatNumber(link.energyOpacity)}
+          opacity={formatNumber(link.energyOpacity * link.connectionOpacity)}
+          pathLength={1}
           stroke={link.energyStroke}
+          strokeDasharray={revealedDash}
           strokeLinecap="round"
           strokeWidth={formatNumber(link.energyWidth)}
         />
         <path
           d={link.d}
-          opacity={formatNumber(link.energyOpacity * 0.16)}
+          opacity={formatNumber(link.energyOpacity * 0.16 * link.connectionOpacity)}
+          pathLength={1}
           stroke={link.energyStroke}
+          strokeDasharray={revealedDash}
           strokeLinecap="round"
           strokeWidth={formatNumber(link.energyWidth * 1.35)}
         />
         <path
           d={link.d}
-          opacity={formatNumber(link.energyOpacity * 0.26)}
+          opacity={formatNumber(link.energyOpacity * 0.26 * link.accentOpacity * accentReveal)}
           stroke="rgba(255,247,238,0.92)"
           strokeLinecap="round"
           strokeDasharray={electricalDash}
@@ -950,27 +1535,45 @@ export function HeroBackgroundMotion() {
         />
         <path
           d={link.d}
-          opacity={formatNumber(link.energyOpacity * 0.18)}
+          opacity={formatNumber(link.energyOpacity * 0.18 * link.accentOpacity * accentReveal)}
           stroke="rgba(255,255,255,0.78)"
           strokeLinecap="round"
           strokeDasharray={ionDash}
           strokeDashoffset={formatNumber(link.energyOffset * 2.15)}
           strokeWidth={formatNumber(link.energyWidth * 0.18)}
         />
-        <circle
-          cx={formatNumber(link.packetForward.x)}
-          cy={formatNumber(link.packetForward.y)}
-          fill={link.packetGlow}
-          opacity={formatNumber(packetOpacity * 0.26)}
-          r={formatNumber(packetGlowRadius)}
-        />
-        <circle
-          cx={formatNumber(link.packetForward.x)}
-          cy={formatNumber(link.packetForward.y)}
-          fill={link.packetFill}
-          opacity={formatNumber(packetOpacity)}
-          r={formatNumber(packetRadius)}
-        />
+        {renderParticleShape({
+          shape: link.packetShape,
+          position: link.packetForward,
+          radius: packetGlowRadius,
+          fill: link.packetGlow,
+          opacity: packetOpacity * 0.42,
+        })}
+        {renderParticleShape({
+          shape: link.packetShape,
+          position: link.packetForward,
+          radius: packetRadius,
+          fill: link.packetFill,
+          opacity: packetOpacity,
+        })}
+        {link.pingPosition ? (
+          <>
+            {renderParticleShape({
+              shape: link.packetShape,
+              position: link.pingPosition,
+              radius: pingGlowRadius,
+              fill: link.pingGlow,
+              opacity: link.pingOpacityFactor * 0.32,
+            })}
+            {renderParticleShape({
+              shape: link.packetShape,
+              position: link.pingPosition,
+              radius: pingRadius,
+              fill: link.pingFill,
+              opacity: link.pingOpacityFactor * 0.9,
+            })}
+          </>
+        ) : null}
       </g>
     );
   };
@@ -1005,12 +1608,12 @@ export function HeroBackgroundMotion() {
       side,
     );
     const ringVisibilityWeight =
-      index === 0 ? 1 : index < ORBITAL_LANES.length ? 0.9 : 0.78;
+      index === 0 ? 0.26 : index < ORBITAL_LANES.length ? 0.2 : 0.15;
     const shellOpacity =
-      (side === "front" ? lane.opacity * 0.82 : lane.opacity * 0.48) *
+      (side === "front" ? lane.opacity * 0.24 : lane.opacity * 0.08) *
       ringVisibilityWeight;
     const textureOpacity =
-      (side === "front" ? 0.09 : 0.045) * ringVisibilityWeight;
+      (side === "front" ? 0.008 : 0.0025) * ringVisibilityWeight;
     const textureOffset =
       orbitalTextureOffset * (0.9 + index * 0.35) * (side === "front" ? 1 : -0.6);
 
@@ -1067,9 +1670,10 @@ export function HeroBackgroundMotion() {
     );
   };
   const renderNode = (node: PositionedNode) => {
-    const tone = toneStyles(node.tone);
-    const glowRadius = node.renderedRadius * (3.5 + node.pulse * 1.15) * (node.layer === "back" ? 0.9 : 1.08);
-    const ringRadius = node.renderedRadius * (1.72 + node.pulse * 0.48);
+    const tone = mixedToneStyles(node.toneFrom, node.toneTo, node.toneMix);
+    const visibleRadius = node.renderedRadius * node.appearanceScale;
+    const glowRadius = visibleRadius * (3.5 + node.pulse * 1.15) * (node.layer === "back" ? 0.9 : 1.08);
+    const ringRadius = visibleRadius * (1.72 + node.pulse * 0.48);
 
     return (
       <g key={node.id}>
@@ -1077,14 +1681,14 @@ export function HeroBackgroundMotion() {
           cx={formatNumber(node.xPos)}
           cy={formatNumber(node.yPos)}
           fill={tone.glow}
-          opacity={formatNumber((0.22 + node.pulse * 0.18) * node.depthOpacity)}
+          opacity={formatNumber((0.22 + node.pulse * 0.18) * node.depthOpacity * node.appearanceOpacity)}
           r={formatNumber(glowRadius)}
         />
         <circle
           cx={formatNumber(node.xPos)}
           cy={formatNumber(node.yPos)}
           fill="none"
-          opacity={formatNumber((0.2 + node.pulse * 0.14) * node.depthOpacity)}
+          opacity={formatNumber((0.2 + node.pulse * 0.14) * node.depthOpacity * node.appearanceOpacity)}
           r={formatNumber(ringRadius)}
           stroke={tone.ring}
           strokeWidth="1"
@@ -1093,15 +1697,15 @@ export function HeroBackgroundMotion() {
           cx={formatNumber(node.xPos)}
           cy={formatNumber(node.yPos)}
           fill={tone.fill}
-          opacity={formatNumber((0.58 + node.pulse * 0.18) * node.depthOpacity)}
-          r={formatNumber(node.renderedRadius + node.pulse * 0.42)}
+          opacity={formatNumber((0.58 + node.pulse * 0.18) * node.depthOpacity * node.appearanceOpacity)}
+          r={formatNumber(visibleRadius + node.pulse * 0.42 * node.appearanceScale)}
         />
         <circle
           cx={formatNumber(node.xPos)}
           cy={formatNumber(node.yPos)}
           fill="rgba(255,250,244,0.76)"
-          opacity={formatNumber((0.34 + node.pulse * 0.16) * node.depthOpacity)}
-          r={formatNumber(Math.max(1.35, node.renderedRadius * 0.32))}
+          opacity={formatNumber((0.34 + node.pulse * 0.16) * node.depthOpacity * node.appearanceOpacity)}
+          r={formatNumber(Math.max(1.2, visibleRadius * 0.32))}
         />
       </g>
     );
@@ -1112,41 +1716,10 @@ export function HeroBackgroundMotion() {
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_22%,rgba(240,168,94,0.01)_0%,rgba(240,168,94,0)_20%),radial-gradient(circle_at_83%_50%,rgba(155,89,182,0.012)_0%,rgba(155,89,182,0)_24%),linear-gradient(90deg,rgba(0,0,1,0.93)_0%,rgba(2,2,4,0.82)_30%,rgba(4,4,7,0.84)_58%,rgba(6,6,10,0.92)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_84%_44%,rgba(0,0,0,0.14)_0%,rgba(0,0,0,0.36)_34%,rgba(0,0,0,0.56)_68%,rgba(0,0,0,0.72)_100%),linear-gradient(180deg,rgba(1,1,2,0.26)_0%,rgba(1,1,2,0.1)_34%,rgba(1,1,2,0.42)_100%)]" />
-
-      {ambientGlows.map((glow) => {
-        const animatedTime = shouldReduceMotion ? 0 : time * glow.speed;
-        const translateX = Math.sin(animatedTime + glow.phase) * glow.xAmplitude;
-        const translateY = Math.cos(animatedTime * 1.14 + glow.phase) * glow.yAmplitude;
-        const scale = 1 + Math.sin(animatedTime * 0.72 + glow.phase) * glow.scaleAmplitude;
-        const opacity =
-          glow.opacityBase +
-          Math.sin(animatedTime * 0.9 + glow.phase) * glow.opacityAmplitude;
-
-        return (
-          <div
-            key={glow.className}
-            className={glow.className}
-            style={{
-              opacity: formatNumber(opacity),
-              transform: `translate3d(${formatNumber(translateX)}px, ${formatNumber(translateY)}px, 0) scale(${formatNumber(scale)})`,
-            }}
-          />
-        );
-      })}
-
-      <div
-        className="absolute inset-y-0 right-0 w-[48%] bg-[linear-gradient(rgba(249,241,230,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(249,241,230,0.01)_1px,transparent_1px)] bg-[size:88px_88px] [mask-image:linear-gradient(180deg,transparent,black_14%,black_86%,transparent)]"
-        style={{
-          opacity: formatNumber(gridOpacity),
-          transform: `translate3d(${formatNumber(gridShift)}px, 0, 0)`,
-        }}
-      />
-
       <svg
         className="absolute inset-0 h-full w-full opacity-[0.98]"
         fill="none"
+        preserveAspectRatio="xMidYMid slice"
         viewBox="0 0 1680 960"
       >
         <defs>
@@ -1347,7 +1920,7 @@ export function HeroBackgroundMotion() {
             <path
               d={ellipseHalfPath(controlNode.xPos, controlNode.yPos, outerOrbitRx, outerOrbitRy, "back")}
               fill="none"
-              opacity={formatNumber(0.2 + controlNode.pulse * 0.08)}
+              opacity={formatNumber(0.05 + controlNode.pulse * 0.02)}
               stroke="rgba(93,70,106,0.18)"
               strokeDasharray="20 22"
               strokeWidth="1.2"
@@ -1355,7 +1928,7 @@ export function HeroBackgroundMotion() {
             <path
               d={ellipseHalfPath(controlNode.xPos, controlNode.yPos, innerOrbitRx, innerOrbitRy, "back")}
               fill="none"
-              opacity={formatNumber(0.18 + controlNode.pulse * 0.06)}
+              opacity={formatNumber(0.04 + controlNode.pulse * 0.015)}
               stroke="rgba(144,92,72,0.16)"
               strokeDasharray="6 14"
               strokeWidth="1.1"
@@ -1389,7 +1962,7 @@ export function HeroBackgroundMotion() {
             <path
               d={ellipseHalfPath(controlNode.xPos, controlNode.yPos, outerOrbitRx, outerOrbitRy, "front")}
               fill="none"
-              opacity={formatNumber(0.4 + controlNode.pulse * 0.18)}
+              opacity={formatNumber(0.1 + controlNode.pulse * 0.045)}
               stroke="rgba(112,84,126,0.24)"
               strokeDasharray="18 18"
               strokeWidth="1.4"
@@ -1397,7 +1970,7 @@ export function HeroBackgroundMotion() {
             <path
               d={ellipseHalfPath(controlNode.xPos, controlNode.yPos, innerOrbitRx, innerOrbitRy, "front")}
               fill="none"
-              opacity={formatNumber(0.34 + controlNode.pulse * 0.12)}
+              opacity={formatNumber(0.08 + controlNode.pulse * 0.03)}
               stroke="rgba(173,101,70,0.24)"
               strokeDasharray="4 12"
               strokeWidth="1.2"
@@ -1500,13 +2073,13 @@ export function HeroBackgroundMotion() {
           />
           <image
             clipPath="url(#heroControlLogoClip)"
-            height={formatNumber(controlNode.logoRadius * 1.86)}
+            height={formatNumber(controlNode.logoRadius * 1.72)}
             href="/images/consultry-logo.png"
             opacity={formatNumber(0.8 + controlNode.pulse * 0.08)}
             preserveAspectRatio="xMidYMid meet"
-            width={formatNumber(controlNode.logoRadius * 1.86)}
-            x={formatNumber(controlNode.xPos - controlNode.logoRadius * 0.93)}
-            y={formatNumber(controlNode.yPos - controlNode.logoRadius * 0.93)}
+            width={formatNumber(controlNode.logoRadius * 1.72)}
+            x={formatNumber(controlNode.xPos - controlNode.logoRadius * 0.86)}
+            y={formatNumber(controlNode.yPos - controlNode.logoRadius * 0.86)}
           />
           <circle
             cx={formatNumber(controlNode.xPos)}
@@ -1530,40 +2103,13 @@ export function HeroBackgroundMotion() {
         {frontLinks.map(renderLink)}
         {frontNodes.map(renderNode)}
 
-        <g opacity="0.18">
-          <path d="M1280 0L1280 960" stroke="rgba(248,239,226,0.12)" strokeWidth="1" />
-          <path d="M1446 0L1446 960" stroke="rgba(248,239,226,0.09)" strokeWidth="1" />
-          <path d="M1608 0L1608 960" stroke="rgba(248,239,226,0.08)" strokeWidth="1" />
+        <g opacity="0.06">
+          <path d="M1280 0L1280 960" stroke="rgba(248,239,226,0.1)" strokeWidth="1" />
+          <path d="M1446 0L1446 960" stroke="rgba(248,239,226,0.08)" strokeWidth="1" />
+          <path d="M1608 0L1608 960" stroke="rgba(248,239,226,0.06)" strokeWidth="1" />
         </g>
       </svg>
 
-      {sparkSpecs.map((spark) => {
-        const animatedTime = shouldReduceMotion ? 0 : time / spark.duration;
-        const frame = animatedTime + spark.delay;
-        const x = Math.sin(frame * Math.PI * 2) * spark.driftX[1];
-        const y = Math.cos(frame * Math.PI * 2 * 0.84) * Math.abs(spark.driftY[1]);
-        const opacity =
-          spark.opacity[0] +
-          ((Math.sin(frame * Math.PI * 2) + 1) / 2) * (spark.opacity[1] - spark.opacity[0]);
-
-        return (
-          <span
-            key={`${spark.left}-${spark.top}`}
-            className="absolute rounded-full"
-            style={{
-              left: spark.left,
-              top: spark.top,
-              width: spark.size,
-              height: spark.size,
-              background: spark.color,
-              filter: `blur(${spark.blur}px)`,
-              opacity: formatNumber(opacity),
-              transform: `translate3d(${formatNumber(x)}px, ${formatNumber(y)}px, 0) scale(${formatNumber(0.9 + ((Math.sin(frame * Math.PI * 2 * 1.2) + 1) / 2) * 0.35)})`,
-              boxShadow: `0 0 ${spark.size * 2.4}px ${spark.color}`,
-            }}
-          />
-        );
-      })}
     </div>
   );
 }

@@ -75,6 +75,19 @@ button {
   margin-inline: auto;
 }
 
+.full-bleed {
+  width: 100vw;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+}
+
+@supports (width: 100dvw) {
+  .full-bleed {
+    width: 100dvw;
+    margin-inline: calc(50% - 50dvw);
+  }
+}
+
 .section-shell {
   padding-block: clamp(4rem, 7vw, 7rem);
 }
