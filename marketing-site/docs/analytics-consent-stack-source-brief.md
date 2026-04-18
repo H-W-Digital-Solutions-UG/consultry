@@ -4,10 +4,13 @@ This brief collects the official primary sources needed to implement a consent-g
 
 ## Recommended Integration Order
 
-1. Load `CookieScript` first in the document `<head>` so consent exists before other scripts.
+1. Load `CookieScript` from the document so consent is established before any tag-management script writes cookies.
 2. Mount `Google Tag Manager` only after `performance` consent.
 3. Keep `GA4` inside `GTM` and avoid a second, direct `gtag.js` install.
-4. Use `Next.js` `beforeInteractive` for the CMP and `afterInteractive` for analytics/tag manager scripts.
+4. Use `Next.js` `afterInteractive` for the CMP and for analytics/tag manager scripts, **and** gate every cookie-writing script on `hasPerformanceConsent()`.
+   - Rationale: `beforeInteractive` renders the CMP script render-blocking and measurably delays LCP on mobile. Since `AnalyticsBootstrap` already re-syncs consent on the `CookieScriptLoaded` / `CookieScriptAccept*` / `CookieScriptReject` events and gates GTM strictly on `performanceConsent`, no cookie is written before consent even when the CMP loads after hydration.
+   - Add a `<link rel="preconnect" crossOrigin="anonymous" href="<CookieScript CDN origin>">` to parallelize the connection setup with HTML parse.
+   - Contract: any future script added to the stack that writes cookies MUST also be gated on `hasPerformanceConsent()`. If that invariant changes, revisit the `afterInteractive` decision.
 
 ## CookieScript
 

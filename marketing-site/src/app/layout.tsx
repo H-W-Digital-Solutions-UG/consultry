@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Suspense } from "react";
 import { AnalyticsBootstrap } from "@/components/analytics/AnalyticsBootstrap";
+import { WebVitalsReporter } from "@/components/analytics/WebVitalsReporter";
 import { Footer } from "@/components/marketing/Footer";
 import { JsonLd } from "@/components/marketing/JsonLd";
 import { Nav } from "@/components/marketing/Nav";
@@ -17,11 +18,36 @@ const inter = Inter({
   display: "swap",
 });
 
+/**
+ * JetBrains Mono is used for small uppercase captions (`.eyebrow`, mono labels).
+ * It is never the LCP element, so we opt out of Next's automatic font preload
+ * to avoid contending with the Inter subset on the LCP critical path. The font
+ * still loads on-demand with `display: swap`; captions simply paint with the
+ * system monospace stack first.
+ */
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
+  preload: false,
 });
+
+/**
+ * Safely derive the origin of the CookieScript CDN URL so we can emit a
+ * `<link rel="preconnect">` for it. Returns `undefined` if the env var is
+ * missing or not a valid absolute URL (e.g. misconfigured deploy).
+ */
+function getCookieScriptOrigin(src: string | undefined): string | undefined {
+  if (!src) {
+    return undefined;
+  }
+
+  try {
+    return new URL(src).origin;
+  } catch {
+    return undefined;
+  }
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -92,6 +118,7 @@ export default function RootLayout({
   const cookieScriptSrc = analyticsEnvironmentEnabled
     ? process.env.NEXT_PUBLIC_COOKIESCRIPT_SRC?.trim()
     : undefined;
+  const cookieScriptOrigin = getCookieScriptOrigin(cookieScriptSrc);
 
   return (
     <html
@@ -101,11 +128,31 @@ export default function RootLayout({
       lang="de"
     >
       <body className={`${inter.variable} ${jetBrainsMono.variable}`}>
+        {cookieScriptOrigin ? (
+          <link
+            crossOrigin="anonymous"
+            href={cookieScriptOrigin}
+            rel="preconnect"
+          />
+        ) : null}
         {cookieScriptSrc ? (
+          // CookieScript is loaded with `afterInteractive` rather than
+          // `beforeInteractive` so it does not render-block LCP. This is
+          // safe because every downstream script that writes cookies
+          // (currently only GTM in `AnalyticsBootstrap`) is gated on
+          // `hasPerformanceConsent()`, which returns `false` until the
+          // CookieScript runtime has loaded and the user has granted
+          // consent. AnalyticsBootstrap re-syncs consent on the
+          // `CookieScriptLoaded` / `CookieScriptAccept*` / `CookieScriptReject`
+          // events, so the banner appears and gates GTM correctly even
+          // though the script now loads after hydration. Expected visible
+          // effect: consent banner appears ~200 ms later on cold visits;
+          // LCP on mobile improves by a corresponding amount because the
+          // third-party CMP script is no longer on the critical path.
           <Script
             id="consultry-cookie-script"
             src={cookieScriptSrc}
-            strategy="beforeInteractive"
+            strategy="afterInteractive"
           />
         ) : null}
         <JsonLd data={[buildOrganizationJsonLd(), buildWebsiteJsonLd()]} />
@@ -115,6 +162,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <AnalyticsBootstrap analyticsEnvironmentEnabled={analyticsEnvironmentEnabled} />
         </Suspense>
+        <WebVitalsReporter />
       </body>
     </html>
   );

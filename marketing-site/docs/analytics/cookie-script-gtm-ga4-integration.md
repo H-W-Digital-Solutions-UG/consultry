@@ -58,8 +58,9 @@ The app is no longer a blank slate. The shell, event layer, and most of the lega
 
 - [src/app/layout.tsx](/Users/jules/dev/consultry/marketing-site/src/app/layout.tsx)
   - loads `CookieScript` with `next/script`
-  - uses `strategy="beforeInteractive"`
-  - mounts the analytics bootstrap under `Suspense`
+  - uses `strategy="afterInteractive"` to keep the CMP off the LCP critical path; every cookie-writing script (currently only GTM) is gated on `hasPerformanceConsent()` so this is safe
+  - emits a `<link rel="preconnect" crossOrigin="anonymous">` to the CookieScript CDN origin so the connection is established in parallel with HTML parse
+  - mounts the analytics bootstrap under `Suspense` and also mounts `WebVitalsReporter` for RUM Core Web Vitals data (gated on the same consent)
 
 - [src/components/analytics/AnalyticsBootstrap.tsx](/Users/jules/dev/consultry/marketing-site/src/components/analytics/AnalyticsBootstrap.tsx)
   - reads `NEXT_PUBLIC_GTM_ID`
@@ -419,7 +420,8 @@ These are the practical guardrails used while shaping this setup.
 
 - one global click delegation path, not several parallel listeners
 - one explicit route-tracking path for pageviews
-- `CookieScript` loaded with `beforeInteractive`
+- `CookieScript` loaded with `afterInteractive` **and** a matching `<link rel="preconnect">` to its CDN origin so the CMP is not on the LCP critical path
+- every downstream script that writes cookies is gated on `hasPerformanceConsent()`; that invariant is what makes `afterInteractive` safe for the CMP
 - `GTM` loaded with `afterInteractive`
 - no direct stateful CMP recreation in React
 - `useSearchParams` kept inside a client component under `Suspense`
