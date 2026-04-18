@@ -27,11 +27,11 @@ const stepThemes: Record<string, StepTheme> = {
     accent: "#f0a85e",
     glow: "rgba(240, 168, 94, 0.28)",
     panelLabel: "Signal Layer",
-    panelBody: "Account-Signale, Stakeholder-Wechsel und Warm Paths werden zu einer priorisierten Opportunity-Sicht verdichtet.",
+    panelBody: "Bewegungen bei Bestandskunden werden zu vorbereiteten Opportunities. Mit Bedarfshypothese, Projektreferenz und konkretem Einstieg.",
     highlights: [
-      "Trigger vor dem Wettbewerber sehen",
-      "Warm Paths mit Account-Kontext",
-      "Folgeprojekte statt Zufall priorisieren",
+      "Bestandskunden vor Neukunden",
+      "Jedes Signal mit Bedarfshypothese",
+      "Projektreferenz aus Ihrer Historie",
     ],
   },
   "staffing-forecasting": {
@@ -109,7 +109,7 @@ function getStepTheme(stepId: string): StepTheme {
 function getCompactStepTitle(step: HomepageStep) {
   switch (step.id) {
     case "account-growth":
-      return "Bestandschancen erkennen";
+      return "Bestandskunden ausbauen";
     case "staffing-forecasting":
       return "Teams besser besetzen";
     case "proposal-workflow":
@@ -129,14 +129,16 @@ function EditorialHeadline({
   overline,
   title,
 }: {
-  overline: string;
+  overline?: string;
   title: string;
 }) {
   return (
     <div className="max-w-[42rem]">
-      <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
-        {overline}
-      </p>
+      {overline ? (
+        <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
+          {overline}
+        </p>
+      ) : null}
       <h2 className="mt-3 max-w-[26ch] text-balance text-[clamp(1.15rem,1.4vw,1.55rem)] font-semibold leading-[1.16] tracking-[-0.02em] text-[var(--consultry-text-primary)]">
         {title}
       </h2>
@@ -471,7 +473,6 @@ export function FeatureShowcaseEditorialScroller({
 
           <div className="relative">
             <EditorialHeadline
-              overline="DIE WEDGES"
               title="Wachstum, Staffing, Wissen und Delivery in einem System."
             />
           </div>

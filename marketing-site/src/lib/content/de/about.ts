@@ -18,21 +18,21 @@ export const aboutContent = {
   hero: {
     overline: "ÜBER CONSULTRY",
     title:
-      "Wir bauen den operativen AI-Begleiter für Beratungen, den wir selbst gebraucht hätten.",
+      "Wir bauen, was uns als Berater gefehlt hat.",
     body:
-      "Drei Gründer aus Berlin. Consulting, Security, Produkt. Wir kennen die Schmerzpunkte aus der Praxis und bauen das System, das Beratungen wirklich steuert. Nicht noch ein Tool daneben.",
+      "Drei Berliner Gründer. Consulting, Security, Produkt. Consultry ist die Arbeitsebene zwischen CRM und Delivery, die wir am eigenen Freitagabend vermisst haben. Kein weiteres Tool daneben.",
   },
   team: {
     overline: "DAS TEAM",
     title: "Drei Gründer. Ein Betriebsverständnis.",
     body:
-      "Hinter Consultry steht ein Team, das Beratung, AI-Architektur und Produktarbeit zusammenbringt. Wir erleben selbst seit Jahren, wo die Lücke zwischen Tool und Alltag liegt.",
+      "Beratung, AI-Architektur und Produktarbeit an einem Tisch. Wir wissen aus erster Hand, wo Tool und Alltag auseinanderlaufen. Consultry schließt genau diese Lücke.",
     members: [
       {
         name: "Julian Weber",
         role: "Co-Founder · CTO/CISO",
         focus:
-          "Baut die AI-native Architektur. Security by Design, erklärbare Empfehlungen, tenant-isolierte Datenhaltung. Eine Plattform, die auch bei 200 Beratern stabil bleibt.",
+          "Baut die AI-native Architektur. Tenant-Isolation, erklärbare Empfehlungen, lokale Open-Source-Modelle in der EU. Eine Plattform, die auch bei 200 Beratern ruhig bleibt.",
         image: {
           src: "/images/team-julian.png",
           alt: "Porträt von Julian Weber",
@@ -42,7 +42,7 @@ export const aboutContent = {
         name: "Caspar Hertel",
         role: "Co-Founder · CEO",
         focus:
-          "Spricht täglich mit Managing Partnern und BD-Leitern. Verantwortet Positionierung, Go-to-Market und die Gespräche, aus denen Pilotkunden werden.",
+          "Spricht täglich mit Managing Partnern und BD-Leitern. Verantwortet Positionierung und Go-to-Market. Führt die Gespräche, aus denen Pilotkunden werden.",
         image: {
           src: "/images/team-caspar.png",
           alt: "Porträt von Caspar Hertel",
@@ -52,7 +52,7 @@ export const aboutContent = {
         name: "Paul Hannemann",
         role: "Co-Founder · CPO",
         focus:
-          "Übersetzt Beratungslogik in Produkt. Sorgt dafür, dass Consultry nach Beratung denkt. Nicht nach CRM, Ticket-System oder Tabellenkalkulation.",
+          "Übersetzt Beratungslogik in Produkt. Consultry denkt nach Mandat, Team und Delivery. Nicht nach CRM, Ticket oder Tabelle.",
         image: {
           src: "/images/team-paul.png",
           alt: "Porträt von Paul Hannemann",
@@ -62,12 +62,12 @@ export const aboutContent = {
   },
   narrative: {
     overline: "UNSERE GESCHICHTE",
-    title: "Beratungen verdienen ein System, das ihre Logik kennt.",
+    title: "Ein System, das nach Beratungslogik denkt.",
     paragraphs: [
-      "Wir haben Consultry begonnen, weil wir die gleiche Szene zu oft gesehen haben. Freitagnachmittag, Managing Partner, 14 offene Tabs. Salesforce für die Pipeline. Excel für das Staffing. PowerPoint für das Angebot. Confluence für die Methodik. Und am Ende entscheidet das Bauchgefühl, weil niemand mehr alles zusammenbringt.",
-      "In DACH-Beratungen zwischen 30 und 200 Beratern liegen die größten Hebel nicht in mehr Software. Sondern in weniger Brüchen. Rund 80 % des Umsatzes kommen aus Bestandskunden. Aber die stärksten Signale dazu stehen in Newslettern, im Postfach eines Partners und in einer Ausschreibung, die niemand rechtzeitig gesehen hat.",
-      "Consultry ist die operative Ebene, die wir uns selbst gewünscht haben. Sie verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss. AI ist dabei kein Knopf, sondern das Interaktionsprinzip. Sie sagen dem System, was Sie brauchen. Das System bereitet vor. Sie entscheiden.",
-      "Wir sind im Pre-Launch. Wir bauen gemeinsam mit einer kleinen Zahl Pilotkunden aus dem DACH-Raum. Wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen Sie mit uns.",
+      "Wir haben Consultry begonnen, weil wir dieselbe Szene zu oft gesehen haben. Freitag, 18 Uhr, Managing Partner, 14 offene Tabs. Salesforce für die Pipeline. Excel für das Staffing. PowerPoint für das Angebot. Confluence für die Methodik. Und am Ende entscheidet das Bauchgefühl, weil niemand mehr alles zusammenbringt.",
+      "In DACH-Beratungen zwischen 30 und 200 Beratern liegt der größte Hebel nicht in mehr Software. Er liegt in weniger Brüchen. Rund 80 Prozent des Umsatzes kommen aus Bestandskunden. Die stärksten Signale dazu stehen in Newslettern, im Postfach eines Partners und in Ausschreibungen, die niemand rechtzeitig sieht.",
+      "Consultry ist die Arbeitsebene dazwischen. Signal, Team, Angebot, Delivery und Wissensrückfluss laufen in einer Logik. AI ist kein Knopf, sondern das Interaktionsprinzip. Sie sagen, was Sie brauchen. Das System bereitet vor. Sie entscheiden.",
+      "Wir sind im Pre-Launch und bauen mit einer kleinen Zahl Pilotkunden aus dem DACH-Raum. Wenn Sie eine Beratung mit 30 bis 200 Beratern führen und Consultry mitgestalten wollen, sprechen Sie mit uns.",
     ],
     proofRail: [
       {
@@ -83,20 +83,20 @@ export const aboutContent = {
       {
         value: "EU",
         label: "Hosting",
-        detail: "Tenant-isoliert in der EU. Kein Workaround, keine Umwege über die USA.",
+        detail: "Tenant-isoliert, auf lokalen Open-Source-Modellen. Keine Umwege über US-Clouds.",
       },
       {
         value: "Pre-Launch",
         label: "Status",
-        detail: "Pilotkunden werden aktuell kuratiert. Warteliste ist offen.",
+        detail: "Pilotplätze werden kuratiert. Warteliste ist offen.",
       },
     ] satisfies ProofStat[],
   },
   cta: {
     eyebrow: "NÄCHSTER SCHRITT",
-    title: "Sie wollen dabei sein, wenn Consultry live geht?",
+    title: "Dabei sein, wenn Consultry live geht?",
     body:
-      "Tragen Sie sich auf die Warteliste ein. Sie hören als Erste zum Launch. Wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden direkt.",
+      "E-Mail eintragen, Launch-Info als Erste erhalten. Pilot-Interesse im Qualifier ankreuzen. Wir melden uns binnen 48 Stunden direkt aus dem Gründerteam.",
     primaryCta: {
       label: "Auf die Warteliste",
       href: "/warteliste",

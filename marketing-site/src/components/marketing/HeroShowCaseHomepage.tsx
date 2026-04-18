@@ -43,15 +43,10 @@ export function HeroShowcaseHomepage({ hero }: HeroShowcaseProps) {
               </div>
             </div>
 
-            <div className="rise-in rise-in-delay-4 mt-10 space-y-3">
+            <div className="rise-in rise-in-delay-4 mt-10">
               <p className="max-w-[40rem] text-[13px] leading-[1.6] text-[rgba(237,232,226,0.66)] sm:text-[14px]">
                 {hero.proofLine}
               </p>
-              <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[11px] uppercase tracking-[0.16em] text-[rgba(237,232,226,0.46)] sm:text-[12px]">
-                {hero.metrics.map((metric) => (
-                  <li key={metric.value}>{metric.value}</li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>

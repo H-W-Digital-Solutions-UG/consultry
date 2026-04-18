@@ -93,9 +93,9 @@ export type ProductInternalLink = {
 };
 
 export const productSeo = {
-  title: "Consultry · Der operative AI-Begleiter für Beratungen",
+  title: "Produkt · Consultry",
   description:
-    "Eine Arbeitsebene für Marktsignal, Staffing, Angebot, Delivery und Wissensrückfluss. Gebaut für IT- und Digitalisierungsberatungen im DACH-Raum. Tenant-isoliert, EU-Hosting.",
+    "Signal, Team, Angebot, Delivery und Wissen in einer Arbeitsebene. Für IT- und Digitalisierungsberatungen mit 30 bis 200 Beratern im DACH-Raum. EU-gehostet, tenant-isoliert.",
   keywords: [
     "Operativer AI-Begleiter für Beratungen",
     "AI-native Plattform Consulting",
@@ -111,12 +111,11 @@ export const productSeo = {
 export const productHero: ProductHeroContent = {
   overline: "DIE PLATTFORM",
   title: [
-    "Ein System,",
-    "das Ihre Beratung",
-    "wirklich steuert.",
+    "Eine Arbeitsebene.",
+    "Kein weiteres Tool.",
   ],
   body:
-    "Sie steuern Ihre Beratung aus einer Ansicht. Sie sagen, was Sie brauchen. Consultry bereitet vor. Sie entscheiden.",
+    "Signal, Team, Angebot, Delivery und Wissen laufen in einer Ansicht zusammen. Statt sieben Tabs, die niemand mehr verknüpft.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: "/warteliste",
@@ -132,7 +131,7 @@ export const productHero: ProductHeroContent = {
     { value: "Wissen", label: "das zurückkommt" },
   ],
   proofLine:
-    "Pre-Launch · Sie entscheiden, Consultry bereitet vor · Daten bleiben in der EU",
+    "Tenant-isoliert · EU-Hosting · Lokale Open-Source-Modelle für vertrauliche Daten",
   preview: {
     src: "/images/hero-dashboard.png",
     alt: "Consultry Arbeitsebene mit Signal-Feed, Team-Matching und Angebotslogik",
@@ -141,9 +140,9 @@ export const productHero: ProductHeroContent = {
 
 export const productDemoModule: ProductDemoModuleContent = {
   eyebrow: "PRODUKT-VORSCHAU",
-  title: "So sieht der Alltag mit Consultry aus.",
+  title: "Signal rein. Angebot raus. In Stunden.",
   body:
-    "Ein Marktsignal kommt herein. Das System schlägt drei Team-Varianten vor, jede mit Begründung. Sie wählen eine. Der Angebotsentwurf ist in Stunden fertig, nicht in Tagen. Nach Projektabschluss fließt das Gelernte automatisch zurück ins System.",
+    "Ein Bestandskunde wechselt den CTO. Um acht wissen Sie es. Consultry baut den Engagement-Brief, schlägt drei Teams vor und legt die erste Angebotsversion an. Sie verfeinern in Sätzen, bevor irgendetwas rausgeht.",
   meta:
     "Signal-Feed, Engagement-Brief, Team-Matching, Angebot, Delivery und Wissensrückfluss in derselben Arbeitsebene.",
   overlayCta: "Vorschau ansehen",
@@ -155,51 +154,51 @@ export const productDemoModule: ProductDemoModuleContent = {
 
 export const productAnswers: ProductAnswer[] = [
   {
-    question: "Was unterscheidet Consultry von einem CRM?",
+    question: "Was macht Consultry, was ein CRM nicht kann?",
     answer:
-      "Ein CRM kennt Ihre Pipeline. Es kennt nicht Ihre Berater. Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer Logik. Nicht in sieben Tools.",
+      "Ein CRM kennt Ihre Pipeline. Es kennt weder Ihre Berater noch Ihre Methodik noch Ihre Delivery. Consultry verbindet Signal, Team, Angebot, Delivery und Wissen in einer Logik. Was im CRM steht, ist ein Teil davon. Nicht die Hauptsache.",
     href: "/produkt/consultry-vs-crm",
     linkLabel: "Zum Vergleich",
   },
   {
     question: "Wo setzt Consultry zuerst an?",
     answer:
-      "Beim Bestandskunden-Wachstum. Dort entstehen rund 80 % des Umsatzes. Die stärksten Signale stehen in Newslettern, im Postfach eines Partners und in Ausschreibungen, die niemand rechtzeitig sieht. Consultry bringt sie zusammen.",
+      "Beim Bestandskunden-Wachstum. Dort entstehen rund 80 Prozent des Umsatzes. Die stärksten Signale stehen in Newslettern, im Postfach eines Partners und in Ausschreibungen, die niemand rechtzeitig sieht. Consultry liest sie mit und macht daraus priorisierte Opportunities.",
     href: "/produkt/account-growth",
     linkLabel: "Zu Bestandskunden-Wachstum",
   },
   {
-    question: "Für wen ist Consultry gebaut?",
+    question: "Was passiert mit unseren Mandatsdaten?",
     answer:
-      "Für IT- und Digitalisierungsberatungen im DACH-Raum mit 30 bis 200 Beratern. Für Managing Partner, BD- und Delivery-Leads, die keine weitere Tool-Insel wollen, sondern eine Steuerungsebene.",
-    href: "/kontakt",
-    linkLabel: "Mit dem Team sprechen",
+      "Sie bleiben bei Ihnen. Tenant-isoliert, EU-gehostet, auf lokalen Open-Source-Modellen. Keine Zeile Mandatsdaten wandert in ein US-Modell. Consultry lernt mit Ihren Daten, aber nur für Sie. Nichts fließt in einen gemeinsamen Topf.",
+    href: "/unternehmen",
+    linkLabel: "Zur Haltung",
   },
 ];
 
 export const productArchitecture: ProductArchitectureContent = {
   overline: "DIE ARCHITEKTUR",
-  title: "Fünf Bereiche. Eine Arbeitsebene.",
+  title: "Fünf Bereiche. Eine Logik.",
   body:
-    "Beratungen arbeiten heute parallel in sieben Systemen. Consultry verbindet die fünf Bereiche, in denen Ihre Wertschöpfung wirklich entsteht. Vom ersten Marktsignal bis zum Wissen, das aus abgeschlossenen Projekten wieder auftaucht.",
+    "Heute laufen Marktsignal, Staffing, Angebot, Delivery und Wissen parallel in sieben Systemen. Consultry führt sie in einer Arbeitsebene zusammen. Vom ersten Signal bis zum Wissen, das aus dem abgeschlossenen Projekt zurückkommt.",
   layers: [
     {
       id: "account-growth",
       eyebrow: "MARKET & SIGNAL INTELLIGENCE",
       title: "Bestandskunden-Wachstum",
       summary:
-        "Das System liest Newsletter, Ausschreibungen, Stellenanzeigen, Presse und Partner-Updates mit. CTO-Wechsel, Budgetentscheidungen, neue Initiativen bei Ihren Bestandskunden. Alles läuft in einem priorisierten Signal-Feed zusammen, inklusive Warm Paths und Engagement-Brief.",
+        "Newsletter, Ausschreibungen, Stellenanzeigen, Presse. Consultry liest mit und verknüpft CTO-Wechsel, Budgetentscheidungen und Hiring-Wellen mit Ihrem Netzwerk. Das Ergebnis ist kein To-do, sondern ein Engagement-Brief mit Bedarfshypothese, Projektreferenz und konkretem Einstieg.",
       capabilities: [
         "Signal-Feed mit Priorisierung",
         "Stakeholder-Mapping pro Account",
-        "Warm Paths aus Ihrem Netzwerk",
+        "Bedarfshypothese aus Signalmuster",
         "Engagement-Brief pro Opportunity",
       ],
       preview: {
         src: "/images/figma/step-signal.png",
         alt: "Signal-Feed mit priorisierten Bestandskunden-Signalen",
         caption:
-          "Signale werden nicht nur gesammelt. Sie werden mit Ihrem Netzwerk, Ihrer Methodik und Ihrem Team verknüpft.",
+          "Signale werden nicht gesammelt. Sie werden mit Ihrem Netzwerk, Ihrer Methodik und Ihrem Team verknüpft.",
       },
     },
     {
@@ -207,10 +206,10 @@ export const productArchitecture: ProductArchitectureContent = {
       eyebrow: "PEOPLE & CAPACITY",
       title: "Staffing und Forecasting",
       summary:
-        "Skills, Zertifikate, Projekterfahrung und Verfügbarkeit werden zu einem lebendigen Knowledge Graph. Das System schlägt drei Team-Varianten vor, jede mit Begründung, Auslastungs-Logik und Forecast. Sie wählen eine und geben frei.",
+        "Skills, Zertifikate, Projekterfahrung und Verfügbarkeit werden zu einem lebendigen Knowledge Graph. Pro Opportunity schlägt das System drei Team-Varianten vor, jede mit Begründung und Forecast. Sie wählen, ändern, geben frei.",
       capabilities: [
         "Skill-Normalisierung über die ganze Beratung",
-        "Team-Varianten mit Match-Score",
+        "Team-Varianten mit Match-Score und Begründung",
         "Forecasting auf Team- und Projektebene",
         "Bench-Sicht und Auslastungs-Steuerung",
       ],
@@ -218,7 +217,7 @@ export const productArchitecture: ProductArchitectureContent = {
         src: "/images/figma/step-matching.png",
         alt: "Team-Vorschläge mit Match-Score und Verfügbarkeit",
         caption:
-          "Drei Varianten, jede mit Begründung. Sie sehen, warum wer vorgeschlagen wird, und entscheiden.",
+          "Drei Varianten, jede mit Begründung. Sie sehen, warum wer vorgeschlagen wird. Sie entscheiden.",
       },
     },
     {
@@ -226,7 +225,7 @@ export const productArchitecture: ProductArchitectureContent = {
       eyebrow: "WISSENSBASIS",
       title: "Wissen, das wieder auftaucht",
       summary:
-        "Methodik, Referenzen, Delivery-Artefakte und Lessons Learned bleiben nicht in Confluence begraben. Sie tauchen dort wieder auf, wo sie Umsatz oder Delivery verbessern. Im Engagement-Brief, im Angebot, beim Onboarding eines neuen Beraters.",
+        "Methodik, Referenzen und Lessons Learned bleiben nicht in Confluence begraben. Sie erscheinen dort, wo sie Umsatz oder Delivery verbessern: im Engagement-Brief, im Angebot, beim Onboarding. Eine Frage wie SAP-Datenmigration Retail liefert in Sekunden eine Antwort.",
       capabilities: [
         "Quellengebundene Antworten statt Halluzinationen",
         "Referenz-Bausteine pro Branche",
@@ -237,7 +236,7 @@ export const productArchitecture: ProductArchitectureContent = {
         src: "/images/figma/step-knowledge.png",
         alt: "Wissensbasis mit Referenzen und Methodik",
         caption:
-          "Kein Archiv. Wissen taucht dort wieder auf, wo es den Umsatz oder die Delivery verbessert.",
+          "Kein Archiv. Wissen taucht dort wieder auf, wo es Umsatz oder Delivery verbessert.",
       },
     },
     {
@@ -245,7 +244,7 @@ export const productArchitecture: ProductArchitectureContent = {
       eyebrow: "DEAL EXECUTION",
       title: "Angebot in Stunden statt Tagen",
       summary:
-        "Aus Engagement-Brief, Team-Vorschlag, CVs, Referenzen und Pricing-Logik entsteht ein Angebotsentwurf im Canvas. Ihre Partner reviewen in Sätzen statt in Klicks. Das System dokumentiert jeden Schritt. Bis zur Vertragsgrundlage mit Audit Trail.",
+        "Aus Engagement-Brief, Team-Vorschlag, CVs, Referenzen und Pricing entsteht ein Canvas. Ihre Partner reviewen in Sätzen statt in Klicks. Jeder Schritt dokumentiert, bis zur Vertragsgrundlage mit Audit-Trail.",
       capabilities: [
         "Canvas für kollaborative Angebotsarbeit",
         "Automatische CVs und Referenzen",
@@ -256,7 +255,7 @@ export const productArchitecture: ProductArchitectureContent = {
         src: "/images/figma/step-delivery.png",
         alt: "Angebots-Canvas mit Team-Kontext und Pricing",
         caption:
-          "Vom qualifizierten Signal zum freigegebenen Angebot in einer einzigen Arbeitsebene.",
+          "Vom qualifizierten Signal zum freigegebenen Angebot. In einer Arbeitsebene.",
       },
     },
     {
@@ -264,7 +263,7 @@ export const productArchitecture: ProductArchitectureContent = {
       eyebrow: "DELIVERY & COMMERCIALS",
       title: "Delivery und Marge",
       summary:
-        "Allocation, Delivery Health, Kostenbezug und Invoice-Ready-Übergabe laufen in derselben Steuerungslogik. Sie sehen Marge, Risiko und Abweichung in Echtzeit. Das Wissen aus der Delivery fließt automatisch zurück in die nächste Opportunity.",
+        "Allocation, Delivery Health, Kostenbezug und Invoice-Ready-Übergabe in derselben Steuerungslogik. Marge, Risiko und Abweichung in Echtzeit. Das Wissen aus der Delivery fließt automatisch zurück in die nächste Opportunity.",
       capabilities: [
         "Allocation mit Echtzeit-Sicht",
         "Risk und Health pro Projekt",
@@ -282,7 +281,7 @@ export const productArchitecture: ProductArchitectureContent = {
   workflowOverline: "DER LIFECYCLE",
   workflowTitle: "Vom Marktsignal bis zum Wissensrückfluss.",
   workflowBody:
-    "Jede Beratung lebt vom gleichen Zyklus. Signale erkennen, qualifizieren, das richtige Team matchen, Angebot und Vertrag abschließen, liefern, steuern, lernen, weiterwachsen. Consultry macht diesen Zyklus sichtbar und schließt ihn.",
+    "Jede Beratung lebt vom gleichen Zyklus. Signal erkennen, Team matchen, Angebot schnüren, liefern, steuern, lernen. Consultry macht ihn sichtbar und schließt ihn.",
   workflowSteps: [
     "Signal erkennen und qualifizieren",
     "Team matchen und Angebot schnüren",
@@ -294,7 +293,7 @@ export const productComparison: ComparisonTableContent = {
   overline: "CONSULTRY VS. STANDARD-CRM",
   title: "Warum ein CRM nicht reicht.",
   body:
-    "CRMs kennen Ihre Pipeline. Sie kennen nicht Ihre Berater. Workforce-Tools kennen Ihre Berater. Sie kennen nicht den Markt. PSA-Tools tracken Delivery. Sie tracken nicht die Akquise. Consultry ist das verbindende System dazwischen. Und es handelt aktiv mit.",
+    "Ein CRM kennt die Pipeline. Workforce-Tools kennen die Berater. PSA-Tools tracken die Delivery. Jedes kennt einen Ausschnitt. Keines verbindet den Zyklus, aus dem eine Beratung ihren Umsatz schöpft.",
   columnHeaders: ["FUNKTIONEN", "CONSULTRY", "STANDARD-CRM"],
   rows: [
     {
@@ -333,7 +332,7 @@ export const productComparison: ComparisonTableContent = {
       competitor: "partial",
     },
     {
-      feature: "Tenant-isoliert, EU-Hosting, DSGVO und AI Act von Anfang an",
+      feature: "Tenant-isoliert, EU-Hosting, DSGVO in der Produktlogik",
       consultry: "yes",
       competitor: "partial",
     },
@@ -342,24 +341,24 @@ export const productComparison: ComparisonTableContent = {
 
 export const productFaq: ProductFaqItem[] = [
   {
-    question: "Was unterscheidet Consultry von einem CRM?",
+    question: "Ist Consultry ein CRM mit AI drauf?",
     answer:
-      "Ein CRM dokumentiert Vertrieb. Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer Arbeitsebene. Sie sagen dem System, was Sie brauchen. Das System bereitet vor. Sie entscheiden.",
+      "Nein. Ein CRM dokumentiert Vertrieb. Consultry verbindet Marktsignal, Team-Matching, Angebot, Delivery und Wissensrückfluss in einer Arbeitsebene. Sie sagen, was Sie brauchen. Das System bereitet vor. Sie entscheiden.",
   },
   {
     question: "Wie behalten wir die Kontrolle über AI-Empfehlungen?",
     answer:
-      "Jede Empfehlung kommt mit Begründung und Freigabe-Schritt. Sie sehen, auf welcher Basis das System entschieden hat. Sie können jederzeit abweichen oder die Annahmen verfeinern. Der Mensch entscheidet. Das System bereitet vor.",
+      "Jede Empfehlung kommt mit Begründung und Freigabe-Schritt. Sie sehen, worauf das System sich stützt, und können in Sätzen korrigieren. Nichts wirkt nach außen, bevor Sie freigegeben haben. Jeder Schritt im Audit-Trail.",
   },
   {
-    question: "Wie geht Consultry mit vertraulichen Daten um?",
+    question: "Wo laufen unsere Mandatsdaten?",
     answer:
-      "Jeder Mandant arbeitet tenant-isoliert. Hosting liegt in der EU. Für sensible Inhalte laufen lokale Open-Source-Modelle. Ihre Daten lernen nur für Ihre Beratung. Nicht für andere Mandanten, nicht für einen globalen Modelltrainings-Topf.",
+      "Tenant-isoliert, EU-gehostet. Vertrauliche Inhalte laufen auf lokalen Open-Source-Modellen in der EU. Ihre Daten lernen nur für Ihre Beratung. Keine Zeile wandert in einen globalen Modelltrainings-Topf oder an einen US-Anbieter.",
   },
   {
     question: "Ist Consultry für DACH-Anforderungen gebaut?",
     answer:
-      "Ja. EU-Hosting, DSGVO, AI Act, BetrVG und sensible People-Analytics sind Teil der Produktlogik. Kein Add-on, das später nachgereicht wird. Wir sind drei Gründer aus Berlin und bauen für den DACH-Raum.",
+      "Ja. EU-Hosting, DSGVO, AI Act, BetrVG und Works-Council-Mode sind Teil der Produktlogik. Kein Add-on, das später nachgereicht wird. Wir sind drei Gründer aus Berlin und bauen für den DACH-Raum.",
   },
   {
     question: "Für wen ist Consultry gedacht?",
@@ -367,19 +366,19 @@ export const productFaq: ProductFaqItem[] = [
       "Für IT- und Digitalisierungsberatungen im DACH-Raum mit 30 bis 200 Beratern. Für Managing Partner, BD- und Delivery-Leads, die Bestandskunden-Wachstum, Staffing, Angebote und Delivery nicht länger in sieben Tools verteilen wollen.",
   },
   {
-    question: "Müssen wir bestehende Systeme sofort ersetzen?",
+    question: "Müssen wir unsere Bestandssysteme ersetzen?",
     answer:
-      "Nein. Consultry integriert dort, wo Ersatz unnötig wäre. DATEV, Bexio, bestehende HR-Systeme bleiben. Wir schließen zuerst die Lücke zwischen den Systemen, die heute nicht sauber zusammenspielen.",
+      "Nein. Consultry integriert dort, wo Ersatz unnötig wäre. DATEV, Bexio, bestehende HR-Systeme bleiben. Wir schließen zuerst die Lücken zwischen den Tools, die heute nicht sauber zusammenspielen.",
   },
   {
     question: "Was ändert sich beim Staffing konkret?",
     answer:
-      "Das System schlägt drei Team-Varianten vor. Jede mit Begründung, Match-Score und Forecast-Kontext. Auslastung steigt typischerweise von 60–70 % auf 80–90 %, weil Engpässe und Bench-Situationen früher sichtbar werden.",
+      "Drei Team-Varianten pro Opportunity, jede mit Begründung, Match-Score und Forecast. Auslastung steigt in Pilot-Setups typischerweise von 60 bis 70 Prozent auf 80 bis 90 Prozent, weil Engpässe und Bench früher sichtbar werden.",
   },
   {
     question: "Wie schnell sind wir live?",
     answer:
-      "Wir sind im Pre-Launch und arbeiten mit einer kleinen Zahl Pilotkunden. Onboarding startet in unter zwei Wochen nach Launch. Wenn Sie dabei sein wollen: Warteliste eintragen und im Formular Pilot-Interesse ankreuzen.",
+      "Wir sind im Pre-Launch. Mit Pilotkunden starten wir unter zwei Wochen nach Setup. Warteliste eintragen, im Qualifier Pilot-Interesse ankreuzen, wir melden uns binnen 48 Stunden.",
   },
 ];
 
@@ -388,39 +387,39 @@ export const productInternalLinks: ProductInternalLink[] = [
     href: "/produkt/account-growth",
     label: "Bestandskunden-Wachstum",
     body:
-      "Wie Signal, Warm Path und Engagement-Brief aus 80 % Ihrer Umsatzquelle einen steuerbaren Wachstumspfad machen.",
+      "Signal, Bedarfshypothese, Engagement-Brief. Aus 80 Prozent Ihrer Umsatzquelle ein steuerbarer Wachstumspfad.",
   },
   {
     href: "/produkt/staffing-forecasting",
     label: "Staffing und Forecasting",
     body:
-      "Wie Skills, Verfügbarkeit und Delivery-Realität drei Team-Varianten mit Begründung liefern. Statt Excel und Bauchgefühl.",
+      "Drei Team-Varianten mit Begründung. Skill-Lücken früh sichtbar, Bench-Kosten vermeidbar.",
   },
   {
     href: "/produkt/knowledge-reuse",
     label: "Wissen, das wieder auftaucht",
     body:
-      "Wie Methodik, Referenzen und Lessons Learned im richtigen Moment sichtbar werden. Statt in Confluence zu versanden.",
+      "Methodik und Referenzen im Kontext. 15 Sekunden Antwort statt drei Stunden Suche.",
   },
   {
     href: "/produkt/commercial-control",
     label: "Delivery und Marge",
     body:
-      "Wie Allocation, Kostenbezug und Invoice-Ready-Übergabe in einer operativen Sicht zusammenlaufen.",
+      "Allocation, Health, Kostenbezug und Invoice-Ready-Übergabe an DATEV. In einer Sicht.",
   },
   {
     href: "/produkt/consultry-vs-crm",
     label: "Consultry vs. CRM",
     body:
-      "Warum ein CRM die Wertschöpfungslogik einer Beratung nicht abbilden kann. Und was stattdessen gebraucht wird.",
+      "Warum ein CRM die Wertschöpfungslogik einer Beratung nicht abbilden kann.",
   },
 ];
 
 export const productCta = {
   eyebrow: "NÄCHSTER SCHRITT",
-  title: "Sie wollen Consultry in Ihrer Beratung sehen?",
+  title: "Consultry in Ihrer Beratung sehen?",
   body:
-    "Tragen Sie sich auf die Warteliste ein. Zum Launch sind Sie als Erste dabei. Wenn Sie Pilotkunde werden wollen, kreuzen Sie es im Formular an. Wir melden uns binnen 48 Stunden.",
+    "Auf die Warteliste eintragen. Zum Launch hören Sie als Erste. Pilot-Interesse im Qualifier ankreuzen. Wir melden uns binnen 48 Stunden direkt aus dem Gründerteam.",
   primaryCta: {
     label: "Auf die Warteliste",
     href: "/warteliste",
