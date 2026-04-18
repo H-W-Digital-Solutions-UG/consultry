@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import type { HomepageHero } from "@/lib/content/de/homepage";
 
@@ -16,33 +15,6 @@ type ValueCardProps = {
   title: string;
 };
 
-function HeroShowcaseRowFallback() {
-  return (
-    <div className="grid w-full max-w-[1140px] gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-[minmax(260px,1fr)_520px_minmax(260px,1fr)] lg:items-center lg:gap-8">
-      <div className="order-2 rounded-[12px] border border-[rgba(232,145,58,0.18)] bg-[rgba(44,40,38,0.88)] p-6 shadow-[0_18px_38px_rgba(0,0,0,0.22)] md:order-2 lg:order-1">
-        <div className="h-11 w-11 rounded-[10px] bg-[rgba(191,83,71,0.18)]" />
-        <div className="mt-5 h-6 w-44 rounded-full bg-[rgba(250,250,249,0.08)]" />
-        <div className="mt-4 space-y-2">
-          <div className="h-4 w-full rounded-full bg-[rgba(250,250,249,0.06)]" />
-          <div className="h-4 w-[88%] rounded-full bg-[rgba(250,250,249,0.05)]" />
-          <div className="h-4 w-[72%] rounded-full bg-[rgba(250,250,249,0.05)]" />
-        </div>
-      </div>
-
-      <div className="order-1 mx-auto aspect-[520/380] w-full max-w-[520px] rounded-[12px] bg-[rgba(33,29,26,0.95)] shadow-[0_8px_32px_rgba(0,0,0,0.3)] md:col-span-2 lg:col-span-1 lg:order-2" />
-
-      <div className="order-3 rounded-[12px] border border-[rgba(232,145,58,0.18)] bg-[rgba(44,40,38,0.88)] p-6 shadow-[0_18px_38px_rgba(0,0,0,0.22)]">
-        <div className="h-11 w-11 rounded-[10px] bg-[rgba(232,145,58,0.18)]" />
-        <div className="mt-5 h-6 w-48 rounded-full bg-[rgba(250,250,249,0.08)]" />
-        <div className="mt-4 space-y-2">
-          <div className="h-4 w-full rounded-full bg-[rgba(250,250,249,0.06)]" />
-          <div className="h-4 w-[82%] rounded-full bg-[rgba(250,250,249,0.05)]" />
-          <div className="h-4 w-[74%] rounded-full bg-[rgba(250,250,249,0.05)]" />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function ValueCard({ accent, body, title }: ValueCardProps) {
   const isPrimary = accent === "primary";
@@ -75,28 +47,13 @@ function ValueCard({ accent, body, title }: ValueCardProps) {
 
 export function HeroShowcaseRowMotion({ hero }: HeroShowcaseRowMotionProps) {
   const shouldReduceMotion = useReducedMotion();
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      setIsHydrated(true);
-    });
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-    };
-  }, []);
-
-  if (!isHydrated) {
-    return <HeroShowcaseRowFallback />;
-  }
 
   return (
     <div className="grid w-full max-w-[1140px] gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-[minmax(260px,1fr)_520px_minmax(260px,1fr)] lg:items-center lg:gap-8">
       <motion.div
         animate={{ opacity: 1, x: 0 }}
         className="order-2 md:order-2 lg:order-1"
-        initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -32 }}
+        initial={false}
         transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
       >
         <ValueCard
@@ -109,7 +66,7 @@ export function HeroShowcaseRowMotion({ hero }: HeroShowcaseRowMotionProps) {
       <motion.div
         animate={{ opacity: 1, scale: 1, y: 0 }}
         className="order-1 mx-auto flex w-full max-w-[520px] flex-col items-center gap-5 md:col-span-2 lg:col-span-1 lg:order-2"
-        initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.985, y: shouldReduceMotion ? 0 : 18 }}
+        initial={false}
         transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="relative aspect-[520/380] w-full overflow-visible rounded-[12px] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
@@ -145,7 +102,7 @@ export function HeroShowcaseRowMotion({ hero }: HeroShowcaseRowMotionProps) {
       <motion.div
         animate={{ opacity: 1, x: 0 }}
         className="order-3"
-        initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 32 }}
+        initial={false}
         transition={{ duration: shouldReduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.14 }}
       >
         <ValueCard
