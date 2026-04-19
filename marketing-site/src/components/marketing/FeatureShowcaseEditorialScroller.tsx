@@ -9,6 +9,10 @@ import { Button } from "@/components/ui/Button";
 import { useActiveSection, useBandActiveSection } from "@/components/marketing/useActiveSection";
 import { cn } from "@/lib/cn";
 import type { HomepageStep } from "@/lib/content/de/homepage";
+import {
+  prefetchImageUrls,
+  schedulePrefetchImagesAfterLoad,
+} from "@/lib/prefetchImagesAfterLoad";
 
 type FeatureShowcaseEditorialScrollerProps = {
   steps: HomepageStep[];
@@ -349,6 +353,7 @@ export function FeatureShowcaseEditorialScroller({
   const railLineLeft = `calc(${railColumnWidth} / 2 - 1.5px)`;
   const railTrackRef = useRef<HTMLDivElement | null>(null);
   const railMarkerRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const showcaseSectionRef = useRef<HTMLElement | null>(null);
   const [railMetrics, setRailMetrics] = useState({ top: 0, height: 0 });
 
   useEffect(() => {
@@ -425,12 +430,66 @@ export function FeatureShowcaseEditorialScroller({
     };
   }, [firstStepId, lastStepId, steps]);
 
+  useEffect(() => {
+    return schedulePrefetchImagesAfterLoad(steps.map((step) => step.image.src));
+  }, [steps]);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined" || !steps.length) {
+      return;
+    }
+
+    const el = showcaseSectionRef.current;
+    if (!el) {
+      return;
+    }
+
+    const stepImageSrcs = steps.map((step) => step.image.src);
+    let observer: IntersectionObserver | null = null;
+    let cancelled = false;
+
+    const startObserving = () => {
+      if (cancelled) {
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) {
+            return;
+          }
+          prefetchImageUrls(stepImageSrcs);
+          observer?.disconnect();
+          observer = null;
+        },
+        { rootMargin: "0px 0px 400px 0px", threshold: 0 },
+      );
+
+      observer.observe(el);
+    };
+
+    if (document.readyState === "complete") {
+      startObserving();
+    } else {
+      window.addEventListener("load", startObserving);
+    }
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("load", startObserving);
+      observer?.disconnect();
+    };
+  }, [steps]);
+
   if (!steps.length || !activeStep || !firstStep || !lastStep) {
     return null;
   }
 
   return (
-    <section className="relative pb-12 pt-10 sm:pb-14 sm:pt-12 lg:-mt-16 lg:pb-16 lg:pt-18">
+    <section
+      ref={showcaseSectionRef}
+      className="relative pb-12 pt-10 sm:pb-14 sm:pt-12 lg:-mt-16 lg:pb-16 lg:pt-18"
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-36 sm:h-44 lg:h-52"
