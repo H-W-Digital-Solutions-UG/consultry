@@ -31,22 +31,22 @@ const stepThemes: Record<string, StepTheme> = {
     accent: "#f0a85e",
     glow: "rgba(240, 168, 94, 0.28)",
     panelLabel: "Signal Layer",
-    panelBody: "Bewegungen bei Bestandskunden werden zu vorbereiteten Opportunities. Mit Bedarfshypothese, Projektreferenz und konkretem Einstieg.",
+    panelBody: "Consultry analysiert stetig den Markt und erkennt Bewegungen in Ihrem Kundenportfolio: Veränderungen im Management, neue Digitalisierungsvorhaben, neue Ausschreibungen und vieles mehr.",
     highlights: [
-      "Bestandskunden vor Neukunden",
-      "Jedes Signal mit Bedarfshypothese",
-      "Projektreferenz aus Ihrer Historie",
+      "Eine Ansicht statt vieler Tools",
+      "Keine stundenlange Recherche mehr",
+      "Priorisiert nach Ihren Stärken",
     ],
   },
   "staffing-forecasting": {
     accent: "#e8655a",
     glow: "rgba(232, 101, 90, 0.26)",
     panelLabel: "Staffing Layer",
-    panelBody: "Projektbedarf, Skills und Verfuegbarkeit bleiben in einem belastbaren Staffing- und Forecasting-Flow verbunden.",
+    panelBody: "Consultry kennt Kompetenzen, Projekthistorie und Verfügbarkeit Ihrer Berater. Drei Team-Vorschläge in Minuten, nicht in Tagen. Mit Marge, Auslastung und Erfahrung. Sie wählen, ändern, ergänzen. Kompetenzlücken werden früh sichtbar, nicht erst kurz vor Projektstart.",
     highlights: [
-      "Skill-fit plus Verfuegbarkeit",
-      "Engpaesse frueher erkennen",
-      "Forecasting mit Teamrealitaet",
+      "Drei Vorschläge in Minuten",
+      "Mit Marge, Auslastung und Erfahrung",
+      "Kompetenzlücken früh sichtbar",
     ],
   },
   "proposal-workflow": {
@@ -113,7 +113,7 @@ function getStepTheme(stepId: string): StepTheme {
 function getCompactStepTitle(step: HomepageStep) {
   switch (step.id) {
     case "account-growth":
-      return "Bestandskunden ausbauen";
+      return "Kundenportfolio ausbauen";
     case "staffing-forecasting":
       return "Teams besser besetzen";
     case "proposal-workflow":
@@ -532,7 +532,7 @@ export function FeatureShowcaseEditorialScroller({
 
           <div className="relative">
             <EditorialHeadline
-              title="Wachstum, Staffing, Wissen und Delivery in einem System."
+              title="Marktsignale erkennen, Teams aufstellen, Angebote schreiben, Wissen sichern."
             />
           </div>
 
@@ -700,9 +700,11 @@ export function FeatureShowcaseEditorialScroller({
                       <p className="font-[var(--font-mono)] text-[12px] uppercase tracking-[0.16em] text-[var(--consultry-brand-warm)]">
                         {activeStep.stepLabel} · {activeStep.stepperLabel}
                       </p>
-                      <p className="max-w-[26rem] text-right text-[14px] leading-[1.6] text-[var(--consultry-text-muted)]">
-                        {activeStep.caption}
-                      </p>
+                      {activeStep.caption ? (
+                        <p className="max-w-[26rem] text-right text-[14px] leading-[1.6] text-[var(--consultry-text-muted)]">
+                          {activeStep.caption}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -767,9 +769,11 @@ export function FeatureShowcaseEditorialScroller({
                       ))}
                     </ul>
 
-                    <p className="mt-8 max-w-[28rem] text-[14px] leading-[1.68] text-[var(--consultry-text-muted)]">
-                      {step.caption}
-                    </p>
+                    {step.caption ? (
+                      <p className="mt-8 max-w-[28rem] text-[14px] leading-[1.68] text-[var(--consultry-text-muted)]">
+                        {step.caption}
+                      </p>
+                    ) : null}
                     <Link
                       className="mt-7 inline-flex items-center gap-2 text-[15px] font-medium text-[var(--consultry-brand-warm)] transition hover:text-[var(--consultry-text-primary)]"
                       href={getStepHref(step.id)}

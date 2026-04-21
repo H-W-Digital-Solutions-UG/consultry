@@ -39,7 +39,7 @@ export type HomepageStep = {
     src: string;
     alt: string;
   };
-  caption: string;
+  caption?: string;
   flipped?: boolean;
 };
 
@@ -102,7 +102,7 @@ export const homepageContent = {
       "Mehr Beratung.",
     ],
     body:
-      "EU-gehostet, tenant-isoliert, DSGVO in der Produktlogik. Keine Zeile Mandatsdaten wandert in ein US-Modell.",
+      "Ihre Datenhoheit bleibt in Europa. EU-gehostet, DSGVO in der Produktlogik, lokale Open-Source-Modelle für vertrauliche Daten.",
     primaryCta: {
       label: "Auf die Warteliste",
       href: ctaTargets.homepagePrimary,
@@ -116,7 +116,7 @@ export const homepageContent = {
       alt: "Consultry Arbeitsebene mit Opportunity, Team und Delivery in einer Ansicht",
     },
     proofLine:
-      "Pre-Launch · Für DACH-Beratungen mit 30 bis 200 Beratern · Pilotplätze werden kuratiert",
+      "Pre-Launch · Für IT-Beratungen 30–200 Berater · Pilotkunden willkommen",
     sideCards: [
       {
         title: "AI-nativ. Kein Chatbot am Rand.",
@@ -131,9 +131,9 @@ export const homepageContent = {
     ],
     metrics: [
       { value: "Signal", label: "Chancen aus Ihrem Bestandsbuch" },
-      { value: "Match", label: "Drei Teams mit Begründung" },
-      { value: "Offer", label: "Angebot in Stunden" },
-      { value: "Learn", label: "Wissen, das zurückfließt" },
+      { value: "Team", label: "Drei Teams mit Begründung" },
+      { value: "Angebot", label: "Angebot in Stunden" },
+      { value: "Wissen", label: "Wissen, das zurückfließt" },
     ],
   },
   answers: [
@@ -167,24 +167,22 @@ export const homepageContent = {
       eyebrow: "BESTANDSKUNDEN UND MARKTSIGNALE",
       title: "Ein neuer Entscheider beim Kunden. Ihr Einstieg ist vorbereitet.",
       body:
-        "Consultry beobachtet, was sich in Ihren Bestandskunden bewegt: Entscheider-Wechsel, neue Strategien, anlaufende Initiativen. Aus jedem relevanten Signal wird eine vorbereitete Opportunity. Mit Bedarfshypothese, passender Projektreferenz aus Ihrer Delivery-Historie und konkretem Einstieg.",
-      ctaLabel: "Zur Seite Bestandskunden-Wachstum",
+        "Consultry analysiert stetig den Markt und erkennt Bewegungen in Ihrem Kundenportfolio: Veränderungen im Management, neue Digitalisierungsvorhaben, neue Ausschreibungen und vieles mehr.",
+      ctaLabel: "Mehr zu Bestandskunden-Wachstum",
       image: {
         src: "/images/figma/step-signal.png",
         alt: "Priorisierte Marktsignale mit Bedarfshypothese und Projektreferenz",
       },
-      caption:
-        "Signal, Bedarfshypothese, Projektreferenz. In einer Ansicht.",
     },
     {
       id: "staffing-forecasting",
       stepLabel: "[02]",
-      stepperLabel: "Match",
+      stepperLabel: "Team",
       eyebrow: "BERATER UND KAPAZITÄT",
       title: "Drei Teams mit Begründung. Sie geben frei.",
       body:
-        "Consultry kennt Skills, Projekthistorie und Verfügbarkeit Ihrer Berater. Für jede Opportunity entstehen drei belastbare Varianten, mit Margin und Matching-Score. Sie wählen, ändern, ergänzen. Skill-Lücken werden früh sichtbar, nicht erst im nächsten Forecast.",
-      ctaLabel: "Zur Seite Staffing und Forecasting",
+        "Consultry kennt Kompetenzen, Projekthistorie und Verfügbarkeit Ihrer Berater. Drei Team-Vorschläge in Minuten, nicht in Tagen. Mit Marge, Auslastung und Erfahrung. Sie wählen, ändern, ergänzen. Kompetenzlücken werden früh sichtbar, nicht erst kurz vor Projektstart.",
+      ctaLabel: "Mehr zu Staffing und Forecasting",
       image: {
         src: "/images/figma/step-matching.png",
         alt: "Drei Team-Varianten mit Match-Score, Verfügbarkeit und Forecast",
@@ -196,12 +194,12 @@ export const homepageContent = {
     {
       id: "proposal-workflow",
       stepLabel: "[03]",
-      stepperLabel: "Offer",
+      stepperLabel: "Angebot",
       eyebrow: "ANGEBOT UND VERTRAG",
       title: "Drei Stunden zum Angebot. Nicht drei Tage.",
       body:
         "Engagement-Brief, CVs, Referenzen und Pricing entstehen aus demselben Kontext wie die Opportunity. Kein Copy-Paste zwischen PowerPoint, Word und Inbox. Consultry baut die erste Version. Sie verfeinern in Sätzen, bis es passt.",
-      ctaLabel: "Zum Angebots-Workflow",
+      ctaLabel: "Mehr zum Angebots-Workflow",
       image: {
         src: "/images/figma/step-delivery.png",
         alt: "Angebots-Canvas mit Varianten, CVs und Freigabeprozess",
@@ -212,12 +210,12 @@ export const homepageContent = {
     {
       id: "knowledge-reuse",
       stepLabel: "[04]",
-      stepperLabel: "Learn",
+      stepperLabel: "Wissen",
       eyebrow: "WISSEN UND DELIVERY",
       title: "Jedes Projekt arbeitet für den nächsten Pitch.",
       body:
         "Delivery Health, Scope-Risiken und Deckungsbeiträge laufen in derselben Ansicht. Methoden und Referenzen fließen nach Projektende zurück. Eine Frage wie \u201eSAP-Datenmigration Retail\u201c liefert 15 Sekunden später eine Antwort, nicht eine Dokumentliste.",
-      ctaLabel: "Zur Seite Wissen und Delivery",
+      ctaLabel: "Mehr zu Wissen und Delivery",
       image: {
         src: "/images/figma/step-knowledge.png",
         alt: "Wissensbausteine und Referenzen im Delivery-Kontext",
