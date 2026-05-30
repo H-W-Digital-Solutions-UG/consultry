@@ -15,6 +15,23 @@
 
 Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die Retention). Der Painkiller ist die **schwere Bid- und Konzept-Dokumentation** (Lösungs-/Arbeitskonzept, Eignungsnachweise, Referenztexte) — die hair-on-fire-Arbeit, die heute Tage kostet.
 
+### 1.1 Der Value-Claim (aufgelöst 30.05.)
+
+> **Frontier-Intelligence hebt Qualität UND senkt Zeit/Ressourcen — gleichzeitig.** Für eine **ressourcenbeschränkte** mid-small Beratung sind Qualität und Aufwand **dieselbe Beschränkung**: Ihre Konzepte sind nicht mangels Können mittelmäßig, sondern mangels Zeit/Köpfen. Constraint weg + Experten-Level-LLM-Wissen dazu → bessere Konzepte in weniger Zeit. „Win-rate" und „effort-reduction" sind damit **kein Entweder-oder**, sondern derselbe Hebel.
+
+> ⚠️ **Beweis-Disziplin:** Im 5-Tage-Pilot ist **Effort/Qualität-pro-Aufwand** messbar; **Win-rate ist es nicht** (Vergabe dauert Monate). Pitch darf Win-rate *implizieren*, **beweisen** im Pilot nur die Qualitäts-/Zeit-Hebung.
+
+### 1.2 Defensibility (aufgelöst 30.05.)
+
+> **Shell bauen, Modell reiten.** Das Frontier-Modell frisst die generische Mitte (Textgenerierung). Consultry besitzt die **defensible Schale**: domänenspezifische Skills, **zusätzliches Grounding**, Company-Context, Profile, Eignungs-/Vergabe-Logik, Compliance/Audit, Multi-Autor-Workflow. **Nicht die Mitte bauen, die das nächste Modell kommodifiziert.**
+
+### 1.3 Zwei harte Grounding-/Qualitäts-Regeln (aus Round 11/12)
+
+1. **Grounding-Split (Pflicht):**
+   - **Firm-Facts** (Zertifikate, Referenzen, Kapazitäten, Track-Record) → **ausschließlich korpus-gegroundet.** Das Frontier-Modell darf diese **nie** aus Allgemeinwissen „verbessern" → sonst plausibel-falsche Firmen-Claims = **Ausschluss-/Vergabe-Haftungs-Risiko** (durch ein stärkeres Modell *verschärft*).
+   - **Allgemein-Expertise** (Methodik, Konzept-Struktur, Domänen-Framing) → Modellwissen erlaubt.
+2. **„Qualität" = Fit-to-Zuschlagskriterien.** Konzept-Qualität wird vom Auftraggeber gegen die **Bewertungsmatrix** bewertet, nicht vom Consultant/LLM. Die Concept Suite **parst die Zuschlagskriterien und strukturiert/gewichtet das Konzept auf maximalen Score** — das ist die Brücke von „gutes Konzept" zu „gewinnendes Konzept" *und* defensible Shell.
+
 ## 2. ICP & Anti-ICP
 
 **ICP:** DACH-IT-/Digitalisierungs-/Security-Beratungen, **mid-to-small**, DE **+ AT**, mit regelmäßigem Akquise-Druck (Tender und/oder Bestandskunden-Folgegeschäft).
@@ -137,7 +154,9 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 | G7 | ≥ 1 Bestandskunden-led Partner als Dogfood-Guardrail | offen |
 | G8 | ACV/Sales-Cycle | ✅ **€50/Seat/Mo, ACV €15–45k** (§6); Pilot-Fee-Betrag noch zu setzen |
 | G9 | PMF-Aktivierung | ✅ **1 Draft aus eigenem Korpus in 5 Tagen** (§5) |
-| — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, Grounding-Regeln) | zu schärfen |
+| — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, **Grounding-Split §1.3**, **Zuschlagskriterien-Optimierung §1.3**, **Eval-Harness für Grounding @ Long-Form**) | zu schärfen — **nach Business-Domain-Definition** (Reihenfolge bestätigt 30.05.) |
+| G10 | **Eval-Harness:** wie wird Grounding & Submission-Qualität bei Long-Form (>1000 Wörter) gemessen, nicht nur behauptet? | offen — direkt nach Domain-Def (kritischer Pfad zur 5-Tage-Metrik) |
+| G11 | **Builder-Bandbreite:** wer baut die tiefe Concept Suite, während die Cybersecurity-Beratung läuft? Solo / Cofounder / Devs? | **offen — Execution-Risiko** |
 
 ---
 
