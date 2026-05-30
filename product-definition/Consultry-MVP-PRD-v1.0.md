@@ -75,9 +75,10 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 > **Vorschlag (zu bestätigen — offen als G9):**
 
-**Primärer PMF-Nordstern:**
-- **Sean-Ellis ≥ 40 %** der aktiven Pilot-Nutzer wären „sehr enttäuscht" ohne Consultry, **UND**
-- **≥ 1 real verwendeter Konzept-/Bid-Entwurf aus eigenem Korpus pro Design-Partner** innerhalb der ersten 3 Wochen (Aktivierung).
+**Primäre Aktivierungs-Metrik (bestätigt 30.05.):**
+- **≥ 1 real verwendeter Konzept-/Bid-Entwurf aus eigenem Korpus pro Design-Partner — innerhalb von 5 Tagen.** Das ist das harte Leading-Signal: sticht der Painkiller schnell?
+
+**PMF-Bestätigung (tiefer):** **Sean-Ellis ≥ 40 %** der aktiven Pilot-Nutzer „sehr enttäuscht" ohne Consultry.
 
 **Sekundär:** Pilot → Paid-Konversion ≥ 2 von 3–5; Time-to-first-Wow < 15 Min; Edit-Distanz am Konzept-Entwurf sinkend über Zeit.
 
@@ -85,16 +86,23 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 ---
 
-## 6. Business-Spec (Platzhalter — offen als G8)
+## 6. Business-Spec (bestätigt 30.05.)
 
-| Größe | Stand | Nötig |
+**Seat-Preis: €50 / Seat / Monat** (je Consultant + Sales; 2 Backoffice frei).
+
+| Firmengröße | Paid Seats | **ACV** |
 |---|---|---|
-| **ACV** | unbestimmt | je Consultant+Sales-Seat × billable Headcount (2 Backoffice frei). 50-Personen-Firma ≈ 45 Seats → Seat-Preis × 45. **Zahl festlegen.** |
-| **Pilot-Fee** | „niedrig" | konkreten Betrag setzen (filtert Intent, §GTM 3.4) |
-| **Sales-Cycle** | unbestimmt | warm-path-getrieben kurz halten; trust-heavy → Wochen, nicht Tage |
-| **CAC/Motion** | founder-led, high-touch | muss vom ACV getragen werden — bei zu niedrigem Seat-Preis kippt die Motion |
+| 30 Köpfe | ~25 | **~€15k/Jahr** |
+| 50 Köpfe | ~45 | **~€27k/Jahr** |
+| 80 Köpfe | ~75 | **~€45k/Jahr** |
 
-> **Offen (G8):** Ohne ACV-Zahl ist nicht entscheidbar, ob die founder-led/high-touch-Motion ökonomisch trägt. **Nächster harter Schritt.**
+**Ökonomie-Verdikt:** Bei warm-intro/founder-led Sales (geringer Cash-CAC) trägt €15–45k ACV die high-touch-Motion. Da Seats mit Headcount skalieren, liegt **NRR strukturell > 100 %**.
+
+**Zwei load-bearing Punkte (Round 6):**
+1. **Seat-Utilization ist die ganze Wette.** €27k existiert nur, wenn ~45 Leute *aktive* Seats sind. Kollabiert die Nutzung auf 3–5 Partner/Sales → ACV ~€1,8–3k → Motion unter Wasser. → **Die Concept Suite muss für den *Consultant als Autor* gebaut sein** (er schreibt das Lösungs-/Arbeitskonzept + nutzt Reuse), nicht nur für den Partner als Käufer.
+2. **€50 ist bewusst value-unterpreist** (ein gewonnener Tender = €100k+). Gut zum *Landen* mid-small und gegen die Preis-Einwand-Mauer — aber **nach PMF Value-Tier / Preiserhöhung einplanen**, nicht €50 als ewige Decke.
+
+**Pilot-Fee:** niedrig (konkreter Betrag noch zu setzen) · **Vertrag:** jährlich (Pilot monatlich) · **Sales-Cycle:** warm-path-getrieben, Wochen.
 
 ---
 
@@ -114,8 +122,8 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 |---|---|---|
 | G6 | 30-Tage-Plan für 2–3 externe Design-Partner | offen |
 | G7 | ≥ 1 Bestandskunden-led Partner als Dogfood-Guardrail | offen |
-| G8 | ACV/Pilot-Fee/Sales-Cycle-Zahlen | **offen — nächster harter Schritt** |
-| G9 | PMF-Nordstern + Schwelle bestätigen (§5) | offen |
+| G8 | ACV/Sales-Cycle | ✅ **€50/Seat/Mo, ACV €15–45k** (§6); Pilot-Fee-Betrag noch zu setzen |
+| G9 | PMF-Aktivierung | ✅ **1 Draft aus eigenem Korpus in 5 Tagen** (§5) |
 | — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, Grounding-Regeln) | zu schärfen |
 
 ---

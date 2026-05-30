@@ -172,8 +172,8 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 | G5 | Win-Fee-Mechanik | ✅ **gestrichen — Pricing bleibt seat-only** (§4) |
 | G6 | Distribution: konkrete 30-Tage-Zahl, um von ~3 (1–2 warm + eigene Firma #0) auf **3–5 externe** Design-Partner zu kommen | offen (§3.6) |
 | G7 | Dogfood-Guardrail: ≥ 1 externer **Bestandskunden-led** Design-Partner in Kohorte 1, um Over-Fit auf die eigene (tender-lastige) Cybersecurity-Firma zu vermeiden | offen (§3.6) |
-| G8 | **Business-Spec-Zahlen**: ACV (Seat-Preis × Headcount), Pilot-Fee, Sales-Cycle, CAC-Tragfähigkeit | **offen — nächster harter Schritt** ([MVP-PRD §6](./Consultry-MVP-PRD-v1.0.md)) |
-| G9 | **PMF-Nordstern + Schwelle** bestätigen (Sean-Ellis ≥ 40 % + Aktivierung) | offen ([MVP-PRD §5](./Consultry-MVP-PRD-v1.0.md)) |
+| G8 | **Business-Spec-Zahlen** | ✅ **€50/Seat/Mo → ACV €15–45k**; Motion ökonomisch tragfähig ([MVP-PRD §6](./Consultry-MVP-PRD-v1.0.md)). Pilot-Fee-Betrag offen. |
+| G9 | **PMF-Aktivierung** | ✅ **1 Draft aus eigenem Korpus in 5 Tagen** (+ Sean-Ellis ≥ 40 % als Bestätigung) ([MVP-PRD §5](./Consultry-MVP-PRD-v1.0.md)) |
 
 > **Doc-Stack (Tier 1→3):** [Product Vision](./Consultry-Product-Vision-v1.0.md) → [PRD v4.0](./Consultry-PRD-v4.0-DACH-Operating-System.md) → [MVP-PRD](./Consultry-MVP-PRD-v1.0.md). Der **MVP = die Acquisition-to-Bid-Linie**; Hero-Painkiller = **Concept & Proposal Suite** (Lösungs-/Arbeitskonzept).
 
