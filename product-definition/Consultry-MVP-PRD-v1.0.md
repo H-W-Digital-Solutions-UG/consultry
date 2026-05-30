@@ -155,8 +155,10 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 | G8 | ACV/Sales-Cycle | ✅ **€50/Seat/Mo, ACV €15–45k** (§6); Pilot-Fee-Betrag noch zu setzen |
 | G9 | PMF-Aktivierung | ✅ **1 Draft aus eigenem Korpus in 5 Tagen** (§5) |
 | — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, **Grounding-Split §1.3**, **Zuschlagskriterien-Optimierung §1.3**, **Eval-Harness für Grounding @ Long-Form**) | zu schärfen — **nach Business-Domain-Definition** (Reihenfolge bestätigt 30.05.) |
-| G10 | **Eval-Harness:** wie wird Grounding & Submission-Qualität bei Long-Form (>1000 Wörter) gemessen, nicht nur behauptet? | offen — direkt nach Domain-Def (kritischer Pfad zur 5-Tage-Metrik) |
-| G11 | **Builder-Bandbreite:** wer baut die tiefe Concept Suite, während die Cybersecurity-Beratung läuft? Solo / Cofounder / Devs? | **offen — Execution-Risiko** |
+| G6 | Design-Partner-Kohorte | ✅ **Kohorte = 1 starker Warm-Path-Partner (+ #0 eigene Firma) für jetzt.** Stage-0: Usefulness tief validieren, dann skalieren. → PMF-Metrik bei n=1 = „nützlich + zahlungsbereit + 5-Tage-Draft", nicht Markt-Validierung. |
+| G7 | Dogfood-Guardrail | später (greift erst bei Kohorten-Erweiterung) |
+| G10 | Eval/Quality | ✅ **frontier-getrieben für Prosa/Struktur; lightweight Harness = Partner-Edit-Distanz + harter Firm-Facts-Citation-Gate** (§1.3, legal, modell-unabhängig). Kein schweres ML-Eval-Suite. |
+| G11 | Builder-Bandbreite | ⏸️ bewusst zurückgestellt |
 
 ---
 
