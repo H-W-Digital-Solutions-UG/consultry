@@ -40,14 +40,27 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
 
 ### 3.1 In-Scope (MVP)
 
+> **Scope-Balance-Regel:** Der Hero (Concept Suite) wird **tief** gebaut — finanziert durch **bewusste Dünnheit** der anderen vier (§3.1a), **nicht** durch mehr Zeit insgesamt. Tiefe wird **durch die 5-Tage-Metrik begrenzt**: bauen bis ein Partner in 5 Tagen einen brauchbaren Entwurf erzeugt (sinkende Edit-Distanz), **dann stop** für die MVP. Ziel = „spart dem Consultant Tage", nicht „perfekte Prosa".
+
 | Baustein | Was im MVP | Verkaufs-Rolle |
 |---|---|---|
-| **Concept & Proposal Suite** (Hero, F4+) | Gegroundeter Entwurf von **Lösungs-/Arbeitskonzept + Angebotstext** aus Opportunity + Korpus. Jeder Absatz quellengebunden. Editierbarer Canvas, Version History, interner Export. **Kein Versand, kein Pricing-Engine.** | **Der Painkiller — das, was gekauft wird** |
+| **Concept & Proposal Suite** (Hero, F4+) | Gegroundeter Entwurf von **Lösungs-/Arbeitskonzept + Angebotstext** aus Opportunity + Korpus. Jeder Absatz quellengebunden. Editierbarer Canvas, Version History, interner Export. **Built für den Consultant als Autor** (nicht nur Partner als Käufer). **Kein Versand, kein Pricing-Engine.** | **Der Painkiller + die kritische Pfad-Wette — das, was gekauft wird** |
 | **Tender Ingest** (Intake A, F5) | TED/eForms (+ AT) lesen, strukturieren (CPV/Fristen/Lose/Eignung), Bid/No-Bid-Eignungs-Check, Match gegen Korpus. **Kein autonomes Einreichen.** | Akquise-Intake + **zero-corpus Showcase-Demo** |
 | **Bestandskunden-Signal** (Intake B, F1) | Vertrags-Options-/Verlängerungsfenster aus hochgeladenen Verträgen, **an Quell-Klausel gebunden** → Opportunity. | Akquise-Intake + **Retention-Spine** |
 | **Team-Shape** (F6, anonym) | Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen — **keine Personen**. Speist Bid/No-Bid + Konzept-Realismus. | Glaubwürdigkeits-/Realismus-Layer |
 | **Engine: Knowledge/Reuse + Grounding-Workspace** (F2/F3) | Korpus-Ingest, Retrieval, Citations, Copilot, Approval-Hook. **Nicht als eigenes Feature vermarktet.** | unsichtbarer Motor |
 | **Backbone** | Approval-Card + Audit-Trail + Grounding-Garantie. | Compliance-Default |
+
+### 3.1a Die anderen vier bewusst dünn (um den Hero zu finanzieren)
+
+| Element | Dünnste tragfähige MVP-Version |
+|---|---|
+| Tender Ingest | **Erst semi-manuell:** Tender-PDF hochladen/einfügen → strukturieren. Volle TED/eForms-Auto-Discovery später. Was zählt: die Strukturierung, die das Konzept speist. |
+| Bestandskunden-Signal | **Ein** Signaltyp: Vertrags-Options-/Verlängerungsfenster. Keine breite Signal-Engine. |
+| Team-Shape | Einfacher strukturierter Output. Keine Ausschmückung. |
+| Knowledge/Reuse | Nur so viel Retrieval, wie das Konzept-Grounding braucht. Kein eigenständiges Wissensprodukt. |
+
+> Kritischer Pfad = **Concept Suite → 5-Tage-Draft → PMF-Signal.** Alles andere ist Zubringer und bleibt dünn, bis dieses Signal steht.
 
 ### 3.2 Die vier MVP-Surfaces (alles andere später)
 
