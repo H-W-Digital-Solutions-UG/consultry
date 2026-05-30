@@ -44,7 +44,7 @@
 - Kein Net-New-Prospecting
 - Kein offener Prompt-Marktplatz ohne Governance
 
-Phase 1 deckt jetzt die ganze Vorderkante ab: **„Signal/Tender → qualifizierte, begründete Opportunity → Teamvorschlag + Forecast → interner Proposal-Entwurf"** — durchgehend mit Quellenbindung und Approval, aber **ohne** Versand, Pricing, Contract, Submission oder personenscharfes Scoring.
+Phase 1 deckt jetzt die ganze Vorderkante ab: **„Signal/Tender → qualifizierte, begründete Opportunity → anonyme Team-Shape + Forecast → interner Proposal-Entwurf"** — durchgehend mit Quellenbindung und Approval, aber **ohne** Versand, Pricing, Contract, Submission, namentliche Personen oder personenscharfes Scoring.
 
 ### 0.3 Phase-1-Erfolgssignale (aus Product Document v1.0)
 
@@ -87,9 +87,9 @@ Default-Regeln:
 | `KnowledgeAsset` | F2 | Referenz/Methode/Report/Skript/Runbook/Blueprint, versioniert, mit Source |
 | `AISkill` / `Workflow-Blueprint` | F2/F3 | wiederverwendbare AI-native Arbeitsfähigkeit (Prompt + Kontext + Owner + Version) |
 | `Tender` | F5 | Ausschreibung: Quelle, CPV, Fristen, Lose, Eignungskriterien, Dokumentenanforderungen, Match-Score |
-| `ConsultantProfile` | F6 | Skills, Zertifikate, Projekterfahrung, Availability (personenbezogen → Gate-pflichtig für scharfe Sichten) |
-| `TeamProposal` | F6 | begründeter Staffing-/Matching-Vorschlag für eine Opportunity/Tender (mit Alternativen) |
-| `Forecast` | F6 | Kapazitäts-/Auslastungsprognose, **Default aggregiert** (Team/Practice), personenscharf nur mit Gate |
+| `ConsultantProfile` | F6 | Skills, Zertifikate, Projekterfahrung, Availability — **in Phase 1 nur aggregiert ausgewertet** (Pool-Statistik); personenscharf erst Phase 1.5+ mit Gate |
+| `TeamShape` | F6 | **anonyme** Team-Zusammensetzung für eine Opportunity/Tender: Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen — **keine namentlichen Personen** |
+| `Forecast` | F6 | Kapazitäts-/Auslastungsprognose, **aggregiert** (Team/Practice); personenscharf erst Phase 1.5+ mit Gate |
 | `Recommendation` | F3 | AI-Vorschlag mit Explanation, Sources, Confidence, Status |
 | `ApprovalEvent` | B | Freigabe/Ablehnung/Edit mit Wer/Wann/Warum |
 | `AuditRecord` | B | unveränderliche Spur über alle obigen |
@@ -111,7 +111,7 @@ Default-Regeln:
 - **AI Copilot (Basis)** — kontextgebundener Assistent als Querschnitt-Surface.
 - **Proposal Canvas** (F4) — editierbarer Angebots-Entwurf mit Version History.
 - **Tender Board** (F5) — Tender-Liste, strukturierte Tender-Sicht, Match + Bid-Checkliste.
-- **Staffing/Forecast-Sicht** (F6) — Teamvorschlag + aggregierter Kapazitäts-Forecast (personenscharf gated).
+- **Deliverability-Sicht** (F6) — anonyme Team-Shape (Anzahl/Skills/Seniority) + aggregierter Kapazitäts-Forecast; personenscharf erst Phase 1.5+ (gated).
 
 ---
 
@@ -160,7 +160,7 @@ Default-Regeln:
 
 > **Entscheidung:** Phase 1 reicht von der freigegebenen Opportunity bis zu einem **internen Proposal-Entwurf**. Kein Versand, kein Pricing-Engine, kein Contract. (Vormals „Stub" — jetzt vollwertige Phase-1-Funktion F4.)
 
-**One-Liner.** *Aus der begründeten, freigegebenen Opportunity, den verknüpften Reuse-Assets und (falls vorhanden) dem Teamvorschlag aus F6 wird per AI-Skill ein strukturierter, editierbarer **Proposal-Entwurf** im Canvas — der erste greifbare Angebots-Beweis, intern.*
+**One-Liner.** *Aus der begründeten, freigegebenen Opportunity, den verknüpften Reuse-Assets und (falls vorhanden) der anonymen Team-Shape aus F6 wird per AI-Skill ein strukturierter, editierbarer **Proposal-Entwurf** im Canvas — der erste greifbare Angebots-Beweis, intern.*
 
 **In-Scope (Phase 1):**
 - `ProposalDraft`-Objekt (neu): an genau eine `Opportunity` gebunden, versioniert.
@@ -171,7 +171,7 @@ Default-Regeln:
 **Out-of-Scope (Phase 1):**
 - Kein Versand/Outbound aus dem Produkt (read-only/import-Prinzip bleibt, siehe §6.2).
 - Kein Pricing-/Kalkulations-Engine, keine Tagessätze, kein Commercial-Draft.
-- Kein Teamvorschlag/CV-Paket (Staffing → Phase 2), kein Contract Drafting (→ Phase 2).
+- Kein namentliches Team / kein CV-Paket (personenscharfes Staffing → Phase 1.5+); die **anonyme Team-Shape** aus F6 darf einfließen. Kein Contract Drafting (→ Phase 2).
 - Keine Kunden-spezifische Formatierung/Corporate-Template-Engine (→ Phase 2).
 
 **AI-Verhalten (darf / nur-mit-Gate / niemals):**
@@ -299,18 +299,19 @@ Default-Regeln:
 
 > **⚠️ Scope-Schnitt 30.05. (siehe [GTM-Decisions §5](./Consultry-GTM-Decisions-v1.0.md)).** Volles Staffing & Forecasting ist **nicht** Phase 1 — es ist Delivery/Resourcing, nicht Akquise, und trägt die schwerste Mitbestimmungs-/AI-Act-Last. **Phase 1 behält nur den akquise-relevanten Rest:** einen **aggregierten „Können wir das liefern?"-Kapazitäts-Check**, der Bid/No-Bid (F5) und die Team-Zusammensetzung im Proposal (F4) speist. Echtes Staffing/Matching/Forecasting → **Phase 1.5+**.
 
-**One-Liner.** *Liefert einen **aggregierten Deliverability-/Kapazitäts-Check** (Team/Practice-Ebene) als Realismus-Gate für Bid/No-Bid und Proposal — „haben wir grundsätzlich die Kapazität und die Skills, um das zu gewinnen und zu liefern?". **Rein aggregiert, kein personenscharfes Matching.***
+**One-Liner.** *Liefert einen **aggregierten Deliverability-Check** plus eine **anonyme Team-Zusammensetzung** (wie viele Personen, welche Skill-/Profil-Typen, welcher Seniority-Mix) als Realismus-Gate für Bid/No-Bid und Proposal — **niemals namentliche Personen.***
 
-**Job-to-be-done.** `Können wir das grundsätzlich liefern — reicht aggregierte Kapazität und Skill-Abdeckung, um darauf zu bieten?`
+**Job-to-be-done.** `Können wir das grundsätzlich liefern — wie viele Leute mit welchen Skills und welcher Seniority braucht es, und haben wir die Kapazität dafür?`
 
 **In-Scope (Phase 1):**
-- `Forecast` (aggregiert): Kapazitäts-/Auslastungssicht auf **Team-/Practice-Ebene** — der einzige F6-Output in Phase 1.
-- Aggregierte **Skill-Abdeckung vs. Anforderung** eines Tenders/einer Opportunity (haben wir die geforderten Skills im Pool — ja/nein/Lücke), **ohne** Personen zu nennen.
+- `Forecast` (aggregiert): Kapazitäts-/Auslastungssicht auf **Team-/Practice-Ebene**.
+- `TeamShape` (anonym): die **abstrakte Team-Zusammensetzung** für einen Tender/eine Opportunity — **Anzahl Köpfe, geforderte Skill-/Profil-Typen, Seniority-Mix, Rollen** (z. B. „2× Senior SAP-Berater, 1× Data Engineer mid, 1× PM"). **Keine namentlichen Personen.**
+- Aggregierte **Skill-Abdeckung vs. Anforderung** (haben wir diese Profil-Typen im Pool — ja/nein/Lücke), **ohne** Personen zu nennen.
 - Sichtbarkeit von Skill-Gaps und Bench-/Überlastungs-Risiken **auf aggregierter Ebene**.
-- **Bid-Gate-Input für F5** und **Realismus-Check für F4** (Proposal: „machbar mit der vorhandenen Kapazität bis Frist Y").
+- **Bid-Gate-Input für F5** und **Realismus-Check für F4** (Proposal: „machbar mit Team-Shape X und vorhandener Kapazität bis Frist Y").
 
 **Out-of-Scope (Phase 1 — auf Phase 1.5+ verschoben):**
-- **`TeamProposal` / personenscharfes Matching entfällt in Phase 1** — keine namentlichen Teamvorschläge.
+- **Personenscharfes Matching entfällt in Phase 1** — keine namentlichen Personen, kein Zuordnen konkreter Berater zu Rollen.
 - Personenscharfes Forecasting bis Einzelberater.
 - **Kein People-Scoring, kein Burnout-/Performance-/Persönlichkeits-Scoring** (PRD v4.0 §4.1).
 - Keine Black-Box-Rankings von Personen; keine automatische Leistungsbeurteilung.
@@ -319,8 +320,8 @@ Default-Regeln:
 > **Compliance-Effekt des Schnitts:** Da Phase 1 **rein aggregiert** bleibt (kein Personenbezug), entfällt der Großteil der personenscharfen Mitbestimmungslast. `Works-Council-Mode` bleibt als Produktfunktion bestehen und greift erst, wenn in Phase 1.5+ personenscharfe Sichten dazukommen (§4A.3).
 
 **AI-Verhalten (darf / nur-mit-Gate / niemals):**
-- **Darf:** aggregierte Forecasts und aggregierte Skill-Gap-Sichten (Team/Practice); begründete Deliverability-Einschätzung „können wir grundsätzlich liefern?".
-- **Nur mit Gate (Phase 1.5+):** personenscharfes Matching/`TeamProposal`; personenbezogene Auslastungs-/Workload-Analysen; personenscharfes Forecasting bis Einzelberater. **Gate = Works-Council-Mode + dokumentierte Freigabe.**
+- **Darf:** aggregierte Forecasts und Skill-Gap-Sichten (Team/Practice); **anonyme Team-Shapes** (Anzahl, Skill-/Profil-Typen, Seniority-Mix); begründete Deliverability-Einschätzung „können wir grundsätzlich liefern?".
+- **Nur mit Gate (Phase 1.5+):** personenscharfes Matching (konkrete Berater zu Rollen); personenbezogene Auslastungs-/Workload-Analysen; personenscharfes Forecasting bis Einzelberater. **Gate = Works-Council-Mode + dokumentierte Freigabe.**
 - **Niemals per Default:** personenbezogenes Ranking/Scoring; Entscheidungen ohne Begründung; personenscharfe Daten ohne Consent-/Mitbestimmungs-Mode.
 
 **Erfolgsmetriken:** Plausibilität des aggregierten Deliverability-Checks; frühere Sichtbarkeit von Skill-/Bench-Risiken; Anteil Bid/No-Bid-Entscheidungen mit nachvollziehbarer Kapazitäts-Begründung (Ziel: 100 %).
@@ -391,10 +392,10 @@ Mit F6 wird Consultry in Phase 1 **mitbestimmungs- und AI-Act-relevant**. Das is
 **Konkret:** 1) Ingest → Tender-Liste; 2) Tender öffnen → strukturierte Sicht (CPV/Fristen/Lose/Eignung); 3) Match gegen Profil + Kapazität (F6) → Score mit Begründung; 4) Tender → Opportunity (Approval); 5) Bid-Paket-Checkliste → passende Assets (F2) anhängen.
 **Abstrakt/AI-dynamisch:** *Continuous-Tender-Sense* (laufendes Screening neuer Tenders gegen Firmenprofil); *Eligibility-Gap-Check* (Modell prüft, welche Eignungskriterien wir (nicht) erfüllen, mit Quelle).
 
-### 5.8 Staffing & Forecasting (F6) — Flows
+### 5.8 Deliverability-Check (F6) — Flows
 
-**Konkret:** 1) Opportunity/Tender → `suggest-team` → Teamvorschlag + Alternativen (aggregiert); 2) Skill-Gap-Sicht auf Team-/Practice-Ebene; 3) Forecast-Sicht (aggregiert) → Bench-/Überlastungs-Hinweise; 4) Teamvorschlag → in F4 Proposal übernehmen (Approval); 5) **Gated:** personenscharfe Sicht öffnen → Works-Council-Mode-Prompt → Freigabe → Audit.
-**Abstrakt/AI-dynamisch:** *Deliverability-Sense* (Copilot bewertet „können wir liefern?" aus Profil+Forecast, on the fly); *Reforecast-on-change* (neue Opportunity/Allocation → aggregierter Forecast aktualisiert sich mit Diff-Erklärung).
+**Konkret:** 1) Opportunity/Tender → `shape-team` → anonyme Team-Shape (Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen); 2) Skill-Abdeckung der Shape vs. Pool (ja/nein/Lücke) auf aggregierter Ebene; 3) Forecast-Sicht (aggregiert) → Bench-/Überlastungs-Hinweise; 4) Team-Shape + Kapazitäts-Aussage → in F4 Proposal & F5 Bid-Gate übernehmen (Approval). **Phase 1.5+ (gated):** personenscharfes Matching → Works-Council-Mode-Prompt → Freigabe → Audit.
+**Abstrakt/AI-dynamisch:** *Deliverability-Sense* (Copilot bewertet „können wir liefern?" aus Pool-Statistik+Forecast, on the fly); *Reforecast-on-change* (neue Opportunity/Allocation → aggregierter Forecast aktualisiert sich mit Diff-Erklärung).
 
 ---
 
@@ -406,7 +407,7 @@ Mit F6 wird Consultry in Phase 1 **mitbestimmungs- und AI-Act-relevant**. Das is
 - **CF-2 — Opportunity → Knowledge-Gap**: Beim Qualifizieren erkennt F3 fehlendes Wissen und legt in F2 einen Capture-Task an.
 - **CF-3 — Asset-Update → Re-Score**: Neues/aktualisiertes F2-Asset lässt F3 betroffene F1-Opportunities neu bewerten.
 - **CF-4 — Approval überall**: Jede Übernahme in F1/F2 aus F3 läuft durch denselben Backbone-Approval (B) → ein Audit-Strom.
-- **CF-5 — Tender → Opportunity → Team → Proposal**: F5-Tender wird zur Opportunity (F1), F6 liefert Teamvorschlag + Forecast, F4 baut daraus den Proposal-Entwurf — ein durchgehender, belegter Pfad.
+- **CF-5 — Tender → Opportunity → Team-Shape → Proposal**: F5-Tender wird zur Opportunity (F1), F6 liefert die **anonyme Team-Shape** + Forecast, F4 baut daraus den Proposal-Entwurf — ein durchgehender, belegter Pfad.
 - **CF-6 — Forecast ↔ Proposal-Realismus**: F6-Kapazitätssicht fließt als Plausibilitäts-Check in den F4-Entwurf („machbar mit Team X bis Frist Y").
 - **CF-7 — Gate-Propagation**: Sobald F6 personenscharf wird, erzwingt der Backbone (B) Works-Council-Mode + Freigabe über alle abhängigen Flows hinweg.
 
@@ -422,7 +423,7 @@ Mit F6 wird Consultry in Phase 1 **mitbestimmungs- und AI-Act-relevant**. Das is
 | **TED/eForms, service.bund** (F5) | Tender-Ingest | read-only |
 | **HR / Skill-Quelle** (F6, optional) | Consultant-Profile/Availability-Import | Import (Gate-pflichtig bei Personenbezug) |
 
-> **Source-of-Truth-Regel (Phase 1):** Consultry führt `Account`, `Opportunity`, `KnowledgeAsset`, `AISkill`, `Tender`, `ConsultantProfile`, `TeamProposal`, `Forecast`, `ProposalDraft` **nativ**. Alles aus Integrationen ist **Vorschlag/Input**, nie automatisch verbindlicher Datensatz. DATEV/ELSTER/Time/Invoice: bewusst **nicht** in Phase 1.
+> **Source-of-Truth-Regel (Phase 1):** Consultry führt `Account`, `Opportunity`, `KnowledgeAsset`, `AISkill`, `Tender`, `ConsultantProfile`, `TeamShape`, `Forecast`, `ProposalDraft` **nativ**. Alles aus Integrationen ist **Vorschlag/Input**, nie automatisch verbindlicher Datensatz. DATEV/ELSTER/Time/Invoice: bewusst **nicht** in Phase 1.
 
 > **Bestätigt (30.05.):** Phase 1 nutzt nur **read-only / Import** (kein Schreibzugriff nach außen, kein Mailversand, **keine autonome Tender-Submission**).
 
@@ -437,8 +438,8 @@ Diese Features sind **emergent** — sie sind kein weiteres Modul, sondern der e
 3. **Explain-anything** — überall im Produkt „warum?" fragen → erklärte, quellengebundene Antwort.
 4. **Context-aware Skill-Suggestion** — der richtige AI-Skill wird im richtigen Moment vorgeschlagen, nicht gesucht.
 5. **Single Audit Stream** — eine durchgehende, mitbestimmungsfähige Spur über Wissen, Empfehlung und Entscheidung (Verkaufsargument für MP/COO/Betriebsrat).
-6. **End-to-end Bid-Pfad** — *Tender/Signal → begründete Opportunity → realistischer Teamvorschlag + Forecast → Proposal-Entwurf*, alles belegt und freigegeben in **einem** System (F5×F1×F6×F4). Das ist der vollständige Phase-1-Demo-Bogen.
-7. **„Can we deliver?"-Reality-Check** — der Forecast (F6) hält den Proposal-Entwurf (F4) ehrlich: kein Angebot, das die Kapazität nicht trägt.
+6. **End-to-end Bid-Pfad** — *Tender/Signal → begründete Opportunity → anonyme Team-Shape + Forecast → Proposal-Entwurf*, alles belegt und freigegeben in **einem** System (F5×F1×F6×F4). Das ist der vollständige Phase-1-Demo-Bogen.
+7. **„Can we deliver?"-Reality-Check** — Team-Shape + Forecast (F6) halten den Proposal-Entwurf (F4) ehrlich: kein Angebot, das das nötige Profil oder die Kapazität nicht trägt.
 
 ---
 
@@ -487,13 +488,13 @@ Liefere: {cpv[], deadlines[], lots[], eligibility[], required_docs[], match_scor
 Verbote: kein autonomes Einreichen; keine Zusage „Compliance vollständig"/„Vergabesicherheit".
 ```
 
-**F6 — Staffing/Forecast-Context-Block:**
+**F6 — Deliverability-Context-Block:**
 ```
-Kontext: <Opportunity/Tender, ConsultantProfiles (aggregiert), Availability, Allocation, Pipeline>.
-Aufgabe: Schlage ein Team vor + liefere aggregierten Kapazitäts-Forecast.
-Liefere: {team_proposal, alternatives[], skill_gaps[], forecast_aggregated, rationale[], confidence}.
-Default: AGGREGIERT (Team/Practice). Personenscharf NUR wenn works_council_mode==on UND freigabe vorhanden.
-Verbote: kein People-/Burnout-/Performance-Scoring; keine Black-Box-Rankings; keine Entscheidung ohne Begründung.
+Kontext: <Opportunity/Tender, Pool-Statistik aus ConsultantProfiles (aggregiert), Availability, Allocation, Pipeline>.
+Aufgabe: Leite die anonyme Team-Shape ab + liefere aggregierten Kapazitäts-Forecast.
+Liefere: {team_shape:{headcount, role_profiles[], skill_types[], seniority_mix}, skill_coverage[], skill_gaps[], forecast_aggregated, rationale[], confidence}.
+Regel: NIEMALS namentliche Personen. AGGREGIERT (Team/Practice). Personenscharfes Matching erst Phase 1.5+ (works_council_mode==on UND Freigabe).
+Verbote: keine Personennamen/-zuordnung; kein People-/Burnout-/Performance-Scoring; keine Black-Box-Rankings; keine Entscheidung ohne Begründung.
 ```
 
 ### 8.2 Reusable Prompt-/Skill-Blueprints (Phase-1-Set)
@@ -504,10 +505,10 @@ Verbote: kein People-/Burnout-/Performance-Scoring; keine Black-Box-Rankings; ke
 | `find-warm-path` | F1 | Stakeholder-Graph → belastbarster Pfad + Begründung |
 | `condense-asset` | F2 | Rohartefakt → quellengebundener Baustein |
 | `match-reuse` | F2/F3 | Arbeitskontext → Top-Assets/Skills |
-| `draft-proposal` | F4/F3 | Opportunity + Assets (+ Teamvorschlag) → strukturierter, quellengebundener Proposal-Entwurf (intern) |
+| `draft-proposal` | F4/F3 | Opportunity + Assets (+ anonyme Team-Shape) → strukturierter, quellengebundener Proposal-Entwurf (intern) |
 | `ingest-tender` | F5 | TED/eForms-Quelle → strukturierter Tender (CPV/Fristen/Lose/Eignung) + Match-Score |
-| `suggest-team` | F6 | Opportunity/Tender + Profile + Forecast → begründeter Teamvorschlag + Alternativen (aggregiert) |
-| `forecast-capacity` | F6 | Allocation + Pipeline → aggregierter Kapazitäts-/Auslastungs-Forecast (personenscharf nur mit Gate) |
+| `shape-team` | F6 | Opportunity/Tender + Pool-Statistik → **anonyme Team-Shape** (Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen) — keine Personen |
+| `forecast-capacity` | F6 | Allocation + Pipeline → aggregierter Kapazitäts-/Auslastungs-Forecast (personenscharf erst Phase 1.5+ mit Gate) |
 | `explain-recommendation` | F3 | beliebige Empfehlung → Begründungskette + Quellen |
 
 > Jeder Blueprint = versioniert, Owner, Kontext-Bindung, Audit. **Kein Prompt-Zoo.**
@@ -531,7 +532,7 @@ Verbote: kein People-/Burnout-/Performance-Scoring; keine Black-Box-Rankings; ke
 - **AI Workspace** — *„Ein Copilot, der erklärt und dir die Kontrolle lässt — nichts passiert ohne deine Freigabe."*
 - **Proposal Draft** — *„Von der Chance zum ersten Angebotsentwurf in Minuten — quellengebunden, intern, editierbar."*
 - **Tender Ingest** — *„Passende öffentliche Ausschreibungen früh erkennen und strukturiert bewerten — ohne Vergabe-Blindflug."*
-- **Staffing & Forecasting** — *„Können wir das liefern? Begründete Teamvorschläge und ehrliche Kapazitätssicht — aggregiert, betriebsratsfest."*
+- **Deliverability-Check** — *„Können wir das liefern? Welches Team-Profil es braucht (Anzahl, Skills, Seniority) und ob die Kapazität reicht — anonym, aggregiert, betriebsratsfest."*
 - **Symbiose** — *„Chancen, die ihre Begründung aus eurem echten Wissen ziehen. Mit einem Audit-Strom, der auch dem Betriebsrat standhält."*
 
 ---
@@ -565,8 +566,8 @@ flowchart LR
     TND[Tender · CPV/Fristen/Lose]
   end
 
-  subgraph F6[F6 · Staffing & Forecasting]
-    TEAM[TeamProposal · aggregiert]
+  subgraph F6[F6 · Deliverability-Check]
+    TEAM[TeamShape · anonym]
     FC[Forecast · aggregiert]
   end
 
@@ -608,8 +609,8 @@ flowchart LR
   TEAM --> PROP
   FC -. Realismus-Check .-> PROP
   PROP --> APP
-  GATE -. erzwingt bei Personenbezug .-> TEAM
-  GATE -. erzwingt bei Personenbezug .-> FC
+  GATE -. erst Phase 1.5+ bei Personenbezug .-> TEAM
+  GATE -. erst Phase 1.5+ bei Personenbezug .-> FC
   APP --> AUD
   OPP -. re-score .-> COP
   ASSET -. update .-> COP

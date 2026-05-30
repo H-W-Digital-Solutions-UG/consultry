@@ -97,12 +97,13 @@ Gleichwertig in der Vision ≠ gleichwertig im Erstgespräch. Für mid-to-small 
 
 **Entscheidung (30.05.):** Volles **F6 Staffing & Forecasting wird aus Phase 1 herausgenommen.** Begründung: Es ist Delivery/Resourcing, **nicht** Akquise — und trägt die schwerste Compliance-Last (Mitbestimmung/AI-Act), die den Sales-Cycle verlängert.
 
-**Was bleibt (der akquise-relevante Rest):** ein **aggregierter „Können wir das liefern?"-Kapazitäts-Check**, der **Bid/No-Bid (F5)** und die **Team-Zusammensetzung im Proposal (F4)** speist.
-- Rein **aggregiert** (Team/Practice) → umgeht den Großteil der personenscharfen Mitbestimmungslast.
-- **Kein** personenscharfes Matching, **kein** Forecasting bis Einzelberater, **kein** People-/Burnout-/Performance-Scoring.
-- Echtes Staffing/Forecasting → **Phase 1.5+**.
+**Was bleibt (der akquise-relevante Rest):** ein **aggregierter Deliverability-Check** + eine **anonyme Team-Shape**, die **Bid/No-Bid (F5)** und den **Proposal-Entwurf (F4)** speisen.
+- **Team-Shape = wie viele Köpfe, welche Skill-/Profil-Typen, welcher Seniority-Mix, welche Rollen** (z. B. „2× Senior SAP, 1× Data Engineer mid, 1× PM") — **niemals namentliche Personen.**
+- Rein **aggregiert/anonym** → umgeht den Großteil der personenscharfen Mitbestimmungslast.
+- **Kein** personenscharfes Matching (konkrete Berater zu Rollen), **kein** Forecasting bis Einzelberater, **kein** People-/Burnout-/Performance-Scoring.
+- Echtes personenscharfes Staffing/Matching → **Phase 1.5+**.
 
-> Konsequenz für die Specs: §4A.2 (F6) wird von „Matching + aggregiertem Forecast" auf **„aggregierter Deliverability-/Kapazitäts-Check"** reduziert. `TeamProposal` (personenbezogenes Matching-Objekt) entfällt in Phase 1; `Forecast` bleibt rein aggregiert als Bid-Gate-Input.
+> Konsequenz für die Specs: §4A.2 (F6) wird von „personenscharfem Matching + Forecast" auf **„aggregierter Deliverability-Check + anonyme Team-Shape"** reduziert. Das personenbezogene `TeamProposal`-Objekt entfällt in Phase 1; an seine Stelle tritt das anonyme `TeamShape`-Objekt. `Forecast` bleibt rein aggregiert als Bid-Gate-Input.
 
 ---
 
