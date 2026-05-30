@@ -310,6 +310,7 @@ Default-Regeln:
 - Keine Black-Box-Rankings von Personen.
 - Keine automatische Leistungsbeurteilung; keine personenscharfe Planung ohne Gate.
 - Kein voller Capacity Planner / keine Workforce-Optimierung (das bleibt spätere Phase).
+- **F6 ist Phase 1 bewusst „Light" (bestätigt 30.05.):** nur Matching + aggregierter Forecast; tiefe Kapazitätsplanung folgt später.
 
 **AI-Verhalten (darf / nur-mit-Gate / niemals):**
 - **Darf:** aggregierte Forecasts, Team-/Skill-Gap-Sichten, begründete Matching-Vorschläge mit Alternativen.
@@ -615,15 +616,11 @@ flowchart LR
 1. ✅ **Scope-Hierarchie** (§0.1): Account Growth = erstes sichtbares Feature, Knowledge + AI Workspace als direkte Verstärker — **bestätigt 30.05.**
 2. ✅ **Integration-Tiefe** (§6.2): Phase 1 nur read-only/import, kein Schreibzugriff/Versand, keine autonome Tender-Submission — **bestätigt 30.05.**
 3. ✅ **Phase-1-Endartefakt**: Opportunity **+ Proposal Draft** (F4, kein Versand) — **bestätigt & eingearbeitet 30.05.** (§2.7)
-4. ⚠️ **Personenbezug (Works-Council-Default)**: Durch das Vorziehen von **F6** ist dies jetzt **build-blockierend**, nicht mehr nice-to-have. Spec-Default gesetzt: **Works-Council-Mode = AN, F6 aggregiert, personenscharf nur gated** (§4A.3). **Bitte final bestätigen.**
+4. ✅ **Personenbezug (Works-Council-Default)**: **bestätigt 30.05.** — Works-Council-Mode = AN, F6 aggregiert, personenscharf nur gated (§4A.3).
 5. ✅ **Canvas-Form**: Mermaid (eingebettet) reicht vorerst; FigJam auf Zuruf — **entschieden 30.05.**
-6. ⚠️ **Scope-Erweiterung Tender + Staffing/Forecasting** (§4A): Beide nach Phase 1 vorgezogen (waren Phase 2/3). **Konsequenzen, die zu bestätigen sind:**
-   - **größerer Phase-1-Scope & längere Time-to-first-Value** (mehr Surfaces, mehr Datenbedarf),
-   - **höherer Datenbedarf** (Consultant-Profile/Availability für F6; Vergabe-Quellen-Anbindung für F5),
-   - **AI-Act-/Mitbestimmungs-Last** wird Phase-1-Pflicht (F6) → Works-Council-Mode, Human Oversight, Audit von Tag 1.
-   - **Empfehlung:** F6 in Phase 1 bewusst **„aggregiert/read-only-Light"** halten (Matching + aggregierter Forecast), tiefes Capacity-Planning weiter später — sonst kippt der MVP-Scope.
+6. ✅ **Scope-Erweiterung Tender + Staffing/Forecasting** (§4A): **bestätigt 30.05.** — F5 + F6 in Phase 1. **F6 bewusst „Light"**: Matching (Teamvorschlag mit Begründung/Alternativen) + aggregierter Forecast; tiefes Capacity-Planning/Workforce-Optimierung bleibt spätere Phase.
 
-> **Offene Punkte: 4 und 6** (Works-Council-Default + Bestätigung der Scope-/Compliance-Konsequenzen).
+> **Alle Phase-1-Scope-Entscheidungen bestätigt (Stand 30.05.).** Nächster Schritt: Verfeinerung je Feature in Build-Tickets + optional FigJam-Canvas.
 
 ---
 
