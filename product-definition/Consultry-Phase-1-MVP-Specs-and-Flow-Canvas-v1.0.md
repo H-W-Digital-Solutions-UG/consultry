@@ -20,19 +20,22 @@
 | **F1** | **Account Growth System** | Primärer Kaufgrund. Bestandskunde → Signal/Trigger → qualifizierte Opportunity. | Primär-Wedge: *Bestandskunden-Expansion & Proposal* |
 | **F2** | **Knowledge & Reuse System** | Verstärker. Wiederverwendbare Referenzen, Methoden, Assets, AI-Skills mit Quellenbindung. | Verstärker-Wedge: *Wissenstransfer, Reuse & Readiness* |
 | **F3** | **AI Workspace** | Die AI-native Interaktions- und Empfehlungsschicht über F1 + F2. | Querschnitt: macht F1+F2 erst „AI-native" |
+| **F1b** | **Proposal-Stub** (Teil von F1) | **Entscheidung 30.05.:** Kein eigenes Modul, aber Phase-1-Pflicht. Aus der freigegebenen Opportunity wird ein **interner Proposal-Entwurf** als Demo-Beweis erzeugt — kein Send-Out. | Primär-Wedge: schließt die Lücke Opportunity → erstes Angebot |
 | **B** | **Approvals + Governance/Audit Backbone** | **Kein eigenes verkaufbares Feature**, sondern verpflichtender Querschnitt unter F1–F3. | Produkt-Default (DACH-Compliance) |
 
-> **Bestätigung erbeten (1):** Account Growth ist der Primär-Wedge und damit das *erste sichtbare* Feature; Knowledge & AI Workspace sind in Phase 1 dabei, weil sie den Primär-Wedge direkt glaubwürdiger machen — **nicht** als eigenständige Backoffice-Suiten. Passt diese Hierarchie?
+> **Bestätigt (1):** Account Growth ist der Primär-Wedge und damit das *erste sichtbare* Feature; Knowledge & AI Workspace sind in Phase 1 dabei, weil sie den Primär-Wedge direkt glaubwürdiger machen — **nicht** als eigenständige Backoffice-Suiten.
+>
+> **Bestätigt (2 · Scope-Erweiterung 30.05.):** Phase 1 endet **nicht** bei der Opportunity, sondern bei einem **Proposal-Stub** (interner Entwurf, kein Versand). Siehe §2.7.
 
 ### 0.2 Was Phase 1 bewusst NICHT ist
 
 - Kein Staffing-/Forecasting-Engine (Consultant/Capacity System → Phase 2)
-- Kein Proposal-Generator mit Send-Out, kein Contract Drafting (→ Phase 2)
+- **Proposal-Stub ist drin** (interner Entwurf), aber **kein Proposal-Send-Out, kein Pricing-Engine, kein Contract Drafting** (→ Phase 2)
 - Kein Time/Expense, kein Invoice Prep, kein DATEV/ELSTER-Handoff (→ Phase 3)
 - Kein Tender-Ingest, kein Net-New-Prospecting, kein People-Scoring
 - Kein offener Prompt-Marktplatz ohne Governance
 
-Phase 1 endet definiert beim Artefakt **„qualifizierte, begründete, freigegebene Opportunity inkl. verknüpfter Reuse-Assets"** — nicht beim sendefertigen Proposal.
+Phase 1 endet definiert beim Artefakt **„qualifizierte, begründete, freigegebene Opportunity inkl. verknüpfter Reuse-Assets → interner Proposal-Stub (Entwurf)"** — **nicht** beim sendefertigen, bepreisten oder vertraglich finalisierten Proposal. Der Stub ist der Demo-Beweis „von der Chance zum ersten Angebotsentwurf in einem System" (Detail: §2.7).
 
 ### 0.3 Phase-1-Erfolgssignale (aus Product Document v1.0)
 
@@ -70,6 +73,7 @@ Default-Regeln:
 | `Stakeholder` | F1 | Person/Rolle beim Account, Warm-Path-Knoten |
 | `Signal` / `Trigger` | F1 | Ereignis/Hinweis (intern oder integriert), das eine Chance nahelegt |
 | `Opportunity` | F1 | qualifizierte Chance mit Status, Begründung, Quellen |
+| `ProposalDraft` | F1b | interner Angebots-Entwurf, an eine Opportunity gebunden, versioniert (kein Versand) |
 | `WarmPath` | F1 | belastbarer Beziehungspfad zu einem Stakeholder |
 | `KnowledgeAsset` | F2 | Referenz/Methode/Report/Skript/Runbook/Blueprint, versioniert, mit Source |
 | `AISkill` / `Workflow-Blueprint` | F2/F3 | wiederverwendbare AI-native Arbeitsfähigkeit (Prompt + Kontext + Owner + Version) |
@@ -132,6 +136,34 @@ Default-Regeln:
 - Time-to-first-qualified-Opportunity (Ziel: < 10 Min ab Signal).
 - Anteil Opportunities mit vollständiger Begründung + Quelle (Ziel: 100 %).
 - „Früher sichtbar"-Quote: Anteil Chancen, die vor dem üblichen manuellen Erkennen aufpoppen.
+
+### 2.7 Proposal-Stub (F1b · Scope-Erweiterung 30.05.)
+
+> **Entscheidung:** Phase 1 reicht von der freigegebenen Opportunity bis zu einem **internen Proposal-Entwurf**. Kein Versand, kein Pricing-Engine, kein Contract.
+
+**One-Liner.** *Aus der begründeten, freigegebenen Opportunity und den verknüpften Reuse-Assets wird per AI-Skill ein strukturierter, editierbarer **Proposal-Entwurf** im Canvas — der erste greifbare Angebots-Beweis, intern.*
+
+**In-Scope (Phase 1):**
+- `ProposalDraft`-Objekt (neu): an genau eine `Opportunity` gebunden, versioniert.
+- AI-Skill `draft-proposal` (F2/F3): erzeugt Gliederung + Kerntext aus Opportunity-Begründung + angehängten Assets, **quellengebunden**.
+- Editierbarer Canvas (F3) mit Version History; Übernahme nur über Approval-Card (B).
+- Export als internes Dokument (PDF/Markdown) zum **manuellen** Weiterverarbeiten außerhalb des Produkts.
+
+**Out-of-Scope (Phase 1):**
+- Kein Versand/Outbound aus dem Produkt (read-only/import-Prinzip bleibt, siehe §6.2).
+- Kein Pricing-/Kalkulations-Engine, keine Tagessätze, kein Commercial-Draft.
+- Kein Teamvorschlag/CV-Paket (Staffing → Phase 2), kein Contract Drafting (→ Phase 2).
+- Keine Kunden-spezifische Formatierung/Corporate-Template-Engine (→ Phase 2).
+
+**AI-Verhalten (darf / nur-mit-Gate / niemals):**
+- **Darf:** Gliederung + Entwurfstext aus vorhandenem, freigegebenem Kontext erzeugen; Assets als Belege einbinden; Lücken markieren.
+- **Nur mit Gate:** Übernahme als „Proposal-Entwurf v1"; Einbeziehung personenbezogener Stakeholder-Aussagen.
+- **Niemals per Default:** Versand; erfundene Referenzen/Zahlen; Pricing-Aussagen; unsourced Claims als belegt darstellen.
+
+**Erfolgsmetriken:**
+- Zeit von freigegebener Opportunity → erstem Proposal-Entwurf (Ziel: < 5 Min).
+- Anteil Entwürfe, die ohne Neuschreiben weiterverarbeitet werden (Edit-Distanz sinkend).
+- Anteil Entwurfs-Absätze mit nachvollziehbarer Quelle/Asset-Bindung (Ziel: hoch).
 
 ---
 
@@ -226,6 +258,7 @@ Default-Regeln:
 4. **White-Space-Review**: Account-Detail → fehlende Leistungen → Chance erzeugen.
 5. **Opportunity ablehnen/zurückstellen**: Approval-Card → „nicht jetzt" mit Grund → Audit.
 6. **Trigger-Triage (MP-Modus)**: Managing Partner scannt nur Approval-Cards → freigeben/ablehnen.
+7. **Opportunity → Proposal-Stub**: freigegebene Opportunity → `draft-proposal` → Canvas-Entwurf editieren → Approval → interner Export (kein Versand).
 
 ### 5.2 Account Growth — abstrakte / AI-dynamische Flows
 
@@ -346,6 +379,7 @@ Liefere: {draft, explanation, sources[], confidence, approval_required: true}.
 | `find-warm-path` | F1 | Stakeholder-Graph → belastbarster Pfad + Begründung |
 | `condense-asset` | F2 | Rohartefakt → quellengebundener Baustein |
 | `match-reuse` | F2/F3 | Arbeitskontext → Top-Assets/Skills |
+| `draft-proposal` | F1b/F3 | Opportunity + Assets → strukturierter, quellengebundener Proposal-Entwurf (intern) |
 | `explain-recommendation` | F3 | beliebige Empfehlung → Begründungskette + Quellen |
 
 > Jeder Blueprint = versioniert, Owner, Kontext-Bindung, Audit. **Kein Prompt-Zoo.**
@@ -388,6 +422,7 @@ flowchart LR
     SIG[Signal/Trigger]
     OPP[Opportunity]
     WP[Warm Path]
+    PROP[Proposal-Stub · intern]
   end
 
   subgraph F2[F2 · Knowledge & Reuse]
@@ -418,6 +453,8 @@ flowchart LR
   APP --> OPP
   APP --> ASSET
   WP --> OPP
+  OPP --> PROP
+  PROP --> APP
   APP --> AUD
   OPP -. re-score .-> COP
   ASSET -. update .-> COP
@@ -427,11 +464,13 @@ flowchart LR
 
 ## 10. Offene Entscheidungen vor dem Build (bitte bestätigen)
 
-1. **Scope-Hierarchie** (§0.1): Account Growth = erstes sichtbares Feature, Knowledge + AI Workspace als direkte Verstärker — ok?
-2. **Integration-Tiefe** (§6.2): Phase 1 nur read-only/import, kein Schreibzugriff/Versand — ok?
-3. **Phase-1-Endartefakt**: „qualifizierte, begründete, freigegebene Opportunity + verknüpfte Assets" — reicht das als Demo-Beweis, oder muss schon ein Proposal-Stub rein?
-4. **Personenbezug**: Works-Council-Mode Default = aus (alle personenbezogenen Stakeholder-Einschätzungen gated) — ok?
-5. **Canvas-Form**: Mermaid (eingebettet) + zusätzlich FigJam — soll ich die FigJam-Variante jetzt generieren?
+1. ✅ **Scope-Hierarchie** (§0.1): Account Growth = erstes sichtbares Feature, Knowledge + AI Workspace als direkte Verstärker — **bestätigt 30.05.**
+2. ✅ **Integration-Tiefe** (§6.2): Phase 1 nur read-only/import, kein Schreibzugriff/Versand — **bestätigt 30.05.**
+3. ✅ **Phase-1-Endartefakt**: Opportunity **+ interner Proposal-Stub** (kein Versand) — **bestätigt & eingearbeitet 30.05.** (§2.7)
+4. **Personenbezug**: Works-Council-Mode Default = aus (alle personenbezogenen Stakeholder-Einschätzungen gated) — noch zu bestätigen.
+5. ✅ **Canvas-Form**: Mermaid (eingebettet) reicht vorerst; FigJam auf Zuruf — **entschieden 30.05.**
+
+> Offen bleibt nur noch Punkt 4 (Works-Council-Default).
 
 ---
 
