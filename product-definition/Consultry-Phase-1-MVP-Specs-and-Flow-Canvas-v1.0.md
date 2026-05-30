@@ -628,7 +628,7 @@ flowchart LR
 6. ✅ **Tender in Phase 1, F6 geschnitten** (§4A): **bestätigt 30.05.** — F5 (Tender Ingest) bleibt; **F6 → Option A**: nur aggregierter Deliverability-Check als Bid-Gate, **kein personenscharfes Matching** (volles Staffing/Forecasting → Phase 1.5+).
 7. ✅ **Headline-Wedge & GTM** (→ [GTM-Decisions v1.0](./Consultry-GTM-Decisions-v1.0.md)): **bestätigt 30.05.** — Job = *Projekt-Wachstum & -Akquise*; F3 = Spine; Tender + Bestandskunden = zwei Intake-Oberflächen; **Bestandskunden öffnet die Tür, Tender = Big Swing**; ICP = mid-to-small zuerst; OS = Vision, nicht Headline.
 8. ✅ **Bestandskunden-Mechanik & F1-Hero** (§2.3): **bestätigt 30.05.** — intelligentes CRM über loser Basis (kein CRM nötig); Hero-Signal = **Vertrags-Options-/Verlängerungsfenster, quellengebunden**.
-9. ✅ **Pricing** (→ GTM-Decisions §4): **bestätigt 30.05.** — Seat = Umsatz; **Win-Fee = Land-/Proof-Hebel, nicht Kern**.
+9. ✅ **Pricing & Markt** (→ GTM-Decisions §3.3–§4): **bestätigt 30.05.** — **seat-only** (Win-Fee gestrichen); **DE+AT ab Tag 1, CH verschoben**; 3–5 Design-Partner mit niedriger Pilot-Gebühr.
 
 > **Alle Phase-1-Scope- und GTM-Kern-Entscheidungen bestätigt (Stand 30.05.).** Offene GTM-Detailpunkte (Onboarding-Ritual, AT/CH-Reichweite, Design-Partner-Ziel, Win-Fee-Mechanik) sind in [GTM-Decisions §8](./Consultry-GTM-Decisions-v1.0.md) als G1–G5 getrackt. Nächster Schritt: Verfeinerung je Feature in Build-Tickets.
 

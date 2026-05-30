@@ -76,7 +76,18 @@ Gleichwertig in der Vision ≠ gleichwertig im Erstgespräch. Für mid-to-small 
 
 > **Begründung:** Öffentliche Tenders skalieren mit Firmengröße/Public-Sector-Nähe. Eine 50-Personen-SAP/Cloud-Beratung bietet wenige formale TED-Tenders, wächst aber laufend über Bestandskunden. Würde man mit Tender ins Erstgespräch gehen, demonstriert man am selteneren Schmerz → schwächere Demo. **Größere/Public-Sector-nahe Firmen können diese Reihenfolge umdrehen** (Tender zuerst).
 
-### 3.3 Buyer
+### 3.3 Geografie (Entscheidung 30.05.)
+**DE + AT ab Tag 1; CH verschoben.**
+- **DE + AT** von Anfang an: ähnliches Vergaberecht, gemeinsame Sprache, TED deckt beide EU-weit ab → geringer Mehraufwand für AT.
+- **CH verschoben:** Nicht-EU, eigenes Portal (**SIMAP statt TED**), eigene Vergabe-Logik und **CH-Datenresidenz** → teurer Roadmap-Fork. Erst wenn ein Partner dafür zahlt.
+- „DACH" bleibt die **Vision**; Phase-1-Execution = **DE+AT-first**.
+
+### 3.4 Design-Partner & Pilot-Modell (Entscheidung 30.05.)
+- **3–5 Design-Partner**, mid-to-small, lead-with-Bestandskunden.
+- **Niedrige Pilot-Gebühr** (kein Gratis-Pilot) → filtert auf echte Kaufabsicht, stärkeres Konversions-Signal.
+- **Ein Konversions-Artefakt** (Pilot → zahlend): ein einziges Before/After — *„diese qualifizierte Opportunity / dieser Bid-Entwurf entstand in 10 Minuten statt 2 Tagen, gegroundet in euren eigenen Dokumenten."*
+
+### 3.5 Buyer
 - **Erst-Buyer:** der **Partner/Geschäftsführer, der Akquise nebenbei macht und sie hasst** (bei kleineren Firmen gibt es kein Bid-Team). Wirtschaftlicher Käufer = Nutzer = Schmerz-Träger — die übliche B2B-Lücke „wer signt vs. wer nutzt" entfällt hier weitgehend.
 - **Bei größeren Firmen:** Head of Sales / Bid-/Angebots-Verantwortliche.
 
@@ -86,9 +97,9 @@ Gleichwertig in der Vision ≠ gleichwertig im Erstgespräch. Für mid-to-small 
 
 | Element | Entscheidung |
 |---|---|
-| **Kernmodell (Umsatz)** | **Seat-basiert** (wie in den Specs angelegt). Vorhersagbar, planbar. |
-| **Win-Fee** | **Kein Kern-Pricing**, sondern **Land-/Proof-Hebel**: *„Pilot günstig/kostenarm; gewinnt ihr einen Tender oder ein von uns angestoßenes Folgegeschäft, nehmen wir X %."* De-riskt den Kauf, beweist Wert. |
-| **Warum nicht Win-Fee als Kern** | Lumpiger Umsatz, Attributions-Streit („haben *wir* gewonnen oder die Bestandsbeziehung?"), SME-Widerstand gegen Erfolgsprovisionen. |
+| **Kernmodell (Umsatz)** | **Seat-basiert, einziges Modell** (wie in den Specs angelegt). Vorhersagbar, planbar, einfach zu verkaufen. |
+| **Win-Fee** | **Vorerst gestrichen (Entscheidung 30.05.).** Attributions-Komplexität („haben *wir* gewonnen oder die Bestandsbeziehung?"), lumpiger Umsatz und SME-Widerstand überwiegen den Land-Vorteil. Pricing bleibt **seat-only**. Kann später als optionaler Hebel reevaluiert werden, ist aber **nicht Teil von Phase-1-GTM**. |
+| **Pilot-Pricing** | **Niedrige Pilot-Gebühr** (kein Gratis-Pilot) — filtert auf echte Kaufabsicht, bessere Konversion (siehe §3.4). |
 | **Packaging-Prinzip** | **Lead-with-one, upsell-the-rest** — ein Einstiegs-Wedge sichtbar, weitere Module als Ausbau (passt zur OS-Vision als *Wachstumspfad*, nicht als Einstiegs-Pitch). |
 
 ---
@@ -131,10 +142,10 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 | # | Frage | Status |
 |---|---|---|
 | G1 | Onboarding-Ritual: wie bekommen wir in Woche 1 ≥ X vergangene Proposals/Verträge ins System? (Korpus = Moat) | ✅ gelöst → [Onboarding-Korpus-Ritual v1.0](./Consultry-Onboarding-Corpus-Ritual-v1.0.md) (Detailpunkte G1a–c offen) |
-| G2 | DACH-Reichweite: Germany-first vs. AT/CH bei frühen Partnern (Datenresidenz, CH-Tender-Quellen) | offen |
-| G3 | Design-Partner-Ziel: wie viele Logos, bis wann, welches Before/After-Artefakt konvertiert Pilot → zahlend | offen |
-| G4 | Extraktions-Genauigkeit Vertragssignale: Messbar-Bar + Quell-Klausel-Bindung als Akzeptanzkriterium | offen → in F1-Spec |
-| G5 | Win-Fee-Mechanik: Attribution & Vertragsklausel für den Pilot-Hebel | offen |
+| G2 | DACH-Reichweite | ✅ **DE + AT ab Tag 1; CH verschoben** (§3.3) |
+| G3 | Design-Partner-Ziel & Konversions-Artefakt | ✅ **3–5 Partner, niedrige Pilot-Gebühr, ein Before/After-Artefakt** (§3.4) |
+| G4 | Extraktions-Genauigkeit Vertragssignale: Messbar-Bar + Quell-Klausel-Bindung als Akzeptanzkriterium | offen → in F1-Spec (§2.6) + Onboarding G1c |
+| G5 | Win-Fee-Mechanik | ✅ **gestrichen — Pricing bleibt seat-only** (§4) |
 
 ---
 
@@ -143,8 +154,8 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 1. **Headline-Wedge:** Projekt-Wachstum & -Akquise (ein Job, zwei Oberflächen).
 2. **Spine:** F3 AI Workspace; Tender- + Bestandskunden-Intake.
 3. **Bestandskunden:** intelligentes CRM über loser Basis (kein CRM nötig); **Hero-Signal = Vertrags-Options-/Verlängerungsfenster, quellengebunden.**
-4. **GTM-Sequenz:** mid-to-small zuerst; **Bestandskunden öffnet die Tür, Tender ist der Big Swing.**
-5. **Pricing:** Seat = Umsatz; **Win-Fee = Land-/Proof-Hebel, nicht Kern.**
+4. **GTM-Sequenz:** mid-to-small zuerst; **Bestandskunden öffnet die Tür, Tender ist der Big Swing.** **DE+AT ab Tag 1, CH verschoben.** 3–5 Design-Partner, niedrige Pilot-Gebühr.
+5. **Pricing:** **seat-only** (Win-Fee gestrichen).
 6. **Scope-Schnitt:** **F6 → Option A** (nur aggregierter Deliverability-Check fürs Bid-Gate; echtes Staffing → Phase 1.5).
 7. **Grounding enforced** über Tender *und* Verträge; Tender ist ein **legaler** Bar.
 8. **OS-Framing = Vision**, nicht Landingpage.
