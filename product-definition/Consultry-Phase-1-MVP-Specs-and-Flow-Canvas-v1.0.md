@@ -7,7 +7,9 @@
 **Scope:** Phase 1 (MVP) — die drei ersten Kernfunktionen + verpflichtender Backbone
 **Bezug:** [PRD v4.0](./Consultry-PRD-v4.0-DACH-Operating-System.md), [Product Document v1.0](./Consultry-Product-Document-v1.0.md), [Module Refinement v1.0](./Consultry-Module-Refinement-v1.0.md), [User Journeys v1.0](./Consultry-User-Journeys-v1.0.md), [Target Personas v1.0](./Consultry-Target-Personas-v1.0.md)
 
-> **Lesehinweis.** Dieses Dokument schärft bewusst **nur die ersten Funktionen** (Phase 1) und lässt Phase 2/3 außen vor. Es ist die Brücke zwischen Produktstrategie (Wedges, Module) und Build (Surfaces, Objekte, AI-Verhalten, Prompts). Drei Spec-Kapitel (eines pro Feature), je eine **Flow-Sammlung** (konkret + abstrakt/AI-dynamisch), dann **Cross-/Integration-Flows**, **Symbiose-Features** und der **Spec/AI-Context + Prompt-Engineering Collab-Canvas**.
+> **Lesehinweis.** Dieses Dokument schärft die Phase-1-Funktionen und ist die Brücke zwischen Produktstrategie (Wedges, Module) und Build (Surfaces, Objekte, AI-Verhalten, Prompts). Pro Feature ein Spec-Kapitel, je eine **Flow-Sammlung** (konkret + abstrakt/AI-dynamisch), dann **Cross-/Integration-Flows**, **Symbiose-Features** und der **Spec/AI-Context + Prompt-Engineering Collab-Canvas**.
+>
+> **Update 30.05. (v1.1-Scope):** Phase 1 umfasst jetzt **sechs** Funktionen — F1 Account Growth, F2 Knowledge & Reuse, F3 AI Workspace, **F4 Proposal Draft**, **F5 Tender Ingest**, **F6 Staffing & Forecasting** — plus den Approvals/Governance-Backbone. F5 und F6 wurden auf Wunsch aus Phase 2/3 vorgezogen; die daraus folgende Scope- und Compliance-Konsequenz ist in §4A.3 und §10 markiert.
 
 ---
 
@@ -20,22 +22,27 @@
 | **F1** | **Account Growth System** | Primärer Kaufgrund. Bestandskunde → Signal/Trigger → qualifizierte Opportunity. | Primär-Wedge: *Bestandskunden-Expansion & Proposal* |
 | **F2** | **Knowledge & Reuse System** | Verstärker. Wiederverwendbare Referenzen, Methoden, Assets, AI-Skills mit Quellenbindung. | Verstärker-Wedge: *Wissenstransfer, Reuse & Readiness* |
 | **F3** | **AI Workspace** | Die AI-native Interaktions- und Empfehlungsschicht über F1 + F2. | Querschnitt: macht F1+F2 erst „AI-native" |
-| **F1b** | **Proposal-Stub** (Teil von F1) | **Entscheidung 30.05.:** Kein eigenes Modul, aber Phase-1-Pflicht. Aus der freigegebenen Opportunity wird ein **interner Proposal-Entwurf** als Demo-Beweis erzeugt — kein Send-Out. | Primär-Wedge: schließt die Lücke Opportunity → erstes Angebot |
-| **B** | **Approvals + Governance/Audit Backbone** | **Kein eigenes verkaufbares Feature**, sondern verpflichtender Querschnitt unter F1–F3. | Produkt-Default (DACH-Compliance) |
+| **F4** | **Proposal Draft** (war F1b-Stub) | **Heraufgestuft 30.05.:** vom Stub zur vollwertigen Phase-1-Funktion. Aus freigegebener Opportunity wird ein strukturierter, editierbarer Proposal-Entwurf — **kein Send-Out**. | Primär-Wedge: schließt Opportunity → erstes Angebot |
+| **F5** | **Tender Ingest** | **Neu in Phase 1 (30.05.):** TED/eForms, service.bund u. ä. einlesen, strukturieren (CPV, Fristen, Lose, Eignung) und gegen Firmenprofil matchen. **Kein autonomes Einreichen.** | vorgezogener vertikaler Wedge (Public-Sector-nahe Segmente) |
+| **F6** | **Staffing & Forecasting** | **Neu in Phase 1 (30.05.):** Teamvorschläge (Matching) + Kapazitäts-/Auslastungs-Forecast. **Aggregiert vor personenbezogen, personenscharf nur mit Gate.** | Verstärker-Wedge: „Können wir das glaubwürdig liefern?" |
+| **B** | **Approvals + Governance/Audit Backbone** | **Kein eigenes verkaufbares Feature**, sondern verpflichtender Querschnitt unter allen Features. | Produkt-Default (DACH-Compliance) |
 
-> **Bestätigt (1):** Account Growth ist der Primär-Wedge und damit das *erste sichtbare* Feature; Knowledge & AI Workspace sind in Phase 1 dabei, weil sie den Primär-Wedge direkt glaubwürdiger machen — **nicht** als eigenständige Backoffice-Suiten.
+> **Bestätigt (1):** Account Growth bleibt der Primär-Wedge und das *erste sichtbare* Feature; Knowledge & AI Workspace sind die direkten Verstärker.
 >
-> **Bestätigt (2 · Scope-Erweiterung 30.05.):** Phase 1 endet **nicht** bei der Opportunity, sondern bei einem **Proposal-Stub** (interner Entwurf, kein Versand). Siehe §2.7.
+> **Bestätigt (2 · 30.05.):** Phase 1 endet nicht bei der Opportunity, sondern beim **Proposal Draft** (interner Entwurf, kein Versand). Siehe §2.7.
+>
+> **⚠️ Scope-Erweiterung (3 · 30.05.):** **Tender Ingest (F5)** und **Staffing & Forecasting (F6)** werden nach **Phase 1 vorgezogen.** Das weicht bewusst von der bisherigen Priorisierung ab (beide waren Phase 2/3). **Konsequenz:** Scope, Datenbedarf und **Compliance-Last steigen deutlich** — F6 ist nach AI Act potenziell Hochrisiko (Worker Management / Task Allocation) und in DE mitbestimmungspflichtig (BetrVG §87/§94, BDSG §26). Siehe §4A-Compliance und offene Entscheidung §10.4. Spezs unter §4A.
 
 ### 0.2 Was Phase 1 bewusst NICHT ist
 
-- Kein Staffing-/Forecasting-Engine (Consultant/Capacity System → Phase 2)
-- **Proposal-Stub ist drin** (interner Entwurf), aber **kein Proposal-Send-Out, kein Pricing-Engine, kein Contract Drafting** (→ Phase 2)
+- **Proposal Draft ist drin** (interner Entwurf), aber **kein Proposal-Send-Out, kein Pricing-Engine, kein Contract Drafting** (→ Phase 2)
+- **Tender Ingest ist drin** (Lesen, Strukturieren, Matchen, Bid-Paket-Vorbereitung), aber **kein autonomes Einreichen, keine Vollständigkeits-/Vergabe-Zusage** (→ Phase 2+)
+- **Staffing & Forecasting ist drin** (Teamvorschlag + Kapazitäts-Forecast), aber **kein People-Scoring, kein Burnout-/Performance-Scoring; personenscharf nur mit Gate** (Default: aggregiert)
 - Kein Time/Expense, kein Invoice Prep, kein DATEV/ELSTER-Handoff (→ Phase 3)
-- Kein Tender-Ingest, kein Net-New-Prospecting, kein People-Scoring
+- Kein Net-New-Prospecting
 - Kein offener Prompt-Marktplatz ohne Governance
 
-Phase 1 endet definiert beim Artefakt **„qualifizierte, begründete, freigegebene Opportunity inkl. verknüpfter Reuse-Assets → interner Proposal-Stub (Entwurf)"** — **nicht** beim sendefertigen, bepreisten oder vertraglich finalisierten Proposal. Der Stub ist der Demo-Beweis „von der Chance zum ersten Angebotsentwurf in einem System" (Detail: §2.7).
+Phase 1 deckt jetzt die ganze Vorderkante ab: **„Signal/Tender → qualifizierte, begründete Opportunity → Teamvorschlag + Forecast → interner Proposal-Entwurf"** — durchgehend mit Quellenbindung und Approval, aber **ohne** Versand, Pricing, Contract, Submission oder personenscharfes Scoring.
 
 ### 0.3 Phase-1-Erfolgssignale (aus Product Document v1.0)
 
@@ -73,10 +80,14 @@ Default-Regeln:
 | `Stakeholder` | F1 | Person/Rolle beim Account, Warm-Path-Knoten |
 | `Signal` / `Trigger` | F1 | Ereignis/Hinweis (intern oder integriert), das eine Chance nahelegt |
 | `Opportunity` | F1 | qualifizierte Chance mit Status, Begründung, Quellen |
-| `ProposalDraft` | F1b | interner Angebots-Entwurf, an eine Opportunity gebunden, versioniert (kein Versand) |
+| `ProposalDraft` | F4 | interner Angebots-Entwurf, an eine Opportunity gebunden, versioniert (kein Versand) |
 | `WarmPath` | F1 | belastbarer Beziehungspfad zu einem Stakeholder |
 | `KnowledgeAsset` | F2 | Referenz/Methode/Report/Skript/Runbook/Blueprint, versioniert, mit Source |
 | `AISkill` / `Workflow-Blueprint` | F2/F3 | wiederverwendbare AI-native Arbeitsfähigkeit (Prompt + Kontext + Owner + Version) |
+| `Tender` | F5 | Ausschreibung: Quelle, CPV, Fristen, Lose, Eignungskriterien, Dokumentenanforderungen, Match-Score |
+| `ConsultantProfile` | F6 | Skills, Zertifikate, Projekterfahrung, Availability (personenbezogen → Gate-pflichtig für scharfe Sichten) |
+| `TeamProposal` | F6 | begründeter Staffing-/Matching-Vorschlag für eine Opportunity/Tender (mit Alternativen) |
+| `Forecast` | F6 | Kapazitäts-/Auslastungsprognose, **Default aggregiert** (Team/Practice), personenscharf nur mit Gate |
 | `Recommendation` | F3 | AI-Vorschlag mit Explanation, Sources, Confidence, Status |
 | `ApprovalEvent` | B | Freigabe/Ablehnung/Edit mit Wer/Wann/Warum |
 | `AuditRecord` | B | unveränderliche Spur über alle obigen |
@@ -96,6 +107,9 @@ Default-Regeln:
 - **Opportunity Detail / Approval-Card** — das zentrale Entscheidungsobjekt.
 - **Knowledge Workspace** — Suche, Asset-Detail, Reuse-Aktion.
 - **AI Copilot (Basis)** — kontextgebundener Assistent als Querschnitt-Surface.
+- **Proposal Canvas** (F4) — editierbarer Angebots-Entwurf mit Version History.
+- **Tender Board** (F5) — Tender-Liste, strukturierte Tender-Sicht, Match + Bid-Checkliste.
+- **Staffing/Forecast-Sicht** (F6) — Teamvorschlag + aggregierter Kapazitäts-Forecast (personenscharf gated).
 
 ---
 
@@ -137,11 +151,11 @@ Default-Regeln:
 - Anteil Opportunities mit vollständiger Begründung + Quelle (Ziel: 100 %).
 - „Früher sichtbar"-Quote: Anteil Chancen, die vor dem üblichen manuellen Erkennen aufpoppen.
 
-### 2.7 Proposal-Stub (F1b · Scope-Erweiterung 30.05.)
+### 2.7 Proposal Draft (F4 · heraufgestuft 30.05.)
 
-> **Entscheidung:** Phase 1 reicht von der freigegebenen Opportunity bis zu einem **internen Proposal-Entwurf**. Kein Versand, kein Pricing-Engine, kein Contract.
+> **Entscheidung:** Phase 1 reicht von der freigegebenen Opportunity bis zu einem **internen Proposal-Entwurf**. Kein Versand, kein Pricing-Engine, kein Contract. (Vormals „Stub" — jetzt vollwertige Phase-1-Funktion F4.)
 
-**One-Liner.** *Aus der begründeten, freigegebenen Opportunity und den verknüpften Reuse-Assets wird per AI-Skill ein strukturierter, editierbarer **Proposal-Entwurf** im Canvas — der erste greifbare Angebots-Beweis, intern.*
+**One-Liner.** *Aus der begründeten, freigegebenen Opportunity, den verknüpften Reuse-Assets und (falls vorhanden) dem Teamvorschlag aus F6 wird per AI-Skill ein strukturierter, editierbarer **Proposal-Entwurf** im Canvas — der erste greifbare Angebots-Beweis, intern.*
 
 **In-Scope (Phase 1):**
 - `ProposalDraft`-Objekt (neu): an genau eine `Opportunity` gebunden, versioniert.
@@ -246,6 +260,76 @@ Default-Regeln:
 
 ---
 
+## 4A. Vorgezogene Feature-Specs (Scope-Erweiterung 30.05.)
+
+> Diese beiden Funktionen waren in der Strategie (Product Document v1.0 / PRD v4.0) bewusst **Phase 2/3**. Sie werden auf ausdrücklichen Wunsch nach Phase 1 vorgezogen. Die Specs halten die DACH-Guardrails aus PRD v4.0 §4.4 (Tenders) und §4.1 (People Planning) ein.
+
+### 4A.1 Feature-Spec F5 — Tender Ingest
+
+**One-Liner.** *Liest öffentliche Ausschreibungen aus offiziellen Quellen ein, strukturiert sie (CPV, Fristen, Lose, Eignung, Dokumente) und matcht sie gegen Firmenprofil + Kapazität — als qualifizierte Chance, **nicht** als autonome Einreichung.*
+
+**Job-to-be-done.** `Welche Ausschreibung passt zu uns, ist fristgerecht machbar, und was müssen wir dafür liefern?`
+
+**In-Scope (Phase 1):**
+- Ingest aus **TED/eForms**, **service.bund.de** und ähnlichen Quellen (read-only).
+- Strukturierung: CPV-Codes, Fristen, Lose, Eignungs-/Ausschlusskriterien, Dokumentenanforderungen.
+- **Match** gegen Firmenprofil, Referenzen (F2) und Kapazität (F6).
+- Überführung in `Opportunity` (gleicher Qualifizierungs-/Approval-Pfad wie F1).
+- Bid-Paket-Vorbereitung: Checkliste der geforderten Unterlagen + Verknüpfung passender Assets.
+
+**Out-of-Scope (Phase 1):**
+- **Kein autonomes Einreichen / keine Submission** (PRD v4.0 §4.4).
+- Keine Zusage „Compliance vollständig" / „Vergabesicherheit".
+- Keine Fristen-Automatik mit Rechtswirkung (nur Hinweise/Reminder).
+- Keine Vollabdeckung aller Vergabeplattformen (segmentselektiv).
+
+**AI-Verhalten (darf / nur-mit-Gate / niemals):**
+- **Darf:** lesen, strukturieren, zusammenfassen, matchen, Bid-Entwürfe vorbereiten, Quellen zeigen.
+- **Nur mit Gate:** Tender → aktiv verfolgte Opportunity; Einreichungsunterlagen „final"; formale Vollständigkeit als „erfüllt" markieren.
+- **Niemals per Default:** autonom einreichen; formale Fehler als „nur Hinweis" abtun; vollständige Vergabesicherheit suggerieren.
+
+**Erfolgsmetriken:** Trefferquote relevanter Tenders; Zeit Ingest → strukturierte Bewertung; Anteil Tenders mit nachvollziehbarem Match-Grund.
+
+### 4A.2 Feature-Spec F6 — Staffing & Forecasting
+
+> **⚠️ Compliance-kritisch.** Siehe §4A.3, bevor gebaut wird.
+
+**One-Liner.** *Erzeugt belastbare, begründete Teamvorschläge (Matching) und Kapazitäts-/Auslastungs-Forecasts — **standardmäßig aggregiert** (Team/Practice), personenscharf nur mit explizitem Gate.*
+
+**Job-to-be-done.** `Können wir das glaubwürdig liefern — mit welchem Team, und wo sind Kapazitäts-/Skill-Lücken?`
+
+**In-Scope (Phase 1):**
+- `ConsultantProfile`: Skills, Zertifikate, Projekterfahrung, Availability (strukturiert, nicht nur CV-Freifeld).
+- `TeamProposal`: Matching-Vorschlag für eine Opportunity/Tender, **mit Begründung + Alternativen + Confidence**.
+- `Forecast`: Kapazitäts-/Auslastungsprognose auf **Team-/Practice-Ebene** (Default aggregiert).
+- Sichtbarkeit von Skill-Gaps und Bench-/Überlastungs-Risiken **auf aggregierter Ebene**.
+- Einspeisung des Teamvorschlags in F4 (Proposal Draft).
+
+**Out-of-Scope (Phase 1):**
+- **Kein People-Scoring, kein Burnout-/Performance-/Persönlichkeits-Scoring** (PRD v4.0 §4.1).
+- Keine Black-Box-Rankings von Personen.
+- Keine automatische Leistungsbeurteilung; keine personenscharfe Planung ohne Gate.
+- Kein voller Capacity Planner / keine Workforce-Optimierung (das bleibt spätere Phase).
+
+**AI-Verhalten (darf / nur-mit-Gate / niemals):**
+- **Darf:** aggregierte Forecasts, Team-/Skill-Gap-Sichten, begründete Matching-Vorschläge mit Alternativen.
+- **Nur mit Gate:** personenbezogene Auslastungs-/Workload-Analysen; personenscharfes Forecasting bis Einzelberater; individualisierte Entwicklungsempfehlungen mit operativer Wirkung. **Gate = Works-Council-Mode + dokumentierte Freigabe.**
+- **Niemals per Default:** personenbezogenes Ranking/Scoring; Entscheidungen ohne Begründung; personenscharfe Daten ohne Consent-/Mitbestimmungs-Mode.
+
+**Erfolgsmetriken:** Akzeptanz der Teamvorschläge als „plausibel"; frühere Sichtbarkeit von Skill-/Bench-Risiken; Anteil Vorschläge mit nachvollziehbarer Begründung (Ziel: 100 %).
+
+### 4A.3 Compliance-Konsequenz dieser Erweiterung
+
+Mit F6 wird Consultry in Phase 1 **mitbestimmungs- und AI-Act-relevant**. Das ist kein Legal-Appendix, sondern Produktlogik:
+
+- **AI Act:** Systeme für Worker Management / Task Allocation können **Hochrisiko** sein → Transparenz, Human Oversight, dokumentierte Freigabe sind Pflicht-Defaults.
+- **BetrVG §87/§94:** technische Systeme zur Verhaltens-/Leistungskontrolle und Beurteilungsgrundsätze sind **mitbestimmungspflichtig** → `Works-Council-Mode` muss echte Produktfunktion sein.
+- **BDSG §26 / DSGVO:** Beschäftigtendaten nur zweckgebunden, datenminimiert, Consent freiwillig.
+
+**Produktentscheidung (Default):** `Works-Council-Mode = AN`, alle personenscharfen F6-Sichten **gated**, F6-Defaults **aggregiert**. (Das ist die strengere Auslegung der bisher offenen §10.4.)
+
+---
+
 ## 5. Flow-Sammlung (pro Feature: konkret + abstrakt/AI-dynamisch)
 
 > Zwei Ebenen pro Feature: **Konkrete Flows** (deterministisch, klickbar) und **abstrakte/dynamische AI-Flows** (high-level, nicht-deterministisch, weil der Copilot Reihenfolge & Tiefe selbst wählt). Die abstrakten Flows sind absichtlich als *Capability-Schleifen* statt fixe Screens beschrieben.
@@ -295,6 +379,16 @@ Default-Regeln:
 - **Recommend-Explain-Approve-Cycle** als generischer Motor hinter *jeder* AI-Aktion (siehe §1.1) — feature-übergreifend wiederverwendet.
 - **Tool-/Skill-Selection-Dynamic**: bei einer Aufgabe wählt der Copilot den passenden AI-Skill aus F2 selbst aus (mit Begründung), statt fixem Menü.
 
+### 5.7 Tender Ingest (F5) — Flows
+
+**Konkret:** 1) Ingest → Tender-Liste; 2) Tender öffnen → strukturierte Sicht (CPV/Fristen/Lose/Eignung); 3) Match gegen Profil + Kapazität (F6) → Score mit Begründung; 4) Tender → Opportunity (Approval); 5) Bid-Paket-Checkliste → passende Assets (F2) anhängen.
+**Abstrakt/AI-dynamisch:** *Continuous-Tender-Sense* (laufendes Screening neuer Tenders gegen Firmenprofil); *Eligibility-Gap-Check* (Modell prüft, welche Eignungskriterien wir (nicht) erfüllen, mit Quelle).
+
+### 5.8 Staffing & Forecasting (F6) — Flows
+
+**Konkret:** 1) Opportunity/Tender → `suggest-team` → Teamvorschlag + Alternativen (aggregiert); 2) Skill-Gap-Sicht auf Team-/Practice-Ebene; 3) Forecast-Sicht (aggregiert) → Bench-/Überlastungs-Hinweise; 4) Teamvorschlag → in F4 Proposal übernehmen (Approval); 5) **Gated:** personenscharfe Sicht öffnen → Works-Council-Mode-Prompt → Freigabe → Audit.
+**Abstrakt/AI-dynamisch:** *Deliverability-Sense* (Copilot bewertet „können wir liefern?" aus Profil+Forecast, on the fly); *Reforecast-on-change* (neue Opportunity/Allocation → aggregierter Forecast aktualisiert sich mit Diff-Erklärung).
+
 ---
 
 ## 6. Cross- / Integration-Flows
@@ -305,6 +399,9 @@ Default-Regeln:
 - **CF-2 — Opportunity → Knowledge-Gap**: Beim Qualifizieren erkennt F3 fehlendes Wissen und legt in F2 einen Capture-Task an.
 - **CF-3 — Asset-Update → Re-Score**: Neues/aktualisiertes F2-Asset lässt F3 betroffene F1-Opportunities neu bewerten.
 - **CF-4 — Approval überall**: Jede Übernahme in F1/F2 aus F3 läuft durch denselben Backbone-Approval (B) → ein Audit-Strom.
+- **CF-5 — Tender → Opportunity → Team → Proposal**: F5-Tender wird zur Opportunity (F1), F6 liefert Teamvorschlag + Forecast, F4 baut daraus den Proposal-Entwurf — ein durchgehender, belegter Pfad.
+- **CF-6 — Forecast ↔ Proposal-Realismus**: F6-Kapazitätssicht fließt als Plausibilitäts-Check in den F4-Entwurf („machbar mit Team X bis Frist Y").
+- **CF-7 — Gate-Propagation**: Sobald F6 personenscharf wird, erzwingt der Backbone (B) Works-Council-Mode + Freigabe über alle abhängigen Flows hinweg.
 
 ### 6.2 Externe Integration-Flows (Phase 1: read-only / Import-first)
 
@@ -315,22 +412,26 @@ Default-Regeln:
 | GitHub / GitLab | Repo-Templates/Skripte als Assets | read-only (Quelle) |
 | CRM (optional) | Account-/Stakeholder-Import | Import |
 | Jira (optional) | schwache Delivery-Signale | read-only |
+| **TED/eForms, service.bund** (F5) | Tender-Ingest | read-only |
+| **HR / Skill-Quelle** (F6, optional) | Consultant-Profile/Availability-Import | Import (Gate-pflichtig bei Personenbezug) |
 
-> **Source-of-Truth-Regel (Phase 1):** Consultry führt `Account`, `Opportunity`, `KnowledgeAsset`, `AISkill` **nativ**. Alles aus Integrationen ist **Vorschlag/Input**, nie automatisch verbindlicher Datensatz. DATEV/ELSTER/Time/Invoice: bewusst **nicht** in Phase 1.
+> **Source-of-Truth-Regel (Phase 1):** Consultry führt `Account`, `Opportunity`, `KnowledgeAsset`, `AISkill`, `Tender`, `ConsultantProfile`, `TeamProposal`, `Forecast`, `ProposalDraft` **nativ**. Alles aus Integrationen ist **Vorschlag/Input**, nie automatisch verbindlicher Datensatz. DATEV/ELSTER/Time/Invoice: bewusst **nicht** in Phase 1.
 
-> **Bestätigung erbeten (2):** Sind in Phase 1 wirklich nur **read-only / Import** Integrationen gewollt (kein Schreibzugriff nach außen, kein Mailversand aus dem Produkt)?
+> **Bestätigt (30.05.):** Phase 1 nutzt nur **read-only / Import** (kein Schreibzugriff nach außen, kein Mailversand, **keine autonome Tender-Submission**).
 
 ---
 
-## 7. Symbiose-Features (entstehen erst durch F1+F2+F3 zusammen)
+## 7. Symbiose-Features (entstehen erst durch F1–F6 zusammen)
 
-Diese Features sind **emergent** — sie sind kein viertes Modul, sondern der eigentliche „AI-native"-Beweis:
+Diese Features sind **emergent** — sie sind kein weiteres Modul, sondern der eigentliche „AI-native"-Beweis:
 
 1. **Begründete Opportunity mit Reuse-Belegen** — eine Chance, die ihre Begründung *aus echtem Firmenwissen* zieht (F1×F2×F3). Das ist der Demo-Moment.
 2. **Self-enriching Knowledge** — jede freigegebene Opportunity macht Assets sichtbarer/besser getaggt (Nutzung verbessert Reuse).
 3. **Explain-anything** — überall im Produkt „warum?" fragen → erklärte, quellengebundene Antwort.
 4. **Context-aware Skill-Suggestion** — der richtige AI-Skill wird im richtigen Moment vorgeschlagen, nicht gesucht.
 5. **Single Audit Stream** — eine durchgehende, mitbestimmungsfähige Spur über Wissen, Empfehlung und Entscheidung (Verkaufsargument für MP/COO/Betriebsrat).
+6. **End-to-end Bid-Pfad** — *Tender/Signal → begründete Opportunity → realistischer Teamvorschlag + Forecast → Proposal-Entwurf*, alles belegt und freigegeben in **einem** System (F5×F1×F6×F4). Das ist der vollständige Phase-1-Demo-Bogen.
+7. **„Can we deliver?"-Reality-Check** — der Forecast (F6) hält den Proposal-Entwurf (F4) ehrlich: kein Angebot, das die Kapazität nicht trägt.
 
 ---
 
@@ -371,6 +472,23 @@ Aufgabe: Erzeuge einen editierbaren Canvas-Draft + Explanation-Panel.
 Liefere: {draft, explanation, sources[], confidence, approval_required: true}.
 ```
 
+**F5 — Tender-Context-Block:**
+```
+Kontext: <Tender-Rohquelle (TED/eForms/service.bund), Firmenprofil, Referenzen (F2), Kapazität (F6)>.
+Aufgabe: Strukturiere den Tender und bewerte den Fit.
+Liefere: {cpv[], deadlines[], lots[], eligibility[], required_docs[], match_score, match_rationale[], sources[]}.
+Verbote: kein autonomes Einreichen; keine Zusage „Compliance vollständig"/„Vergabesicherheit".
+```
+
+**F6 — Staffing/Forecast-Context-Block:**
+```
+Kontext: <Opportunity/Tender, ConsultantProfiles (aggregiert), Availability, Allocation, Pipeline>.
+Aufgabe: Schlage ein Team vor + liefere aggregierten Kapazitäts-Forecast.
+Liefere: {team_proposal, alternatives[], skill_gaps[], forecast_aggregated, rationale[], confidence}.
+Default: AGGREGIERT (Team/Practice). Personenscharf NUR wenn works_council_mode==on UND freigabe vorhanden.
+Verbote: kein People-/Burnout-/Performance-Scoring; keine Black-Box-Rankings; keine Entscheidung ohne Begründung.
+```
+
 ### 8.2 Reusable Prompt-/Skill-Blueprints (Phase-1-Set)
 
 | Blueprint | Feature | Input → Output |
@@ -379,7 +497,10 @@ Liefere: {draft, explanation, sources[], confidence, approval_required: true}.
 | `find-warm-path` | F1 | Stakeholder-Graph → belastbarster Pfad + Begründung |
 | `condense-asset` | F2 | Rohartefakt → quellengebundener Baustein |
 | `match-reuse` | F2/F3 | Arbeitskontext → Top-Assets/Skills |
-| `draft-proposal` | F1b/F3 | Opportunity + Assets → strukturierter, quellengebundener Proposal-Entwurf (intern) |
+| `draft-proposal` | F4/F3 | Opportunity + Assets (+ Teamvorschlag) → strukturierter, quellengebundener Proposal-Entwurf (intern) |
+| `ingest-tender` | F5 | TED/eForms-Quelle → strukturierter Tender (CPV/Fristen/Lose/Eignung) + Match-Score |
+| `suggest-team` | F6 | Opportunity/Tender + Profile + Forecast → begründeter Teamvorschlag + Alternativen (aggregiert) |
+| `forecast-capacity` | F6 | Allocation + Pipeline → aggregierter Kapazitäts-/Auslastungs-Forecast (personenscharf nur mit Gate) |
 | `explain-recommendation` | F3 | beliebige Empfehlung → Begründungskette + Quellen |
 
 > Jeder Blueprint = versioniert, Owner, Kontext-Bindung, Audit. **Kein Prompt-Zoo.**
@@ -401,6 +522,9 @@ Liefere: {draft, explanation, sources[], confidence, approval_required: true}.
 - **Account Growth** — *„Sieh Bestandskunden-Chancen früher — mit Begründung statt Bauchgefühl."*
 - **Knowledge & Reuse** — *„Nie wieder bei null anfangen: dein Firmenwissen, wiederverwendbar und quellengebunden."*
 - **AI Workspace** — *„Ein Copilot, der erklärt und dir die Kontrolle lässt — nichts passiert ohne deine Freigabe."*
+- **Proposal Draft** — *„Von der Chance zum ersten Angebotsentwurf in Minuten — quellengebunden, intern, editierbar."*
+- **Tender Ingest** — *„Passende öffentliche Ausschreibungen früh erkennen und strukturiert bewerten — ohne Vergabe-Blindflug."*
+- **Staffing & Forecasting** — *„Können wir das liefern? Begründete Teamvorschläge und ehrliche Kapazitätssicht — aggregiert, betriebsratsfest."*
 - **Symbiose** — *„Chancen, die ihre Begründung aus eurem echten Wissen ziehen. Mit einem Audit-Strom, der auch dem Betriebsrat standhält."*
 
 ---
@@ -416,13 +540,27 @@ flowchart LR
     DMS[DMS/SharePoint]
     GIT[GitHub/GitLab]
     CRM[CRM optional]
+    TED[TED/eForms · service.bund]
+    HR[HR/Skill-Quelle · optional]
   end
 
   subgraph F1[F1 · Account Growth]
     SIG[Signal/Trigger]
     OPP[Opportunity]
     WP[Warm Path]
-    PROP[Proposal-Stub · intern]
+  end
+
+  subgraph F4[F4 · Proposal Draft]
+    PROP[Proposal-Entwurf · intern]
+  end
+
+  subgraph F5[F5 · Tender Ingest]
+    TND[Tender · CPV/Fristen/Lose]
+  end
+
+  subgraph F6[F6 · Staffing & Forecasting]
+    TEAM[TeamProposal · aggregiert]
+    FC[Forecast · aggregiert]
   end
 
   subgraph F2[F2 · Knowledge & Reuse]
@@ -437,6 +575,7 @@ flowchart LR
 
   subgraph B[Backbone]
     APP[Approval-Card]
+    GATE{{Works-Council-Mode · Gate}}
     AUD[(Audit Trail)]
   end
 
@@ -444,8 +583,11 @@ flowchart LR
   CRM --> F1
   DMS --> ASSET
   GIT --> ASSET
+  TED --> TND
+  HR --> TEAM
 
   SIG --> COP
+  TND --> COP
   ASSET --> COP
   SKILL --> COP
   COP --> REC
@@ -453,8 +595,14 @@ flowchart LR
   APP --> OPP
   APP --> ASSET
   WP --> OPP
-  OPP --> PROP
+  TND --> OPP
+  OPP --> TEAM
+  TEAM --> FC
+  TEAM --> PROP
+  FC -. Realismus-Check .-> PROP
   PROP --> APP
+  GATE -. erzwingt bei Personenbezug .-> TEAM
+  GATE -. erzwingt bei Personenbezug .-> FC
   APP --> AUD
   OPP -. re-score .-> COP
   ASSET -. update .-> COP
@@ -465,12 +613,17 @@ flowchart LR
 ## 10. Offene Entscheidungen vor dem Build (bitte bestätigen)
 
 1. ✅ **Scope-Hierarchie** (§0.1): Account Growth = erstes sichtbares Feature, Knowledge + AI Workspace als direkte Verstärker — **bestätigt 30.05.**
-2. ✅ **Integration-Tiefe** (§6.2): Phase 1 nur read-only/import, kein Schreibzugriff/Versand — **bestätigt 30.05.**
-3. ✅ **Phase-1-Endartefakt**: Opportunity **+ interner Proposal-Stub** (kein Versand) — **bestätigt & eingearbeitet 30.05.** (§2.7)
-4. **Personenbezug**: Works-Council-Mode Default = aus (alle personenbezogenen Stakeholder-Einschätzungen gated) — noch zu bestätigen.
+2. ✅ **Integration-Tiefe** (§6.2): Phase 1 nur read-only/import, kein Schreibzugriff/Versand, keine autonome Tender-Submission — **bestätigt 30.05.**
+3. ✅ **Phase-1-Endartefakt**: Opportunity **+ Proposal Draft** (F4, kein Versand) — **bestätigt & eingearbeitet 30.05.** (§2.7)
+4. ⚠️ **Personenbezug (Works-Council-Default)**: Durch das Vorziehen von **F6** ist dies jetzt **build-blockierend**, nicht mehr nice-to-have. Spec-Default gesetzt: **Works-Council-Mode = AN, F6 aggregiert, personenscharf nur gated** (§4A.3). **Bitte final bestätigen.**
 5. ✅ **Canvas-Form**: Mermaid (eingebettet) reicht vorerst; FigJam auf Zuruf — **entschieden 30.05.**
+6. ⚠️ **Scope-Erweiterung Tender + Staffing/Forecasting** (§4A): Beide nach Phase 1 vorgezogen (waren Phase 2/3). **Konsequenzen, die zu bestätigen sind:**
+   - **größerer Phase-1-Scope & längere Time-to-first-Value** (mehr Surfaces, mehr Datenbedarf),
+   - **höherer Datenbedarf** (Consultant-Profile/Availability für F6; Vergabe-Quellen-Anbindung für F5),
+   - **AI-Act-/Mitbestimmungs-Last** wird Phase-1-Pflicht (F6) → Works-Council-Mode, Human Oversight, Audit von Tag 1.
+   - **Empfehlung:** F6 in Phase 1 bewusst **„aggregiert/read-only-Light"** halten (Matching + aggregierter Forecast), tiefes Capacity-Planning weiter später — sonst kippt der MVP-Scope.
 
-> Offen bleibt nur noch Punkt 4 (Works-Council-Default).
+> **Offene Punkte: 4 und 6** (Works-Council-Default + Bestätigung der Scope-/Compliance-Konsequenzen).
 
 ---
 
