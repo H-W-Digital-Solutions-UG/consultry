@@ -98,7 +98,7 @@ Default-Regeln:
 - **Practice Lead** — qualifiziert Opportunities, kuratiert Knowledge.
 - **Senior Consultant** — Knowledge-Contributor, AI-Skill-Autor.
 - **Managing Partner** — „Scan-Entscheider"-Modus: Cockpit + Approval-Cards.
-- **Works-Council-Mode** — schaltet personenbezogene Sichten global ab/auf (Default: aus).
+- **Works-Council-Mode** — schaltet personenbezogene Sichten global frei/gated (**Default: AN = personenscharf gated**, seit Aufnahme von F6 — siehe §4A.3).
 
 ### 1.4 Phase-1-Oberflächen (Surfaces)
 
