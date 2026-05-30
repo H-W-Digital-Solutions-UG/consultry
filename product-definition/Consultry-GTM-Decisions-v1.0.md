@@ -130,7 +130,7 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 
 | # | Frage | Status |
 |---|---|---|
-| G1 | Onboarding-Ritual: wie bekommen wir in Woche 1 ≥ X vergangene Proposals/Verträge ins System? (Korpus = Moat) | offen |
+| G1 | Onboarding-Ritual: wie bekommen wir in Woche 1 ≥ X vergangene Proposals/Verträge ins System? (Korpus = Moat) | ✅ gelöst → [Onboarding-Korpus-Ritual v1.0](./Consultry-Onboarding-Corpus-Ritual-v1.0.md) (Detailpunkte G1a–c offen) |
 | G2 | DACH-Reichweite: Germany-first vs. AT/CH bei frühen Partnern (Datenresidenz, CH-Tender-Quellen) | offen |
 | G3 | Design-Partner-Ziel: wie viele Logos, bis wann, welches Before/After-Artefakt konvertiert Pilot → zahlend | offen |
 | G4 | Extraktions-Genauigkeit Vertragssignale: Messbar-Bar + Quell-Klausel-Bindung als Akzeptanzkriterium | offen → in F1-Spec |
