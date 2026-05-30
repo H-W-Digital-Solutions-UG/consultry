@@ -91,16 +91,40 @@ Gleichwertig in der Vision ≠ gleichwertig im Erstgespräch. Für mid-to-small 
 - **Erst-Buyer:** der **Partner/Geschäftsführer, der Akquise nebenbei macht und sie hasst** (bei kleineren Firmen gibt es kein Bid-Team). Wirtschaftlicher Käufer = Nutzer = Schmerz-Träger — die übliche B2B-Lücke „wer signt vs. wer nutzt" entfällt hier weitgehend.
 - **Bei größeren Firmen:** Head of Sales / Bid-/Angebots-Verantwortliche.
 
+### 3.6 Distribution & Founder-Market-Fit (Entscheidung 30.05.)
+
+> **Größter struktureller Vorteil:** Der Gründer **betreibt selbst eine Cybersecurity-Beratung** → Consultry wird von seinem eigenen Erst-Nutzer gebaut.
+
+- **Design-Partner #0 = die eigene Cybersecurity-Beratung** (Dogfooding, sofortiger Feedback-Loop, gelebte Domänen-Glaubwürdigkeit).
+- **Showcase-Demo (löst das Chicken-and-Egg):** ein **vorab geladener öffentlicher-Tender-Demo mit der eigenen Cybersecurity-Beratung als Beispiel** — **kein Vertrauen und kein Kunden-Korpus nötig**, um den Wow zu zeigen. Das ist der **Tür-Öffner-Demo** für Erstgespräche.
+- **Akquise-Kanäle Design-Partner:** 1–2 warme Kontakte (Ex-Kolleg:innen), LinkedIn, Events.
+- **⚠️ Lücke (G6):** 1–2 warm + #0 (eigene Firma) = ~3 Logos. **Für 3–5 externe** fehlen noch 2–3 konkrete Wege/Termine. LinkedIn/Events sind Kanal, nicht Plan → 30-Tage-Zahl festlegen.
+
+> **Wichtige Konsequenz / Spannungsfeld (Round C):** Eine Cybersecurity-Beratung ist **tender-/public-sector-lastig** (BSI, KRITIS, öffentliche Hand). Der Showcase ist damit **Tender-led**, während die GTM-Sequenz für mid-to-small **Bestandskunden-led** ist (§3.2). **Beides ist okay — sie bedienen verschiedene ICP-Schnitte** (public-sector-nahe Firmen flippen ohnehin auf Tender-first, §3.2). **Guardrail gegen Dogfood-Over-Fit:** mindestens **ein externer, Bestandskunden-led Design-Partner** in der ersten Kohorte, damit das Produkt nicht „Consultry für die eigene Firma" wird, sondern „Consultry für DACH-Beratungen".
+
 ---
 
 ## 4. Pricing & Packaging
 
 | Element | Entscheidung |
 |---|---|
-| **Kernmodell (Umsatz)** | **Seat-basiert, einziges Modell** (wie in den Specs angelegt). Vorhersagbar, planbar, einfach zu verkaufen. |
+| **Kernmodell (Umsatz)** | **Seat-basiert** — **je Consultant- und Sales-Seat kostenpflichtig, 2 Backoffice-Seats frei.** Seats skalieren mit der billable Headcount → eine 50-Personen-Firma ≈ 45 Seats (nicht 3). **NRR wächst mit der Firma**, ohne separate Usage-Achse. |
 | **Win-Fee** | **Vorerst gestrichen (Entscheidung 30.05.).** Attributions-Komplexität („haben *wir* gewonnen oder die Bestandsbeziehung?"), lumpiger Umsatz und SME-Widerstand überwiegen den Land-Vorteil. Pricing bleibt **seat-only**. Kann später als optionaler Hebel reevaluiert werden, ist aber **nicht Teil von Phase-1-GTM**. |
 | **Pilot-Pricing** | **Niedrige Pilot-Gebühr** (kein Gratis-Pilot) — filtert auf echte Kaufabsicht, bessere Konversion (siehe §3.4). |
 | **Packaging-Prinzip** | **Lead-with-one, upsell-the-rest** — ein Einstiegs-Wedge sichtbar, weitere Module als Ausbau (passt zur OS-Vision als *Wachstumspfad*, nicht als Einstiegs-Pitch). |
+
+---
+
+## 4A. Retention & Usage-Frequenz (Entscheidung 30.05.)
+
+**These:** Consultry ist **kein episodisches Tool**, sondern habituell — *Projekt-Akquise hört nie auf.*
+
+- **Tender braucht permanente Arbeit**, Akquise läuft kontinuierlich → wiederkehrender Anlass zum Einloggen.
+- **AI-Knowledge & Reuse (F2/F3)** geben einen **Between-Bids-Grund** zum Nutzen (Wissen pflegen, Assets wiederverwenden).
+- **Der Bestandskunden-Signal-Board (F1) ist die Retention-Spine:** das einzige Surface mit **wöchentlichem Puls** (Vertrags-/Optionsfenster öffnen sich laufend, White-Space). Es ist damit nicht nur Tür-Öffner (§3.2), sondern **das, was sie jede Woche wieder einloggen lässt** — und ein Kandidat, **am tiefsten zuerst** gebaut zu werden.
+- **Seat-Expansion:** je Consultant ein Seat → Retention/Expansion skaliert mit Headcount (siehe §4).
+
+> **Produkt-Konsequenz:** F1-Signal-Board doppelt gewichten — Akquise-Tür-Öffner **und** Retention-Engine.
 
 ---
 
@@ -146,6 +170,8 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 | G3 | Design-Partner-Ziel & Konversions-Artefakt | ✅ **3–5 Partner, niedrige Pilot-Gebühr, ein Before/After-Artefakt** (§3.4) |
 | G4 | Extraktions-Genauigkeit Vertragssignale: Messbar-Bar + Quell-Klausel-Bindung als Akzeptanzkriterium | offen → in F1-Spec (§2.6) + Onboarding G1c |
 | G5 | Win-Fee-Mechanik | ✅ **gestrichen — Pricing bleibt seat-only** (§4) |
+| G6 | Distribution: konkrete 30-Tage-Zahl, um von ~3 (1–2 warm + eigene Firma #0) auf **3–5 externe** Design-Partner zu kommen | offen (§3.6) |
+| G7 | Dogfood-Guardrail: ≥ 1 externer **Bestandskunden-led** Design-Partner in Kohorte 1, um Over-Fit auf die eigene (tender-lastige) Cybersecurity-Firma zu vermeiden | offen (§3.6) |
 
 ---
 
@@ -155,7 +181,9 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 2. **Spine:** F3 AI Workspace; Tender- + Bestandskunden-Intake.
 3. **Bestandskunden:** intelligentes CRM über loser Basis (kein CRM nötig); **Hero-Signal = Vertrags-Options-/Verlängerungsfenster, quellengebunden.**
 4. **GTM-Sequenz:** mid-to-small zuerst; **Bestandskunden öffnet die Tür, Tender ist der Big Swing.** **DE+AT ab Tag 1, CH verschoben.** 3–5 Design-Partner, niedrige Pilot-Gebühr.
-5. **Pricing:** **seat-only** (Win-Fee gestrichen).
+5. **Pricing:** **seat-only**, je Consultant + Sales kostenpflichtig, 2 Backoffice frei (Win-Fee gestrichen).
+9. **Founder-Market-Fit:** eigene Cybersecurity-Beratung = Design-Partner #0 + Showcase-Demo (Tender-led); Guardrail = ≥ 1 externer Bestandskunden-led Partner.
+10. **Retention:** Akquise ist kontinuierlich; **F1-Signal-Board = Retention-Spine** (wöchentlicher Puls), nicht nur Tür-Öffner.
 6. **Scope-Schnitt:** **F6 → Option A** (nur aggregierter Deliverability-Check fürs Bid-Gate; echtes Staffing → Phase 1.5).
 7. **Grounding enforced** über Tender *und* Verträge; Tender ist ein **legaler** Bar.
 8. **OS-Framing = Vision**, nicht Landingpage.
