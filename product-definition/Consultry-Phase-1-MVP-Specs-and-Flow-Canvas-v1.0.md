@@ -9,7 +9,9 @@
 
 > **Lesehinweis.** Dieses Dokument schärft die Phase-1-Funktionen und ist die Brücke zwischen Produktstrategie (Wedges, Module) und Build (Surfaces, Objekte, AI-Verhalten, Prompts). Pro Feature ein Spec-Kapitel, je eine **Flow-Sammlung** (konkret + abstrakt/AI-dynamisch), dann **Cross-/Integration-Flows**, **Symbiose-Features** und der **Spec/AI-Context + Prompt-Engineering Collab-Canvas**.
 >
-> **Update 30.05. (v1.1-Scope):** Phase 1 umfasst jetzt **sechs** Funktionen — F1 Account Growth, F2 Knowledge & Reuse, F3 AI Workspace, **F4 Proposal Draft**, **F5 Tender Ingest**, **F6 Staffing & Forecasting** — plus den Approvals/Governance-Backbone. F5 und F6 wurden auf Wunsch aus Phase 2/3 vorgezogen; die daraus folgende Scope- und Compliance-Konsequenz ist in §4A.3 und §10 markiert.
+> **Update 30.05. (v1.1-Scope):** Phase 1 umfasst F1 Account Growth, F2 Knowledge & Reuse, F3 AI Workspace, **F4 Proposal Draft**, **F5 Tender Ingest** und **F6 Deliverability-Check** — plus den Approvals/Governance-Backbone. F5 wurde aus Phase 2 vorgezogen; F6 wurde auf einen **aggregierten Deliverability-/Kapazitäts-Check geschnitten** (volles Staffing/Forecasting → Phase 1.5+), siehe §4A.2.
+>
+> **Update 30.05. (v1.2-Positionierung):** Die GTM-/Wedge-Entscheidungen dieser Phase sind separat in **[GTM-Decisions v1.0](./Consultry-GTM-Decisions-v1.0.md)** festgehalten. Kurz: Headline-Wedge = **Projekt-Wachstum & -Akquise** (ein Job, zwei Intake-Oberflächen Tender + Bestandskunden); **F3 AI Workspace ist die Spine**; Bestandskunden läuft als **intelligentes CRM über loser Basis** (Hero-Signal = Vertrags-Options-/Verlängerungsfenster, quellengebunden, §2.3); „Operating System" bleibt **Vision, nicht Headline**.
 
 ---
 
@@ -24,7 +26,7 @@
 | **F3** | **AI Workspace** | Die AI-native Interaktions- und Empfehlungsschicht über F1 + F2. | Querschnitt: macht F1+F2 erst „AI-native" |
 | **F4** | **Proposal Draft** (war F1b-Stub) | **Heraufgestuft 30.05.:** vom Stub zur vollwertigen Phase-1-Funktion. Aus freigegebener Opportunity wird ein strukturierter, editierbarer Proposal-Entwurf — **kein Send-Out**. | Primär-Wedge: schließt Opportunity → erstes Angebot |
 | **F5** | **Tender Ingest** | **Neu in Phase 1 (30.05.):** TED/eForms, service.bund u. ä. einlesen, strukturieren (CPV, Fristen, Lose, Eignung) und gegen Firmenprofil matchen. **Kein autonomes Einreichen.** | vorgezogener vertikaler Wedge (Public-Sector-nahe Segmente) |
-| **F6** | **Staffing & Forecasting** | **Neu in Phase 1 (30.05.):** Teamvorschläge (Matching) + Kapazitäts-/Auslastungs-Forecast. **Aggregiert vor personenbezogen, personenscharf nur mit Gate.** | Verstärker-Wedge: „Können wir das glaubwürdig liefern?" |
+| **F6** | **Deliverability-Check** | **Geschnitten 30.05. (Option A):** nur **aggregierter** Kapazitäts-/Skill-Abdeckungs-Check als Bid-Gate (F5) + Realismus-Check (F4). **Kein personenscharfes Matching** (→ Phase 1.5+). | Verstärker: „Können wir das grundsätzlich liefern?" |
 | **B** | **Approvals + Governance/Audit Backbone** | **Kein eigenes verkaufbares Feature**, sondern verpflichtender Querschnitt unter allen Features. | Produkt-Default (DACH-Compliance) |
 
 > **Bestätigt (1):** Account Growth bleibt der Primär-Wedge und das *erste sichtbare* Feature; Knowledge & AI Workspace sind die direkten Verstärker.
@@ -37,7 +39,7 @@
 
 - **Proposal Draft ist drin** (interner Entwurf), aber **kein Proposal-Send-Out, kein Pricing-Engine, kein Contract Drafting** (→ Phase 2)
 - **Tender Ingest ist drin** (Lesen, Strukturieren, Matchen, Bid-Paket-Vorbereitung), aber **kein autonomes Einreichen, keine Vollständigkeits-/Vergabe-Zusage** (→ Phase 2+)
-- **Staffing & Forecasting ist drin** (Teamvorschlag + Kapazitäts-Forecast), aber **kein People-Scoring, kein Burnout-/Performance-Scoring; personenscharf nur mit Gate** (Default: aggregiert)
+- **Nur ein aggregierter Deliverability-Check ist drin** (Kapazitäts-/Skill-Abdeckung als Bid-Gate), aber **kein personenscharfes Matching, kein `TeamProposal`, kein People-/Burnout-/Performance-Scoring** (volles Staffing/Forecasting → Phase 1.5+)
 - Kein Time/Expense, kein Invoice Prep, kein DATEV/ELSTER-Handoff (→ Phase 3)
 - Kein Net-New-Prospecting
 - Kein offener Prompt-Marktplatz ohne Governance
@@ -125,8 +127,10 @@ Default-Regeln:
 
 ### 2.3 In-Scope (Phase 1)
 
+- **Intelligentes CRM über loser Basis (kein CRM nötig):** Verträge + Dokumente werden hochgeladen, die AI extrahiert daraus Struktur und Signale. Eine bestehende CRM-Anbindung ist **optional**, keine Voraussetzung. (Siehe [GTM-Decisions §1/§W4](./Consultry-GTM-Decisions-v1.0.md).)
+- **Hero-Signal — Vertrags-Options-/Verlängerungsfenster:** Das wichtigste Folgegeschäfts-Signal ist das sich öffnende Options-/Verlängerungs-/Ablauf-Fenster, extrahiert direkt aus dem hochgeladenen Vertrag und **an die konkrete Quell-Klausel gebunden** (gleiche Grounding-Regel wie F5-Tender). Demobar an Tag 1 aus *einem* Vertrag, ohne E-Mail-Graph → umgeht die Mitbestimmungs-/DSGVO-Grenze.
 - Account- & Stakeholder-Modell mit Tenant-Isolation.
-- **Signal/Trigger-Erfassung**: nativ (manuell, Notiz) + integriert (E-Mail/Kalender/DMS read-only, optional CRM-Import).
+- **Weitere Signal/Trigger-Erfassung**: nativ (manuell, Notiz) + integriert (E-Mail/Kalender/DMS read-only, optional CRM-Import).
 - **Warm-Path-Sichtbarkeit**: wer kennt wen, wie belastbar.
 - **Opportunity-Qualifizierung**: AI-Vorschlag mit Begründung, Quellen, Confidence → Approval-Card.
 - White-Space-Hinweise auf Account-Ebene (welche Leistung fehlt bei welchem Account).
@@ -149,6 +153,7 @@ Default-Regeln:
 
 - Time-to-first-qualified-Opportunity (Ziel: < 10 Min ab Signal).
 - Anteil Opportunities mit vollständiger Begründung + Quelle (Ziel: 100 %).
+- **Vertragssignal-Extraktions-Genauigkeit**: Anteil korrekt erkannter Options-/Verlängerungsfenster mit korrekter Quell-Klausel-Bindung (Akzeptanzkriterium, vgl. GTM-Decisions G4).
 - „Früher sichtbar"-Quote: Anteil Chancen, die vor dem üblichen manuellen Erkennen aufpoppen.
 
 ### 2.7 Proposal Draft (F4 · heraufgestuft 30.05.)
@@ -290,34 +295,35 @@ Default-Regeln:
 
 **Erfolgsmetriken:** Trefferquote relevanter Tenders; Zeit Ingest → strukturierte Bewertung; Anteil Tenders mit nachvollziehbarem Match-Grund.
 
-### 4A.2 Feature-Spec F6 — Staffing & Forecasting
+### 4A.2 Feature-Spec F6 — Deliverability-Check (Option A · geschnitten 30.05.)
 
-> **⚠️ Compliance-kritisch.** Siehe §4A.3, bevor gebaut wird.
+> **⚠️ Scope-Schnitt 30.05. (siehe [GTM-Decisions §5](./Consultry-GTM-Decisions-v1.0.md)).** Volles Staffing & Forecasting ist **nicht** Phase 1 — es ist Delivery/Resourcing, nicht Akquise, und trägt die schwerste Mitbestimmungs-/AI-Act-Last. **Phase 1 behält nur den akquise-relevanten Rest:** einen **aggregierten „Können wir das liefern?"-Kapazitäts-Check**, der Bid/No-Bid (F5) und die Team-Zusammensetzung im Proposal (F4) speist. Echtes Staffing/Matching/Forecasting → **Phase 1.5+**.
 
-**One-Liner.** *Erzeugt belastbare, begründete Teamvorschläge (Matching) und Kapazitäts-/Auslastungs-Forecasts — **standardmäßig aggregiert** (Team/Practice), personenscharf nur mit explizitem Gate.*
+**One-Liner.** *Liefert einen **aggregierten Deliverability-/Kapazitäts-Check** (Team/Practice-Ebene) als Realismus-Gate für Bid/No-Bid und Proposal — „haben wir grundsätzlich die Kapazität und die Skills, um das zu gewinnen und zu liefern?". **Rein aggregiert, kein personenscharfes Matching.***
 
-**Job-to-be-done.** `Können wir das glaubwürdig liefern — mit welchem Team, und wo sind Kapazitäts-/Skill-Lücken?`
+**Job-to-be-done.** `Können wir das grundsätzlich liefern — reicht aggregierte Kapazität und Skill-Abdeckung, um darauf zu bieten?`
 
 **In-Scope (Phase 1):**
-- `ConsultantProfile`: Skills, Zertifikate, Projekterfahrung, Availability (strukturiert, nicht nur CV-Freifeld).
-- `TeamProposal`: Matching-Vorschlag für eine Opportunity/Tender, **mit Begründung + Alternativen + Confidence**.
-- `Forecast`: Kapazitäts-/Auslastungsprognose auf **Team-/Practice-Ebene** (Default aggregiert).
+- `Forecast` (aggregiert): Kapazitäts-/Auslastungssicht auf **Team-/Practice-Ebene** — der einzige F6-Output in Phase 1.
+- Aggregierte **Skill-Abdeckung vs. Anforderung** eines Tenders/einer Opportunity (haben wir die geforderten Skills im Pool — ja/nein/Lücke), **ohne** Personen zu nennen.
 - Sichtbarkeit von Skill-Gaps und Bench-/Überlastungs-Risiken **auf aggregierter Ebene**.
-- Einspeisung des Teamvorschlags in F4 (Proposal Draft).
+- **Bid-Gate-Input für F5** und **Realismus-Check für F4** (Proposal: „machbar mit der vorhandenen Kapazität bis Frist Y").
 
-**Out-of-Scope (Phase 1):**
+**Out-of-Scope (Phase 1 — auf Phase 1.5+ verschoben):**
+- **`TeamProposal` / personenscharfes Matching entfällt in Phase 1** — keine namentlichen Teamvorschläge.
+- Personenscharfes Forecasting bis Einzelberater.
 - **Kein People-Scoring, kein Burnout-/Performance-/Persönlichkeits-Scoring** (PRD v4.0 §4.1).
-- Keine Black-Box-Rankings von Personen.
-- Keine automatische Leistungsbeurteilung; keine personenscharfe Planung ohne Gate.
-- Kein voller Capacity Planner / keine Workforce-Optimierung (das bleibt spätere Phase).
-- **F6 ist Phase 1 bewusst „Light" (bestätigt 30.05.):** nur Matching + aggregierter Forecast; tiefe Kapazitätsplanung folgt später.
+- Keine Black-Box-Rankings von Personen; keine automatische Leistungsbeurteilung.
+- Kein voller Capacity Planner / keine Workforce-Optimierung.
+
+> **Compliance-Effekt des Schnitts:** Da Phase 1 **rein aggregiert** bleibt (kein Personenbezug), entfällt der Großteil der personenscharfen Mitbestimmungslast. `Works-Council-Mode` bleibt als Produktfunktion bestehen und greift erst, wenn in Phase 1.5+ personenscharfe Sichten dazukommen (§4A.3).
 
 **AI-Verhalten (darf / nur-mit-Gate / niemals):**
-- **Darf:** aggregierte Forecasts, Team-/Skill-Gap-Sichten, begründete Matching-Vorschläge mit Alternativen.
-- **Nur mit Gate:** personenbezogene Auslastungs-/Workload-Analysen; personenscharfes Forecasting bis Einzelberater; individualisierte Entwicklungsempfehlungen mit operativer Wirkung. **Gate = Works-Council-Mode + dokumentierte Freigabe.**
+- **Darf:** aggregierte Forecasts und aggregierte Skill-Gap-Sichten (Team/Practice); begründete Deliverability-Einschätzung „können wir grundsätzlich liefern?".
+- **Nur mit Gate (Phase 1.5+):** personenscharfes Matching/`TeamProposal`; personenbezogene Auslastungs-/Workload-Analysen; personenscharfes Forecasting bis Einzelberater. **Gate = Works-Council-Mode + dokumentierte Freigabe.**
 - **Niemals per Default:** personenbezogenes Ranking/Scoring; Entscheidungen ohne Begründung; personenscharfe Daten ohne Consent-/Mitbestimmungs-Mode.
 
-**Erfolgsmetriken:** Akzeptanz der Teamvorschläge als „plausibel"; frühere Sichtbarkeit von Skill-/Bench-Risiken; Anteil Vorschläge mit nachvollziehbarer Begründung (Ziel: 100 %).
+**Erfolgsmetriken:** Plausibilität des aggregierten Deliverability-Checks; frühere Sichtbarkeit von Skill-/Bench-Risiken; Anteil Bid/No-Bid-Entscheidungen mit nachvollziehbarer Kapazitäts-Begründung (Ziel: 100 %).
 
 ### 4A.3 Compliance-Konsequenz dieser Erweiterung
 
@@ -618,9 +624,12 @@ flowchart LR
 3. ✅ **Phase-1-Endartefakt**: Opportunity **+ Proposal Draft** (F4, kein Versand) — **bestätigt & eingearbeitet 30.05.** (§2.7)
 4. ✅ **Personenbezug (Works-Council-Default)**: **bestätigt 30.05.** — Works-Council-Mode = AN, F6 aggregiert, personenscharf nur gated (§4A.3).
 5. ✅ **Canvas-Form**: Mermaid (eingebettet) reicht vorerst; FigJam auf Zuruf — **entschieden 30.05.**
-6. ✅ **Scope-Erweiterung Tender + Staffing/Forecasting** (§4A): **bestätigt 30.05.** — F5 + F6 in Phase 1. **F6 bewusst „Light"**: Matching (Teamvorschlag mit Begründung/Alternativen) + aggregierter Forecast; tiefes Capacity-Planning/Workforce-Optimierung bleibt spätere Phase.
+6. ✅ **Tender in Phase 1, F6 geschnitten** (§4A): **bestätigt 30.05.** — F5 (Tender Ingest) bleibt; **F6 → Option A**: nur aggregierter Deliverability-Check als Bid-Gate, **kein personenscharfes Matching** (volles Staffing/Forecasting → Phase 1.5+).
+7. ✅ **Headline-Wedge & GTM** (→ [GTM-Decisions v1.0](./Consultry-GTM-Decisions-v1.0.md)): **bestätigt 30.05.** — Job = *Projekt-Wachstum & -Akquise*; F3 = Spine; Tender + Bestandskunden = zwei Intake-Oberflächen; **Bestandskunden öffnet die Tür, Tender = Big Swing**; ICP = mid-to-small zuerst; OS = Vision, nicht Headline.
+8. ✅ **Bestandskunden-Mechanik & F1-Hero** (§2.3): **bestätigt 30.05.** — intelligentes CRM über loser Basis (kein CRM nötig); Hero-Signal = **Vertrags-Options-/Verlängerungsfenster, quellengebunden**.
+9. ✅ **Pricing** (→ GTM-Decisions §4): **bestätigt 30.05.** — Seat = Umsatz; **Win-Fee = Land-/Proof-Hebel, nicht Kern**.
 
-> **Alle Phase-1-Scope-Entscheidungen bestätigt (Stand 30.05.).** Nächster Schritt: Verfeinerung je Feature in Build-Tickets + optional FigJam-Canvas.
+> **Alle Phase-1-Scope- und GTM-Kern-Entscheidungen bestätigt (Stand 30.05.).** Offene GTM-Detailpunkte (Onboarding-Ritual, AT/CH-Reichweite, Design-Partner-Ziel, Win-Fee-Mechanik) sind in [GTM-Decisions §8](./Consultry-GTM-Decisions-v1.0.md) als G1–G5 getrackt. Nächster Schritt: Verfeinerung je Feature in Build-Tickets.
 
 ---
 
