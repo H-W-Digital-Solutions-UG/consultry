@@ -52,7 +52,7 @@ Die OS-Erzählung (*„zentraler Punkt für immer mehr AI-assistierte/automatisi
 | **W4** | Bestandskunden-Mechanik | **Intelligentes CRM über loser Basis** — Verträge/Docs statt CRM-Pflicht |
 | **W5** | F1-Hero-Signal | **Vertrags-Options-/Verlängerungsfenster**, extrahiert aus dem Vertrag, **an die Quell-Klausel gebunden** |
 | **W6** | OS-Framing | **Vision/Deck only** — nicht Landingpage |
-| **W7** | Grounding | **Enforced** über beide Oberflächen: kein Claim ohne hochgeladene Quelle |
+| **W7** | Grounding | **Enforced, drei-wertig:** jedes *Faktum* zitierpflichtig — Firm-Fact → Tenant-Korpus, External-Fact → öffentliche ExternalSource; Model-Expertise erlaubt, aber markiert. Firm vor External. ([Domain-Def GI-1](./Consultry-Business-Domain-Definition-v1.0.md)) |
 
 ### Warum W5 (Vertrags-Options-Signal) das F1-Hero ist
 - **Konkret & demobar an Tag 1** aus *einem* hochgeladenen Vertrag — kein E-Mail-Graph nötig.

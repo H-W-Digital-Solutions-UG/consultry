@@ -36,9 +36,11 @@
 | **ConsultantProfile** | Skills/Zertifikate/Erfahrung/Availability — **im MVP nur aggregiert ausgewertet.** | personenscharfes Matching (H2) |
 | **TeamShape** | **Anonyme** Soll-Zusammensetzung: Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen — **keine Personen.** | TeamProposal/named team (H2) |
 | **Forecast** | Aggregierte Kapazitäts-/Auslastungssicht (Team/Practice). | personenscharfer Forecast (H2) |
-| **Firm-Fact** | Eine **überprüfbare Tatsache über den Tenant** (Zertifikat, Referenz, Kapazität, Track-Record). **Muss korpus-gegroundet sein.** | Allgemein-Expertise |
-| **Allgemein-Expertise** | Methodik/Domänen-Framing/Best-Practice — darf aus Modellwissen stammen. | Firm-Fact |
-| **Citation / Grounding** | Bindung einer Aussage an eine konkrete Quelle (Klausel/Asset). | unbelegte Behauptung |
+| **Firm-Fact** | Eine **überprüfbare Tatsache über den Tenant** (Zertifikat, Referenz, Kapazität, Track-Record). **Muss tenant-korpus-gegroundet sein.** | External-Fact, Model-Expertise |
+| **External-Fact** | Eine **überprüfbare Tatsache aus einer öffentlichen externen Quelle** (Norm/Standard, Regulatorik, Marktdaten, öffentliche Referenz, Research). **Muss auf eine `ExternalSource` zitiert sein.** | Firm-Fact (tenant-eigen), Model-Expertise (unbelegt) |
+| **Model-Expertise** | Methodik/Domänen-Framing/Best-Practice-Formulierung aus Modellwissen — **kein Faktum**, darf unzitiert sein, aber als solche gekennzeichnet. | Firm-Fact, External-Fact (beide faktisch + zitierpflichtig) |
+| **ExternalSource** | Zitierbare externe Quelle (URL/Dokument/Norm) mit **Freshness-Stempel** und Abruf-Zeitpunkt. | KnowledgeAsset (tenant-intern) |
+| **Citation / Grounding** | Bindung einer **faktischen** Aussage an eine konkrete Quelle (Firm → KnowledgeAsset/Klausel; External → ExternalSource). | unbelegte Behauptung |
 | **Recommendation** | AI-Vorschlag mit Explanation + Sources + Confidence + Status. Nie autonom verbindlich. | Datensatz |
 | **ApprovalEvent** | Menschliche Freigabe/Ablehnung/Edit mit Wer/Wann/Warum. | — |
 | **AuditRecord** | Unveränderliche Spur über alle Domänen-Ereignisse. | — |
@@ -88,13 +90,21 @@
 - **Aggregate:** `ProposalDraft` (Root) → `Konzept` (Sektionen), `DraftSection[]`, `CitationLink[]`.
 - **Verantwortung:** Aus Opportunity + Korpus + TeamShape + **AwardCriteria** einen gegroundeten, an der Bewertungsmatrix ausgerichteten Konzept-/Angebots-Entwurf erzeugen — **consultant-as-author**, editierbar, versioniert.
 - **Domäne-Invarianten (kritisch):**
-  - **GI-1 Grounding-Split:** jeder `DraftSection`-Satz ist klassifiziert als **Firm-Fact** oder **Allgemein-Expertise**. **Firm-Facts MÜSSEN einen `CitationLink` auf ein KnowledgeAsset/Quelle haben**; ohne → blockiert (nicht nur Warnung). Allgemein-Expertise darf modellgeneriert sein.
+  - **GI-1 Provenance-Modell (drei-wertig):** jeder `DraftSection`-Satz trägt genau eine **Provenance-Klasse**:
+    | Klasse | Quelle | Zitierpflicht |
+    |---|---|---|
+    | **Firm-Fact** | nur Tenant-Korpus (`KnowledgeAsset`/Klausel) | **CitationLink Pflicht → sonst blockiert** |
+    | **External-Fact** | öffentliche `ExternalSource` (Norm, Regulatorik, Research) | **CitationLink Pflicht → sonst blockiert** |
+    | **Model-Expertise** | Modellwissen (Methodik/Formulierung, **kein Faktum**) | keine Citation, aber **als Model-Expertise markiert** |
+    > **Kern-Regel:** **Jede faktische Aussage (Firm *oder* External) ist zitierpflichtig.** Ein Faktum ohne Citation wird blockiert, egal welcher Herkunft. Model-Expertise darf nie als Faktum *getarnt* erscheinen. Modell-Qualität ändert das nicht — es ist eine legale Regel.
   - **GI-2 Award-Alignment:** jede Konzept-Sektion ist einem `AwardCriterion` zuordenbar (Fit-to-Score), wo ein Tender vorliegt.
   - **GI-3 Kein Versand:** Output ist immer internes Artefakt.
+  - **GI-4 Firm vor External:** widersprechen sich ein Firm-Fact und ein External-Fact, **gewinnt der Firm-Fact** (die Aussage über die Firma kommt von der Firma). External darf Firm-Facts *kontextualisieren*, nie *überschreiben*.
 
 ### 3.4 **Knowledge Context** (MVP-Engine, nicht separat verkauft)
-- **Aggregate:** `KnowledgeAsset` (Root), `AISkill`.
-- **Verantwortung:** Korpus-Ingest, Verdichtung mit Quelle, Retrieval — **liefert die Grounding-Quellen** für Bid Production. MVP: nur so tief wie das Konzept-Grounding braucht.
+- **Aggregate:** `KnowledgeAsset` (Root, tenant-intern), `ExternalSource` (Root, öffentlich/research), `AISkill`.
+- **Verantwortung:** Korpus-Ingest + **kuratiertes externes Grounding** (Normen/Regulatorik/Research mit Freshness), Verdichtung mit Quelle, Retrieval — **liefert beide Grounding-Quellen** (Firm + External) für Bid Production. MVP: nur so tief wie das Konzept-Grounding braucht.
+- **Invariante:** `ExternalSource` ist **zitierbar + tenant-isoliert in der Verwendung**; externe Inhalte werden nie als Tenant-Firm-Fact gespeichert (GI-4).
 
 ### 3.5 **Capability Context** (MVP, dünn)
 - **Aggregate:** `ConsultantProfile` (nur aggregiert), `TeamShape`, `Forecast`.
@@ -126,7 +136,7 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 
 1. **Tenant-Isolation absolut.** Kein Cross-Tenant-Zugriff ohne explizites Gate.
 2. **Recommendation ≠ Datensatz.** Nichts wird ohne ApprovalEvent verbindlich.
-3. **Grounding-Split (GI-1):** Firm-Facts → korpus-only; Allgemein-Expertise → Modell erlaubt. **Modell-Qualität ändert das nicht** — es ist eine legale, keine Qualitäts-Regel.
+3. **Provenance-Modell (GI-1, drei-wertig):** Firm-Fact → tenant-korpus-only (citation Pflicht); External-Fact → ExternalSource (citation Pflicht); Model-Expertise → Modell erlaubt, aber markiert, nie als Faktum getarnt. **Jedes Faktum ist zitierpflichtig.** Bei Konflikt **Firm vor External** (GI-4). **Modell-Qualität ändert das nicht** — es ist eine legale, keine Qualitäts-Regel.
 4. **Aggregiert/anonym vor personenscharf.** Personenbezug nur via Gate (H2).
 5. **Alles auditierbar.** Jedes Domänen-Ereignis erzeugt einen AuditRecord.
 
@@ -136,7 +146,8 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 
 - **`Opportunity` ist der gemeinsame Demand-Knoten** — Acquisition und Tender konvergieren dort; Bid Production hängt nur an Opportunity, nicht an der Intake-Quelle. → ein Konzept-Pfad, zwei Türen.
 - **`AwardCriterion` ist ein First-Class-Domänenobjekt**, kein Tender-Detail — weil es die Konzept-Qualität (= Fit-to-Score) steuert.
-- **`CitationLink` + Firm-Fact-Klassifikation sind Domäne-Invarianten**, nicht UI — der Build muss sie auf Datenebene erzwingen, nicht im Frontend.
+- **`CitationLink` + die drei-wertige Provenance-Klassifikation sind Domäne-Invarianten**, nicht UI — der Build muss sie auf Datenebene erzwingen, nicht im Frontend. Jedes Faktum (Firm *oder* External) ohne Citation wird blockiert.
+- **`ExternalSource` ist ein eigenes Aggregat im Knowledge Context** mit Freshness — externes Research-Grounding ist erlaubt, aber zitierpflichtig und tenant-isoliert; es überschreibt nie Firm-Facts (GI-4).
 - **Capability gibt nur `TeamShape`/`Forecast` aus** — `ConsultantProfile` bleibt intern/aggregiert; kein personenscharfes Aggregat verlässt den Kontext.
 
 ---
@@ -145,9 +156,10 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 
 | # | Punkt | Status |
 |---|---|---|
-| D1 | Klassifikator Firm-Fact vs. Allgemein-Expertise — regelbasiert, LLM-gestützt oder Autor-markiert? (entscheidet GI-1-Durchsetzung) | offen — kritisch für Concept Suite |
+| D1 | **Drei-wertiger** Provenance-Klassifikator (Firm-Fact / External-Fact / Model-Expertise) — regelbasiert, LLM-gestützt oder Autor-markiert? Härtester Fall: Faktum vs. „getarnte" Expertise zuverlässig trennen (entscheidet GI-1-Durchsetzung) | offen — kritisch für Concept Suite |
 | D2 | `AwardCriterion`-Parsing bei semi-manuellem Tender-Intake — strukturiert genug für GI-2? | offen |
 | D3 | Konzept-Sektionsmodell (DACH-Lösungs-/Arbeitskonzept-Standardstruktur) | → Concept-Suite-Spec |
+| D4 | **External-Grounding-Scope:** welche `ExternalSource`-Klassen im MVP (kuratierte Normen/Regulatorik vs. offene Web-Research)? Freshness-/Vertrauens-Policy? | offen — siehe Grilling Round 14 |
 
 ---
 

@@ -27,9 +27,11 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
 
 ### 1.3 Zwei harte Grounding-/Qualitäts-Regeln (aus Round 11/12)
 
-1. **Grounding-Split (Pflicht):**
-   - **Firm-Facts** (Zertifikate, Referenzen, Kapazitäten, Track-Record) → **ausschließlich korpus-gegroundet.** Das Frontier-Modell darf diese **nie** aus Allgemeinwissen „verbessern" → sonst plausibel-falsche Firmen-Claims = **Ausschluss-/Vergabe-Haftungs-Risiko** (durch ein stärkeres Modell *verschärft*).
-   - **Allgemein-Expertise** (Methodik, Konzept-Struktur, Domänen-Framing) → Modellwissen erlaubt.
+1. **Provenance-Modell (drei-wertig, Pflicht):** jeder faktische Satz trägt eine Quelle-Klasse:
+   - **Firm-Fact** (Zertifikate, Referenzen, Kapazitäten, Track-Record) → **ausschließlich Tenant-Korpus**, CitationLink Pflicht. Das Modell darf diese **nie** aus Allgemeinwissen „verbessern" → plausibel-falscher Firmen-Claim = **Ausschluss-/Vergabe-Haftung** (durch ein stärkeres Modell *verschärft*).
+   - **External-Fact** (Normen, Regulatorik, Marktdaten, öffentliche Research) → **zitiert auf eine `ExternalSource`** (mit Freshness), CitationLink Pflicht.
+   - **Model-Expertise** (Methodik, Konzept-Struktur, Domänen-Framing, Formulierung) → Modellwissen erlaubt, **als solche markiert, nie als Faktum getarnt.**
+   - **Regel:** *Jedes Faktum ist zitierpflichtig* (Firm oder External); bei Konflikt **Firm vor External.** Siehe [Domain-Def GI-1/GI-4](./Consultry-Business-Domain-Definition-v1.0.md).
 2. **„Qualität" = Fit-to-Zuschlagskriterien.** Konzept-Qualität wird vom Auftraggeber gegen die **Bewertungsmatrix** bewertet, nicht vom Consultant/LLM. Die Concept Suite **parst die Zuschlagskriterien und strukturiert/gewichtet das Konzept auf maximalen Score** — das ist die Brücke von „gutes Konzept" zu „gewinnendes Konzept" *und* defensible Shell.
 
 ## 2. ICP & Anti-ICP

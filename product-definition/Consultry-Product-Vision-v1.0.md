@@ -20,7 +20,7 @@
 
 ## 3. Enduring Principles (gelten in jedem Horizont)
 
-1. **Grounding ist nicht verhandelbar.** Kein Claim ohne hochgeladene Quelle. (Bei öffentlichen Tendern ist das eine *rechtliche*, nicht nur UX-Anforderung.)
+1. **Grounding ist nicht verhandelbar (drei-wertig).** Jedes *Faktum* ist zitierpflichtig — Firm-Facts an den Tenant-Korpus, External-Facts an eine öffentliche Quelle; Model-Expertise (Methodik/Formulierung) ist erlaubt, aber als solche markiert und nie als Faktum getarnt. (Bei öffentlichen Tendern ist das eine *rechtliche*, nicht nur UX-Anforderung.)
 2. **Human-Approval vor Verbindlichkeit.** Vorschlag ≠ Datensatz; nichts geht autonom raus.
 3. **Aggregiert/anonym vor personenscharf.** Mitbestimmungs- und AI-Act-fest by default.
 4. **Profil statt Person, Entwurf statt Versand, Lesen statt Schreiben** — in Phase 1.
