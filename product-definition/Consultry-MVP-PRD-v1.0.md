@@ -154,7 +154,7 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 | G7 | ≥ 1 Bestandskunden-led Partner als Dogfood-Guardrail | offen |
 | G8 | ACV/Sales-Cycle | ✅ **€50/Seat/Mo, ACV €15–45k** (§6); Pilot-Fee-Betrag noch zu setzen |
 | G9 | PMF-Aktivierung | ✅ **1 Draft aus eigenem Korpus in 5 Tagen** (§5) |
-| — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, **Grounding-Split §1.3**, **Zuschlagskriterien-Optimierung §1.3**, **Eval-Harness für Grounding @ Long-Form**) | zu schärfen — **nach Business-Domain-Definition** (Reihenfolge bestätigt 30.05.) |
+| — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, **Grounding-Split §1.3**, **Zuschlagskriterien-Optimierung §1.3**, **Eval-Harness für Grounding @ Long-Form**) | zu schärfen — **nach Business-Domain-Definition** ✅ ([Domain-Def](./Consultry-Business-Domain-Definition-v1.0.md) fertig) → Concept-Suite-Spec als nächstes |
 | G6 | Design-Partner-Kohorte | ✅ **Kohorte = 1 starker Warm-Path-Partner (+ #0 eigene Firma) für jetzt.** Stage-0: Usefulness tief validieren, dann skalieren. → PMF-Metrik bei n=1 = „nützlich + zahlungsbereit + 5-Tage-Draft", nicht Markt-Validierung. |
 | G7 | Dogfood-Guardrail | später (greift erst bei Kohorten-Erweiterung) |
 | G10 | Eval/Quality | ✅ **frontier-getrieben für Prosa/Struktur; lightweight Harness = Partner-Edit-Distanz + harter Firm-Facts-Citation-Gate** (§1.3, legal, modell-unabhängig). Kein schweres ML-Eval-Suite. |
