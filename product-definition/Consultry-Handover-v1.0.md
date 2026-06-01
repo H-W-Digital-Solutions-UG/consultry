@@ -1,6 +1,6 @@
 # Consultry — Handover & Session Summary v1.0
 
-**Datum:** 30.05.2026
+**Datum:** 30.05.2026 · **zuletzt aktualisiert:** 01.06.2026
 **Branch:** `claude/phase-1-mvp-scope-7sTXZ` (laufend in `main` gemergt; `main` enthält auch fremde Arbeit — Homepage-Copy + PRD-v4.0-Phase-2-Neukundenakquise)
 **Zweck dieses Dokuments:** Jemand (Cofounder, Entwickler, künftige Session) soll **kalt einsteigen** können — was entschieden wurde, warum, was offen ist, und was als Nächstes zu tun ist.
 
@@ -13,8 +13,11 @@
 > **Dies ist die Sektion, mit der man die Arbeit beginnt.** Sie verdichtet die Session zu „was bauen wir, in welcher Reihenfolge, und was ist verbindlich". Entscheidungen 30.05.
 
 ### 0.1 Verbindliche Richtung (locked)
+> Die drei Kernpunkte wurden am **01.06. erneut explizit bestätigt** (Neukunden-Scope, Build-Reihenfolge, Form der Richtungs-Doku).
+
 - **Produkt-Fokus MVP:** **Acquisition-to-Bid.** Zwei Intakes (Tender + Bestandskunden) → Opportunity → **Concept & Proposal Suite (Hero)**.
-- **Neukundenakquise = H2, NICHT MVP.** (PRD v4.0 führt Neukunden als „Phase 2" — das ist als *Horizont 2* korrekt und **kein** MVP-Scope. MVP bleibt Bestandskunden + Tender. Net-New-Prospecting ist in `MVP-PRD §3.3` explizit OUT — das gilt.)
+- **✅ Neukundenakquise = H2, NICHT MVP** (bestätigt 01.06.). PRD v4.0 führt Neukunden als „Phase 2" — das ist als *Horizont 2* korrekt und **kein** MVP-Scope. MVP bleibt Bestandskunden + Tender. Net-New-Prospecting ist in `MVP-PRD §3.3` explizit OUT — das gilt.
+- **✅ Build-Reihenfolge: Substrat zuerst** (bestätigt 01.06.) — Details §0.2.
 - **Pricing:** €50/Seat/Monat, seat-only. **PMF-Beweis:** 1 echter Konzept-Entwurf aus eigenem Korpus in **5 Tagen**.
 - **Compliance:** Enterprise-API + AVV/DPA; §87 = „ein Schalter" (Works-Council-Mode, Default-OFF), Restrisiko bewusst akzeptiert.
 
