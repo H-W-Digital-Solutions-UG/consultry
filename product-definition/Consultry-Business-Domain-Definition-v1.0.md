@@ -124,8 +124,9 @@
 - **Verantwortung:** Beraterprofile strukturieren (Stammdaten) **+** anonyme TeamShape/aggregierte Deliverability als Bid-Gate (F5) und Realismus-Check (Konzept).
 - **Invarianten (kritisch — die Profile-Falle):**
   - **GI-12 Stammdaten erlaubt, Bewertung nicht:** `ConsultantProfile` darf **deskriptiv** sein (welche Skills/Zertifikate existieren). **Kein** Ranking, Scoring, Burnout-/Performance-/Persönlichkeits-Bewertung (PRD §4.1 „darf nicht per Default").
+  - **GI-12a Auto-Maintenance:** Profile werden von **Background-Agents aus verknüpften Quellen** automatisch aktualisiert (neues Zertifikat, Projekt-/Produkterfahrung); der Consultant **bestätigt/verfeinert** die Änderungen (Human-in-the-loop). Löst den „leeren Skill-DB"-Cold-Start.
   - **GI-13 Aggregiert nach außen:** in **Bid Production / TeamShape / Forecast** fließen Profile **nur aggregiert/anonym** ein (Pool-Statistik) — personenscharfes Matching „Person Y auf Rolle Z" bleibt **H2 + Gate**.
-  - **GI-14 Consent/Mitbestimmung:** personenbezogene Profildaten unterliegen Works-Council-Mode + Zweckbindung (BDSG §26); Self-Service-Pflege durch den Berater bevorzugt vor Fremdbefüllung.
+  - **GI-14 Consent/Mitbestimmung:** personenbezogene Profildaten unterliegen Works-Council-Mode + Zweckbindung (BDSG §26).
 
 ### 3.6 **Governance Context** (MVP, Querschnitt)
 - **Aggregate:** `Recommendation`, `ApprovalEvent`, `AuditRecord`.
@@ -141,6 +142,7 @@
   - **GI-7 Privacy-by-Default:** `PersonalLogEntry` ist **privat zum Consultant**; Management hat **keinen** Lesezugriff.
   - **GI-8 No-Auto-Surface:** ein Log-Eintrag erscheint **nie** automatisch in Project Observability (3.9). Übergabe nur durch **explizite, item-weise Publish-Aktion des Consultants**. Kein Fluss Self-Log → Management ohne diesen bewussten Schritt.
   - **GI-9 Kein Leistungs-Inferenz:** das System leitet aus `PersonalLogEntry` **keine** Personen-Leistungs-/Verhaltensbewertung ab.
+  - **GI-9a Auto-Feed gegen Doku-Fatigue:** der Self-Log wird **automatisch** aus der In-Tool-Arbeit des Consultants befüllt (Projects, Knowledge, Spec/Concept Suite) — kein manuelles Abtippen. Das ist der Unterschied zu (gescheiterten) manuellen Journaling-/Standup-Tools.
 
 ### 3.9 **Project Observability** (MVP — bewusst dünn, deliverable-zentriert)
 - **Aggregate:** `ProjectStatus` (Root) → `Milestone[]`, `RAGState`, `Deadline[]`.
@@ -148,6 +150,8 @@
 - **Invarianten (kritisch):**
   - **GI-10 Deliverable-zentriert, NIE personen-attribuiert:** Status hängt an **Projekt/Deliverable**, nicht an Personen. **Kein Drill-down „Projekt gelb *wegen Person Y*".** Personen-Attribution = BetrVG §87 → verboten im MVP.
   - **GI-11 Quelle ≠ Self-Logs:** `ProjectStatus` wird **nicht** aus `PersonalLogEntry` abgeleitet (GI-8); Quelle ist explizit gepflegter Projekt-Status.
+  - **GI-15 Scope-Disziplin:** MVP = **Substrat-Level** Projektstatus (RAG/Milestones/Fristen) als Record-Layer-Basisplattform — **kein** tiefes Delivery-Analytics/Auslastungs-Reporting (H2). Der **Renewal-Signal kommt aus Vertragsdaten (F1/Acquisition), nicht aus RAG-Status** — Observability rechtfertigt sich als Substrat, nicht als Wedge-Zubringer.
+  - **GI-16 Works-Council-Gate für Personenbezug:** jedes personenbezogene Feature (ConsultantProfile-Details, PersonalLogEntry, jede künftige personenscharfe Sicht) ist technisch **nur unter konfiguriertem Works-Council-Mode bzw. „kein-BR"-Attestierung** aktivierbar (siehe Invariante §5.9).
 
 ---
 
@@ -173,6 +177,10 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 6. **Model-Processing-Compliance (bestätigt 30.05.):** LLM-Nutzung läuft über einen **Enterprise-API-Deal mit AVV/DPA (Art. 28 DSGVO), No-Training-on-Data und EU/EEA-Processing bzw. SCCs.** Tenant-Daten dürfen zur Verarbeitung an das Modell — die Compliance-Grenze liegt im Vertrag, nicht im Verbot. **Wichtig: das löst *Datenverarbeitung*, nicht *externes Research-Grounding* (Scope/Freshness/Faithfulness — siehe GI-1, GI-5/6).**
 7. **External-Research-Firewall (GI-5/6, bestätigt 30.05.):** externe Research-Queries werden PII-/kundendaten-bereinigt (GI-5); zulässige Quellen via White-/Blacklist (`SourcePolicy`, GI-6). Web-Research ist erlaubt, aber sanitisiert und policy-gefiltert.
 8. **Human-Backstop (GI-1b):** kein LLM garantiert Grounding zu 100 %. Die rechtliche Sicherungsschicht ist die **menschliche Freigabe** des verantwortlichen Consultant-Autors, nicht die AI.
+9. **⚠️ §87-Realität (korrigiert 30.05. — NICHT darauf bauen, dass es anders wäre):**
+   - **§87 Abs. 1 Nr. 6 BetrVG greift bei *objektiver Eignung zur Überwachung* — der bloßen *Fähigkeit* des Systems, Verhalten/Leistung personenbezogen zu erfassen — unabhängig von Absicht.** Personenbezogene Profile/Logs/Status sind objektiv überwachungsgeeignet.
+   - **Manuelle Einzel-Zustimmung des Consultants hebt §87 NICHT auf.** §87 ist ein **kollektives** Recht des Betriebsrats; ein einzelner Beschäftigter kann es **nicht** verzichten. Manuelle Akzeptanz hilft DSGVO/BDSG §26 (Transparenz/Zweckbindung) + Vertrauen, ist aber **kein §87-Ausweg.**
+   - **Lawful path:** (a) viele ICP-Firmen (30–60 P.) haben **keinen Betriebsrat** → §87 greift dort nicht (ehrliche Near-Term-Deckung); (b) wo ein BR existiert → **Betriebsvereinbarung**, technisch abgebildet über **Works-Council-Mode**: personenbezogene Features sind **nur unter konfiguriertem Works-Council-Mode/BV aktivierbar.** Manuelle Akzeptanz + Transparenz sind *unterstützende Evidenz innerhalb* dieses Rahmens, nicht der Rahmen selbst.
 
 ---
 
