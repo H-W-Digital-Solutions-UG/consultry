@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultry — Investor Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#BF5347; --brand-light:#CA7168; --brand-dark:#A2463C;
+    --warm:#E8913A; --warm-light:#F0A85E;
+    --gs:#E8913A; --gm:#E8655A; --ge:#9B59B6;
+    --success:#16A34A; --warning:#D97706; --danger:#DC2626; --info:#3A5DAE;
+    --ink:#3E3C3A; --ink2:#605D59; --ink3:#7B7671;
+    --line:#DDDAD5; --line2:#EBE9E8;
+    --page:#F6F6F6; --card:#FFFFFF; --ai:#FFF8F5; --aib:#F0D4C8;
+    --sh:0 4px 12px rgba(0,0,0,.06); --shl:0 10px 30px rgba(0,0,0,.10); --shx:0 18px 48px rgba(0,0,0,.16);
+    --grad:linear-gradient(120deg,var(--gs),var(--gm) 52%,var(--ge));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#1c1b19;overflow:hidden;-webkit-font-smoothing:antialiased}
+  .slide{position:absolute;inset:0;display:none;padding:60px 80px;flex-direction:column;background:var(--page);opacity:0;transition:opacity .3s}
+  .slide.active{display:flex;opacity:1}
+  .slide.dark{background:#1c1b19;color:#EDE8E2}
+  .slide.grad{background:radial-gradient(120% 120% at 80% 10%,#2a2320,#1c1b19 60%);color:#EDE8E2}
+  .slide.dark h1,.slide.dark h2,.slide.grad h1,.slide.grad h2{color:#fff}
+
+  .eyebrow{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:24px;height:3px;border-radius:2px;background:var(--grad)}
+  .grad .eyebrow,.dark .eyebrow{color:var(--warm-light)}
+  h1{font-size:clamp(40px,5.6vw,76px);font-weight:900;line-height:1.02;letter-spacing:-.03em}
+  h2{font-size:clamp(30px,3.8vw,52px);font-weight:900;line-height:1.06;letter-spacing:-.025em}
+  .lead{font-size:clamp(18px,1.7vw,24px);line-height:1.45;color:var(--ink2);max-width:52ch;font-weight:500}
+  .grad .lead,.dark .lead{color:#C9C3BC}
+  .gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  strong{font-weight:800}
+  .fill{flex:1;display:flex;flex-direction:column;justify-content:center}
+  .top{margin-bottom:28px}
+
+  /* big number / stat */
+  .stat{font-size:clamp(56px,9vw,128px);font-weight:900;letter-spacing:-.04em;line-height:.9}
+  .statgrid{display:flex;gap:48px;flex-wrap:wrap;align-items:flex-end}
+  .statgrid .lbl{font-size:16px;color:var(--ink3);font-weight:600;margin-top:10px;max-width:22ch}
+  .grad .statgrid .lbl{color:#A9A39C}
+
+  /* pills */
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink2)}
+  .pill.hero{background:var(--grad);color:#fff;border:none}
+  .pill.dk{background:#2a2724;border-color:#403c37;color:#D5D0CA}
+  .badges{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
+
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:22px 24px;box-shadow:var(--sh)}
+  .dark .card,.grad .card{background:#262320;border-color:#3a3631;box-shadow:none}
+  .card .k{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin-bottom:9px}
+  .grad .card .k,.dark .card .k{color:var(--warm-light)}
+  .card p{font-size:15px;line-height:1.5;color:var(--ink2)}
+  .dark .card p,.grad .card p{color:#B5B0AD}
+  .card .big{font-size:42px;font-weight:900;letter-spacing:-.03em;line-height:1;margin:2px 0 8px}
+
+  .logo{width:54px;height:54px;border-radius:15px;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:900;font-size:28px;box-shadow:var(--shl);margin-bottom:26px}
+
+  /* ---------- PRODUCT MOCKUP (browser window) ---------- */
+  .window{background:#fff;border-radius:14px;box-shadow:var(--shx);overflow:hidden;border:1px solid var(--line2);width:100%}
+  .winbar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#F2F0ED;border-bottom:1px solid var(--line2)}
+  .dot{width:11px;height:11px;border-radius:999px}
+  .dot.r{background:#ED6A5E}.dot.y{background:#F4BF4F}.dot.g{background:#61C554}
+  .url{margin-left:12px;font-size:12px;color:var(--ink3);background:#fff;border:1px solid var(--line);border-radius:7px;padding:4px 12px;font-weight:600}
+  .app{display:flex;min-height:392px}
+  .side{width:182px;background:#FAF9F7;border-right:1px solid var(--line2);padding:16px 12px;flex:none}
+  .side .logo-sm{width:26px;height:26px;border-radius:8px;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:900;font-size:14px;margin-bottom:18px}
+  .nav-i{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:var(--ink2);padding:8px 10px;border-radius:8px;margin-bottom:3px}
+  .nav-i.on{background:#fff;color:var(--brand);box-shadow:var(--sh)}
+  .nav-i .ic{width:15px;height:15px;border-radius:4px;background:currentColor;opacity:.55}
+  .nav-i.on .ic{opacity:1;background:var(--brand)}
+  .main{flex:1;padding:20px 24px;overflow:hidden}
+  .crumb{font-size:12px;color:var(--ink3);font-weight:600;margin-bottom:4px}
+  .h{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px}
+
+  /* tender rows */
+  .trow{display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line2);border-radius:10px;margin-bottom:9px;background:#fff}
+  .trow.best{border-color:var(--aib);background:var(--ai)}
+  .score{flex:none;width:46px;height:46px;border-radius:11px;display:grid;place-items:center;font-weight:900;font-size:16px;color:#fff}
+  .score.hi{background:var(--success)}.score.mid{background:var(--warm)}.score.lo{background:#C7C2BC}
+  .tinfo{flex:1;min-width:0}
+  .tinfo .t{font-size:14px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tinfo .m{font-size:12px;color:var(--ink3);margin-top:3px;display:flex;gap:12px}
+  .chip{font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;background:#EEF2FF;color:var(--info)}
+  .chip.ok{background:#E8F5ED;color:var(--success)}
+  .chip.warn{background:#FEF3E0;color:var(--warning)}
+
+  /* concept editor */
+  .editor{display:flex;gap:0;min-height:352px}
+  .doc{flex:1;padding:22px 26px;border-right:1px solid var(--line2);overflow:hidden}
+  .doc .sec{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin:0 0 8px}
+  .doc h4{font-size:16px;font-weight:800;margin:0 0 10px;color:var(--ink)}
+  .doc p{font-size:13.5px;line-height:1.6;color:var(--ink2);margin-bottom:9px}
+  .cite{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:800;vertical-align:super;
+    padding:1px 6px;border-radius:999px;margin-left:3px;cursor:default}
+  .cite.firm{background:#E8F5ED;color:var(--success)}
+  .cite.ext{background:#EEF2FF;color:var(--info)}
+  .hl-firm{background:rgba(22,163,74,.10);border-bottom:2px solid rgba(22,163,74,.4);border-radius:3px;padding:0 2px}
+  .hl-ext{background:rgba(58,93,174,.08);border-bottom:2px solid rgba(58,93,174,.35);border-radius:3px;padding:0 2px}
+  .aipanel{width:248px;flex:none;background:var(--ai);padding:18px 18px}
+  .aipanel .k{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--brand);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+  .spark{width:15px;height:15px;background:var(--warm);border-radius:3px;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+  .srcitem{background:#fff;border:1px solid var(--aib);border-radius:9px;padding:10px 12px;margin-bottom:8px}
+  .srcitem .st{font-size:12px;font-weight:700;color:var(--ink)}
+  .srcitem .sd{font-size:11px;color:var(--ink3);margin-top:3px}
+  .srcitem .tag{font-size:9px;font-weight:800;padding:2px 7px;border-radius:999px;letter-spacing:.04em}
+  .meter{margin-top:6px}
+  .meter .bar{height:7px;border-radius:999px;background:#EDE9E5;overflow:hidden}
+  .meter .bar i{display:block;height:100%;background:var(--grad);border-radius:999px}
+  .meter .lbl{display:flex;justify-content:space-between;font-size:11px;font-weight:700;color:var(--ink2);margin-bottom:5px}
+
+  /* signal card mock */
+  .sig{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid var(--aib);background:var(--ai);border-radius:12px;margin-bottom:11px}
+  .sig .ico{flex:none;width:40px;height:40px;border-radius:10px;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:900;font-size:18px}
+  .sig .t{font-size:14px;font-weight:700;color:var(--ink)}
+  .sig .d{font-size:12.5px;color:var(--ink2);margin-top:4px;line-height:1.45}
+  .sig .src{font-size:11px;color:var(--info);font-weight:700;margin-top:6px;display:inline-flex;gap:5px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;padding:9px 16px;border-radius:9px;background:var(--grad);color:#fff;border:none;box-shadow:var(--sh)}
+  .btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--line)}
+
+  ul.cl{list-style:none;display:flex;flex-direction:column;gap:13px}
+  ul.cl li{display:flex;gap:12px;font-size:16px;line-height:1.4;color:var(--ink2)}
+  .dark ul.cl li,.grad ul.cl li{color:#C0BBB5}
+  ul.cl li .n{flex:none;width:24px;height:24px;border-radius:999px;background:var(--grad);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;margin-top:1px}
+  ul.cl.ck li .n{background:rgba(22,163,74,.16);color:var(--success)}
+
+  /* steps */
+  .steps{display:flex;gap:14px}
+  .step{flex:1;background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:22px;box-shadow:var(--sh);position:relative}
+  .step .num{font-size:13px;font-weight:900;color:#fff;background:var(--grad);width:30px;height:30px;border-radius:999px;display:grid;place-items:center;margin-bottom:14px}
+  .step h3{font-size:17px;font-weight:800;margin-bottom:7px}
+  .step p{font-size:14px;color:var(--ink2);line-height:1.45}
+
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line2)}
+  th{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+  td{color:var(--ink2)} td strong{color:var(--ink)}
+  tr:last-child td{border-bottom:none}
+  .tcard{background:var(--card);border:1px solid var(--line2);border-radius:14px;overflow:hidden;box-shadow:var(--sh)}
+
+  .note{font-size:13px;color:var(--ink3);margin-top:16px}
+  .grad .note,.dark .note{color:#8A857F}
+
+  /* chrome */
+  .foot{position:fixed;bottom:20px;left:80px;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--ink3);z-index:20;pointer-events:none}
+  .foot b{color:var(--brand)}
+  .progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:30;transition:width .3s}
+  .nav{position:fixed;bottom:16px;right:80px;display:flex;gap:8px;z-index:40}
+  .nav button{width:36px;height:36px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink2);font-size:16px;cursor:pointer;box-shadow:var(--sh)}
+  .nav button:hover{border-color:var(--brand);color:var(--brand)}
+  .counter{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:700;color:var(--ink3);z-index:40}
+
+  @media print{body{overflow:visible}.slide{display:flex!important;opacity:1!important;position:relative;page-break-after:always;height:100vh;inset:auto}.nav,.counter,.progress,.foot{display:none!important}}
+  @media (max-width:980px){.slide{padding:36px 26px}.g2,.g3,.steps{grid-template-columns:1fr;flex-direction:column}.side{display:none}.foot{left:26px}.nav{right:26px}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- 1 · TITLE -->
+<section class="slide grad active">
+  <div class="fill">
+    <div class="logo">C</div>
+    <div class="eyebrow">Consultry</div>
+    <h1>Tender rein.<br><span class="gt">Gewinnender Bid raus.</span></h1>
+    <p class="lead" style="margin-top:22px">Der AI-Workspace, mit dem DACH-Beratungen aus ihren eigenen Dokumenten in Minuten ein submission-fertiges Angebot bauen — statt in Tagen.</p>
+    <div class="badges">
+      <span class="pill hero">Seed · MVP</span>
+      <span class="pill dk">DACH · DE + AT</span>
+      <span class="pill dk">€50 / Seat / Monat</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · PROBLEM (catchy stat) -->
+<section class="slide">
+  <div class="top"><div class="eyebrow">Problem</div></div>
+  <div class="fill">
+    <h2>Beratungen verlieren gewinnbare Aufträge —<br>weil das Angebot zu lange dauert.</h2>
+    <div class="statgrid" style="margin-top:46px">
+      <div><div class="stat gt">3–5</div><div class="lbl">Tage für <strong>ein</strong> Lösungs-/Arbeitskonzept</div></div>
+      <div><div class="stat gt">&gt;60%</div><div class="lbl">passender Tender werden <strong>gar nicht</strong> bearbeitet</div></div>
+      <div><div class="stat gt">0</div><div class="lbl">CRM bei den meisten mid-small Beratungen — nur Verträge in Ordnern</div></div>
+    </div>
+    <p class="note">Mid-small Beratungen sind nicht mangels Können limitiert, sondern mangels <strong>Zeit und Köpfen</strong>. Qualität und Aufwand sind dieselbe Beschränkung.</p>
+  </div>
+</section>
+
+<!-- 3 · SOLUTION -->
+<section class="slide grad">
+  <div class="fill">
+    <div class="eyebrow">Lösung</div>
+    <h2 style="max-width:18ch">Lade eure Dokumente hoch.<br>Consultry schreibt das <span class="gt">gewinnende Konzept.</span></h2>
+    <div class="grid g3" style="margin-top:40px">
+      <div class="card"><div class="k">Gegroundet</div><p>Jede Aussage belegt — aus eurem Korpus oder zitierter Quelle. Kein erfundener Claim.</p></div>
+      <div class="card"><div class="k">Fit-to-Score</div><p>Liest die Zuschlagskriterien und gewichtet das Konzept auf maximale Punktzahl.</p></div>
+      <div class="card"><div class="k">In Minuten</div><p>Vom Tender zum editierbaren Entwurf — der Consultant verfeinert, statt bei null zu starten.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · PRODUCT: TENDER BOARD -->
+<section class="slide">
+  <div class="top">
+    <div class="eyebrow">Produkt · 1 — Tender Board</div>
+    <h2 style="font-size:clamp(24px,2.8vw,34px)">Passende Ausschreibungen, automatisch bewertet.</h2>
+  </div>
+  <div class="fill">
+    <div class="window">
+      <div class="winbar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">app.consultry.ai/tenders</span></div>
+      <div class="app">
+        <div class="side">
+          <div class="logo-sm">C</div>
+          <div class="nav-i on"><span class="ic"></span>Tender Board</div>
+          <div class="nav-i"><span class="ic"></span>Opportunities</div>
+          <div class="nav-i"><span class="ic"></span>Konzepte</div>
+          <div class="nav-i"><span class="ic"></span>Wissen</div>
+          <div class="nav-i"><span class="ic"></span>Team</div>
+        </div>
+        <div class="main">
+          <div class="crumb">Öffentliche Ausschreibungen · TED / eForms</div>
+          <div class="h">14 neue Treffer · gematcht gegen euer Profil</div>
+          <div class="trow best">
+            <div class="score hi">92</div>
+            <div class="tinfo"><div class="t">Zero-Trust-Architektur &amp; SOC-Aufbau — Landesbehörde NRW</div>
+              <div class="m"><span>CPV 72500000</span><span>Frist 24 Tage</span><span class="chip ok">Eignung erfüllt</span></div></div>
+            <button class="btn">Konzept starten</button>
+          </div>
+          <div class="trow">
+            <div class="score mid">68</div>
+            <div class="tinfo"><div class="t">ISMS-Beratung nach BSI IT-Grundschutz — Stadtwerke</div>
+              <div class="m"><span>CPV 79417000</span><span>Frist 11 Tage</span><span class="chip warn">1 Nachweis offen</span></div></div>
+            <button class="btn ghost">Prüfen</button>
+          </div>
+          <div class="trow">
+            <div class="score lo">34</div>
+            <div class="tinfo"><div class="t">Rechenzentrums-Migration — Bundesamt</div>
+              <div class="m"><span>CPV 72600000</span><span>Frist 30 Tage</span><span class="chip">No-Bid empfohlen</span></div></div>
+            <button class="btn ghost">Verwerfen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Match-Score + Bid/No-Bid-Eignungscheck gegen euren eigenen Korpus — keine Submission-Blindflüge.</p>
+  </div>
+</section>
+
+<!-- 5 · PRODUCT: CONCEPT SUITE (HERO) -->
+<section class="slide">
+  <div class="top">
+    <div class="eyebrow">Produkt · 2 — Concept Suite ★ Hero</div>
+    <h2 style="font-size:clamp(24px,2.8vw,34px)">Gegroundetes Konzept — jeder Satz belegt.</h2>
+  </div>
+  <div class="fill">
+    <div class="window">
+      <div class="winbar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">app.consultry.ai/concept/zero-trust-nrw</span></div>
+      <div class="editor">
+        <div class="doc">
+          <div class="sec">Lösungskonzept · 3.2 Vorgehen</div>
+          <h4>Aufbau einer Zero-Trust-Architektur</h4>
+          <p>Wir implementieren das Zielbild gemäß <span class="hl-ext">BSI IT-Grundschutz Baustein OPS.1.1.2<span class="cite ext">↗ Norm</span></span> in vier Phasen mit kontinuierlicher Risikobewertung.</p>
+          <p>Das Vorhaben wird von einem Team geleitet, das <span class="hl-firm">17 vergleichbare SOC-Projekte im öffentlichen Sektor<span class="cite firm">◆ Korpus</span></span> umgesetzt hat, zertifiziert nach <span class="hl-firm">ISO 27001 &amp; BSI APT-Response<span class="cite firm">◆ Korpus</span></span>.</p>
+          <p>Die Segmentierung folgt dem Least-Privilege-Prinzip; Identitäten werden über einen zentralen Broker mit kontinuierlicher Verifikation gesteuert.</p>
+        </div>
+        <div class="aipanel">
+          <div class="k"><span class="spark"></span>Grounding</div>
+          <div class="srcitem"><span class="tag" style="background:#E8F5ED;color:var(--success)">◆ FIRM-FACT</span>
+            <div class="st" style="margin-top:6px">17 SOC-Projekte öff. Sektor</div>
+            <div class="sd">Referenzliste_2025.pdf · S.4</div></div>
+          <div class="srcitem"><span class="tag" style="background:#EEF2FF;color:var(--info)">↗ EXTERNAL</span>
+            <div class="st" style="margin-top:6px">BSI Grundschutz OPS.1.1.2</div>
+            <div class="sd">bsi.bund.de · Edition 2023</div></div>
+          <div class="meter" style="margin-top:14px">
+            <div class="lbl"><span>Fit-to-Zuschlagskriterien</span><span>88%</span></div>
+            <div class="bar"><i style="width:88%"></i></div>
+          </div>
+          <div class="meter" style="margin-top:10px">
+            <div class="lbl"><span>Belegte Aussagen</span><span>100%</span></div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note"><strong>Firm-Facts</strong> nur aus eurem Korpus · <strong>External-Facts</strong> zitiert · <strong>Model-Expertise</strong> markiert. Ein Mensch gibt frei — die AI assistiert.</p>
+  </div>
+</section>
+
+<!-- 6 · PRODUCT: BESTANDSKUNDEN SIGNAL -->
+<section class="slide">
+  <div class="top">
+    <div class="eyebrow">Produkt · 3 — Bestandskunden-Radar</div>
+    <h2 style="font-size:clamp(24px,2.8vw,34px)">Folgegeschäft, bevor die Konkurrenz es sieht.</h2>
+  </div>
+  <div class="fill">
+    <div class="grid g2" style="align-items:start">
+      <div class="window">
+        <div class="winbar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="url">app.consultry.ai/signals</span></div>
+        <div class="main" style="padding:22px 22px">
+          <div class="crumb">Aus euren Verträgen — automatisch erkannt</div>
+          <div class="h">Aktive Chancen</div>
+          <div class="sig">
+            <div class="ico">⏰</div>
+            <div><div class="t">Optionsfenster öffnet in 38 Tagen</div>
+              <div class="d">Rahmenvertrag „Stadtwerke Köln" enthält eine Verlängerungsoption über 2 Jahre — jetzt ansprechen.</div>
+              <span class="src">◆ Vertrag_SWK_2023.pdf · §11 Abs. 2</span></div>
+          </div>
+          <div class="sig" style="background:#fff;border-color:var(--line2)">
+            <div class="ico" style="background:#C7C2BC">↻</div>
+            <div><div class="t">White-Space: Pentest-Leistung fehlt</div>
+              <div class="d">Bestandskunde bezieht ISMS, aber kein Penetration-Testing — naheliegende Erweiterung.</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card"><div class="k">Kein CRM nötig</div><p>Verträge &amp; Dokumente hochladen — die AI extrahiert Fristen, Optionen und Stakeholder. Quellen-Klausel immer verlinkt.</p></div>
+        <div class="card ai"><div class="k">Retention-Spine</div><p>Vertragsfenster öffnen sich laufend — der Grund, jede Woche wieder einzuloggen. Nicht nur bei der nächsten Ausschreibung.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · HOW IT WORKS -->
+<section class="slide grad">
+  <div class="top"><div class="eyebrow">So funktioniert's</div><h2>Drei Schritte vom Anlass zum Angebot</h2></div>
+  <div class="fill">
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Intake</h3><p>Tender (TED/eForms) oder Bestandskunden-Signal aus euren Verträgen landet als qualifizierte Opportunity.</p></div>
+      <div class="step"><div class="num">2</div><h3>Ground &amp; Draft</h3><p>Die Concept Suite zieht euren Korpus + zitierte Quellen, baut das Konzept entlang der Zuschlagskriterien.</p></div>
+      <div class="step"><div class="num">3</div><h3>Verfeinern &amp; freigeben</h3><p>Consultant editiert, prüft Belege, gibt frei. Anonyme Team-Shape zeigt: können wir liefern?</p></div>
+    </div>
+    <p class="note">Alles in einem System — gegroundet, freigegeben, auditierbar.</p>
+  </div>
+</section>
+
+<!-- 8 · MARKET / WHY NOW -->
+<section class="slide">
+  <div class="top"><div class="eyebrow">Markt &amp; Timing</div><h2>Richtiger Markt, richtiger Moment.</h2></div>
+  <div class="fill">
+    <div class="grid g3">
+      <div class="card"><div class="big gt">~38k</div><div class="k" style="color:var(--ink3)">DACH IT-/Digital-Beratungen</div><p>Mid-small (30–200), unterversorgt von Enterprise-PSA und generischen RFP-Tools.</p></div>
+      <div class="card"><div class="big gt">AI-nativ</div><div class="k" style="color:var(--ink3)">Jetzt baubar</div><p>Frontier-Modelle + Grounding machen submission-taugliche Konzepte erst heute möglich.</p></div>
+      <div class="card"><div class="big gt">DACH</div><div class="k" style="color:var(--ink3)">Moat statt Nachteil</div><p>Grounding, Vergaberecht, Mitbestimmung, deutschsprachige Tiefe — globale Player adressieren das nicht.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · BUSINESS MODEL -->
+<section class="slide grad">
+  <div class="top"><div class="eyebrow">Business-Modell</div><h2>Einfach, planbar, wächst mit dem Kunden.</h2></div>
+  <div class="fill">
+    <div class="grid g3" style="margin-bottom:8px">
+      <div class="card"><div class="big gt">€50</div><p>pro Seat / Monat · je Consultant + Sales · 2 Backoffice frei</p></div>
+      <div class="card"><div class="big gt">€15–45k</div><p>ACV pro Firma · 25–75 Seats</p></div>
+      <div class="card"><div class="big gt">&gt;100%</div><p>NRR strukturell — Seats skalieren mit Headcount</p></div>
+    </div>
+    <p class="note">Ein gewonnener öffentlicher Tender = €100k+. €50/Seat ist gegen den Wert eine Rundungsdifferenz — bewusst niedrig zum Landen, Value-Tier nach PMF.</p>
+  </div>
+</section>
+
+<!-- 10 · WHY US / MOAT -->
+<section class="slide">
+  <div class="top"><div class="eyebrow">Warum wir</div><h2>Founder-Market-Fit + ein Moat, der wächst.</h2></div>
+  <div class="fill">
+    <div class="grid g2" style="align-items:center">
+      <ul class="cl ck">
+        <li><span class="n">✓</span><div><strong>Gründer betreibt eine Cybersecurity-Beratung</strong> — Design-Partner #0, gelebte Domäne, Showcase-Demo ohne fremde Daten.</div></li>
+        <li><span class="n">✓</span><div><strong>Korpus compoundet</strong> — jedes hochgeladene Dokument macht Consultry für genau diese Firma wertvoller.</div></li>
+        <li><span class="n">✓</span><div><strong>Shell statt Mitte</strong> — das Modell frisst Textgenerierung; wir besitzen Grounding, Vergabe-Logik, Compliance, Workflow.</div></li>
+      </ul>
+      <div class="card ai" style="padding:30px">
+        <div class="k">10x gegen ChatGPT &amp; RFP-Tools</div>
+        <p style="font-size:18px;line-height:1.5">Discovery + Qualifizierung + Produktion <strong>in einem</strong> — auf Deutsch, gegroundet im eigenen Korpus, zum SME-Preis. Reine Proposal-Writer decken ein Drittel ab. Discovery-Tools sind ein RSS-Feed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · GTM / TRACTION PLAN -->
+<section class="slide">
+  <div class="top"><div class="eyebrow">Go-to-Market</div><h2>Stage-0: erst beweisen, dann skalieren.</h2></div>
+  <div class="fill">
+    <div class="tcard">
+      <table>
+        <thead><tr><th style="width:130px">Phase</th><th>Ziel</th><th>Beweis</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Jetzt</strong></td><td>1 Design-Partner (warm) + eigene Firma</td><td><strong>1 echter Bid-Entwurf aus eigenem Korpus in 5 Tagen</strong></td></tr>
+          <tr><td><strong>+3 Monate</strong></td><td>3–5 zahlende Pilots, niedrige Pilot-Fee</td><td>Before/After: 10 Min statt 2 Tage · Pilot → Paid</td></tr>
+          <tr><td><strong>+9 Monate</strong></td><td>DE + AT, Bestandskunden-Tür breit öffnen</td><td>Sean-Ellis ≥ 40% · NRR &gt; 100%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Tür-Öffner = Bestandskunden (täglicher Schmerz). Big Swing = Tender (der große Auftrag).</p>
+  </div>
+</section>
+
+<!-- 12 · VISION / ASK -->
+<section class="slide grad">
+  <div class="fill">
+    <div class="logo">C</div>
+    <h2 style="max-width:16ch">Heute der Bid-Gewinner.<br>Morgen das <span class="gt">Betriebssystem</span> der DACH-Beratung.</h2>
+    <p class="lead" style="margin-top:22px">Wir starten beim schärfsten, beweisbarsten Schmerz — Projekte gewinnen — und wachsen entlang des gesamten Beratungs-Workflows.</p>
+    <div class="badges">
+      <span class="pill hero">Acquisition → Delivery → Commercial</span>
+      <span class="pill dk">Seed · DACH · AI-nativ</span>
+    </div>
+  </div>
+</section>
+
+<div class="foot"><b>Consultry</b> · Investor Deck v1.0 · vertraulich</div>
+<div class="counter"><span id="cur">1</span> / <span id="tot">12</span></div>
+<div class="nav"><button id="prev">‹</button><button id="next">›</button></div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')],prog=document.getElementById('progress'),cur=document.getElementById('cur');
+  document.getElementById('tot').textContent=slides.length;let i=0;
+  function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    prog.style.width=((i+1)/slides.length*100)+'%';cur.textContent=i+1;
+    const d=slides[i].classList.contains('dark')||slides[i].classList.contains('grad');
+    document.querySelector('.foot').style.color=d?'#8A857F':'';document.querySelector('.counter').style.color=d?'#8A857F':''}
+  const next=()=>show(i+1),prev=()=>show(i-1);
+  document.getElementById('next').onclick=next;document.getElementById('prev').onclick=prev;
+  document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+    else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1)});
+  let x0=null;addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+  addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50){dx<0?next():prev()}x0=null});
+  show(0);
+</script>
+</body>
+</html>
