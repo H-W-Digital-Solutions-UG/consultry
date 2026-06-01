@@ -72,7 +72,19 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
 | **Engine: Knowledge/Reuse + Grounding-Workspace** (F2/F3) | Korpus-Ingest, Retrieval, Citations, Copilot, Approval-Hook. **Nicht als eigenes Feature vermarktet.** | unsichtbarer Motor |
 | **Backbone** | Approval-Card + Audit-Trail + Grounding-Garantie. | Compliance-Default |
 
-### 3.1a Die anderen vier bewusst dünn (um den Hero zu finanzieren)
+### 3.1-Platform: Record-Layer-Substrat (MVP — weil ICP meist kein CRM hat)
+
+> Diese Bausteine sind **Plattform-Substrat**, nicht der Hero. Sie existieren, weil mid-small DACH-Beratungen kein gepflegtes CRM/PSA haben → Consultry ist ihre Record-Basis. **Sie dürfen den 5-Tage-Concept-Pfad nicht starven** (siehe Tiering, §3.1b).
+
+| Baustein | Was im MVP | Rolle |
+|---|---|---|
+| **ConsultantProfile** | Personenbez. Skills/Zertifikate/Erfahrung — **auto-gepflegt** von Background-Agents aus verknüpften Quellen, Consultant bestätigt. Deskriptiv, **kein Scoring**. Speist nur **aggregiert** in Team-Shape. | Capability-Substrat |
+| **Work-Agent / Time-Capture** (Harvest-orientiert) | Leichte Zeiterfassung (BAG-pflichtig); Agent schlägt `TimeEntry`s aus In-Tool-Arbeit vor, Consultant bestätigt. Privater `PersonalNote`-Layer = Retention-Driver. | Daily-Driver + Capture |
+| **Project Observability** | Deliverable-zentrierter `ProjectStatus`/Burn aus **aggregierten TimeEntries**. **Nie personen-attribuiert** im Default; Personenbezug nur unter Works-Council-Mode. | Management-Substrat |
+
+> **Compliance-Posture (bestätigt 30.05.):** Capture (Zeit) ist legitim/BAG-pflichtig; **personenbezogene Auswertung ist hinter Works-Council-Mode geschaltet** — kein Verbot, sondern ein **verkaufbarer Deal-Enabler.** DACH-Risiko = blockierter Deal (BR verweigert Unterschrift), nicht Lawsuit. Details: [Domain-Def §5 Punkt 9, GI-7..16](./Consultry-Business-Domain-Definition-v1.0.md).
+
+### 3.1a Die anderen vier (Acquisition-Linie) bewusst dünn (um den Hero zu finanzieren)
 
 | Element | Dünnste tragfähige MVP-Version |
 |---|---|
@@ -83,18 +95,31 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
 
 > Kritischer Pfad = **Concept Suite → 5-Tage-Draft → PMF-Signal.** Alles andere ist Zubringer und bleibt dünn, bis dieses Signal steht.
 
-### 3.2 Die vier MVP-Surfaces (alles andere später)
+### 3.1b Tiering (damit das Substrat den kritischen Pfad nicht starvt)
+
+Der MVP ist gewachsen (Acquisition-Linie **+** Record-Substrat). Damit der 5-Tage-Concept-Pfad nicht ertrinkt, zwei Tiers — **Reihenfolge, nicht Streichung**:
+
+| Tier | Inhalt | Zweck |
+|---|---|---|
+| **MVP-Core** (zuerst) | Acquisition-to-Bid-Linie: Opportunity, Tender (semi-manuell), Bestandskunden-Signal, **Concept Suite (Hero)**, anonyme Team-Shape, Grounding-Engine, Backbone. | Beweist das **PMF-Signal** (5-Tage-Draft). |
+| **MVP-Platform** (parallel/danach) | Record-Substrat: ConsultantProfile (auto), Work-Agent/Time-Capture, Project Observability, Works-Council-Mode. | Macht Consultry zur **CRM-losen Basisplattform** + Retention. |
+
+> **Regel:** MVP-Platform darf den MVP-Core nicht verzögern. Ist Build-Bandbreite knapp (G11), hat **MVP-Core Vorrang** — das PMF-Signal hängt am Hero, nicht am Substrat.
+
+### 3.2 Die MVP-Surfaces
 
 1. **Opportunity-Detail / Approval-Card** — das zentrale Entscheidungsobjekt.
 2. **Tender Board** — Liste, strukturierte Tender-Sicht, Eignungs-/Match-Check.
 3. **Concept & Proposal Canvas** — der Hero-Surface: gegroundeter Entwurf, editierbar, Version History.
 4. **Team-Profile-Sicht** — anonyme Team-Shape + aggregierte Kapazitäts-Aussage.
+5. *(MVP-Platform)* **Work-Agent / Time-Capture** — Zeiterfassung + privater Notiz-Layer.
+6. *(MVP-Platform)* **Project-Status-Board** — deliverable-zentriert, aggregiert.
 
-> Die vier anderen Surfaces aus den Phase-1-Specs (Cockpit, Notification Center, Knowledge Workspace als eigene Oberfläche, Staffing-Detailsicht) sind **MVP-out** — sie kommen als dünne Einstiegspunkte, nicht als ausgebaute Surfaces.
+> Cockpit, Notification Center, Knowledge Workspace (als eigene Oberfläche) bleiben **dünne Einstiegspunkte**, nicht ausgebaute Surfaces.
 
 ### 3.3 Explizit OUT (MVP)
 
-Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **personenscharfes** Staffing/Matching · voller Capacity Planner/Forecasting · Time/Expense/Invoice, DATEV/ELSTER · Net-New-Prospecting · CH-Markt · offener Prompt-Marktplatz · Multi-Step-Agentik/autonome Aktionsketten · Schreibzugriff/Outbound nach außen.
+Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **personenscharfes** Staffing/Matching · voller Capacity Planner/Workforce-Optimierung · **tiefes personenbezogenes Utilization-/Delivery-Analytics** (≠ Time-Capture, das ist drin) · Invoice/DATEV/ELSTER · Net-New-Prospecting · CH-Markt · offener Prompt-Marktplatz · Multi-Step-Agentik/autonome Aktionsketten · Schreibzugriff/Outbound nach außen · **personenbez. Auswertung ohne Works-Council-Mode**.
 
 ---
 

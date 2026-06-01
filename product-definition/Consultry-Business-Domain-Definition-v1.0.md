@@ -34,8 +34,10 @@
 | **KnowledgeAsset** | Wiederverwendbarer, quellengebundener Baustein (Referenz, Methode, Runbook, Blueprint). | Roh-Dokument (un-verdichtet) |
 | **AISkill / Blueprint** | Versionierte, wiederverwendbare AI-Arbeitsfähigkeit (Prompt + Kontext + Owner). | Ad-hoc-Prompt |
 | **ConsultantProfile** | Personenbezogene Stammdaten: Skills/Zertifikate/Erfahrung/Availability. **Im MVP deskriptiv pflegbar, aber in Bid/TeamShape/Forecast nur aggregiert verwendet** (GI-12/13). | personenscharfes Matching/Scoring (H2+Gate) |
-| **PersonalLogEntry** | Privates, opt-in Arbeitslog des Consultants (Retention-Driver). Management hat keinen Zugriff (GI-7/8). | ProjectStatus (Management-sichtbar) |
-| **ProjectStatus** | Deliverable-zentrierter Projektfortschritt (RAG/Milestones/Fristen). **Nie personen-attribuiert** (GI-10). | PersonalLogEntry; Leistungskontrolle |
+| **TimeEntry** | Zeiterfassungs-Eintrag (Dauer, Projekt/Task, billable, Notiz). Geschäftsdatum, **BAG-pflichtig**. Capture erlaubt; personenbez. Auswertung WC-gated (GI-8). | PersonalNote (rein privat) |
+| **PersonalNote** | **Strikt privater** Notiz-Layer des Consultants (Retention-Driver). Nie management-sichtbar, nie Analytics-Input (GI-7). | TimeEntry (Geschäftsdatum) |
+| **WorkAgentSuggestion** | Vom Work-Agent vorgeschlagener TimeEntry/Tages-Summary aus In-Tool-Arbeit; wird erst nach Consultant-Bestätigung zum `TimeEntry` (GI-9a). | bestätigter TimeEntry |
+| **ProjectStatus** | Deliverable-zentrierter Projektfortschritt (RAG/Milestones/Fristen/BudgetBurn), aus **aggregierten TimeEntries**. **Nie personen-attribuiert** im Default (GI-10/16). | personenbez. Utilization (WC-gated) |
 | **TeamShape** | **Anonyme** Soll-Zusammensetzung: Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen — **keine Personen.** | TeamProposal/named team (H2) |
 | **Forecast** | Aggregierte Kapazitäts-/Auslastungssicht (Team/Practice). | personenscharfer Forecast (H2) |
 | **Firm-Fact** | Eine **überprüfbare Tatsache über den Tenant** (Zertifikat, Referenz, Kapazität, Track-Record). **Muss tenant-korpus-gegroundet sein.** | External-Fact, Model-Expertise |
@@ -74,11 +76,13 @@
         │  (Asset/Skill/  │    │  (ConsultantProfile│
         │   Grounding-Eng)│    │   /TeamShape/Forec)│
         └────────────────┘    └────────────────────┘
- ┌──────────────────────┐   ┌──────────────────────────┐
- │ PERSONAL WORK-CONTEXT│ ✗ │  PROJECT OBSERVABILITY    │   ✗ = harte
- │ (PersonalLogEntry,   │───│  (ProjectStatus, RAG,     │   Firewall
- │  privat, opt-in)     │   │   deliverable-only)       │   GI-7/8/10/11
- └──────────────────────┘   └──────────────────────────┘
+ ┌──────────────────────┐       ┌──────────────────────────┐
+ │ PERSONAL WORK-CONTEXT│       │  PROJECT OBSERVABILITY    │
+ │ TimeEntry (Capture)  │──agg─▶│  ProjectStatus/BudgetBurn │
+ │ PersonalNote (✗priv.)│       │  (deliverable-aggregiert) │
+ │ WorkAgent (Harvest)  │       │  Personenbezug = WC-gated │
+ └──────────────────────┘       └──────────────────────────┘
+   ✗ PersonalNote nie → Observability/Analytics (GI-7).  TimeEntry nur AGGREGIERT → Status (GI-11).
 ┌─────────────────────────────────────────────────────────────────────┐
 │  GOVERNANCE  (Querschnitt — Recommendation/Approval/Audit/Grounding) │
 └─────────────────────────────────────────────────────────────────────┘
@@ -135,23 +139,27 @@
 ### 3.7 Tenant & Identity (MVP, Querschnitt)
 - Tenant-Isolation, Rollen (BD/Account Lead, Practice Lead, Consultant-Autor, Managing Partner), **Seat-Modell** (je Consultant+Sales kostenpflichtig, 2 Backoffice frei).
 
-### 3.8 **Personal Work-Context** (MVP — Retention-Daily-Driver, opt-in)
-- **Aggregate:** `PersonalLogEntry` (Root, **eigentümer = der Consultant**).
-- **Verantwortung:** privates, **opt-in** Arbeitslog/Notiz-Assistent für den Consultant selbst (Tages-Fortschritt, Gedanken, Draft-Schnipsel) → gibt einen **täglichen Login-Grund ohne Überwachung**.
-- **Invarianten (kritisch — Mitbestimmungs-Firewall):**
-  - **GI-7 Privacy-by-Default:** `PersonalLogEntry` ist **privat zum Consultant**; Management hat **keinen** Lesezugriff.
-  - **GI-8 No-Auto-Surface:** ein Log-Eintrag erscheint **nie** automatisch in Project Observability (3.9). Übergabe nur durch **explizite, item-weise Publish-Aktion des Consultants**. Kein Fluss Self-Log → Management ohne diesen bewussten Schritt.
-  - **GI-9 Kein Leistungs-Inferenz:** das System leitet aus `PersonalLogEntry` **keine** Personen-Leistungs-/Verhaltensbewertung ab.
-  - **GI-9a Auto-Feed gegen Doku-Fatigue:** der Self-Log wird **automatisch** aus der In-Tool-Arbeit des Consultants befüllt (Projects, Knowledge, Spec/Concept Suite) — kein manuelles Abtippen. Das ist der Unterschied zu (gescheiterten) manuellen Journaling-/Standup-Tools.
+### 3.8 **Personal Work-Context** (MVP — Work-Agent, Harvest-orientiert)
+> **Vorbild Harvest/Toggl, AI-nativ neu gedacht:** der Consultant erfasst Zeit/Arbeit *mit minimalem Aufwand*, der **Work-Agent** schlägt Einträge aus der In-Tool-Aktivität vor. **Saubere Trennung: Capture (erlaubt, BAG-pflichtig) vs. personenbezogene Analytics (WC-Mode-gated).**
+- **Aggregate:** `TimeEntry` (Root — Dauer, Projekt-/Task-Zuordnung, billable/non-billable, Notiz), `PersonalNote` (Root, **rein privat** — Gedanken/Draft-Schnipsel), `WorkAgentSuggestion`.
+- **Verantwortung:**
+  - **Time-Capture** (Harvest-Kern): leichte Zeiterfassung pro Projekt/Task. **Rechtsgrundlage: BAG 13.09.2022 → Arbeitszeiterfassung ist in DE Pflicht** → Capture ist legitim/gefordert, nicht Überwachungs-Kür.
+  - **Work-Agent:** schlägt `TimeEntry`s + Tages-Zusammenfassung aus der In-Tool-Arbeit vor (Projects, Knowledge, Concept Suite) → killt Doku-Fatigue; der Consultant **bestätigt/korrigiert** (Human-in-the-loop).
+  - **PersonalNote:** privater Notiz-Layer als Retention-Daily-Driver.
+- **Invarianten (kritisch — Capture/Analytics-Firewall):**
+  - **GI-7 Private Note ≠ Time Entry:** `PersonalNote` ist **strikt privat zum Consultant**, niemals management-sichtbar, nie Analytics-Input. `TimeEntry` ist Geschäftsdatum (abrechnungs-/projektrelevant).
+  - **GI-8 Capture erlaubt, Analytics gated:** **Erfassung** von `TimeEntry` (auch agentengestützt) ist im MVP erlaubt. **Personenbezogene Auswertung** (Utilization/Burn/Vergleich pro Person) ist **§87-relevant → nur unter Works-Council-Mode** (GI-16). Aggregierte/anonyme Auswertung ist frei.
+  - **GI-9 Kein Leistungs-Scoring:** kein Ranking/Burnout-/Performance-Scoring aus `TimeEntry`/`PersonalNote` — auch nicht unter WC-Mode (PRD §4.1 „darf nicht").
+  - **GI-9a Agent schlägt vor, Mensch bestätigt:** Work-Agent-Einträge sind `WorkAgentSuggestion` bis zur Consultant-Bestätigung — nichts wird ohne Bestätigung zum `TimeEntry`.
 
-### 3.9 **Project Observability** (MVP — bewusst dünn, deliverable-zentriert)
-- **Aggregate:** `ProjectStatus` (Root) → `Milestone[]`, `RAGState`, `Deadline[]`.
-- **Verantwortung:** Management-Sicht auf **Projekt-/Deliverable-Fortschritt** (RAG, Milestones, Fristen) — speist optional das Bestandskunden-Renewal-/Deliverability-Signal (Wedge-Anbindung).
+### 3.9 **Project Observability** (MVP — deliverable-zentriert, aus Time-Entries)
+- **Aggregate:** `ProjectStatus` (Root) → `Milestone[]`, `RAGState`, `Deadline[]`, `BudgetBurn` (aggregiert).
+- **Verantwortung:** Management-Sicht auf **Projekt-/Deliverable-Fortschritt** (RAG, Milestones, Fristen, Budget-Burn) — Harvest-artig **aus aggregierten `TimeEntry`s** abgeleitet (löst das Quellen-Problem), nicht aus manueller Pflege.
 - **Invarianten (kritisch):**
-  - **GI-10 Deliverable-zentriert, NIE personen-attribuiert:** Status hängt an **Projekt/Deliverable**, nicht an Personen. **Kein Drill-down „Projekt gelb *wegen Person Y*".** Personen-Attribution = BetrVG §87 → verboten im MVP.
-  - **GI-11 Quelle ≠ Self-Logs:** `ProjectStatus` wird **nicht** aus `PersonalLogEntry` abgeleitet (GI-8); Quelle ist explizit gepflegter Projekt-Status.
-  - **GI-15 Scope-Disziplin:** MVP = **Substrat-Level** Projektstatus (RAG/Milestones/Fristen) als Record-Layer-Basisplattform — **kein** tiefes Delivery-Analytics/Auslastungs-Reporting (H2). Der **Renewal-Signal kommt aus Vertragsdaten (F1/Acquisition), nicht aus RAG-Status** — Observability rechtfertigt sich als Substrat, nicht als Wedge-Zubringer.
-  - **GI-16 Works-Council-Gate für Personenbezug:** jedes personenbezogene Feature (ConsultantProfile-Details, PersonalLogEntry, jede künftige personenscharfe Sicht) ist technisch **nur unter konfiguriertem Works-Council-Mode bzw. „kein-BR"-Attestierung** aktivierbar (siehe Invariante §5.9).
+  - **GI-10 Deliverable-/Projekt-aggregiert, NIE personen-attribuiert:** Status & Burn hängen an **Projekt/Deliverable**, nicht an Personen. **Kein Drill-down „Projekt gelb *wegen Person Y*"** im Default-Modus. Personen-Drilldown = §87 → **nur unter Works-Council-Mode** (GI-16), nicht „verboten", sondern **konfigurierbar**.
+  - **GI-11 Quelle = aggregierte Time-Entries, nicht PersonalNote:** `ProjectStatus`/`BudgetBurn` werden aus **aggregierten `TimeEntry`s** abgeleitet; `PersonalNote` fließt **nie** ein (GI-7).
+  - **GI-15 Scope-Disziplin:** MVP = Projektstatus/Burn als Record-Layer-Substrat — **kein** tiefes Delivery-/Workforce-Analytics (H2). **Renewal-Signal kommt primär aus Vertragsdaten (F1)**; Burn/Status sind Substrat + sekundärer Deliverability-Input.
+  - **GI-16 Works-Council-Gate für Personenbezug (konfigurierbar):** personenbezogene Auswertung (Utilization/Burn/Drilldown pro Person) ist technisch **hinter Works-Council-Mode** geschaltet — bei „kein-BR"-Attestierung frei, mit BR nur per Betriebsvereinbarung. **Risiko in DACH = blockierter Deal, nicht Lawsuit → WC-Mode ist ein verkaufbares Deal-Enabler-Feature, kein Verbot.** (siehe §5 Punkt 9)
 
 ---
 
@@ -177,10 +185,11 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 6. **Model-Processing-Compliance (bestätigt 30.05.):** LLM-Nutzung läuft über einen **Enterprise-API-Deal mit AVV/DPA (Art. 28 DSGVO), No-Training-on-Data und EU/EEA-Processing bzw. SCCs.** Tenant-Daten dürfen zur Verarbeitung an das Modell — die Compliance-Grenze liegt im Vertrag, nicht im Verbot. **Wichtig: das löst *Datenverarbeitung*, nicht *externes Research-Grounding* (Scope/Freshness/Faithfulness — siehe GI-1, GI-5/6).**
 7. **External-Research-Firewall (GI-5/6, bestätigt 30.05.):** externe Research-Queries werden PII-/kundendaten-bereinigt (GI-5); zulässige Quellen via White-/Blacklist (`SourcePolicy`, GI-6). Web-Research ist erlaubt, aber sanitisiert und policy-gefiltert.
 8. **Human-Backstop (GI-1b):** kein LLM garantiert Grounding zu 100 %. Die rechtliche Sicherungsschicht ist die **menschliche Freigabe** des verantwortlichen Consultant-Autors, nicht die AI.
-9. **⚠️ §87-Realität (korrigiert 30.05. — NICHT darauf bauen, dass es anders wäre):**
-   - **§87 Abs. 1 Nr. 6 BetrVG greift bei *objektiver Eignung zur Überwachung* — der bloßen *Fähigkeit* des Systems, Verhalten/Leistung personenbezogen zu erfassen — unabhängig von Absicht.** Personenbezogene Profile/Logs/Status sind objektiv überwachungsgeeignet.
-   - **Manuelle Einzel-Zustimmung des Consultants hebt §87 NICHT auf.** §87 ist ein **kollektives** Recht des Betriebsrats; ein einzelner Beschäftigter kann es **nicht** verzichten. Manuelle Akzeptanz hilft DSGVO/BDSG §26 (Transparenz/Zweckbindung) + Vertrauen, ist aber **kein §87-Ausweg.**
-   - **Lawful path:** (a) viele ICP-Firmen (30–60 P.) haben **keinen Betriebsrat** → §87 greift dort nicht (ehrliche Near-Term-Deckung); (b) wo ein BR existiert → **Betriebsvereinbarung**, technisch abgebildet über **Works-Council-Mode**: personenbezogene Features sind **nur unter konfiguriertem Works-Council-Mode/BV aktivierbar.** Manuelle Akzeptanz + Transparenz sind *unterstützende Evidenz innerhalb* dieses Rahmens, nicht der Rahmen selbst.
+9. **§87-Realität — pragmatisch (Move-fast, aber ehrlich):**
+   - **Das DACH-Risiko ist ein *blockierter Deal*, kein Lawsuit.** §87 Abs. 1 Nr. 6 greift bei *objektiver Überwachungs-Eignung* (Fähigkeit, nicht Absicht); ein Betriebsrat kann die Einführung *aufhalten*. Das killt Verkäufe, nicht via Klage, sondern via verweigerter Unterschrift.
+   - **Einzel-Consent hebt §87 nicht auf** (kollektives BR-Recht) — also lösen wir es **nicht** über Klick-Zustimmung, sondern über das Produkt.
+   - **Capture vs. Analytics ist der Hebel:** **Zeiterfassung (Capture) ist seit BAG 13.09.2022 in DE Pflicht** → legitim/gefordert. Nur die **personenbezogene Auswertung** ist mitbestimmt.
+   - **Works-Council-Mode = verkaufbarer Deal-Enabler, kein Verbot:** (a) Firmen ohne BR (viele 30–60-P.-ICP) → Personenbezug frei nutzbar; (b) mit BR → WC-Mode bildet die **Betriebsvereinbarung** technisch ab und macht den Deal *durchsetzbar*. „move fast" heißt hier: **den Schalter shippen, der den Deal durchlässt**, nicht §87 ignorieren.
 
 ---
 
