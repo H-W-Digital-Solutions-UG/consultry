@@ -139,6 +139,7 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 3. **Provenance-Modell (GI-1, drei-wertig):** Firm-Fact → tenant-korpus-only (citation Pflicht); External-Fact → ExternalSource (citation Pflicht); Model-Expertise → Modell erlaubt, aber markiert, nie als Faktum getarnt. **Jedes Faktum ist zitierpflichtig.** Bei Konflikt **Firm vor External** (GI-4). **Modell-Qualität ändert das nicht** — es ist eine legale, keine Qualitäts-Regel.
 4. **Aggregiert/anonym vor personenscharf.** Personenbezug nur via Gate (H2).
 5. **Alles auditierbar.** Jedes Domänen-Ereignis erzeugt einen AuditRecord.
+6. **Model-Processing-Compliance (bestätigt 30.05.):** LLM-Nutzung läuft über einen **Enterprise-API-Deal mit AVV/DPA (Art. 28 DSGVO), No-Training-on-Data und EU/EEA-Processing bzw. SCCs.** Tenant-Daten dürfen zur Verarbeitung an das Modell — die Compliance-Grenze liegt im Vertrag, nicht im Verbot. **Wichtig: das löst *Datenverarbeitung*, nicht *externes Research-Grounding* (Scope/Freshness/Faithfulness — siehe GI-1, D4).**
 
 ---
 
@@ -159,7 +160,10 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 | D1 | **Drei-wertiger** Provenance-Klassifikator (Firm-Fact / External-Fact / Model-Expertise) — regelbasiert, LLM-gestützt oder Autor-markiert? Härtester Fall: Faktum vs. „getarnte" Expertise zuverlässig trennen (entscheidet GI-1-Durchsetzung) | offen — kritisch für Concept Suite |
 | D2 | `AwardCriterion`-Parsing bei semi-manuellem Tender-Intake — strukturiert genug für GI-2? | offen |
 | D3 | Konzept-Sektionsmodell (DACH-Lösungs-/Arbeitskonzept-Standardstruktur) | → Concept-Suite-Spec |
-| D4 | **External-Grounding-Scope:** welche `ExternalSource`-Klassen im MVP (kuratierte Normen/Regulatorik vs. offene Web-Research)? Freshness-/Vertrauens-Policy? | offen — siehe Grilling Round 14 |
+| D4 | **External-Grounding-Scope (A vs. B):** A = kuratierte Quellen (BSI/ISO/EU-DACH-Regulatorik/Tender-Referenzdocs, kein offenes Web, freshness-gated) · B = offenes Web-Research. **Empfehlung: A im MVP, B als H2.** Compliance-Deal löst das *nicht* — orthogonal. | **offen — Entscheidung nötig** |
+| D5 | **Freshness-Gate:** wer/was markiert eine `ExternalSource` als „zu alt zum Zitieren" und blockiert sie? (stale Norm = Ausschluss-Risiko) | offen |
+| D6 | **Citation-Faithfulness:** dritter Eval-Check — stützt die zitierte ExternalSource den Satz wirklich? (Firm-Facts-Gate fängt das nicht) | offen |
+| D7 | **Classifier-Fail-Safe (default-to-fact):** bei Unsicherheit Fakt vs. Expertise → als Fakt behandeln → Citation verlangen. Annoying-but-safe. | **offen — Entscheidung nötig** |
 
 ---
 

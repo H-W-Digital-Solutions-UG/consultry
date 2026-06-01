@@ -136,6 +136,8 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 **Pilot-Fee:** niedrig (konkreter Betrag noch zu setzen) · **Vertrag:** jährlich (Pilot monatlich) · **Sales-Cycle:** warm-path-getrieben, Wochen.
 
+**Compliance-Modell (bestätigt 30.05.):** Enterprise-API-Deal mit **AVV/DPA, No-Training-on-Data, EU/EEA bzw. SCCs** → Tenant-Daten dürfen DSGVO-konform zur Modell-Verarbeitung. **Verkaufssatz:** *„DSGVO-konform, AVV, kein Training auf euren Daten."* Löst die *Datenverarbeitungs*-Frage — **nicht** die externe Research-Scope-/Freshness-/Faithfulness-Frage (offen: A/B unten).
+
 ---
 
 ## 7. Design-Partner-Kohorte 1
