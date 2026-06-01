@@ -1,10 +1,46 @@
 # Consultry — Handover & Session Summary v1.0
 
 **Datum:** 30.05.2026
-**Branch:** `claude/phase-1-mvp-scope-7sTXZ` (vollständig in `main` gemergt, HEAD = `c644bec`)
+**Branch:** `claude/phase-1-mvp-scope-7sTXZ` (laufend in `main` gemergt; `main` enthält auch fremde Arbeit — Homepage-Copy + PRD-v4.0-Phase-2-Neukundenakquise)
 **Zweck dieses Dokuments:** Jemand (Cofounder, Entwickler, künftige Session) soll **kalt einsteigen** können — was entschieden wurde, warum, was offen ist, und was als Nächstes zu tun ist.
 
 > **TL;DR.** In dieser Session wurde Consultry von einem breiten „DACH Operating System"-Konzept auf einen **scharfen, verteidigbaren MVP** zugespitzt: **Acquisition-to-Bid**, Hero = **Concept & Proposal Suite**. Strategie, Positionierung, ICP, Pricing, Compliance-Haltung und das Domänenmodell sind entschieden und in sich konsistent. Der Hero hat **noch keine Detail-Spec** — das ist der nächste Bau-Schritt.
+
+---
+
+## 0. Richtung — finalisiert (Start-Punkt für die Arbeit)
+
+> **Dies ist die Sektion, mit der man die Arbeit beginnt.** Sie verdichtet die Session zu „was bauen wir, in welcher Reihenfolge, und was ist verbindlich". Entscheidungen 30.05.
+
+### 0.1 Verbindliche Richtung (locked)
+- **Produkt-Fokus MVP:** **Acquisition-to-Bid.** Zwei Intakes (Tender + Bestandskunden) → Opportunity → **Concept & Proposal Suite (Hero)**.
+- **Neukundenakquise = H2, NICHT MVP.** (PRD v4.0 führt Neukunden als „Phase 2" — das ist als *Horizont 2* korrekt und **kein** MVP-Scope. MVP bleibt Bestandskunden + Tender. Net-New-Prospecting ist in `MVP-PRD §3.3` explizit OUT — das gilt.)
+- **Pricing:** €50/Seat/Monat, seat-only. **PMF-Beweis:** 1 echter Konzept-Entwurf aus eigenem Korpus in **5 Tagen**.
+- **Compliance:** Enterprise-API + AVV/DPA; §87 = „ein Schalter" (Works-Council-Mode, Default-OFF), Restrisiko bewusst akzeptiert.
+
+### 0.2 Build-Reihenfolge (Entscheidung 30.05.: **Substrat zuerst**)
+1. **MVP-Platform / Record-Layer-Substrat zuerst** — `ConsultantProfile` (auto-gepflegt), Time-Capture/Work-Agent, `ProjectStatus`, plus der **Korpus-Ingest** (KnowledgeAsset/Tenant-Isolation). Begründung: CRM-lose Firmen brauchen erst die Daten-/Korpus-Basis, gegen die der Hero groundet.
+2. **Dann der Hero** — Concept & Proposal Suite auf dem gefüllten Substrat.
+3. **Tender-Intake + Opportunity** parallel/dazwischen, soweit der Hero sie als Input braucht.
+
+> **⚠️ Guardrail (nicht verhandelbar):** „Substrat zuerst" ist **time-boxed und im Dienst des Hero**. Das **5-Tage-Draft-PMF-Signal** bleibt der kritische Pfad — das Substrat darf es nicht verzögern, sondern muss es *ermöglichen* (Korpus + Profile = Grounding-Quellen). Sobald genug Substrat steht, um *einen* echten Konzept-Entwurf zu grounden, **sofort zum Hero wechseln** und nicht das Substrat „fertig" machen. (Siehe Risiko #1: Scope-Wachstum.)
+
+### 0.3 Noch zu bestätigen, bevor Code (kleine, aber blockierende Punkte)
+- **Concept-Suite-Spec** existiert noch nicht → muss vor dem Hero-Build geschrieben werden (enthält D1/D3/D5/D6, Sektionsmodell, Eval-Harness).
+- **G11 Builder-Bandbreite** — wer baut das Substrat *und* den Hero? Bei knapper Kapazität: Substrat nur so weit wie nötig, Hero hat PMF-Priorität.
+
+### 0.4 Querschnitts-Prinzip: Human-AI-Collaboration (die eigentliche Arbeitsweisen-Änderung)
+
+> **Consultry ist nicht „Software mit AI-Features" — es ist eine neue Arbeitsweise, in der Mensch und AI gemeinsam Beratungsarbeit produzieren.** Dieses Prinzip ist über *jedes* Feature zu legen, nicht ein einzelnes Modul. Es ist gleichzeitig Produkt-Mechanik, Retention-Treiber und der Grund, warum Seats sich rechnen.
+
+Konkrete Muster, die im ganzen Produkt gelten (nicht verhandelbar):
+- **Agent schlägt vor → Mensch verfeinert/bestätigt → System lernt.** Nie autonome Verbindlichkeit. (Profile-Auto-Maintenance GI-12a, Work-Agent GI-9a, jede Recommendation.)
+- **Consultant-as-Author, nicht Consultant-as-Reviewer.** Der Mensch *gestaltet mit* der AI im selben Canvas (Concept Suite) — er kontrolliert nicht nur ein fertiges Ergebnis. Das ist der Unterschied, der Seat-Utilization (→ ACV) real macht.
+- **AI assistiert, benannter Mensch verantwortet** (Human-Backstop GI-1b) — rechtlich *und* als Vertrauens-/UX-Haltung.
+- **Doku-Fatigue → Auto-Feed:** die AI übernimmt die mühsame Erfassung (Time, Profile, Log), der Mensch bleibt im wertschöpfenden Teil. Das ist die Arbeitsweisen-Änderung, die tägliche Nutzung (Retention) erzeugt.
+- **Explain-anything / Grounding sichtbar:** der Mensch kann jederzeit „warum?" fragen und Quellen sehen → Kollaboration auf Augenhöhe statt Black-Box.
+
+**Implikation für den Build:** Jedes Feature-Spec (beginnend mit der Concept-Suite-Spec) muss den **Collaboration-Loop** explizit beschreiben — *was schlägt die AI vor, wo greift der Mensch ein, wie wird bestätigt, was wird auditiert* — statt nur Input→Output. Dieses Muster ist Consultrys eigentliche Differenzierung und durchzieht Vision, Domänenmodell (Recommendation→Approval→Audit) und GTM (Pitch: „AI + euer Team produzieren gemeinsam, gegroundet").
 
 ---
 
@@ -114,15 +150,17 @@ Vier-Tier-Logik, von „wohin" zu „was zuerst" zu „in welcher Sprache":
 3. **§87-Restrisiko:** bewusst akzeptiert; trifft Kunden mit aktivem Betriebsrat ohne WC-Mode.
 4. **Hero ist technisch hart:** submission-taugliche, gegroundete deutsche Langform ist *nicht* „der einfache Teil". Eval-Harness (Edit-Distanz + Firm-Facts-Gate + Faithfulness) ist Pflicht.
 5. **Korpus-Cold-Start:** gemildert durch Onboarding-Ritual, aber jeder Pilot startet dünn.
+6. **Collaboration-Loop verwässert:** Risiko, dass Features als reine Input→Output-Automaten gebaut werden statt als Human-AI-Co-Produktion (§0.4). Das würde Differenzierung *und* Retention kosten. In jedem Feature-Spec den Loop explizit fordern.
 
 ---
 
-## 7. Was als Nächstes zu tun ist (priorisiert)
+## 7. Was als Nächstes zu tun ist (priorisiert — gemäß „Substrat zuerst", §0.2)
 
-1. **Concept & Proposal Suite Feature-Spec schreiben** — der Hero, auf der Domänensprache. Enthält D1, D3, D5, D6, Sektionsmodell, consultant-as-author-Workflow, Eval-Harness. **Höchste Priorität.**
-2. **Work-Agent / Time-Capture spec** (Harvest-Level Detail) — falls MVP-Platform parallel läuft.
-3. **Präsentation verfeinern & interaktiver machen** (siehe §7a) — Investor-ready + lebendige Produkt-Demo.
-4. **G11 klären:** Build-Kapazität (solo/cofounder/devs).
+1. **MVP-Platform / Record-Layer + Korpus-Ingest** — `ConsultantProfile` (auto-gepflegt), Time-Capture/Work-Agent, `ProjectStatus`, Korpus-Ingest mit Tenant-Isolation. **Time-boxed, im Dienst des Hero** (§0.2-Guardrail).
+2. **Concept & Proposal Suite Feature-Spec schreiben** — der Hero, auf der Domänensprache. Enthält D1, D3, D5, D6, Sektionsmodell, consultant-as-author-Workflow, Eval-Harness. **Höchste inhaltliche Priorität — parallel zur Substrat-Arbeit schreibbar.**
+3. **Work-Agent / Time-Capture spec** (Harvest-Level Detail) — Teil von Schritt 1.
+4. **Präsentation verfeinern & interaktiver machen** (siehe §7a) — Investor-ready + lebendige Produkt-Demo.
+5. **G11 klären:** Build-Kapazität (solo/cofounder/devs).
 
 ### 7a. Ziel: Präsentation verfeinern & interaktiv machen
 
