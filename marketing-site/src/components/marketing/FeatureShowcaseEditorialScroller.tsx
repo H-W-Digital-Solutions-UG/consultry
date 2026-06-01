@@ -9,6 +9,10 @@ import { Button } from "@/components/ui/Button";
 import { useActiveSection, useBandActiveSection } from "@/components/marketing/useActiveSection";
 import { cn } from "@/lib/cn";
 import type { HomepageStep } from "@/lib/content/de/homepage";
+import {
+  prefetchImageUrls,
+  schedulePrefetchImagesAfterLoad,
+} from "@/lib/prefetchImagesAfterLoad";
 
 type FeatureShowcaseEditorialScrollerProps = {
   steps: HomepageStep[];
@@ -27,22 +31,22 @@ const stepThemes: Record<string, StepTheme> = {
     accent: "#f0a85e",
     glow: "rgba(240, 168, 94, 0.28)",
     panelLabel: "Signal Layer",
-    panelBody: "Account-Signale, Stakeholder-Wechsel und Warm Paths werden zu einer priorisierten Opportunity-Sicht verdichtet.",
+    panelBody: "Consultry analysiert stetig den Markt und erkennt Bewegungen in Ihrem Kundenportfolio: Veränderungen im Management, neue Digitalisierungsvorhaben, neue Ausschreibungen und vieles mehr.",
     highlights: [
-      "Trigger vor dem Wettbewerber sehen",
-      "Warm Paths mit Account-Kontext",
-      "Folgeprojekte statt Zufall priorisieren",
+      "Eine Ansicht statt vieler Tools",
+      "Keine stundenlange Recherche mehr",
+      "Priorisiert nach Ihren Stärken",
     ],
   },
   "staffing-forecasting": {
     accent: "#e8655a",
     glow: "rgba(232, 101, 90, 0.26)",
     panelLabel: "Staffing Layer",
-    panelBody: "Projektbedarf, Skills und Verfuegbarkeit bleiben in einem belastbaren Staffing- und Forecasting-Flow verbunden.",
+    panelBody: "Consultry kennt Kompetenzen, Projekthistorie und Verfügbarkeit Ihrer Berater. Drei Team-Vorschläge in Minuten, nicht in Tagen. Mit Marge, Auslastung und Erfahrung. Sie wählen, ändern, ergänzen. Kompetenzlücken werden früh sichtbar, nicht erst kurz vor Projektstart.",
     highlights: [
-      "Skill-fit plus Verfuegbarkeit",
-      "Engpaesse frueher erkennen",
-      "Forecasting mit Teamrealitaet",
+      "Drei Vorschläge in Minuten",
+      "Mit Marge, Auslastung und Erfahrung",
+      "Kompetenzlücken früh sichtbar",
     ],
   },
   "proposal-workflow": {
@@ -109,7 +113,7 @@ function getStepTheme(stepId: string): StepTheme {
 function getCompactStepTitle(step: HomepageStep) {
   switch (step.id) {
     case "account-growth":
-      return "Bestandschancen erkennen";
+      return "Kundenportfolio ausbauen";
     case "staffing-forecasting":
       return "Teams besser besetzen";
     case "proposal-workflow":
@@ -129,14 +133,16 @@ function EditorialHeadline({
   overline,
   title,
 }: {
-  overline: string;
+  overline?: string;
   title: string;
 }) {
   return (
     <div className="max-w-[42rem]">
-      <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
-        {overline}
-      </p>
+      {overline ? (
+        <p className="font-[var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-[var(--consultry-text-faint)]">
+          {overline}
+        </p>
+      ) : null}
       <h2 className="mt-3 max-w-[26ch] text-balance text-[clamp(1.15rem,1.4vw,1.55rem)] font-semibold leading-[1.16] tracking-[-0.02em] text-[var(--consultry-text-primary)]">
         {title}
       </h2>
@@ -347,6 +353,7 @@ export function FeatureShowcaseEditorialScroller({
   const railLineLeft = `calc(${railColumnWidth} / 2 - 1.5px)`;
   const railTrackRef = useRef<HTMLDivElement | null>(null);
   const railMarkerRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const showcaseSectionRef = useRef<HTMLElement | null>(null);
   const [railMetrics, setRailMetrics] = useState({ top: 0, height: 0 });
 
   useEffect(() => {
@@ -423,12 +430,66 @@ export function FeatureShowcaseEditorialScroller({
     };
   }, [firstStepId, lastStepId, steps]);
 
+  useEffect(() => {
+    return schedulePrefetchImagesAfterLoad(steps.map((step) => step.image.src));
+  }, [steps]);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined" || !steps.length) {
+      return;
+    }
+
+    const el = showcaseSectionRef.current;
+    if (!el) {
+      return;
+    }
+
+    const stepImageSrcs = steps.map((step) => step.image.src);
+    let observer: IntersectionObserver | null = null;
+    let cancelled = false;
+
+    const startObserving = () => {
+      if (cancelled) {
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) {
+            return;
+          }
+          prefetchImageUrls(stepImageSrcs);
+          observer?.disconnect();
+          observer = null;
+        },
+        { rootMargin: "0px 0px 400px 0px", threshold: 0 },
+      );
+
+      observer.observe(el);
+    };
+
+    if (document.readyState === "complete") {
+      startObserving();
+    } else {
+      window.addEventListener("load", startObserving);
+    }
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("load", startObserving);
+      observer?.disconnect();
+    };
+  }, [steps]);
+
   if (!steps.length || !activeStep || !firstStep || !lastStep) {
     return null;
   }
 
   return (
-    <section className="relative pb-12 pt-10 sm:pb-14 sm:pt-12 lg:-mt-16 lg:pb-16 lg:pt-18">
+    <section
+      ref={showcaseSectionRef}
+      className="relative pb-12 pt-10 sm:pb-14 sm:pt-12 lg:-mt-16 lg:pb-16 lg:pt-18"
+    >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-36 sm:h-44 lg:h-52"
@@ -471,8 +532,7 @@ export function FeatureShowcaseEditorialScroller({
 
           <div className="relative">
             <EditorialHeadline
-              overline="DIE WEDGES"
-              title="Wachstum, Staffing, Wissen und Delivery in einem System."
+              title="Marktsignale erkennen, Teams aufstellen, Angebote schreiben, Wissen sichern."
             />
           </div>
 
@@ -640,9 +700,11 @@ export function FeatureShowcaseEditorialScroller({
                       <p className="font-[var(--font-mono)] text-[12px] uppercase tracking-[0.16em] text-[var(--consultry-brand-warm)]">
                         {activeStep.stepLabel} · {activeStep.stepperLabel}
                       </p>
-                      <p className="max-w-[26rem] text-right text-[14px] leading-[1.6] text-[var(--consultry-text-muted)]">
-                        {activeStep.caption}
-                      </p>
+                      {activeStep.caption ? (
+                        <p className="max-w-[26rem] text-right text-[14px] leading-[1.6] text-[var(--consultry-text-muted)]">
+                          {activeStep.caption}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -707,9 +769,11 @@ export function FeatureShowcaseEditorialScroller({
                       ))}
                     </ul>
 
-                    <p className="mt-8 max-w-[28rem] text-[14px] leading-[1.68] text-[var(--consultry-text-muted)]">
-                      {step.caption}
-                    </p>
+                    {step.caption ? (
+                      <p className="mt-8 max-w-[28rem] text-[14px] leading-[1.68] text-[var(--consultry-text-muted)]">
+                        {step.caption}
+                      </p>
+                    ) : null}
                     <Link
                       className="mt-7 inline-flex items-center gap-2 text-[15px] font-medium text-[var(--consultry-brand-warm)] transition hover:text-[var(--consultry-text-primary)]"
                       href={getStepHref(step.id)}
