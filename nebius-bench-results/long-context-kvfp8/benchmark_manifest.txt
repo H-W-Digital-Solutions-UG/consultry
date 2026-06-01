@@ -1,0 +1,28 @@
+started_at=2026-04-30T19:22:39+00:00
+model=Qwen/Qwen3.6-35B-A3B-FP8
+tokenizer=Qwen/Qwen3.6-35B-A3B-FP8
+base_url=http://127.0.0.1:8000
+endpoint=/v1/chat/completions
+backend=openai-chat
+speed_dir=/home/jules/bench/speed-bench
+request_rate=inf
+benchmark_profile=long_context_raw_v1_qwen36_35b_a3b_fp8_kvfp8
+output_len_speed=512
+output_len_65k=512
+output_len_131k=256
+
+=== concurrency ranges ===
+throughput_16k=10 12 14 16 18 20 22 24 26 28 30
+throughput_32k=7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+cache65k=2 3 4 5 6 7 8 9 10
+cache131k=1 2 3 4 5
+
+=== vllm ===
+0.20.0
+
+=== server models ===
+{"object":"list","data":[{"id":"Qwen/Qwen3.6-35B-A3B-FP8","object":"model","created":1777576961,"owned_by":"vllm","root":"Qwen/Qwen3.6-35B-A3B-FP8","parent":null,"max_model_len":262144,"permission":[{"id":"modelperm-bf88a119c0fe41b2","object":"model_permission","created":1777576961,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}
+
+=== gpu ===
+name, driver_version, memory.total [MiB]
+NVIDIA H200, 580.126.09, 143771 MiB

@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nebius H200 vLLM Benchmark Dashboard</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-2: #eef2f5;
+      --line: #d9dee6;
+      --line-strong: #b8c1cc;
+      --text: #1e242c;
+      --muted: #66707d;
+      --dense: #3157d5;
+      --dense-soft: #dfe6ff;
+      --moe: #0d956b;
+      --moe-soft: #dcf4ec;
+      --warn: #c86b12;
+      --bad: #b42318;
+      --good: #0f7b58;
+      --shadow: 0 16px 40px rgba(25, 35, 55, 0.08);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .shell {
+      width: min(1500px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: 30px;
+      line-height: 1.15;
+      font-weight: 740;
+    }
+    h2 {
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 720;
+    }
+    h3 {
+      font-size: 14px;
+      line-height: 1.25;
+      font-weight: 720;
+    }
+    .subtitle {
+      max-width: 900px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      min-width: 320px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: #364151;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .panel {
+      grid-column: span 6;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+    .panel.wide { grid-column: 1 / -1; }
+    .panel.third { grid-column: span 4; }
+    #kpis .panel.third { grid-column: span 3; }
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 18px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .panel-body { padding: 16px 18px 18px; }
+    .muted { color: var(--muted); }
+    .small { font-size: 12px; line-height: 1.45; }
+    .kpi {
+      display: grid;
+      gap: 8px;
+      min-height: 132px;
+      padding: 16px;
+    }
+    .kpi-title {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 680;
+      text-transform: uppercase;
+    }
+    .kpi-value {
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 780;
+    }
+    .kpi-pair {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .model-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 28px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 12px;
+      font-weight: 640;
+    }
+    .model-chip::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .model-chip.dense { color: var(--dense); }
+    .model-chip.moe { color: var(--moe); }
+    .frontier {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(132px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+    .frontier-step {
+      position: relative;
+      min-height: 142px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #fff, #f7f9fb);
+    }
+    .frontier-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      width: 10px;
+      border-top: 1px solid var(--line-strong);
+    }
+    .frontier-context {
+      font-weight: 760;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .frontier-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    .frontier-row b { font-size: 14px; }
+    .lift {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+      color: var(--good);
+      font-weight: 720;
+      font-size: 12px;
+    }
+    .chart-wrap {
+      min-height: 360px;
+      width: 100%;
+    }
+    svg.chart {
+      display: block;
+      width: 100%;
+      height: 360px;
+      overflow: visible;
+    }
+    .legend {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      background: var(--dense);
+    }
+    .swatch.moe { background: var(--moe); }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .segmented {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface-2);
+    }
+    button.segment {
+      min-height: 30px;
+      border: 0;
+      border-radius: 6px;
+      background: transparent;
+      color: #425066;
+      padding: 6px 9px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    button.segment.active {
+      background: #fff;
+      color: var(--text);
+      box-shadow: 0 1px 2px rgba(10, 20, 30, 0.08);
+    }
+    .table-tools {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    input[type="search"] {
+      min-width: 240px;
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 7px 10px;
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+      font-size: 13px;
+    }
+    .table-scroll {
+      max-height: 560px;
+      overflow: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 12px;
+      min-width: 1120px;
+    }
+    th, td {
+      text-align: right;
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+    }
+    th:first-child, td:first-child,
+    th:nth-child(2), td:nth-child(2) {
+      text-align: left;
+    }
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #f8fafc;
+      color: #526071;
+      font-weight: 720;
+      border-bottom: 1px solid var(--line-strong);
+    }
+    tbody tr:hover td { background: #f9fbfc; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 720;
+      border: 1px solid transparent;
+    }
+    .status.pass {
+      color: var(--good);
+      background: #e5f5ef;
+      border-color: #b8e1d2;
+    }
+    .status.fail {
+      color: var(--bad);
+      background: #fde8e5;
+      border-color: #fac5be;
+    }
+    .note-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .note-list li {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+    }
+    .conclusion-lead {
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 660;
+      max-width: 980px;
+    }
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .insight {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      min-height: 126px;
+    }
+    .insight strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+    .insight p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .estimate-table {
+      width: 100%;
+      min-width: 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 12px;
+    }
+    .estimate-table th,
+    .estimate-table td {
+      white-space: normal;
+      text-align: left;
+      vertical-align: top;
+      padding: 9px 10px;
+    }
+    .estimate-table td:not(:first-child),
+    .estimate-table th:not(:first-child) {
+      text-align: right;
+    }
+    .estimate-table .scenario-cell {
+      min-width: 165px;
+    }
+    .estimate-table .subline {
+      color: var(--muted);
+      display: block;
+      font-size: 11px;
+      line-height: 1.35;
+      margin-top: 3px;
+    }
+    .decision-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .decision-list li {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 11px 12px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .decision-list b {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .axis text, .tick text {
+      fill: #6b7583;
+      font-size: 11px;
+    }
+    .axis line, .axis path, .gridline {
+      stroke: #d8dee7;
+      stroke-width: 1;
+    }
+    .target-line {
+      stroke: var(--warn);
+      stroke-dasharray: 5 4;
+      stroke-width: 1.4;
+    }
+    .chart-label {
+      fill: #455164;
+      font-size: 11px;
+      font-weight: 650;
+    }
+    .empty-state {
+      display: grid;
+      place-items: center;
+      min-height: 240px;
+      color: var(--muted);
+      border: 1px dashed var(--line-strong);
+      border-radius: 8px;
+    }
+    @media (max-width: 1000px) {
+      .topbar { flex-direction: column; }
+      .pills { justify-content: flex-start; min-width: 0; }
+      .panel, .panel.third { grid-column: 1 / -1; }
+      #kpis .panel.third { grid-column: span 6; }
+      .analysis-grid { grid-template-columns: 1fr; }
+      .insight-grid { grid-template-columns: 1fr; }
+      .frontier { grid-template-columns: repeat(4, minmax(132px, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 20px, 1500px); padding-top: 12px; }
+      h1 { font-size: 24px; }
+      #kpis .panel.third { grid-column: 1 / -1; }
+      .frontier { grid-template-columns: repeat(2, minmax(132px, 1fr)); }
+      .chart-wrap, svg.chart { height: 330px; min-height: 330px; }
+      input[type="search"] { width: 100%; min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <h1>Nebius H200 vLLM Benchmark</h1>
+        <p class="subtitle">Qwen3.6 dense FP8 versus Qwen3.6 MoE FP8 on one NVIDIA H200. The dashboard now uses raw vLLM serving metrics: peak output-token throughput, request throughput, first-token latency, per-token latency, end-to-end latency, and failures.</p>
+      </div>
+      <div class="pills" id="meta-pills"></div>
+    </header>
+
+    <section class="grid" id="kpis"></section>
+
+    <section class="grid">
+      <article class="panel wide">
+        <div class="panel-header">
+          <div>
+            <h2>Executive Comparison</h2>
+            <p class="muted small">What the benchmark means for serving architecture and pricing assumptions.</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="analysis-grid">
+            <div>
+              <p class="conclusion-lead" id="executive-lead"></p>
+              <div class="insight-grid" id="executive-insights"></div>
+            </div>
+            <ul class="decision-list" id="decision-list"></ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-header">
+          <div>
+            <h2>Estimate Check</h2>
+            <p class="muted small">The pricing report assumed 20 active mixed-consulting sessions per H200. This table compares that planning variable with a raw peak-output concurrency proxy under several workload mixes.</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="table-scroll">
+            <table class="estimate-table">
+              <thead>
+                <tr>
+                  <th>Workload mix</th>
+                  <th>Dense mixed tok/s</th>
+                  <th>Dense pricing readout</th>
+                  <th>MoE mixed tok/s</th>
+                  <th>MoE pricing readout</th>
+                  <th>Readout</th>
+                </tr>
+              </thead>
+              <tbody id="estimate-table"></tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-header">
+          <div>
+            <h2>Workload Interpretation</h2>
+            <p class="muted small">How to map the measured workloads into product lanes.</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="insight-grid" id="workload-interpretation"></div>
+        </div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-header">
+          <div>
+            <h2>Raw Throughput Frontier</h2>
+            <p class="muted small">Tested concurrency with the highest measured output-token throughput.</p>
+          </div>
+          <div class="legend">
+            <span class="legend-item"><span class="swatch"></span>Dense 27B FP8</span>
+            <span class="legend-item"><span class="swatch moe"></span>MoE 35B-A3B FP8</span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="frontier" id="frontier"></div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Peak-Output Concurrency</h2>
+            <p class="muted small">Concurrency at the highest measured generated-token throughput.</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="chart-wrap"><svg class="chart" id="capacity-chart" role="img" aria-label="Capacity bar chart"></svg></div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-header">
+          <div>
+            <h2>Peak Output Throughput</h2>
+            <p class="muted small">Generated tokens per second at the peak-output point.</p>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="chart-wrap"><svg class="chart" id="capacity-output-chart" role="img" aria-label="Output throughput bar chart"></svg></div>
+        </div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-header">
+          <div>
+            <h2>Concurrency Curves</h2>
+            <p class="muted small" id="curve-caption"></p>
+          </div>
+          <div class="controls">
+            <div class="segmented" id="workload-tabs"></div>
+            <div class="segmented" id="metric-tabs"></div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="chart-wrap"><svg class="chart" id="curve-chart" role="img" aria-label="Concurrency curve chart"></svg></div>
+        </div>
+      </article>
+
+      <article class="panel third">
+        <div class="panel-header"><h2>What Changed</h2></div>
+        <div class="panel-body">
+          <ul class="note-list" id="finding-notes"></ul>
+        </div>
+      </article>
+      <article class="panel third">
+        <div class="panel-header"><h2>Run Health</h2></div>
+        <div class="panel-body">
+          <ul class="note-list" id="health-notes"></ul>
+        </div>
+      </article>
+      <article class="panel third">
+        <div class="panel-header"><h2>GPU Snapshot</h2></div>
+        <div class="panel-body">
+          <ul class="note-list" id="gpu-notes"></ul>
+        </div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-header">
+          <div>
+            <h2>All Benchmark Rows</h2>
+            <p class="muted small">Aggregate CSV fields with failure counts from the JSON result files.</p>
+          </div>
+        </div>
+        <div class="table-tools">
+          <div class="segmented" id="table-model-tabs"></div>
+          <input id="table-search" type="search" placeholder="Filter workload, model, or result file">
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Workload</th>
+                <th>Model</th>
+                <th>Input tokens</th>
+                <th>Concurrency</th>
+                <th>Good requests</th>
+                <th>Success rate</th>
+                <th>Output tok/s</th>
+                <th>First token p95</th>
+                <th>Token time p95</th>
+                <th>End-to-end p95</th>
+                <th>Failed</th>
+                <th>Result JSON</th>
+              </tr>
+            </thead>
+            <tbody id="result-table"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script id="bench-data" type="application/json">{"generated_from":"nebius-bench-results","runs":{"dense":{"label":"Dense 27B FP8","short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5"},"moe":{"label":"MoE 35B-A3B FP8","short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b"}},"workload_order":["throughput_1k","throughput_2k","throughput_8k","throughput_16k","throughput_32k","cache65k","cache131k","cache256k"],"workload_labels":{"throughput_1k":"SPEED 1k","throughput_2k":"SPEED 2k","throughput_8k":"SPEED 8k","throughput_16k":"SPEED 16k","throughput_32k":"SPEED 32k","cache65k":"Cache 65k","cache131k":"Cache 131k","cache256k":"Cache 256k"},"rows":[{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":1,"successful_requests":20,"duration_s":74.61,"request_throughput_rps":0.268,"goodput_rps":0.268,"slo_attainment":1.0,"input_tps":285.5,"output_tps":137.2,"ttft_p50_ms":88.9,"ttft_p95_ms":91.8,"ttft_p99_ms":92.4,"tpot_p50_ms":7.14,"tpot_p95_ms":7.33,"tpot_p99_ms":7.36,"itl_p95_ms":13.82,"e2el_p95_ms":3836.5,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_1k_c1.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_1k_c1.json","failed_requests":0,"num_prompts":20,"completed_requests":20,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":1,"successful_requests":20,"duration_s":31.64,"request_throughput_rps":0.632,"goodput_rps":0.632,"slo_attainment":1.0,"input_tps":673.1,"output_tps":323.6,"ttft_p50_ms":108.8,"ttft_p95_ms":111.5,"ttft_p99_ms":111.5,"tpot_p50_ms":2.91,"tpot_p95_ms":3.1,"tpot_p99_ms":3.14,"itl_p95_ms":7.53,"e2el_p95_ms":1689.4,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_1k_c1.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_1k_c1.json","failed_requests":0,"num_prompts":20,"completed_requests":20,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":4,"successful_requests":80,"duration_s":86.94,"request_throughput_rps":0.92,"goodput_rps":0.874,"slo_attainment":0.95,"input_tps":994.4,"output_tps":471.1,"ttft_p50_ms":122.2,"ttft_p95_ms":411.9,"ttft_p99_ms":1955.9,"tpot_p50_ms":7.95,"tpot_p95_ms":8.48,"tpot_p99_ms":8.91,"itl_p95_ms":14.72,"e2el_p95_ms":4737.8,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_1k_c4.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_1k_c4.json","failed_requests":0,"num_prompts":80,"completed_requests":80,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":4,"successful_requests":80,"duration_s":48.49,"request_throughput_rps":1.65,"goodput_rps":1.567,"slo_attainment":0.95,"input_tps":1783.0,"output_tps":844.7,"ttft_p50_ms":136.1,"ttft_p95_ms":283.4,"ttft_p99_ms":1103.9,"tpot_p50_ms":4.33,"tpot_p95_ms":4.84,"tpot_p99_ms":4.96,"itl_p95_ms":10.56,"e2el_p95_ms":2736.3,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_1k_c4.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_1k_c4.json","failed_requests":0,"num_prompts":80,"completed_requests":80,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":8,"successful_requests":160,"duration_s":94.62,"request_throughput_rps":1.691,"goodput_rps":1.606,"slo_attainment":0.95,"input_tps":1833.3,"output_tps":865.8,"ttft_p50_ms":124.6,"ttft_p95_ms":308.9,"ttft_p99_ms":692.2,"tpot_p50_ms":8.9,"tpot_p95_ms":9.48,"tpot_p99_ms":9.61,"itl_p95_ms":15.74,"e2el_p95_ms":5045.6,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_1k_c8.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_1k_c8.json","failed_requests":0,"num_prompts":160,"completed_requests":160,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":8,"successful_requests":160,"duration_s":59.43,"request_throughput_rps":2.692,"goodput_rps":2.692,"slo_attainment":1.0,"input_tps":2919.0,"output_tps":1378.5,"ttft_p50_ms":133.8,"ttft_p95_ms":247.0,"ttft_p99_ms":305.7,"tpot_p50_ms":5.51,"tpot_p95_ms":6.33,"tpot_p99_ms":6.57,"itl_p95_ms":11.78,"e2el_p95_ms":3372.3,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_1k_c8.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_1k_c8.json","failed_requests":0,"num_prompts":160,"completed_requests":160,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":16,"successful_requests":320,"duration_s":116.21,"request_throughput_rps":2.754,"goodput_rps":2.607,"slo_attainment":0.9469,"input_tps":3065.8,"output_tps":1409.9,"ttft_p50_ms":164.2,"ttft_p95_ms":533.1,"ttft_p99_ms":1100.1,"tpot_p50_ms":10.92,"tpot_p95_ms":11.91,"tpot_p99_ms":12.44,"itl_p95_ms":18.16,"e2el_p95_ms":6296.7,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_1k_c16.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_1k_c16.json","failed_requests":0,"num_prompts":320,"completed_requests":320,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":16,"successful_requests":320,"duration_s":81.6,"request_throughput_rps":3.922,"goodput_rps":3.922,"slo_attainment":1.0,"input_tps":4366.4,"output_tps":2008.0,"ttft_p50_ms":134.3,"ttft_p95_ms":327.2,"ttft_p99_ms":489.3,"tpot_p50_ms":7.67,"tpot_p95_ms":8.55,"tpot_p99_ms":8.86,"itl_p95_ms":111.52,"e2el_p95_ms":4532.4,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_1k_c16.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_1k_c16.json","failed_requests":0,"num_prompts":320,"completed_requests":320,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":32,"successful_requests":640,"duration_s":151.2,"request_throughput_rps":4.233,"goodput_rps":3.902,"slo_attainment":0.9219,"input_tps":4650.0,"output_tps":2167.2,"ttft_p50_ms":230.1,"ttft_p95_ms":632.2,"ttft_p99_ms":2171.6,"tpot_p50_ms":14.22,"tpot_p95_ms":15.54,"tpot_p99_ms":16.08,"itl_p95_ms":106.82,"e2el_p95_ms":8361.4,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_1k_c32.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_1k_c32.json","failed_requests":0,"num_prompts":640,"completed_requests":640,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":32,"successful_requests":640,"duration_s":116.56,"request_throughput_rps":5.491,"goodput_rps":5.285,"slo_attainment":0.9625,"input_tps":6031.8,"output_tps":2811.2,"ttft_p50_ms":147.7,"ttft_p95_ms":342.2,"ttft_p99_ms":886.2,"tpot_p50_ms":11.15,"tpot_p95_ms":12.56,"tpot_p99_ms":13.07,"itl_p95_ms":117.26,"e2el_p95_ms":6607.6,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_1k_c32.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_1k_c32.json","failed_requests":0,"num_prompts":640,"completed_requests":640,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":64,"successful_requests":1280,"duration_s":231.48,"request_throughput_rps":5.53,"goodput_rps":4.553,"slo_attainment":0.8234,"input_tps":6034.2,"output_tps":2831.2,"ttft_p50_ms":320.4,"ttft_p95_ms":868.3,"ttft_p99_ms":3800.1,"tpot_p50_ms":21.74,"tpot_p95_ms":23.81,"tpot_p99_ms":25.23,"itl_p95_ms":116.15,"e2el_p95_ms":12767.7,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_1k_c64.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_1k_c64.json","failed_requests":0,"num_prompts":1280,"completed_requests":1280,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":64,"successful_requests":1280,"duration_s":168.12,"request_throughput_rps":7.614,"goodput_rps":7.328,"slo_attainment":0.9625,"input_tps":8308.5,"output_tps":3898.3,"ttft_p50_ms":240.7,"ttft_p95_ms":366.4,"ttft_p99_ms":1076.0,"tpot_p50_ms":16.26,"tpot_p95_ms":18.46,"tpot_p99_ms":18.97,"itl_p95_ms":124.01,"e2el_p95_ms":9619.9,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_1k_c64.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_1k_c64.json","failed_requests":0,"num_prompts":1280,"completed_requests":1280,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":128,"successful_requests":2560,"duration_s":402.72,"request_throughput_rps":6.357,"goodput_rps":2.811,"slo_attainment":0.4422,"input_tps":6926.9,"output_tps":3254.7,"ttft_p50_ms":531.6,"ttft_p95_ms":1664.5,"ttft_p99_ms":7151.1,"tpot_p50_ms":38.3,"tpot_p95_ms":41.54,"tpot_p99_ms":43.32,"itl_p95_ms":205.36,"e2el_p95_ms":22300.7,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_1k_c128.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_1k_c128.json","failed_requests":0,"num_prompts":2560,"completed_requests":2560,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":128,"successful_requests":2560,"duration_s":249.96,"request_throughput_rps":10.242,"goodput_rps":9.754,"slo_attainment":0.9523,"input_tps":11160.3,"output_tps":5243.7,"ttft_p50_ms":290.0,"ttft_p95_ms":428.9,"ttft_p99_ms":2035.2,"tpot_p50_ms":24.21,"tpot_p95_ms":27.92,"tpot_p99_ms":29.2,"itl_p95_ms":133.75,"e2el_p95_ms":14538.3,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_1k_c128.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_1k_c128.json","failed_requests":0,"num_prompts":2560,"completed_requests":2560,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":256,"successful_requests":5120,"duration_s":782.38,"request_throughput_rps":6.544,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":7161.7,"output_tps":3350.6,"ttft_p50_ms":4379.0,"ttft_p95_ms":19507.2,"ttft_p99_ms":21870.1,"tpot_p50_ms":62.39,"tpot_p95_ms":68.23,"tpot_p99_ms":71.18,"itl_p95_ms":337.69,"e2el_p95_ms":52248.5,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_1k_c256.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_1k_c256.json","failed_requests":0,"num_prompts":5120,"completed_requests":5120,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_1k","dataset":"speed_bench","approx_isl":1024,"output_len":0,"concurrency":256,"successful_requests":5120,"duration_s":455.67,"request_throughput_rps":11.236,"goodput_rps":10.444,"slo_attainment":0.9295,"input_tps":12296.5,"output_tps":5753.0,"ttft_p50_ms":364.1,"ttft_p95_ms":545.4,"ttft_p99_ms":4065.0,"tpot_p50_ms":43.7,"tpot_p95_ms":48.34,"tpot_p99_ms":49.87,"itl_p95_ms":125.31,"e2el_p95_ms":25225.6,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_1k_c256.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 1k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_1k_c256.json","failed_requests":0,"num_prompts":5120,"completed_requests":5120,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":1,"successful_requests":20,"duration_s":75.72,"request_throughput_rps":0.264,"goodput_rps":0.264,"slo_attainment":1.0,"input_tps":565.4,"output_tps":135.2,"ttft_p50_ms":143.6,"ttft_p95_ms":146.7,"ttft_p99_ms":151.6,"tpot_p50_ms":7.12,"tpot_p95_ms":7.33,"tpot_p99_ms":7.38,"itl_p95_ms":13.85,"e2el_p95_ms":3890.6,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_2k_c1.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_2k_c1.json","failed_requests":0,"num_prompts":20,"completed_requests":20,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":1,"successful_requests":20,"duration_s":32.1,"request_throughput_rps":0.623,"goodput_rps":0.623,"slo_attainment":1.0,"input_tps":1333.8,"output_tps":319.0,"ttft_p50_ms":112.9,"ttft_p95_ms":114.8,"ttft_p99_ms":117.7,"tpot_p50_ms":2.95,"tpot_p95_ms":3.11,"tpot_p99_ms":3.13,"itl_p95_ms":7.54,"e2el_p95_ms":1702.1,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_2k_c1.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_2k_c1.json","failed_requests":0,"num_prompts":20,"completed_requests":20,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":4,"successful_requests":80,"duration_s":87.74,"request_throughput_rps":0.912,"goodput_rps":0.9,"slo_attainment":0.9875,"input_tps":1962.2,"output_tps":466.9,"ttft_p50_ms":162.4,"ttft_p95_ms":300.6,"ttft_p99_ms":466.8,"tpot_p50_ms":8.24,"tpot_p95_ms":8.86,"tpot_p99_ms":9.0,"itl_p95_ms":14.98,"e2el_p95_ms":4721.3,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_2k_c4.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_2k_c4.json","failed_requests":0,"num_prompts":80,"completed_requests":80,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":4,"successful_requests":80,"duration_s":47.27,"request_throughput_rps":1.692,"goodput_rps":1.692,"slo_attainment":1.0,"input_tps":3641.6,"output_tps":866.5,"ttft_p50_ms":133.1,"ttft_p95_ms":233.4,"ttft_p99_ms":237.1,"tpot_p50_ms":4.3,"tpot_p95_ms":4.85,"tpot_p99_ms":5.02,"itl_p95_ms":10.41,"e2el_p95_ms":2620.7,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_2k_c4.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_2k_c4.json","failed_requests":0,"num_prompts":80,"completed_requests":80,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":8,"successful_requests":160,"duration_s":101.78,"request_throughput_rps":1.572,"goodput_rps":1.493,"slo_attainment":0.95,"input_tps":3391.5,"output_tps":804.9,"ttft_p50_ms":167.2,"ttft_p95_ms":386.1,"ttft_p99_ms":943.8,"tpot_p50_ms":9.51,"tpot_p95_ms":10.33,"tpot_p99_ms":10.68,"itl_p95_ms":15.97,"e2el_p95_ms":5557.1,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_2k_c8.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_2k_c8.json","failed_requests":0,"num_prompts":160,"completed_requests":160,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":8,"successful_requests":160,"duration_s":59.81,"request_throughput_rps":2.675,"goodput_rps":2.675,"slo_attainment":1.0,"input_tps":5771.5,"output_tps":1369.7,"ttft_p50_ms":141.7,"ttft_p95_ms":249.4,"ttft_p99_ms":373.0,"tpot_p50_ms":5.49,"tpot_p95_ms":6.22,"tpot_p99_ms":6.58,"itl_p95_ms":11.82,"e2el_p95_ms":3342.4,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_2k_c8.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_2k_c8.json","failed_requests":0,"num_prompts":160,"completed_requests":160,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":16,"successful_requests":320,"duration_s":131.89,"request_throughput_rps":2.426,"goodput_rps":2.199,"slo_attainment":0.9062,"input_tps":5239.7,"output_tps":1242.3,"ttft_p50_ms":285.8,"ttft_p95_ms":599.5,"ttft_p99_ms":1915.1,"tpot_p50_ms":12.21,"tpot_p95_ms":13.46,"tpot_p99_ms":13.94,"itl_p95_ms":59.05,"e2el_p95_ms":7223.4,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_2k_c16.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_2k_c16.json","failed_requests":0,"num_prompts":320,"completed_requests":320,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":16,"successful_requests":320,"duration_s":81.67,"request_throughput_rps":3.918,"goodput_rps":3.82,"slo_attainment":0.975,"input_tps":8461.3,"output_tps":2006.1,"ttft_p50_ms":149.9,"ttft_p95_ms":346.6,"ttft_p99_ms":593.3,"tpot_p50_ms":7.6,"tpot_p95_ms":8.53,"tpot_p99_ms":8.96,"itl_p95_ms":112.57,"e2el_p95_ms":4559.6,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_2k_c16.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_2k_c16.json","failed_requests":0,"num_prompts":320,"completed_requests":320,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":32,"successful_requests":640,"duration_s":187.91,"request_throughput_rps":3.406,"goodput_rps":2.634,"slo_attainment":0.7734,"input_tps":7405.2,"output_tps":1743.8,"ttft_p50_ms":312.7,"ttft_p95_ms":1132.9,"ttft_p99_ms":3626.4,"tpot_p50_ms":17.63,"tpot_p95_ms":19.55,"tpot_p99_ms":20.94,"itl_p95_ms":109.41,"e2el_p95_ms":10642.3,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_2k_c32.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_2k_c32.json","failed_requests":0,"num_prompts":640,"completed_requests":640,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":32,"successful_requests":640,"duration_s":116.62,"request_throughput_rps":5.488,"goodput_rps":5.248,"slo_attainment":0.9563,"input_tps":11931.8,"output_tps":2809.7,"ttft_p50_ms":160.1,"ttft_p95_ms":400.5,"ttft_p99_ms":1110.3,"tpot_p50_ms":11.07,"tpot_p95_ms":12.62,"tpot_p99_ms":13.14,"itl_p95_ms":118.57,"e2el_p95_ms":6651.5,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_2k_c32.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_2k_c32.json","failed_requests":0,"num_prompts":640,"completed_requests":640,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":64,"successful_requests":1280,"duration_s":311.39,"request_throughput_rps":4.111,"goodput_rps":2.026,"slo_attainment":0.493,"input_tps":8886.5,"output_tps":2104.6,"ttft_p50_ms":505.4,"ttft_p95_ms":2139.0,"ttft_p99_ms":6659.3,"tpot_p50_ms":29.29,"tpot_p95_ms":32.46,"tpot_p99_ms":34.16,"itl_p95_ms":201.78,"e2el_p95_ms":17683.2,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_2k_c64.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_2k_c64.json","failed_requests":0,"num_prompts":1280,"completed_requests":1280,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":64,"successful_requests":1280,"duration_s":169.84,"request_throughput_rps":7.537,"goodput_rps":7.178,"slo_attainment":0.9523,"input_tps":16293.4,"output_tps":3858.8,"ttft_p50_ms":257.2,"ttft_p95_ms":487.1,"ttft_p99_ms":1944.2,"tpot_p50_ms":16.13,"tpot_p95_ms":18.54,"tpot_p99_ms":19.28,"itl_p95_ms":124.68,"e2el_p95_ms":9726.9,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_2k_c64.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_2k_c64.json","failed_requests":0,"num_prompts":1280,"completed_requests":1280,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":128,"successful_requests":2560,"duration_s":564.87,"request_throughput_rps":4.532,"goodput_rps":0.051,"slo_attainment":0.0113,"input_tps":9788.9,"output_tps":2320.4,"ttft_p50_ms":828.4,"ttft_p95_ms":2403.3,"ttft_p99_ms":13211.0,"tpot_p50_ms":53.4,"tpot_p95_ms":58.88,"tpot_p99_ms":61.12,"itl_p95_ms":340.56,"e2el_p95_ms":32029.8,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench/results/speed_throughput_2k_c128.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_2k_c128.json","failed_requests":0,"num_prompts":2560,"completed_requests":2560,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_2k","dataset":"speed_bench","approx_isl":2048,"output_len":0,"concurrency":128,"successful_requests":2560,"duration_s":254.26,"request_throughput_rps":10.069,"goodput_rps":9.262,"slo_attainment":0.9199,"input_tps":21747.3,"output_tps":5155.1,"ttft_p50_ms":335.6,"ttft_p95_ms":670.3,"ttft_p99_ms":3772.1,"tpot_p50_ms":24.16,"tpot_p95_ms":27.94,"tpot_p99_ms":29.27,"itl_p95_ms":135.1,"e2el_p95_ms":14625.7,"slo_ttft_ms":500,"slo_tpot_ms":50,"source_json":"/home/jules/bench-moe/results/speed_throughput_2k_c128.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 2k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_2k_c128.json","failed_requests":0,"num_prompts":2560,"completed_requests":2560,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":1,"successful_requests":12,"duration_s":49.92,"request_throughput_rps":0.24,"goodput_rps":0.24,"slo_attainment":1.0,"input_tps":2048.5,"output_tps":123.1,"ttft_p50_ms":515.3,"ttft_p95_ms":554.5,"ttft_p99_ms":555.4,"tpot_p50_ms":7.03,"tpot_p95_ms":7.44,"tpot_p99_ms":7.45,"itl_p95_ms":13.81,"e2el_p95_ms":4329.8,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench/results/speed_throughput_8k_c1.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_8k_c1.json","failed_requests":0,"num_prompts":12,"completed_requests":12,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":1,"successful_requests":12,"duration_s":20.11,"request_throughput_rps":0.597,"goodput_rps":0.597,"slo_attainment":1.0,"input_tps":5086.2,"output_tps":305.6,"ttft_p50_ms":180.5,"ttft_p95_ms":249.5,"ttft_p99_ms":250.0,"tpot_p50_ms":2.86,"tpot_p95_ms":3.14,"tpot_p99_ms":3.14,"itl_p95_ms":7.6,"e2el_p95_ms":1801.5,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench-moe/results/speed_throughput_8k_c1.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_8k_c1.json","failed_requests":0,"num_prompts":12,"completed_requests":12,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":2,"successful_requests":24,"duration_s":57.64,"request_throughput_rps":0.416,"goodput_rps":0.382,"slo_attainment":0.9167,"input_tps":3580.4,"output_tps":213.2,"ttft_p50_ms":579.4,"ttft_p95_ms":1028.0,"ttft_p99_ms":1050.2,"tpot_p50_ms":8.22,"tpot_p95_ms":8.75,"tpot_p99_ms":8.82,"itl_p95_ms":14.24,"e2el_p95_ms":5143.7,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench/results/speed_throughput_8k_c2.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_8k_c2.json","failed_requests":0,"num_prompts":24,"completed_requests":24,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":2,"successful_requests":24,"duration_s":23.93,"request_throughput_rps":1.003,"goodput_rps":1.003,"slo_attainment":1.0,"input_tps":8624.7,"output_tps":513.5,"ttft_p50_ms":207.7,"ttft_p95_ms":395.0,"ttft_p99_ms":401.9,"tpot_p50_ms":3.34,"tpot_p95_ms":3.98,"tpot_p99_ms":4.11,"itl_p95_ms":8.32,"e2el_p95_ms":2248.9,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench-moe/results/speed_throughput_8k_c2.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_8k_c2.json","failed_requests":0,"num_prompts":24,"completed_requests":24,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":4,"successful_requests":48,"duration_s":72.04,"request_throughput_rps":0.666,"goodput_rps":0.416,"slo_attainment":0.625,"input_tps":5683.2,"output_tps":341.1,"ttft_p50_ms":595.3,"ttft_p95_ms":1680.5,"ttft_p99_ms":2042.2,"tpot_p50_ms":10.4,"tpot_p95_ms":10.91,"tpot_p99_ms":11.51,"itl_p95_ms":15.02,"e2el_p95_ms":6862.8,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench/results/speed_throughput_8k_c4.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_8k_c4.json","failed_requests":0,"num_prompts":48,"completed_requests":48,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":4,"successful_requests":48,"duration_s":32.17,"request_throughput_rps":1.492,"goodput_rps":1.492,"slo_attainment":1.0,"input_tps":12727.6,"output_tps":764.0,"ttft_p50_ms":212.5,"ttft_p95_ms":519.2,"ttft_p99_ms":697.7,"tpot_p50_ms":4.66,"tpot_p95_ms":5.32,"tpot_p99_ms":5.47,"itl_p95_ms":10.57,"e2el_p95_ms":3039.3,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench-moe/results/speed_throughput_8k_c4.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_8k_c4.json","failed_requests":0,"num_prompts":48,"completed_requests":48,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":8,"successful_requests":96,"duration_s":99.56,"request_throughput_rps":0.964,"goodput_rps":0.352,"slo_attainment":0.3646,"input_tps":8205.7,"output_tps":493.7,"ttft_p50_ms":1062.1,"ttft_p95_ms":2712.2,"ttft_p99_ms":4046.5,"tpot_p50_ms":14.13,"tpot_p95_ms":16.5,"tpot_p99_ms":18.5,"itl_p95_ms":16.62,"e2el_p95_ms":10313.6,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench/results/speed_throughput_8k_c8.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_8k_c8.json","failed_requests":0,"num_prompts":96,"completed_requests":96,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":8,"successful_requests":96,"duration_s":43.27,"request_throughput_rps":2.219,"goodput_rps":2.126,"slo_attainment":0.9583,"input_tps":18880.1,"output_tps":1135.9,"ttft_p50_ms":336.1,"ttft_p95_ms":794.4,"ttft_p99_ms":1268.7,"tpot_p50_ms":6.28,"tpot_p95_ms":7.54,"tpot_p99_ms":8.18,"itl_p95_ms":34.73,"e2el_p95_ms":4325.5,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench-moe/results/speed_throughput_8k_c8.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_8k_c8.json","failed_requests":0,"num_prompts":96,"completed_requests":96,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":16,"successful_requests":192,"duration_s":156.29,"request_throughput_rps":1.228,"goodput_rps":0.339,"slo_attainment":0.276,"input_tps":10453.9,"output_tps":629.0,"ttft_p50_ms":1281.8,"ttft_p95_ms":3881.7,"ttft_p99_ms":7513.1,"tpot_p50_ms":22.67,"tpot_p95_ms":27.52,"tpot_p99_ms":29.02,"itl_p95_ms":270.52,"e2el_p95_ms":15887.3,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench/results/speed_throughput_8k_c16.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_8k_c16.json","failed_requests":0,"num_prompts":192,"completed_requests":192,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":16,"successful_requests":192,"duration_s":64.23,"request_throughput_rps":2.989,"goodput_rps":2.787,"slo_attainment":0.9323,"input_tps":25436.8,"output_tps":1530.5,"ttft_p50_ms":388.0,"ttft_p95_ms":1239.8,"ttft_p99_ms":2215.3,"tpot_p50_ms":9.55,"tpot_p95_ms":11.34,"tpot_p99_ms":11.79,"itl_p95_ms":115.41,"e2el_p95_ms":6382.2,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench-moe/results/speed_throughput_8k_c16.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_8k_c16.json","failed_requests":0,"num_prompts":192,"completed_requests":192,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":32,"successful_requests":151,"duration_s":120.1,"request_throughput_rps":1.257,"goodput_rps":0.075,"slo_attainment":0.0596,"input_tps":10709.4,"output_tps":643.7,"ttft_p50_ms":2754.7,"ttft_p95_ms":13092.0,"ttft_p99_ms":15942.4,"tpot_p50_ms":38.72,"tpot_p95_ms":46.84,"tpot_p99_ms":48.9,"itl_p95_ms":483.98,"e2el_p95_ms":31429.7,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench/results/speed_throughput_8k_c32.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_8k_c32.json","failed_requests":233,"num_prompts":384,"completed_requests":151,"success_rate":0.3932291666666667,"average_output_len":512.0,"has_failures":true,"error_sample":"Traceback (most recent call last):\n  File \"/home/jules/vllm-bench/lib/python3.12/site-packages/aiohttp/client_proto.py\", line 144, in connection_lost\n    uncompleted = self._parser.feed_eof()\n                  ^^^^^^^^^^^^^^^^^^^^^^^\n  File"},{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":32,"successful_requests":384,"duration_s":101.08,"request_throughput_rps":3.799,"goodput_rps":3.463,"slo_attainment":0.9115,"input_tps":32403.4,"output_tps":1945.1,"ttft_p50_ms":436.4,"ttft_p95_ms":2348.2,"ttft_p99_ms":4486.6,"tpot_p50_ms":15.26,"tpot_p95_ms":17.92,"tpot_p99_ms":19.21,"itl_p95_ms":132.68,"e2el_p95_ms":10369.5,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench-moe/results/speed_throughput_8k_c32.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_8k_c32.json","failed_requests":0,"num_prompts":384,"completed_requests":384,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":1,"successful_requests":10,"duration_s":47.58,"request_throughput_rps":0.21,"goodput_rps":0.21,"slo_attainment":1.0,"input_tps":3507.1,"output_tps":107.6,"ttft_p50_ms":1065.2,"ttft_p95_ms":1156.2,"ttft_p99_ms":1202.3,"tpot_p50_ms":7.23,"tpot_p95_ms":7.48,"tpot_p99_ms":7.52,"itl_p95_ms":13.91,"e2el_p95_ms":4872.8,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_16k_c1.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_16k_c1.json","failed_requests":0,"num_prompts":10,"completed_requests":10,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":1,"successful_requests":10,"duration_s":18.21,"request_throughput_rps":0.549,"goodput_rps":0.549,"slo_attainment":1.0,"input_tps":9164.5,"output_tps":281.2,"ttft_p50_ms":339.5,"ttft_p95_ms":408.3,"ttft_p99_ms":409.2,"tpot_p50_ms":2.85,"tpot_p95_ms":3.21,"tpot_p99_ms":3.24,"itl_p95_ms":7.61,"e2el_p95_ms":2005.9,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_16k_c1.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_16k_c1.json","failed_requests":0,"num_prompts":10,"completed_requests":10,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":2,"successful_requests":20,"duration_s":60.3,"request_throughput_rps":0.332,"goodput_rps":0.265,"slo_attainment":0.8,"input_tps":5580.5,"output_tps":169.8,"ttft_p50_ms":1169.8,"ttft_p95_ms":2529.5,"ttft_p99_ms":2623.0,"tpot_p50_ms":9.29,"tpot_p95_ms":10.03,"tpot_p99_ms":10.2,"itl_p95_ms":14.48,"e2el_p95_ms":6819.1,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_16k_c2.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_16k_c2.json","failed_requests":0,"num_prompts":20,"completed_requests":20,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":2,"successful_requests":20,"duration_s":23.13,"request_throughput_rps":0.865,"goodput_rps":0.865,"slo_attainment":1.0,"input_tps":14546.7,"output_tps":442.7,"ttft_p50_ms":405.7,"ttft_p95_ms":683.2,"ttft_p99_ms":710.2,"tpot_p50_ms":3.67,"tpot_p95_ms":4.07,"tpot_p99_ms":4.1,"itl_p95_ms":8.39,"e2el_p95_ms":2541.7,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_16k_c2.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_16k_c2.json","failed_requests":0,"num_prompts":20,"completed_requests":20,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":4,"successful_requests":40,"duration_s":82.44,"request_throughput_rps":0.485,"goodput_rps":0.34,"slo_attainment":0.7,"input_tps":8153.5,"output_tps":248.4,"ttft_p50_ms":1543.4,"ttft_p95_ms":3772.1,"ttft_p99_ms":4196.8,"tpot_p50_ms":12.9,"tpot_p95_ms":14.43,"tpot_p99_ms":15.71,"itl_p95_ms":15.62,"e2el_p95_ms":10472.3,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_16k_c4.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_16k_c4.json","failed_requests":0,"num_prompts":40,"completed_requests":40,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":4,"successful_requests":40,"duration_s":32.96,"request_throughput_rps":1.214,"goodput_rps":1.214,"slo_attainment":1.0,"input_tps":20394.5,"output_tps":621.4,"ttft_p50_ms":438.4,"ttft_p95_ms":918.3,"ttft_p99_ms":1273.6,"tpot_p50_ms":5.39,"tpot_p95_ms":6.21,"tpot_p99_ms":6.29,"itl_p95_ms":11.31,"e2el_p95_ms":3797.9,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_16k_c4.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_16k_c4.json","failed_requests":0,"num_prompts":40,"completed_requests":40,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":8,"successful_requests":80,"duration_s":127.63,"request_throughput_rps":0.627,"goodput_rps":0.306,"slo_attainment":0.4875,"input_tps":10520.0,"output_tps":320.9,"ttft_p50_ms":2180.6,"ttft_p95_ms":5224.7,"ttft_p99_ms":8055.3,"tpot_p50_ms":20.65,"tpot_p95_ms":26.81,"tpot_p99_ms":27.32,"itl_p95_ms":262.39,"e2el_p95_ms":17095.7,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_16k_c8.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_16k_c8.json","failed_requests":0,"num_prompts":80,"completed_requests":80,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":8,"successful_requests":80,"duration_s":47.36,"request_throughput_rps":1.689,"goodput_rps":1.626,"slo_attainment":0.9625,"input_tps":28351.9,"output_tps":864.9,"ttft_p50_ms":616.1,"ttft_p95_ms":1620.8,"ttft_p99_ms":2464.8,"tpot_p50_ms":7.76,"tpot_p95_ms":9.95,"tpot_p99_ms":10.88,"itl_p95_ms":119.96,"e2el_p95_ms":6030.0,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_16k_c8.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_16k_c8.json","failed_requests":0,"num_prompts":80,"completed_requests":80,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":16,"successful_requests":160,"duration_s":219.2,"request_throughput_rps":0.73,"goodput_rps":0.269,"slo_attainment":0.3688,"input_tps":12304.0,"output_tps":373.7,"ttft_p50_ms":2815.1,"ttft_p95_ms":9049.5,"ttft_p99_ms":15219.7,"tpot_p50_ms":37.33,"tpot_p95_ms":43.83,"tpot_p99_ms":47.43,"itl_p95_ms":504.27,"e2el_p95_ms":27509.7,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_16k_c16.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_16k_c16.json","failed_requests":0,"num_prompts":160,"completed_requests":160,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_16k","dataset":"speed_bench","approx_isl":16384,"output_len":0,"concurrency":16,"successful_requests":160,"duration_s":76.56,"request_throughput_rps":2.09,"goodput_rps":1.946,"slo_attainment":0.9313,"input_tps":35227.9,"output_tps":1070.0,"ttft_p50_ms":632.4,"ttft_p95_ms":2781.1,"ttft_p99_ms":4548.4,"tpot_p50_ms":13.31,"tpot_p95_ms":16.12,"tpot_p99_ms":16.7,"itl_p95_ms":141.1,"e2el_p95_ms":9443.4,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_16k_c16.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 16k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_16k_c16.json","failed_requests":0,"num_prompts":160,"completed_requests":160,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_32k","dataset":"speed_bench","approx_isl":32768,"output_len":0,"concurrency":1,"successful_requests":8,"duration_s":48.18,"request_throughput_rps":0.166,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":5533.0,"output_tps":85.0,"ttft_p50_ms":2267.1,"ttft_p95_ms":2384.5,"ttft_p99_ms":2409.5,"tpot_p50_ms":7.26,"tpot_p95_ms":7.58,"tpot_p99_ms":7.62,"itl_p95_ms":14.26,"e2el_p95_ms":6135.1,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_32k_c1.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 32k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_32k_c1.json","failed_requests":0,"num_prompts":8,"completed_requests":8,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_32k","dataset":"speed_bench","approx_isl":32768,"output_len":0,"concurrency":1,"successful_requests":8,"duration_s":17.68,"request_throughput_rps":0.453,"goodput_rps":0.453,"slo_attainment":1.0,"input_tps":15078.3,"output_tps":231.7,"ttft_p50_ms":714.4,"ttft_p95_ms":789.1,"ttft_p99_ms":790.6,"tpot_p50_ms":2.91,"tpot_p95_ms":3.07,"tpot_p99_ms":3.07,"itl_p95_ms":7.78,"e2el_p95_ms":2278.3,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_32k_c1.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 32k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_32k_c1.json","failed_requests":0,"num_prompts":8,"completed_requests":8,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_32k","dataset":"speed_bench","approx_isl":32768,"output_len":0,"concurrency":2,"successful_requests":16,"duration_s":67.71,"request_throughput_rps":0.236,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":7901.8,"output_tps":121.0,"ttft_p50_ms":3020.6,"ttft_p95_ms":4475.4,"ttft_p99_ms":4527.1,"tpot_p50_ms":10.49,"tpot_p95_ms":12.18,"tpot_p99_ms":12.26,"itl_p95_ms":15.11,"e2el_p95_ms":9728.4,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_32k_c2.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 32k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_32k_c2.json","failed_requests":0,"num_prompts":16,"completed_requests":16,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_32k","dataset":"speed_bench","approx_isl":32768,"output_len":0,"concurrency":2,"successful_requests":16,"duration_s":25.15,"request_throughput_rps":0.636,"goodput_rps":0.636,"slo_attainment":1.0,"input_tps":21273.1,"output_tps":325.7,"ttft_p50_ms":838.4,"ttft_p95_ms":1420.2,"ttft_p99_ms":1475.6,"tpot_p50_ms":4.33,"tpot_p95_ms":5.26,"tpot_p99_ms":5.79,"itl_p95_ms":8.64,"e2el_p95_ms":3457.1,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_32k_c2.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 32k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_32k_c2.json","failed_requests":0,"num_prompts":16,"completed_requests":16,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_32k","dataset":"speed_bench","approx_isl":32768,"output_len":0,"concurrency":4,"successful_requests":32,"duration_s":106.77,"request_throughput_rps":0.3,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":10070.8,"output_tps":153.5,"ttft_p50_ms":2832.0,"ttft_p95_ms":7097.5,"ttft_p99_ms":8585.1,"tpot_p50_ms":20.77,"tpot_p95_ms":24.5,"tpot_p99_ms":24.65,"itl_p95_ms":18.33,"e2el_p95_ms":16867.0,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_32k_c4.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 32k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_32k_c4.json","failed_requests":0,"num_prompts":32,"completed_requests":32,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_32k","dataset":"speed_bench","approx_isl":32768,"output_len":0,"concurrency":4,"successful_requests":32,"duration_s":38.38,"request_throughput_rps":0.834,"goodput_rps":0.782,"slo_attainment":0.9375,"input_tps":28011.6,"output_tps":426.8,"ttft_p50_ms":971.0,"ttft_p95_ms":2014.2,"ttft_p99_ms":2695.6,"tpot_p50_ms":7.2,"tpot_p95_ms":8.65,"tpot_p99_ms":9.64,"itl_p95_ms":111.41,"e2el_p95_ms":6088.2,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_32k_c4.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 32k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_32k_c4.json","failed_requests":0,"num_prompts":32,"completed_requests":32,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_32k","dataset":"speed_bench","approx_isl":32768,"output_len":0,"concurrency":8,"successful_requests":64,"duration_s":183.13,"request_throughput_rps":0.349,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":11759.9,"output_tps":178.9,"ttft_p50_ms":4912.5,"ttft_p95_ms":11759.5,"ttft_p99_ms":16772.8,"tpot_p50_ms":35.07,"tpot_p95_ms":46.09,"tpot_p99_ms":49.9,"itl_p95_ms":529.83,"e2el_p95_ms":29712.8,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench/results/speed_throughput_32k_c8.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 32k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_32k_c8.json","failed_requests":0,"num_prompts":64,"completed_requests":64,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"throughput_32k","dataset":"speed_bench","approx_isl":32768,"output_len":0,"concurrency":8,"successful_requests":64,"duration_s":60.85,"request_throughput_rps":1.052,"goodput_rps":0.723,"slo_attainment":0.6875,"input_tps":35392.5,"output_tps":538.5,"ttft_p50_ms":1440.3,"ttft_p95_ms":3424.8,"ttft_p99_ms":4890.9,"tpot_p50_ms":12.01,"tpot_p95_ms":14.72,"tpot_p99_ms":17.61,"itl_p95_ms":162.19,"e2el_p95_ms":10099.9,"slo_ttft_ms":2000,"slo_tpot_ms":200,"source_json":"/home/jules/bench-moe/results/speed_throughput_32k_c8.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"SPEED 32k","is_speed":true,"detail_json":"nebius-bench-results/moe/results/speed_throughput_32k_c8.json","failed_requests":0,"num_prompts":64,"completed_requests":64,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"cache65k","dataset":"random_cache_stress","approx_isl":65536,"output_len":0,"concurrency":1,"successful_requests":4,"duration_s":36.69,"request_throughput_rps":0.109,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":7146.2,"output_tps":55.8,"ttft_p50_ms":5278.4,"ttft_p95_ms":5297.8,"ttft_p99_ms":5300.0,"tpot_p50_ms":7.66,"tpot_p95_ms":7.72,"tpot_p99_ms":7.72,"itl_p95_ms":14.75,"e2el_p95_ms":9242.7,"slo_ttft_ms":4000,"slo_tpot_ms":300,"source_json":"/home/jules/bench/results/kv_cache65k_c1.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"Cache 65k","is_speed":false,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/kv_cache65k_c1.json","failed_requests":0,"num_prompts":4,"completed_requests":4,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"cache65k","dataset":"random_cache_stress","approx_isl":65536,"output_len":0,"concurrency":1,"successful_requests":4,"duration_s":13.95,"request_throughput_rps":0.287,"goodput_rps":0.287,"slo_attainment":1.0,"input_tps":18799.0,"output_tps":146.8,"ttft_p50_ms":1801.7,"ttft_p95_ms":1834.2,"ttft_p99_ms":1838.6,"tpot_p50_ms":3.13,"tpot_p95_ms":3.89,"tpot_p99_ms":4.0,"itl_p95_ms":7.96,"e2el_p95_ms":3824.1,"slo_ttft_ms":4000,"slo_tpot_ms":300,"source_json":"/home/jules/bench-moe/results/kv_cache65k_c1.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"Cache 65k","is_speed":false,"detail_json":"nebius-bench-results/moe/results/kv_cache65k_c1.json","failed_requests":0,"num_prompts":4,"completed_requests":4,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"cache65k","dataset":"random_cache_stress","approx_isl":65536,"output_len":0,"concurrency":2,"successful_requests":8,"duration_s":57.85,"request_throughput_rps":0.138,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":9063.6,"output_tps":70.8,"ttft_p50_ms":8225.7,"ttft_p95_ms":10472.7,"ttft_p99_ms":10576.4,"tpot_p50_ms":12.2,"tpot_p95_ms":16.53,"tpot_p99_ms":16.53,"itl_p95_ms":15.93,"e2el_p95_ms":14765.9,"slo_ttft_ms":4000,"slo_tpot_ms":300,"source_json":"/home/jules/bench/results/kv_cache65k_c2.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"Cache 65k","is_speed":false,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/kv_cache65k_c2.json","failed_requests":0,"num_prompts":8,"completed_requests":8,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"cache65k","dataset":"random_cache_stress","approx_isl":65536,"output_len":0,"concurrency":2,"successful_requests":8,"duration_s":20.57,"request_throughput_rps":0.389,"goodput_rps":0.389,"slo_attainment":1.0,"input_tps":25490.2,"output_tps":199.1,"ttft_p50_ms":2790.5,"ttft_p95_ms":3654.7,"ttft_p99_ms":3677.6,"tpot_p50_ms":4.56,"tpot_p95_ms":5.94,"tpot_p99_ms":6.0,"itl_p95_ms":8.83,"e2el_p95_ms":5435.2,"slo_ttft_ms":4000,"slo_tpot_ms":300,"source_json":"/home/jules/bench-moe/results/kv_cache65k_c2.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"Cache 65k","is_speed":false,"detail_json":"nebius-bench-results/moe/results/kv_cache65k_c2.json","failed_requests":0,"num_prompts":8,"completed_requests":8,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"cache65k","dataset":"random_cache_stress","approx_isl":65536,"output_len":0,"concurrency":4,"successful_requests":16,"duration_s":100.46,"request_throughput_rps":0.159,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":10439.6,"output_tps":81.5,"ttft_p50_ms":11611.5,"ttft_p95_ms":20380.1,"ttft_p99_ms":20494.8,"tpot_p50_ms":26.31,"tpot_p95_ms":37.22,"tpot_p99_ms":37.39,"itl_p95_ms":45.03,"e2el_p95_ms":29734.6,"slo_ttft_ms":4000,"slo_tpot_ms":300,"source_json":"/home/jules/bench/results/kv_cache65k_c4.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"Cache 65k","is_speed":false,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/kv_cache65k_c4.json","failed_requests":0,"num_prompts":16,"completed_requests":16,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"cache65k","dataset":"random_cache_stress","approx_isl":65536,"output_len":0,"concurrency":4,"successful_requests":16,"duration_s":33.84,"request_throughput_rps":0.473,"goodput_rps":0.236,"slo_attainment":0.5,"input_tps":30987.8,"output_tps":242.1,"ttft_p50_ms":4398.9,"ttft_p95_ms":6483.7,"ttft_p99_ms":6588.3,"tpot_p50_ms":7.92,"tpot_p95_ms":12.26,"tpot_p99_ms":12.31,"itl_p95_ms":144.31,"e2el_p95_ms":8942.4,"slo_ttft_ms":4000,"slo_tpot_ms":300,"source_json":"/home/jules/bench-moe/results/kv_cache65k_c4.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"Cache 65k","is_speed":false,"detail_json":"nebius-bench-results/moe/results/kv_cache65k_c4.json","failed_requests":0,"num_prompts":16,"completed_requests":16,"success_rate":1.0,"average_output_len":512.0,"has_failures":false,"error_sample":""},{"subset":"cache131k","dataset":"random_cache_stress","approx_isl":131072,"output_len":0,"concurrency":1,"successful_requests":3,"duration_s":46.36,"request_throughput_rps":0.065,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":8482.1,"output_tps":16.6,"ttft_p50_ms":13401.2,"ttft_p95_ms":13424.6,"ttft_p99_ms":13426.6,"tpot_p50_ms":8.07,"tpot_p95_ms":8.1,"tpot_p99_ms":8.1,"itl_p95_ms":15.65,"e2el_p95_ms":15490.1,"slo_ttft_ms":8000,"slo_tpot_ms":400,"source_json":"/home/jules/bench/results/kv_cache131k_c1.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"Cache 131k","is_speed":false,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/kv_cache131k_c1.json","failed_requests":0,"num_prompts":3,"completed_requests":3,"success_rate":1.0,"average_output_len":256.0,"has_failures":false,"error_sample":""},{"subset":"cache131k","dataset":"random_cache_stress","approx_isl":131072,"output_len":0,"concurrency":1,"successful_requests":3,"duration_s":16.69,"request_throughput_rps":0.18,"goodput_rps":0.18,"slo_attainment":1.0,"input_tps":23568.2,"output_tps":46.0,"ttft_p50_ms":4832.6,"ttft_p95_ms":4850.3,"ttft_p99_ms":4851.8,"tpot_p50_ms":2.89,"tpot_p95_ms":3.07,"tpot_p99_ms":3.08,"itl_p95_ms":8.57,"e2el_p95_ms":5616.4,"slo_ttft_ms":8000,"slo_tpot_ms":400,"source_json":"/home/jules/bench-moe/results/kv_cache131k_c1.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"Cache 131k","is_speed":false,"detail_json":"nebius-bench-results/moe/results/kv_cache131k_c1.json","failed_requests":0,"num_prompts":3,"completed_requests":3,"success_rate":1.0,"average_output_len":256.0,"has_failures":false,"error_sample":""},{"subset":"cache131k","dataset":"random_cache_stress","approx_isl":131072,"output_len":0,"concurrency":2,"successful_requests":6,"duration_s":85.33,"request_throughput_rps":0.07,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":9217.2,"output_tps":18.0,"ttft_p50_ms":20134.2,"ttft_p95_ms":26308.4,"ttft_p99_ms":26338.8,"tpot_p50_ms":32.36,"tpot_p95_ms":55.93,"tpot_p99_ms":55.97,"itl_p95_ms":588.44,"e2el_p95_ms":28575.4,"slo_ttft_ms":8000,"slo_tpot_ms":400,"source_json":"/home/jules/bench/results/kv_cache131k_c2.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"Cache 131k","is_speed":false,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/kv_cache131k_c2.json","failed_requests":0,"num_prompts":6,"completed_requests":6,"success_rate":1.0,"average_output_len":256.0,"has_failures":false,"error_sample":""},{"subset":"cache131k","dataset":"random_cache_stress","approx_isl":131072,"output_len":0,"concurrency":2,"successful_requests":6,"duration_s":29.39,"request_throughput_rps":0.204,"goodput_rps":0.102,"slo_attainment":0.5,"input_tps":26761.5,"output_tps":52.3,"ttft_p50_ms":6995.6,"ttft_p95_ms":9079.1,"ttft_p99_ms":9113.8,"tpot_p50_ms":10.8,"tpot_p95_ms":18.55,"tpot_p99_ms":18.58,"itl_p95_ms":237.62,"e2el_p95_ms":9912.0,"slo_ttft_ms":8000,"slo_tpot_ms":400,"source_json":"/home/jules/bench-moe/results/kv_cache131k_c2.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"Cache 131k","is_speed":false,"detail_json":"nebius-bench-results/moe/results/kv_cache131k_c2.json","failed_requests":0,"num_prompts":6,"completed_requests":6,"success_rate":1.0,"average_output_len":256.0,"has_failures":false,"error_sample":""},{"subset":"cache256k","dataset":"random_cache_stress","approx_isl":255488,"output_len":0,"concurrency":1,"successful_requests":2,"duration_s":75.04,"request_throughput_rps":0.027,"goodput_rps":0.0,"slo_attainment":0.0,"input_tps":6809.6,"output_tps":3.4,"ttft_p50_ms":36514.2,"ttft_p95_ms":36548.1,"ttft_p99_ms":36551.1,"tpot_p50_ms":7.92,"tpot_p95_ms":8.05,"tpot_p99_ms":8.06,"itl_p95_ms":17.41,"e2el_p95_ms":37570.7,"slo_ttft_ms":15000,"slo_tpot_ms":500,"source_json":"/home/jules/bench/results/kv_cache256k_c1.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"Cache 256k","is_speed":false,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/kv_cache256k_c1.json","failed_requests":0,"num_prompts":2,"completed_requests":2,"success_rate":1.0,"average_output_len":128.0,"has_failures":false,"error_sample":""},{"subset":"cache256k","dataset":"random_cache_stress","approx_isl":255488,"output_len":0,"concurrency":1,"successful_requests":2,"duration_s":27.85,"request_throughput_rps":0.072,"goodput_rps":0.072,"slo_attainment":1.0,"input_tps":18348.7,"output_tps":9.2,"ttft_p50_ms":13613.2,"ttft_p95_ms":13647.5,"ttft_p99_ms":13650.6,"tpot_p50_ms":2.45,"tpot_p95_ms":2.49,"tpot_p99_ms":2.49,"itl_p95_ms":9.65,"e2el_p95_ms":13953.9,"slo_ttft_ms":15000,"slo_tpot_ms":500,"source_json":"/home/jules/bench-moe/results/kv_cache256k_c1.json","run_key":"moe","run_label":"MoE 35B-A3B FP8","run_short_label":"MoE","model":"Qwen/Qwen3.6-35B-A3B-FP8","color":"#0d956b","workload_label":"Cache 256k","is_speed":false,"detail_json":"nebius-bench-results/moe/results/kv_cache256k_c1.json","failed_requests":0,"num_prompts":2,"completed_requests":2,"success_rate":1.0,"average_output_len":128.0,"has_failures":false,"error_sample":""}],"capacity":{"dense":{"throughput_1k":{"capacity_concurrency":256,"capacity_output_tps":3350.6,"capacity_first_token_p95_ms":19507.2,"best_output_concurrency":256,"best_output_tps":3350.6,"best_request_concurrency":256,"best_request_rps":6.544},"throughput_2k":{"capacity_concurrency":128,"capacity_output_tps":2320.4,"capacity_first_token_p95_ms":2403.3,"best_output_concurrency":128,"best_output_tps":2320.4,"best_request_concurrency":128,"best_request_rps":4.532},"throughput_8k":{"capacity_concurrency":32,"capacity_output_tps":643.7,"capacity_first_token_p95_ms":13092.0,"best_output_concurrency":32,"best_output_tps":643.7,"best_request_concurrency":32,"best_request_rps":1.257},"throughput_16k":{"capacity_concurrency":16,"capacity_output_tps":373.7,"capacity_first_token_p95_ms":9049.5,"best_output_concurrency":16,"best_output_tps":373.7,"best_request_concurrency":16,"best_request_rps":0.73},"throughput_32k":{"capacity_concurrency":8,"capacity_output_tps":178.9,"capacity_first_token_p95_ms":11759.5,"best_output_concurrency":8,"best_output_tps":178.9,"best_request_concurrency":8,"best_request_rps":0.349},"cache65k":{"capacity_concurrency":4,"capacity_output_tps":81.5,"capacity_first_token_p95_ms":20380.1,"best_output_concurrency":4,"best_output_tps":81.5,"best_request_concurrency":4,"best_request_rps":0.159},"cache131k":{"capacity_concurrency":2,"capacity_output_tps":18.0,"capacity_first_token_p95_ms":26308.4,"best_output_concurrency":2,"best_output_tps":18.0,"best_request_concurrency":2,"best_request_rps":0.07},"cache256k":{"capacity_concurrency":1,"capacity_output_tps":3.4,"capacity_first_token_p95_ms":36548.1,"best_output_concurrency":1,"best_output_tps":3.4,"best_request_concurrency":1,"best_request_rps":0.027}},"moe":{"throughput_1k":{"capacity_concurrency":256,"capacity_output_tps":5753.0,"capacity_first_token_p95_ms":545.4,"best_output_concurrency":256,"best_output_tps":5753.0,"best_request_concurrency":256,"best_request_rps":11.236},"throughput_2k":{"capacity_concurrency":128,"capacity_output_tps":5155.1,"capacity_first_token_p95_ms":670.3,"best_output_concurrency":128,"best_output_tps":5155.1,"best_request_concurrency":128,"best_request_rps":10.069},"throughput_8k":{"capacity_concurrency":32,"capacity_output_tps":1945.1,"capacity_first_token_p95_ms":2348.2,"best_output_concurrency":32,"best_output_tps":1945.1,"best_request_concurrency":32,"best_request_rps":3.799},"throughput_16k":{"capacity_concurrency":16,"capacity_output_tps":1070.0,"capacity_first_token_p95_ms":2781.1,"best_output_concurrency":16,"best_output_tps":1070.0,"best_request_concurrency":16,"best_request_rps":2.09},"throughput_32k":{"capacity_concurrency":8,"capacity_output_tps":538.5,"capacity_first_token_p95_ms":3424.8,"best_output_concurrency":8,"best_output_tps":538.5,"best_request_concurrency":8,"best_request_rps":1.052},"cache65k":{"capacity_concurrency":4,"capacity_output_tps":242.1,"capacity_first_token_p95_ms":6483.7,"best_output_concurrency":4,"best_output_tps":242.1,"best_request_concurrency":4,"best_request_rps":0.473},"cache131k":{"capacity_concurrency":2,"capacity_output_tps":52.3,"capacity_first_token_p95_ms":9079.1,"best_output_concurrency":2,"best_output_tps":52.3,"best_request_concurrency":2,"best_request_rps":0.204},"cache256k":{"capacity_concurrency":1,"capacity_output_tps":9.2,"capacity_first_token_p95_ms":13647.5,"best_output_concurrency":1,"best_output_tps":9.2,"best_request_concurrency":1,"best_request_rps":0.072}}},"metadata":{"planning_assumptions":{"report_a_safe":20,"report_break_even_seats":153,"seat_revenue_eur":79,"dev_attach_rate":0.2,"fixed_monthly_cost_eur":8857,"committed_h200_monthly_eur":1418,"burst_65_window_eur":132,"burst_30_window_eur":197,"burst_25_window_eur":66,"dev_gpu_window_eur":394,"dev_slots_per_h200":10},"estimate_comparison":[{"scenario":"Short-chat heavy","description":"Mostly normal chat and short consulting context.","weights":{"throughput_1k":0.65,"throughput_2k":0.25,"throughput_8k":0.08,"throughput_16k":0.02},"dense":{"effective_sessions":2085.4,"contractable":true,"zero_capacity_workloads":[],"vs_report":0,"break_even_seats":null},"moe":{"effective_sessions":4518.7,"contractable":true,"zero_capacity_workloads":[],"vs_report":0,"break_even_seats":null}},{"scenario":"Reasonable mixed","description":"Balanced daily consulting traffic with some RAG and agent context.","weights":{"throughput_1k":0.5,"throughput_2k":0.25,"throughput_8k":0.15,"throughput_16k":0.1},"dense":{"effective_sessions":1320.0,"contractable":true,"zero_capacity_workloads":[],"vs_report":0,"break_even_seats":null},"moe":{"effective_sessions":3268.2,"contractable":true,"zero_capacity_workloads":[],"vs_report":0,"break_even_seats":null}},{"scenario":"Long-context heavy","description":"Document-heavy usage where 8k and 16k prompts are common.","weights":{"throughput_1k":0.35,"throughput_2k":0.25,"throughput_8k":0.25,"throughput_16k":0.15},"dense":{"effective_sessions":998.0,"contractable":true,"zero_capacity_workloads":[],"vs_report":0,"break_even_seats":null},"moe":{"effective_sessions":2645.2,"contractable":true,"zero_capacity_workloads":[],"vs_report":0,"break_even_seats":null}},{"scenario":"Includes 32k lane","description":"Normal mixed traffic with a small amount of 32k interactive context.","weights":{"throughput_1k":0.5,"throughput_2k":0.25,"throughput_8k":0.15,"throughput_16k":0.05,"throughput_32k":0.05},"dense":{"effective_sessions":1107.1,"contractable":true,"zero_capacity_workloads":[],"vs_report":0,"break_even_seats":null},"moe":{"effective_sessions":2840.1,"contractable":true,"zero_capacity_workloads":[],"vs_report":0,"break_even_seats":null}}],"moe_manifest":{"started_at":"2026-04-28T22:47:56+00:00","model":"Qwen/Qwen3.6-35B-A3B-FP8","tokenizer":"Qwen/Qwen3.6-35B-A3B-FP8","base_url":"http://127.0.0.1:8000","endpoint":"/v1/chat/completions","backend":"openai-chat","speed_dir":"/home/jules/bench/speed-bench","output_len":"512","request_rate":"inf"},"moe_wallclock":{"status":"0","started_at":"2026-04-28T22:47:56+00:00","ended_at":"2026-04-28T23:42:48+00:00","elapsed_seconds":"3292","elapsed_hms":"00:54:52"},"moe_idle_gpu":{"used_mib":132779,"total_mib":143771,"used_gib":129.7,"total_gib":140.4,"pct":92.4},"moe_peak_gpu":{"used_mib":132789,"total_mib":143771,"used_gib":129.7,"total_gib":140.4,"pct":92.4},"dense_failures":[{"subset":"throughput_8k","dataset":"speed_bench","approx_isl":8192,"output_len":0,"concurrency":32,"successful_requests":151,"duration_s":120.1,"request_throughput_rps":1.257,"goodput_rps":0.075,"slo_attainment":0.0596,"input_tps":10709.4,"output_tps":643.7,"ttft_p50_ms":2754.7,"ttft_p95_ms":13092.0,"ttft_p99_ms":15942.4,"tpot_p50_ms":38.72,"tpot_p95_ms":46.84,"tpot_p99_ms":48.9,"itl_p95_ms":483.98,"e2el_p95_ms":31429.7,"slo_ttft_ms":1000,"slo_tpot_ms":100,"source_json":"/home/jules/bench/results/speed_throughput_8k_c32.json","run_key":"dense","run_label":"Dense 27B FP8","run_short_label":"Dense","model":"Qwen/Qwen3.6-27B-FP8","color":"#3157d5","workload_label":"SPEED 8k","is_speed":true,"detail_json":"nebius-bench-results/nebius-bench-results-qwen36_27b-dense/results/speed_throughput_8k_c32.json","failed_requests":233,"num_prompts":384,"completed_requests":151,"success_rate":0.3932291666666667,"average_output_len":512.0,"has_failures":true,"error_sample":"Traceback (most recent call last):\n  File \"/home/jules/vllm-bench/lib/python3.12/site-packages/aiohttp/client_proto.py\", line 144, in connection_lost\n    uncompleted = self._parser.feed_eof()\n                  ^^^^^^^^^^^^^^^^^^^^^^^\n  File"}],"moe_failures":[]}}</script>
+  <script>
+    const DATA = JSON.parse(document.getElementById("bench-data").textContent);
+    const state = {
+      workload: "throughput_1k",
+      metric: "ttft_p95_ms",
+      tableModel: "all",
+      query: ""
+    };
+
+    const metrics = {
+      ttft_p95_ms: { label: "First token p95", unit: "ms", target: null, lowerIsBetter: true },
+      tpot_p95_ms: { label: "Token time p95", unit: "ms", target: null, lowerIsBetter: true },
+      output_tps: { label: "Output tok/s", unit: "tok/s", target: null, lowerIsBetter: false },
+      request_throughput_rps: { label: "Requests/s", unit: "req/s", target: null, lowerIsBetter: false }
+    };
+
+    const fmt = (n, digits = 0) => {
+      const value = Number(n || 0);
+      if (!Number.isFinite(value)) return "0";
+      return value.toLocaleString(undefined, { maximumFractionDigits: digits, minimumFractionDigits: digits });
+    };
+    const pct = n => `${fmt(Number(n || 0) * 100, 1)}%`;
+    const byRun = run => DATA.rows.filter(r => r.run_key === run);
+    const workloadLabel = subset => DATA.workload_labels[subset] || subset;
+    const cap = (run, subset) => DATA.capacity[run][subset] || {};
+    const capValue = (run, subset, key) => Number((cap(run, subset) || {})[key] || 0);
+    const liftLabel = (dense, moe) => {
+      if (dense === 0 && moe > 0) return `opens C${moe}`;
+      if (dense === 0 && moe === 0) return "no data";
+      return `${fmt(moe / dense, 1)}x peak C`;
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, ch => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      }[ch]));
+    }
+
+    function setupMeta() {
+      const meta = DATA.metadata || {};
+      const manifest = meta.moe_manifest || {};
+      const wallclock = meta.moe_wallclock || {};
+      const peak = meta.moe_peak_gpu || {};
+      const pills = [
+        "1x NVIDIA H200",
+        manifest.vllm ? `vLLM ${manifest.vllm}` : "vLLM",
+        `${DATA.rows.length} result rows`,
+        wallclock.elapsed_hms ? `MoE sweep ${wallclock.elapsed_hms}` : "MoE sweep",
+        peak.used_gib ? `Peak GPU ${peak.used_gib} GiB` : "GPU captured"
+      ];
+      document.getElementById("meta-pills").innerHTML = pills.map(p => `<span class="pill">${escapeHtml(p)}</span>`).join("");
+    }
+
+    function setupKpis() {
+      const cards = [
+        ["SPEED 1k peak C", "throughput_1k"],
+        ["SPEED 2k peak C", "throughput_2k"],
+        ["SPEED 8k peak C", "throughput_8k"],
+        ["Long-cache peak", "cache65k"]
+      ].map(([title, subset]) => {
+        const d = capValue("dense", subset, "capacity_concurrency");
+        const m = capValue("moe", subset, "capacity_concurrency");
+        const out = subset === "cache65k"
+          ? `Dense C0 · MoE C${m} at 65k`
+          : `Dense C${d} · MoE C${m}`;
+        const value = subset === "cache65k" ? "MoE only" : liftLabel(d, m);
+        return `
+          <article class="panel third">
+            <div class="kpi">
+              <div class="kpi-title">${escapeHtml(title)}</div>
+              <div class="kpi-value">${escapeHtml(value)}</div>
+              <div class="kpi-pair">
+                <span class="model-chip dense">Dense</span>
+                <span class="model-chip moe">MoE</span>
+              </div>
+              <p class="muted small">${escapeHtml(out)}</p>
+            </div>
+          </article>`;
+      }).join("");
+      document.getElementById("kpis").innerHTML = cards;
+    }
+
+    function setupFrontier() {
+      const html = DATA.workload_order.map(subset => {
+        const d = capValue("dense", subset, "capacity_concurrency");
+        const m = capValue("moe", subset, "capacity_concurrency");
+        const denseOut = capValue("dense", subset, "capacity_output_tps");
+        const moeOut = capValue("moe", subset, "capacity_output_tps");
+        return `
+          <div class="frontier-step">
+            <div class="frontier-context">${escapeHtml(workloadLabel(subset))}</div>
+            <div class="frontier-row"><span class="model-chip dense">Dense</span><b>C${d}</b></div>
+            <div class="frontier-row"><span class="model-chip moe">MoE</span><b>C${m}</b></div>
+            <div class="lift">${escapeHtml(liftLabel(d, m))}</div>
+            <p class="muted small">${fmt(denseOut)} vs ${fmt(moeOut)} output tok/s</p>
+          </div>`;
+      }).join("");
+      document.getElementById("frontier").innerHTML = html;
+    }
+
+    function setupExecutiveComparison() {
+      const report = DATA.metadata.planning_assumptions || {};
+      const reportSafe = Number(report.report_a_safe || 20);
+      const reportBreakEven = Number(report.report_break_even_seats || 153);
+      const dense1k = capValue("dense", "throughput_1k", "capacity_concurrency");
+      const moe1k = capValue("moe", "throughput_1k", "capacity_concurrency");
+      const dense8k = capValue("dense", "throughput_8k", "capacity_concurrency");
+      const moe8k = capValue("moe", "throughput_8k", "capacity_concurrency");
+      const mixed = (DATA.metadata.estimate_comparison || []).find(r => r.scenario === "Reasonable mixed");
+      const denseMixed = mixed?.dense?.effective_sessions || 0;
+      const moeMixed = mixed?.moe?.effective_sessions || 0;
+
+      document.getElementById("executive-lead").textContent =
+        `The benchmark changes the baseline architecture decision: dense 27B FP8 is the slower serving baseline on this H200, while MoE 35B-A3B FP8 provides much higher raw concurrency and output throughput under the same benchmark shape. The pricing report's ${reportSafe} active-sessions-per-H200 assumption should now be treated as a planning proxy, not as a measured benchmark result.`;
+
+      const insights = [
+        [
+          "Throughput is workload-dependent",
+          `Short chat is not the same product as long-context RAG. MoE reaches C${moe1k} at 1k but only C${capValue("moe", "throughput_32k", "capacity_concurrency")} at 32k.`
+        ],
+        [
+          "Dense breaks the shared-H200 plan",
+          `Dense reaches peak-output C${dense1k} at 1k and C${dense8k} at 8k. A reasonable mixed workload scores around ${fmt(denseMixed, 1)} output tok/s under this raw throughput proxy.`
+        ],
+        [
+          "MoE preserves the economics",
+          `MoE lands near ${fmt(moeMixed, 1)} mixed output tok/s, or ${fmt(moeMixed / Math.max(denseMixed, 0.001), 1)}x dense. Convert this to seats only after choosing a product latency policy.`
+        ]
+      ];
+      document.getElementById("executive-insights").innerHTML = insights.map(([title, body]) => `
+        <div class="insight">
+          <strong>${escapeHtml(title)}</strong>
+          <p>${escapeHtml(body)}</p>
+        </div>`).join("");
+
+      const decisions = [
+        [
+          "Baseline model",
+          "Use Qwen3.6-35B-A3B-FP8 MoE as the serving baseline for shared H200 economics. Treat dense 27B FP8 as a low-concurrency reference, not the financial baseline."
+        ],
+        [
+          "Product lanes",
+          "Expose 1k-16k as the normal shared lane. Put 32k into a controlled long-context lane, and keep 65k+ as premium, queued, or dedicated capacity."
+        ],
+        [
+          "Conservative caveat",
+          "The MoE run used MTP speculative decoding but did not enable prefix caching. Repeated system prompts, tool schemas, and workspace context should make production traffic better than this cold-prefix benchmark."
+        ]
+      ];
+      document.getElementById("decision-list").innerHTML = decisions.map(([title, body]) => `
+        <li><b>${escapeHtml(title)}</b>${escapeHtml(body)}</li>`).join("");
+    }
+
+    function formatBreakEven(value) {
+      if (!value) return "no break-even";
+      return `~${fmt(value)} seats`;
+    }
+
+    function setupEstimateTable() {
+      const report = DATA.metadata.planning_assumptions || {};
+      const reportSafe = Number(report.report_a_safe || 20);
+      const rows = DATA.metadata.estimate_comparison || [];
+      document.getElementById("estimate-table").innerHTML = rows.map(row => {
+        const dense = row.dense || {};
+        const moe = row.moe || {};
+        const denseSessions = Number(dense.effective_sessions || 0);
+        const moeSessions = Number(moe.effective_sessions || 0);
+        const denseContract = dense.contractable !== false;
+        const moeContract = moe.contractable !== false;
+        const readout = denseContract
+          ? `MoE gives ${fmt(moeSessions / Math.max(denseSessions, 0.001), 1)}x effective mixed output throughput.`
+          : `Dense has no measured peak point for ${(dense.zero_capacity_workloads || []).map(workloadLabel).join(", ")}.`;
+        return `
+          <tr>
+            <td class="scenario-cell">
+              <b>${escapeHtml(row.scenario)}</b>
+              <span class="subline">${escapeHtml(row.description)}</span>
+            </td>
+            <td>
+              ${fmt(denseSessions, 1)}
+              <span class="subline">harmonic weighted output tok/s</span>
+            </td>
+            <td>
+              raw metric only
+              <span class="subline">choose latency policy before seat mapping</span>
+            </td>
+            <td>
+              ${fmt(moeSessions, 1)}
+              <span class="subline">harmonic weighted output tok/s</span>
+            </td>
+            <td>
+              raw metric only
+              <span class="subline">not an SLA capacity number</span>
+            </td>
+            <td>${escapeHtml(readout)}</td>
+          </tr>`;
+      }).join("");
+    }
+
+    function setupWorkloadInterpretation() {
+      const items = [
+        [
+          "Default shared lane",
+          `SPEED 1k and 2k behave like normal chat and lightweight consulting. MoE peaks at C${capValue("moe", "throughput_1k", "capacity_concurrency")} and C${capValue("moe", "throughput_2k", "capacity_concurrency")}, so this lane is the strongest candidate for shared-seat economics.`
+        ],
+        [
+          "Agentic and RAG lane",
+          `8k and 16k are where retrieval, tool context, and document excerpts start to matter. MoE peaks at C${capValue("moe", "throughput_8k", "capacity_concurrency")} and C${capValue("moe", "throughput_16k", "capacity_concurrency")}; dense peaks much lower.`
+        ],
+        [
+          "Deep-context lane",
+          `32k+ should not be treated as normal interactive shared capacity. MoE can do low concurrency; dense is weak in the 32k and cache-stress ranges.`
+        ],
+        [
+          "The bottleneck",
+          "The failing metric is mostly first-token time, meaning prompt prefill. Token generation after the first token remains fast enough in most rows."
+        ],
+        [
+          "Optimization path",
+          "Enable prefix caching, deduplicate tool schemas and policy text, compress retrieved context, and route 32k+ requests through separate concurrency limits."
+        ],
+        [
+          "What this does not prove",
+          "This is a serving benchmark. It does not measure answer quality, hallucination rate, tool success rate, or customer-specific accuracy."
+        ]
+      ];
+      document.getElementById("workload-interpretation").innerHTML = items.map(([title, body]) => `
+        <div class="insight">
+          <strong>${escapeHtml(title)}</strong>
+          <p>${escapeHtml(body)}</p>
+        </div>`).join("");
+    }
+
+    function svgEl(id) {
+      const svg = document.getElementById(id);
+      const box = svg.getBoundingClientRect();
+      const width = Math.max(640, Math.floor(box.width || 900));
+      const height = Math.max(320, Math.floor(box.height || 360));
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      return { svg, width, height };
+    }
+
+    function drawGroupedBars(id, valueKey, titleFormatter) {
+      const { svg, width, height } = svgEl(id);
+      const margin = { top: 24, right: 22, bottom: 78, left: 58 };
+      const plotW = width - margin.left - margin.right;
+      const plotH = height - margin.top - margin.bottom;
+      const items = DATA.workload_order.map(subset => ({
+        subset,
+        label: workloadLabel(subset),
+        dense: capValue("dense", subset, valueKey),
+        moe: capValue("moe", subset, valueKey)
+      }));
+      const maxY = Math.max(1, ...items.flatMap(d => [d.dense, d.moe])) * 1.16;
+      const band = plotW / items.length;
+      const barW = Math.max(10, Math.min(28, band * 0.25));
+      let out = "";
+      for (let i = 0; i <= 4; i++) {
+        const y = margin.top + plotH - (plotH * i / 4);
+        const val = maxY * i / 4;
+        out += `<line class="gridline" x1="${margin.left}" x2="${width - margin.right}" y1="${y}" y2="${y}"></line>`;
+        out += `<text class="chart-label" text-anchor="end" x="${margin.left - 8}" y="${y + 4}">${fmt(val)}</text>`;
+      }
+      items.forEach((d, i) => {
+        const cx = margin.left + band * i + band / 2;
+        [["dense", d.dense, "var(--dense)", -barW / 1.8], ["moe", d.moe, "var(--moe)", barW / 1.8]].forEach(([key, val, color, offset]) => {
+          const h = val <= 0 ? 0 : Math.max(2, plotH * val / maxY);
+          const x = cx + offset - barW / 2;
+          const y = margin.top + plotH - h;
+          out += `<rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="3" fill="${color}"></rect>`;
+          if (val > 0) out += `<text class="chart-label" text-anchor="middle" x="${x + barW / 2}" y="${Math.max(13, y - 6)}">${titleFormatter(val)}</text>`;
+        });
+        out += `<text class="chart-label" text-anchor="end" transform="translate(${cx - 4},${height - 20}) rotate(-35)">${escapeHtml(d.label)}</text>`;
+      });
+      out += `<line class="axis" x1="${margin.left}" x2="${width - margin.right}" y1="${margin.top + plotH}" y2="${margin.top + plotH}"></line>`;
+      svg.innerHTML = out;
+    }
+
+    function setupTabs() {
+      const workloadTabs = DATA.workload_order.map(subset => `<button class="segment${subset === state.workload ? " active" : ""}" data-workload="${subset}">${escapeHtml(workloadLabel(subset))}</button>`).join("");
+      document.getElementById("workload-tabs").innerHTML = workloadTabs;
+      document.getElementById("workload-tabs").onclick = e => {
+        const btn = e.target.closest("button[data-workload]");
+        if (!btn) return;
+        state.workload = btn.dataset.workload;
+        setupTabs();
+        drawCurve();
+      };
+
+      const metricTabs = Object.entries(metrics).map(([key, m]) => `<button class="segment${key === state.metric ? " active" : ""}" data-metric="${key}">${escapeHtml(m.label)}</button>`).join("");
+      document.getElementById("metric-tabs").innerHTML = metricTabs;
+      document.getElementById("metric-tabs").onclick = e => {
+        const btn = e.target.closest("button[data-metric]");
+        if (!btn) return;
+        state.metric = btn.dataset.metric;
+        setupTabs();
+        drawCurve();
+      };
+    }
+
+    function drawCurve() {
+      const { svg, width, height } = svgEl("curve-chart");
+      const metric = metrics[state.metric];
+      const rows = DATA.rows.filter(r => r.subset === state.workload);
+      const concs = [...new Set(rows.map(r => Number(r.concurrency)))].sort((a, b) => a - b);
+      const values = rows.map(r => Number(r[state.metric] || 0));
+      const targetValue = metric.target ? Math.max(...rows.map(r => Number(metric.target(r) || 0))) : 0;
+      const maxY = Math.max(1, targetValue, ...values) * 1.14;
+      const margin = { top: 26, right: 28, bottom: 52, left: 72 };
+      const plotW = width - margin.left - margin.right;
+      const plotH = height - margin.top - margin.bottom;
+      const xFor = c => margin.left + (concs.length === 1 ? plotW / 2 : plotW * concs.indexOf(c) / (concs.length - 1));
+      const yFor = v => margin.top + plotH - plotH * v / maxY;
+      let out = "";
+      for (let i = 0; i <= 4; i++) {
+        const val = maxY * i / 4;
+        const y = yFor(val);
+        out += `<line class="gridline" x1="${margin.left}" x2="${width - margin.right}" y1="${y}" y2="${y}"></line>`;
+        out += `<text class="chart-label" text-anchor="end" x="${margin.left - 8}" y="${y + 4}">${fmt(val)}</text>`;
+      }
+      if (targetValue > 0) {
+        const y = yFor(targetValue);
+        out += `<line class="target-line" x1="${margin.left}" x2="${width - margin.right}" y1="${y}" y2="${y}"></line>`;
+        out += `<text class="chart-label" text-anchor="start" x="${margin.left + 8}" y="${y - 7}">target ${fmt(targetValue)} ${metric.unit}</text>`;
+      }
+      concs.forEach(c => {
+        const x = xFor(c);
+        out += `<line class="axis" x1="${x}" x2="${x}" y1="${margin.top + plotH}" y2="${margin.top + plotH + 5}"></line>`;
+        out += `<text class="chart-label" text-anchor="middle" x="${x}" y="${height - 20}">C${c}</text>`;
+      });
+
+      ["dense", "moe"].forEach(run => {
+        const runRows = rows.filter(r => r.run_key === run).sort((a, b) => Number(a.concurrency) - Number(b.concurrency));
+        const color = run === "dense" ? "var(--dense)" : "var(--moe)";
+        const points = runRows.map(r => [xFor(Number(r.concurrency)), yFor(Number(r[state.metric] || 0)), r]);
+        if (!points.length) return;
+        out += `<polyline fill="none" stroke="${color}" stroke-width="2.4" points="${points.map(p => `${p[0]},${p[1]}`).join(" ")}"></polyline>`;
+        points.forEach(([x, y, r]) => {
+          out += `<circle cx="${x}" cy="${y}" r="4.5" fill="${color}" stroke="${color}" stroke-width="2"></circle>`;
+        });
+      });
+      out += `<line class="axis" x1="${margin.left}" x2="${width - margin.right}" y1="${margin.top + plotH}" y2="${margin.top + plotH}"></line>`;
+      svg.innerHTML = out;
+      const label = workloadLabel(state.workload);
+      document.getElementById("curve-caption").textContent = `${label}: ${metric.label} by tested concurrency. These are raw vLLM measurements without custom SLA targets.`;
+    }
+
+    function setupTableControls() {
+      const tabs = [
+        ["all", "All"],
+        ["dense", "Dense"],
+        ["moe", "MoE"]
+      ].map(([key, label]) => `<button class="segment${key === state.tableModel ? " active" : ""}" data-model="${key}">${label}</button>`).join("");
+      document.getElementById("table-model-tabs").innerHTML = tabs;
+      document.getElementById("table-model-tabs").onclick = e => {
+        const btn = e.target.closest("button[data-model]");
+        if (!btn) return;
+        state.tableModel = btn.dataset.model;
+        setupTableControls();
+        renderTable();
+      };
+      const search = document.getElementById("table-search");
+      search.oninput = e => {
+        state.query = e.target.value.toLowerCase();
+        renderTable();
+      };
+    }
+
+    function renderTable() {
+      const q = state.query;
+      const rows = DATA.rows.filter(r => {
+        if (state.tableModel !== "all" && r.run_key !== state.tableModel) return false;
+        if (!q) return true;
+        return [r.workload_label, r.run_label, r.detail_json, r.model].join(" ").toLowerCase().includes(q);
+      });
+      document.getElementById("result-table").innerHTML = rows.map(r => {
+        return `
+          <tr>
+            <td>${escapeHtml(r.workload_label)}</td>
+            <td><span class="model-chip ${r.run_key}">${escapeHtml(r.run_short_label)}</span></td>
+            <td>${fmt(r.approx_isl)}</td>
+            <td>C${fmt(r.concurrency)}</td>
+            <td>${fmt(r.completed_requests)} / ${fmt(r.num_prompts)}</td>
+            <td><span class="status ${Number(r.success_rate || 0) >= 0.99 ? "pass" : "fail"}">${pct(r.success_rate)}</span></td>
+            <td>${fmt(r.output_tps, 1)}</td>
+            <td>${fmt(r.ttft_p95_ms, 1)} ms</td>
+            <td>${fmt(r.tpot_p95_ms, 2)} ms</td>
+            <td>${fmt(r.e2el_p95_ms, 1)} ms</td>
+            <td>${fmt(r.failed_requests)}</td>
+            <td>${escapeHtml(r.detail_json)}</td>
+          </tr>`;
+      }).join("");
+    }
+
+    function setupNotes() {
+      const d1 = capValue("dense", "throughput_1k", "capacity_concurrency");
+      const m1 = capValue("moe", "throughput_1k", "capacity_concurrency");
+      const d32 = capValue("dense", "throughput_32k", "capacity_concurrency");
+      const m32 = capValue("moe", "throughput_32k", "capacity_concurrency");
+      const moe32c2 = DATA.rows.find(r => r.run_key === "moe" && r.subset === "throughput_32k" && Number(r.concurrency) === 2);
+      const dense32c2 = DATA.rows.find(r => r.run_key === "dense" && r.subset === "throughput_32k" && Number(r.concurrency) === 2);
+      const notes = [
+        `At SPEED 1k, MoE peak-output concurrency is C${m1} while dense is C${d1}. That is the largest clean serving jump in the run.`,
+        `At SPEED 32k, MoE peak-output concurrency is C${m32}. At C2, first-token p95 is ${fmt(moe32c2?.ttft_p95_ms, 1)} ms for MoE versus ${fmt(dense32c2?.ttft_p95_ms, 1)} ms for dense.`,
+        "The decode side is not the main bottleneck. The failures are mostly from first-token prefill latency at longer inputs and higher concurrency."
+      ];
+      document.getElementById("finding-notes").innerHTML = notes.map(n => `<li>${escapeHtml(n)}</li>`).join("");
+
+      const denseFailures = DATA.metadata.dense_failures || [];
+      const moeFailures = DATA.metadata.moe_failures || [];
+      const health = [
+        `Dense failed requests appear in ${denseFailures.length} aggregate row: ${denseFailures.length ? denseFailures.map(r => `${r.workload_label} C${r.concurrency} (${r.failed_requests} failed)`).join(", ") : "none"}.`,
+        `MoE failed requests: ${moeFailures.length ? moeFailures.map(r => `${r.workload_label} C${r.concurrency} (${r.failed_requests} failed)`).join(", ") : "none in copied results"}.`,
+        `Both result sets contain ${byRun("dense").length} dense rows and ${byRun("moe").length} MoE rows.`
+      ];
+      document.getElementById("health-notes").innerHTML = health.map(n => `<li>${escapeHtml(n)}</li>`).join("");
+
+      const idle = DATA.metadata.moe_idle_gpu || {};
+      const peak = DATA.metadata.moe_peak_gpu || {};
+      const wallclock = DATA.metadata.moe_wallclock || {};
+      const manifest = DATA.metadata.moe_manifest || {};
+      const gpu = [
+        `MoE model served as ${manifest.model || "Qwen/Qwen3.6-35B-A3B-FP8"} on ${manifest.backend || "openai-chat"}.`,
+        idle.used_gib ? `Idle server memory before sweep: ${idle.used_gib} GiB of ${idle.total_gib} GiB.` : "Idle GPU memory snapshot was not copied for the dense run.",
+        peak.used_gib ? `Peak sweep snapshot: ${peak.used_gib} GiB used, ${peak.pct}% of H200 memory, with 100% GPU utilization.` : "Peak GPU snapshot unavailable.",
+        wallclock.elapsed_hms ? `MoE sweep wallclock: ${wallclock.elapsed_hms}.` : "MoE sweep wallclock unavailable."
+      ];
+      document.getElementById("gpu-notes").innerHTML = gpu.map(n => `<li>${escapeHtml(n)}</li>`).join("");
+    }
+
+    function redraw() {
+      drawGroupedBars("capacity-chart", "capacity_concurrency", v => `C${fmt(v)}`);
+      drawGroupedBars("capacity-output-chart", "capacity_output_tps", v => fmt(v));
+      drawCurve();
+    }
+
+    setupMeta();
+    setupKpis();
+    setupExecutiveComparison();
+    setupEstimateTable();
+    setupWorkloadInterpretation();
+    setupFrontier();
+    setupTabs();
+    setupTableControls();
+    setupNotes();
+    renderTable();
+    redraw();
+    window.addEventListener("resize", () => window.requestAnimationFrame(redraw));
+  </script>
+</body>
+</html>

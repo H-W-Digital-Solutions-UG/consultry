@@ -1,0 +1,8 @@
+[FAIL] speed_throughput_16k_c26 produced zero successful requests
+[warn] throughput_16k failed at concurrency=26; skipping higher concurrency for this subset
+[FAIL] speed_throughput_32k_c7 produced zero successful requests
+[warn] throughput_32k failed at concurrency=7; skipping higher concurrency for this subset
+[FAIL] kv_cache65k_c2 produced zero successful requests
+[warn] kv cache65k failed at concurrency=2; skipping higher concurrency for this cache workload
+[FAIL] kv_cache131k_c1 produced zero successful requests
+[warn] kv cache131k failed at concurrency=1; skipping higher concurrency for this cache workload

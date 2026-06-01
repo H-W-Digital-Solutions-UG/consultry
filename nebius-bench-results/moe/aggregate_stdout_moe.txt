@@ -1,0 +1,11 @@
+Wrote /home/jules/bench-moe/speed_bench_capacity_moe.csv (36 rows)
+
+=== Capacity (95% SLO attainment) ===
+  cache65k        random_cache_stress isl~65536  max_conc@95%=   2 out_tps@cap=199
+  cache131k       random_cache_stress isl~131072 max_conc@95%=   1 out_tps@cap=46
+  cache256k       random_cache_stress isl~255488 max_conc@95%=   1 out_tps@cap=9
+  throughput_1k   speed_bench         isl~1024   max_conc@95%= 128 out_tps@cap=5244
+  throughput_2k   speed_bench         isl~2048   max_conc@95%=  64 out_tps@cap=3859
+  throughput_8k   speed_bench         isl~8192   max_conc@95%=   8 out_tps@cap=1136
+  throughput_16k  speed_bench         isl~16384  max_conc@95%=   8 out_tps@cap=865
+  throughput_32k  speed_bench         isl~32768  max_conc@95%=   2 out_tps@cap=326

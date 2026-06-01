@@ -1,0 +1,8 @@
+[FAIL] speed_throughput_1k_c1 produced zero successful requests
+[warn] throughput_1k failed at concurrency=1; skipping higher concurrency for this subset
+[FAIL] speed_throughput_2k_c1 produced zero successful requests
+[warn] throughput_2k failed at concurrency=1; skipping higher concurrency for this subset
+[FAIL] speed_throughput_8k_c1 produced zero successful requests
+[warn] throughput_8k failed at concurrency=1; skipping higher concurrency for this subset
+[FAIL] speed_throughput_16k_c1 produced zero successful requests
+[warn] throughput_16k failed at concurrency=1; skipping higher concurrency for this subset

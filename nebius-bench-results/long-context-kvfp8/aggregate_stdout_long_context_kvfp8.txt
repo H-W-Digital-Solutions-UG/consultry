@@ -1,0 +1,5 @@
+Wrote /home/jules/bench-long-context-kvfp8/long_context_metrics_kvfp8.csv (8 rows)
+
+=== Raw Throughput Frontier ===
+  throughput_16k  speed_bench         isl~16384  peak_out_c=  18 out_tps=  1500.3 req_s=  2.93 p95_first_token=  1299.2ms p95_token_time= 16.42ms fail_rate= 0.0%
+                                                 lowest_p95_first_token_c=12 p95_first_token=1106.9ms; max_req_s_c=18 req_s=2.93

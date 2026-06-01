@@ -1,0 +1,32 @@
+started_at=2026-04-30T18:01:04+00:00
+model=Qwen/Qwen3.6-35B-A3B-FP8
+tokenizer=Qwen/Qwen3.6-35B-A3B-FP8
+base_url=http://127.0.0.1:8000
+endpoint=/v1/chat/completions
+backend=openai-chat
+speed_dir=/home/jules/bench/speed-bench
+output_len=512
+request_rate=inf
+benchmark_profile=raw_vllm_metrics_v1_qwen36_35b_a3b_fp8_kvfp8
+
+=== vllm ===
+0.20.0
+
+=== server models ===
+{"object":"list","data":[{"id":"Qwen/Qwen3.6-35B-A3B-FP8","object":"model","created":1777572066,"owned_by":"vllm","root":"Qwen/Qwen3.6-35B-A3B-FP8","parent":null,"max_model_len":262144,"permission":[{"id":"modelperm-adac39c03bece680","object":"model_permission","created":1777572066,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}
+
+=== gpu ===
+name, driver_version, memory.total [MiB]
+NVIDIA H200, 580.126.09, 143771 MiB
+
+=== workloads ===
+throughput_1k|1024|1 4 8 16 32 64 128 256|20
+throughput_2k|2048|1 4 8 16 32 64 128|20
+throughput_8k|8192|1 2 4 8 16 32|12
+throughput_16k|16384|1 2 4 8 16|10
+throughput_32k|32768|1 2 4 8|8
+
+=== kv_cache_workloads ===
+cache65k|65536|512|1 2 4|4
+cache131k|131072|256|1 2|3
+cache256k|255488|128|1|2

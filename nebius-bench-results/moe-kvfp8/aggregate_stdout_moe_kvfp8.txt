@@ -1,0 +1,18 @@
+Wrote /home/jules/bench-moe-kvfp8/speed_bench_metrics_moe_kvfp8.csv (36 rows)
+
+=== Raw Throughput Frontier ===
+  cache65k        random_cache_stress isl~65536  peak_out_c=   4 out_tps=   273.0 req_s=  0.53 p95_first_token=  6155.3ms p95_token_time= 16.52ms fail_rate= 0.0%
+                                                 lowest_p95_first_token_c=1 p95_first_token=2266.7ms; max_req_s_c=4 req_s=0.53
+  cache131k       random_cache_stress isl~131072 peak_out_c=   2 out_tps=    84.0 req_s=  0.33 p95_first_token=  7612.1ms p95_token_time= 19.38ms fail_rate= 0.0%
+                                                 lowest_p95_first_token_c=1 p95_first_token=4838.0ms; max_req_s_c=2 req_s=0.33
+  cache256k       random_cache_stress isl~255488 peak_out_c=   1 out_tps=     8.6 req_s=  0.07 p95_first_token= 14308.0ms p95_token_time=  4.32ms fail_rate= 0.0%
+  throughput_1k   speed_bench         isl~1024   peak_out_c= 256 out_tps=  6096.5 req_s= 11.91 p95_first_token=   620.0ms p95_token_time= 45.45ms fail_rate= 0.0%
+                                                 lowest_p95_first_token_c=1 p95_first_token=128.1ms; max_req_s_c=256 req_s=11.91
+  throughput_2k   speed_bench         isl~2048   peak_out_c= 128 out_tps=  4777.6 req_s=  9.33 p95_first_token=   566.0ms p95_token_time= 29.66ms fail_rate= 0.0%
+                                                 lowest_p95_first_token_c=1 p95_first_token=113.0ms; max_req_s_c=128 req_s=9.33
+  throughput_8k   speed_bench         isl~8192   peak_out_c=  32 out_tps=  2000.6 req_s=  3.91 p95_first_token=  1302.8ms p95_token_time= 19.38ms fail_rate= 0.0%
+                                                 lowest_p95_first_token_c=1 p95_first_token=232.7ms; max_req_s_c=32 req_s=3.91
+  throughput_16k  speed_bench         isl~16384  peak_out_c=  16 out_tps=  1170.1 req_s=  2.29 p95_first_token=  1422.6ms p95_token_time= 17.48ms fail_rate= 0.0%
+                                                 lowest_p95_first_token_c=1 p95_first_token=417.4ms; max_req_s_c=16 req_s=2.29
+  throughput_32k  speed_bench         isl~32768  peak_out_c=   8 out_tps=   611.2 req_s=  1.19 p95_first_token=  2720.3ms p95_token_time= 16.95ms fail_rate= 0.0%
+                                                 lowest_p95_first_token_c=1 p95_first_token=892.8ms; max_req_s_c=8 req_s=1.19
