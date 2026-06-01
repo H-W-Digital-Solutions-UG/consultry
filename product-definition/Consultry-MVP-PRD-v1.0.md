@@ -82,7 +82,7 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
 | **Work-Agent / Time-Capture** (Harvest-orientiert) | Leichte Zeiterfassung (BAG-pflichtig); Agent schlägt `TimeEntry`s aus In-Tool-Arbeit vor, Consultant bestätigt. Privater `PersonalNote`-Layer = Retention-Driver. | Daily-Driver + Capture |
 | **Project Observability** | Deliverable-zentrierter `ProjectStatus`/Burn aus **aggregierten TimeEntries**. **Nie personen-attribuiert** im Default; Personenbezug nur unter Works-Council-Mode. | Management-Substrat |
 
-> **Compliance-Posture (bestätigt 30.05.):** Capture (Zeit) ist legitim/BAG-pflichtig; **personenbezogene Auswertung ist hinter Works-Council-Mode geschaltet** — kein Verbot, sondern ein **verkaufbarer Deal-Enabler.** DACH-Risiko = blockierter Deal (BR verweigert Unterschrift), nicht Lawsuit. Details: [Domain-Def §5 Punkt 9, GI-7..16](./Consultry-Business-Domain-Definition-v1.0.md).
+> **Compliance-Posture (Entscheidung 30.05. — „move fast, ein Schalter"):** Wir **optimieren nicht auf §87** — Wette: Erst-ICP hat überwiegend **keinen Betriebsrat.** Einzige Versicherung = **Works-Council-Mode** (Default-OFF), der personenbez. Auswertung **und den Aktivitäts-Auto-Feed** (GI-9b) gated. Restrisiko bei Kunden *mit* aktivem BR **bewusst akzeptiert**. Zeiterfassung-Capture ist ohnehin BAG-pflichtig/legitim. Details: [Domain-Def §5 Punkt 9, GI-7..16](./Consultry-Business-Domain-Definition-v1.0.md).
 
 ### 3.1a Die anderen vier (Acquisition-Linie) bewusst dünn (um den Hero zu finanzieren)
 

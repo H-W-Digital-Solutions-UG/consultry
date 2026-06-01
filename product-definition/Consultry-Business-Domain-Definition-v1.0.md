@@ -36,7 +36,7 @@
 | **ConsultantProfile** | Personenbezogene Stammdaten: Skills/Zertifikate/Erfahrung/Availability. **Im MVP deskriptiv pflegbar, aber in Bid/TeamShape/Forecast nur aggregiert verwendet** (GI-12/13). | personenscharfes Matching/Scoring (H2+Gate) |
 | **TimeEntry** | Zeiterfassungs-Eintrag (Dauer, Projekt/Task, billable, Notiz). Geschäftsdatum, **BAG-pflichtig**. Capture erlaubt; personenbez. Auswertung WC-gated (GI-8). | PersonalNote (rein privat) |
 | **PersonalNote** | **Strikt privater** Notiz-Layer des Consultants (Retention-Driver). Nie management-sichtbar, nie Analytics-Input (GI-7). | TimeEntry (Geschäftsdatum) |
-| **WorkAgentSuggestion** | Vom Work-Agent vorgeschlagener TimeEntry/Tages-Summary aus In-Tool-Arbeit; wird erst nach Consultant-Bestätigung zum `TimeEntry` (GI-9a). | bestätigter TimeEntry |
+| **WorkAgentSuggestion** | Vom Work-Agent vorgeschlagener TimeEntry/Tages-Summary aus In-Tool-Arbeit; wird erst nach Consultant-Bestätigung/Verfeinerung zum `TimeEntry` (GI-9a). Auto-Feed selbst ist WC-Mode-gated (GI-9b). | bestätigter TimeEntry |
 | **ProjectStatus** | Deliverable-zentrierter Projektfortschritt (RAG/Milestones/Fristen/BudgetBurn), aus **aggregierten TimeEntries**. **Nie personen-attribuiert** im Default (GI-10/16). | personenbez. Utilization (WC-gated) |
 | **TeamShape** | **Anonyme** Soll-Zusammensetzung: Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen — **keine Personen.** | TeamProposal/named team (H2) |
 | **Forecast** | Aggregierte Kapazitäts-/Auslastungssicht (Team/Practice). | personenscharfer Forecast (H2) |
@@ -150,7 +150,8 @@
   - **GI-7 Private Note ≠ Time Entry:** `PersonalNote` ist **strikt privat zum Consultant**, niemals management-sichtbar, nie Analytics-Input. `TimeEntry` ist Geschäftsdatum (abrechnungs-/projektrelevant).
   - **GI-8 Capture erlaubt, Analytics gated:** **Erfassung** von `TimeEntry` (auch agentengestützt) ist im MVP erlaubt. **Personenbezogene Auswertung** (Utilization/Burn/Vergleich pro Person) ist **§87-relevant → nur unter Works-Council-Mode** (GI-16). Aggregierte/anonyme Auswertung ist frei.
   - **GI-9 Kein Leistungs-Scoring:** kein Ranking/Burnout-/Performance-Scoring aus `TimeEntry`/`PersonalNote` — auch nicht unter WC-Mode (PRD §4.1 „darf nicht").
-  - **GI-9a Agent schlägt vor, Mensch bestätigt:** Work-Agent-Einträge sind `WorkAgentSuggestion` bis zur Consultant-Bestätigung — nichts wird ohne Bestätigung zum `TimeEntry`.
+  - **GI-9a Self-Log = Auto-Feed + Time-Track + AI-Verfeinerung (Entscheidung 30.05.):** der Self-Log entsteht aus drei Quellen — (1) **Auto-Feed** aus der In-Tool-Arbeit, (2) **Time-Track**-Einträge, (3) **manuelle, AI-assistierte Verfeinerung** durch den Consultant. Agent-Vorschläge sind `WorkAgentSuggestion` bis zur Bestätigung/Verfeinerung — nichts wird ohne diesen Schritt zum `TimeEntry`.
+  - **GI-9b Auto-Feed hinter WC-Mode (Entscheidung 30.05.):** der **automatische Aktivitäts-Auto-Feed** (Agent erfasst, *was* der Consultant in-tool getan hat) ist objektiv überwachungsgeeignet → **hinter Works-Council-Mode geschaltet** (GI-16), **Default-OFF-Posture**: da die meisten ICP-Firmen **keinen Betriebsrat** haben (Entscheidung #3), ist der Auto-Feed dort frei aktivierbar; bei BR greift der Schalter. Manuelle Erfassung + privater `PersonalNote`-Layer sind immer frei.
 
 ### 3.9 **Project Observability** (MVP — deliverable-zentriert, aus Time-Entries)
 - **Aggregate:** `ProjectStatus` (Root) → `Milestone[]`, `RAGState`, `Deadline[]`, `BudgetBurn` (aggregiert).
@@ -185,11 +186,11 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 6. **Model-Processing-Compliance (bestätigt 30.05.):** LLM-Nutzung läuft über einen **Enterprise-API-Deal mit AVV/DPA (Art. 28 DSGVO), No-Training-on-Data und EU/EEA-Processing bzw. SCCs.** Tenant-Daten dürfen zur Verarbeitung an das Modell — die Compliance-Grenze liegt im Vertrag, nicht im Verbot. **Wichtig: das löst *Datenverarbeitung*, nicht *externes Research-Grounding* (Scope/Freshness/Faithfulness — siehe GI-1, GI-5/6).**
 7. **External-Research-Firewall (GI-5/6, bestätigt 30.05.):** externe Research-Queries werden PII-/kundendaten-bereinigt (GI-5); zulässige Quellen via White-/Blacklist (`SourcePolicy`, GI-6). Web-Research ist erlaubt, aber sanitisiert und policy-gefiltert.
 8. **Human-Backstop (GI-1b):** kein LLM garantiert Grounding zu 100 %. Die rechtliche Sicherungsschicht ist die **menschliche Freigabe** des verantwortlichen Consultant-Autors, nicht die AI.
-9. **§87-Realität — pragmatisch (Move-fast, aber ehrlich):**
-   - **Das DACH-Risiko ist ein *blockierter Deal*, kein Lawsuit.** §87 Abs. 1 Nr. 6 greift bei *objektiver Überwachungs-Eignung* (Fähigkeit, nicht Absicht); ein Betriebsrat kann die Einführung *aufhalten*. Das killt Verkäufe, nicht via Klage, sondern via verweigerter Unterschrift.
-   - **Einzel-Consent hebt §87 nicht auf** (kollektives BR-Recht) — also lösen wir es **nicht** über Klick-Zustimmung, sondern über das Produkt.
-   - **Capture vs. Analytics ist der Hebel:** **Zeiterfassung (Capture) ist seit BAG 13.09.2022 in DE Pflicht** → legitim/gefordert. Nur die **personenbezogene Auswertung** ist mitbestimmt.
-   - **Works-Council-Mode = verkaufbarer Deal-Enabler, kein Verbot:** (a) Firmen ohne BR (viele 30–60-P.-ICP) → Personenbezug frei nutzbar; (b) mit BR → WC-Mode bildet die **Betriebsvereinbarung** technisch ab und macht den Deal *durchsetzbar*. „move fast" heißt hier: **den Schalter shippen, der den Deal durchlässt**, nicht §87 ignorieren.
+9. **§87-Posture — bewusste Entscheidung (30.05.): „nicht optimieren, nur ein Schalter":**
+   - **Strategische Wette (#3/#4):** der **Erst-ICP hat überwiegend keinen Betriebsrat** → §87 greift dort schlicht nicht. Wir bauen **keine** umfassende §87-Compliance-Maschinerie und optimieren nicht darauf — **move fast**.
+   - **Die eine Versicherung, die bleibt:** **Works-Council-Mode** als einzelner Schalter, der personenbezogene Auswertung + Auto-Feed (GI-9b) gated. **Default-OFF.** Kosten gering, rettet aber die wenigen Deals mit BR (Risiko dort = *blockierter Deal*, kein Lawsuit — BR verweigert Unterschrift).
+   - **Hilfs-Tatsachen (kein Aufwand nötig):** Zeiterfassung-Capture ist seit **BAG 13.09.2022 in DE Pflicht** → ohnehin legitim. Einzel-Consent hebt §87 zwar nicht auf (kollektives Recht), aber das ist uns bewusst und wir verlassen uns nicht darauf.
+   - **Offene Akzeptanz des Restrisikos:** bei einem Kunden *mit* aktivem BR und *ohne* eingeschalteten WC-Mode besteht ein Einführungs-/Blockade-Risiko. **Bewusst akzeptiert** (Entscheidung #4), nicht wegdesignt.
 
 ---
 
