@@ -33,7 +33,9 @@
 | **ProposalDraft** | Interner, versionierter Angebots-Entwurf an eine Opportunity gebunden — umfasst Konzept + Angebotstext. **Kein Versand.** | versendetes Angebot (H2) |
 | **KnowledgeAsset** | Wiederverwendbarer, quellengebundener Baustein (Referenz, Methode, Runbook, Blueprint). | Roh-Dokument (un-verdichtet) |
 | **AISkill / Blueprint** | Versionierte, wiederverwendbare AI-Arbeitsfähigkeit (Prompt + Kontext + Owner). | Ad-hoc-Prompt |
-| **ConsultantProfile** | Skills/Zertifikate/Erfahrung/Availability — **im MVP nur aggregiert ausgewertet.** | personenscharfes Matching (H2) |
+| **ConsultantProfile** | Personenbezogene Stammdaten: Skills/Zertifikate/Erfahrung/Availability. **Im MVP deskriptiv pflegbar, aber in Bid/TeamShape/Forecast nur aggregiert verwendet** (GI-12/13). | personenscharfes Matching/Scoring (H2+Gate) |
+| **PersonalLogEntry** | Privates, opt-in Arbeitslog des Consultants (Retention-Driver). Management hat keinen Zugriff (GI-7/8). | ProjectStatus (Management-sichtbar) |
+| **ProjectStatus** | Deliverable-zentrierter Projektfortschritt (RAG/Milestones/Fristen). **Nie personen-attribuiert** (GI-10). | PersonalLogEntry; Leistungskontrolle |
 | **TeamShape** | **Anonyme** Soll-Zusammensetzung: Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen — **keine Personen.** | TeamProposal/named team (H2) |
 | **Forecast** | Aggregierte Kapazitäts-/Auslastungssicht (Team/Practice). | personenscharfer Forecast (H2) |
 | **Firm-Fact** | Eine **überprüfbare Tatsache über den Tenant** (Zertifikat, Referenz, Kapazität, Track-Record). **Muss tenant-korpus-gegroundet sein.** | External-Fact, Model-Expertise |
@@ -69,9 +71,14 @@
         └───────┬──────────────────────┬─────────────┘
         ┌───────▼────────┐    ┌─────────▼──────────┐
         │  KNOWLEDGE      │    │  CAPABILITY        │
-        │  (Asset/Skill/  │    │  (Profile aggr./   │
-        │   Grounding-Eng)│    │   TeamShape/Forec.)│
+        │  (Asset/Skill/  │    │  (ConsultantProfile│
+        │   Grounding-Eng)│    │   /TeamShape/Forec)│
         └────────────────┘    └────────────────────┘
+ ┌──────────────────────┐   ┌──────────────────────────┐
+ │ PERSONAL WORK-CONTEXT│ ✗ │  PROJECT OBSERVABILITY    │   ✗ = harte
+ │ (PersonalLogEntry,   │───│  (ProjectStatus, RAG,     │   Firewall
+ │  privat, opt-in)     │   │   deliverable-only)       │   GI-7/8/10/11
+ └──────────────────────┘   └──────────────────────────┘
 ┌─────────────────────────────────────────────────────────────────────┐
 │  GOVERNANCE  (Querschnitt — Recommendation/Approval/Audit/Grounding) │
 └─────────────────────────────────────────────────────────────────────┘
@@ -112,10 +119,13 @@
   - **GI-5 Egress-Sanitization:** eine externe Research-Query darf **niemals PII oder sensible Kundendaten** enthalten (Scrubber auf dem Egress-Pfad, Pflicht).
   - **GI-6 Source-Policy:** Domains/Quellen sind über `SourcePolicy` **white-/blacklist-bar** (pro Tenant konfigurierbar, mit sinnvollen Defaults — z. B. BSI/ISO/EU-DACH-Regulatorik whitelisted). Geblacklistete Quellen werden nie zitiert.
 
-### 3.5 **Capability Context** (MVP, dünn)
-- **Aggregate:** `ConsultantProfile` (nur aggregiert), `TeamShape`, `Forecast`.
-- **Verantwortung:** anonyme TeamShape + aggregierte Deliverability als Bid-Gate (F5) und Realismus-Check (Konzept).
-- **Invariante:** **keine personenscharfe Ausgabe** im MVP (H2 + Gate).
+### 3.5 **Capability Context** (MVP — Profile jetzt drin, mit harter Use-Trennung)
+- **Aggregate:** `ConsultantProfile` (Root — **personenbezogen: Skills, Zertifikate, Projekterfahrung, Availability**, PRD §4.1), `TeamShape`, `Forecast`.
+- **Verantwortung:** Beraterprofile strukturieren (Stammdaten) **+** anonyme TeamShape/aggregierte Deliverability als Bid-Gate (F5) und Realismus-Check (Konzept).
+- **Invarianten (kritisch — die Profile-Falle):**
+  - **GI-12 Stammdaten erlaubt, Bewertung nicht:** `ConsultantProfile` darf **deskriptiv** sein (welche Skills/Zertifikate existieren). **Kein** Ranking, Scoring, Burnout-/Performance-/Persönlichkeits-Bewertung (PRD §4.1 „darf nicht per Default").
+  - **GI-13 Aggregiert nach außen:** in **Bid Production / TeamShape / Forecast** fließen Profile **nur aggregiert/anonym** ein (Pool-Statistik) — personenscharfes Matching „Person Y auf Rolle Z" bleibt **H2 + Gate**.
+  - **GI-14 Consent/Mitbestimmung:** personenbezogene Profildaten unterliegen Works-Council-Mode + Zweckbindung (BDSG §26); Self-Service-Pflege durch den Berater bevorzugt vor Fremdbefüllung.
 
 ### 3.6 **Governance Context** (MVP, Querschnitt)
 - **Aggregate:** `Recommendation`, `ApprovalEvent`, `AuditRecord`.
@@ -123,6 +133,21 @@
 
 ### 3.7 Tenant & Identity (MVP, Querschnitt)
 - Tenant-Isolation, Rollen (BD/Account Lead, Practice Lead, Consultant-Autor, Managing Partner), **Seat-Modell** (je Consultant+Sales kostenpflichtig, 2 Backoffice frei).
+
+### 3.8 **Personal Work-Context** (MVP — Retention-Daily-Driver, opt-in)
+- **Aggregate:** `PersonalLogEntry` (Root, **eigentümer = der Consultant**).
+- **Verantwortung:** privates, **opt-in** Arbeitslog/Notiz-Assistent für den Consultant selbst (Tages-Fortschritt, Gedanken, Draft-Schnipsel) → gibt einen **täglichen Login-Grund ohne Überwachung**.
+- **Invarianten (kritisch — Mitbestimmungs-Firewall):**
+  - **GI-7 Privacy-by-Default:** `PersonalLogEntry` ist **privat zum Consultant**; Management hat **keinen** Lesezugriff.
+  - **GI-8 No-Auto-Surface:** ein Log-Eintrag erscheint **nie** automatisch in Project Observability (3.9). Übergabe nur durch **explizite, item-weise Publish-Aktion des Consultants**. Kein Fluss Self-Log → Management ohne diesen bewussten Schritt.
+  - **GI-9 Kein Leistungs-Inferenz:** das System leitet aus `PersonalLogEntry` **keine** Personen-Leistungs-/Verhaltensbewertung ab.
+
+### 3.9 **Project Observability** (MVP — bewusst dünn, deliverable-zentriert)
+- **Aggregate:** `ProjectStatus` (Root) → `Milestone[]`, `RAGState`, `Deadline[]`.
+- **Verantwortung:** Management-Sicht auf **Projekt-/Deliverable-Fortschritt** (RAG, Milestones, Fristen) — speist optional das Bestandskunden-Renewal-/Deliverability-Signal (Wedge-Anbindung).
+- **Invarianten (kritisch):**
+  - **GI-10 Deliverable-zentriert, NIE personen-attribuiert:** Status hängt an **Projekt/Deliverable**, nicht an Personen. **Kein Drill-down „Projekt gelb *wegen Person Y*".** Personen-Attribution = BetrVG §87 → verboten im MVP.
+  - **GI-11 Quelle ≠ Self-Logs:** `ProjectStatus` wird **nicht** aus `PersonalLogEntry` abgeleitet (GI-8); Quelle ist explizit gepflegter Projekt-Status.
 
 ---
 
