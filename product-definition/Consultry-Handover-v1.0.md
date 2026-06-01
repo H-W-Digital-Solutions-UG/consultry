@@ -194,7 +194,7 @@ Vier-Tier-Logik, von „wohin" zu „was zuerst" zu „in welcher Sprache":
 ## 8. Git / Arbeitsweise
 
 - Alle Arbeit auf `claude/phase-1-mvp-scope-7sTXZ`, per Fast-Forward in `main` gemergt (kein PR-Flow genutzt — falls Branch-Protection gewünscht, künftig PR statt direktem ff).
-- 24 Commits in dieser Session (von `54695e7` bis `c644bec`). Jeder Commit = eine Entscheidung, Messages sind die Mini-Historie.
+- 29 Commits in dieser Session (von `54695e7` bis `38afa30`). Jeder Commit = eine Entscheidung, Messages sind die Mini-Historie.
 - **Sprache:** Specs auf Deutsch (DACH-Markt), Commit-Messages Englisch.
 
 ---
