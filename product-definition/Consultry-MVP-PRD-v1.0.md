@@ -32,6 +32,8 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
    - **External-Fact** (Normen, Regulatorik, Marktdaten, öffentliche Research) → **zitiert auf eine `ExternalSource`** (mit Freshness), CitationLink Pflicht.
    - **Model-Expertise** (Methodik, Konzept-Struktur, Domänen-Framing, Formulierung) → Modellwissen erlaubt, **als solche markiert, nie als Faktum getarnt.**
    - **Regel:** *Jedes Faktum ist zitierpflichtig* (Firm oder External); bei Konflikt **Firm vor External.** Siehe [Domain-Def GI-1/GI-4](./Consultry-Business-Domain-Definition-v1.0.md).
+   - **External-Firewall:** Web-Research erlaubt, aber Queries **PII-/kundendaten-bereinigt** + Quellen **White-/Blacklist-gefiltert** (GI-5/6).
+   - **Human-Backstop (ehrliche Grenze):** kein LLM garantiert Grounding zu 100 %. Die rechtliche Sicherung ist die **Freigabe des Consultant-Autors**, nicht die AI. Verkaufssatz: *„AI assistiert gegroundet und gekennzeichnet; ein benannter Mensch prüft und verantwortet jede faktische Aussage."* — vor einer Vergabestelle verteidigbar, anders als „unsere AI ist 100 % gegroundet".
 2. **„Qualität" = Fit-to-Zuschlagskriterien.** Konzept-Qualität wird vom Auftraggeber gegen die **Bewertungsmatrix** bewertet, nicht vom Consultant/LLM. Die Concept Suite **parst die Zuschlagskriterien und strukturiert/gewichtet das Konzept auf maximalen Score** — das ist die Brücke von „gutes Konzept" zu „gewinnendes Konzept" *und* defensible Shell.
 
 ## 2. ICP & Anti-ICP

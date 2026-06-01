@@ -40,6 +40,7 @@
 | **External-Fact** | Eine **überprüfbare Tatsache aus einer öffentlichen externen Quelle** (Norm/Standard, Regulatorik, Marktdaten, öffentliche Referenz, Research). **Muss auf eine `ExternalSource` zitiert sein.** | Firm-Fact (tenant-eigen), Model-Expertise (unbelegt) |
 | **Model-Expertise** | Methodik/Domänen-Framing/Best-Practice-Formulierung aus Modellwissen — **kein Faktum**, darf unzitiert sein, aber als solche gekennzeichnet. | Firm-Fact, External-Fact (beide faktisch + zitierpflichtig) |
 | **ExternalSource** | Zitierbare externe Quelle (URL/Dokument/Norm) mit **Freshness-Stempel** und Abruf-Zeitpunkt. | KnowledgeAsset (tenant-intern) |
+| **SourcePolicy** | Pro-Tenant White-/Blacklist zulässiger externer Quellen + Freshness-Regeln. | — |
 | **Citation / Grounding** | Bindung einer **faktischen** Aussage an eine konkrete Quelle (Firm → KnowledgeAsset/Klausel; External → ExternalSource). | unbelegte Behauptung |
 | **Recommendation** | AI-Vorschlag mit Explanation + Sources + Confidence + Status. Nie autonom verbindlich. | Datensatz |
 | **ApprovalEvent** | Menschliche Freigabe/Ablehnung/Edit mit Wer/Wann/Warum. | — |
@@ -97,14 +98,19 @@
     | **External-Fact** | öffentliche `ExternalSource` (Norm, Regulatorik, Research) | **CitationLink Pflicht → sonst blockiert** |
     | **Model-Expertise** | Modellwissen (Methodik/Formulierung, **kein Faktum**) | keine Citation, aber **als Model-Expertise markiert** |
     > **Kern-Regel:** **Jede faktische Aussage (Firm *oder* External) ist zitierpflichtig.** Ein Faktum ohne Citation wird blockiert, egal welcher Herkunft. Model-Expertise darf nie als Faktum *getarnt* erscheinen. Modell-Qualität ändert das nicht — es ist eine legale Regel.
+    > **GI-1a Fail-Safe (default-to-fact):** ist der Klassifikator unsicher (Faktum vs. Expertise), wird **als Faktum behandelt** → Citation verlangt. Annoying-but-safe.
+    > **GI-1b Human-Backstop (entscheidend):** ein LLM-Klassifikator kann Grounding **nicht zu 100 % garantieren.** Die eigentliche rechtliche Sicherungsschicht ist die **menschliche Freigabe durch den verantwortlichen Consultant-Autor**, der jede faktische Aussage vor Verwendung prüft und freigibt (ApprovalEvent + AuditRecord). **Die AI assistiert und kennzeichnet; der benannte Mensch verantwortet.** Die Maschine ist nicht die Safety-Layer.
   - **GI-2 Award-Alignment:** jede Konzept-Sektion ist einem `AwardCriterion` zuordenbar (Fit-to-Score), wo ein Tender vorliegt.
   - **GI-3 Kein Versand:** Output ist immer internes Artefakt.
   - **GI-4 Firm vor External:** widersprechen sich ein Firm-Fact und ein External-Fact, **gewinnt der Firm-Fact** (die Aussage über die Firma kommt von der Firma). External darf Firm-Facts *kontextualisieren*, nie *überschreiben*.
 
 ### 3.4 **Knowledge Context** (MVP-Engine, nicht separat verkauft)
-- **Aggregate:** `KnowledgeAsset` (Root, tenant-intern), `ExternalSource` (Root, öffentlich/research), `AISkill`.
-- **Verantwortung:** Korpus-Ingest + **kuratiertes externes Grounding** (Normen/Regulatorik/Research mit Freshness), Verdichtung mit Quelle, Retrieval — **liefert beide Grounding-Quellen** (Firm + External) für Bid Production. MVP: nur so tief wie das Konzept-Grounding braucht.
-- **Invariante:** `ExternalSource` ist **zitierbar + tenant-isoliert in der Verwendung**; externe Inhalte werden nie als Tenant-Firm-Fact gespeichert (GI-4).
+- **Aggregate:** `KnowledgeAsset` (Root, tenant-intern), `ExternalSource` (Root, öffentlich/research), `AISkill`, `SourcePolicy` (White-/Blacklist + Freshness-Regeln).
+- **Verantwortung:** Korpus-Ingest + **externes Grounding** (Normen/Regulatorik/Research mit Freshness), Verdichtung mit Quelle, Retrieval — **liefert beide Grounding-Quellen** (Firm + External) für Bid Production. MVP: nur so tief wie das Konzept-Grounding braucht.
+- **Invarianten:**
+  - `ExternalSource` ist **zitierbar + tenant-isoliert in der Verwendung**; externe Inhalte werden nie als Tenant-Firm-Fact gespeichert (GI-4).
+  - **GI-5 Egress-Sanitization:** eine externe Research-Query darf **niemals PII oder sensible Kundendaten** enthalten (Scrubber auf dem Egress-Pfad, Pflicht).
+  - **GI-6 Source-Policy:** Domains/Quellen sind über `SourcePolicy` **white-/blacklist-bar** (pro Tenant konfigurierbar, mit sinnvollen Defaults — z. B. BSI/ISO/EU-DACH-Regulatorik whitelisted). Geblacklistete Quellen werden nie zitiert.
 
 ### 3.5 **Capability Context** (MVP, dünn)
 - **Aggregate:** `ConsultantProfile` (nur aggregiert), `TeamShape`, `Forecast`.
@@ -139,7 +145,9 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 3. **Provenance-Modell (GI-1, drei-wertig):** Firm-Fact → tenant-korpus-only (citation Pflicht); External-Fact → ExternalSource (citation Pflicht); Model-Expertise → Modell erlaubt, aber markiert, nie als Faktum getarnt. **Jedes Faktum ist zitierpflichtig.** Bei Konflikt **Firm vor External** (GI-4). **Modell-Qualität ändert das nicht** — es ist eine legale, keine Qualitäts-Regel.
 4. **Aggregiert/anonym vor personenscharf.** Personenbezug nur via Gate (H2).
 5. **Alles auditierbar.** Jedes Domänen-Ereignis erzeugt einen AuditRecord.
-6. **Model-Processing-Compliance (bestätigt 30.05.):** LLM-Nutzung läuft über einen **Enterprise-API-Deal mit AVV/DPA (Art. 28 DSGVO), No-Training-on-Data und EU/EEA-Processing bzw. SCCs.** Tenant-Daten dürfen zur Verarbeitung an das Modell — die Compliance-Grenze liegt im Vertrag, nicht im Verbot. **Wichtig: das löst *Datenverarbeitung*, nicht *externes Research-Grounding* (Scope/Freshness/Faithfulness — siehe GI-1, D4).**
+6. **Model-Processing-Compliance (bestätigt 30.05.):** LLM-Nutzung läuft über einen **Enterprise-API-Deal mit AVV/DPA (Art. 28 DSGVO), No-Training-on-Data und EU/EEA-Processing bzw. SCCs.** Tenant-Daten dürfen zur Verarbeitung an das Modell — die Compliance-Grenze liegt im Vertrag, nicht im Verbot. **Wichtig: das löst *Datenverarbeitung*, nicht *externes Research-Grounding* (Scope/Freshness/Faithfulness — siehe GI-1, GI-5/6).**
+7. **External-Research-Firewall (GI-5/6, bestätigt 30.05.):** externe Research-Queries werden PII-/kundendaten-bereinigt (GI-5); zulässige Quellen via White-/Blacklist (`SourcePolicy`, GI-6). Web-Research ist erlaubt, aber sanitisiert und policy-gefiltert.
+8. **Human-Backstop (GI-1b):** kein LLM garantiert Grounding zu 100 %. Die rechtliche Sicherungsschicht ist die **menschliche Freigabe** des verantwortlichen Consultant-Autors, nicht die AI.
 
 ---
 
@@ -160,10 +168,10 @@ Signal│Tender ─▶ Opportunity ─▶ [TeamShape + Forecast] ─▶ Konzept/
 | D1 | **Drei-wertiger** Provenance-Klassifikator (Firm-Fact / External-Fact / Model-Expertise) — regelbasiert, LLM-gestützt oder Autor-markiert? Härtester Fall: Faktum vs. „getarnte" Expertise zuverlässig trennen (entscheidet GI-1-Durchsetzung) | offen — kritisch für Concept Suite |
 | D2 | `AwardCriterion`-Parsing bei semi-manuellem Tender-Intake — strukturiert genug für GI-2? | offen |
 | D3 | Konzept-Sektionsmodell (DACH-Lösungs-/Arbeitskonzept-Standardstruktur) | → Concept-Suite-Spec |
-| D4 | **External-Grounding-Scope (A vs. B):** A = kuratierte Quellen (BSI/ISO/EU-DACH-Regulatorik/Tender-Referenzdocs, kein offenes Web, freshness-gated) · B = offenes Web-Research. **Empfehlung: A im MVP, B als H2.** Compliance-Deal löst das *nicht* — orthogonal. | **offen — Entscheidung nötig** |
+| D4 | **External-Grounding-Scope:** ✅ **entschieden 30.05.** — Web-Research erlaubt, aber (GI-5) **PII-/kundendaten-bereinigte Queries** + (GI-6) **White-/Blacklist via `SourcePolicy`**. Default-Whitelist (BSI/ISO/EU-DACH-Regulatorik) noch zu kuratieren. | ✅ Prinzip entschieden; Default-Liste offen |
 | D5 | **Freshness-Gate:** wer/was markiert eine `ExternalSource` als „zu alt zum Zitieren" und blockiert sie? (stale Norm = Ausschluss-Risiko) | offen |
 | D6 | **Citation-Faithfulness:** dritter Eval-Check — stützt die zitierte ExternalSource den Satz wirklich? (Firm-Facts-Gate fängt das nicht) | offen |
-| D7 | **Classifier-Fail-Safe (default-to-fact):** bei Unsicherheit Fakt vs. Expertise → als Fakt behandeln → Citation verlangen. Annoying-but-safe. | **offen — Entscheidung nötig** |
+| D7 | **Classifier-Fail-Safe:** ✅ **entschieden 30.05.** — (GI-1a) default-to-fact bei Unsicherheit + (GI-1b) **Human-Backstop**: AI garantiert Grounding nicht, der Consultant-Autor verantwortet per Freigabe. | ✅ entschieden |
 
 ---
 
