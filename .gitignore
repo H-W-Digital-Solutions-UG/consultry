@@ -10,3 +10,5 @@
 /.codex-artifacts**
 /marketing-site/test-results**
 /.claude/worktrees/**
+/outputs/
+/output/

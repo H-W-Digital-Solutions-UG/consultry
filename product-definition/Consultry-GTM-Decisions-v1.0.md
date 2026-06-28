@@ -2,9 +2,11 @@
 
 **Status:** Bestätigt (Sparring-Session 30.05.2026)
 **Datum:** 30. Mai 2026
-**Bezug:** [Phase-1 MVP Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), [Product Document v1.0](./Consultry-Product-Document-v1.0.md), [PRD v4.0](./Consultry-PRD-v4.0-DACH-Operating-System.md), [DACH Market Thesis](./Consultry-DACH-Market-Thesis-v1.0.md), [Target Personas](./Consultry-Target-Personas-v1.0.md)
+**Bezug:** [Product Vision (komplett)](./Consultry-Product-Vision-v1.0.md), [MVP-Doc](./Consultry-MVP-PRD-v1.0.md), [Phase-1 MVP Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), [Target Personas](./Consultry-Target-Personas-v1.0.md). *(Markt-Thesis, PRD v4.1, Product-Document → konsolidiert in Vision §5–§8, Originale in `_archive/`.)*
 
 > **Zweck.** Die technische Seite (Feature-Specs, Datenmodell, Flows) ist geschärft. Dieses Dokument hält die **offenen Produkt-/Markt-/GTM-Entscheidungen** fest, die in der Sparring-Session 30.05. geklärt wurden — Wedge, Positionierung, ICP-Sequenz, Pricing, Scope-Schnitt. Es ist die **Quelle der Wahrheit für „warum verkaufen wir was zuerst an wen"**, während die MVP-Specs das „was bauen wir wie" sind.
+>
+> **Update 13.06.2026:** Neuer §3A „Beratung im KI-Zeitalter"-Frame + Dual-Hero-Positionierung (Win + Work), gesourcte Markt-Evidenz, Seat-Paradox-Auflösung. Verbindlich mit [Foundation-Decisions T11/T12](./Consultry-MVP-Foundation-Decisions-v1.0.md).
 
 ---
 
@@ -115,6 +117,37 @@ Gleichwertig in der Vision ≠ gleichwertig im Erstgespräch. Für mid-to-small 
 
 ---
 
+## 3A. Positionierungs-Frame: „Beratung im KI-Zeitalter" (Entscheidung 13.06.)
+
+> **Status:** Verbindlich. Quelle der Wahrheit für *warum jetzt* und für den Umgang mit dem Tagessatz-Einwand. Verankert in [Foundation-Decisions T11/T12](./Consultry-MVP-Foundation-Decisions-v1.0.md).
+
+**Der Einwand (real, im Kopf des ICP):** *„Warum noch hohe Tagessätze zahlen, wenn AI Berater ersetzt?"*
+
+**Der Reframe (unsere Antwort):** Nicht billiger werden — **AI-nativ werden.** Eine Beratung mit korrekt in die Arbeitsprozesse integrierter AI liefert **bessere Ergebnisse in weniger Zeit** und gehört damit zu den Firmen, die im KI-Zeitalter **wachsen**, statt verdrängt zu werden. Consultry ist das Werkzeug dieser Transformation — an zwei Fronten (Dual-Hero): **Win** (mehr gewinnen) + **Work** (AI-nativ arbeiten).
+
+### 3A.1 Evidenz (gesourct 13.06. — ersetzt Deck-Platzhalter)
+
+| Befund | Zahl | Quelle |
+|---|---|---|
+| Ø Tagessatz DACH 2025 | €1.300 (Partner ~€1.600) | BDU „Honorare im Consulting 2025" |
+| Tagessatz-Trend | −2 % YoY | BDU 2025 |
+| AI-Effekt auf Honorar heute | **66 % noch keiner**, ~40 % erwarten ihn | BDU 2025 |
+| „AI-Discount"-Anfragen | ~⅓ der Agenturen schon | Productive.io 2025 |
+| AI = Wachstumstreiber | **+18,8 %** DACH 2025 | BDU 2025/26 |
+
+> **Disziplin (keine erfundenen Metriken):** Rate-Druck als **kommenden Trend** rahmen (66 % noch kein Effekt) — nicht als heutige Massenrealität. Hebel auf **Wachstum** (AI-native Firmen wachsen), nicht auf Angst. Das ist evidenzfest und investor-diligence-tauglich.
+
+### 3A.2 Seat-Paradox aufgelöst
+„AI ersetzt Berater → weniger Seats → Seat-Modell kollabiert" — **Gegen-Story:** AI-native Beratungen **gewinnen mehr und stellen ein.** Consultry verkauft **Wachstum**, nicht Schrumpfung; das Seat-Modell skaliert mit dem wachsenden Headcount (NRR > 100 %). Value-Tier-Pricing bleibt der Post-PMF-Hebel.
+
+### 3A.3 Wo es im Funnel lebt
+- **Title-/Why-now-/Markt-Slide** im Deck (Frame). **Co-gleichrangig** mit dem Win-Versprechen — beide Heroes (T8).
+- **Sales-Script-Antwort** auf den Tagessatz-Einwand im Erstgespräch.
+- **Discovery-Validierung (Pflicht):** jeder Pilot-Intake fragt *„Haben Kunden eure Tagessätze unter Verweis auf AI hinterfragt? Einen Deal deshalb verloren?"* → macht die Annahme zu First-hand-Daten.
+- **Landingpage:** W6 bleibt — Transformation ist Frame/Why-now, der Win-Painkiller bleibt die konkrete Conversion-Zeile; die „Work"-Story tritt gleichrangig daneben, nicht als verwässerter dritter Claim.
+
+---
+
 ## 4A. Retention & Usage-Frequenz (Entscheidung 30.05.)
 
 **These:** Consultry ist **kein episodisches Tool**, sondern habituell — *Projekt-Akquise hört nie auf.*
@@ -125,6 +158,8 @@ Gleichwertig in der Vision ≠ gleichwertig im Erstgespräch. Für mid-to-small 
 - **Seat-Expansion:** je Consultant ein Seat → Retention/Expansion skaliert mit Headcount (siehe §4).
 
 > **Produkt-Konsequenz:** F1-Signal-Board doppelt gewichten — Akquise-Tür-Öffner **und** Retention-Engine.
+>
+> **Update 13.06. (Dual-Hero):** Die Retention-These ist jetzt **Hero 2 „Work"** (eigenes Produktversprechen + PMF-Bar, T12), nicht nur eine Eigenschaft. Der Operating-Foundation-Layer (Profile/Time/Notes/Status + Human-AI-Collaboration) ist der **tägliche** Nutzungsgrund; das Signal-Board ist ein Element davon. Siehe §3A.
 
 ---
 
@@ -175,7 +210,7 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 | G8 | **Business-Spec-Zahlen** | ✅ **€50/Seat/Mo → ACV €15–45k**; Motion ökonomisch tragfähig ([MVP-PRD §6](./Consultry-MVP-PRD-v1.0.md)). Pilot-Fee-Betrag offen. |
 | G9 | **PMF-Aktivierung** | ✅ **1 Draft aus eigenem Korpus in 5 Tagen** (+ Sean-Ellis ≥ 40 % als Bestätigung) ([MVP-PRD §5](./Consultry-MVP-PRD-v1.0.md)) |
 
-> **Doc-Stack (Tier 1→3):** [Product Vision](./Consultry-Product-Vision-v1.0.md) → [PRD v4.0](./Consultry-PRD-v4.0-DACH-Operating-System.md) → [MVP-PRD](./Consultry-MVP-PRD-v1.0.md). Der **MVP = die Acquisition-to-Bid-Linie**; Hero-Painkiller = **Concept & Proposal Suite** (Lösungs-/Arbeitskonzept).
+> **Doc-Stack:** [Product Vision (komplett, wohin)](./Consultry-Product-Vision-v1.0.md) ↔ [MVP-Doc (was zuerst)](./Consultry-MVP-PRD-v1.0.md) + [Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md). Der **MVP = Dual-Hero (Win + Work)**; Win-Painkiller = **Concept & Proposal Suite**.
 
 ---
 

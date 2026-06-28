@@ -1,19 +1,25 @@
 # Consultry — Business Domain Definition v1.0
 
-**Status:** Entwurf zur Bestätigung
-**Rolle im Doc-Stack:** **Fundament** unter [MVP-PRD](./Consultry-MVP-PRD-v1.0.md) (Tier 3). Definiert die *Sprache und Struktur*, auf der die Concept-Suite-Spec und der Build sitzen.
-**Datum:** 30. Mai 2026
-**Bezug:** [Product Vision](./Consultry-Product-Vision-v1.0.md), [PRD v4.0](./Consultry-PRD-v4.0-DACH-Operating-System.md), [MVP-PRD](./Consultry-MVP-PRD-v1.0.md), [Phase-1 MVP Specs §1.2](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), [GTM-Decisions](./Consultry-GTM-Decisions-v1.0.md)
+**Status:** Aktiv (dual-hero-aligned 13.06.2026)
+**Rolle im Doc-Stack:** **Fundament** unter dem [MVP-Doc](./Consultry-MVP-PRD-v1.0.md). Definiert die *Sprache und Struktur*, auf der die Concept-Suite-Spec und der Build sitzen.
+**Datum:** 30. Mai 2026 · **dual-hero-Rework:** 13.06.2026
+**Bezug:** [Product Vision (komplett)](./Consultry-Product-Vision-v1.0.md), [MVP-Doc](./Consultry-MVP-PRD-v1.0.md), [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md), [Phase-1 MVP Specs §1.2](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), [GTM-Decisions](./Consultry-GTM-Decisions-v1.0.md). *(PRD v4.0 → `_archive/`.)*
 
 > **Zweck.** Bevor die hero-kritische Concept Suite gebaut wird, braucht es eine **eindeutige Domänensprache** und klare **Bounded Contexts** — damit „Opportunity", „Konzept", „Grounding", „Profil" überall dasselbe bedeuten und die schwierigen Regeln (v. a. der Grounding-Split) **als Domäne-Invarianten** und nicht als UI-Detail leben. **MVP-Kern fett**, spätere Horizonte als *(H2/H3)* markiert.
 
 ---
 
-## 1. Domänen-Nordstern
+## 1. Domänen-Nordstern (Dual-Hero)
 
-> Consultrys Domäne ist **die Akquise- und Bid-Produktion einer Beratung** — von einem Akquise-Anlass (Tender oder Bestandskunden-Signal) über eine begründete Chance bis zu einem **gegroundeten, submission-tauglichen Konzept-/Angebots-Entwurf**, mit anonymer Team-Shape und durchgängiger Freigabe-/Audit-Spur.
+> Consultrys Domäne ist **wie eine DACH-Beratung im KI-Zeitalter arbeitet** — an zwei gleichrangigen Fronten, die sich denselben Korpus, dieselbe Grounding-/Approval-/Audit-Engine und denselben Tenant teilen:
+>
+> - **Win-Domäne (Hero 1):** Akquise- und Bid-Produktion — von einem Akquise-Anlass (Tender oder Bestandskunden-Signal) über eine begründete `Opportunity` bis zu einem **gegroundeten, submission-tauglichen Konzept-/Angebots-Entwurf**, mit anonymer `TeamShape`.
+> - **Work-Domäne (Hero 2):** die AI-native Operating Foundation — wie der Consultant **täglich arbeitet**: auto-gepflegtes `ConsultantProfile`, Work-Agent/`TimeEntry`-Capture, privater `PersonalNote`-Layer, deliverable-aggregierter `ProjectStatus` — Human-AI-Collaboration als Arbeitsweise.
 
-**Nicht** in der Domäne (MVP): Delivery-Execution, Time/Invoice, Buchhaltung, Versand/Vergabe-Submission, personenscharfes Resourcing.
+Verbindende Klammer-Thesis: *„Beratung im KI-Zeitalter"* — AI-native Arbeit hebt Qualität und senkt Zeit zugleich (siehe [Vision §1/§8](./Consultry-Product-Vision-v1.0.md)). Die Schmerzen, die jeder Kontext killt, sind in der [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md) (PW#/PK#) belegt.
+
+**In der Domäne (MVP):** Bid-Produktion (intern, kein Versand) · **Time-*Capture*** (BAG-pflichtig) · deliverable-aggregierte Observability.
+**Nicht** in der Domäne (MVP): Delivery-Execution, **Invoice/Billing/Buchhaltung**, Versand/Vergabe-Submission, personenscharfes Resourcing, personenbezogene Utilization-Auswertung (ohne WC-Mode). *(Time-Capture ist drin, Time-→-Invoice/Analytics nicht — feine, aber wichtige Grenze, siehe §3.8/§3.9.)*
 
 ---
 
@@ -54,7 +60,11 @@
 
 ## 3. Bounded Contexts
 
-> Sechs Kontexte. **Fett = MVP-kritisch.** Jeder Kontext besitzt seine Aggregate exklusiv; Verkehr zwischen Kontexten läuft über IDs/Events, nicht über geteilte Tabellen.
+> Acht Kontexte, gruppiert in **zwei Hero-Cluster + geteiltes Fundament.** **Fett = MVP-kritisch.** Jeder Kontext besitzt seine Aggregate exklusiv; Verkehr zwischen Kontexten läuft über IDs/Events, nicht über geteilte Tabellen.
+>
+> - **🟦 Win-Cluster (Hero 1):** Acquisition · Tender · **Bid Production**.
+> - **🟩 Work-Cluster (Hero 2):** Capability · Personal Work-Context · Project Observability.
+> - **⬛ Geteiltes Fundament:** Knowledge (Grounding-Engine) · Governance · Tenant & Identity.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -123,7 +133,8 @@
   - **GI-5 Egress-Sanitization:** eine externe Research-Query darf **niemals PII oder sensible Kundendaten** enthalten (Scrubber auf dem Egress-Pfad, Pflicht).
   - **GI-6 Source-Policy:** Domains/Quellen sind über `SourcePolicy` **white-/blacklist-bar** (pro Tenant konfigurierbar, mit sinnvollen Defaults — z. B. BSI/ISO/EU-DACH-Regulatorik whitelisted). Geblacklistete Quellen werden nie zitiert.
 
-### 3.5 **Capability Context** (MVP — Profile jetzt drin, mit harter Use-Trennung)
+### 3.5 **Capability Context** 🟩 Work-Hero (MVP — Profile jetzt drin, mit harter Use-Trennung)
+> *Doppelrolle: speist Win (aggregierte TeamShape fürs Bid-Gate) **und** ist selbst Work-Hero-Oberfläche (auto-gepflegtes Profil killt PK5/PK2).*
 - **Aggregate:** `ConsultantProfile` (Root — **personenbezogen: Skills, Zertifikate, Projekterfahrung, Availability**, PRD §4.1), `TeamShape`, `Forecast`.
 - **Verantwortung:** Beraterprofile strukturieren (Stammdaten) **+** anonyme TeamShape/aggregierte Deliverability als Bid-Gate (F5) und Realismus-Check (Konzept).
 - **Invarianten (kritisch — die Profile-Falle):**
@@ -139,7 +150,8 @@
 ### 3.7 Tenant & Identity (MVP, Querschnitt)
 - Tenant-Isolation, Rollen (BD/Account Lead, Practice Lead, Consultant-Autor, Managing Partner), **Seat-Modell** (je Consultant+Sales kostenpflichtig, 2 Backoffice frei).
 
-### 3.8 **Personal Work-Context** (MVP — Work-Agent, Harvest-orientiert)
+### 3.8 **Personal Work-Context** 🟩 Work-Hero (MVP — Work-Agent, Harvest-orientiert)
+> *Kern des Work-Hero: killt PK1 (Billable-Leakage 15–25 %), PK2 (Admin 20 %), liefert die tägliche Nutzung (Seat-Utilization-PMF).*
 > **Vorbild Harvest/Toggl, AI-nativ neu gedacht:** der Consultant erfasst Zeit/Arbeit *mit minimalem Aufwand*, der **Work-Agent** schlägt Einträge aus der In-Tool-Aktivität vor. **Saubere Trennung: Capture (erlaubt, BAG-pflichtig) vs. personenbezogene Analytics (WC-Mode-gated).**
 - **Aggregate:** `TimeEntry` (Root — Dauer, Projekt-/Task-Zuordnung, billable/non-billable, Notiz), `PersonalNote` (Root, **rein privat** — Gedanken/Draft-Schnipsel), `WorkAgentSuggestion`.
 - **Verantwortung:**
@@ -153,7 +165,8 @@
   - **GI-9a Self-Log = Auto-Feed + Time-Track + AI-Verfeinerung (Entscheidung 30.05.):** der Self-Log entsteht aus drei Quellen — (1) **Auto-Feed** aus der In-Tool-Arbeit, (2) **Time-Track**-Einträge, (3) **manuelle, AI-assistierte Verfeinerung** durch den Consultant. Agent-Vorschläge sind `WorkAgentSuggestion` bis zur Bestätigung/Verfeinerung — nichts wird ohne diesen Schritt zum `TimeEntry`.
   - **GI-9b Auto-Feed hinter WC-Mode (Entscheidung 30.05.):** der **automatische Aktivitäts-Auto-Feed** (Agent erfasst, *was* der Consultant in-tool getan hat) ist objektiv überwachungsgeeignet → **hinter Works-Council-Mode geschaltet** (GI-16), **Default-OFF-Posture**: da die meisten ICP-Firmen **keinen Betriebsrat** haben (Entscheidung #3), ist der Auto-Feed dort frei aktivierbar; bei BR greift der Schalter. Manuelle Erfassung + privater `PersonalNote`-Layer sind immer frei.
 
-### 3.9 **Project Observability** (MVP — deliverable-zentriert, aus Time-Entries)
+### 3.9 **Project Observability** 🟩 Work-Hero (MVP — deliverable-zentriert, aus Time-Entries)
+> *Killt PK3 (Utilization-Lücke) + PK6 (Delivery→Wachstum-Loop) — aggregiert, nie personen-attribuiert.*
 - **Aggregate:** `ProjectStatus` (Root) → `Milestone[]`, `RAGState`, `Deadline[]`, `BudgetBurn` (aggregiert).
 - **Verantwortung:** Management-Sicht auf **Projekt-/Deliverable-Fortschritt** (RAG, Milestones, Fristen, Budget-Burn) — Harvest-artig **aus aggregierten `TimeEntry`s** abgeleitet (löst das Quellen-Problem), nicht aus manueller Pflege.
 - **Invarianten (kritisch):**

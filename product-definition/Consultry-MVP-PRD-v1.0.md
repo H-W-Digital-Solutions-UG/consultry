@@ -1,19 +1,25 @@
 # Consultry — MVP-PRD v1.0 (Acquisition-to-Bid)
 
 **Status:** Entwurf zur Bestätigung
-**Rolle im Doc-Stack:** **Tier 3 — was wir ZUERST bauen (und was NICHT).** Über mir: [Product Vision](./Consultry-Product-Vision-v1.0.md) (Tier 1), [PRD v4.0](./Consultry-PRD-v4.0-DACH-Operating-System.md) (Tier 2).
+**Rolle im Doc-Stack:** **Das MVP-Fokus-Doc — was wir ZUERST bauen (und was NICHT).** Gegenstück: [Product Vision (komplett)](./Consultry-Product-Vision-v1.0.md) = *wohin insgesamt*. Technische Tiefe: [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md). Begründungen: [Foundation-Decisions (Decision-Log)](./Consultry-MVP-Foundation-Decisions-v1.0.md).
 **Datum:** 30. Mai 2026
-**Bezug:** [GTM-Decisions](./Consultry-GTM-Decisions-v1.0.md), [Onboarding-Korpus-Ritual](./Consultry-Onboarding-Corpus-Ritual-v1.0.md), [Phase-1 MVP Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md)
+**Bezug:** [GTM-Decisions](./Consultry-GTM-Decisions-v1.0.md), [Onboarding-Korpus-Ritual](./Consultry-Onboarding-Corpus-Ritual-v1.0.md), [Phase-1 MVP Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), **[MVP-Foundation-Decisions v1.0](./Consultry-MVP-Foundation-Decisions-v1.0.md) (verbindliche Klärungen 12.06.: T1–T10 — Tenancy, Data-Layer, AI-Spine-Minimum, Inference, Tender-Polling, Build-Plan)**
 
 > **Auftrag dieser Datei: NEIN sagen.** Die Vision ist groß. Diese MVP-PRD ist absichtlich klein. Alles, was hier nicht explizit *In-Scope* steht, ist **out** — egal wie verlockend.
 
 ---
 
-## 1. Die eine Wette (PMF-Hypothese)
+## 1. Die Wette (PMF-Hypothese) — Dual-Hero unter einer Thesis
 
-> **Wenn eine DACH-Beratung aus ihren eigenen Dokumenten in Minuten einen submission-tauglichen Konzept-/Bid-Entwurf erzeugt — gegroundet, mit anonymer Team-Shape — dann ist das ein Painkiller, für den sie zahlt und ohne den sie „sehr enttäuscht" wäre.**
+> **Revidiert 13.06.2026 ([Foundation-Decisions T8/T11/T12](./Consultry-MVP-Foundation-Decisions-v1.0.md)).** Der MVP verfolgt **zwei gleichrangige Heroes**, vereint unter einer Thesis: **Consultry macht DACH-Beratungen AI-native — sie gewinnen mehr *und* arbeiten AI-nativ.**
 
-Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die Retention). Der Painkiller ist die **schwere Bid- und Konzept-Dokumentation** (Lösungs-/Arbeitskonzept, Eignungsnachweise, Referenztexte) — die hair-on-fire-Arbeit, die heute Tage kostet.
+**Übergeordnete Thesis („Beratung im KI-Zeitalter"):** Kunden hinterfragen zunehmend hohe Tagessätze — die Antwort ist nicht „billiger werden", sondern **AI-nativ werden**: bessere Ergebnisse in weniger Zeit, und damit zu den Beratungen gehören, die im KI-Zeitalter *wachsen* (BDU 2025: AI = +18,8 % Wachstumstreiber; Rate-Druck ist Vorwärtstrend). Consultry liefert diese Arbeitsweise an zwei Fronten:
+
+> **Hero 1 — „Win" (der Painkiller):** Wenn eine DACH-Beratung aus ihren eigenen Dokumenten in Minuten einen submission-tauglichen Konzept-/Bid-Entwurf erzeugt — gegroundet, mit anonymer Team-Shape — dann ist das ein Painkiller, für den sie zahlt und ohne den sie „sehr enttäuscht" wäre. Der Painkiller ist die **schwere Bid- und Konzept-Dokumentation**, die heute Tage kostet.
+
+> **Hero 2 — „Work" (die neue Arbeitsweise):** Wenn dieselbe Beratung ihr Tagesgeschäft (Profile, Zeiterfassung, Notizen, Projektstatus) durch einen Human-AI-Collaboration-Layer führt — Agent schlägt vor, Mensch verfeinert, System dokumentiert — dann wird sie messbar AI-nativer, rechtfertigt ihre Tagessätze und nutzt Consultry **täglich** (Retention + Seat-Utilization → ACV).
+
+Beide teilen sich **dieselbe Grounding-/Approval-/Audit-Engine** und denselben Korpus. „Chancen früher sehen" (F1-Signal-Board) bleibt Teil von Hero 2 als wöchentlicher Puls.
 
 ### 1.1 Der Value-Claim (aufgelöst 30.05.)
 
@@ -46,7 +52,11 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
 - Firmen ohne Tender- *und* ohne Bestandskunden-Akquise-Schmerz.
 - **CH** (eigene Vergabe/SIMAP, Datenresidenz → später).
 
-## 3. MVP = eine Linie, nicht sechs Features: **Acquisition-to-Bid**
+## 3. MVP = zwei Heroes auf einem Fundament: **Win + Work**
+
+> **Revidiert 13.06.:** Früher „eine Linie (Acquisition-to-Bid)". Jetzt zwei gleichrangige Heroes auf geteilter Engine (T8). Hero 1 = die Acquisition-to-Bid-Linie unten; Hero 2 = die AI-native Operating Foundation (§3.1-Platform, hochgestuft von „Substrat" zu „Hero"). Beide unter der „Beratung im KI-Zeitalter"-Thesis (§1).
+
+### 3.0 Hero 1: Acquisition-to-Bid (die Win-Linie)
 
 ```
   INTAKE A: Tender (F5)  ─┐
@@ -72,9 +82,9 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
 | **Engine: Knowledge/Reuse + Grounding-Workspace** (F2/F3) | Korpus-Ingest, Retrieval, Citations, Copilot, Approval-Hook. **Nicht als eigenes Feature vermarktet.** | unsichtbarer Motor |
 | **Backbone** | Approval-Card + Audit-Trail + Grounding-Garantie. | Compliance-Default |
 
-### 3.1-Platform: Record-Layer-Substrat (MVP — weil ICP meist kein CRM hat)
+### 3.1-Platform → Hero 2: AI-native Operating Foundation (MVP — die „neue Arbeitsweise")
 
-> Diese Bausteine sind **Plattform-Substrat**, nicht der Hero. Sie existieren, weil mid-small DACH-Beratungen kein gepflegtes CRM/PSA haben → Consultry ist ihre Record-Basis. **Sie dürfen den 5-Tage-Concept-Pfad nicht starven** (siehe Tiering, §3.1b).
+> **Hochgestuft 13.06. von „Substrat" zu Hero 2 (T8).** Diese Bausteine sind nicht mehr nur Record-Basis, sondern der **zweite verkaufte Hero**: der Human-AI-Collaboration-Layer fürs Tagesgeschäft, der eine Beratung messbar AI-nativ macht. Sie existieren auch, weil mid-small DACH-Beratungen kein gepflegtes CRM/PSA haben → Consultry ist zugleich ihre Record-Basis. Eigene PMF-Bar (Seat-Utilization, T12).
 
 | Baustein | Was im MVP | Rolle |
 |---|---|---|
@@ -88,23 +98,25 @@ Der Painkiller ist **nicht** „Chancen früher sehen" (das ist das Vitamin/die 
 
 | Element | Dünnste tragfähige MVP-Version |
 |---|---|
-| Tender Ingest | **Erst semi-manuell:** Tender-PDF hochladen/einfügen → strukturieren. Volle TED/eForms-Auto-Discovery später. Was zählt: die Strukturierung, die das Konzept speist. |
+| Tender Ingest | **Revidiert 12.06. (T7): semi-manueller Upload/Paste + thin TED/eForms-Polling im MVP** (täglicher read-only Pull, CPV-Filter pro Tenant — kein Submission-Pfad). Was zählt: die Strukturierung inkl. `AwardCriterion`, die das Konzept speist. Schwergewichtige Discovery-Features (Volltext-Monitoring, Multi-Plattform-Abdeckung) bleiben später. |
 | Bestandskunden-Signal | **Ein** Signaltyp: Vertrags-Options-/Verlängerungsfenster. Keine breite Signal-Engine. |
 | Team-Shape | Einfacher strukturierter Output. Keine Ausschmückung. |
 | Knowledge/Reuse | Nur so viel Retrieval, wie das Konzept-Grounding braucht. Kein eigenständiges Wissensprodukt. |
 
 > Kritischer Pfad = **Concept Suite → 5-Tage-Draft → PMF-Signal.** Alles andere ist Zubringer und bleibt dünn, bis dieses Signal steht.
 
-### 3.1b Tiering (damit das Substrat den kritischen Pfad nicht starvt)
+### 3.1b Tiering → Dual-Hero (revidiert 13.06.2026, T8)
 
-Der MVP ist gewachsen (Acquisition-Linie **+** Record-Substrat). Damit der 5-Tage-Concept-Pfad nicht ertrinkt, zwei Tiers — **Reihenfolge, nicht Streichung**:
+> **Wende:** Aus „ein Hero + nachrangiges Substrat" wurde **zwei gleichrangige Heroes**. Die frühere „MVP-Core hat Vorrang"-Regel ist **bewusst aufgehoben** (Begründung: Foundation-Decisions T8/T11). Das Substrat ist nicht mehr nur Retention-Zubringer, sondern ein eigenständig verkauftes Produktversprechen.
 
-| Tier | Inhalt | Zweck |
-|---|---|---|
-| **MVP-Core** (zuerst) | Acquisition-to-Bid-Linie: Opportunity, Tender (semi-manuell), Bestandskunden-Signal, **Concept Suite (Hero)**, anonyme Team-Shape, Grounding-Engine, Backbone. | Beweist das **PMF-Signal** (5-Tage-Draft). |
-| **MVP-Platform** (parallel/danach) | Record-Substrat: ConsultantProfile (auto), Work-Agent/Time-Capture, Project Observability, Works-Council-Mode. | Macht Consultry zur **CRM-losen Basisplattform** + Retention. |
+| Hero | Inhalt | Verkaufs-Rolle | PMF-Bar (T12) |
+|---|---|---|---|
+| **Hero 1 — „Win"** | Acquisition-to-Bid-Linie: Opportunity, Tender (TED-Polling + semi-manuell), Bestandskunden-Signal, **Concept Suite**, anonyme Team-Shape, Grounding-Engine. | Der Painkiller — „gewinnt mehr Projekte". | ≥ 1 gegroundeter Draft aus eigenem Korpus in **5 Tagen**. |
+| **Hero 2 — „Work"** | AI-native Operating Foundation: `ConsultantProfile` (auto), Work-Agent/Time-Capture, `PersonalNote`, `ProjectStatus`, Human-AI-Collaboration-Loop, Signal-Board-Puls. | Die neue Arbeitsweise — „werdet AI-nativ, rechtfertigt eure Tagessätze". | **≥ 60 % Consultant-Seats wöchentlich aktiv** + Work-Agent-Bestätigungs-Rate (Arbeitshypothese). |
 
-> **Regel:** MVP-Platform darf den MVP-Core nicht verzögern. Ist Build-Bandbreite knapp (G11), hat **MVP-Core Vorrang** — das PMF-Signal hängt am Hero, nicht am Substrat.
+> **Geteiltes Fundament (kein eigener Hero):** Grounding/Provenance, Approval-Card, AuditEvent, Korpus-Ingest, WC-Mode, Tenant-Isolation — trägt beide Heroes.
+>
+> **Tie-Breaker bei Kapazitätsknappheit:** Das 5-Tage-Signal (Hero 1) bleibt das **schärfste** Leading-Signal für Zahlungsbereitschaft; bei einem echten Konflikt zuerst absichern. Aber Hero 2 wird **nicht** auf „später" geschoben — Build-Kapazität ist laut T9 nicht der binding constraint (Experten vorhanden, Hiring nach Bestätigung).
 
 ### 3.2 Die MVP-Surfaces
 
@@ -119,7 +131,36 @@ Der MVP ist gewachsen (Acquisition-Linie **+** Record-Substrat). Damit der 5-Tag
 
 ### 3.3 Explizit OUT (MVP)
 
-Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **personenscharfes** Staffing/Matching · voller Capacity Planner/Workforce-Optimierung · **tiefes personenbezogenes Utilization-/Delivery-Analytics** (≠ Time-Capture, das ist drin) · Invoice/DATEV/ELSTER · Net-New-Prospecting · CH-Markt · offener Prompt-Marktplatz · Multi-Step-Agentik/autonome Aktionsketten · Schreibzugriff/Outbound nach außen · **personenbez. Auswertung ohne Works-Council-Mode**.
+Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **personenscharfes** Staffing/Matching · voller Capacity Planner/Workforce-Optimierung · **tiefes personenbezogenes Utilization-/Delivery-Analytics** (≠ Time-Capture, das ist drin) · Invoice/DATEV/ELSTER · Net-New-Prospecting · CH-Markt · offener Prompt-Marktplatz · Multi-Step-Agentik/autonome Aktionsketten · Schreibzugriff/Outbound nach außen · **personenbez. Auswertung bei aktiviertem Works-Council-Mode** (Schalter AN = gated; Default-OFF, T6 — präzisiert 12.06.) · *(per Foundation-Decisions T1–T5 außerdem technisch OUT: Graph-DB, PII-Router, Drift-Monitor/Eval-CI, Single-Tenant/Customer-Cloud, EN-UI, LinkedIn-Ingest)*.
+
+---
+
+## 3.4 Foundation- & Technical-Entscheidungen (T1–T12, eingearbeitet 13.06.2026)
+
+> Diese Entscheidungen waren bis 13.06. in einer separaten Datei (`Consultry-MVP-Foundation-Decisions`). Sie sind **hier eingearbeitet** — dieses Doc ist die **eine MVP-Quelle**. Die Foundation-Datei bleibt als **Decision-Log/Changelog** (Begründungen, Salvage-Details, Markt-Evidenz-Tabelle, Quellen). Technische Tiefe (Datenmodell, Architektur) → [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md).
+
+| # | Entscheidung | Verbindlich |
+|---|---|---|
+| **T1** | Doc-Authority | Gen-A archiviert (PRD v5.0, Roadmap v1.0, feature-specs); selektiver Salvage → Technical-Foundation. |
+| **T2** | Tenancy/Hosting | **Multi-Tenant SaaS, EU-Region**, Postgres Row-Level-Security. Compliance = AVV/DPA + No-Training. Single-Tenant/Customer-Cloud → H2+. |
+| **T3** | Data Layer | **Neon Postgres + pgvector**, graph-ready Edge-Tabellen. Dedizierte Graph-DB erst, wenn ein Traversal-Feature sie verlangt (GraphRAG/Skill-Graph = H2). |
+| **T4** | AI-Reliability-Minimum | (1) **CitationLink-Gate auf Datenebene**, (2) **Faithfulness-Check (D6)**, (3) **versionierte Prompts** (Git), (4) **AuditEvent je AI-Call**. Kein Drift-Monitor/Eval-CI/PII-Router im MVP. |
+| **T5** | Inference | **Anthropic via AWS Bedrock EU (Frankfurt)** = einziger verdrahteter Pfad; Abstraktion für späteren Azure-Foundry-Fallback. Eine DPA-Kette vor Pilot #1. |
+| **T6** | Works-Council-Mode | **Default-OFF.** Schalter gated (wenn AN) personenbez. Auswertung + Auto-Feed. MVP-Sichten ohnehin aggregiert/anonym. |
+| **T7** | Tender-Intake | **Thin TED/eForms-Polling im MVP** (täglicher Pull, CPV-Filter/Tenant, read-only) **+** semi-manueller Upload. Kein Submit. |
+| **T8** | **Dual-Hero** | Zwei gleichrangige Heroes (Win + Work, §3/§3.1b), geteiltes Engine-Fundament. „Core-Vorrang"-Lesart bewusst aufgehoben. |
+| **T9** | Build-Kapazität | Experten vorhanden, Hiring nach Idee-Bestätigung (Dogfood #0 + 1. Partner). Build-Zeit ist nicht der binding constraint; Dual-Hero tragbar. |
+| **T10** | Deck-Ehrlichkeit | NL-Cockpit-Slide + „Profile aus LinkedIn" raus; Profile-Quellen = M365/Credly/Upload; Markt-Platzhalter → BDU-Zahlen. *(Deck-Edit offen.)* |
+| **T11** | Thesis „Beratung im KI-Zeitalter" | Objection-Reframe auf den Tagessatz-Einwand; Win+Work-Klammer; gesourcte Evidenz (BDU/Productive). Frame co-gleichrangig mit Win. → [GTM §3A](./Consultry-GTM-Decisions-v1.0.md). |
+| **T12** | **Dual-PMF** | Hero 1: 5-Tage-Draft (§5). Hero 2: Seat-Utilization-Adoption (≥ 60 % Consultant-Seats wöchentlich aktiv + Work-Agent-Bestätigungs-Rate). **PMF-Primat (13.06.): Win ist das Survival-Signal (go/no-go), Work ist Retention-Verstärker** — verfehlt Win, wird pivotiert, unabhängig von Work. |
+| **T13** | **Pricing-Reconciliation** | **€50/Seat = Pilot-Land-Preis** (filtert auf Kaufabsicht); **€69 Core + Tiers = post-PMF-Pricebook** (final aus T14-COGS). Die self-host-Ära-Tiers (€119 Dev/€150–189 Dedicated) werden gegen das Bedrock-Kostenmodell neu bewertet. Deck/GTM/§6 sagen ab jetzt einheitlich „€50 Pilot → €69+ Modell". |
+| **T14** | **COGS-Basis** | **Bedrock + Azure Foundry (per-token) = primäres Kostenmodell** (lineare variable Kosten, kein GPU-Break-even). **Self-hosted (H200/B200, Qwen via vLLM) = teure strategische Spätoption**, wenn Open-Weight weiter aufschließt → als Appendix/Crossover-Analyse. Der frühere „Pricing & Architecture Report v5" (self-host) ist **kein Kostenkanon mehr**, nur Self-Host-Referenz. |
+| **T15** | **Dev-Seat gestrichen** | Das „Developer Seat / Coding-Agent"-Produkt (€119, parallele Coding-Agents) ist **ersatzlos gestrichen** — self-host-Ära-Idee, passt nicht zur Win+Work-These. Sein GPU-Lane-Anteil fliegt aus jedem Kostenmodell. |
+| **T16** | **Deployment** | **Multi-Tenant-EU-SaaS für MVP** (T2 bleibt). **Appliance/BYOI-Sovereignty-Modell = H2** (lokale Connectors/PII-Gating/Inference — starker DACH-Moat, → Vision H2). **Action (offen):** mit Cybersecurity-Design-Partner #0 **jetzt validieren**, ob SaaS + AVV fürs Pilot akzeptiert wird, bevor es zum Überraschungs-Blocker wird. |
+
+**Technical-Boundary (Kurzfassung):**
+*Drin* — Multi-Tenant-EU-SaaS (Neon+pgvector) · Korpus-Ingest + Span-Citations · Provenance-Gate + Faithfulness · **Hero 1** (Concept Suite + TED-Polling/semi-manuell + AwardCriterion + Vertrags-Klausel-Extraktion + anonyme TeamShape) · **Hero 2** (auto-ConsultantProfile via Upload/M365 + Work-Agent/Time-Capture + PersonalNote + ProjectStatus + Collaboration-Loop) · Approval-Card + AuditEvent · WC-Mode (OFF) · Bedrock-EU · PDF/MD-Export.
+*Draußen* — Graph-DB · PII-Router · Drift-Monitor/Eval-CI · Versand/Outbound · Pricing-Engine · Contract/eIDAS · DATEV/ELSTER · personenscharfes Staffing · Net-New-Prospecting · CH · EN-UI · LinkedIn-Ingest · Multi-Step-Agentik nach außen.
 
 ---
 
@@ -134,12 +175,15 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 > **Vorschlag (zu bestätigen — offen als G9):**
 
-**Primäre Aktivierungs-Metrik (bestätigt 30.05.):**
-- **≥ 1 real verwendeter Konzept-/Bid-Entwurf aus eigenem Korpus pro Design-Partner — innerhalb von 5 Tagen.** Das ist das harte Leading-Signal: sticht der Painkiller schnell?
+**Dual-Hero-Aktivierung (revidiert 13.06., T12 — zwei Signale):**
+- **Hero 1 „Win":** **≥ 1 real verwendeter Konzept-/Bid-Entwurf aus eigenem Korpus pro Design-Partner — innerhalb von 5 Tagen.** Das schärfste Leading-Signal: sticht der Painkiller schnell?
+- **Hero 2 „Work":** **≥ 60 % der Consultant-Seats wöchentlich aktiv** im Operating-Foundation-Layer (Profile/Time/Notes/Status) + messbare **Work-Agent-Bestätigungs-Rate** + Profile-Auto-Maintenance-Akzeptanz. Misst, ob die „neue Arbeitsweise" wirklich gelebt wird (Retention + Seat-Utilization-Fundament).
 
 **PMF-Bestätigung (tiefer):** **Sean-Ellis ≥ 40 %** der aktiven Pilot-Nutzer „sehr enttäuscht" ohne Consultry.
 
 **Sekundär:** Pilot → Paid-Konversion ≥ 2 von 3–5; Time-to-first-Wow < 15 Min; Edit-Distanz am Konzept-Entwurf sinkend über Zeit.
+
+> **Warum zwei Bars (Seat-Paradox-Auflösung):** Das Seat-Modell (€50 × Headcount) hält nur, wenn Consultants *aktive* Seats sind — Hero 2 misst genau das. Die Wachstums-Story (AI-native Beratungen gewinnen mehr → stellen ein) ist die Antwort auf „AI ersetzt Berater → weniger Seats": Consultry verkauft **Wachstum, nicht Schrumpfung**. Value-Tier-Pricing bleibt der Post-PMF-Hebel (§6).
 
 **Kill / Pivot-Signal:** Wenn nach der ersten Kohorte (a) < 40 % „sehr enttäuscht" **und** (b) Partner den Konzept-Entwurf regelmäßig **neu schreiben statt editieren** → der Painkiller sticht nicht; Wedge oder Grounding-Tiefe überdenken, **bevor** Module ausgebaut werden.
 
@@ -147,7 +191,7 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 ## 6. Business-Spec (bestätigt 30.05.)
 
-**Seat-Preis: €50 / Seat / Monat** (je Consultant + Sales; 2 Backoffice frei).
+**Seat-Preis: €50 / Seat / Monat = Pilot-Land-Preis** (je Consultant + Sales; 2 Backoffice frei). **Post-PMF-Pricebook: €69 Core + Tiers** (T13) — final aus dem Bedrock-COGS-Modell (T14) abzuleiten, **nicht** aus den self-host-Ära-Zahlen (€119 Dev gestrichen, T15).
 
 | Firmengröße | Paid Seats | **ACV** |
 |---|---|---|
@@ -189,7 +233,7 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 | G6 | Design-Partner-Kohorte | ✅ **Kohorte = 1 starker Warm-Path-Partner (+ #0 eigene Firma) für jetzt.** Stage-0: Usefulness tief validieren, dann skalieren. → PMF-Metrik bei n=1 = „nützlich + zahlungsbereit + 5-Tage-Draft", nicht Markt-Validierung. |
 | G7 | Dogfood-Guardrail | später (greift erst bei Kohorten-Erweiterung) |
 | G10 | Eval/Quality | ✅ **frontier-getrieben für Prosa/Struktur; lightweight Harness = Partner-Edit-Distanz + harter Firm-Facts-Citation-Gate** (§1.3, legal, modell-unabhängig). Kein schweres ML-Eval-Suite. |
-| G11 | Builder-Bandbreite | ⏸️ bewusst zurückgestellt |
+| G11 | Builder-Bandbreite | ✅ **geschlossen 13.06. (T9):** Experten vorhanden; Hiring nach Idee-Bestätigung (Dogfood #0 + erster Design-Partner). Pre-Validation: Hero-1-Spine + Showcase-Demo + Substrat-Kern; Team-Skalierung nach validierter Thesis. |
 
 ---
 

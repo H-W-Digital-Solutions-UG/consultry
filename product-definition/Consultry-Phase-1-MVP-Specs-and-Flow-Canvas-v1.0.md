@@ -1,61 +1,64 @@
 # Consultry — Phase 1 MVP: Feature-Specs, Flow-Sammlung & AI-Context-Canvas v1.0
 
-## Giga-sharpened Specs für die ersten Funktionen
+## Feature-Specs, Flow-Sammlung & AI-Context-Canvas (Dual-Hero)
 
-**Status:** Draft zur Scope-Bestätigung
-**Datum:** 30. Mai 2026
-**Scope:** Phase 1 (MVP) — die drei ersten Kernfunktionen + verpflichtender Backbone
-**Bezug:** [PRD v4.0](./Consultry-PRD-v4.0-DACH-Operating-System.md), [Product Document v1.0](./Consultry-Product-Document-v1.0.md), [Module Refinement v1.0](./Consultry-Module-Refinement-v1.0.md), [User Journeys v1.0](./Consultry-User-Journeys-v1.0.md), [Target Personas v1.0](./Consultry-Target-Personas-v1.0.md)
+**Status:** Aktiv — dual-hero-aligned 13.06.2026
+**Datum:** 30. Mai 2026 · **Dual-Hero-Rework:** 13.06.2026
+**Scope:** MVP — **zwei gleichrangige Heroes (Win + Work)** auf geteiltem Engine-Fundament + Backbone.
+**Bezug:** [Product Vision (komplett)](./Consultry-Product-Vision-v1.0.md), [MVP-Doc](./Consultry-MVP-PRD-v1.0.md), [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md), [Business-Domain-Definition](./Consultry-Business-Domain-Definition-v1.0.md), [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md), [Target Personas](./Consultry-Target-Personas-v1.0.md).
 
-> **Lesehinweis.** Dieses Dokument schärft die Phase-1-Funktionen und ist die Brücke zwischen Produktstrategie (Wedges, Module) und Build (Surfaces, Objekte, AI-Verhalten, Prompts). Pro Feature ein Spec-Kapitel, je eine **Flow-Sammlung** (konkret + abstrakt/AI-dynamisch), dann **Cross-/Integration-Flows**, **Symbiose-Features** und der **Spec/AI-Context + Prompt-Engineering Collab-Canvas**.
+> **Lesehinweis.** Brücke zwischen Strategie (Vision/Pains) und Build (Surfaces, Objekte, AI-Verhalten, Prompts). Pro Feature: Spec + Flow-Sammlung (konkret + AI-dynamisch), dann Cross-Flows, Symbiose, Collab-Canvas. **Inline-Pain-Refs** (PW#/PK#) zeigen je Feature den belegten Schmerz aus der [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md).
 >
-> **Update 30.05. (v1.1-Scope):** Phase 1 umfasst F1 Account Growth, F2 Knowledge & Reuse, F3 AI Workspace, **F4 Proposal Draft**, **F5 Tender Ingest** und **F6 Deliverability-Check** — plus den Approvals/Governance-Backbone. F5 wurde aus Phase 2 vorgezogen; F6 wurde auf einen **aggregierten Deliverability-/Kapazitäts-Check geschnitten** (volles Staffing/Forecasting → Phase 1.5+), siehe §4A.2.
->
-> **Update 30.05. (v1.2-Positionierung):** Die GTM-/Wedge-Entscheidungen dieser Phase sind separat in **[GTM-Decisions v1.0](./Consultry-GTM-Decisions-v1.0.md)** festgehalten. Kurz: Headline-Wedge = **Projekt-Wachstum & -Akquise** (ein Job, zwei Intake-Oberflächen Tender + Bestandskunden); **F3 AI Workspace ist die Spine**; Bestandskunden läuft als **intelligentes CRM über loser Basis** (Hero-Signal = Vertrags-Options-/Verlängerungsfenster, quellengebunden, §2.3); „Operating System" bleibt **Vision, nicht Headline**.
+> **Frühere Versionshistorie** (v1.1 F5/F6-Vorziehen, v1.2-Positionierung, v1.3-Korrekturen WC-OFF/TED-Polling) ist im [Decision-Log](./Consultry-MVP-Foundation-Decisions-v1.0.md) konsolidiert — hier sauber eingearbeitet, keine Patch-Notes mehr.
 
 ---
 
-## 0. Phase-1-Scope — zur Bestätigung
+## 0. MVP-Scope — Dual-Hero
 
-### 0.1 Was in Phase 1 giga-geschärft wird (diese drei + Backbone)
+### 0.1 Die zwei Heroes auf geteiltem Fundament
 
-| # | Feature (Modul) | Rolle in Phase 1 | Wedge-Bezug |
+> Die historischen Feature-IDs **F1–F6** bleiben als Spec-Anker erhalten, sind aber jetzt zwei Heroes zugeordnet. Klammer-Thesis: *„Beratung im KI-Zeitalter"* — gewinnen **und** AI-nativ arbeiten ([Vision §1](./Consultry-Product-Vision-v1.0.md)).
+
+**🟦 Hero 1 — „Win" (Acquisition-to-Bid)**
+
+| # | Feature | Rolle | Killt Pain |
 |---|---|---|---|
-| **F1** | **Account Growth System** | Primärer Kaufgrund. Bestandskunde → Signal/Trigger → qualifizierte Opportunity. | Primär-Wedge: *Bestandskunden-Expansion & Proposal* |
-| **F2** | **Knowledge & Reuse System** | Verstärker. Wiederverwendbare Referenzen, Methoden, Assets, AI-Skills mit Quellenbindung. | Verstärker-Wedge: *Wissenstransfer, Reuse & Readiness* |
-| **F3** | **AI Workspace** | Die AI-native Interaktions- und Empfehlungsschicht über F1 + F2. | Querschnitt: macht F1+F2 erst „AI-native" |
-| **F4** | **Proposal Draft** (war F1b-Stub) | **Heraufgestuft 30.05.:** vom Stub zur vollwertigen Phase-1-Funktion. Aus freigegebener Opportunity wird ein strukturierter, editierbarer Proposal-Entwurf — **kein Send-Out**. | Primär-Wedge: schließt Opportunity → erstes Angebot |
-| **F5** | **Tender Ingest** | **Neu in Phase 1 (30.05.):** TED/eForms, service.bund u. ä. einlesen, strukturieren (CPV, Fristen, Lose, Eignung) und gegen Firmenprofil matchen. **Kein autonomes Einreichen.** | vorgezogener vertikaler Wedge (Public-Sector-nahe Segmente) |
-| **F6** | **Deliverability-Check** | **Geschnitten 30.05. (Option A):** nur **aggregierter** Kapazitäts-/Skill-Abdeckungs-Check als Bid-Gate (F5) + Realismus-Check (F4). **Kein personenscharfes Matching** (→ Phase 1.5+). | Verstärker: „Können wir das grundsätzlich liefern?" |
-| **B** | **Approvals + Governance/Audit Backbone** | **Kein eigenes verkaufbares Feature**, sondern verpflichtender Querschnitt unter allen Features. | Produkt-Default (DACH-Compliance) |
+| **F1** | **Account Growth** | Bestandskunde → Signal (Vertrags-Optionsfenster, klausel-gegroundet) → qualifizierte Opportunity. | PW4 (Folgegeschäft gewinnt), PW5 |
+| **F5** | **Tender Ingest** | TED/eForms-**Polling (MVP, T7)** + semi-manuell → strukturieren (CPV/Fristen/Lose/Eignung/**AwardCriteria**) → Bid/No-Bid → Opportunity. Kein Submit. | PW2, PW5, PW3 |
+| **F4→Concept Suite** | **Concept & Proposal Suite (★HERO★)** | Aus Opportunity + Korpus + TeamShape + AwardCriteria → gegroundeter, editierbarer Konzept-/Angebots-Entwurf. Consultant-as-author. Kein Versand. | PW1, PW2, PW6, PW7 |
+| **F6** | **Deliverability / anonyme TeamShape** | Aggregierter „Können wir liefern?"-Check (Anzahl/Skills/Seniority, keine Personen) → Bid-Gate + Konzept-Realismus. | PW3, PK5 |
 
-> **Bestätigt (1):** Account Growth bleibt der Primär-Wedge und das *erste sichtbare* Feature; Knowledge & AI Workspace sind die direkten Verstärker.
->
-> **Bestätigt (2 · 30.05.):** Phase 1 endet nicht bei der Opportunity, sondern beim **Proposal Draft** (interner Entwurf, kein Versand). Siehe §2.7.
->
-> **⚠️ Scope-Erweiterung (3 · 30.05.):** **Tender Ingest (F5)** und **Staffing & Forecasting (F6)** werden nach **Phase 1 vorgezogen.** Das weicht bewusst von der bisherigen Priorisierung ab (beide waren Phase 2/3). **Konsequenz:** Scope, Datenbedarf und **Compliance-Last steigen deutlich** — F6 ist nach AI Act potenziell Hochrisiko (Worker Management / Task Allocation) und in DE mitbestimmungspflichtig (BetrVG §87/§94, BDSG §26). Siehe §4A-Compliance und offene Entscheidung §10.4. Spezs unter §4A.
+**🟩 Hero 2 — „Work" (AI-native Operating Foundation)**
 
-### 0.2 Was Phase 1 bewusst NICHT ist
+| # | Feature | Rolle | Killt Pain |
+|---|---|---|---|
+| **F-Profile** | **Auto-ConsultantProfile** | Profile pflegen sich aus Upload/M365/Credly; Consultant bestätigt (GI-12a). Deskriptiv, kein Scoring. | PK5, PK2 |
+| **F-Work** | **Work-Agent / Time-Capture** | Agent schlägt TimeEntries aus In-Tool-Arbeit vor → killt Billable-Leakage + Admin-Last. Privater PersonalNote-Layer. | PK1, PK2, PK3 |
+| **F-Status** | **Project Observability** | Deliverable-aggregierter ProjectStatus aus TimeEntries; nie personen-attribuiert. | PK3, PK6 |
 
-- **Proposal Draft ist drin** (interner Entwurf), aber **kein Proposal-Send-Out, kein Pricing-Engine, kein Contract Drafting** (→ Phase 2)
-- **Tender Ingest ist drin** (Lesen, Strukturieren, Matchen, Bid-Paket-Vorbereitung), aber **kein autonomes Einreichen, keine Vollständigkeits-/Vergabe-Zusage** (→ Phase 2+)
-- **Nur ein aggregierter Deliverability-Check ist drin** (Kapazitäts-/Skill-Abdeckung als Bid-Gate), aber **kein personenscharfes Matching, kein `TeamProposal`, kein People-/Burnout-/Performance-Scoring** (volles Staffing/Forecasting → Phase 1.5+)
-- Kein Time/Expense, kein Invoice Prep, kein DATEV/ELSTER-Handoff (→ Phase 3)
-- Kein Net-New-Prospecting
-- Kein offener Prompt-Marktplatz ohne Governance
+**⬛ Geteiltes Fundament (kein eigener Hero, trägt beide)**
 
-Phase 1 deckt jetzt die ganze Vorderkante ab: **„Signal/Tender → qualifizierte, begründete Opportunity → anonyme Team-Shape + Forecast → interner Proposal-Entwurf"** — durchgehend mit Quellenbindung und Approval, aber **ohne** Versand, Pricing, Contract, Submission, namentliche Personen oder personenscharfes Scoring.
+| # | Feature | Rolle |
+|---|---|---|
+| **F2** | **Knowledge & Reuse** | Korpus-Ingest, Retrieval, Citations, ExternalSource/Grounding-Engine. Killt PK4, speist beide Heroes. |
+| **F3** | **AI Workspace** | Kontext-Copilot + editierbarer Canvas + Explanation. Die Interaktions-Spine über allem. |
+| **B** | **Approvals + Governance/Audit Backbone** | Recommendation→Explanation→Approval→Audit + WC-Mode-Schalter (Default-OFF). |
 
-### 0.3 Phase-1-Erfolgssignale (aus Product Document v1.0)
+### 0.2 Was der MVP bewusst NICHT ist
 
-- Bestandskundenchancen werden **früher und strukturierter** sichtbar.
-- Wissensbausteine verkürzen Proposal-/Onboarding-Vorbereitung **messbar**.
-- AI-Empfehlungen werden als **brauchbare Entscheidungshilfe** akzeptiert (nicht als Black Box).
-- Design Partner verstehen den Kaufgrund **in wenigen Minuten**.
+- **Win:** kein Proposal-Versand, kein Pricing-Engine, kein Contract/eIDAS (→ H2); kein autonomes Tender-Einreichen, keine Vergabe-Zusage (→ H2+); **kein personenscharfes Matching/`TeamProposal`/People-Scoring** (→ H2 + Gate).
+- **Work:** Time-**Capture** ist drin (BAG-pflichtig), aber **kein** Time-→-Invoice, **kein** Billing/DATEV/ELSTER (→ H3); **keine personenbezogene Utilization-Auswertung** ohne WC-Mode; **kein** Performance-/Burnout-Scoring (niemals per Default).
+- Kein Net-New-Prospecting (→ H2); kein offener Prompt-Marktplatz; keine Multi-Step-Agentik nach außen.
+
+### 0.3 MVP-Erfolgssignale (Dual-PMF, T12)
+
+- **Hero 1 (Win):** ≥ 1 gegroundeter Konzept-/Bid-Entwurf aus eigenem Korpus **in 5 Tagen**; Edit-Distanz sinkend; Time-to-first-Wow < 15 Min.
+- **Hero 2 (Work):** **≥ 60 % Consultant-Seats wöchentlich aktiv** + Work-Agent-Bestätigungs-Rate + Profile-Auto-Maintenance-Akzeptanz *(Bar mit Design-Partner final setzen)*.
+- **Gemeinsam:** AI-Empfehlungen als brauchbare, gegroundete Entscheidungshilfe akzeptiert (nicht Black Box); Design-Partner versteht den Kaufgrund in Minuten.
 
 ---
 
-## 1. Gemeinsame Fundamente (gelten für F1–F3)
+## 1. Gemeinsame Fundamente (gelten für beide Heroes)
 
 ### 1.1 Der AI-Vertrag (nicht verhandelbar)
 
@@ -86,13 +89,17 @@ Default-Regeln:
 | `WarmPath` | F1 | belastbarer Beziehungspfad zu einem Stakeholder |
 | `KnowledgeAsset` | F2 | Referenz/Methode/Report/Skript/Runbook/Blueprint, versioniert, mit Source |
 | `AISkill` / `Workflow-Blueprint` | F2/F3 | wiederverwendbare AI-native Arbeitsfähigkeit (Prompt + Kontext + Owner + Version) |
-| `Tender` | F5 | Ausschreibung: Quelle, CPV, Fristen, Lose, Eignungskriterien, Dokumentenanforderungen, Match-Score |
-| `ConsultantProfile` | F6 | Skills, Zertifikate, Projekterfahrung, Availability — **in Phase 1 nur aggregiert ausgewertet** (Pool-Statistik); personenscharf erst Phase 1.5+ mit Gate |
-| `TeamShape` | F6 | **anonyme** Team-Zusammensetzung für eine Opportunity/Tender: Anzahl, Skill-/Profil-Typen, Seniority-Mix, Rollen — **keine namentlichen Personen** |
-| `Forecast` | F6 | Kapazitäts-/Auslastungsprognose, **aggregiert** (Team/Practice); personenscharf erst Phase 1.5+ mit Gate |
-| `Recommendation` | F3 | AI-Vorschlag mit Explanation, Sources, Confidence, Status |
-| `ApprovalEvent` | B | Freigabe/Ablehnung/Edit mit Wer/Wann/Warum |
-| `AuditRecord` | B | unveränderliche Spur über alle obigen |
+| `Tender` | 🟦 F5 | Ausschreibung: Quelle, CPV, Fristen, Lose, Eignungs-/**AwardCriteria**, Dokumentenanforderungen, Match-Score |
+| `ConsultantProfile` | 🟩 Work + 🟦 F6 | Skills, Zertifikate, Projekterfahrung, Availability — **auto-gepflegt** (GI-12a), deskriptiv. In Bid/TeamShape nur **aggregiert** (GI-13); personenscharf erst H2 + Gate |
+| `TeamShape` | 🟦 F6 | **anonyme** Soll-Zusammensetzung (Anzahl/Skill-Typen/Seniority/Rollen) — **keine Personen** |
+| `Forecast` | 🟦 F6 | Kapazitäts-/Auslastungssicht, **aggregiert** (Team/Practice); personenscharf erst H2 + Gate |
+| `TimeEntry` | 🟩 Work | Zeiterfassungs-Eintrag (BAG-pflichtig); Capture erlaubt, personenbez. Auswertung WC-gated (GI-8) |
+| `PersonalNote` | 🟩 Work | **strikt privater** Notiz-Layer des Consultants — nie management-sichtbar, nie Analytics (GI-7) |
+| `WorkAgentSuggestion` | 🟩 Work | Agent-Vorschlag (TimeEntry/Tages-Summary) aus In-Tool-Arbeit → erst nach Bestätigung `TimeEntry` (GI-9a) |
+| `ProjectStatus` | 🟩 Work | deliverable-aggregierter Fortschritt (RAG/Burn) aus TimeEntries; nie personen-attribuiert (GI-10) |
+| `Recommendation` | ⬛ F3 | AI-Vorschlag mit Explanation, Sources, Confidence, Status |
+| `ApprovalEvent` | ⬛ B | Freigabe/Ablehnung/Edit mit Wer/Wann/Warum |
+| `AuditRecord` | ⬛ B | unveränderliche Spur über alle obigen |
 
 ### 1.3 Rollen (Phase 1, vereinfacht)
 
@@ -100,18 +107,25 @@ Default-Regeln:
 - **Practice Lead** — qualifiziert Opportunities, kuratiert Knowledge.
 - **Senior Consultant** — Knowledge-Contributor, AI-Skill-Autor.
 - **Managing Partner** — „Scan-Entscheider"-Modus: Cockpit + Approval-Cards.
-- **Works-Council-Mode** — schaltet personenbezogene Sichten global frei/gated (**Default: AN = personenscharf gated**, seit Aufnahme von F6 — siehe §4A.3).
+- **Works-Council-Mode** — ein Schalter, der personenbezogene Auswertung + Aktivitäts-Auto-Feed gated, wenn er AN ist (**Default: AUS** — korrigiert 12.06., T6; siehe §4A.3 und Domain-Def GI-9b/16). MVP-Sichten sind ohnehin aggregiert/anonym.
 
-### 1.4 Phase-1-Oberflächen (Surfaces)
+### 1.4 MVP-Oberflächen (Surfaces, hero-gruppiert)
 
-- **Cockpit / Dashboard** (Basis) — rollenbasierter Einstieg, Top-Signale, offene Approvals.
-- **Notification Center** (P0/P1) — priorisierte Trigger & Freigaben.
+**🟦 Win:**
 - **Opportunity Detail / Approval-Card** — das zentrale Entscheidungsobjekt.
+- **Tender Board** (F5) — Tender-Liste, strukturierte Sicht, Match + Bid-Checkliste.
+- **Concept & Proposal Canvas** (Hero) — gegroundeter, editierbarer Entwurf mit Version History + Citation-Hover.
+- **TeamShape-Sicht** (F6) — anonyme Team-Shape + aggregierte Kapazitäts-Aussage.
+
+**🟩 Work:**
+- **Work-Agent / Time-Capture** — Agent-Vorschläge bestätigen, privater PersonalNote-Layer.
+- **Profil-Sicht** — auto-gepflegtes ConsultantProfile, Consultant bestätigt/verfeinert.
+- **Project-Status-Board** — deliverable-aggregiert (RAG/Burn), nie personen-attribuiert.
+
+**⬛ Geteilt:**
+- **Cockpit / Dashboard** (dünner Einstieg) — rollenbasiert, Top-Signale, offene Approvals. *(NL-Query-Cockpit = H2, nicht MVP — T10.)*
 - **Knowledge Workspace** — Suche, Asset-Detail, Reuse-Aktion.
-- **AI Copilot (Basis)** — kontextgebundener Assistent als Querschnitt-Surface.
-- **Proposal Canvas** (F4) — editierbarer Angebots-Entwurf mit Version History.
-- **Tender Board** (F5) — Tender-Liste, strukturierte Tender-Sicht, Match + Bid-Checkliste.
-- **Deliverability-Sicht** (F6) — anonyme Team-Shape (Anzahl/Skills/Seniority) + aggregierter Kapazitäts-Forecast; personenscharf erst Phase 1.5+ (gated).
+- **AI Copilot (Basis)** — kontextgebundener Assistent + Explanation-Panel.
 
 ---
 
@@ -120,6 +134,8 @@ Default-Regeln:
 ### 2.1 One-Liner
 
 > *Macht aus verstreuten Bestandskunden-Signalen früh und strukturiert eine **qualifizierte, begründete Opportunity** — mit nachvollziehbarem Warm Path und verknüpften Reuse-Assets.*
+
+> 🟦 **Hero 1 (Win).** Killt **PW4** (Incumbent-Win-Rate 60–90 % vs. 15 % neu; ~80 % Umsatz aus Bestand) + **PW5**. → [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md)
 
 ### 2.2 Job-to-be-done
 
@@ -162,6 +178,8 @@ Default-Regeln:
 
 **One-Liner.** *Aus der begründeten, freigegebenen Opportunity, den verknüpften Reuse-Assets und (falls vorhanden) der anonymen Team-Shape aus F6 wird per AI-Skill ein strukturierter, editierbarer **Proposal-Entwurf** im Canvas — der erste greifbare Angebots-Beweis, intern.*
 
+> 🟦 **Hero 1 (Win) ★HERO★ = Concept & Proposal Suite.** Killt **PW1** (Proposals 30+ Tage), **PW2** (~25 h/Bid), **PW6** (Tagessatz-Druck), **PW7** (Grounding-Haftung). Trägt das **5-Tage-PMF-Signal**. → [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md)
+
 **In-Scope (Phase 1):**
 - `ProposalDraft`-Objekt (neu): an genau eine `Opportunity` gebunden, versioniert.
 - AI-Skill `draft-proposal` (F2/F3): erzeugt Gliederung + Kerntext aus Opportunity-Begründung + angehängten Assets, **quellengebunden**.
@@ -191,6 +209,8 @@ Default-Regeln:
 ### 3.1 One-Liner
 
 > *Verwandelt vorhandenes Projektwissen, Delivery-Artefakte und AI-Skills in **auffindbare, wiederverwendbare, quellengebundene Bausteine** — damit Proposal- und Onboarding-Vorbereitung nicht jedes Mal von vorn startet.*
+
+> ⬛ **Geteilte Engine (trägt beide Heroes).** Killt **PK4** (~20 % der Arbeitswoche für Suchen/Neu-Erstellen, APQC). Liefert Firm- + External-Grounding. → [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md)
 
 ### 3.2 Job-to-be-done
 
@@ -231,6 +251,8 @@ Default-Regeln:
 ### 4.1 One-Liner
 
 > *Die AI-native Schicht, die F1 und F2 bedienbar macht: ein kontextgebundener Copilot + ein **editierbarer Canvas** mit Version History, der Empfehlungen erklärt, Quellen zeigt und Freigaben einsammelt.*
+
+> ⬛ **Geteilte Spine (Interaktions-Fundament beider Heroes).** Verkörpert den Human-AI-Collaboration-Loop (Vorschlag → Verfeinern → Verantworten → Audit). → [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md)
 
 ### 4.2 Job-to-be-done
 
@@ -273,10 +295,12 @@ Default-Regeln:
 
 **One-Liner.** *Liest öffentliche Ausschreibungen aus offiziellen Quellen ein, strukturiert sie (CPV, Fristen, Lose, Eignung, Dokumente) und matcht sie gegen Firmenprofil + Kapazität — als qualifizierte Chance, **nicht** als autonome Einreichung.*
 
+> 🟦 **Hero 1 (Win).** Killt **PW2**, **PW5** (~37 % der Tenders unbearbeitet) + **PW3** (Bid/No-Bid = größter Win-Rate-Hebel). MVP: **TED-Polling (T7)** + semi-manuell. → [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md)
+
 **Job-to-be-done.** `Welche Ausschreibung passt zu uns, ist fristgerecht machbar, und was müssen wir dafür liefern?`
 
 **In-Scope (Phase 1):**
-- Ingest aus **TED/eForms**, **service.bund.de** und ähnlichen Quellen (read-only).
+- Ingest aus **TED/eForms**, **service.bund.de** und ähnlichen Quellen (read-only) — **thin Polling im MVP** (täglicher Pull, CPV-Filter pro Tenant; T7) **plus** semi-manueller Upload/Paste.
 - Strukturierung: CPV-Codes, Fristen, Lose, Eignungs-/Ausschlusskriterien, Dokumentenanforderungen.
 - **Match** gegen Firmenprofil, Referenzen (F2) und Kapazität (F6).
 - Überführung in `Opportunity` (gleicher Qualifizierungs-/Approval-Pfad wie F1).
@@ -300,6 +324,8 @@ Default-Regeln:
 > **⚠️ Scope-Schnitt 30.05. (siehe [GTM-Decisions §5](./Consultry-GTM-Decisions-v1.0.md)).** Volles Staffing & Forecasting ist **nicht** Phase 1 — es ist Delivery/Resourcing, nicht Akquise, und trägt die schwerste Mitbestimmungs-/AI-Act-Last. **Phase 1 behält nur den akquise-relevanten Rest:** einen **aggregierten „Können wir das liefern?"-Kapazitäts-Check**, der Bid/No-Bid (F5) und die Team-Zusammensetzung im Proposal (F4) speist. Echtes Staffing/Matching/Forecasting → **Phase 1.5+**.
 
 **One-Liner.** *Liefert einen **aggregierten Deliverability-Check** plus eine **anonyme Team-Zusammensetzung** (wie viele Personen, welche Skill-/Profil-Typen, welcher Seniority-Mix) als Realismus-Gate für Bid/No-Bid und Proposal — **niemals namentliche Personen.***
+
+> 🟦 **Hero 1 (Win), gespeist aus 🟩 Capability.** Killt **PW3** (Realismus-Gate) + **PK5** (Skills nicht normalisiert). Personenscharf = H2 + WC-Gate. → [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md)
 
 **Job-to-be-done.** `Können wir das grundsätzlich liefern — wie viele Leute mit welchen Skills und welcher Seniority braucht es, und haben wir die Kapazität dafür?`
 
@@ -334,7 +360,44 @@ Mit F6 wird Consultry in Phase 1 **mitbestimmungs- und AI-Act-relevant**. Das is
 - **BetrVG §87/§94:** technische Systeme zur Verhaltens-/Leistungskontrolle und Beurteilungsgrundsätze sind **mitbestimmungspflichtig** → `Works-Council-Mode` muss echte Produktfunktion sein.
 - **BDSG §26 / DSGVO:** Beschäftigtendaten nur zweckgebunden, datenminimiert, Consent freiwillig.
 
-**Produktentscheidung (Default):** `Works-Council-Mode = AN`, alle personenscharfen F6-Sichten **gated**, F6-Defaults **aggregiert**. (Das ist die strengere Auslegung der bisher offenen §10.4.)
+**Produktentscheidung (revidiert 12.06.2026, T6):** `Works-Council-Mode = AUS` (Default-OFF). Der Schalter gated — wenn AN — personenbezogene Auswertung + Aktivitäts-Auto-Feed (Domain-Def GI-9b/GI-16). F6-MVP-Sichten bleiben **ohnehin aggregiert/anonym** (TeamShape ohne Personen) — schalterunabhängig. Bei Kunden mit aktivem Betriebsrat → AN; Restrisiko bewusst akzeptiert („ein blockierter Deal, kein Lawsuit"). ~~Frühere Auslegung „Default AN"~~ aufgehoben; verbindliche Linie: [MVP-PRD §3.1-Platform](./Consultry-MVP-PRD-v1.0.md) + [Foundation-Decisions T6](./Consultry-MVP-Foundation-Decisions-v1.0.md).
+
+---
+
+## 4B. Hero 2 „Work" — AI-native Operating Foundation (Feature-Specs)
+
+> **Hochgestuft 13.06. zu co-gleichrangigem Hero (T8).** Die „neue Arbeitsweise": der Consultant arbeitet täglich *mit* der AI, statt Doku nachzutragen. Killt die chronischen Work-Pains (PK1–PK6) und liefert die **Seat-Utilization-PMF-Bar** (T12). Domänenregeln: [Domain-Def §3.5/§3.8/§3.9](./Consultry-Business-Domain-Definition-v1.0.md); Entities: [Technical-Foundation §2.4/§2.5](./Consultry-MVP-Technical-Foundation-v1.0.md).
+
+### 4B.1 F-Profile — Auto-ConsultantProfile
+
+**One-Liner.** *Beraterprofile (Skills, Zertifikate, Projekterfahrung, Availability) pflegen sich **selbst** aus verknüpften Quellen (Upload, M365, Credly-Export, CV); der Consultant bestätigt/verfeinert — nie ein leeres Skill-DB-Formular.*
+
+> 🟩 Killt **PK5** (Skills nicht normalisiert) + **PK2** (Admin-Last). Speist aggregiert die TeamShape (Win).
+
+- **In-Scope:** auto-Maintenance via Background-Agent (GI-12a, Human-in-the-loop-Bestätigung); deskriptive Skills mit `source_of_claim`-Hierarchie (SelfDeclared<PeerVerified<ProjectAttested<CertificationBacked); Cost/Sell strikt getrennt.
+- **AI darf:** Skills/Zertifikate aus Quellen vorschlagen, Duplikate erkennen, Profil-Lücken markieren. **Nur mit Gate:** personenscharfe Verwendung außerhalb Aggregat (H2). **Niemals:** Performance-/Burnout-Score (GI-9/12); LinkedIn-Scraping (T10).
+- **Metriken:** Profil-Vollständigkeit, Auto-Maintenance-Akzeptanz-Rate, Time-to-current-profile.
+
+### 4B.2 F-Work — Work-Agent / Time-Capture
+
+**One-Liner.** *Der Work-Agent schlägt `TimeEntry`s und Tages-Zusammenfassungen aus der In-Tool-Arbeit vor; der Consultant bestätigt mit einem Klick. Plus ein **strikt privater** `PersonalNote`-Layer.*
+
+> 🟩 Killt **PK1** (Billable-Leakage 15–25 %, 2,9 h/Tag), **PK2** (Admin 20 %), **PK3** (Utilization-Lücke). **Trägt die Seat-Utilization-PMF-Bar.**
+
+- **In-Scope:** Time-Capture (BAG-pflichtig, GI-8); `WorkAgentSuggestion`→Bestätigung→`TimeEntry` (GI-9a); privater PersonalNote-Layer (GI-7, nie management-sichtbar/Analytics).
+- **Compliance:** der **Aktivitäts-Auto-Feed** ist WC-Mode-gated (GI-9b, Default-OFF-Posture); manuelle Erfassung + PersonalNote immer frei.
+- **AI darf:** Einträge vorschlagen, Tag zusammenfassen, Projekt/Task zuordnen. **Niemals:** ohne Bestätigung zum TimeEntry machen; PersonalNote auswerten; Leistungs-Scoring.
+- **Metriken:** Work-Agent-Bestätigungs-Rate, erfasste vs. geschätzte billable Stunden (Leakage-Reduktion), wöchentlich aktive Seats.
+
+### 4B.3 F-Status — Project Observability
+
+**One-Liner.** *Deliverable-zentrierter `ProjectStatus` (RAG/Milestones/Fristen/BudgetBurn) — abgeleitet aus **aggregierten** `TimeEntry`s, **nie** personen-attribuiert.*
+
+> 🟩 Killt **PK3** (Utilization-Sicht) + **PK6** (Delivery→Wachstum-Loop). Sekundärer Deliverability-Input für Win.
+
+- **In-Scope:** Projekt-/Deliverable-RAG, Burn, Fristen aus aggregierten TimeEntries (GI-10/11). **Out:** tiefes Delivery-/Workforce-Analytics (H2), Billing (H3).
+- **AI darf:** aggregierte Status-/Risiko-Hinweise. **Nur mit Gate:** Personen-Drilldown (WC-Mode, GI-16). **Niemals:** „Projekt gelb wegen Person Y" im Default.
+- **Metriken:** Status-Aktualität ohne Handpflege, früher sichtbare Bench-/Überlast-Risiken (aggregiert).
 
 ---
 
@@ -623,7 +686,7 @@ flowchart LR
 1. ✅ **Scope-Hierarchie** (§0.1): Account Growth = erstes sichtbares Feature, Knowledge + AI Workspace als direkte Verstärker — **bestätigt 30.05.**
 2. ✅ **Integration-Tiefe** (§6.2): Phase 1 nur read-only/import, kein Schreibzugriff/Versand, keine autonome Tender-Submission — **bestätigt 30.05.**
 3. ✅ **Phase-1-Endartefakt**: Opportunity **+ Proposal Draft** (F4, kein Versand) — **bestätigt & eingearbeitet 30.05.** (§2.7)
-4. ✅ **Personenbezug (Works-Council-Default)**: **bestätigt 30.05.** — Works-Council-Mode = AN, F6 aggregiert, personenscharf nur gated (§4A.3).
+4. ✅ **Personenbezug (Works-Council-Default)**: **revidiert 12.06. (T6)** — Works-Council-Mode = **AUS** (Default-OFF); F6 bleibt aggregiert/anonym; der Schalter gated personenbezogene Auswertung + Auto-Feed bei Kunden mit Betriebsrat (§4A.3).
 5. ✅ **Canvas-Form**: Mermaid (eingebettet) reicht vorerst; FigJam auf Zuruf — **entschieden 30.05.**
 6. ✅ **Tender in Phase 1, F6 geschnitten** (§4A): **bestätigt 30.05.** — F5 (Tender Ingest) bleibt; **F6 → Option A**: nur aggregierter Deliverability-Check als Bid-Gate, **kein personenscharfes Matching** (volles Staffing/Forecasting → Phase 1.5+).
 7. ✅ **Headline-Wedge & GTM** (→ [GTM-Decisions v1.0](./Consultry-GTM-Decisions-v1.0.md)): **bestätigt 30.05.** — Job = *Projekt-Wachstum & -Akquise*; F3 = Spine; Tender + Bestandskunden = zwei Intake-Oberflächen; **Bestandskunden öffnet die Tür, Tender = Big Swing**; ICP = mid-to-small zuerst; OS = Vision, nicht Headline.
