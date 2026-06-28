@@ -1,0 +1,109 @@
+- main "Personalized image stream" [ref=e2]:
+  - generic [ref=e3]:
+    - generic "Mood board controls" [ref=e4]:
+      - generic [ref=e5]:
+        - heading "Consultry MVP Mood Board" [level=1] [ref=e6]
+        - paragraph [ref=e7]: Grounded acquisition-to-bid workbench for DACH consultancies
+    - region "Mood-board images" [ref=e8]:
+      - generic [ref=e9]:
+        - figure [ref=e10] [cursor=pointer]:
+          - button "Select Source-Bound Proposal Canvas" [ref=e11]:
+            - img [ref=e13]
+          - button "Remove image" [ref=e15]:
+            - img [ref=e17]
+          - button "View Source-Bound Proposal Canvas large" [ref=e19]:
+            - img "Source-Bound Proposal Canvas" [ref=e20]
+          - img
+        - figure [ref=e21] [cursor=pointer]:
+          - button "Select Anonymous Team Shape" [ref=e22]:
+            - img [ref=e24]
+          - button "Remove image" [ref=e26]:
+            - img [ref=e28]
+          - button "View Anonymous Team Shape large" [ref=e30]:
+            - img "Anonymous Team Shape" [ref=e31]
+          - img
+        - figure [ref=e32] [cursor=pointer]:
+          - button "Select Five-Day Draft Rhythm" [ref=e33]:
+            - img [ref=e35]
+          - button "Remove image" [ref=e37]:
+            - img [ref=e39]
+          - button "View Five-Day Draft Rhythm large" [ref=e41]:
+            - img "Five-Day Draft Rhythm" [ref=e42]
+          - img
+      - generic [ref=e43]:
+        - figure [ref=e44] [cursor=pointer]:
+          - button "Select Tender Desk Intake" [ref=e45]:
+            - img [ref=e47]
+          - button "Remove image" [ref=e49]:
+            - img [ref=e51]
+          - button "View Tender Desk Intake large" [ref=e53]:
+            - img "Tender Desk Intake" [ref=e54]
+          - img
+        - figure [ref=e55] [cursor=pointer]:
+          - button "Select Deadline Operator Cockpit" [ref=e56]:
+            - img [ref=e58]
+          - button "Remove image" [ref=e60]:
+            - img [ref=e62]
+          - button "View Deadline Operator Cockpit large" [ref=e64]:
+            - img "Deadline Operator Cockpit" [ref=e65]
+          - img
+        - figure [ref=e66] [cursor=pointer]:
+          - button "Select Quiet Advantage Studio" [ref=e67]:
+            - img [ref=e69]
+          - button "Remove image" [ref=e71]:
+            - img [ref=e73]
+          - button "View Quiet Advantage Studio large" [ref=e75]:
+            - img "Quiet Advantage Studio" [ref=e76]
+          - img
+      - generic [ref=e77]:
+        - figure [ref=e78] [cursor=pointer]:
+          - button "Select Knowledge Corpus Room" [ref=e79]:
+            - img [ref=e81]
+          - button "Remove image" [ref=e83]:
+            - img [ref=e85]
+          - button "View Knowledge Corpus Room large" [ref=e87]:
+            - img "Knowledge Corpus Room" [ref=e88]
+          - img
+        - figure [ref=e89] [cursor=pointer]:
+          - button "Select Citation Evidence Detail" [ref=e90]:
+            - img [ref=e92]
+          - button "Remove image" [ref=e94]:
+            - img [ref=e96]
+          - button "View Citation Evidence Detail large" [ref=e98]:
+            - img "Citation Evidence Detail" [ref=e99]
+          - img
+      - generic [ref=e100]:
+        - figure [ref=e101] [cursor=pointer]:
+          - button "Select Calm Consulting War Room" [ref=e102]:
+            - img [ref=e104]
+          - button "Remove image" [ref=e106]:
+            - img [ref=e108]
+          - button "View Calm Consulting War Room large" [ref=e110]:
+            - img "Calm Consulting War Room" [ref=e111]
+          - img
+        - figure [ref=e112] [cursor=pointer]:
+          - button "Select Existing-Client Signal" [ref=e113]:
+            - img [ref=e115]
+          - button "Remove image" [ref=e117]:
+            - img [ref=e119]
+          - button "View Existing-Client Signal large" [ref=e121]:
+            - img "Existing-Client Signal" [ref=e122]
+          - img
+      - generic [ref=e123]:
+        - figure [ref=e124] [cursor=pointer]:
+          - button "Select Executive Approval Card" [ref=e125]:
+            - img [ref=e127]
+          - button "Remove image" [ref=e129]:
+            - img [ref=e131]
+          - button "View Executive Approval Card large" [ref=e133]:
+            - img "Executive Approval Card" [ref=e134]
+          - img
+        - figure [ref=e135] [cursor=pointer]:
+          - button "Select Consultant Author Craft" [ref=e136]:
+            - img [ref=e138]
+          - button "Remove image" [ref=e140]:
+            - img [ref=e142]
+          - button "View Consultant Author Craft large" [ref=e144]:
+            - img "Consultant Author Craft" [ref=e145]
+          - img
+    - paragraph [ref=e146]: Loaded 12 unique mood board images.
