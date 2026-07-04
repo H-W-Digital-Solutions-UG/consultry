@@ -3,7 +3,7 @@
 **Status:** Aktiv — Seed für die technische MVP-Planung.
 **Datum:** 13.06.2026
 **Rolle:** Konsolidiert den **wiederverwendbaren technischen Substanz-Layer** aus den archivierten Gen-A-Dokumenten (PRD v5.0, feature-specs/01–04, cross-cutting) — **scope-bereinigt** auf den Dual-Hero-MVP. Das *Scope*-Framing von Gen A war falsch (Win-and-Deliver, Contracts/DATEV/personenscharfes Staffing); die *Datenmodelle, Source-Binding-, Audit- und Integrations-Architektur* sind es nicht — sie leben hier weiter.
-**Verbindlich darüber:** [MVP-Doc](./Consultry-MVP-PRD-v1.0.md) (§3.4 T1–T12) · [Foundation-Decisions](./Consultry-MVP-Foundation-Decisions-v1.0.md) (Begründungen) · [Business-Domain-Definition](./Consultry-Business-Domain-Definition-v1.0.md) (Invarianten GI-1…16). Bei Konflikt gewinnt das MVP-Doc.
+**Verbindlich darüber:** [MVP-Doc](./Consultry-MVP-PRD-v1.0.md) (§3.4 T1–T12) · [Foundation-Decisions](./Consultry-MVP-Foundation-Decisions-v1.0.md) (Begründungen) · [Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md) · [Business-Domain-Definition](./Consultry-Business-Domain-Definition-v1.0.md) (Invarianten GI-1…16). Bei Konflikt gewinnt das MVP-Doc; fuer Architektur-Baselines gewinnt der akzeptierte ADR.
 
 > **Lesehinweis Scope-Markierung:** **🟢 MVP** = im Dual-Hero-MVP zu bauen · **🟡 H2** · **🔴 H3+**. Entities/Felder ohne MVP-Marke sind übernommen, aber erst später relevant — bewusst behalten, um Migrationen zu vermeiden.
 
@@ -15,11 +15,11 @@ Drei Schichten, jede mit fixierter Posture — **gilt unverändert auch im Dual-
 
 | Schicht | Posture | MVP-Realisierung |
 |---|---|---|
-| **Datenschicht (1.0)** | Deterministisch, transaktional, audit-erzeugend | **Neon Postgres** (RLS-Tenant-Isolation, Append-Only-Audit, pgvector). Graph-ready via explizite Edge-Tabellen; dedizierte Graph-DB erst bei Traversal-Bedarf (T3). Keine AI-Schreibzugriffe. |
+| **Datenschicht (1.0)** | Deterministisch, transaktional, audit-erzeugend | **Aurora PostgreSQL Serverless v2 + pgvector** (RLS-Tenant-Isolation, Append-Only-Audit, pgvector). Graph-ready via explizite Edge-Tabellen; dedizierte Graph-DB erst bei Traversal-Bedarf (T3/ADR-001). Keine AI-Schreibzugriffe. |
 | **Logikschicht (1.0 + 2.0-Anreicherung)** | Deterministische Business-Rules + ML-Anreicherung | TypeScript-Business-Rules; pgvector-Embeddings für Retrieval/Ähnlichkeit; Klassifizierer (Provenance, Trigger-Kind) als **Inputs** für deterministische Logik, nicht selbst Logik. |
 | **Kollaborationsschicht (3.0)** | LLM als supervisor-bounded Kollaborateur | Bounded Operators (§8) auf dem Graph; nie direkter State-Mutator; jeder Call audit-logged + source-bound. |
 
-**Nicht-Ziel (unverändert aus v5.0):** kein Agent-Runtime, kein Auto-Execute/Tool-Orchestrate im MVP — verletzt die Supervisor-Boundary + AI-Act-High-Risk-Fußspur. Spätere Einführung nur mit expliziter Compliance-/Approval-Re-Architektur.
+**Nicht-Ziel (präzisiert 28.06. durch ADR-002):** keine autonome Agent-Runtime, kein freies Auto-Execute/Tool-Orchestrate im MVP. Erlaubt ist nur ein bounded Hermes/Virtual Harness: job-scoped, HarnessPack-scoped, policy-gated, ohne direkte Persistenz und ohne autonome Außenaktionen.
 
 ---
 
@@ -75,7 +75,7 @@ EngagementBrief 🟢    outcome_statement, scope_in/exclusions[], timeline,
 SkillRequirement 🟢   skill(→SkillTaxonomy), level_min, duration_pd, locality, must_have
 ```
 
-### 2.3 🟢 Bid Production — HERO (Concept Suite)
+### 2.3 🟢 Bid Production — HERO Proof Surface (Concept Suite)
 
 ```
 ProposalDraft / Konzept 🟢   opportunity, version(write-once-on-approval),
@@ -133,6 +133,25 @@ betrvg_visibility 🟢  auf LessonsLearned: Aggregated-Only | ConsultantApproval
                       pseudonymized-Flag (Klarnamen → Pseudonym, Mapping nur im Audit)
 ```
 
+### 2.7 🟡 Project Intelligence & Symbiosis Graph (H2 Candidate)
+
+```text
+ProjectWorkSource 🟡  source_type{Jira,Confluence,ServiceNow,GitHub,GitLab,M365,...},
+                      connector_grant_id, source_scope, sync_cursor, snapshot_hash
+ProjectWorkItem 🟡   source_ref, project_ref, work_type{Epic,Story,Task,Bug,Incident,
+                      Change,Request,Decision,Requirement}, status, labels, source_bindings[]
+ProjectRequirement 🟡 need_statement, pain_point, target_outcome, acceptance_hint,
+                      evidence_spans[]
+ProjectSignal 🟡     kind{UnmetRequirement,RepeatedIncident,ExpansionHint,DuplicateWork,
+                      DeliveryRisk,ReuseOpportunity}, confidence, review_state
+SymbiosisLink 🟡     subject_ref, predicate, object_ref, evidence_refs[], link_type
+RedundancyFinding 🟡 work_item_refs[], overlap_summary, suggested_resolution, reviewer
+InternalPlanDraft 🟡 opportunity_ref, requirements[], relevant_assets[], skill_shape,
+                      delivery_steps[], risks[], source_bindings[]
+```
+
+**Boundary:** H1 baut nur `ProjectStatus`, Knowledge/Reuse und optional read-only Fixtures. Der ausgebaute Project Radar ist H2. Keine Ticket-Mutation, kein Personen-Performance-Scoring, keine autonome Opportunity-Erzeugung ohne Review.
+
 ---
 
 ## 3. Source-Binding & Provenance (der T4-Backbone) 🟢
@@ -177,7 +196,7 @@ Append-only, kryptografisch verkettet (jeder Event hält den Hash des vorigen), 
 
 ## 6. Bounded Operator Set (Vokabular, aus PRD v5.0 §3)
 
-`Read · Classify · Suggest · Summarise · Draft · Review · Plan` — die einzige Schnittstelle, über die AI auf den Graph zugreift; jeder Operator namentlich, typisiert, audit-logged, source-bound. **Verboten im MVP:** Tool-Orchestrate, Auto-Execute. **„Review" = die QA-Schicht** (Operator gegen Methodology-Knoten), kein eigenes Modul — im MVP nur passiv/Basis, Ausbau H2 (Code/Doc) / H3 (Deck/Diagramm/Test-Infra).
+`Read · Classify · Suggest · Summarise · Draft · Review · Plan` — die einzige Schnittstelle, über die AI auf den Graph zugreift; jeder Operator namentlich, typisiert, audit-logged, source-bound. **Verboten im MVP:** autonome Tool-Orchestration und freies Auto-Execute. **Erlaubt:** bounded Harness-Aufrufe nach ADR-002, wenn Tool, Corpus, ConnectorGrant und Output-Schema vorab gepackt sind. **„Review" = die QA-Schicht** (Operator gegen Methodology-Knoten), kein eigenes Modul — im MVP nur passiv/Basis, Ausbau H2 (Code/Doc) / H3 (Deck/Diagramm/Test-Infra).
 
 MVP-Blueprints: `qualify-opportunity`, `find-warm-path`, `condense-asset`, `match-reuse`, `draft-concept` (Hero 1), `ingest-tender`, `shape-team`, `suggest-timeentry` (Hero 2 Work-Agent), `explain-recommendation`. Jeder versioniert (`prompt_id@version`), mit Owner + Eval-Baseline.
 
@@ -189,7 +208,7 @@ MVP-Blueprints: `qualify-opportunity`, `find-warm-path`, `condense-asset`, `matc
 
 **Dual-Hero-Flüsse:** *Win:* Tender/Signal → Opportunity → (TeamShape) → ProposalDraft → Approval → interner Export. *Work:* In-Tool-Arbeit → WorkAgentSuggestion → Consultant-Bestätigung → TimeEntry → (aggregiert) ProjectStatus.
 
-**Integrationen (MVP, read-only/Import + Polling):** M365 Mail/Cal (Signal/Warm-Path + Profile-Quelle), DMS/SharePoint (Knowledge-Capture), GitHub/GitLab (Asset-Quelle), CRM (optional Import), **TED/eForms (Polling)**, Credly/CV-Upload (Profile). **Source-of-Truth-Regel:** Consultry führt seine Aggregate nativ; alles aus Integrationen ist Vorschlag/Input, nie automatisch verbindlich. Kein Schreibzugriff/Versand nach außen.
+**Integrationen (MVP, read-only/Import + Polling):** M365 Mail/Cal (Signal-, Kontakt- und Profilquelle), DMS/SharePoint (Knowledge-Capture), GitHub/GitLab (Asset-Quelle), CRM (optional Import), **TED/eForms (Polling)**, Credly/CV-Upload (Profile). **H2 Project Intelligence:** Jira/Atlassian, Confluence und ServiceNow als read-only/snapshot Quellen fuer ProjectWorkItems, Requirements, Incidents, Changes und Decisions. **Source-of-Truth-Regel:** Consultry führt seine Aggregate nativ; alles aus Integrationen ist Vorschlag/Input, nie automatisch verbindlich. Kein Schreibzugriff/Versand nach außen.
 
 ---
 
@@ -197,7 +216,7 @@ MVP-Blueprints: `qualify-opportunity`, `find-warm-path`, `condense-asset`, `matc
 
 > „1+1=3"-Features, die erst aus ≥2 Modulen entstehen — der eigentliche Beweis gegen „4 Tools zusammenkleben". Scope-markiert als Kandidaten; nicht alle MVP.
 
-S1 Stakeholder-Berater-Resonanz-Map · S2 Briefing mit aktiver Risiko-Sicht · S3 Clause-Deviation-Pattern-Detector 🟡 · S4 Methodology-Authorship → Berater-Authority · S5 Stakeholder-Wechsel als Opportunity- **und** Risk-Trigger · S6 Win-Pattern-Cluster pro Account · S7 Lessons-Driven Brief-Vorfilter · S8 Margenrechnung mit Authority-bewusster Sell-Rate 🟡 · S9 Decision-Record-Resurfacing bei Re-Engagement · S10 Berater-Profil als Story aus Datenstrom · S11 Verloren-mit-Pattern-Trace · S12 Stakeholder-Berater-Beziehungs-Erosion-Detector · S13 Tailored-CV mit Match-Confidence-Transparenz 🟡.
+S1 Stakeholder-Berater-Resonanz-Map · S2 Briefing mit aktiver Risiko-Sicht · S3 Clause-Deviation-Pattern-Detector 🟡 · S4 Methodology-Authorship → Berater-Authority · S5 Stakeholder-Wechsel als Opportunity- **und** Risk-Trigger · S6 Win-Pattern-Cluster pro Account · S7 Lessons-Driven Brief-Vorfilter · S8 Margenrechnung mit Authority-bewusster Sell-Rate 🟡 · S9 Decision-Record-Resurfacing bei Re-Engagement · S10 Berater-Profil als Story aus Datenstrom · S11 Verloren-mit-Pattern-Trace · S12 Stakeholder-Berater-Beziehungs-Erosion-Detector · S13 Tailored-CV mit Match-Confidence-Transparenz 🟡 · S14 Redundant-Work-Detector 🟡 · S15 Project-Signal-to-Opportunity 🟡 · S16 Requirement-to-Internal-Plan 🟡.
 
 **MVP-nahe Symbiose-Beweise:** S1, S2, S5, S6, S7, S10 (alle nur auf MVP-Entities). Rest H2 (an Pricing/CV/Clause gebunden).
 
@@ -219,7 +238,7 @@ S1 Stakeholder-Berater-Resonanz-Map · S2 Briefing mit aktiver Risiko-Sicht · S
 
 ## 10. Quellen-Provenance dieses Dokuments
 
-Salvage aus (archiviert in `_archive/`): `Consultry-PRD-v5.0-Software-Layered.md` (§2 Posture, §3 Operatoren, §6 Audit, §7 Spine), `feature-specs/01-account-growth` (Account/Stakeholder/Trigger/WarmPath/Consent), `02-opportunity-proposal-contract` (Opportunity/Brief/Pricing/Proposal-Entities + State-Machine), `03-consultant-team-capacity` (Skill-Taxonomie, Cost/Sell, Availability, No-Score), `04-knowledge-reuse` (Source-Binding, Versionierung, BetrVG-Felder), `_cross-cutting` (Audit-Struktur, Handoffs, Symbiose S1–S13). Scope-Bereinigung gegen [MVP-Doc §3.4](./Consultry-MVP-PRD-v1.0.md) + [Domain-Def GI-1…16](./Consultry-Business-Domain-Definition-v1.0.md).
+Salvage aus (archiviert in `_archive/`): `Consultry-PRD-v5.0-Software-Layered.md` (§2 Posture, §3 Operatoren, §6 Audit, §7 Spine), `feature-specs/01-account-growth` (Account/Stakeholder/Trigger/WarmPath/Consent), `02-opportunity-proposal-contract` (Opportunity/Brief/Pricing/Proposal-Entities + State-Machine), `03-consultant-team-capacity` (Skill-Taxonomie, Cost/Sell, Availability, No-Score), `04-knowledge-reuse` (Source-Binding, Versionierung, BetrVG-Felder), `_cross-cutting` (Audit-Struktur, Handoffs, Symbiose S1–S13). Scope-Bereinigung gegen [MVP-Doc §3.4](./Consultry-MVP-PRD-v1.0.md) + [Domain-Def GI-1…16](./Consultry-Business-Domain-Definition-v1.0.md) + [Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md).
 
 ---
 

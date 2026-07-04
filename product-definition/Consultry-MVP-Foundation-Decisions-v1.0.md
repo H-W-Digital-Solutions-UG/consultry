@@ -9,6 +9,8 @@
 > **Anlass.** Im Repo koexistierten zwei widersprüchliche Doc-Generationen: **Gen A** („Win-and-Deliver", 05.–28.05.: PRD v5.0, Roadmap v1.0, feature-specs/01–04) und **Gen B** („Acquisition-to-Bid", 30.05.–08.06.: Vision, MVP-PRD, GTM, Phase-1-Specs, Domain-Def, Deck). PRD v5.0 beanspruchte „Quelle der Wahrheit" für die Architektur, encodierte aber den verworfenen MVP. Diese Datei beendet das.
 >
 > **Update 13.06.2026 — Dual-Hero-Wende.** Auf Basis der Marktrecherche (BDU 2025 + Productive.io) und der „Beratung im KI-Zeitalter"-Thesis wurde der MVP bewusst von **einem** Hero auf **zwei gleichrangige Heroes** erweitert (T8/T11/T12). Das ist eine **explizite Revision** der „Core-Vorrang"-Lesart (Revisions-Disziplin §4) — keine stille Abweichung. Begründung: Die „neue Arbeitsweise" (AI-native Operating Foundation) ist nicht nur Retention-Substrat, sondern ein eigenständiges Kaufargument, das denselben ICP an einem zweiten, täglichen Schmerz packt.
+>
+> **Update 28.06.2026 — Alignment-Freeze.** Die Misalignment-Review wurde in drei Kontrollartefakte ueberfuehrt: [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md), [MVP Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md), [MVP Measurement Spec](./Consultry-MVP-Measurement-Spec-v1.0.md). Wichtigste Revisionen: Starting Wedge = **Opportunity-to-Concept**, T3 = **Aurora PostgreSQL Serverless v2 + pgvector**, Hermes = **bounded Harness, kein autonomer Agent**.
 
 ---
 
@@ -18,12 +20,12 @@
 |---|---|---|
 | **T1** | **Doc-Authority** | **Gen A wird archiviert** (PRD v5.0, Roadmap v1.0, feature-specs/01–04 → Archiv-Banner, nicht löschen). Selektiver Salvage (§4). Eine neue, dünne Technical-Definition v1.1 wird auf der MVP-PRD verankert. |
 | **T2** | **Tenancy/Hosting** | **Multi-Tenant SaaS, EU-Region.** Tenant-Isolation via Postgres Row-Level-Security. Compliance-Antwort = AVV/DPA + No-Training (Domain-Def Invariante 6), nicht Infrastruktur-Isolation. Single-Tenant/Customer-Cloud = H2+-Enterprise-Option. |
-| **T3** | **Data Layer** | **Neon Postgres + pgvector, graph-ready relationales Schema** (explizite Edge-Tabellen für Stakeholder/Skill/Asset-Relationen). **Dedizierte Graph-DB erst**, wenn ein konkretes Traversal-Feature sie verlangt (personenscharfe Warm-Paths, Skill-Graph = ohnehin H2 per GI-13). GraphRAG-Ambition bleibt notiert, ist aber nicht MVP-blocking — MVP-Retrieval = Chunks + CitationLinks + pgvector. |
+| **T3** | **Data Layer** | **Revidiert 28.06. durch ADR-001:** **Aurora PostgreSQL Serverless v2 + pgvector** ersetzt Neon als AWS-native MVP-Implementierungsbaseline. RLS, graph-ready relationales Schema, explizite Edge-Tabellen und Graph-DB-deferred bleiben. Kein Hybrid Neon + Aurora im Pilot. |
 | **T4** | **AI-Reliability-Minimum (vor Partner #0)** | (1) **CitationLink-Gate auf Datenebene** — kein Firm-Fact-Satz persistiert ohne Quelle (GI-1/1a); (2) **Faithfulness-Check (D6) Pflicht**; (3) **versionierte Prompts** in Git (`prompt_id@version`); (4) **AuditEvent je AI-Call**. **Nicht im MVP:** Drift-Monitor, Eval-CI-Gate, PII-Router. Empfohlen: manuelles Mini-Eval-Set (20–50 Fälle) für Provenance-Klassifikator (D1) + AwardCriterion-Parser (D2). |
 | **T5** | **Inference-Stack** | **Anthropic via AWS Bedrock EU (Frankfurt) = einziger verdrahteter Pfad im MVP.** Dünne Abstraktionsschicht, damit Azure Foundry später ohne Refactor als Fallback andockt. **Eine** DPA-Kette vor Pilot #1. |
 | **T6** | **Works-Council-Mode** | **Default-OFF ist verbindlich** (MVP-PRD/Domain-Def/Handover/Deck-Linie). Phase-1-Specs §1.3, §4A.3 + §10 Punkt 4 ✅ korrigiert (12.06.). |
 | **T7** | **Tender-Intake** | **Thin TED/eForms-Polling ist IM MVP** (täglicher Pull, CPV-Filter pro Tenant, read-only) — zusätzlich zum semi-manuellen Upload. Damit ist der Deck-Claim („automatisch gematcht") wahr. **MVP-PRD §3.1a wird revidiert** (dort: „erst semi-manuell"). AT via TED abgedeckt. Kein Submission-Pfad (unverändert). |
-| **T8** | **Build-Struktur: Dual-Hero** | **REVIDIERT 13.06. (bewusste Umkehr der „Core-Vorrang"-Lesart):** Der MVP hat **zwei gleichrangige Heroes**, vereint unter einer Thesis (T11): **Hero 1 „Win"** = Concept & Proposal Suite (Acquisition-to-Bid); **Hero 2 „Work"** = AI-native Operating Foundation (CRM-artiges Substrat: auto-gepflegte `ConsultantProfile`, Work-Agent/Time-Capture, `PersonalNote`, `ProjectStatus`, Human-AI-Collaboration im Tagesgeschäft). Beide werden als Produktversprechen **verkauft und gemessen** (T12). Voller Substrat-Scope bleibt. |
+| **T8** | **Build-Struktur: Dual-Hero** | **REVIDIERT 13.06., terminologisch normalisiert 28.06.:** Der MVP hat **zwei gleichrangige Heroes**, vereint unter einer Thesis (T11): **Hero 1 „Win"** = Opportunity-to-Concept mit Concept Suite als Proof Surface; **Hero 2 „Work"** = AI-native Operating Foundation (auto-gepflegte `ConsultantProfile`, Work-Agent/Time-Capture, `PersonalNote`, `ProjectStatus`, Human-AI-Collaboration im Tagesgeschäft). Beide werden als Produktversprechen **verkauft und gemessen** (T12). Voller Substrat-Scope bleibt. |
 | **T9** | **Build-Kapazität (G11)** | **Experten vorhanden; Hiring nach Idee-Bestätigung** (Dogfood #0 + erster Design-Partner = Bestätigung). Build-Zeit ist **nicht** der binding constraint — Dual-Hero ist tragbar. Reihenfolge: Founder/Experten bauen pre-validation **Hero-1-Spine + Showcase-Demo + Substrat-Kern**; Team-Skalierung sobald die Thesis validiert ist. (Frühere funding-first/Core-Vorrang-Lesart aufgehoben.) |
 | **T10** | **Deck-Ehrlichkeit** | **Streichen/zusammenführen:** NL-Query-Management-Cockpit-Slide + „Profile aus LinkedIn"-Claim (LinkedIn hat keine API dafür). Tender-Slide **bleibt** (durch T7 gedeckt). Profile-Quellen im Deck → erreichbare: M365, Credly-Export, CV-/Zertifikat-Upload. Markt-Platzhalter (~38k, >60%) durch **BDU-2025-Zahlen** ersetzen (T11-Evidenz). |
 | **T11** | **Produkt-Thesis: „Beratung im KI-Zeitalter" (Dual-Hero-Klammer)** | **Eine Thesis, zwei Heroes:** *Consultry macht DACH-Beratungen AI-native — sie **gewinnen mehr** (Hero 1) und **arbeiten AI-nativ** (Hero 2).* Der **Objection-Reframe** „Warum hohe Tagessätze im KI-Zeitalter?" → *„Weil AI-native Beratungen bessere Ergebnisse in weniger Zeit liefern und genau die sind, die wachsen."* Belegt (T-Evidenz unten), **nicht** als reine Angst verkauft: Rate-Druck ist ein **Vorwärtstrend** (BDU: 66 % noch kein Honorar-Effekt, ~40 % erwarten ihn), während **AI = Wachstumstreiber** (+18,8 % DACH-Beratungsumsatz 2025). W6 bleibt: Transformation = **Frame/Why-now**, nicht die einzige Landingpage-Zeile — aber jetzt **co-gleichrangig** mit dem Win-Versprechen. |
@@ -70,9 +72,9 @@
 
 > **Dual-Hero-Lesart:** „Drin" enthält jetzt **beide** Heroes gleichrangig. **Hero 1 (Win):** Concept Suite + Tender + Akquise-Pfad. **Hero 2 (Work):** AI-native Operating Foundation (Profile/Time/Notes/ProjectStatus + Human-AI-Collaboration). Die Grounding-/Audit-/Compliance-Engine ist geteiltes Fundament beider.
 
-**Drin:** Multi-Tenant-EU-SaaS (Neon Postgres RLS + pgvector) · Korpus-Ingest mit Tenant-Isolation + Span-auflösbaren Citations · Provenance-Pipeline (Firm/External/Model, GI-1) mit Daten-Level-Gate + Faithfulness-Check · **Hero 1:** Concept Suite (Spec folgt) + TED-Polling + semi-manueller Tender-Intake + AwardCriterion-Parsing + Vertrags-Klausel-Extraktion (F1-Hero-Signal) + anonyme TeamShape (aggregiert) · **Hero 2:** ConsultantProfile auto-maintenance (Quellen: Upload + M365) + Work-Agent/Time-Capture + PersonalNote + ProjectStatus + Collaboration-Loop (Vorschlag→Verfeinern→Audit) · Approval-Card + AuditEvent-Kette · WC-Mode-Schalter (Default-OFF) · Bedrock-EU-Inference hinter Abstraktion · PDF/MD-Export.
+**Drin:** Multi-Tenant-EU-SaaS (Aurora PostgreSQL Serverless v2 RLS + pgvector) · Korpus-Ingest mit Tenant-Isolation + Span-auflösbaren Citations · Provenance-Pipeline (Firm/External/Model, GI-1) mit Daten-Level-Gate + Faithfulness-Check · **Hero 1:** Opportunity-to-Concept mit Concept Suite (Spec folgt) + TED-Polling + semi-manueller Tender-Intake + AwardCriterion-Parsing + Vertrags-Klausel-Extraktion (F1-Hero-Signal) + anonyme TeamShape (aggregiert) · **Hero 2:** ConsultantProfile auto-maintenance (Quellen: Upload + M365) + Work-Agent/Time-Capture + PersonalNote + ProjectStatus + Collaboration-Loop (Vorschlag→Verfeinern→Audit) · Approval-Card + AuditEvent-Kette · WC-Mode-Schalter (Default-OFF) · Bedrock-EU-Inference hinter Abstraktion · bounded Hermes/Virtual Harness nach ADR-002 · PDF/MD-Export.
 
-**Draußen:** Graph-DB · PII-Router · Drift-Monitor/Eval-CI · Versand/Outbound · Pricing-Engine · Contract/eIDAS · DATEV/ELSTER · personenscharfes Staffing · Net-New-Prospecting · CH · EN-UI · LinkedIn-Ingest · Multi-Step-Agentik nach außen.
+**Draußen:** Graph-DB · PII-Router · Drift-Monitor/Eval-CI · Versand/Outbound · Pricing-Engine · Contract/eIDAS · DATEV/ELSTER · personenscharfes Staffing · Net-New-Prospecting · CH · EN-UI · LinkedIn-Ingest · autonome Multi-Step-Agentik nach außen.
 
 ---
 
@@ -103,6 +105,13 @@ Auslöser: Analyse des self-hosted „Consultry Final Pricing & Architecture Rep
 
 > **Strukturelle Pointe:** Der Self-Host-Report ist ein *Fixkosten-Amortisations*-Modell (GPU-Miete → Verlustzone bis Break-even → Margin-Asymptote). Bedrock ist *variabel pro Token* — die COGS-Neu-Ableitung ist keine Kopie, sondern ein **anderes Kostenshape**: Kosten-pro-Draft × Volumen × Grounding/Faithfulness-Overhead → Marge-pro-aktivem-Seat.
 
+## 5c. Alignment- und Architektur-Freeze (28.06.2026)
+
+- **Terminologie:** Category = Opinionated AI Work Harness; Whole Product = Win + Work; Starting Wedge = Opportunity-to-Concept; Proof Surface = Concept Suite; Proof Slice = 5-Business-Day grounded section. Quelle: [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md).
+- **Architektur:** Aurora ersetzt Neon fuer die MVP-Implementierungsbaseline. Quelle: [ADR-001](./Consultry-MVP-Architecture-ADR-v1.0.md).
+- **Harness:** Hermes/Virtual Harness ist erlaubt, aber nur als bounded, job-scoped Harness mit HarnessPack, Policy, Capability Tokens, ResultVerifier und Human Approval. Quelle: [ADR-002](./Consultry-MVP-Architecture-ADR-v1.0.md).
+- **Messung:** Opportunity-to-Concept-Verification und Work-Hypothesen stehen in der [MVP Measurement Spec](./Consultry-MVP-Measurement-Spec-v1.0.md).
+
 ## 6. Verbleibende offene Punkte
 
 | ID | Punkt | Ort |
@@ -112,6 +121,7 @@ Auslöser: Analyse des self-hosted „Consultry Final Pricing & Architecture Rep
 | D4 | External-Whitelist-Default kuratieren (BSI/ISO/EU-DACH) | offen |
 | G6/G7 | Externe Design-Partner-Pipeline + Bestandskunden-led-Guardrail | bewusst Stage-0-deferred |
 | — | Pilot-Fee-Betrag, Deck-Marktzahlen sourcen (~38k, >60%) | vor Investor-/Pilot-Einsatz |
+| AC-01 | Persona-Refresh auf akquise-mueden Partner/Managing Partner + aktuelle MVP-Grenzen | offen |
 
 ---
 
@@ -119,7 +129,7 @@ Auslöser: Analyse des self-hosted „Consultry Final Pricing & Architecture Rep
 
 1. **Concept-Suite-Spec schreiben** (Hero; enthält D1/D3/D5/D6, Collaboration-Loop per Handover §0.4, Eval-Harness T4).
 2. **Korrektur-Pass** über die Dateien aus §3 (Archiv-Banner + Fixes).
-3. **Technical-Definition v1.1** (dünn, auf T1–T5 verankert): Schema-Skizze, Ingest-Pipeline, Provenance-Enforcement, Bedrock-Abstraktion.
+3. **Technical-Foundation synchron halten** (auf ADR-001/002 verankert): Aurora, bounded Harness, Provenance-Enforcement, Bedrock-Abstraktion.
 4. **Deck-Edit** (T10) + Meilenstein-Slide (T9).
 
 ---

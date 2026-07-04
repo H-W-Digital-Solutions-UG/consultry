@@ -1,11 +1,11 @@
 # Consultry - MVP AWS & Hermes Harness Architecture v1.0
 
-**Status:** Architekturplan zur Entscheidung - noch nicht Source of Truth.  
+**Status:** Architekturplan / Planning Source. ADR-001/002 sind accepted; Detail-WBS bleibt planungsleitend, aber MVP-Scope bleibt im MVP-PRD.  
 **Datum:** 27.06.2026  
 **Rolle im Doc-Stack:** Konkretisiert den AWS-nativen MVP-Build und den **Hermes Harness**: eine kontrollierte Cloud-Sandbox mit streng begrenztem Korpus-Zugriff.  
-**Bezug:** [MVP-PRD](./Consultry-MVP-PRD-v1.0.md), [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md), [MVP-Foundation-Decisions](./Consultry-MVP-Foundation-Decisions-v1.0.md), [Onboarding-Korpus-Ritual](./Consultry-Onboarding-Corpus-Ritual-v1.0.md).
+**Bezug:** [MVP-PRD](./Consultry-MVP-PRD-v1.0.md), [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md), [MVP Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md), [MVP-Foundation-Decisions](./Consultry-MVP-Foundation-Decisions-v1.0.md), [Onboarding-Korpus-Ritual](./Consultry-Onboarding-Corpus-Ritual-v1.0.md).
 
-> **Kurzfassung.** Consultry bleibt eine Multi-Tenant-EU-SaaS. Wenn der MVP bewusst auf AWS gebaut wird, ist die sauberste Basis: **eu-central-1**, **Aurora PostgreSQL Serverless v2 + pgvector**, **S3 + KMS** fuer Dokumente und Korpus-Bundles, **Amazon Bedrock** fuer Inferenz, **ECS Fargate + Step Functions/SQS** fuer App- und Worker-Flows, plus **Hermes Harness** als isolierte Ausfuehrungsebene. Hermes bekommt **nie freien Tenant-Korpuszugriff**, sondern nur ein pro Job erzeugtes, unveraenderliches Korpus-Bundle mit Quellspannen.
+> **Kurzfassung.** Consultry bleibt eine Multi-Tenant-EU-SaaS. Nach ADR-001/002 ist die MVP-Planungsbasis: **eu-central-1**, **Aurora PostgreSQL Serverless v2 + pgvector**, **S3 + KMS** fuer Dokumente und Korpus-Bundles, **Amazon Bedrock** fuer Inferenz, **ECS Fargate + Step Functions/SQS** fuer App- und Worker-Flows, plus **Hermes Harness** als bounded, isolierte Ausfuehrungsebene. Hermes bekommt **nie freien Tenant-Korpuszugriff**, sondern nur ein pro Job erzeugtes, unveraenderliches Korpus-/Harness-Bundle mit Quellspannen.
 
 ---
 
@@ -14,7 +14,7 @@
 | ID | Entscheidung | MVP-Plan |
 |---|---|---|
 | A1 | Region | Primaer **AWS Frankfurt / eu-central-1**. Keine Cross-Region-Datenbewegung im MVP. |
-| A2 | Datenbank | **Aurora PostgreSQL Serverless v2 + pgvector** als AWS-native Variante der bisherigen Neon-Entscheidung. RLS bleibt Pflicht. |
+| A2 | Datenbank | **Aurora PostgreSQL Serverless v2 + pgvector** ersetzt Neon nach ADR-001. RLS bleibt Pflicht. |
 | A3 | Dokumente | **S3**, SSE-KMS, tenant-prefixes, raw/extracted/bundle/export getrennt. |
 | A4 | Vektor/Retrieval | App-owned Retrieval in Aurora/pgvector als Source of Truth. Bedrock Knowledge Bases optional fuer Spaeterevaluierung, nicht fuer harte Citation-Gates. |
 | A5 | Inferenz | **Amazon Bedrock via PrivateLink/VPC Endpoint**; Modellzugriff nur ueber `ModelGateway`. |
@@ -23,7 +23,7 @@
 | A8 | Corpus Access | Nur ueber `CorpusBundle` in S3: read-only, job-scoped, TTL, KMS encryption context, source-map inklusive. |
 | A9 | Audit | Jede Operator-/Hermes-/Model-Aktion schreibt `AuditEntry`; Resultate werden erst nach Validierung persistiert. |
 
-**Bewusste Revision gegen bestehende Docs:** `T3` sagt bisher Neon Postgres + pgvector. Ein AWS-MVP ersetzt das durch Aurora PostgreSQL + pgvector, behaelt aber RLS, relationales graph-ready Schema und Source-Binding-Regeln unveraendert.
+**Bewusste Revision gegen bestehende Docs:** ADR-001 ersetzt das fruehere `T3` (Neon Postgres + pgvector) durch Aurora PostgreSQL + pgvector, behaelt aber RLS, relationales graph-ready Schema und Source-Binding-Regeln unveraendert.
 
 ---
 
@@ -397,7 +397,7 @@ Release-Ringe:
 
 ### Woche 0 - Entscheidungen
 
-- Aurora vs. bestehendes Neon final entscheiden.
+- Aurora als ADR-001-Baseline in IaC/Schema umsetzen.
 - AgentCore Code Interpreter Region/Quota/Security pruefen.
 - KMS-Key-Strategie entscheiden: per env oder per tenant.
 - RLS-Prototyp fuer `documents/chunks/audit_entries`.
@@ -450,7 +450,7 @@ Release-Ringe:
 
 | ID | Frage | Empfehlung |
 |---|---|---|
-| O1 | Aurora statt Neon verbindlich? | Ja, wenn AWS als Plattformentscheidung gilt. Sonst Hybrid vermeiden. |
+| O1 | Aurora statt Neon verbindlich? | ✅ Ja, entschieden durch ADR-001. Kein Hybrid. |
 | O2 | AgentCore oder Fargate fuer Hermes v0? | AgentCore testen; Fargate fallback fertig halten. |
 | O3 | Bedrock Knowledge Bases nutzen? | Nur optional. App-owned Retrieval bleibt Source of Truth. |
 | O4 | Tenant-KMS-Key pro Tenant? | MVP: env key + encryption context; H2: tenant keys fuer groessere Kunden. |

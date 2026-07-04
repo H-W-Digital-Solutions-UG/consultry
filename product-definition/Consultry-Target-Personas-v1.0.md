@@ -1,6 +1,6 @@
 # Consultry — Target User Personas
 
-> **⚠️ DATE-STALE / PRE-PIVOT (Stand 13.06.2026).** Personas vom 31.03.2026, **vor** dem Acquisition-to-Bid- und Dual-Hero-Pivot erstellt. Als **UX-/Journey-Input weiterhin nützlich**, aber gegen [MVP-PRD](./Consultry-MVP-PRD-v1.0.md) (ICP mid-to-small, Buyer = akquise-müder Partner) + [GTM-Decisions §3.5/§3A](./Consultry-GTM-Decisions-v1.0.md) verifizieren, bevor als verbindlich behandelt.
+> **⚠️ DATE-STALE / PRE-PIVOT (Stand 28.06.2026).** Personas vom 31.03.2026, **vor** dem Opportunity-to-Concept- und Dual-Hero-Pivot erstellt. Als **UX-/Journey-Input weiterhin nützlich**, aber gegen [MVP-PRD](./Consultry-MVP-PRD-v1.0.md) (ICP mid-to-small, Buyer = akquise-müder Partner) + [GTM-Decisions §3.5/§3A](./Consultry-GTM-Decisions-v1.0.md) + [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md) verifizieren, bevor als verbindlich behandelt.
 
 ## Handlungsrelevante Personas für UX Design & User Journey Definition
 

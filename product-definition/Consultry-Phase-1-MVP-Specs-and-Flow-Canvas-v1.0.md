@@ -5,7 +5,7 @@
 **Status:** Aktiv — dual-hero-aligned 13.06.2026
 **Datum:** 30. Mai 2026 · **Dual-Hero-Rework:** 13.06.2026
 **Scope:** MVP — **zwei gleichrangige Heroes (Win + Work)** auf geteiltem Engine-Fundament + Backbone.
-**Bezug:** [Product Vision (komplett)](./Consultry-Product-Vision-v1.0.md), [MVP-Doc](./Consultry-MVP-PRD-v1.0.md), [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md), [Business-Domain-Definition](./Consultry-Business-Domain-Definition-v1.0.md), [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md), [Target Personas](./Consultry-Target-Personas-v1.0.md).
+**Bezug:** [Product Vision (komplett)](./Consultry-Product-Vision-v1.0.md), [MVP-Doc](./Consultry-MVP-PRD-v1.0.md), [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md), [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md), [Business-Domain-Definition](./Consultry-Business-Domain-Definition-v1.0.md), [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md), [Target Personas](./Consultry-Target-Personas-v1.0.md).
 
 > **Lesehinweis.** Brücke zwischen Strategie (Vision/Pains) und Build (Surfaces, Objekte, AI-Verhalten, Prompts). Pro Feature: Spec + Flow-Sammlung (konkret + AI-dynamisch), dann Cross-Flows, Symbiose, Collab-Canvas. **Inline-Pain-Refs** (PW#/PK#) zeigen je Feature den belegten Schmerz aus der [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md).
 >
@@ -19,7 +19,7 @@
 
 > Die historischen Feature-IDs **F1–F6** bleiben als Spec-Anker erhalten, sind aber jetzt zwei Heroes zugeordnet. Klammer-Thesis: *„Beratung im KI-Zeitalter"* — gewinnen **und** AI-nativ arbeiten ([Vision §1](./Consultry-Product-Vision-v1.0.md)).
 
-**🟦 Hero 1 — „Win" (Acquisition-to-Bid)**
+**🟦 Hero 1 — „Win" (Opportunity-to-Concept)**
 
 | # | Feature | Rolle | Killt Pain |
 |---|---|---|---|
@@ -689,7 +689,7 @@ flowchart LR
 4. ✅ **Personenbezug (Works-Council-Default)**: **revidiert 12.06. (T6)** — Works-Council-Mode = **AUS** (Default-OFF); F6 bleibt aggregiert/anonym; der Schalter gated personenbezogene Auswertung + Auto-Feed bei Kunden mit Betriebsrat (§4A.3).
 5. ✅ **Canvas-Form**: Mermaid (eingebettet) reicht vorerst; FigJam auf Zuruf — **entschieden 30.05.**
 6. ✅ **Tender in Phase 1, F6 geschnitten** (§4A): **bestätigt 30.05.** — F5 (Tender Ingest) bleibt; **F6 → Option A**: nur aggregierter Deliverability-Check als Bid-Gate, **kein personenscharfes Matching** (volles Staffing/Forecasting → Phase 1.5+).
-7. ✅ **Headline-Wedge & GTM** (→ [GTM-Decisions v1.0](./Consultry-GTM-Decisions-v1.0.md)): **bestätigt 30.05.** — Job = *Projekt-Wachstum & -Akquise*; F3 = Spine; Tender + Bestandskunden = zwei Intake-Oberflächen; **Bestandskunden öffnet die Tür, Tender = Big Swing**; ICP = mid-to-small zuerst; OS = Vision, nicht Headline.
+7. ✅ **Headline-Job, Starting Wedge & GTM** (→ [GTM-Decisions v1.0](./Consultry-GTM-Decisions-v1.0.md), [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md)): **bestätigt 30.05., normalisiert 28.06.** — Job = *Projekt-Wachstum & -Akquise*; Starting Wedge = **Opportunity-to-Concept**; Tender + Bestandskunden = zwei Intake-Oberflächen; **Bestandskunden öffnet die Tür, Tender = Big Swing**; ICP = mid-to-small zuerst; OS = Vision, nicht Headline.
 8. ✅ **Bestandskunden-Mechanik & F1-Hero** (§2.3): **bestätigt 30.05.** — intelligentes CRM über loser Basis (kein CRM nötig); Hero-Signal = **Vertrags-Options-/Verlängerungsfenster, quellengebunden**.
 9. ✅ **Pricing & Markt** (→ GTM-Decisions §3.3–§4): **bestätigt 30.05.** — **seat-only** (Win-Fee gestrichen); **DE+AT ab Tag 1, CH verschoben**; 3–5 Design-Partner mit niedriger Pilot-Gebühr.
 

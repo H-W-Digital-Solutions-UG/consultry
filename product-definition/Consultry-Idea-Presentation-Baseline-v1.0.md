@@ -595,8 +595,8 @@ This is a later product-suite idea, not the current MVP wedge.
 | File | Change after approval |
 |---|---|
 | [presentation/consultry-mvp-deck.html](../presentation/consultry-mvp-deck.html) | Rewrite title, wedge, Attio, proof, close, remove or appendix Management-Cockpit, replace "MVP-Core/Platform" labels |
-| [Consultry-GTM-Decisions-v1.0.md](./Consultry-GTM-Decisions-v1.0.md) | Add category architecture and Opportunity-to-Concept naming if approved |
-| [Consultry-MVP-PRD-v1.0.md](./Consultry-MVP-PRD-v1.0.md) | Keep scope, optionally add note: Acquisition-to-Bid is local build label; Opportunity-to-Concept is presentation label |
+| [Consultry-GTM-Decisions-v1.0.md](./Consultry-GTM-Decisions-v1.0.md) | Done 28.06: category/wedge hierarchy points to Alignment Control Plane |
+| [Consultry-MVP-PRD-v1.0.md](./Consultry-MVP-PRD-v1.0.md) | Done 28.06: Opportunity-to-Concept is canonical; Acquisition-to-Bid is historical alias only |
 | [Consultry-Product-Vision-v1.0.md](./Consultry-Product-Vision-v1.0.md) | Keep OS vision, add wording guardrail for MVP/deck usage |
 | [Consultry-MVP-Technical-Foundation-v1.0.md](./Consultry-MVP-Technical-Foundation-v1.0.md) | Use Concept Suite working-object names in next spec |
 | [Consultry-Feature-Pain-Map-v1.0.md](./Consultry-Feature-Pain-Map-v1.0.md) | Add PMF event/anti-success criteria if accepted |

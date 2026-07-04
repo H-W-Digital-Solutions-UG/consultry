@@ -61,7 +61,7 @@ Arbeitsregel:
 
 **Empfehlung:** Nicht hybrid bauen. Wenn AWS als Plattform gesetzt ist, T3 explizit zu `Aurora PostgreSQL Serverless v2 + pgvector` revidieren. RLS, pgvector, graph-ready Schema und SourceBinding bleiben identisch.
 
-**ADR-Kandidat:** Ja, hart zu revidieren.
+**Status 28.06.:** ✅ Geloest durch [ADR-001](./Consultry-MVP-Architecture-ADR-v1.0.md). Aurora ersetzt Neon fuer die MVP-Implementierungsbaseline.
 
 ### G2 - "Kein Agent-Runtime im MVP" vs Hermes Harness
 
@@ -69,7 +69,7 @@ Arbeitsregel:
 
 **Empfehlung:** Hermes strikt als Harness definieren: bounded job, read-only CorpusBundle, kein DB-Zugriff, kein freier Korpus, kein Internet, kein State Write. Damit ist Hermes kein autonomer Agent, sondern eine kontrollierte Ausfuehrungsschicht fuer Operatoren.
 
-**ADR-Kandidat:** Ja, falls Hermes als Produktbegriff verbindlich wird.
+**Status 28.06.:** ✅ Geloest durch [ADR-002](./Consultry-MVP-Architecture-ADR-v1.0.md). Hermes ist bounded Harness, kein autonomer Agent.
 
 ### G3 - Work Layer darf nicht mit UI verwechselt werden
 
@@ -139,7 +139,7 @@ Arbeitsregel:
 
 | ID | Frage | Empfohlene Antwort | Muss jetzt gefragt werden? |
 |---|---|---|---|
-| Q1 | Wird AWS-native offiziell gesetzt und Neon ersetzt? | Ja, wenn der MVP bewusst auf AWS/Hermes gebaut wird. Sonst kein AWS-only IaC planen. | Nein, als Architekturannahme fortfahren; als ADR klaeren. |
+| Q1 | Wird AWS-native offiziell gesetzt und Neon ersetzt? | ✅ Ja, entschieden durch ADR-001. | Nein, erledigt. |
 | Q2 | AgentCore oder Fargate fuer Hermes v0? | AgentCore testen, Fargate fallback mitbauen. | Nein, WBS enthaelt beide als kleine Pakete. |
 | Q3 | Cognito oder externer Auth-Anbieter? | Cognito fuer Identity im AWS-MVP, Domain-RBAC in Aurora. | Nein, reicht fuer MVP. |
 | Q4 | Fastify/Kysely oder Nest/Prisma? | Fastify/Kysely wegen RLS-/SQL-Transparenz. | Nein, solange kein bestehender Backend-Code widerspricht. |
@@ -179,7 +179,7 @@ Diese Fragen gehoeren in PR-/ADR-Reviews:
 
 | Risiko | Auswirkung | Mitigation |
 |---|---|---|
-| AWS/Aurora-Revision wird nicht explizit akzeptiert | Docs widersprechen weiter | ADR-001 oder T3-Revision anlegen |
+| AWS/Aurora-Revision nicht in Detaildocs propagiert | alte Planungsdocs koennten Neon wieder aufgreifen | erledigt durch ADR-001 + Doc-Coherence-Pass; bei neuen Docs rg-Check ausfuehren |
 | AgentCore in Region/Quota nicht passend | Hermes v0 blockiert | Fargate runner parallel vorbereiten |
 | RLS Session Context falsch gesetzt | Cross-tenant Datenleck | fail-closed helper + integration tests |
 | Citation-Gate nur im UI | ungrounded facts koennen persistieren | DB/Application Verifier gate, UI nur Anzeige |
@@ -197,10 +197,10 @@ Diese Fragen gehoeren in PR-/ADR-Reviews:
 
 | ADR | Thema | Trigger |
 |---|---|---|
-| ADR-001 | AWS-native Aurora statt Neon | Sobald AWS-MVP offiziell gewuenscht ist |
+| ADR-001 | AWS-native Aurora statt Neon | ✅ Erledigt 28.06. durch [MVP Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md) |
 | ADR-002 | Fastify + Kysely Backend Stack | Vor erstem Backend-Code |
 | ADR-003 | Terraform als IaC Standard | Vor erstem Infra-Module-Merge |
-| ADR-004 | Hermes Harness Boundary | Vor erstem Hermes-Runner |
+| ADR-004 | Hermes Harness Boundary | ✅ Erledigt 28.06. als ADR-002 in [MVP Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md) |
 | ADR-005 | Work Layer Source Hierarchy | Vor KnowledgeAsset/CompiledArtifact Schema |
 | ADR-006 | Virtual Harness Client + HarnessPack | Vor MCP/Connector/Harness implementation |
 | ADR-007 | Second Brain Graph/Triple/Hypergraph Layer | Vor Memory schema implementation |

@@ -7,14 +7,17 @@
 > **Zweck.** Die technische Seite (Feature-Specs, Datenmodell, Flows) ist geschärft. Dieses Dokument hält die **offenen Produkt-/Markt-/GTM-Entscheidungen** fest, die in der Sparring-Session 30.05. geklärt wurden — Wedge, Positionierung, ICP-Sequenz, Pricing, Scope-Schnitt. Es ist die **Quelle der Wahrheit für „warum verkaufen wir was zuerst an wen"**, während die MVP-Specs das „was bauen wir wie" sind.
 >
 > **Update 13.06.2026:** Neuer §3A „Beratung im KI-Zeitalter"-Frame + Dual-Hero-Positionierung (Win + Work), gesourcte Markt-Evidenz, Seat-Paradox-Auflösung. Verbindlich mit [Foundation-Decisions T11/T12](./Consultry-MVP-Foundation-Decisions-v1.0.md).
+>
+> **Update 28.06.2026:** Die [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md) normalisiert die Begriffe: **Opportunity-to-Concept** ist der Starting Wedge; **Projekt-Wachstum & -Akquise** ist der Kundennutzen/Job; **Concept Suite** ist die Proof Surface.
 
 ---
 
-## 0. Der eine Satz (Headline-Wedge)
+## 0. Der eine Satz (Headline-Job + Starting Wedge)
 
 > **Consultry hilft DACH-Beratungen, mehr Projekte zu gewinnen und auszubauen — Neugeschäft *und* Folgegeschäft — aus einem AI-Workspace, der ihre losen Dokumente und Verträge in intelligente Aktion verwandelt.**
 
-**Kernjob (über beiden Kanälen):** *Projekt-Wachstum & -Akquise.*
+**Kernjob (über beiden Kanälen):** *Projekt-Wachstum & -Akquise.*  
+**Kanonischer Starting Wedge:** **Opportunity-to-Concept** - Tender oder Bestandskunden-Signal wird zur belegbaren Konzept-/Proposal-Artefaktarbeit.
 Tender (Neugeschäft) und Bestandskunden-Expansion (Folgegeschäft) sind **zwei Akquise-*Oberflächen* desselben Jobs** — nicht zwei konkurrierende Features. Sie teilen sich denselben Kern (F3 AI Workspace) und dieselbe Grounding-Engine.
 
 ### 0.1 Warum das kein „verwässerter Doppel-Wedge" ist
@@ -48,7 +51,8 @@ Die OS-Erzählung (*„zentraler Punkt für immer mehr AI-assistierte/automatisi
 
 | # | Entscheidung | Wahl |
 |---|---|---|
-| **W1** | Headline-Wedge | **Projekt-Wachstum & -Akquise** (Job über Tender + Bestandskunden) |
+| **W1** | Headline-Job | **Projekt-Wachstum & -Akquise** (Kundennutzen über Tender + Bestandskunden) |
+| **W1a** | Starting Wedge | **Opportunity-to-Concept** (Tender oder Bestandskunden-Signal → belegbares Konzept/Proposal-Artefakt) |
 | **W2** | Tender vs. Bestandskunden | **Gleichwertig in der Vision**, aber **GTM-sequenziert** (siehe §3) |
 | **W3** | Spine | **F3 AI Workspace** als Kern; zwei Intake-Oberflächen |
 | **W4** | Bestandskunden-Mechanik | **Intelligentes CRM über loser Basis** — Verträge/Docs statt CRM-Pflicht |
@@ -203,21 +207,21 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 | G1 | Onboarding-Ritual: wie bekommen wir in Woche 1 ≥ X vergangene Proposals/Verträge ins System? (Korpus = Moat) | ✅ gelöst → [Onboarding-Korpus-Ritual v1.0](./Consultry-Onboarding-Corpus-Ritual-v1.0.md) (Detailpunkte G1a–c offen) |
 | G2 | DACH-Reichweite | ✅ **DE + AT ab Tag 1; CH verschoben** (§3.3) |
 | G3 | Design-Partner-Ziel & Konversions-Artefakt | ✅ **3–5 Partner, niedrige Pilot-Gebühr, ein Before/After-Artefakt** (§3.4) |
-| G4 | Extraktions-Genauigkeit Vertragssignale: Messbar-Bar + Quell-Klausel-Bindung als Akzeptanzkriterium | offen → in F1-Spec (§2.6) + Onboarding G1c |
+| G4 | Extraktions-Genauigkeit Vertragssignale: Messbar-Bar + Quell-Klausel-Bindung als Akzeptanzkriterium | ✅ Messlogik in [MVP Measurement Spec §3](./Consultry-MVP-Measurement-Spec-v1.0.md); F1-Spec setzt Implementierungsdetails |
 | G5 | Win-Fee-Mechanik | ✅ **gestrichen — Pricing bleibt seat-only** (§4) |
 | G6 | Distribution: konkrete 30-Tage-Zahl, um von ~3 (1–2 warm + eigene Firma #0) auf **3–5 externe** Design-Partner zu kommen | offen (§3.6) |
 | G7 | Dogfood-Guardrail: ≥ 1 externer **Bestandskunden-led** Design-Partner in Kohorte 1, um Over-Fit auf die eigene (tender-lastige) Cybersecurity-Firma zu vermeiden | offen (§3.6) |
 | G8 | **Business-Spec-Zahlen** | ✅ **€50/Seat/Mo → ACV €15–45k**; Motion ökonomisch tragfähig ([MVP-PRD §6](./Consultry-MVP-PRD-v1.0.md)). Pilot-Fee-Betrag offen. |
-| G9 | **PMF-Aktivierung** | ✅ **1 Draft aus eigenem Korpus in 5 Tagen** (+ Sean-Ellis ≥ 40 % als Bestätigung) ([MVP-PRD §5](./Consultry-MVP-PRD-v1.0.md)) |
+| G9 | **PMF-Aktivierung** | ✅ **1 source-grounded Opportunity-to-Concept Proof Slice aus eigenem Korpus in 5 Business-Tagen** (+ Sean-Ellis ≥ 40 % als Bestätigung) ([MVP-PRD §5](./Consultry-MVP-PRD-v1.0.md), [Measurement Spec](./Consultry-MVP-Measurement-Spec-v1.0.md)) |
 
-> **Doc-Stack:** [Product Vision (komplett, wohin)](./Consultry-Product-Vision-v1.0.md) ↔ [MVP-Doc (was zuerst)](./Consultry-MVP-PRD-v1.0.md) + [Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md). Der **MVP = Dual-Hero (Win + Work)**; Win-Painkiller = **Concept & Proposal Suite**.
+> **Doc-Stack:** [Product Vision (komplett, wohin)](./Consultry-Product-Vision-v1.0.md) ↔ [MVP-Doc (was zuerst)](./Consultry-MVP-PRD-v1.0.md) + [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md) + [Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md). Der **MVP = Dual-Hero (Win + Work)**; Starting Wedge = **Opportunity-to-Concept**; Proof Surface = **Concept Suite**.
 
 ---
 
 ## 9. Zusammenfassung der bestätigten Entscheidungen
 
-1. **Headline-Wedge:** Projekt-Wachstum & -Akquise (ein Job, zwei Oberflächen).
-2. **Spine:** F3 AI Workspace; Tender- + Bestandskunden-Intake.
+1. **Headline-Job:** Projekt-Wachstum & -Akquise (ein Job, zwei Oberflächen). **Starting Wedge:** Opportunity-to-Concept.
+2. **Spine:** Tender- + Bestandskunden-Intake → Opportunity → belegbares Konzept-/Proposal-Artefakt in der Concept Suite.
 3. **Bestandskunden:** intelligentes CRM über loser Basis (kein CRM nötig); **Hero-Signal = Vertrags-Options-/Verlängerungsfenster, quellengebunden.**
 4. **GTM-Sequenz:** mid-to-small zuerst; **Bestandskunden öffnet die Tür, Tender ist der Big Swing.** **DE+AT ab Tag 1, CH verschoben.** 3–5 Design-Partner, niedrige Pilot-Gebühr.
 5. **Pricing:** **seat-only**, je Consultant + Sales kostenpflichtig, 2 Backoffice frei (Win-Fee gestrichen).

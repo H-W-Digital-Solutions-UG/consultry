@@ -15,7 +15,7 @@
 
 > **Consultry wird das AI-native Betriebssystem für DACH-Beratungen — beginnend dort, wo der Schmerz am größten und am besten beweisbar ist: Projekte gewinnen und AI-nativ arbeiten.**
 
-**Dual-Hero-Einstieg (seit 13.06.):** **Win** (Projekte gewinnen — Acquisition-to-Bid) **und Work** (AI-nativ arbeiten — die Operating Foundation) sind die zwei gleichrangigen MVP-Heroes. Beide unter der Klammer-Thesis **„Beratung im KI-Zeitalter"**: AI-native Beratungen liefern bessere Ergebnisse in weniger Zeit und gehören zu den Firmen, die *wachsen* statt verdrängt zu werden.
+**Dual-Hero-Einstieg (seit 13.06., terminologisch normalisiert 28.06.):** **Win** (Projekte gewinnen — **Opportunity-to-Concept**) **und Work** (AI-nativ arbeiten — die Operating Foundation) sind die zwei gleichrangigen MVP-Heroes. Beide unter der Klammer-Thesis **„Beratung im KI-Zeitalter"**: AI-native Beratungen liefern bessere Ergebnisse in weniger Zeit und gehören zu den Firmen, die *wachsen* statt verdrängt zu werden.
 
 ## 2. Warum jetzt
 
@@ -68,6 +68,7 @@
 
 - **New Client Acquisition System** — Prospect (datentechnisch **streng getrennt** von Account), ConsentRecord, EnrichmentSource-Register; UWG-/DSGVO-konformer Outreach mit Approval-Gates. Positionierung: „Apollo/Clay/UpLead/Instantly für Beratungen — aber EU-datenhoheitlich, tenant-isoliert, quellengebunden."
 - **Market-Intelligence Sub-System** — Regulatorien (BaFin/BSI/EU), Trends, News, Makro als Knoten; Classify-Operator pro Quellklasse; Routing in Bestandskunden-Trigger **und** Prospect-Trigger.
+- **Project Intelligence & Symbiosis Graph** *(Strategic Suite Candidate)* — read-only Analyse ueber Jira/Atlassian, Confluence, ServiceNow, GitHub/GitLab, M365 und Projektartefakte. Findet Symbiosis Links, Redundanzen, Konflikte, Reuse-Moeglichkeiten und Projekt-Signale, die zu neuen Opportunities und internen Plaenen werden koennen. Details: [Project Intelligence & Symbiosis Graph](./Consultry-Project-Intelligence-Symbiosis-Graph-v1.0.md).
 - **AI-native Brand & Page CMS** *(Strategic Suite Candidate)* — Brand Memory, Tonalitaet, Sprachen, Design-System, Produkt-/Offer-Katalog und Proof Library werden zu LLM-editierbaren Landingpages, Offer Pages und Kampagnenvarianten kompiliert. Kein klassisches CMS, sondern ein source-bound Page-Generation-Layer mit Approval vor Veroeffentlichung. Details: [AI-Native CMS Module](./Consultry-AI-Native-CMS-Module-v1.0.md).
 - **Personenscharfes Staffing/Forecasting (gated)** — konkrete Berater zu Rollen; nur unter Works-Council-Mode + dokumentierte Freigabe.
 - **Proposal-Versand + Pricing/Kalkulation + Contract-Drafting (eIDAS AdES).**
@@ -85,13 +86,13 @@ QA-Layer-Ausbau (Diagramme/Decks/Test-Infra-Generierung) · volle Delivery- & Wo
 
 > Consultry rollt in scharf abgegrenzten Phasen aus; jede hat einen Wedge, klare Module und ein **Phase-Gate**. Reihenfolge: **Bestandskunden vor Neukunden; aggregiert vor personenscharf; Integration vor Ersatz.**
 
-**Phase 0 — Foundation:** Multi-Tenant-EU-SaaS (Neon Postgres RLS + pgvector), Auth/RBAC, i18n-Backbone (DE-first, EN H2), Audit-Infra (write-side), Korpus-Ingest/Indexing, Design-System v1.2, Observability, Reliability-Minimum (Citation-Gate + Faithfulness + versionierte Prompts, [Foundation-Decisions T4](./Consultry-MVP-Foundation-Decisions-v1.0.md)). *Details: Foundation-Decisions + Technical-Foundation.*
+**Phase 0 — Foundation:** Multi-Tenant-EU-SaaS (Aurora PostgreSQL Serverless v2 RLS + pgvector, ADR-001), Auth/RBAC, i18n-Backbone (DE-first, EN H2), Audit-Infra (write-side), Korpus-Ingest/Indexing, Design-System v1.2, Observability, Reliability-Minimum (Citation-Gate + Faithfulness + versionierte Prompts, [Foundation-Decisions T4](./Consultry-MVP-Foundation-Decisions-v1.0.md)). *Details: Foundation-Decisions + Technical-Foundation.*
 
-**Phase 1 (H1) — MVP, Dual-Hero:** Win (Acquisition-to-Bid) + Work (Operating Foundation). Erfolg = **Dual-PMF** (§ MVP-Doc): 5-Tage-gegroundeter-Draft **und** Seat-Utilization-Adoption.
+**Phase 1 (H1) — MVP, Dual-Hero:** Win (**Opportunity-to-Concept**) + Work (Operating Foundation). Erfolg = **Dual-PMF** (§ MVP-Doc): 5-Tage-gegroundeter-Draft **und** Seat-Utilization-Adoption.
 
 **Gate 1 → 2:** Bestandskunden- + Work-Kernflows bei Referenzkunde produktiv · belastbare Telemetrie · dokumentierter AI-Audit-Trail (Quelle/Version/Freigabe) · Compliance-Defaults live validiert (DSGVO, BetrVG, AI-Act, E-Rechnung-Bereitschaft) · WC-Mode erprobt.
 
-**Phase 2 (H2):** Neukunden-Akquise + Market-Intelligence (voneinander abhängig) · personenscharfes Staffing (gated) · Versand/Pricing/Contract · QA-Layer (Code/Doc).
+**Phase 2 (H2):** Neukunden-Akquise + Market-Intelligence (voneinander abhängig) · Project Intelligence & Symbiosis Graph · personenscharfes Staffing (gated) · Versand/Pricing/Contract · QA-Layer (Code/Doc).
 
 **Gate 2 → 3+:** Prospect-/Bestandskunden-Datenmodell **sauber getrennt** · Outreach-Compliance (UWG/Consent) live · belegte Adoption ≥ 3 Beratungen vor Wedge-Erweiterung.
 

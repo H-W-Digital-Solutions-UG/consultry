@@ -1,9 +1,9 @@
 # Consultry - MVP Backend, IaC & Software Design v1.0
 
-**Status:** Tiefenplan / Source-Candidate - noch nicht verbindliche Source of Truth.  
+**Status:** Tiefenplan / Planning Source. ADR-001/002 sind accepted; Detail-WBS bleibt planungsleitend, aber MVP-Scope bleibt im MVP-PRD.  
 **Datum:** 27.06.2026  
 **Rolle im Doc-Stack:** Konkretisiert Backend, Infrastruktur, IaC, Validierungsloops und WBS fuer den AWS-nativen MVP mit Hermes Harness.  
-**Bezug:** [MVP-PRD](./Consultry-MVP-PRD-v1.0.md), [Business-Domain-Definition](./Consultry-Business-Domain-Definition-v1.0.md), [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md), [AWS & Hermes Architecture](./Consultry-MVP-AWS-Hermes-Architecture-v1.0.md), [Virtual Harness & Second Brain Refinement](./Consultry-MVP-Virtual-Harness-Second-Brain-Refinement-v1.0.md), [Grill-Me Backend/IaC](./Consultry-MVP-Backend-IaC-Grill-Me-v1.0.md).
+**Bezug:** [MVP-PRD](./Consultry-MVP-PRD-v1.0.md), [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md), [MVP Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md), [Business-Domain-Definition](./Consultry-Business-Domain-Definition-v1.0.md), [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md), [AWS & Hermes Architecture](./Consultry-MVP-AWS-Hermes-Architecture-v1.0.md), [Virtual Harness & Second Brain Refinement](./Consultry-MVP-Virtual-Harness-Second-Brain-Refinement-v1.0.md), [Grill-Me Backend/IaC](./Consultry-MVP-Backend-IaC-Grill-Me-v1.0.md).
 
 **FigJam Board:** https://www.figma.com/board/yrvsmZHxeNo7GoypjfagrI  
 Enthaelt editierbare Sichten: Backend/Hermes-Architektur, Hermes-CorpusBundle-Sequenz, Core-ERD, HermesJob-State-Machine, Virtual Harness + Second Brain.
@@ -24,18 +24,18 @@ Enthaelt editierbare Sichten: Backend/Hermes-Architektur, Hermes-CorpusBundle-Se
 
 | ID | Entscheidung | Empfehlung fuer MVP |
 |---|---|---|
-| B1 | Plattform | AWS-native MVP in `eu-central-1`; keine Hybrid-Mischung aus Neon + AWS fuer den Pilot. |
-| B2 | Datenbank | Aurora PostgreSQL Serverless v2 + pgvector ersetzt Neon, falls AWS-native akzeptiert wird. RLS, graph-ready relationales Schema und Citation-Gates bleiben unveraendert. |
+| B1 | Plattform | AWS-native MVP in `eu-central-1` gemaess ADR-001; keine Hybrid-Mischung aus Neon + AWS fuer den Pilot. |
+| B2 | Datenbank | Aurora PostgreSQL Serverless v2 + pgvector ersetzt Neon gemaess ADR-001. RLS, graph-ready relationales Schema und Citation-Gates bleiben unveraendert. |
 | B3 | Backend-Form | Modularer TypeScript-Monolith, getrennte Worker, keine Microservice-Zerlegung vor PMF. |
 | B4 | Backend-Framework | **Fastify + Kysely + Zod/OpenAPI** statt schwerer Framework-Magie. Grund: RLS/Transaktionen/SQL muessen sichtbar und testbar bleiben. |
 | B5 | Auth | Amazon Cognito fuer Identity/OIDC; Tenant/RBAC/Seats bleiben in Aurora, nicht in Cognito-Gruppen. |
 | B6 | Async | SQS fuer Jobs, EventBridge fuer Zeittrigger, Step Functions nur fuer laengere koordinierte Workflows mit klarer Retry-/Timeout-Logik. |
 | B7 | IaC | Terraform, nicht CDK, weil der Auftrag planbare `plan`-/Policy-Validation verlangt und die Infrastruktur reviewbar bleiben soll. |
-| B8 | Hermes Runtime | `HermesRunner` Interface mit AgentCore Code Interpreter als bevorzugtem Pfad und ECS Fargate Sandbox als Fallback. |
+| B8 | Hermes Runtime | `HermesRunner` Interface mit AgentCore Code Interpreter als bevorzugtem Pfad und ECS Fargate Sandbox als Fallback; immer bounded nach ADR-002. |
 | B9 | AI Boundary | Bedrock nur ueber `ModelGateway`; keine direkten Model-Calls aus Domain-Modulen oder Hermes-Sandbox. |
 | B10 | Testhaltung | TDD fuer Domain und Gates; Integrationstests mit Postgres/Testcontainers und AWS-Mocks; Terraform-Plan-Validation als Merge-Gate. |
 | B11 | Virtual Harness | Hermes wird als Virtual Harness Client mit `HarnessPack` modelliert: Corpus, Memory, Tools, Connector-Grants, Capability Tokens und Output Contracts. |
-| B12 | MVP Connectors | M365, Google Drive, GitHub, GitLab, local files, SQL/NoSQL DBs, Clay und Apollo sind als read-only/snapshot Connectoren Teil des Harness-Substrats; keine autonome Schreib-/Outreach-Funktion im MVP. |
+| B12 | MVP Connectors | M365, Google Drive, GitHub, GitLab, local files, SQL/NoSQL DBs, Clay und Apollo sind als read-only/snapshot Connectoren Teil des Harness-Substrats; Jira/Atlassian/Confluence und ServiceNow sind H2-nahe Project-Intelligence-Connectoren. Keine autonome Schreib-/Outreach-/Ticket-Mutation im MVP. |
 | B13 | Skill Graph | Skill-, Projekt-, Zertifikats- und Referenzwissen wird als source-bound Graph/Triple/Hypergraph gespeichert und fuer TeamShape nur anonym/aggregiert projiziert. |
 
 ---
@@ -99,7 +99,7 @@ consultry/
 | Capability & Work | `WorkModule` | `consultant_profiles`, `time_entries`, `personal_notes`, `project_statuses` | `SuggestTimeEntry`, `ConfirmTimeEntry`, `UpdateProfileClaim` | no scoring, WC-mode gate, PersonalNote isolation |
 | Hermes | `HermesModule` | `hermes_jobs`, `hermes_job_bundles`, `hermes_results` | `CreateHermesJob`, `BuildCorpusBundle`, `RunHermesJob` | no DB write from sandbox, job-scoped S3/KMS, TTL |
 | ModelGateway | `ModelGatewayModule` | prompt call audit in `audit_entries`, prompt registry in Git | `InvokePrompt`, `EmbedText`, `RunGuardrail` | prompt version required, quota/budget, Bedrock abstraction |
-| Integrations | `ConnectorModule` | connector metadata, imported raw docs, connector grants, local snapshots | `PollTed`, `ImportM365`, `ImportGoogleDrive`, `ImportGitHub`, `ImportGitLab`, `ImportLocalSnapshot`, `ImportSqlView`, `ImportNoSqlScope`, `ImportClay`, `ImportApollo` | read-only, source policy, no writeback, no outreach |
+| Integrations | `ConnectorModule` | connector metadata, imported raw docs, connector grants, local snapshots | `PollTed`, `ImportM365`, `ImportGoogleDrive`, `ImportGitHub`, `ImportGitLab`, `ImportLocalSnapshot`, `ImportSqlView`, `ImportNoSqlScope`, `ImportClay`, `ImportApollo`, `ImportJira`, `ImportConfluence`, `ImportServiceNow` | read-only, source policy, no writeback, no outreach, no ticket mutation |
 
 ---
 
@@ -529,20 +529,25 @@ The detailed WBS lives in [Virtual Harness & Second Brain Refinement §9](./Cons
 - `HG-*`: graph assertion schema, triples, hyperedges, graph pack builder, bounded traversal helpers, graph export adapter.
 - `SG-*`: skill taxonomy, skill claims, skill hyperedges, anonymous TeamShape projection.
 - `INT-*`: M365, Google Drive, GitHub, GitLab, local files, SQL, NoSQL, Clay, Apollo read-only/snapshot connector packages.
+- `PI-*`: Jira/Confluence/ServiceNow Project Intelligence packages for ProjectWorkItems, SymbiosisLinks, RedundancyFinding and InternalPlanDraft.
 
-Hard boundary: these connectors feed Corpus/Second Brain/Harness packs. They do not create autonomous outbound, writeback, code modification, CRM mutation or Clay/Apollo sequence execution in the MVP.
+Hard boundary: these connectors feed Corpus/Second Brain/Harness packs. They do not create autonomous outbound, writeback, ticket mutation, code modification, CRM mutation or Clay/Apollo sequence execution in the MVP.
 
 ---
 
-## 11. ADR Candidates
+## 11. ADR Status / Candidates
 
-Create ADRs only when accepted:
+Accepted now:
 
-1. **ADR-001 AWS-native data layer:** Aurora PostgreSQL Serverless v2 + pgvector replaces Neon for MVP.
-2. **ADR-002 Backend stack:** Fastify + Kysely + Zod for RLS-visible modular monolith.
-3. **ADR-003 Terraform as IaC standard:** Terraform with plan/policy gates over CDK.
-4. **ADR-004 Hermes runtime abstraction:** AgentCore preferred, Fargate fallback mandatory.
-5. **ADR-005 Work Layer source hierarchy:** raw sources, compiled assets, recommendations, approvals and audit as separate layers.
+1. **ADR-001 AWS-native data layer:** Aurora PostgreSQL Serverless v2 + pgvector replaces Neon for MVP. See [MVP Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md).
+2. **ADR-002 Hermes bounded harness boundary:** Hermes is not an autonomous agent runtime. See [MVP Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md).
+
+Still candidates:
+
+3. **ADR-BE-001 Backend stack:** Fastify + Kysely + Zod for RLS-visible modular monolith.
+4. **ADR-IAC-001 Terraform as IaC standard:** Terraform with plan/policy gates over CDK.
+5. **ADR-HERMES-001 Hermes runtime abstraction:** AgentCore preferred, Fargate fallback mandatory.
+6. **ADR-WORK-001 Work Layer source hierarchy:** raw sources, compiled assets, recommendations, approvals and audit as separate layers.
 
 ---
 
@@ -573,4 +578,4 @@ Create ADRs only when accepted:
 
 ---
 
-*Ende v1.0 - naechster Schritt: Grill-Me-Fragen entscheiden, dann ADR-001/002/003 entweder anlegen oder als offene Architekturannahmen belassen.*
+*Ende v1.0 - naechster Schritt: Backend-/IaC-Kandidaten entscheiden und dann Build-Tickets aus WBS schneiden.*

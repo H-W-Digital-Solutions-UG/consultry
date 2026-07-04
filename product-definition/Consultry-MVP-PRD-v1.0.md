@@ -1,11 +1,13 @@
-# Consultry — MVP-PRD v1.0 (Acquisition-to-Bid)
+# Consultry — MVP-PRD v1.0 (Opportunity-to-Concept)
 
 **Status:** Entwurf zur Bestätigung
 **Rolle im Doc-Stack:** **Das MVP-Fokus-Doc — was wir ZUERST bauen (und was NICHT).** Gegenstück: [Product Vision (komplett)](./Consultry-Product-Vision-v1.0.md) = *wohin insgesamt*. Technische Tiefe: [MVP-Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md). Begründungen: [Foundation-Decisions (Decision-Log)](./Consultry-MVP-Foundation-Decisions-v1.0.md).
 **Datum:** 30. Mai 2026
-**Bezug:** [GTM-Decisions](./Consultry-GTM-Decisions-v1.0.md), [Onboarding-Korpus-Ritual](./Consultry-Onboarding-Corpus-Ritual-v1.0.md), [Phase-1 MVP Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), **[MVP-Foundation-Decisions v1.0](./Consultry-MVP-Foundation-Decisions-v1.0.md) (verbindliche Klärungen 12.06.: T1–T10 — Tenancy, Data-Layer, AI-Spine-Minimum, Inference, Tender-Polling, Build-Plan)**
+**Bezug:** [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md), [GTM-Decisions](./Consultry-GTM-Decisions-v1.0.md), [Onboarding-Korpus-Ritual](./Consultry-Onboarding-Corpus-Ritual-v1.0.md), [Phase-1 MVP Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), [Measurement Spec](./Consultry-MVP-Measurement-Spec-v1.0.md), **[MVP-Foundation-Decisions v1.0](./Consultry-MVP-Foundation-Decisions-v1.0.md) (verbindliche Klärungen 12.06. + Architektur-Revision 28.06.)**
 
 > **Auftrag dieser Datei: NEIN sagen.** Die Vision ist groß. Diese MVP-PRD ist absichtlich klein. Alles, was hier nicht explizit *In-Scope* steht, ist **out** — egal wie verlockend.
+
+> **Update 28.06.2026 - Alignment-Freeze:** Die kanonische Hierarchie ist jetzt: **Category** = Opinionated AI Work Harness for consulting firms; **Whole Product** = Win + Work; **Starting Wedge** = **Opportunity-to-Concept**; **Proof Surface** = Concept Suite; **First Proof Slice** = ein realer, source-grounded Konzept-/Proposal-Abschnitt aus eigenem Korpus in 5 Business-Tagen. `Acquisition-to-Bid` bleibt nur historischer Alias fuer die Win-Linie.
 
 ---
 
@@ -54,9 +56,9 @@ Beide teilen sich **dieselbe Grounding-/Approval-/Audit-Engine** und denselben K
 
 ## 3. MVP = zwei Heroes auf einem Fundament: **Win + Work**
 
-> **Revidiert 13.06.:** Früher „eine Linie (Acquisition-to-Bid)". Jetzt zwei gleichrangige Heroes auf geteilter Engine (T8). Hero 1 = die Acquisition-to-Bid-Linie unten; Hero 2 = die AI-native Operating Foundation (§3.1-Platform, hochgestuft von „Substrat" zu „Hero"). Beide unter der „Beratung im KI-Zeitalter"-Thesis (§1).
+> **Revidiert 13.06., normalisiert 28.06.:** Früher „eine Linie (Acquisition-to-Bid)". Jetzt zwei gleichrangige Heroes auf geteilter Engine (T8). Hero 1 = **Opportunity-to-Concept**; Hero 2 = die AI-native Operating Foundation (§3.1-Platform, hochgestuft von „Substrat" zu „Hero"). Beide unter der „Beratung im KI-Zeitalter"-Thesis (§1).
 
-### 3.0 Hero 1: Acquisition-to-Bid (die Win-Linie)
+### 3.0 Hero 1: Opportunity-to-Concept (die Win-Linie)
 
 ```
   INTAKE A: Tender (F5)  ─┐
@@ -103,7 +105,7 @@ Beide teilen sich **dieselbe Grounding-/Approval-/Audit-Engine** und denselben K
 | Team-Shape | Einfacher strukturierter Output. Keine Ausschmückung. |
 | Knowledge/Reuse | Nur so viel Retrieval, wie das Konzept-Grounding braucht. Kein eigenständiges Wissensprodukt. |
 
-> Kritischer Pfad = **Concept Suite → 5-Tage-Draft → PMF-Signal.** Alles andere ist Zubringer und bleibt dünn, bis dieses Signal steht.
+> Kritischer Pfad = **Opportunity-to-Concept → Concept Suite → 5-Tage-Draft → PMF-Signal.** Alles andere ist Zubringer und bleibt dünn, bis dieses Signal steht.
 
 ### 3.1b Tiering → Dual-Hero (revidiert 13.06.2026, T8)
 
@@ -111,7 +113,7 @@ Beide teilen sich **dieselbe Grounding-/Approval-/Audit-Engine** und denselben K
 
 | Hero | Inhalt | Verkaufs-Rolle | PMF-Bar (T12) |
 |---|---|---|---|
-| **Hero 1 — „Win"** | Acquisition-to-Bid-Linie: Opportunity, Tender (TED-Polling + semi-manuell), Bestandskunden-Signal, **Concept Suite**, anonyme Team-Shape, Grounding-Engine. | Der Painkiller — „gewinnt mehr Projekte". | ≥ 1 gegroundeter Draft aus eigenem Korpus in **5 Tagen**. |
+| **Hero 1 — „Win"** | Opportunity-to-Concept-Linie: Opportunity, Tender (TED-Polling + semi-manuell), Bestandskunden-Signal, **Concept Suite**, anonyme Team-Shape, Grounding-Engine. | Der Painkiller — „gewinnt mehr Projekte". | ≥ 1 gegroundeter Draft aus eigenem Korpus in **5 Tagen**. |
 | **Hero 2 — „Work"** | AI-native Operating Foundation: `ConsultantProfile` (auto), Work-Agent/Time-Capture, `PersonalNote`, `ProjectStatus`, Human-AI-Collaboration-Loop, Signal-Board-Puls. | Die neue Arbeitsweise — „werdet AI-nativ, rechtfertigt eure Tagessätze". | **≥ 60 % Consultant-Seats wöchentlich aktiv** + Work-Agent-Bestätigungs-Rate (Arbeitshypothese). |
 
 > **Geteiltes Fundament (kein eigener Hero):** Grounding/Provenance, Approval-Card, AuditEvent, Korpus-Ingest, WC-Mode, Tenant-Isolation — trägt beide Heroes.
@@ -143,7 +145,7 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 |---|---|---|
 | **T1** | Doc-Authority | Gen-A archiviert (PRD v5.0, Roadmap v1.0, feature-specs); selektiver Salvage → Technical-Foundation. |
 | **T2** | Tenancy/Hosting | **Multi-Tenant SaaS, EU-Region**, Postgres Row-Level-Security. Compliance = AVV/DPA + No-Training. Single-Tenant/Customer-Cloud → H2+. |
-| **T3** | Data Layer | **Neon Postgres + pgvector**, graph-ready Edge-Tabellen. Dedizierte Graph-DB erst, wenn ein Traversal-Feature sie verlangt (GraphRAG/Skill-Graph = H2). |
+| **T3** | Data Layer | **Revidiert 28.06. durch [ADR-001](./Consultry-MVP-Architecture-ADR-v1.0.md): Aurora PostgreSQL Serverless v2 + pgvector** ersetzt Neon als AWS-native MVP-Implementierungsbaseline. RLS, graph-ready Edge-Tabellen und Graph-DB-deferred bleiben. |
 | **T4** | AI-Reliability-Minimum | (1) **CitationLink-Gate auf Datenebene**, (2) **Faithfulness-Check (D6)**, (3) **versionierte Prompts** (Git), (4) **AuditEvent je AI-Call**. Kein Drift-Monitor/Eval-CI/PII-Router im MVP. |
 | **T5** | Inference | **Anthropic via AWS Bedrock EU (Frankfurt)** = einziger verdrahteter Pfad; Abstraktion für späteren Azure-Foundry-Fallback. Eine DPA-Kette vor Pilot #1. |
 | **T6** | Works-Council-Mode | **Default-OFF.** Schalter gated (wenn AN) personenbez. Auswertung + Auto-Feed. MVP-Sichten ohnehin aggregiert/anonym. |
@@ -159,8 +161,8 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 | **T16** | **Deployment** | **Multi-Tenant-EU-SaaS für MVP** (T2 bleibt). **Appliance/BYOI-Sovereignty-Modell = H2** (lokale Connectors/PII-Gating/Inference — starker DACH-Moat, → Vision H2). **Action (offen):** mit Cybersecurity-Design-Partner #0 **jetzt validieren**, ob SaaS + AVV fürs Pilot akzeptiert wird, bevor es zum Überraschungs-Blocker wird. |
 
 **Technical-Boundary (Kurzfassung):**
-*Drin* — Multi-Tenant-EU-SaaS (Neon+pgvector) · Korpus-Ingest + Span-Citations · Provenance-Gate + Faithfulness · **Hero 1** (Concept Suite + TED-Polling/semi-manuell + AwardCriterion + Vertrags-Klausel-Extraktion + anonyme TeamShape) · **Hero 2** (auto-ConsultantProfile via Upload/M365 + Work-Agent/Time-Capture + PersonalNote + ProjectStatus + Collaboration-Loop) · Approval-Card + AuditEvent · WC-Mode (OFF) · Bedrock-EU · PDF/MD-Export.
-*Draußen* — Graph-DB · PII-Router · Drift-Monitor/Eval-CI · Versand/Outbound · Pricing-Engine · Contract/eIDAS · DATEV/ELSTER · personenscharfes Staffing · Net-New-Prospecting · CH · EN-UI · LinkedIn-Ingest · Multi-Step-Agentik nach außen.
+*Drin* — Multi-Tenant-EU-SaaS (Aurora PostgreSQL Serverless v2 + pgvector) · Korpus-Ingest + Span-Citations · Provenance-Gate + Faithfulness · **Hero 1** (Opportunity-to-Concept: Concept Suite + TED-Polling/semi-manuell + AwardCriterion + Vertrags-Klausel-Extraktion + anonyme TeamShape) · **Hero 2** (auto-ConsultantProfile via Upload/M365 + Work-Agent/Time-Capture + PersonalNote + ProjectStatus + Collaboration-Loop) · Approval-Card + AuditEvent · WC-Mode (OFF) · Bedrock-EU · bounded Hermes/Virtual Harness nach ADR-002 · PDF/MD-Export.
+*Draußen* — Graph-DB · PII-Router · Drift-Monitor/Eval-CI · Versand/Outbound · Pricing-Engine · Contract/eIDAS · DATEV/ELSTER · personenscharfes Staffing · Net-New-Prospecting · CH · EN-UI · LinkedIn-Ingest · autonome Multi-Step-Agentik nach außen.
 
 ---
 
@@ -173,10 +175,10 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 ## 5. PMF — Nordstern-Metrik & Kill-Kriterium
 
-> **Vorschlag (zu bestätigen — offen als G9):**
+> **Messbasis:** Details stehen in der [MVP Measurement Spec](./Consultry-MVP-Measurement-Spec-v1.0.md). G9 ist fuer Hero 1 geschlossen; Work-Schwellen bleiben T12-Hypothesen bis zur Design-Partner-Kalibrierung.
 
 **Dual-Hero-Aktivierung (revidiert 13.06., T12 — zwei Signale):**
-- **Hero 1 „Win":** **≥ 1 real verwendeter Konzept-/Bid-Entwurf aus eigenem Korpus pro Design-Partner — innerhalb von 5 Tagen.** Das schärfste Leading-Signal: sticht der Painkiller schnell?
+- **Hero 1 „Win":** **≥ 1 real verwendeter, source-grounded Konzept-/Proposal-Abschnitt aus eigenem Korpus pro Design-Partner — innerhalb von 5 Business-Tagen.** Das schärfste Leading-Signal: sticht der Painkiller schnell?
 - **Hero 2 „Work":** **≥ 60 % der Consultant-Seats wöchentlich aktiv** im Operating-Foundation-Layer (Profile/Time/Notes/Status) + messbare **Work-Agent-Bestätigungs-Rate** + Profile-Auto-Maintenance-Akzeptanz. Misst, ob die „neue Arbeitsweise" wirklich gelebt wird (Retention + Seat-Utilization-Fundament).
 
 **PMF-Bestätigung (tiefer):** **Sean-Ellis ≥ 40 %** der aktiven Pilot-Nutzer „sehr enttäuscht" ohne Consultry.
@@ -228,7 +230,7 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 | G6 | 30-Tage-Plan für 2–3 externe Design-Partner | offen |
 | G7 | ≥ 1 Bestandskunden-led Partner als Dogfood-Guardrail | offen |
 | G8 | ACV/Sales-Cycle | ✅ **€50/Seat/Mo, ACV €15–45k** (§6); Pilot-Fee-Betrag noch zu setzen |
-| G9 | PMF-Aktivierung | ✅ **1 Draft aus eigenem Korpus in 5 Tagen** (§5) |
+| G9 | PMF-Aktivierung | ✅ **1 source-grounded Opportunity-to-Concept Proof Slice aus eigenem Korpus in 5 Business-Tagen** (§5 + [Measurement Spec](./Consultry-MVP-Measurement-Spec-v1.0.md)) |
 | — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, **Grounding-Split §1.3**, **Zuschlagskriterien-Optimierung §1.3**, **Eval-Harness für Grounding @ Long-Form**) | zu schärfen — **nach Business-Domain-Definition** ✅ ([Domain-Def](./Consultry-Business-Domain-Definition-v1.0.md) fertig) → Concept-Suite-Spec als nächstes |
 | G6 | Design-Partner-Kohorte | ✅ **Kohorte = 1 starker Warm-Path-Partner (+ #0 eigene Firma) für jetzt.** Stage-0: Usefulness tief validieren, dann skalieren. → PMF-Metrik bei n=1 = „nützlich + zahlungsbereit + 5-Tage-Draft", nicht Markt-Validierung. |
 | G7 | Dogfood-Guardrail | später (greift erst bei Kohorten-Erweiterung) |
@@ -237,4 +239,4 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 ---
 
-*Ende v1.0 — Entwurf. Diese Datei ist der Scope-Zaun. Erweiterungen gehören in PRD v4.0 (Tier 2), nicht hierher.*
+*Ende v1.0 — Entwurf. Diese Datei ist der Scope-Zaun. Erweiterungen gehören in die Product Vision / H2-H3-Dokumente, nicht in den MVP-Scope.*

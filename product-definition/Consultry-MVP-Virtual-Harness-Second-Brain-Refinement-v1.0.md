@@ -1,9 +1,9 @@
 # Consultry - Virtual Harness & Second Brain Refinement v1.0
 
-**Status:** 5-Iteration Refinement-Log und Architekturzusatz - Source-Candidate, nicht locked.  
+**Status:** Planning Source. Harness-Boundary ist durch ADR-002 accepted; Second-Brain-/Connector-/Hypergraph-Tiefe bleibt gated durch MVP-PRD und Alignment Control Plane.  
 **Datum:** 27.06.2026  
 **Rolle im Doc-Stack:** Erweitert den AWS/Hermes-Plan vom isolierten Sandbox-Job zu einem **Virtual Harness Client** mit Corpus, MCP/local tooling, DOCX/Word, lokalen Dateien, Datenbank-Connectors und Second-Brain-Compilation.  
-**Bezug:** [Backend/IaC Design](./Consultry-MVP-Backend-IaC-Software-Design-v1.0.md), [AWS/Hermes Architecture](./Consultry-MVP-AWS-Hermes-Architecture-v1.0.md), [Backend/IaC Grill-Me](./Consultry-MVP-Backend-IaC-Grill-Me-v1.0.md).
+**Bezug:** [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md), [MVP Architecture ADR](./Consultry-MVP-Architecture-ADR-v1.0.md), [Backend/IaC Design](./Consultry-MVP-Backend-IaC-Software-Design-v1.0.md), [AWS/Hermes Architecture](./Consultry-MVP-AWS-Hermes-Architecture-v1.0.md), [Backend/IaC Grill-Me](./Consultry-MVP-Backend-IaC-Grill-Me-v1.0.md).
 
 **FigJam Board:** https://www.figma.com/board/yrvsmZHxeNo7GoypjfagrI  
 Neue Sicht im Board: **Consultry Virtual Harness and Second Brain Architecture**.
@@ -310,6 +310,8 @@ MVP use:
 | Google Drive | Drive API files/list/export/download/changes | Google Workspace Dateien, Docs/Slides/Sheets-Exports, Vorlagen | read-only snapshot, folder allowlist, export hashes |
 | GitHub | repo contents, issues, PRs, releases, webhooks | Code-/Runbook-/Architecture-Artefakte, delivery evidence, skill evidence | read-only app permissions, repo allowlist |
 | GitLab | project/repository files, issues, merge requests, webhooks | Code-/CI-/delivery evidence analog GitHub | read-only token, project/group allowlist |
+| Jira / Atlassian | Jira REST/JQL, approved webhooks, Confluence REST/CQL | Project Work Items, Epics, Requirements, Decisions, Runbooks, projektbezogene Knowledge | read-only/snapshot, project/space allowlist, no ticket mutation |
+| ServiceNow | Table API / approved ITSM views | Incidents, Problems, Changes, Requests, CMDB refs as ProjectSignals | read-only tables/views, role-scoped service account |
 | Local Files | Local Harness Relay | Kundenordner, lokale Templates, lokale Exportartefakte als Snapshot | outbound TLS, allowlist paths, snapshot hash, no live crawl |
 | MCP | MCPGateway | lokale oder cloudbasierte Tools/Resources kontrolliert nutzbar machen | server registry, tool allowlist, capability token |
 | SQL Databases | `sql.readonly.query` | CRM/PSA/DMS-Auszuege, Reporting-Views, Referenzdaten | nur read-only views, parameterisierte Queries, row caps |
@@ -319,7 +321,7 @@ MVP use:
 | Browser/Web | trusted research connector | externe Quellen, Normen, TED/eForms, Whitelist-Research | nicht aus Harness frei; nur ueber trusted Connector |
 | Design/Brand | artifact connector | Brand-Guidelines, Logos, Deck-/Website-Artefakte als Memory Nodes | nur freigegebene Assets in MemoryPack |
 
-**MVP integration posture:** "MVP needs integrations" means the harness substrate can ingest and snapshot these systems. It does **not** mean autonomous writeback, outreach, sequence management, code modification or ticket mutation. All MVP connector outputs are corpus/second-brain inputs unless an explicit later ADR unlocks a write path.
+**MVP integration posture:** "MVP needs integrations" means the harness substrate can ingest and snapshot these systems. It does **not** mean autonomous writeback, outreach, sequence management, code modification, ticket mutation or hidden performance monitoring. All MVP connector outputs are corpus/second-brain inputs unless an explicit later ADR unlocks a write path.
 
 ---
 
@@ -506,6 +508,8 @@ All items remain 500-1000 LOC max.
 - Microsoft Graph DriveItem delta API: https://learn.microsoft.com/en-us/graph/api/driveitem-delta?view=graph-rest-1.0
 - Office Add-ins / Word Open XML guidance: https://learn.microsoft.com/en-us/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml
 - Google Drive API files/list/export: https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list, https://developers.google.com/workspace/drive/api/reference/rest/v3/files/export
+- Atlassian Jira Cloud REST issue search/webhooks and Confluence REST/CQL: https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/, https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-webhooks/, https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-search/
+- ServiceNow REST/Table API: https://www.servicenow.com/docs/r/api-reference/rest-apis/c_TableAPI.html
 - GitHub REST API repositories/contents: https://docs.github.com/en/rest, https://docs.github.com/rest/repos/contents
 - GitLab REST API repository files/projects: https://docs.gitlab.com/api/repository_files/, https://docs.gitlab.com/api/repositories/
 - Apollo developer docs and enrichment/search APIs: https://docs.apollo.io/, https://docs.apollo.io/reference/people-enrichment, https://docs.apollo.io/reference/organization-enrichment
@@ -519,4 +523,4 @@ All items remain 500-1000 LOC max.
 
 ---
 
-*Ende v1.0 - naechster Schritt: ADR-006 "Virtual Harness Client + HarnessPack" und ADR-007 "Second Brain Memory Layer" anlegen, sobald diese Source-Candidate Richtung verbindlich wird.*
+*Ende v1.0 - naechster Schritt: Second-Brain-/Memory-Tiefe als separaten ADR klaeren, sobald sie ueber Opportunity-to-Concept hinaus implementierungsrelevant wird.*
