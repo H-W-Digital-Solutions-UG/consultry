@@ -2,6 +2,8 @@
 **.DS_Store**
 **/.vscode**
 **/.idea**
+/_BKP/
+/renders/
 **/.playwright-cli**
 **/marketing-site/_debug_output**
 **/.archive_old_docs**
