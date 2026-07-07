@@ -1,0 +1,11 @@
+{
+  "name": "consultry-presentation-delivery",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node serve-hyperframes-delivery.mjs",
+    "serve:check": "node serve-hyperframes-delivery.mjs --check",
+    "verify": "node verify-hyperframes-delivery.mjs",
+    "verify:full": "node verify-hyperframes-delivery.mjs --full"
+  }
+}

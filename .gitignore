@@ -2,8 +2,8 @@
 **.DS_Store**
 **/.vscode**
 **/.idea**
-/_BKP/
-/renders/
+**/_BKP/
+**/renders/
 **/.playwright-cli**
 **/marketing-site/_debug_output**
 **/.archive_old_docs**
@@ -14,3 +14,45 @@
 /.claude/worktrees/**
 /outputs/
 /output/
+
+# Generated docs renders
+tmp/docs/rendered/
+
+# Presentation generated artifacts
+presentation/**/_BKP/
+presentation/**/renders/
+presentation/**/snapshots/
+presentation/**/screenshots/
+presentation/**/scraps/
+presentation/**/exports/
+presentation/**/audio-backups/
+presentation/**/*-frames/
+presentation/**/frames-*/
+presentation/**/*.bak*
+presentation/**/*.log
+presentation/**/.thumbnail
+
+# Presentation local media drops
+presentation/*.mov
+presentation/hf_*.mp4
+
+# Presentation generated upload artifacts
+presentation/**/uploads/**/*-frames/
+presentation/**/uploads/**/*-source.mp4
+presentation/**/uploads/seedance-video-*.mp4
+presentation/**/uploads/Generated Audio *.wav
+presentation/**/uploads/wavetoys-*.mp3
+
+# Keep curated HyperFrames final delivery renders
+!presentation/consultry-hyperframes-video/renders/
+presentation/consultry-hyperframes-video/renders/*
+!presentation/consultry-hyperframes-video/renders/consultry-hyperframes-google-voice.mp4
+!presentation/consultry-hyperframes-video/renders/consultry-hyperframes-google-voice-720p.mp4
+!presentation/consultry-hyperframes-video/renders/consultry-hyperframes-google-voice-poster.jpg
+!presentation/consultry-hyperframes-video/renders/consultry-hyperframes-google-voice-contact-sheet.jpg
+
+!presentation/consultry-hyperframes-second-brain-video/renders/
+presentation/consultry-hyperframes-second-brain-video/renders/*
+!presentation/consultry-hyperframes-second-brain-video/renders/consultry-hyperframes-second-brain-google-voice.mp4
+!presentation/consultry-hyperframes-second-brain-video/renders/consultry-hyperframes-second-brain-google-voice-poster.jpg
+!presentation/consultry-hyperframes-second-brain-video/renders/consultry-hyperframes-second-brain-google-voice-contact-sheet.jpg

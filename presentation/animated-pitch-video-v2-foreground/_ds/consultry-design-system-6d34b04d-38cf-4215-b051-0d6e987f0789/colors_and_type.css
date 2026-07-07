@@ -1,0 +1,324 @@
+/* ================================================================
+   Consultry Design System — Tokens (Marketing-first, dark-default)
+   Source: Consultry-Figma-Design-System-Rules v1.0 (31 March 2026) +
+           consultry/marketing-site/src/styles/tokens.css
+   The marketing site is dark-default. App tokens (light-default)
+   are also exposed below under --app-* aliases for app contexts.
+   ================================================================ */
+
+@import url("./fonts/fonts.css");
+
+:root {
+  /* ---------------------------------------------------------------
+     Brand colors — the gradient stops are sacred. Always 27deg or
+     135deg three-stop. Used in logo, hero accents, dividers.
+  --------------------------------------------------------------- */
+  --consultry-brand-gradient-start: #e8913a;  /* warm amber */
+  --consultry-brand-gradient-mid:   #e8655a;  /* bright coral */
+  --consultry-brand-gradient-end:   #9b59b6;  /* soft purple */
+
+  --consultry-brand-primary:        #bf5347;  /* workhorse — buttons, links, focus */
+  --consultry-brand-primary-hover:  #ca7168;
+  --consultry-brand-primary-active: #a2463c;
+  --consultry-brand-coral:          #e8655a;
+  --consultry-brand-warm:           #f0a85e;  /* accents, eyebrows on dark */
+  --consultry-brand-purple:         #9b59b6;
+
+  /* gradient variants used across the marketing site */
+  --consultry-brand-gradient:           linear-gradient(27deg, #e8913a 10%, #e8655a 25%, #9b59b6 60%);
+  --consultry-brand-gradient-hero:      linear-gradient(160.96deg, #e8913a 0%, #e8655a 37.59%, #9b59b7 75.19%);
+  --consultry-brand-gradient-hero-alt:  linear-gradient(151.8deg, #e8655a 0%, #9b59b7 37.59%, #c084e5 75.19%);
+  --consultry-brand-gradient-135:       linear-gradient(135deg, #e8913a, #e8655a, #9b59b6);
+
+  /* Identity gradient — the LOGO MARK ONLY. Orange → magenta/rose.
+     Do not use on digital surfaces; use --consultry-brand-gradient there. */
+  --consultry-identity-amber:    #ea660d;
+  --consultry-identity-amber-lt: #fcb75c;
+  --consultry-identity-amber-dk: #b64702;
+  --consultry-identity-magenta:  #d2397e;
+  --consultry-identity-pink:     #ffa9ce;
+  --consultry-identity-rose-dk:  #ad2764;
+  --consultry-identity-gradient: linear-gradient(120deg, #b64702 0%, #ea660d 22%, #fcb75c 40%, #d2397e 74%, #ffa9ce 100%);
+
+  /* CTA gradient — slightly more saturated, used for the pill button */
+  --consultry-cta-surface:        linear-gradient(180deg, #df9a58 0%, #d9843f 44%, #cb6153 100%);
+  --consultry-cta-surface-hover:  linear-gradient(180deg, #f0aa63 0%, #e77f53 42%, #cf5e66 100%);
+  --consultry-cta-border:         rgba(232, 145, 58, 0.26);
+  --consultry-cta-text:           #fff8f1;
+
+  /* ---------------------------------------------------------------
+     Marketing surfaces (dark default). The hero is the deepest tint.
+  --------------------------------------------------------------- */
+  --consultry-page-bg:                 #1e1b18;
+  --consultry-surface-hero:            #1e1b18;
+  --consultry-surface-dark:            #2c2926;
+  --consultry-surface-dark-elevated:   #35312d;
+  --consultry-surface-card:            #3a3632;
+  --consultry-surface-glass:           rgba(30, 27, 24, 0.85);
+  --consultry-surface-soft:            rgba(255, 255, 255, 0.03);
+
+  /* The body actually paints two gradients on top of #171311 — kept
+     here as a custom token so cards/panels can match the canvas. */
+  --consultry-body-background:
+    radial-gradient(circle at top, rgba(244, 183, 109, 0.08) 0%, rgba(23, 19, 17, 0) 26%),
+    linear-gradient(180deg, #191311 0%, #171311 16%, #171311 100%);
+  --consultry-hero-background:
+    linear-gradient(180deg,
+      rgba(191, 84, 71, 0.15) 0%,
+      rgba(232, 145, 59, 0.08) 50%,
+      rgba(30, 27, 24, 0) 100%),
+    linear-gradient(180deg, #1f140f 0%, #1e1b18 100%);
+
+  /* ---------------------------------------------------------------
+     Text — warm off-whites, never pure #fff. Faint = quietest.
+  --------------------------------------------------------------- */
+  --consultry-text-primary:    #ede8e2;
+  --consultry-text-secondary:  #d9d4cf;
+  --consultry-text-muted:      rgba(250, 250, 249, 0.65);
+  --consultry-text-faint:      rgba(250, 250, 249, 0.40);
+
+  /* Borders — tonal, never harsh */
+  --consultry-border-soft:    rgba(255, 255, 255, 0.08);
+  --consultry-border-strong:  rgba(255, 255, 255, 0.16);
+
+  /* ---------------------------------------------------------------
+     Semantic — single source for status/score color.
+  --------------------------------------------------------------- */
+  --consultry-success:        #16a34a;
+  --consultry-success-light:  #1a3d2a;
+  --consultry-warning:        #d97706;
+  --consultry-warning-light:  #3d2e0a;
+  --consultry-danger:         #dc2626;
+  --consultry-danger-light:   #3d1a1a;
+  --consultry-info:           #3a5dae;
+  --consultry-info-light:     #1a2340;
+
+  --consultry-score-excellent: #16a34a;  /* 80–100 */
+  --consultry-score-good:      #e8913a;  /* 60–79  */
+  --consultry-score-moderate:  #d97706;  /* 40–59  */
+  --consultry-score-weak:      #ea580c;  /* 20–39  */
+  --consultry-score-poor:      #dc2626;  /*  0–19  — only one with white text */
+
+  /* ---------------------------------------------------------------
+     Decorative gradients used in editorial scroller + dividers
+  --------------------------------------------------------------- */
+  --consultry-step-progress-gradient:
+    linear-gradient(90deg, #e8913a 0%, rgba(232, 102, 89, 0.75) 45%, #9c59b5 100%);
+  --consultry-card-border-gradient:
+    linear-gradient(135deg,
+      rgba(140, 87, 173, 0.92) 0%,
+      rgba(232, 145, 58, 0.95) 58%,
+      rgba(232, 101, 90, 0.92) 100%);
+  --consultry-divider-gradient:
+    linear-gradient(90deg,
+      rgba(232, 145, 58, 0)   0%,
+      rgba(232, 145, 58, 0.92) 16%,
+      rgba(232, 101, 90, 0.92) 48%,
+      rgba(155, 89, 182, 0.88) 82%,
+      rgba(155, 89, 182, 0)   100%);
+
+  /* ---------------------------------------------------------------
+     Spacing — marketing-scaled (generous). App is 4px-based; both
+     map onto the same scale below via mktg-* / consultry-space-*.
+  --------------------------------------------------------------- */
+  --consultry-space-1:   4px;
+  --consultry-space-2:   8px;
+  --consultry-space-3:  12px;
+  --consultry-space-4:  16px;
+  --consultry-space-5:  20px;
+  --consultry-space-6:  24px;
+  --consultry-space-8:  32px;
+  --consultry-space-10: 40px;
+  --consultry-space-12: 48px;
+  --consultry-space-16: 64px;
+
+  --mktg-space-xs:  8px;
+  --mktg-space-sm: 16px;
+  --mktg-space-md: 24px;
+  --mktg-space-lg: 40px;
+  --mktg-space-xl: 64px;   /* primary rhythm between sections */
+  --mktg-space-2xl: 96px;
+  --mktg-space-3xl: 128px;
+
+  /* ---------------------------------------------------------------
+     Radii — pill for marketing CTAs, 12–24px for cards/heroes.
+     App radii (8px buttons / 10px cards) are exposed as --app-*.
+  --------------------------------------------------------------- */
+  --consultry-radius-sm:    8px;
+  --consultry-radius-md:   12px;   /* default card */
+  --consultry-radius-lg:   16px;
+  --consultry-radius-xl:   24px;   /* hero, nav shell */
+  --consultry-radius-pill: 9999px; /* every marketing CTA */
+
+  --app-radius-md:  8px;   /* app buttons / inputs */
+  --app-radius-lg: 10px;   /* app cards */
+  --app-radius-xl: 14px;   /* command palette */
+
+  /* ---------------------------------------------------------------
+     Shadows — soft & atmospheric. Hero shadow is the largest.
+  --------------------------------------------------------------- */
+  --consultry-shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.06);
+  --consultry-shadow-md:    0 4px 16px rgba(0, 0, 0, 0.10);
+  --consultry-shadow-lg:    0 16px 40px rgba(0, 0, 0, 0.18);
+  --consultry-shadow-hero:  0 20px 60px rgba(0, 0, 0, 0.18);
+  --consultry-shadow-focus: 0 0 0 3px rgba(232, 101, 90, 0.24);
+  --consultry-shadow-glow:  0 0 40px rgba(191, 83, 71, 0.12);
+
+  /* ---------------------------------------------------------------
+     Motion
+  --------------------------------------------------------------- */
+  --consultry-ease-default:   cubic-bezier(0.4, 0, 0.2, 1);
+  --consultry-ease-dramatic:  cubic-bezier(0.16, 1, 0.3, 1);
+  --consultry-ease-rise:      cubic-bezier(0.22, 1, 0.36, 1);
+
+  --consultry-duration-fast:        200ms;
+  --consultry-duration-normal:      400ms;
+  --consultry-duration-slow:        600ms;
+  --consultry-duration-cinematic:   800ms;
+
+  /* ---------------------------------------------------------------
+     Layout
+  --------------------------------------------------------------- */
+  --consultry-container-max: 1200px;
+  --consultry-container-wide: 1440px;
+
+  /* ---------------------------------------------------------------
+     Type — Inter for everything, JetBrains Mono for eyebrows/labels.
+  --------------------------------------------------------------- */
+  --font-inter: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Marketing type scale (the public surface) */
+  --mktg-display-hero-size: clamp(3rem, 6vw, 5rem);     /* 48–80px */
+  --mktg-display-hero-leading: 0.96;
+  --mktg-display-hero-track: -0.04em;
+  --mktg-display-hero-weight: 800;
+
+  --mktg-display-lg-size: clamp(2.25rem, 4vw, 3.45rem); /* 36–55px */
+  --mktg-display-lg-leading: 1.04;
+  --mktg-display-lg-track: -0.03em;
+  --mktg-display-lg-weight: 700;
+
+  --mktg-display-md-size: clamp(2rem, 4vw, 3.5rem);
+  --mktg-display-md-leading: 1.02;
+  --mktg-display-md-track: -0.03em;
+  --mktg-display-md-weight: 700;
+
+  --mktg-display-sm-size: clamp(1.4rem, 1.8vw, 2rem);
+  --mktg-display-sm-leading: 1.14;
+  --mktg-display-sm-track: -0.02em;
+  --mktg-display-sm-weight: 600;
+
+  --mktg-heading-lg-size: 24px;
+  --mktg-heading-md-size: 20px;
+  --mktg-heading-sm-size: 16px;
+
+  --mktg-body-lg-size: 18px;
+  --mktg-body-md-size: 16px;
+  --mktg-body-sm-size: 14px;
+  --mktg-label-size:   13px;
+}
+
+/* ================================================================
+   Semantic element styles
+   ================================================================ */
+
+html {
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  color: var(--consultry-text-primary);
+  background: var(--consultry-body-background);
+}
+
+::selection {
+  background: rgba(232, 145, 58, 0.32);
+  color: var(--consultry-text-primary);
+}
+
+/* Display hero — used once per page, full-bleed */
+.display-hero,
+h1.display {
+  font-size: clamp(2.7rem, 8vw, 6.2rem);
+  font-weight: 600;
+  letter-spacing: -0.058em;
+  line-height: 0.925;
+  text-wrap: balance;
+}
+
+/* Section headline */
+.display-section,
+h2 {
+  font-size: var(--mktg-display-lg-size);
+  font-weight: 700;
+  letter-spacing: var(--mktg-display-lg-track);
+  line-height: var(--mktg-display-lg-leading);
+  text-wrap: balance;
+}
+
+/* Sub-section */
+.display-sub,
+h3 {
+  font-size: var(--mktg-display-sm-size);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.14;
+}
+
+/* Eyebrow — mono uppercase warm-amber. The most distinctive
+   typographic motif on the marketing site. */
+.eyebrow,
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--consultry-brand-warm);
+}
+
+.body-lg {
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--consultry-text-muted);
+}
+.body-md {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--consultry-text-muted);
+}
+.body-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--consultry-text-muted);
+  letter-spacing: 0.01em;
+}
+
+/* Mono helper for step numerals like [01], /02 */
+.mono { font-family: var(--font-mono); }
+
+/* Gradient text — the headline accent. */
+.gradient-text {
+  background: var(--consultry-brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-text-hero {
+  background: var(--consultry-brand-gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  line-height: 1.08;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.08em;
+}
+
+.text-balance { text-wrap: balance; }
+.text-pretty  { text-wrap: pretty; }

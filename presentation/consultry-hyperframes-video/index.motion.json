@@ -1,0 +1,15 @@
+{
+  "duration": 25,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#s1-title", "bySec": 0.6 },
+    { "kind": "appearsBy", "selector": "#s2-title", "bySec": 4.9 },
+    { "kind": "appearsBy", "selector": "#s3-title", "bySec": 9.3 },
+    { "kind": "appearsBy", "selector": "#s4-title", "bySec": 13.9 },
+    { "kind": "appearsBy", "selector": "#s5-title", "bySec": 20.1 },
+    { "kind": "staysInFrame", "selector": "#s1-title" },
+    { "kind": "staysInFrame", "selector": "#s2-title" },
+    { "kind": "staysInFrame", "selector": "#s3-title" },
+    { "kind": "staysInFrame", "selector": "#s4-title" },
+    { "kind": "staysInFrame", "selector": "#s5-title" }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "status": "refined review package",
+  "updated": "2026-06-28",
+  "requiredFiles": [
+    "presentation/README.md",
+    "presentation/CONSULTRY_HYPERFRAMES_DELIVERY.md",
+    "presentation/consultry-hyperframes-review.html",
+    "presentation/consultry-hyperframes-review-screenshot.png",
+    "presentation/package.json",
+    "presentation/serve-hyperframes-delivery.mjs",
+    "presentation/verify-hyperframes-delivery.mjs"
+  ],
+  "review": {
+    "page": "presentation/consultry-hyperframes-review.html",
+    "brandAsset": "presentation/consultry-hyperframes-video/assets/consultry-v3-dark.svg",
+    "screenshot": "presentation/consultry-hyperframes-review-screenshot.png",
+    "screenshotWidth": 1440,
+    "screenshotHeight": 1800
+  },
+  "brandAssets": [
+    "presentation/consultry-hyperframes-video/assets/consultry-v3.svg",
+    "presentation/consultry-hyperframes-video/assets/consultry-v3-dark.svg",
+    "presentation/consultry-hyperframes-second-brain-video/assets/consultry-v3.svg",
+    "presentation/consultry-hyperframes-second-brain-video/assets/consultry-v3-dark.svg"
+  ],
+  "expected": {
+    "durationTolerance": 0.08,
+    "video": {
+      "width": 1920,
+      "height": 1080,
+      "codec": "h264",
+      "fps": "24/1",
+      "audioCodec": "aac"
+    },
+    "posterFrame": {
+      "width": 1920,
+      "height": 1080
+    },
+    "contactSheet": {
+      "width": 2520,
+      "height": 236
+    },
+    "voiceover": {
+      "codec": "mp3"
+    }
+  },
+  "videos": [
+    {
+      "id": "win-projects",
+      "name": "Win Projects",
+      "positioning": "Project acquisition, Ausschreibungen, Clay/Apollo-style selling signals, CRM context, consultant CVs, proof and offer planning.",
+      "projectDir": "presentation/consultry-hyperframes-video",
+      "mp4": "presentation/consultry-hyperframes-video/renders/consultry-hyperframes-google-voice.mp4",
+      "posterFrame": "presentation/consultry-hyperframes-video/renders/consultry-hyperframes-google-voice-poster.jpg",
+      "contactSheet": "presentation/consultry-hyperframes-video/renders/consultry-hyperframes-google-voice-contact-sheet.jpg",
+      "sourceHtml": "presentation/consultry-hyperframes-video/index.html",
+      "voiceover": "presentation/consultry-hyperframes-video/assets/voiceover-google-25s.mp3",
+      "script": "presentation/consultry-hyperframes-video/SCRIPT.md",
+      "speakerTimeline": "presentation/consultry-hyperframes-video/SPEAKER_SCRIPT_TIMELINE.md",
+      "storyboard": "presentation/consultry-hyperframes-video/STORYBOARD.md",
+      "duration": 25.024,
+      "voiceoverDuration": 24.973,
+      "renditions": [
+        {
+          "label": "720p",
+          "mp4": "presentation/consultry-hyperframes-video/renders/consultry-hyperframes-google-voice-720p.mp4",
+          "width": 1280,
+          "height": 720,
+          "codec": "h264",
+          "fps": "24/1",
+          "audioCodec": "aac",
+          "duration": 25.024
+        }
+      ]
+    },
+    {
+      "id": "second-brain",
+      "name": "Second Brain",
+      "positioning": "Scattered work to trusted corpus, Hermes Harness, graph/triplet memory, source-backed answers, redundant work detection and team alignment.",
+      "projectDir": "presentation/consultry-hyperframes-second-brain-video",
+      "mp4": "presentation/consultry-hyperframes-second-brain-video/renders/consultry-hyperframes-second-brain-google-voice.mp4",
+      "posterFrame": "presentation/consultry-hyperframes-second-brain-video/renders/consultry-hyperframes-second-brain-google-voice-poster.jpg",
+      "contactSheet": "presentation/consultry-hyperframes-second-brain-video/renders/consultry-hyperframes-second-brain-google-voice-contact-sheet.jpg",
+      "sourceHtml": "presentation/consultry-hyperframes-second-brain-video/index.html",
+      "voiceover": "presentation/consultry-hyperframes-second-brain-video/assets/voiceover-second-brain-google.mp3",
+      "script": "presentation/consultry-hyperframes-second-brain-video/SCRIPT.md",
+      "speakerTimeline": "presentation/consultry-hyperframes-second-brain-video/SPEAKER_SCRIPT_TIMELINE.md",
+      "storyboard": "presentation/consultry-hyperframes-second-brain-video/STORYBOARD.md",
+      "duration": 22.037,
+      "voiceoverDuration": 22.056
+    }
+  ],
+  "nonFinalDraftArtifacts": [
+    "presentation/consultry-hyperframes-video/renders/consultry-hyperframes-preproduct.mp4",
+    "presentation/consultry-hyperframes-video/renders/consultry-hyperframes-preproduct-contact-sheet.jpg",
+    "presentation/consultry-hyperframes-video/assets/voiceover-google.mp3",
+    "presentation/consultry-hyperframes-video/assets/voiceover.aiff",
+    "presentation/exports/consultry-mvp-ad-clipframes/"
+  ]
+}
