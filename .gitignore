@@ -5,6 +5,7 @@
 **/_BKP/
 **/renders/
 **/.playwright-cli**
+**/.playwright-mcp**
 **/marketing-site/_debug_output**
 **/.archive_old_docs**
 /output/
@@ -29,8 +30,9 @@ presentation/**/audio-backups/
 presentation/**/*-frames/
 presentation/**/frames-*/
 presentation/**/*.bak*
-presentation/**/*.log
 presentation/**/.thumbnail
+presentation/**/uploads/
+presentation/**/*.log
 
 # Presentation local media drops
 presentation/*.mov

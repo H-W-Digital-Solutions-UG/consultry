@@ -1,7 +1,7 @@
 # Consultry — Project Context & Memory (START HERE)
 
 **Zweck:** Persistenter Kontext-Anker für **jede künftige Session** dieses Projekts. Wer hier kalt einsteigt, liest **zuerst diese Datei**, dann die zwei Haupt-Docs. Diese Datei wird am Ende jeder substanziellen Session aktualisiert (locked decisions, offene Punkte, letzter Stand).
-**Letzter Stand:** 28.06.2026 (Misalignment-Review umgesetzt: Alignment Control Plane, Architecture ADR, Measurement Spec; Aurora/Hermes-Boundary jetzt fuer MVP-Planung accepted)
+**Letzter Stand:** 10.07.2026 (Product-Vision-Refinement-Modus und Video-Narrativ festgehalten; MVP-Re-Baselining folgt erst nach Abschluss der Vision)
 **Pflege-Regel:** Bei neuen verbindlichen Entscheidungen → hier eintragen **und** in die jeweilige Quell-Datei. Konflikt = explizite Revision, nie stilles Abweichen.
 
 ---
@@ -79,6 +79,18 @@
 - Human-Backstop: benannter Mensch verantwortet, nicht die AI (GI-1b).
 - Personenbezug nur aggregiert; personenscharf erst H2 + WC-Mode-Gate (GI-12/13/16).
 - Daten-Compliance: Enterprise-API + AVV/DPA + No-Training + EU/SCCs.
+
+## 2a. Arbeitsmodus Product-Vision Refinement (10.07.2026)
+
+- **Vision zuerst, Scope danach:** Solange die Product Vision noch verfeinert wird, dürfen bestehende H1/H2/H3-Grenzen nicht als Filter verwendet werden, um Vision-Capabilities aus Journey, Video oder Produktbild zu entfernen. Das finale Scope-Re-Baselining erfolgt erst nach Abschluss der Vision.
+- **Build-Scope bleibt separat:** Die bestehenden MVP-Dateien bleiben bis zu dieser späteren Re-Baselining-Entscheidung der aktuelle Build-Stand. Vision-Erweiterungen werden nicht stillschweigend zum MVP erklärt.
+- **Video-Hauptnarrativ:** fiktiver Bestandskunde, **ERP-Migration & Prozessmanagement**. Der Einstieg kombiniert ein quellengebundenes Vertrags-/Optionssignal mit einem Bedarf, den ein interner Consultant aus laufender Projektarbeit über seinen Consultry Workspace meldet; LinkedIn Mail und verbundene Projektdaten verstärken das Signal.
+- **In der Vision behalten:** personenscharfes Team-Matching, People Scores und CV-Generierung; tiefe Verbindung von Wissen, Projektdaten und weiteren Arbeitsquellen ist ein **Core Use Case**.
+- **Default-Sicht:** personenscharfe Aktivität erscheint nicht in der Standard-ProjectStatus-Sicht, kann aber in bewusst geöffneten Detail-/Drill-down-Sichten existieren.
+- **Journey Rail ist erweiterbar:** keine feste Fünf-Schritt-Grenze. Empfohlen sind Makro-Kapitel `Gewinnen → Arbeiten → Wirkung` und eine expandierte Journey `Signal → Opportunity → Kontext → Team → Konzept → Freigabe → Projekt → Wirkung`.
+- **Narrative Entscheidungen:** Outreach-E-Mail aus dem Hauptflow entfernen; `Deal closed` durch menschlich verantwortete interne Freigabe/Exportbereitschaft ersetzen; `ReviewIssues` nicht als primären Payoff-Baustein verwenden; Business-Case-Szenen vorerst nicht überarbeiten; aktuelle Länge erhalten; Voiceover und Musik bleiben gemutet; bestehende `.dc.html`-Komposition bleibt das Produktionsformat.
+- **Zeitbezug:** Das spätere aktive Projekt ist dasselbe Projekt, das zuvor gewonnen wurde, aber die Story muss den zeitlichen Übergang sichtbar machen und darf keinen sofortigen autonomen Opportunity→Project-Sprung suggerieren.
+- **Arbeitsartefakte:** [Journey Graph](../Consultry-Hypermock/pitch-video-layout-review/project/graph.md), [Video Redline Index](../Consultry-Hypermock/pitch-video-layout-review/project/video-redline-index.md), [QA/Decision Register](../Consultry-Hypermock/pitch-video-layout-review/project/video-redline-qa.md).
 
 ---
 
