@@ -33,7 +33,19 @@ presentation/**/*.bak*
 presentation/**/.thumbnail
 presentation/**/uploads/
 presentation/**/*.log
-
+Consultry-Hypermock/**/_BKP/
+Consultry-Hypermock/**/renders/
+Consultry-Hypermock/**/snapshots/
+Consultry-Hypermock/**/screenshots/
+Consultry-Hypermock/**/scraps/
+Consultry-Hypermock/**/exports/
+Consultry-Hypermock/**/audio-backups/
+Consultry-Hypermock/**/*-frames/
+Consultry-Hypermock/**/frames-*/
+Consultry-Hypermock/**/*.bak*
+Consultry-Hypermock/**/.thumbnail
+Consultry-Hypermock/**/uploads/
+Consultry-Hypermock/**/*.log
 # Presentation local media drops
 presentation/*.mov
 presentation/hf_*.mp4

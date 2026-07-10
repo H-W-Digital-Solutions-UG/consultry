@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=swap">
+  <link rel="stylesheet" href="_ds/consultry-design-system-6d34b04d-38cf-4215-b051-0d6e987f0789/colors_and_type.css">
+  <style>
+    html, body { margin: 0; height: 100%; background: #171311; overflow: hidden; }
+  </style>
+</helmet>
+<x-import component-from-global-scope="PitchVideo" from="./animations.jsx ./pitch-scene.jsx" vo-volume="{{ voVolume }}" hint-size="100%,100%"></x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;voVolume&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ton&quot;},&quot;musicVolume&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Ton&quot;}}"></script>
+</body>
+</html>

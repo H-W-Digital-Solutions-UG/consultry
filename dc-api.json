@@ -1,0 +1,17 @@
+{
+  "keys": [
+    "displayName"
+  ],
+  "protoKeys": [
+    "apply",
+    "arguments",
+    "bind",
+    "call",
+    "caller",
+    "constructor",
+    "length",
+    "name",
+    "toString"
+  ],
+  "values": {}
+}
