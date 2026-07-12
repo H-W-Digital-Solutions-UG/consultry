@@ -4,7 +4,7 @@
 **Journey model:** [`graph.md`](./graph.md)  
 **Scene index:** [`video-redline-index.md`](./video-redline-index.md)  
 **Status:** open unless explicitly marked resolved  
-**Updated:** 2026-07-10
+**Updated:** 2026-07-12
 
 ## How to use this list
 
@@ -12,11 +12,31 @@ Resolve questions in priority order. Each item contains a recommended answer so 
 
 ## A. Narrative decisions — blocking
 
+### QA-00 — What is the Product Vision scope versus the demo scope?
+
+**Resolution:** The Product Vision is the complete **AI-native Consulting Operating System** across clients/growth, consultants/teams, offers/commercials, projects/delivery, knowledge/methods, finance/impact and the shared governance/integration layers. The demo is one vertical proof path through that OS and must not be worded as the product boundary. `Opportunity-to-Concept` is a starting wedge, not the Whole Product.
+
+**Demo posture:** **Context-centred, multi-role and entry-point-flexible.** Project/Knowledge is infused by consultants and synchronized with Offer/Service/Product Portfolio, CRM/customer data, Contracts, People/Capacity and Finance/Operations. Sales, Team Leads/Team Managers, Staffing, Backoffice, Finance, consultants and management all contribute to and act from the same context.
+
+**Execution posture:** Second Brain/Context Graph → Consultry Engine → job-scoped HarnessPack → virtualized or local Harness → approved Tools/RAG/MCP → Result Verification/Human Approval/Audit. An adapted Hermes fork may be the initial Harness implementation.
+
+**Backoffice posture:** Vision-Core with high automation potential for travel/expenses, business meals, billing/invoice preparation, licenses/subscriptions and vendor/cost workflows; binding actions remain explicitly gated.
+
+**Team Lead posture:** Vision-Core control room for team/staffing/structure plus Delivery and invoice readiness. Intelligent dashboards may detect gaps and propose sourced actions, but person-level recommendations and mutations remain WC-/role-/policy-/approval-gated.
+
+**Personal-development posture:** Vision-Core Capability Planning across skill evidence, weighted demand, contracted work, active pipeline, portfolio and market trends. Recommendations may cover individual learning and role-based hiring/partner needs, but never hidden performance ranking or automatic employment decisions.
+
+**Bestandskunden/Consultant posture:** Consultants are distributed human sensing nodes in active customer projects. Intentional, source-bound observations and contracted existing-client work are primary demand evidence. LinkedIn/XING/job-market/certification sources are secondary reinforcement, especially for existing customers and only later for potential customers; no unbounded scraping or private-profile crawling.
+
+**Canonical demo example:** Tobias learns in the running ERP migration project that the customer wants to accelerate the timeline, records the observation in Consultry, and the source-bound signal is routed to the responsible Hansa account owner for human validation before any customer, staffing or commercial action.
+
+**Status:** RESOLVED 2026-07-11 — Product Vision and demo scope expanded.
+
 ### QA-01 — What truth level should the film claim?
 
 **Question:** Is this an H1/current-MVP film, a full product-vision film, or a mixed film?
 
-**Resolution:** This is a **product-vision refinement film**. Existing phase boundaries do not remove capabilities from the narrative. Final H1/H2/H3 scope will be re-baselined only after the Product Vision is complete.
+**Resolution:** This is a **full Consulting-OS Product Vision film** told through one ERP/process proof path. Existing phase boundaries do not remove capabilities from the narrative; H1/H2/H3 describe rollout depth. Final build scope will be re-baselined separately after Product Vision refinement.
 
 **Why it matters:** named staffing, CVs, outbound, contract, project intelligence and billing have different horizons. Without a truth-level lock, copy polishing cannot make the story accurate.
 
@@ -47,10 +67,10 @@ Resolve questions in priority order. Each item contains a recommended answer so 
 
 **Question:** How should the rail evolve from `Signal → Team → Angebot → Projekt → Faktura`?
 
-**Resolution:** The rail may be extended and may change abstraction level. Recommended macro mode: `Gewinnen → Arbeiten → Wirkung`. Recommended expanded mode: `Signal → Opportunity → Kontext → Team → Konzept → Freigabe → Projekt → Wirkung`.
+**Resolution:** The rail may be extended, circular and change abstraction level. Current Product-Vision cycle: `Capture ↔ Understand ↔ Decide ↔ Coordinate ↔ Execute ↔ Reuse ↔ Learn & Steer`. Expanded demo path: `Consulting Context → Observation → Signal & EvidencePack → Decision → ActionCase → Team/Commercials/Delivery → Approval → Active Project → ProblemPattern/SymbiosisLink → ReusableAsset/ReuseApplication → Value/Learning → Consulting Context`.
 
 **Owner:** product/design  
-**Status:** REVISED 2026-07-10 — extensibility approved; macro/expanded rail documented.
+**Status:** REVISED 2026-07-12 — role-neutral Context Graph and circular OS cycle replace both acquisition-first and Consultant-first prescriptions.
 
 ### QA-05 — Is the Work scene the same account?
 
@@ -87,7 +107,7 @@ Resolve questions in priority order. Each item contains a recommended answer so 
 
 **Question:** Should the outreach-email drafting and “Versand geplant” state remain?
 
-**Recommended answer:** **No in H1.** The chosen story is existing-client-led and the canonical proof is internal concept/proposal production. Replace with EvidencePack/NeedMap/draft editing. If retained as H2, use `Entwurf · nicht versendet` plus explicit human approval.
+**Recommended answer:** **No in the primary story.** The chosen story is existing-client-led. Replace outreach drafting with EvidencePack review, human validation and a recommended next step. ConceptPlan is only an optional elaboration route.
 
 **Status:** RESOLVED 2026-07-10 — remove outreach email/channel flow from the primary narrative.
 
@@ -95,7 +115,7 @@ Resolve questions in priority order. Each item contains a recommended answer so 
 
 **Question:** Can `Leistung · Vertrag · Konditionen` remain in the payoff?
 
-**Resolution:** Replace the primary payoff cards with `EvidencePack · Team/TeamShape · CVs · ConceptPlan · Grounded Draft`. `ReviewIssues` may exist as contextual review metadata, but not as a primary payoff card. This is a narrative choice, not a phase-boundary decision.
+**Resolution:** Replace the primary payoff cards with `EvidencePack · human validation · recommended next step · selected Team/TeamShape · CVs`. `ConceptPlan` and `Grounded Draft` remain optional elaboration outputs. `ReviewIssues` may exist as contextual review metadata, but not as a primary payoff card.
 
 **Status:** RESOLVED 2026-07-10 — core replacement accepted; `ReviewIssues` demoted from the payoff.
 
@@ -111,7 +131,7 @@ Resolve questions in priority order. Each item contains a recommended answer so 
 
 **Question:** Are Jira/ERP/DMS/Confluence conflict detection and automatically maintained project knowledge intended as current H1 functionality?
 
-**Resolution:** Deep connection of Knowledge, Project Data and related work sources is a **core use case** in the Product Vision. Keep deep references and cross-source intelligence in scope; do not badge them as an H2 aside during vision refinement.
+**Resolution:** Deep connection of Knowledge, Project Data and related work sources is a **core use case** in the Product Vision. It includes explained cross-project Problem Patterns, Symbiosis Links, human-reviewed Reuse Candidates, governed Assetization, project Reuse Applications and Value Learning—not only search/retrieval. Do not badge this as an H2 aside during vision refinement.
 
 **Evidence:** [Project Intelligence candidate](../../../product-definition/Consultry-Project-Intelligence-Symbiosis-Graph-v1.0.md), [Product Vision horizons](../../../product-definition/Consultry-Product-Vision-v1.0.md).
 
@@ -191,19 +211,19 @@ Resolve questions in priority order. Each item contains a recommended answer so 
 
 **Question:** Are the current value, pipeline and Consultry-cost curves still correct under the current €50 pilot / €69+ post-PMF pricing definition?
 
-**Resolution:** Skip this question. Do not rework the finance/business-case scene in the current pass.
+**Resolution:** Do not change visible figures in the documentation-first pass. The target economic model is now defined as `ReuseValueCase`: baseline versus actual internal effort, delivery time, quality, revenue, cost and margin with explicit Contract/Pricing model. T&M records actual worked/billed effort; fixed-price/outcome/accelerated-delivery value is separate.
 
 **Evidence:** [MVP PRD pricing](../../../product-definition/Consultry-MVP-PRD-v1.0.md), [Measurement Spec](../../../product-definition/Consultry-MVP-Measurement-Spec-v1.0.md).
 
-**Status:** SKIPPED 2026-07-10 — business-case rework explicitly excluded.
+**Status:** REVISED 2026-07-12 — target data contract documented; exact fictional assumptions and visible scene remain pending.
 
 ### QA-21 — ROI versus proof metrics
 
 **Question:** Should the business-case scene show only financial ROI?
 
-**Resolution:** Ignore business-scene reworks in the current pass.
+**Resolution:** The future business scene should not show only financial ROI. It should trace Customer/Project/Delivery/Quality/Knowledge/Capability and economic effects back to the exact `ReusableAsset`/`ReuseApplication` and assumptions. Visible rework remains paused.
 
-**Status:** DEFERRED 2026-07-10 — preserve current business scene.
+**Status:** REVISED 2026-07-12 — documentation target accepted; visible implementation paused.
 
 ### QA-22 — Market-source footnotes
 
@@ -267,7 +287,7 @@ Resolve questions in priority order. Each item contains a recommended answer so 
 
 **Observation:** the longest interaction is outreach/CV generation, while the canonical H1 proof is a source-grounded concept/proposal section.
 
-**Decision proposed:** make EvidencePack, NeedMap, ConceptPlan, GroundedDraftSection and ReviewIssues the dominant interaction sequence.
+**Superseded proposal:** the dominant interaction sequence is now EvidencePack → human validation → recommended next step. ConceptPlan/GroundedDraftSection are optional and ReviewIssues stays supporting metadata.
 
 **Status:** DEFERRED/NON-GOVERNING 2026-07-10 — owner prioritised vision completeness over this scope-oriented grill. Outreach is still removed via QA-08; CV generation remains via QA-07.
 
@@ -319,12 +339,67 @@ Resolve questions in priority order. Each item contains a recommended answer so 
 
 **Status:** DEFERRED AS A GRILL 2026-07-10; the concrete decisions are resolved via QA-03/14/15/19.
 
-## G. Resolution log
+## G. Project Symbiosis / Assetization decisions
+
+### QA-28 — Is similarity detection enough?
+
+**Question:** Is the capability complete when Consultry shows that two projects solve similar problems?
+
+**Resolution:** No. Detection must continue through `ProblemPattern → SymbiosisLink → human-reviewed ReuseCandidate → governed ReusableAsset → ReuseApplication`; repeated proven applications may create a `ServiceBundleCandidate` and `ReuseValueCase`.
+
+**Status:** RESOLVED 2026-07-12 — full compounding loop is Product-Vision-Core.
+
+### QA-29 — May raw customer artefacts cross accounts?
+
+**Question:** Can a template, mapping, ticket, decision or document from Customer X be shown or used directly in Customer Y?
+
+**Resolution:** No by default. Cross-account reuse requires a new abstracted/de-identified `ReusableAsset` with Source Lineage, `RightsState`, `ReuseScope`, Contract/IP/Confidentiality/Usage-Rights review, owner, version, Approval and Audit. Account-/Project-confidential raw content remains isolated.
+
+**Status:** RESOLVED 2026-07-12 — customer boundary and asset distinction are mandatory.
+
+### QA-30 — Is Symbiosis a new primary navigation module?
+
+**Question:** Should the demo/app add a permanent `Symbiosis` module to the rail?
+
+**Resolution:** No. Symbiosis is a capability and object flow projected into `My Work`, Project 360, Practice/Team Lead Control Room, Knowledge/Assetization and Offer/Value workspaces. The narrative rail may include `Reuse`, but workflow frames are not app navigation modules.
+
+**Status:** RESOLVED 2026-07-12 — object/workspace projection, not module maze.
+
+### QA-31 — How is the economic effect represented?
+
+**Question:** May saved project hours simply be treated as additional billable hours or margin?
+
+**Resolution:** No. T&M uses actual worked/billed effort. Fixed-price, outcome-based and accelerated-delivery offerings may capture reuse value only with an explicit Contract/Pricing basis. `ReuseValueCase` must show baseline, actuals, assumptions, delivery/quality outcome, revenue, cost and margin separately.
+
+**Status:** RESOLVED 2026-07-12 — contract-aware economics; no fictitious T&M billing.
+
+### QA-32 — What exact fictional demonstration is canonical?
+
+**Question:** Which project pair and asset should the presentation use?
+
+**Recommended working example:** Hansa `ERP-Migration · Welle 1` plus a second fictional, approved SAP-S/4HANA migration context share a data-mapping/cutover/readiness pattern. Candidate asset: `S/4HANA Migration Readiness & Cutover Blueprint` including Blueprint, Quality Gate and Template projections.
+
+**Status:** OPEN — exact second account/project label, source artefacts, overlap/difference copy and illustrative ValueCase assumptions require approval before visible implementation.
+
+### QA-33 — May visible HyperFrames work start now?
+
+**Resolution:** No. Documentation is being updated first. Do not modify visible HyperFrames scenes or run HyperFrames validation until the user resumes that step.
+
+**Status:** RESOLVED 2026-07-12 — documentation-first hold active.
+
+## H. Resolution log
 
 Use this table when decisions are made. Propagate locked decisions to the file that owns them; do not leave them only here.
 
 | Date | ID | Resolution | Authority updated | Implemented in video? |
 |---|---|---|---|---|
+| 2026-07-12 | QA-28–33 | Project Symbiosis continues through governed Assetization, Reuse, Service Productization and contract-aware Value Learning; no raw Cross-Customer reuse; visible HyperFrames work is paused. | Product Vision v2.7 + Project Intelligence v1.1 + UX Operating Model + Alignment Control Plane v1.1 + presentation/redline docs | Not implemented; documentation-first hold active |
+| 2026-07-12 | QA-Existing-Client-Sensing | Bestandskunden/Consultant project sensing is primary; external LinkedIn/XING/job-market/certification evidence is secondary and governed. | Product Vision v2.7 + GTM Decisions + Harness Refinement v1.1 + Context anchor + redline docs | Current Hansa demo aligns; capability-market visualization pending |
+| 2026-07-12 | QA-People-Development | Personal Development/Capability Planning connects skill supply with opportunity, contract, pipeline, portfolio and market demand; recommends learning, Academy and hiring/partner profiles. | Product Vision v2.5 + Harness Refinement v1.1 + Context anchor + redline docs | Capability-planning visualization pending |
+| 2026-07-12 | QA-Team-Lead | Team Lead/Team Management Control Room added for staffing/structure dashboards, Delivery/Faktura risk detection and gap-resolution proposals. | Product Vision v2.4 + Harness Refinement v1.1 + Context anchor + redline docs | Team Lead dashboard visualization pending |
+| 2026-07-12 | QA-00/Architecture | Context Graph feeds Consultry Engine; virtualized/local Harnesses use approved Tools/RAG/MCP. Backoffice Automation elevated to Vision-Core. | Product Vision v2.3 + Harness Refinement v1.1 + Context anchor + redline docs | Architecture/backoffice visualization pending |
+| 2026-07-12 | QA-00/04 | Shared Consulting Context Graph is the centre; roles and entry points are plural. Portfolio, CRM, contracts, people/capacity and finance/operations inform Project/Knowledge. | Product Vision v2.2 + Context anchor + redline docs | Scope wording updated; cross-role visualization pending |
+| 2026-07-11 | QA-00/01/04 | Whole Product = Consulting OS; initial Consultant-first vertical proof proposal; horizons/wedge/demo are not product boundaries. | Product Vision v2.1 + Alignment Control Plane + Context anchor + redline docs | Superseded by 12.07 role-neutral Context Graph decision |
 | 2026-07-10 | QA-01 | Product Vision first; existing phase boundaries non-governing for this redline. | Context anchor + redline docs | Source implementation pending |
 | 2026-07-10 | QA-02 | Main video narrative changed to `ERP-Migration & Prozessmanagement`. | Video redline docs (`graph.md`, `video-redline-index.md`, this QA file) | Documentation complete; source implementation pending |
 | 2026-07-10 | QA-03–05 | Fictional Hansa account; extensible macro/expanded rail; active Work scene is the same previously won project after a time jump. | Context anchor + redline docs | Source implementation pending |
@@ -333,7 +408,7 @@ Use this table when decisions are made. Propagate locked decisions to the file t
 | 2026-07-10 | QA-11–12 | Deep Project/Knowledge Intelligence is core; no person activity in default ProjectStatus view. | Context anchor + redline docs | Source implementation pending |
 | 2026-07-10 | QA-13–14 | Keep LinkedIn Mail; primary signal combines contract trigger with consultant-logged need from project work. | Context anchor + redline docs | Source implementation pending |
 | 2026-07-10 | QA-15–19 | Qualitative/demo metrics; O2C first wave; vendor-neutral ERP; trustworthy external sources + internal methods; fictional reference. | Redline docs | Source implementation pending |
-| 2026-07-10 | QA-20–22 | Skip/defer all business-scene content rework. | Redline docs + handover | Preserved |
+| 2026-07-12 | QA-20–22 | Generic ROI target superseded by traceable `ReuseValueCase`; exact figures and visible implementation remain deferred. | Project Intelligence v1.1 + redline docs + handover | Not implemented; documentation target only |
 | 2026-07-10 | QA-23–25 | Preserve current length; mute VO/music; keep `.dc.html` project and port-4173 preview. | Redline docs + handover | Existing source already muted/current format |
 | 2026-07-10 | QA-26–27 | Refresh handover; derive verification markers dynamically instead of using a permanent timestamp set. | `HANDOVER.md` + redline docs | Handover refreshed; dynamic checks apply during implementation |
 | 2026-07-10 | GRILL-06 | Keep deep references and cross-source Project/Knowledge Intelligence in scope as a core use case. | Context anchor + redline docs | Source implementation pending |

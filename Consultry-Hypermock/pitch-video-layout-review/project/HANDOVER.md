@@ -1,14 +1,18 @@
 # Consultry Pitch Video — Session Handover
 
-**File under edit:** `pitch-scene.jsx` (the React scene graph). It is mounted by `Consultry Pitch Video.dc.html` via `<x-import>` and rendered through `animations.jsx` (`Stage` + `useTime`).
+**File under edit:** `pitch-scene.jsx` (the React scene graph). It is mounted by `Latest Consultry Video Teaser.dc.html` via `<x-import>` and rendered through `animations.jsx` (`Stage` + `useTime`).
 **Format:** 1920×1080, **118.16s current calculated timeline**. `VO_MUTED = true` and `MUSIC_MUTED = true`; preserve the current length for now. Assets remain: `voiceover.wav` (71.68s), `music.wav`, background frame sequences under `uploads/gen-*-bg-frames/`, SVGs under `assets/`.
 **Design system:** Consultry DS bound at `_ds/consultry-design-system-6d34b04d-38cf-4215-b051-0d6e987f0789/`. NOTE: this animation predates the DS bundle and uses raw hex color constants (WARM `#f0a85e`, TEXT `#ede8e2`, BG `#171311`, etc.). The oxlint "use var(--ds-color-*)" warnings are **expected/legacy** for this file — do not churn the whole palette.
 
-## Product-Vision narrative decision — 10.07.2026
+## Product-Vision and demo-scope decision — updated 11.07.2026
 
-**Main narrative:** fictional existing client `Hansa Maschinenbau AG · ERP-Migration & Prozessmanagement`.
+**Whole Product:** Consultry is the **AI-native Consulting Operating System** across clients/growth, consultants/teams, offers/commercials, projects/delivery, knowledge/methods, finance/impact and the shared governance/integration layers.
 
-This video is currently a **Product Vision refinement surface**. Existing H1/H2/H3 boundaries are tracked but do not remove capabilities from the narrative; final scope is re-baselined after Product Vision completion.
+**Operating architecture:** sources feed the Consultry Second Brain / Consulting Context Graph; the Consultry Engine compiles bounded Context/Memory/Tool/Policy packs; virtualized or local Harnesses execute approved Tools/RAG/MCP/Connector calls; Result Verification, Human Approval and Audit gate persistence or external effects. An adapted Hermes fork is a possible initial Harness implementation, not the product boundary.
+
+**Demo proof path:** fictional existing client `Hansa Maschinenbau AG · ERP-Migration & Prozessmanagement`. The case is one vertical proof through the OS, not the product scope.
+
+This video is currently a **Product Vision refinement surface**. H1/H2/H3 describe rollout depth; `Opportunity-to-Concept`, Concept Suite and the executed ERP journey are starting/proof surfaces, not Whole Product boundaries. MVP build scope remains separately governed and is not silently expanded by the film.
 
 Authoritative redline artefacts:
 
@@ -19,14 +23,18 @@ Authoritative redline artefacts:
 
 Resolved narrative constraints:
 
-- Signal intake combines the contract option trigger, a consultant-logged need from active project work, LinkedIn Mail and connected project data.
+- Target posture is **context-centred and role-neutral**: Project/Knowledge is enriched by consultants and synchronized with Offer/Service/Product Portfolio, CRM/customer data, Contracts, People/Capacity and Finance/Operations. Sales, Team Leads/Team Managers, Staffing, Backoffice, Finance, consultants and management act from the same context; no mandatory first actor or scene is prescribed.
+- Backoffice/Finance is Vision-Core with high automation potential: travel and expense receipts, business meals, invoice/billing preparation, licenses/subscriptions, vendor/renewal and cost reconciliation. Binding external or accounting actions remain policy-, approval- and audit-gated.
+- Team Lead / Team Management is a Vision-Core control room: team, staffing and structure plus revenue/forecast/margin/billed-unbilled overview; intelligent Delivery/Capacity/Faktura dashboards; explainable detection of missing times/receipts, SOW/rate mismatches, unbilled work, scope creep and blocked approvals; solution proposals remain role-, WC-, policy- and approval-gated.
+- Personal Development / Capability Planning is Vision-Core: evidence-backed consultant skill profiles are matched against weighted signals/opportunities, contracted work, current order/project pipeline, service/product trends and source-bound market indicators. Outputs include training/certification/mentoring/rotation suggestions, Academy plans, role-based hiring/partner profiles and build/buy/partner scenarios; no hidden performance ranking or automated employment decision.
+- Demand evidence is explicitly Bestandskunden-first: contracted existing-client work and consultant project observations → existing-client CRM/contracts/signals → internal pipeline/portfolio → approved external skill/job-market sources such as LinkedIn, XING, jobboards, customer career pages and certification providers → later potential-client signals. The consultant is the human "Krake im Projekt beim Kunden": a distributed sensing node across delivery, process, stakeholder, contract, technology and capability context — never a monitored sales agent.
 - Keep named team matching, People Scores, availability/collisions and CV generation; reframe them for ERP/process roles.
 - Remove the outreach-email/channel workflow from the primary narrative.
-- Primary payoff: EvidencePack, named team/People Scores, CVs, ConceptPlan and GroundedDraftSection. `ReviewIssues` is secondary metadata, not a payoff card.
+- Primary payoff: EvidencePack, human validation, a recommended next step and the selected team/People Scores/CVs. `ConceptPlan` and `GroundedDraftSection` are optional elaboration outputs; `ReviewIssues` is secondary metadata.
 - Replace `Deal closed` with human-owned internal approval/export readiness.
 - The later active project is the same project previously won; show an explicit time jump (`Später · im gewonnenen Projekt`).
 - Deep Knowledge/Project Data connection is a core use case. Person-specific activity is absent from the default ProjectStatus view but may exist in drill-down.
-- Rail is extensible. Recommended macro mode: `Gewinnen → Arbeiten → Wirkung`; expanded mode: `Signal → Opportunity → Kontext → Team → Konzept → Freigabe → Projekt → Wirkung`.
+- Rail is extensible and conceptually circular: `Kontext ↔ Erkennen ↔ Entscheiden ↔ Orchestrieren ↔ Ausführen ↔ Lernen & Steuern`. The detailed ERP proof may enter at any credible operational event and expand into Signal, Opportunity/EvidencePack, Team/Commercials, Approval, Delivery, Knowledge, Finance and Impact.
 - Do not rework business-case scene content in this pass.
 - Keep the current `.dc.html`/React composition and local preview on port 4173.
 
@@ -79,6 +87,30 @@ Scene windows overlap intentionally for transitions. Never copy this list into a
 
 ---
 
+## IMPLEMENTED — Product-Vision redline (11.07.2026)
+
+- Added `ERP_CASE` as the shared fictional narrative model for `Hansa Maschinenbau AG · ERP-Migration & Prozessmanagement`.
+- Product Vision v2.5 and the demo redline now define the Whole Product as a role-spanning Consulting OS centred on the shared Consulting Context Graph, with Engine/Harness runtime, Backoffice Automation, Team Lead Control Room and Capability Planning as Vision-Core. No Consultant-first scene reorder is required; the next narrative pass should make cross-role context exchange visible.
+- Opening now names the ERP/process-management use case directly.
+- Signal intake now uses contract option, consultant-logged active-project need, LinkedIn Mail and connected ERP/project data.
+- The Signal scene is now a single full-width work surface: the redundant right-hand `Signal-Auswertung`, its recent-opportunity list and the three top-right meta controls were removed; the source list expands into the released space.
+- The remaining blurred secondary signal rows are no longer foreign prospects; they now represent `Hansa · Werk Süd` and `Hansa · Service` follow-on contexts, keeping the visible demo Bestandskunden-led.
+- The primary consultant signal is now concrete: Tobias hears in the active ERP migration project that the customer wants to accelerate the timeline, logs it in Consultry, and the signal is routed to fictional Hansa account owner `Katrin M.` for validation before a customer conversation, staffing scenario or Change Request.
+- Named team, People Scores, availability/collisions and CV generation are retained and reframed for ERP, process and data roles.
+- The former outreach/editor flow now consolidates `EvidencePack`, exposes source provenance and requires human Opportunity validation; email recipient/channel/send semantics are removed.
+- The recommended next-step selector offers Kundengespräch, Team-Erweiterung, Angebot/Change Request and optional ConceptPlan elaboration. The current case selects Team-Erweiterung.
+- Team matching stays unavailable until validation, then becomes the selected recommended route. Canvas keeps `ConceptPlan` and `GroundedDraftSection` as optional nodes; `ReviewIssues` is a secondary leaf.
+- `Deal closed` is replaced with `Intern freigegeben` and export/project-readiness language.
+- Project dashboard now begins with `Später · im gewonnenen Projekt`, represents the same Hansa case and avoids person-specific activity in the default status view.
+- Meeting preparation now joins project context, ERP process data, knowledge and internally applied methodology.
+- Current source rail remains intro `Gewinnen → Arbeiten → Wirkung` plus app `Signal → Opportunity → EvidencePack → Validierung → Nächster Schritt → Team-Erweiterung → Freigabe → Projekt → Wirkung`. Target redline is the circular, context-centred OS model documented above; do not mistake the current rail for the Product Vision scope model.
+- New interaction surfaces use app-design-system geometry (dense 8–10px control/card radii, neutral surfaces, tonal borders and focus rings) with Consultry typography and warm/coral/blue semantic accents layered on top.
+- Runtime remains **118.16s**; VO and music remain muted; business-case content is unchanged.
+- App-shell typography now has a scoped **10pt / 13.33px minimum**. `appTyped()` clamps numeric sizes, and `APP_UI_MIN_TYPE_CSS` covers raw inline styles, dynamic sizes and SVG presentation attributes below the floor without changing larger text or non-app scenes.
+- Static verification: JSX transpiles without syntax diagnostics, all static asset paths resolve, and the live server returns HTTP 200 on port 4173. Automated in-app screenshot inspection is unavailable because the browser-control URL policy blocks localhost navigation.
+
+---
+
 ## DONE this session
 - **m0135 — Opportunity-Canvas-Szene (`CANVAS_SCENE_INSERT` 8.40, t≈60.3–68.7):** In Visit 2 klickt der Cursor nach den CV-Slots den **bestehenden Footer-Button "Im Canvas öffnen"** (Glow-State `cvp` @ local 11.90; Waypoint 1478/928) → Canvas-Szene `OpportunityCanvas` (eigene Komponente, useTime, band CANVAS_ABS_START→END): gepunktetes Grid-Panel (zoom-in, origin 79%/96%), Breadcrumb "Canvas · Opportunity · Bank AG" + Auto-Layout/82%-Chips, 6 Knoten-Karten (Signal-Cluster Score 94, Opportunity Brief warm, Team [drag cl 2.75–4.05 → +88/−40, Connectors folgen], Outreach ✓, CV-Entwürfe 3/3, Angebot & Vertrag dashed "nächster Schritt") + 5 SVG-Quadratic-Connectors (pathLength-Draw) → KI-Chip "Angebot aus dem Canvas erstellen" (cl 5.3) + Angebot-Glow (cl 6.3) → Handoff in die Offer-Bridge. Konsts: `CANVAS_ABS_START/END`, `LOGO_BRIDGE_START = CANVAS_ABS_START + CANVAS_SCENE_INSERT`, `WS2_ABS_END = CANVAS_ABS_START + 0.55`, POST_MATCH_SHIFT += CANVAS_SCENE_INSERT. Cursor-Branch bis `CANVAS_ABS_END − 0.85`. DUR ≈140.9s. ⚠ Preview lädt nach jsx-Edits nicht automatisch neu — vor Screenshots show_html aufrufen.
 - **m0123 — Dashboard-Detail:** Projekt-Phasen-Band → **Projekt-Timeline · Tagesbasis** (Gantt: 6 W × 5 Tage Ticks, Bars done/aktiv/geplant auf Tag-Indizes, pulsierender HEUTE-Marker bei d9.6, Label-Spalte mit JIRA/SNOW-Ticket-Keys, Header-Chips "Live / Jira · synchron / ServiceNow · verknüpft"); Meilensteine-Karte → **Board · Sprint W2** Kanban (Offen/In Arbeit/Done, 6 Karten mit Jira/CHG-Keys + Assignee-Dots). `ganttTasks`/`TODAY_D` ersetzen `phases`; Cursor-Waypoint 1.90 → (820,356). Keine Timing-Änderung (DUR ≈132.5s).
@@ -117,22 +149,17 @@ Scene windows overlap intentionally for transitions. Never copy this list into a
 
 ---
 
-## TODO — next session (in priority order)
+## FOLLOW-UP — next session
 
-### 0. Implement the approved Product-Vision redline
+### 0. Approved Product-Vision redline — implemented 11.07.2026
 
-- Use [`video-redline-index.md`](./video-redline-index.md) as the source-backed scene content plan and [`graph.md`](./graph.md) for journey/function relationships.
-- Replace the AWS/Bank narrative with the fictional `Hansa Maschinenbau AG · ERP-Migration & Prozessmanagement` case.
-- Preserve named team matching, People Scores, availability/collisions and CV generation; convert all role/profile content to ERP/process management.
-- Rebuild Signal intake around contract option + consultant Workspace need + LinkedIn Mail + connected project evidence.
-- Remove outreach-email/channel flow, demote `ReviewIssues`, replace `Deal closed`, add the previously-won-project time jump, deepen Project/Knowledge connections, and keep person activity out of the default dashboard.
-- Preserve current length and muted audio. Regenerate timing/verification markers from current source constants after every timing change.
-- Do not rework the business-case scene content in this pass. Implement an extensible macro/expanded rail and keep `Wirkung` as the business-scene stage.
+- Core narrative implementation is complete; use the implementation summary above as the current state.
+- Remaining work is visual QA/polish only, especially long-label fit in the canvas/rail and the preview-padding issue below.
 
 ### 1. Replace the former "Deal closed" transition  (`PersistentProjectBundleBridge`; `LOGO_MARK_KEYS`)
 - Do not polish or enlarge `Deal closed`; remove that claim.
 - Replace the bridge payoff with human-owned `Intern freigegeben · bereit für internen Export`.
-- Primary visual objects are EvidencePack, named team/People Scores, CVs, ConceptPlan and GroundedDraftSection. `ReviewIssues` remains secondary metadata.
+- Primary visual objects are EvidencePack, human validation, the selected next step and named team/People Scores/CVs. ConceptPlan and GroundedDraftSection remain optional; `ReviewIssues` remains secondary metadata.
 - The logo may still rise/fade as part of the approval transition, but it must restore cleanly for the later project scenes.
 
 ### 2. Approval → previously won project time transition  (`PersistentProjectBundleBridge`, project-scene handoff)

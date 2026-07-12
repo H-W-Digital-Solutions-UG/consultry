@@ -49,6 +49,26 @@ const MONO        = '"JetBrains Mono", ui-monospace, monospace';
 const INTER      = '"Satoshi", Inter, system-ui, sans-serif';
 const DISPLAY     = '"Satoshi", Inter, system-ui, sans-serif'; // logo wordmark face
 const APP_TYPED_FONT = INTER;
+const APP_UI_MIN_FONT_PX = 40 / 3; // 10pt at the CSS 96dpi reference pixel density
+const APP_UI_LOW_FONT_SELECTORS = Array.from({ length: 13 }, (_, value) => [
+  `.consultry-app-ui [style*="font-size: ${value}px"]`,
+  `.consultry-app-ui [style*="font-size: ${value}."]`,
+  `.consultry-app-ui [font-size="${value}"]`,
+  `.consultry-app-ui [font-size^="${value}."]`,
+]).flat();
+const APP_UI_THIRTEEN_FONT_SELECTORS = [
+  '.consultry-app-ui [style*="font-size: 13px"]',
+  '.consultry-app-ui [font-size="13"]',
+  ...[0, 1, 2, 3].flatMap((decimal) => [
+    `.consultry-app-ui [style*="font-size: 13.${decimal}"]`,
+    `.consultry-app-ui [font-size^="13.${decimal}"]`,
+  ]),
+];
+const APP_UI_MIN_TYPE_CSS = `
+${[...APP_UI_LOW_FONT_SELECTORS, ...APP_UI_THIRTEEN_FONT_SELECTORS].join(',\n')} {
+  font-size: ${APP_UI_MIN_FONT_PX}px !important;
+}
+`;
 const appTyped = (overrides = {}) => ({
   fontFamily: APP_TYPED_FONT,
   fontWeight: 650,
@@ -57,7 +77,28 @@ const appTyped = (overrides = {}) => ({
   color: APP_TEXT,
   fontFeatureSettings: '"ss01" 1, "cv01" 1',
   ...overrides,
+  ...(typeof overrides.fontSize === 'number'
+    ? { fontSize: Math.max(APP_UI_MIN_FONT_PX, overrides.fontSize) }
+    : {}),
 });
+
+// Fictional product-vision scenario. Keep narrative facts here so Signal,
+// Opportunity, Workspace, Team and Project views stay aligned as scope evolves.
+const ERP_CASE = {
+  account: 'Hansa Maschinenbau AG',
+  accountShort: 'Hansa Maschinenbau',
+  opportunity: 'ERP-Migration & Prozessmanagement',
+  project: 'ERP-Migration · Welle 1',
+  sector: 'Industrie · Maschinenbau',
+  owner: 'Tobias R.',
+  accountOwner: 'Katrin M.',
+  need: 'Process Mining & Datenmigration',
+  trigger: 'Vertragsoption · ERP-Programm',
+  internalSignal: 'Migrations-Timeline soll beschleunigt werden',
+  externalSignal: 'LinkedIn Mail · Transformationsleitung',
+  sources: ['Projektwissen', 'ERP-Daten', 'LinkedIn Mail'],
+  capabilities: ['ERP-Migration', 'Process Mining', 'Datenmigration', 'Change Management'],
+};
 
 const LOGO  = 'assets/consultry-v3-user.svg'; // mark + Satoshi wordmark + tagline
 const LOGO_AR = 0.2568;                       // tight-cropped aspect (h/w)
@@ -77,10 +118,10 @@ const APP_FRAME_H = 986;
 const APP_TOPBAR_H = 0;
 const APP_SIDEBAR_W = 116;
 const APP_VIEWPORT_GAP = 0;
-const APP_SIDEBAR_NAV_TOP = 132;
-const APP_SIDEBAR_ITEM_LEFT = 22;
-const APP_SIDEBAR_ITEM_SIZE = 70;
-const APP_SIDEBAR_ITEM_GAP = 15;
+const APP_SIDEBAR_NAV_TOP = 90;
+const APP_SIDEBAR_ITEM_LEFT = 17;
+const APP_SIDEBAR_ITEM_SIZE = 76;
+const APP_SIDEBAR_ITEM_GAP = 4;
 const APP_CONTENT_INSET_LEFT = 150;
 const APP_CONTENT_INSET_RIGHT = 34;
 const APP_CONTENT_INSET_BOTTOM = 30;
@@ -126,7 +167,7 @@ const PROMPT_SEQUENCE_ADVANCE = 3.50; // pulls prompt handoff + dependent downst
 const HOLD_FEED = 0.00;     // (removed per review: no wait after selecting signals)
 const HOLD_POPUP = -0.80;   // (per review: click means action — transition follows the Opportunity-gewinnen click promptly)
 const HOLD_MATCH = 2.30;    // match list + timeline + team confirmation land before the Deal-closed bridge
-const HOLD_OVERVIEW = 1.00; // AWS Transformation overview lands before prompt typing
+const HOLD_OVERVIEW = 1.00; // ERP project overview lands before prompt typing
 const HOLD_PREP = 1.50;     // meeting-prep popups land before Finanz
 const HOLD_FINANZ = 2.50;   // finance dashboard lands before CTA
 const HOLD_ANGEBOT = 6.00;  // Angebot workspace hold — opens EMPTY (placeholders only; filled previews land in a later scene)
@@ -139,7 +180,7 @@ const CV_SCENE_INSERT = 12.80;           // m0018/m0087: second workspace visit 
 const CANVAS_SCENE_INSERT = 8.40;        // m0135: Opportunity-Canvas scene — "Im Canvas öffnen" click → canvas view → offer bridge
 const BRIDGE_TRIM = 5.28;                // offer-payoff window collapsed — the workspace no longer plays inside the bridge (+3.00 m0042: Vertrieb overview pulled up to meet the Deal-closed fade, kills the white gap)
 const POST_MATCH_SHIFT = REORDER_SHIFT + BRIDGE_PAUSE_AFTER_MATCH + CV_SCENE_INSERT + CANVAS_SCENE_INSERT - BRIDGE_TRIM;
-const OFFER_OVERVIEW_HOLD = 0.65 + HOLD_OVERVIEW; // let Deal closed resolve into the AWS Transformation overview before prompt typing
+const OFFER_OVERVIEW_HOLD = 0.65 + HOLD_OVERVIEW; // let internal approval resolve into the ERP project overview
 const OFFER_STAGE_START = 4.05 + WORK_SEQUENCE_SHIFT; // overlay timing remains locked within Consultant Work
 const OFFER_BG_START = 4.25 + WORK_SEQUENCE_SHIFT; // JSX work-stage starts after the bridge hold
 const OFFER_OVERLAY_START = 7.25 + WORK_SEQUENCE_SHIFT; // work document overlays follow the delayed stage
@@ -154,7 +195,7 @@ const WISSEN_DETAIL_END = 15.00;
 const OFFER_VISUAL_END = WORK_DETAIL_END; // hold Consultant Work context through prompt + payoff
 const OFFER_STAGE_SCALE = 0.96;
 const OFFER_STAGE_Y = 0;
-const PROJECT_CONTEXT_SHRINK_LEAD = 0.25; // prompt enters while the AWS Transformation bundle is still shrinking
+const PROJECT_CONTEXT_SHRINK_LEAD = 0.25; // prompt enters while the ERP project bundle is still shrinking
 const WISSEN_BG_FRAME_COUNT = 145; // logo/pipeline follow-up clip for Wissen foreground overlays
 const WISSEN_BG_PLAY_DUR = 6.04;
 const WISSEN_BG = (idx) => `uploads/gen-wissen-logo-pipeline-bg-frames/frame-${String(idx).padStart(4, '0')}.jpg`;
@@ -247,6 +288,17 @@ const appTile = (color = APP_ACCENT, radius = 18) => ({
   boxShadow: APP_TILE_SHADOW,
   backdropFilter: 'none',
   WebkitBackdropFilter: 'none',
+});
+// App-mode selection card: compact 10px radius, tonal border and one
+// Consultry warm focus treatment layered over the neutral CRM surface.
+const appSelectionCard = ({ color = APP_ACCENT, selected = false, disabled = false } = {}) => ({
+  borderRadius: 10,
+  background: selected ? '#fff8ef' : APP_SURFACE,
+  border: `1px solid ${selected ? `${color}88` : APP_LINE_STRONG}`,
+  boxShadow: selected
+    ? `0 0 0 3px ${color}20, 0 4px 16px rgba(45,38,32,0.10), inset 3px 0 0 ${color}`
+    : '0 1px 3px rgba(45,38,32,0.06)',
+  opacity: disabled ? 0.46 : 1,
 });
 
 // ramp: 0→1 across [a,a+f], hold, 1→0 across [b-f,b]; 0 outside [a,b]
@@ -594,8 +646,8 @@ function AppMouseCursor({ t, fade = 1 }) {
       { t: SIGNAL_TEAM_STAFFING_PAGE_START + 4.55, x: 1505, y: 734, click: true },
     ];
   } else if (t < WS_ABS_END - 0.12) {
-    // m0018/m0045/m0054 visit 1: click outreach → square "Entwurf generieren" → draft assembles → select subject
-    // → Prompt-Kontext → gesprochener Edit-Wunsch → Anwenden → Erfolgs-Popup → bestätigen → Team finden
+    // m0018/m0045/m0054 visit 1: open EvidencePack → consolidate sources → human review
+    // → contextual correction → validate Opportunity → accept recommended next step → match team
     l = t - OFFER_WS_START;
     actions = [
       { t: 2.30, x: 1015, y: 267 },
@@ -717,25 +769,12 @@ function ConsultryAppExperienceFrame({ children = null } = {}) {
   const shellOpacity = rise(t, shellInStart, 0.34) *
     (1 - rise(t, SCENE_FINANZ_START - 0.12, 0.18));
   const workflowCanvasOpacity = band(t, WORKFLOW_CANVAS_UI_START, WORKFLOW_CANVAS_UI_END, 0.42);
-  const l = t - SIGNAL_START;
-  const teamActive = rise(l, SIGNAL_TEAM_PROFILE_STAGE_START - 0.22, 0.56);
-  const outreachActive = band(l, SIGNAL_TEAM_OUTREACH_STAGE_START - 0.18, SIGNAL_TEAM_STAFFING_PAGE_START + 0.30, 0.54);
-  const staffingActive = rise(l, SIGNAL_TEAM_STAFFING_PAGE_START - 0.18, 0.54);
-  const projectActive = band(t, SCENE_VERTRIEB_START + WORK_PROMPT_VISUAL_START - 0.20, SCENE_FINANZ_START + 0.08, 0.58);
-  const bridgeOfferActive = band(t, LOGO_BRIDGE_OFFER_START - 0.10, LOGO_BRIDGE_DEAL_START + 0.24, 0.48);
-  const offerActive = Math.max(
-    bridgeOfferActive,
-    band(t, SCENE_VERTRIEB_START - 0.18, SCENE_VERTRIEB_START + WORK_PROMPT_VISUAL_START + 0.85, 0.58) * (1 - projectActive),
-  );
-  const signalActive = t < SCENE_VERTRIEB_START ? 1 - teamActive : 0.08;
-  const trueTeamActive = t < SCENE_VERTRIEB_START ? Math.max(teamActive * (1 - staffingActive), staffingActive) : 0.12;
-  const nav = [
-    { key: 'Signal', icon: 'target', color: WARM, active: signalActive },
-    { key: 'Team', icon: 'users', color: '#8fbfd8', active: trueTeamActive },
-    { key: 'Angebot', icon: 'file', color: '#d69a4d', active: offerActive },
-    { key: 'Projekt', icon: 'briefcase', color: '#c65bb0', active: projectActive },
-    { key: 'Faktura', icon: 'euro', color: '#e8655a', active: 0.08 },
-  ];
+  const nav = STAGE_RAIL.map((item, i) => {
+    const nextStart = STAGE_RAIL[i + 1]?.start ?? STAGE_RAIL_OUT + 1;
+    const active = rise(t, item.start - 0.18, 0.48) *
+      (1 - rise(t, nextStart - 0.18, 0.48));
+    return { ...item, active: Math.max(0.08, active) };
+  });
   const railTrackH = (nav.length - 1) * (APP_SIDEBAR_ITEM_SIZE + APP_SIDEBAR_ITEM_GAP);
   const activeStageIndex = nav.reduce((best, item, i) =>
     item.active > nav[best].active ? i : best, 0);
@@ -752,7 +791,8 @@ function ConsultryAppExperienceFrame({ children = null } = {}) {
   const railProgressH = railTrackH * railProgress;
   return (
     <>
-    <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: shellOpacity, zIndex: 2 }}>
+    <style>{APP_UI_MIN_TYPE_CSS}</style>
+    <div className="consultry-app-ui" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: shellOpacity, zIndex: 2 }}>
       <div style={{ position: 'absolute', left: APP_FRAME_LEFT, top: APP_FRAME_TOP, width: APP_FRAME_W, height: APP_FRAME_H,
         borderRadius: 34, overflow: 'hidden',
         background: APP_SURFACE,
@@ -781,19 +821,27 @@ function ConsultryAppExperienceFrame({ children = null } = {}) {
               const active = clamp(item.active, 0, 1);
               return (
                 <div key={item.key} style={{ position: 'relative',
-                  width: APP_SIDEBAR_ITEM_SIZE, height: APP_SIDEBAR_ITEM_SIZE, borderRadius: 22,
+                  width: APP_SIDEBAR_ITEM_SIZE, height: APP_SIDEBAR_ITEM_SIZE,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   opacity: 1,
                   background: active > 0.24 ? APP_RAISED : APP_SURFACE,
                   border: `1px solid ${active > 0.24 ? `${item.color}66` : APP_LINE}`,
                   boxShadow: active > 0.24 ? `inset 2px 0 0 ${item.color}, 0 0 22px ${item.color}28` : 'none',
                   borderRadius: 0 }}>
-                  <span style={{ position: 'absolute', left: -8, top: 18,
-                    width: 3, height: 34, borderRadius: 999,
+                  <span style={{ position: 'absolute', left: -8, top: 14,
+                    width: 3, height: 30, borderRadius: 999,
                     opacity: active,
                     background: item.color,
                     boxShadow: `0 0 ${10 + active * 14}px ${item.color}` }} />
-                  <Icon name={item.icon} size={28} color={active > 0.24 ? item.color : APP_MUTED} sw={1.9} />
+                  <div style={{ position: 'absolute', top: 8, left: 0, right: 0,
+                    display: 'flex', justifyContent: 'center' }}>
+                    <Icon name={item.icon} size={22} color={active > 0.24 ? item.color : APP_MUTED} sw={1.9} />
+                  </div>
+                  <span style={appTyped({ position: 'absolute', left: 3, right: 3, bottom: 7,
+                    textAlign: 'center', fontSize: 10, lineHeight: 0.95, fontWeight: 790,
+                    color: active > 0.24 ? item.color : APP_MUTED, whiteSpace: 'normal' })}>
+                    {item.label || item.key}
+                  </span>
                 </div>
               );
             })}
@@ -814,7 +862,7 @@ function ConsultryAppExperienceFrame({ children = null } = {}) {
         </div>
       </div>
     </div>
-    <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: shellOpacity, zIndex: 45 }}>
+    <div className="consultry-app-ui" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: shellOpacity, zIndex: 45 }}>
       <div style={{ position: 'absolute', left: APP_FRAME_LEFT, top: APP_FRAME_TOP, width: APP_FRAME_W, height: APP_FRAME_H,
         borderRadius: 34, overflow: 'hidden',
         border: '1px solid rgba(35,31,27,0.18)',
@@ -847,19 +895,27 @@ function ConsultryAppExperienceFrame({ children = null } = {}) {
               const active = clamp(item.active, 0, 1);
               return (
                 <div key={`fg-nav-${item.key}`} style={{ position: 'relative',
-                  width: APP_SIDEBAR_ITEM_SIZE, height: APP_SIDEBAR_ITEM_SIZE, borderRadius: 22,
+                  width: APP_SIDEBAR_ITEM_SIZE, height: APP_SIDEBAR_ITEM_SIZE,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   opacity: 1,
                   background: active > 0.24 ? APP_RAISED : APP_SURFACE,
                   border: `1px solid ${active > 0.24 ? `${item.color}66` : APP_LINE}`,
                   boxShadow: active > 0.24 ? `inset 2px 0 0 ${item.color}, 0 0 26px ${item.color}30` : 'none',
                   borderRadius: 0 }}>
-                  <span style={{ position: 'absolute', left: -8, top: 18,
-                    width: 3, height: 34, borderRadius: 999,
+                  <span style={{ position: 'absolute', left: -8, top: 14,
+                    width: 3, height: 30, borderRadius: 999,
                     opacity: active,
                     background: item.color,
                     boxShadow: `0 0 ${12 + active * 18}px ${item.color}` }} />
-                  <Icon name={item.icon} size={28} color={active > 0.24 ? item.color : APP_MUTED} sw={1.9} />
+                  <div style={{ position: 'absolute', top: 8, left: 0, right: 0,
+                    display: 'flex', justifyContent: 'center' }}>
+                    <Icon name={item.icon} size={22} color={active > 0.24 ? item.color : APP_MUTED} sw={1.9} />
+                  </div>
+                  <span style={appTyped({ position: 'absolute', left: 3, right: 3, bottom: 7,
+                    textAlign: 'center', fontSize: 10, lineHeight: 0.95, fontWeight: 790,
+                    color: active > 0.24 ? item.color : APP_MUTED, whiteSpace: 'normal' })}>
+                    {item.label || item.key}
+                  </span>
                 </div>
               );
             })}
@@ -1210,20 +1266,20 @@ const WS_ABS_START = SIGNAL_START + SIGNAL_TEAM_PROFILE_STAGE_START + SIGNAL_TEA
 const WS_ABS_END = WS_ABS_START + 20.56; // m0018 +2.00 · m0035 +2.40 · m0045 +4.00 · m0054 +0.90 · m0078 +1.40 (drafting animation)
 
 const SIGNAL_TREE = [
-  { label: 'Eure Projekte', meta: 'Security Tender', icon: 'briefcase', x: 70, y: 128, dockX: 98, dockY: 136, t: SIGNAL_BEAT_SOURCES + 0.00, color: WARM },
-  { label: 'Trend', meta: 'Cloud Security', icon: 'search', x: 70, y: 262, dockX: 98, dockY: 242, t: SIGNAL_BEAT_SOURCES + 0.18, color: '#8fbfd8' },
-  { label: 'Euer Angebot', meta: 'Azure Projekte', icon: 'file', x: 70, y: 396, dockX: 1172, dockY: 136, t: SIGNAL_BEAT_SOURCES + 0.36, color: '#d69a4d' },
-  { label: 'Risiko', meta: 'Compliance Check', icon: 'shield', x: 70, y: 530, dockX: 1172, dockY: 242, t: SIGNAL_BEAT_SOURCES + 0.54, color: '#c65bb0' },
+  { label: 'Projektarbeit', meta: 'Bedarf geloggt', icon: 'briefcase', x: 70, y: 128, dockX: 98, dockY: 136, t: SIGNAL_BEAT_SOURCES + 0.00, color: WARM },
+  { label: 'LinkedIn Mail', meta: 'Transformation', icon: 'search', x: 70, y: 262, dockX: 98, dockY: 242, t: SIGNAL_BEAT_SOURCES + 0.18, color: '#8fbfd8' },
+  { label: 'Vertrag', meta: 'Optionsfenster', icon: 'file', x: 70, y: 396, dockX: 1172, dockY: 136, t: SIGNAL_BEAT_SOURCES + 0.36, color: '#d69a4d' },
+  { label: 'ERP-Daten', meta: 'Prozessmuster', icon: 'database', x: 70, y: 530, dockX: 1172, dockY: 242, t: SIGNAL_BEAT_SOURCES + 0.54, color: '#c65bb0' },
   { label: 'Finanz', meta: 'Faktura', icon: 'euro', x: 70, y: 664, dockX: 1172, dockY: 242, t: SIGNAL_BEAT_SOURCES + 0.72, color: '#8fbfd8' },
 ];
 const SIGNAL_NODE_W = 92;
 const SIGNAL_NODE_H = 92;
 const TEAM_REQUIREMENTS = [
-  { k: 'CERTS', icon: 'azure', color: '#8fbfd8', items: ['AZ-500', 'SC-200'] },
+  { k: 'METHODS', icon: 'file', color: '#8fbfd8', items: ['SAP ACT', 'BPMN'] },
   { k: 'SKILL LABELS', icon: 'zap', color: WARM,
-    items: ['Azure Cloud Architekturen', 'Container-Orchestrierung', 'SOC-Management', 'Incident Response'] },
+    items: ['ERP-Zielarchitektur', 'Process Mining', 'Datenmigration', 'Change Management'] },
   { k: 'PRODUCTS', icon: 'database', color: '#e8655a',
-    items: ['Azure Cloud', 'Microsoft Sentinel', 'Terraform', 'Kubernetes'] },
+    items: ['ERP-Prozessdaten', 'Migrationsobjekte', 'BPMN', 'Cutover'] },
 ];
 const CERT_BADGE_SRC = 'assets/cert-icons/sc-200.svg';
 
@@ -1727,7 +1783,6 @@ function XingMark({ size = 32 }) {
 function SignalGraphPanel({ local }) {
   const enter = rise(local, 0.12, 0.72);
   const draw = rise(local, SIGNAL_BEAT_SOURCES + 0.12, 1.60);
-  const active = rise(local, SIGNAL_BEAT_FEED + 0.48, 0.92);
   const click = band(local, SIGNAL_BEAT_SELECT + 0.20, SIGNAL_BEAT_SELECT + 1.34, 0.28);
   const selected = rise(local, SIGNAL_BEAT_SELECT + 0.56, 0.84);
   const scan = band(local, SIGNAL_BEAT_SELECT + 0.72, SIGNAL_BEAT_BRIDGE + 0.74, 0.34);
@@ -1737,23 +1792,23 @@ function SignalGraphPanel({ local }) {
   const handoff = rise(local, SIGNAL_TEAM_PREVIEW_START + 0.12, 2.30);
   const pulse = 0.5 + Math.sin(local * 3.4) * 0.5;
   const signalGroups = [
-    { company: 'Bank AG', score: '94', trend: '+4 Signale · 7 Tage', top: true, signals: [
-      { tag: 'Financial Times · Artikel', title: 'Bank AG bestätigt Wechsel zu AWS Cloud', meta: 'Cloud-Migration · Security im Fokus', icon: 'financial-times', color: '#b87842', main: true },
-      { tag: 'LinkedIn · Stellenpost', title: 'Cloud Architecture Lead / SOC', meta: 'Hiring-Signal · Cloud-Team wächst', icon: 'linkedin', color: '#0A66C2' },
-      { tag: 'Vergabeportal · RFP', title: 'Cloud Security Services', meta: 'Ausschreibung · Q3 erwartet', icon: 'file', color: '#3f7b56' },
-      { tag: 'Consultant-Netzwerk · Intern', title: 'CIO-Office plant Managed SOC · Upsell', meta: 'geloggt von Tobias R. · aktuell im Projekt bei Bank AG', icon: 'users', color: '#c65bb0', photo: 'assets/people/paul.png' },
+    { company: ERP_CASE.account, score: '94', trend: '+4 Signale · 7 Tage', top: true, signals: [
+      { tag: 'Vertrag · Optionsfenster', title: 'ERP-Programm: Migrationsoption wird aktiv', meta: 'Vertragsoption · Entscheidung in Q3', icon: 'file', color: '#b87842', main: true },
+      { tag: 'Consultry Workspace · Projektsignal', title: ERP_CASE.internalSignal, meta: `${ERP_CASE.owner} · laufendes Projekt · → ${ERP_CASE.accountOwner}`, icon: 'users', color: '#c65bb0', photo: 'assets/people/paul.png' },
+      { tag: 'LinkedIn Mail', title: 'Transformationsleitung sucht Prozesskompetenz', meta: 'ERP-Rollout · Fachbereiche einbinden', icon: 'linkedin', color: '#0A66C2' },
+      { tag: 'Connected Data · ERP & Projekt', title: 'Medienbrüche in Order-to-Cash erkannt', meta: 'Projektwissen · Prozessdaten · freigegebene Quellen', icon: 'database', color: '#3f7b56' },
     ] },
-    { company: 'Konzern X', score: '71', trend: 'stabil', signals: [
-      { tag: 'LinkedIn', title: 'CEO-Wechsel · Azure-Fokus erkannt', meta: 'Leadership-Wechsel', icon: 'linkedin', color: '#0A66C2' },
+    { company: 'Hansa · Werk Süd', score: '82', trend: '+2 interne Signale', signals: [
+      { tag: 'Projektarbeit · Standort', title: 'ERP-Rollout verlangt lokale Prozesskompetenz', meta: 'Bestandskunde · Bedarf aus Delivery', icon: 'users', color: '#5f97bf' },
     ] },
-    { company: 'Versicherer Y', score: '58', trend: 'neu', signals: [
-      { tag: 'Handelsblatt', title: 'Versicherer Y konsolidiert IT', meta: 'Markttrend', icon: 'zap', color: '#c65bb0' },
+    { company: 'Hansa · Service', score: '76', trend: 'neuer Folgekontext', signals: [
+      { tag: 'CRM + Projektwissen', title: 'Field Service soll ins ERP-Zielbild', meta: 'Bestandskunde · potenzieller Folgeauftrag', icon: 'database', color: '#3f7b56' },
     ] },
   ];
   const panelH = 800;
   const cardX = 64;
   const cardY = 84;
-  const cardW = 1092;
+  const cardW = 1532;
   const cardH = 672;
   const eventListTop = 12;
   const eventRowH = 110;
@@ -1813,19 +1868,16 @@ function SignalGraphPanel({ local }) {
       <div style={{ position: 'absolute', right: -120, bottom: -220, width: 520, height: 520,
         opacity: 0, background: 'transparent' }} />
 
-      <div style={{ position: 'absolute', left: 76, top: -66, width: 1600, opacity: documentUi,
+      <div style={{ position: 'absolute', left: 76, top: -66, width: cardW - 12, opacity: documentUi,
         display: 'flex', flexDirection: 'column', gap: 12, zIndex: 6 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, opacity: 0.9 }}>
           <span style={{ fontFamily: MONO, fontSize: 9.6, fontWeight: 820, letterSpacing: '0.13em',
-            textTransform: 'uppercase', color: APP_FAINT, whiteSpace: 'nowrap' }}>Signal Radar</span>
+            textTransform: 'uppercase', color: APP_FAINT, whiteSpace: 'nowrap' }}>Consulting OS</span>
           <span style={{ width: 3, height: 3, borderRadius: 99, background: APP_FAINT, opacity: 0.6 }} />
           <span style={{ fontFamily: MONO, fontSize: 9.6, fontWeight: 820, letterSpacing: '0.13em',
             textTransform: 'uppercase', color: '#9a6a2e', whiteSpace: 'nowrap' }}>
-            Marktsignale & Ausschreibungen
+            Kunden · Leistungen · Projekte · Teams · Wissen · Finanzen
           </span>
-          <span style={{ flex: 1 }} />
-          <span style={appTyped({ fontSize: 10.5, fontWeight: 740, color: APP_FAINT,
-            whiteSpace: 'nowrap' })}>zuletzt aktualisiert · gerade eben</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ width: 560, height: 56, borderRadius: 18, display: 'flex', alignItems: 'center',
@@ -1835,12 +1887,12 @@ function SignalGraphPanel({ local }) {
             <span style={{ height: 30, borderRadius: 9, padding: '0 9px', display: 'inline-flex',
               alignItems: 'center', gap: 7, background: APP_RAISED,
               border: `1px solid ${APP_LINE_STRONG}` }}>
-              <span style={appTyped({ fontSize: 12.5, fontWeight: 800, color: APP_TEXT, whiteSpace: 'nowrap' })}>Bank AG</span>
+              <span style={appTyped({ fontSize: 12.5, fontWeight: 800, color: APP_TEXT, whiteSpace: 'nowrap' })}>{ERP_CASE.accountShort}</span>
               <span style={appTyped({ fontSize: 13, fontWeight: 700, color: APP_FAINT })}>×</span>
             </span>
-            <span style={appTyped({ fontSize: 16, fontWeight: 700, whiteSpace: 'nowrap' })}>Cloud Migration</span>
+            <span style={appTyped({ fontSize: 16, fontWeight: 700, whiteSpace: 'nowrap' })}>ERP-Migration</span>
             <span style={{ width: 2, height: 24, borderRadius: 99, background: APP_MUTED, opacity: 0.6 }} />
-            <span style={appTyped({ fontSize: 16, fontWeight: 700, color: APP_FAINT, whiteSpace: 'nowrap' })}>AWS</span>
+            <span style={appTyped({ fontSize: 16, fontWeight: 700, color: APP_FAINT, whiteSpace: 'nowrap' })}>Prozessmanagement</span>
           </div>
           <div style={{ height: 44, borderRadius: 14, padding: '0 14px', display: 'flex',
             alignItems: 'center', gap: 9, whiteSpace: 'nowrap',
@@ -1855,18 +1907,9 @@ function SignalGraphPanel({ local }) {
               borderLeft: '4.5px solid transparent', borderRight: '4.5px solid transparent',
               borderTop: `5.5px solid ${APP_MUTED}` }} />
           </div>
-          <span style={{ flex: 1 }} />
-          <div style={{ height: 44, borderRadius: 999, padding: '0 16px', display: 'flex',
-            alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
-            background: APP_RAISED, border: `1px solid ${APP_LINE}`,
-            ...appTyped({ fontSize: 12.5, fontWeight: 760, color: APP_TEXT }) }}>
-            <span style={{ width: 7, height: 7, borderRadius: 99, background: '#7fdca6',
-              boxShadow: '0 0 10px rgba(127,220,166,0.36)' }} />
-            5 aktive Signale
-          </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-          {[['Branche', 'Financial Services'], ['Region', 'DACH'], ['Relevanz', 'ab 60']].map(([filterKey, filterValue]) => (
+          {[['Kontext', 'Bestandskunde'], ['Projekt', 'ERP-Programm'], ['Quelle', 'intern + verbunden']].map(([filterKey, filterValue]) => (
             <div key={filterKey} style={{ height: 30, borderRadius: 9, padding: '0 10px',
               display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap',
               background: APP_SURFACE, border: `1px solid ${APP_LINE}` }}>
@@ -1881,8 +1924,6 @@ function SignalGraphPanel({ local }) {
             ...appTyped({ fontSize: 11.5, fontWeight: 740, color: APP_MUTED }) }}>
             + Filter
           </div>
-          <span style={{ flex: 1 }} />
-          <span style={appTyped({ fontSize: 11.5, fontWeight: 740, color: APP_FAINT, whiteSpace: 'nowrap' })}>Signal-Regeln bearbeiten</span>
         </div>
       </div>
 
@@ -1932,7 +1973,7 @@ function SignalGraphPanel({ local }) {
                         display: 'inline-flex', alignItems: 'center',
                         background: 'rgba(240,168,94,0.15)', border: '1px solid rgba(240,168,94,0.32)',
                         fontFamily: MONO, fontSize: 8.4, fontWeight: 840, letterSpacing: '0.10em',
-                        textTransform: 'uppercase', color: '#9a6a2e' }}>Top-Prospect</span>
+                        textTransform: 'uppercase', color: '#9a6a2e' }}>Bestandskunde</span>
                     )}
                     <span style={{ flex: 1 }} />
                     <span style={{ fontFamily: MONO, fontSize: 9.4, fontWeight: 780, letterSpacing: '0.08em',
@@ -2021,7 +2062,7 @@ function SignalGraphPanel({ local }) {
                         <span style={{ flex: 1 }} />
                         <span style={{ ...appTyped({ fontSize: 11, fontWeight: 740, color: APP_FAINT,
                           whiteSpace: 'nowrap' }), opacity: selAll }}>
-                          Bank AG · AWS Cloud Transformation
+                          {ERP_CASE.accountShort} · {ERP_CASE.opportunity}
                         </span>
                         <span style={{ height: 44, borderRadius: 999, padding: '0 16px 0 7px',
                           display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -2045,7 +2086,7 @@ function SignalGraphPanel({ local }) {
                             </span>
                             <span style={{ ...appTyped({ fontSize: 12.5, fontWeight: 830, color: '#fdfaf5',
                               whiteSpace: 'nowrap' }) }}>
-                              Team matchen & Angebot entwerfen
+                              Opportunity qualifizieren
                             </span>
                           </span>
                           <Icon name="arrowUR" size={14} color={WARM} sw={2.3} />
@@ -2058,129 +2099,6 @@ function SignalGraphPanel({ local }) {
             })}
           </div>
         </div>
-      </div>
-
-      <div style={{ position: 'absolute', left: cardX + cardW + 22, top: cardY,
-        width: 1676 - (cardX + cardW + 22), height: cardH, zIndex: 5,
-        opacity: documentUi * (1 - frameExit * 0.98),
-        transform: `translateY(${(1 - active) * 10 + frameExit * 8}px)`,
-        display: 'grid', gridTemplateRows: 'auto 46px 72px 72px 72px auto', rowGap: 9,
-        alignContent: 'start' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '0 2px 4px 2px' }}>
-          <div>
-            <div style={{ fontFamily: INTER, fontWeight: 830, fontSize: 21,
-              lineHeight: 1, color: APP_TEXT, letterSpacing: '-0.014em' }}>
-              Signal-Auswertung
-            </div>
-            <div style={{ marginTop: 5, fontFamily: INTER, fontWeight: 650,
-              fontSize: 12, color: APP_MUTED }}>
-              Kontext aus Markt, CRM und Projektwissen
-            </div>
-          </div>
-        </div>
-        {(() => {
-          const bind = rise(local, dkbActivationStart + 0.10, 0.66);
-          return (
-            <div style={{ borderRadius: 16, display: 'grid',
-              gridTemplateColumns: '38px 1fr auto', alignItems: 'center', gap: 12,
-              padding: '0 14px', boxSizing: 'border-box',
-              background: bind > 0.4 ? '#fff8ef' : APP_SURFACE,
-              border: `1px solid ${bind > 0.4 ? 'rgba(240,168,94,0.44)' : APP_LINE}` }}>
-              <span style={{ width: 36, height: 36, borderRadius: 12, display: 'flex',
-                alignItems: 'center', justifyContent: 'center',
-                background: 'rgba(184,120,66,0.12)', border: '1px solid rgba(184,120,66,0.26)' }}>
-                <FinancialTimesMark size={21} />
-              </span>
-              <span style={{ minWidth: 0 }}>
-                <div style={{ fontFamily: MONO, fontSize: 8.6, fontWeight: 820, letterSpacing: '0.11em',
-                  textTransform: 'uppercase', color: APP_MUTED }}>
-                  {bind > 0.4 ? 'Analysiert · Aktives Signal' : 'Beobachtet · 5 Signale'}
-                </div>
-                <div style={{ marginTop: 4, ...appTyped({ fontSize: 12.6, fontWeight: 800, color: APP_TEXT,
-                  whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }) }}>
-                  Bank AG bestätigt Wechsel zu AWS Cloud
-                </div>
-              </span>
-              <span style={{ width: 8, height: 8, borderRadius: 99, background: WARM,
-                opacity: 0.35 + pulse * 0.65 * Math.max(bind, 0.4),
-                boxShadow: `0 0 ${8 + bind * 8}px rgba(240,168,94,0.5)` }} />
-            </div>
-          );
-        })()}
-        {[
-          { icon: 'briefcase', label: 'Kunde', title: 'Bank AG', meta: 'neues Cloud-Programm', color: '#b87842', metric: '94', metricLabel: 'Prospect-Score' },
-          { icon: 'zap', label: 'Trigger', title: 'AWS Migration', meta: 'Projektbedarf steigt', color: '#5f9fc0', metric: '+38 %', metricLabel: 'Trend · 30 Tage' },
-          { icon: 'shield', label: 'Priorität', title: 'Security + DORA', meta: 'relevant für Angebot', color: '#c35bb9', metric: '92 %', metricLabel: 'Konfidenz' },
-        ].map((item, idx) => {
-          const p = rise(local, SIGNAL_BEAT_FEED + 0.42 + idx * 0.18, 0.62);
-          return (
-            <div key={item.label} style={{ borderRadius: 14,
-              display: 'grid', gridTemplateColumns: '38px 1fr auto',
-              alignItems: 'center', gap: 11, padding: '0 13px',
-              boxSizing: 'border-box', background: APP_SURFACE,
-              border: `1px solid ${APP_LINE}`,
-              opacity: p, transform: `translateX(${(1 - p) * 16}px)` }}>
-              <div style={{ width: 36, height: 36, borderRadius: 11,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                background: `${item.color}12`, border: `1px solid ${item.color}28` }}>
-                <Icon name={item.icon} size={17} color={item.color} sw={2.1} />
-              </div>
-              <div>
-                <div style={{ fontFamily: INTER, fontWeight: 710, fontSize: 10.5,
-                  color: APP_MUTED }}>{item.label}</div>
-                <div style={{ marginTop: 2, fontFamily: DISPLAY, fontWeight: 820,
-                  fontSize: 16, color: APP_TEXT, letterSpacing: '-0.012em' }}>
-                  {item.title}
-                </div>
-                <div style={{ marginTop: 2, fontFamily: INTER, fontWeight: 640,
-                  fontSize: 11.5, color: APP_MUTED }}>
-                  {item.meta}
-                </div>
-              </div>
-              <div style={{ display: 'grid', justifyItems: 'end', rowGap: 3 }}>
-                <span style={{ fontFamily: MONO, fontSize: 13.5, fontWeight: 800, color: item.color }}>{item.metric}</span>
-                <span style={{ ...appTyped({ fontSize: 9.2, fontWeight: 760, color: APP_FAINT,
-                  whiteSpace: 'nowrap' }) }}>{item.metricLabel}</span>
-              </div>
-            </div>
-          );
-        })}
-        {(() => {
-          const rec = rise(local, dkbActivationStart + 0.95, 0.72);
-          const recentItems = [
-            { title: 'Versicherer Z · AWS Landing Zone', status: 'Gewonnen · 6 Wochen', color: '#74c69d', icon: 'check' },
-            { title: 'Bank XY · SOC-Aufbau', status: 'Abgeschlossen · DORA-Audit', color: '#8fbfd8', icon: 'shield' },
-            { title: 'Konzern X · Azure Review', status: 'Angebot versendet', color: WARM, icon: 'file' },
-          ];
-          return (
-            <div style={{ opacity: 0.4 + rec * 0.6, transform: `translateY(${(1 - rec) * 5}px)` }}>
-              <div style={{ padding: '4px 2px 8px', fontFamily: MONO, fontSize: 9, fontWeight: 820,
-                letterSpacing: '0.12em', textTransform: 'uppercase', color: APP_FAINT }}>
-                Recent · Zuletzt bearbeitete Opportunities
-              </div>
-              <div style={{ display: 'grid', gap: 8 }}>
-                {recentItems.map((item) => (
-                  <div key={item.title} style={{ height: 50, borderRadius: 14, display: 'grid',
-                    gridTemplateColumns: '32px minmax(0,1fr) auto', alignItems: 'center', gap: 11,
-                    padding: '0 12px', boxSizing: 'border-box',
-                    background: APP_SURFACE, border: `1px solid ${APP_LINE}` }}>
-                    <span style={{ width: 30, height: 30, borderRadius: 10, display: 'flex',
-                      alignItems: 'center', justifyContent: 'center',
-                      background: `${item.color}16`, border: `1px solid ${item.color}3a` }}>
-                      <Icon name={item.icon} size={14} color={item.color} sw={2.2} />
-                    </span>
-                    <span style={{ minWidth: 0, ...appTyped({ fontSize: 11.5, fontWeight: 800,
-                      color: APP_TEXT, whiteSpace: 'nowrap', overflow: 'hidden',
-                      textOverflow: 'ellipsis' }) }}>{item.title}</span>
-                    <span style={{ ...appTyped({ fontSize: 9.6, fontWeight: 760, color: APP_MUTED,
-                      whiteSpace: 'nowrap' }) }}>{item.status}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })()}
       </div>
 
       {(() => {
@@ -2247,7 +2165,7 @@ function SignalGraphPanel({ local }) {
                   <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 850, color: '#9a6a2e',
                     whiteSpace: 'nowrap' }}>12 %</span>
                   <span style={{ ...appTyped({ fontSize: 10.5, fontWeight: 740, color: APP_MUTED,
-                    whiteSpace: 'nowrap' }) }}>4 Signale · hohe Signalqualität</span>
+                    whiteSpace: 'nowrap' }) }}>EvidencePack bereit · Validierung offen</span>
                 </div>
               )}
               <div style={{ position: 'absolute', left: iconLeft, top: iconTop,
@@ -2257,21 +2175,20 @@ function SignalGraphPanel({ local }) {
                 background: detail > 0.5 ? 'rgba(29,58,95,0.08)' : 'rgba(184,120,66,0.14)',
                 border: detail > 0.5 ? '1px solid rgba(29,58,95,0.22)' : '1px solid rgba(184,120,66,0.28)',
                 boxShadow: `0 10px ${18 + detail * 8}px rgba(45,38,32,0.10)` }}>
-                {detail > 0.5
-                  ? <BankAGMark size={mix(34, 42, detail)} />
-                  : <FinancialTimesMark size={mix(34, 44, detail)} />}
+                <Icon name={detail > 0.5 ? 'briefcase' : 'file'} size={mix(30, 38, detail)}
+                  color={detail > 0.5 ? '#1d3a5f' : '#b87842'} sw={2.1} />
               </div>
               <div style={{ position: 'absolute', left: titleLeft, top: titleTop,
                 width: bridgeRow.w - titleLeft - mix(70, 46, detail), minWidth: 0 }}>
                 <div style={{ fontFamily: MONO, fontSize: mix(9.6, 11.0, detail), letterSpacing: '0.13em',
                   textTransform: 'uppercase', color: detail > 0.5 ? '#9a6a2e' : APP_MUTED }}>
-                  {detail > 0.5 ? 'Neue Opportunity · Signal-Score 94' : 'Financial Times'}
+                  {detail > 0.5 ? 'Neue Opportunity · Signal-Score 94' : 'Vertrag · Optionsfenster'}
                 </div>
                 <div style={{ marginTop: mix(5, 8, detail), display: 'flex', alignItems: 'center', gap: 16 }}>
                   <span style={{ fontFamily: DISPLAY, fontWeight: 805,
                     fontSize: mix(25, 34, detail), lineHeight: 1.02, letterSpacing: '-0.018em',
                     color: APP_TEXT, whiteSpace: 'nowrap' }}>
-                    {detail > 0.5 ? 'New Opportunity · Bank AG' : 'Bank AG bestätigt Wechsel zu AWS Cloud'}
+                    {detail > 0.5 ? `New Opportunity · ${ERP_CASE.accountShort}` : 'ERP-Programm: Migrationsoption wird aktiv'}
                   </span>
                   {detail > 0.5 && (
                     <span style={{ width: 40, height: 40, borderRadius: 999, flexShrink: 0,
@@ -2285,7 +2202,7 @@ function SignalGraphPanel({ local }) {
                 <div style={{ marginTop: mix(4, 8, detail), fontFamily: INTER, fontWeight: 690,
                   fontSize: mix(12.2, 15.5, detail), lineHeight: 1.14,
                   color: APP_MUTED, whiteSpace: 'nowrap' }}>
-                  {detail > 0.5 ? 'AWS Cloud Transformation · aus 4 Signalen erkannt' : 'Cloud-Migration erkannt'}
+                  {detail > 0.5 ? `${ERP_CASE.opportunity} · EvidencePack aus 4 Quellen` : 'ERP- und Prozessbedarf erkannt'}
                 </div>
               </div>
               <div style={{ position: 'absolute', right: mix(20, 356, detail), top: statusTop,
@@ -2298,8 +2215,8 @@ function SignalGraphPanel({ local }) {
                 transform: `scale(${0.82 + checkIn * 0.18})`,
                 background: APP_RAISED, border: `1px solid rgba(184,120,66,${0.20 + checkIn * 0.22})` }}>
                 <Icon name="check" size={mix(12, 14, detail)} color="#b87842" sw={2.2} />
-                <span style={{ opacity: detail, maxWidth: mix(0, 70, detail), overflow: 'hidden',
-                  whiteSpace: 'nowrap', display: 'inline-block' }}>Signal</span>
+                <span style={{ opacity: detail, maxWidth: mix(0, 110, detail), overflow: 'hidden',
+                  whiteSpace: 'nowrap', display: 'inline-block' }}>EvidencePack</span>
               </div>
               <div style={{ position: 'absolute', right: 36, top: statusTop - 14,
                 height: 58, borderRadius: 999, padding: '0 26px',
@@ -2313,18 +2230,18 @@ function SignalGraphPanel({ local }) {
                   whiteSpace: 'nowrap' }) }}>
                 <span style={{ width: 9, height: 9, borderRadius: 99, background: WARM,
                   boxShadow: '0 0 11px rgba(240,168,94,0.7)' }} />
-                Opportunity gewinnen
+                Opportunity validieren
                 <Icon name="arrowUR" size={17} color="#fdfaf5" sw={2.3} />
               </div>
               <div style={{ position: 'absolute', left: 40, right: 550, top: 222,
                 height: 452, opacity: detailBody * detail,
                 display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: '1fr 1fr', gap: 14 }}>
                 {[
-                  { icon: 'briefcase', label: 'Branche', title: 'Banking', meta: 'Financial Services', color: '#b87842' },
-                  { icon: 'target', label: 'Region', title: 'DE / EU', meta: 'DACH-Markt', color: '#5f9fc0' },
-                  { icon: 'users', label: 'Team', title: '2 Rollen', meta: 'Security · Platform', color: '#74c69d' },
-                  { icon: 'clock', label: 'Zeitfaktor', title: '2 Wochen', meta: 'Start kurzfristig', color: '#e8655a' },
-                  { icon: 'shield', label: 'Regulatorik', title: 'DORA · BaFin', meta: 'Audit Trail nötig', color: '#c35bb9' },
+                  { icon: 'briefcase', label: 'Branche', title: 'Maschinenbau', meta: 'Industrie · DACH', color: '#b87842' },
+                  { icon: 'target', label: 'Scope', title: 'ERP · Prozesse', meta: 'Migration & Harmonisierung', color: '#5f9fc0' },
+                  { icon: 'users', label: 'Team', title: '3 Rollen', meta: 'ERP · Prozess · Change', color: '#74c69d' },
+                  { icon: 'clock', label: 'Zeitfaktor', title: 'Q3-Fenster', meta: 'Vertragsoption aktiv', color: '#e8655a' },
+                  { icon: 'database', label: 'Datenlage', title: 'verbunden', meta: 'Projekt- & ERP-Daten', color: '#c35bb9' },
                 ].map((item, idx) => (
                   <div key={item.label} style={{ borderRadius: 18, padding: '14px 14px 12px',
                     boxSizing: 'border-box', background: APP_RAISED,
@@ -2355,7 +2272,7 @@ function SignalGraphPanel({ local }) {
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <span style={{ fontFamily: MONO, fontSize: 10, fontWeight: 840, letterSpacing: '0.13em',
-                      textTransform: 'uppercase', color: APP_MUTED }}>Zugeordnete Signale</span>
+                      textTransform: 'uppercase', color: APP_MUTED }}>EvidencePack · Quellenlage</span>
                     <span style={{ fontFamily: MONO, fontSize: 10, fontWeight: 800, color: APP_FAINT }}>4 / 4</span>
                   </div>
                   <div style={{ marginTop: 10, borderRadius: 14, background: '#fffaf3',
@@ -2393,9 +2310,9 @@ function SignalGraphPanel({ local }) {
                   </div>
                   <div style={{ marginTop: 10, display: 'grid', gap: 9 }}>
                     {[
-                      { name: 'AWS Landing Zone Setup', meta: 'Beratungsservice · Cloud Foundation', match: '96 %', icon: 'target', color: '#8fbfd8' },
-                      { name: 'Security Baseline & SOC', meta: 'Beratungsservice · IAM, GuardDuty, Logging', match: '93 %', icon: 'shield', color: WARM },
-                      { name: 'DORA-Compliance Audit', meta: 'Beratungsservice · Regulatorik & Audit Trail', match: '88 %', icon: 'file', color: '#c35bb9' },
+                      { name: 'ERP Migration Readiness', meta: 'Beratungsservice · Scope, Daten, Wellenplan', match: '96 %', icon: 'target', color: '#8fbfd8' },
+                      { name: 'Process Mining & Design', meta: 'Beratungsservice · Ist-Prozesse & Zielbild', match: '93 %', icon: 'workflow', color: WARM },
+                      { name: 'Data Migration Assurance', meta: 'Beratungsservice · Qualität & Cutover', match: '88 %', icon: 'database', color: '#c35bb9' },
                     ].map((service) => (
                       <div key={service.name} style={{ height: 54, borderRadius: 13,
                         display: 'grid', gridTemplateColumns: '36px 1fr auto', columnGap: 12,
@@ -2432,12 +2349,12 @@ function SignalGraphPanel({ local }) {
                       <span style={{ minWidth: 0 }}>
                         <div style={appTyped({ fontSize: 13.5, fontWeight: 840, color: APP_TEXT,
                           whiteSpace: 'nowrap' })}>
-                          Cloud Security Paket
+                          ERP Transformationspaket
                         </div>
                         <div style={{ marginTop: 3, ...appTyped({ fontSize: 10.6, fontWeight: 700,
                           color: '#9a6a2e', whiteSpace: 'nowrap', overflow: 'hidden',
                           textOverflow: 'ellipsis' }) }}>
-                          Bundle · Landing Zone + Baseline + DORA-Audit
+                          Bundle · Readiness + Process Mining + Migration
                         </div>
                       </span>
                       <span style={{ height: 24, borderRadius: 999, padding: '0 10px',
@@ -2616,12 +2533,12 @@ function TeamMorphModules({ local, showAttention = true }) {
   const graphCy = mix(66, 296, leftMorph);
   const graphR = mix(34, 172, leftMorph);
   const profile = [
-    { short: 'AWS', name: 'Landing Zone', value: 0.92, color: '#8fbfd8' },
-    { short: 'IAM', name: 'Security Baseline', value: 0.88, color: WARM },
-    { short: 'SOC', name: 'Logging', value: 0.84, color: WARM },
-    { short: 'IAC', name: 'Migration Scope', value: 0.78, color: '#e8655a' },
-    { short: 'DORA', name: 'Regulatorik', value: 0.82, color: '#d69a4d' },
-    { short: 'KOM', name: 'Delivery', value: 0.76, color: '#c65bb0' },
+    { short: 'ERP', name: 'Zielarchitektur', value: 0.92, color: '#8fbfd8' },
+    { short: 'PM', name: 'Process Mining', value: 0.88, color: WARM },
+    { short: 'DAT', name: 'Datenmigration', value: 0.84, color: WARM },
+    { short: 'INT', name: 'Integration', value: 0.78, color: '#e8655a' },
+    { short: 'CHG', name: 'Change', value: 0.82, color: '#d69a4d' },
+    { short: 'PMO', name: 'Delivery', value: 0.76, color: '#c65bb0' },
   ];
   const axes = profile.map((skill, i) => {
     const angle = -Math.PI / 2 + i * (Math.PI * 2 / profile.length);
@@ -2647,44 +2564,44 @@ function TeamMorphModules({ local, showAttention = true }) {
   });
   const teamPoints = teamAxes.map((a) => `${a.x.toFixed(1)},${a.y.toFixed(1)}`).join(' ');
   const productIcons = [
-    { k: 'AWSCloud', src: 'assets/tech-icons/aws-control-tower.svg', color: WARM, edge: 0, size: 40 },
-    { k: 'AWSSecurity', src: 'assets/tech-icons/aws-security-hub.svg', color: WARM, edge: 1, size: 40 },
-    { k: 'SOC', label: 'SOC', color: WARM, edge: 2, size: 24 },
-    { k: 'Terraform', src: 'assets/tech-icons/terraform.svg', color: '#e8655a', edge: 3, size: 38 },
-    { k: 'Kubernetes', src: 'assets/tech-icons/kubernetes.svg', color: '#c65bb0', edge: 4, size: 40 },
-    { k: 'Kundenkommunikation', label: 'KOMM', color: '#d69a4d', edge: 5, size: 20 },
+    { k: 'ERP', label: 'ERP', color: WARM, edge: 0, size: 24 },
+    { k: 'ProcessMining', label: 'PM', color: WARM, edge: 1, size: 22 },
+    { k: 'Data', label: 'DATA', color: WARM, edge: 2, size: 18 },
+    { k: 'Integration', label: 'INT', color: '#e8655a', edge: 3, size: 20 },
+    { k: 'Change', label: 'CHG', color: '#c65bb0', edge: 4, size: 18 },
+    { k: 'PMO', label: 'PMO', color: '#d69a4d', edge: 5, size: 20 },
   ];
   const requirementDetails = [
-    { title: 'AWS Landing Zone', meta: 'Accounts, Netzwerk, Guardrails', icon: 'target', color: '#8fbfd8' },
-    { title: 'Security Baseline', meta: 'IAM, GuardDuty, Logging', icon: 'shield', color: WARM },
-    { title: 'Bank-Regulatorik', meta: 'DORA, BaFin, Audit Trail', icon: 'file', color: '#c65bb0' },
-    { title: 'Migration Scope', meta: 'Pilot-Workloads + IaC', icon: 'workflow', color: '#e8655a' },
+    { title: 'ERP-Zielbild', meta: 'Module, Werke, Migrationswellen', icon: 'target', color: '#8fbfd8' },
+    { title: 'Prozessmanagement', meta: 'Order-to-Cash · Procure-to-Pay', icon: 'workflow', color: WARM },
+    { title: 'Datenmigration', meta: 'Qualität, Mapping, Cutover', icon: 'database', color: '#c65bb0' },
+    { title: 'Change & Governance', meta: 'Fachbereiche, Adoption, PMO', icon: 'users', color: '#e8655a' },
   ];
   const requirementFacts = [
-    { label: 'Branche', value: 'Banking', icon: 'briefcase', color: WARM },
+    { label: 'Branche', value: 'Maschinenbau', icon: 'briefcase', color: WARM },
     { label: 'Region', value: 'DE / EU', icon: 'target', color: '#8fbfd8' },
-    { label: 'Team', value: '2 Rollen', icon: 'users', color: '#74c69d' },
-    { label: 'Zeitfenster', value: '2 Wochen', icon: 'clock', color: '#e8655a' },
+    { label: 'Team', value: '3 Rollen', icon: 'users', color: '#74c69d' },
+    { label: 'Zeitfenster', value: 'Q3-Start', icon: 'clock', color: '#e8655a' },
   ];
   const requirementEvidence = [
     { label: 'Signal', w: 0.94, color: '#8fbfd8' },
     { label: 'Projektakte', w: 0.76, color: WARM },
-    { label: 'Compliance', w: 0.68, color: '#c65bb0' },
+    { label: 'ERP-Daten', w: 0.68, color: '#c65bb0' },
   ];
   const roles = [
-    { initials: 'SA', name: 'Sr. Architect - Max Muster', fit: '96%', focus: 'Azure Security', certs: ['AZ-500', 'AWS-SAA', 'AWS-SAP', 'CISSP', 'TOGAF'],
+    { initials: 'EA', name: 'ERP Architect - Max Muster', fit: '96%', focus: 'ERP-Zielarchitektur', certs: ['SAP ACT', 'S/4', 'TOGAF'],
       color: '#8fbfd8', y: 118, start: 0.08, span: 0.34, pt: '2 PT', days: '5 T',
       occupied: [{ start: 0.00, span: 0.07 }, { start: 0.56, span: 0.16 }],
       photo: 'assets/people/max.jpg', avatar: 0, skin: '#d7ad86', hair: '#3b2a24' },
-    { initials: 'SE', name: 'Sec. Engineer - Lena Weber', fit: '91%', focus: 'Sentinel / SOC', certs: ['SC-200', 'AWS-SCS', 'AWS-ANS'],
+    { initials: 'PL', name: 'Process Lead - Lena Weber', fit: '91%', focus: 'Process Mining / O2C', certs: ['CELONIS', 'BPMN', 'LEAN'],
       color: WARM, y: 176, start: 0.18, span: 0.36, pt: '2 PT', days: '6 T',
       occupied: [{ start: 0.02, span: 0.11 }, { start: 0.72, span: 0.14 }],
       photo: 'assets/people/lena.jpg', avatar: 1, skin: '#c9916c', hair: '#2b2425' },
-    { initials: 'PE', name: 'Platform Eng. - Jonas Klein', fit: '84%', focus: 'Terraform / AKS', certs: ['CKA', 'TF-ASSOC'],
+    { initials: 'DM', name: 'Data Migration - Jonas Klein', fit: '84%', focus: 'Data Quality / Cutover', certs: ['DATA', 'ETL'],
       color: '#e8655a', y: 234, start: 0.38, span: 0.30, pt: '2 PT', days: '5 T',
       occupied: [{ start: 0.14, span: 0.12 }, { start: 0.73, span: 0.12 }],
       photo: 'assets/people/jonas.jpg', avatar: 2, skin: '#e1bd93', hair: '#5a382d' },
-    { initials: 'DL', name: 'Delivery Lead - Carla Vogt', fit: '78%', focus: 'Delivery Risk', certs: [],
+    { initials: 'CL', name: 'Change Lead - Carla Vogt', fit: '78%', focus: 'Adoption / Governance', certs: [],
       color: '#c65bb0', y: 292, start: 0.02, span: 0.22, pt: '1 PT', days: '4 T',
       occupied: [{ start: 0.34, span: 0.15 }],
       photo: 'assets/people/caspar.png', avatar: 1, skin: '#cfa17f', hair: '#352728' },
@@ -2706,8 +2623,8 @@ function TeamMorphModules({ local, showAttention = true }) {
   const matchCandidates = [
     ...matchedConsultants,
     { ...roles[3], certs: ['PMP'] },
-    { initials: 'CE', name: 'Cloud Eng. - David Brandt', fit: '74%', focus: 'AWS Networking',
-      certs: ['AWS-ANS', 'AWS-SAA'], color: '#8fbfd8', photo: 'assets/people/julian.png',
+    { initials: 'IE', name: 'Integration Expert - David Brandt', fit: '74%', focus: 'ERP Interfaces',
+      certs: ['API', 'ETL'], color: '#8fbfd8', photo: 'assets/people/julian.png',
       avatar: 0, skin: '#b98a63', hair: '#241d1b' },
   ];
   const staffingT = (i = 0) => staffingStageStart + 0.72 + i * 0.10;
@@ -2797,7 +2714,7 @@ function TeamMorphModules({ local, showAttention = true }) {
             <div style={{ maxWidth: 980, fontFamily: DISPLAY,
               fontSize: mix(34, 48, leftMorph), lineHeight: 0.96, fontWeight: 800,
 		              letterSpacing: '-0.026em', color: APP_TEXT }}>
-              AWS Cloud Transformation bei Bank AG
+              {ERP_CASE.opportunity} bei {ERP_CASE.accountShort}
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
               {requirementFacts.map((fact, i) => {
@@ -2948,13 +2865,13 @@ function TeamMorphModules({ local, showAttention = true }) {
               display: 'inline-flex', alignItems: 'center',
               fontFamily: MONO, fontSize: mix(7.8, 9.4, rightMorph), fontWeight: 820,
               letterSpacing: '0.08em', color: APP_TEXT,
-              background: APP_RAISED, border: `1px solid ${APP_LINE}` }}>BANK AG / AWS-1042</span>
+              background: APP_RAISED, border: `1px solid ${APP_LINE}` }}>HANSA / ERP-2042</span>
           </div>
           <div style={{ fontFamily: DISPLAY, fontWeight: 790,
             fontSize: mix(20, 35, rightMorph), color: APP_TEXT, letterSpacing: '-0.026em', lineHeight: 0.98,
-            whiteSpace: 'nowrap' }}>AWS Cloud Transformation</div>
+            whiteSpace: 'nowrap' }}>{ERP_CASE.opportunity}</div>
           <div style={{ fontFamily: MONO, fontSize: mix(7.8, 9.6, rightMorph), fontWeight: 820,
-            letterSpacing: '0.11em', textTransform: 'uppercase', color: APP_MUTED }}>Einsatzplanung · Security Cloud Team</div>
+            letterSpacing: '0.11em', textTransform: 'uppercase', color: APP_MUTED }}>Einsatzplanung · ERP & Prozess Team</div>
         </div>
         <div style={{ position: 'absolute', right: mix(32, 42, rightMorph), top: mix(28, 24, rightMorph),
           display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -2995,7 +2912,7 @@ function TeamMorphModules({ local, showAttention = true }) {
               padding: '0 18px', display: 'flex', alignItems: 'center', gap: 12,
               boxShadow: '0 14px 34px rgba(45,38,32,0.055)' }}>
               <Icon name="search" size={22} color="#8fbfd8" sw={1.9} />
-              <span style={appTyped({ fontSize: 15.5, fontWeight: 720, color: APP_TEXT })}>AWS Cloud Security</span>
+              <span style={appTyped({ fontSize: 15.5, fontWeight: 720, color: APP_TEXT })}>ERP & Prozessmanagement</span>
               <span style={{ marginLeft: 'auto', width: 2, height: 27, borderRadius: 99,
                 background: APP_ACCENT, opacity: 0.56 + staffingBeat * 0.18 }} />
             </div>
@@ -3058,7 +2975,7 @@ function TeamMorphModules({ local, showAttention = true }) {
                       <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
                         <span style={appTyped({ fontSize: 11.2, fontWeight: 760, color: APP_MUTED,
                           whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 118 })}>
-                          {person.focus.replace('Sentinel / SOC', 'IAM / GuardDuty').replace('Terraform / AKS', 'Terraform / Kubernetes')}
+                          {person.focus}
                         </span>
                         {person.certs.slice(0, 2).map((cert) => (
                           <CertificationBadge key={`${person.initials}-${cert}-staffing`} cert={cert} color={person.color} mini />
@@ -3149,7 +3066,7 @@ function TeamMorphModules({ local, showAttention = true }) {
               <div style={{ minWidth: 0 }}>
                 <div style={appTyped({ fontSize: 11.8, fontWeight: 840, color: APP_TEXT })}>Team gesamt</div>
                 <div style={appTyped({ marginTop: 3, fontSize: 10, fontWeight: 700, color: APP_FAINT,
-                  whiteSpace: 'nowrap' })}>3 Consultants · Security Cloud</div>
+                  whiteSpace: 'nowrap' })}>3 Consultants · ERP & Prozess</div>
               </div>
             </div>
             <div style={{ borderRadius: 18, background: APP_RAISED, border: `1px solid ${APP_LINE}`,
@@ -3181,13 +3098,13 @@ function TeamMorphModules({ local, showAttention = true }) {
         const stripOp = matchDetail * outreachSceneOpacity;
         if (stripOp <= 0.001) return null;
         const projectPhases = [
-          { label: 'Landing Zone & IAM', start: 0.04, span: 0.32, color: '#8fbfd8' },
-          { label: 'Security Baseline', start: 0.22, span: 0.36, color: WARM },
-          { label: 'Migration & Betrieb', start: mix(0.42, 0.34, exploreP), span: mix(0.32, 0.42, exploreP), color: '#e8655a' },
+          { label: 'Readiness & Zielbild', start: 0.04, span: 0.32, color: '#8fbfd8' },
+          { label: 'Process Mining', start: 0.22, span: 0.36, color: WARM },
+          { label: 'Migration & Change', start: mix(0.42, 0.34, exploreP), span: mix(0.32, 0.42, exploreP), color: '#e8655a' },
         ];
         const milestones = [
           { label: 'Kickoff', p: 0.02, color: '#74c69d' },
-          { label: 'Security Review', p: 0.62, color: WARM },
+          { label: 'Design Review', p: 0.62, color: WARM },
           { label: 'Go-Live', p: 0.98, color: APP_FAINT },
         ];
         return (
@@ -3196,11 +3113,11 @@ function TeamMorphModules({ local, showAttention = true }) {
             opacity: stripOp * 0.9, transform: `translateY(${(1 - matchDetail) * -10}px)`,
             display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontFamily: MONO, fontSize: 9.6, fontWeight: 820, letterSpacing: '0.13em',
-              textTransform: 'uppercase', color: APP_FAINT, whiteSpace: 'nowrap' }}>Projekt · Bank AG</span>
+              textTransform: 'uppercase', color: APP_FAINT, whiteSpace: 'nowrap' }}>Opportunity · {ERP_CASE.accountShort}</span>
             <span style={{ width: 3, height: 3, borderRadius: 99, background: APP_FAINT, opacity: 0.6 }} />
             <span style={{ fontFamily: MONO, fontSize: 9.6, fontWeight: 820, letterSpacing: '0.13em',
               textTransform: 'uppercase', color: '#9a6a2e', whiteSpace: 'nowrap' }}>
-              AWS Transformation
+              {ERP_CASE.opportunity}
             </span>
             <span style={{ flex: 1 }} />
             <span style={appTyped({ fontSize: 10.5, fontWeight: 740, color: APP_FAINT,
@@ -3304,7 +3221,7 @@ function TeamMorphModules({ local, showAttention = true }) {
             border: `1px solid ${APP_LINE_STRONG}` }}>
             <Icon name="search" size={27} color="#8fbfd8" sw={1.9} />
             <span style={appTyped({ fontSize: 18.5, fontWeight: 690,
-              color: APP_TEXT, whiteSpace: 'nowrap' })}>AWS Cloud Security</span>
+              color: APP_TEXT, whiteSpace: 'nowrap' })}>ERP & Prozessmanagement</span>
             <span style={{ width: 2, height: 32, borderRadius: 99, background: APP_ACCENT,
               opacity: 0.62 + matchBeat * 0.28,
               boxShadow: `0 0 ${10 + matchBeat * 10}px rgba(232,101,90,0.34)` }} />
@@ -3342,10 +3259,10 @@ function TeamMorphModules({ local, showAttention = true }) {
           </div>
           {(() => {
             const collisionByRow = [
-              { project: 'Bank XY · SOC-Betrieb', range: 'endet W1', warn: false },
+              { project: 'Werkgruppe West · Process Mining', range: 'endet W1', warn: false },
               null,
-              { project: 'Versicherer Z · IaC-Rollout', range: 'W2–W3', warn: true },
-              { project: 'Konzern X · Review', range: 'endet W1', warn: false },
+              { project: 'Industrie Nord · Cutover', range: 'W2–W3', warn: true },
+              { project: 'Aktives Mandat · Review', range: 'endet W1', warn: false },
               null,
             ];
             return (
@@ -3360,13 +3277,10 @@ function TeamMorphModules({ local, showAttention = true }) {
               : band(local, matchT(i) + 0.18, matchT(i) + 1.30, 0.30);
             const slotIn = rise(local, staffingStageStart + 0.24 + i * 0.16, 0.66);
             const shortName = person.name
-              .replace('Sr. Architect - Max Muster', 'Sr. Architect - Max')
-              .replace('Sec. Engineer - Lena Weber', 'Sec. Engineer - Lena')
-              .replace('Platform Eng. - Jonas Klein', 'Platform Eng. - Jonas');
-            const focus = (person.focus || '')
-              .replace('Sentinel / SOC', 'IAM / GuardDuty')
-              .replace('Terraform / AKS', 'Terraform / Kubernetes')
-              .replace('Azure Security', 'AWS Security');
+              .replace('ERP Architect - Max Muster', 'ERP Architect - Max')
+              .replace('Process Lead - Lena Weber', 'Process Lead - Lena')
+              .replace('Data Migration - Jonas Klein', 'Data Migration - Jonas');
+            const focus = person.focus || '';
             return (
               <div key={person.name} style={{ flex: 'none', height: 'calc((100% - 56px) / 5)', borderRadius: 16,
                 padding: '10px 14px', boxSizing: 'border-box',
@@ -3488,7 +3402,7 @@ function TeamMorphModules({ local, showAttention = true }) {
             background: APP_RAISED, border: `1px solid ${APP_LINE_STRONG}`, opacity: matchDetail }}>
             <span style={appTyped({ fontSize: 11.6, fontWeight: 840, color: APP_TEXT, whiteSpace: 'nowrap' })}>Ø Fit 90%</span>
             <span style={{ width: 1, height: 18, background: APP_LINE_STRONG }} />
-            <span style={appTyped({ fontSize: 11.2, fontWeight: 740, color: APP_MUTED, whiteSpace: 'nowrap' })}>2 Rollen gedeckt · Security Cloud Team</span>
+            <span style={appTyped({ fontSize: 11.2, fontWeight: 740, color: APP_MUTED, whiteSpace: 'nowrap' })}>3 Rollen gedeckt · ERP & Prozess Team</span>
             <span style={{ marginLeft: 'auto', ...appTyped({ fontSize: 11.6, fontWeight: 840,
               color: APP_TEXT, whiteSpace: 'nowrap' }) }}>
               Σ 7 PT / 2 W
@@ -3506,7 +3420,7 @@ function TeamMorphModules({ local, showAttention = true }) {
           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
             <div>
               <div style={{ fontFamily: MONO, fontSize: 9.8, fontWeight: 820, letterSpacing: '0.12em',
-                textTransform: 'uppercase', color: APP_MUTED }}>Anforderungsprofil · AWS Transformation</div>
+                textTransform: 'uppercase', color: APP_MUTED }}>Anforderungsprofil · ERP-Migration</div>
               <div style={{ marginTop: 6, ...appTyped({ fontSize: 16.5, fontWeight: 820, color: APP_TEXT }) }}>
                 Skill-Abdeckung
               </div>
@@ -3579,7 +3493,7 @@ function TeamMorphModules({ local, showAttention = true }) {
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <span style={{ width: 10, height: 10, borderRadius: 99, background: 'rgba(232,101,90,0.7)',
                 boxShadow: '0 0 8px rgba(232,101,90,0.55)' }} />
-              <span style={appTyped({ fontSize: 10.6, fontWeight: 760, color: APP_MUTED })}>Anforderung · Bank AG</span>
+              <span style={appTyped({ fontSize: 10.6, fontWeight: 760, color: APP_MUTED })}>Anforderung · {ERP_CASE.accountShort}</span>
             </span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <span style={{ width: 10, height: 10, borderRadius: 99, background: '#9b59b6', opacity: 0.9,
@@ -3786,7 +3700,7 @@ function PersistentProjectBundleBridge() {
   const flow = rise(t, offerStart + 0.76, 1.02);
   const result = rise(t, offerStart + 1.42, 0.82);
   const out = rise(t, end - 0.78, 0.72);
-  const dealClosed = rise(t, LOGO_BRIDGE_DEAL_START, 0.72);   // final "Deal closed" confirmation, bridging to the next scene
+  const dealClosed = rise(t, LOGO_BRIDGE_DEAL_START, 0.72);   // human-owned internal approval bridges into project work
   const offerLabelsStart = LOGO_BRIDGE_OFFER_LABELS_START;
   const offerHeaderOut = rise(t, offerLabelsStart - 0.02, 0.64);
   const offerHeaderOpacity = (1 - out) * (1 - dealClosed * 0.9) * (1 - offerHeaderOut);
@@ -3820,9 +3734,9 @@ function PersistentProjectBundleBridge() {
   const modLeft = 960 - modRowW / 2;
   const offerModulesTop = logoY + 132;
   const offerModules = [
-    { key: 'cv', title: 'CVs', icon: 'users', color: '#8fbfd8', lines: [0.54, 0.78, 0.46] },
-    { key: 'scope', title: 'Dienstleistung', icon: 'briefcase', color: WARM, lines: [0.72, 0.58, 0.42] },
-    { key: 'cond', title: 'Vertragsentwurf', icon: 'file', color: '#e8655a', lines: [0.66, 0.48, 0.70] },
+    { key: 'evidence', title: 'EvidencePack', icon: 'database', color: '#8fbfd8', lines: [0.54, 0.78, 0.46] },
+    { key: 'concept', title: 'Next Step', icon: 'workflow', color: WARM, lines: [0.72, 0.58, 0.42] },
+    { key: 'draft', title: 'Team & CVs', icon: 'users', color: '#e8655a', lines: [0.66, 0.48, 0.70] },
   ];
   const sources = [
     { src: 'assets/tech-icons/azure.svg', color: '#8fbfd8', x: 676, y: 438 },
@@ -4035,7 +3949,7 @@ function PersistentProjectBundleBridge() {
                   transform: `translateY(${(1 - projectMorph) * 12}px) scale(${0.90 + projectMorph * 0.14})` }}>
                   <Icon name="briefcase" size={mix(62, 96, dealEase)} color="#7fdca6" sw={1.9} />
                   <span style={{ fontFamily: MONO, fontSize: mix(10, 13, dealEase),
-                    letterSpacing: '0.14em', fontWeight: 800, color: 'rgba(250,250,249,0.72)' }}>PROJECT</span>
+                    letterSpacing: '0.14em', fontWeight: 800, color: 'rgba(250,250,249,0.72)' }}>PROJECT READY</span>
                 </div>
               </div>
             </div>
@@ -4043,7 +3957,11 @@ function PersistentProjectBundleBridge() {
               letterSpacing: '-0.02em', whiteSpace: 'nowrap',
               transform: `translateY(${(1 - dealClosed) * 14}px)`,
               textShadow: '0 14px 40px rgba(0,0,0,0.5)' }}>
-              Deal closed
+              Intern freigegeben
+            </div>
+            <div style={{ marginTop: -8, fontFamily: MONO, fontSize: 14, fontWeight: 760,
+              letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(250,250,249,0.58)' }}>
+              Export bereit · Projektanlage nach Zustimmung
             </div>
           </div>
         </div>
@@ -4284,13 +4202,13 @@ function SuggestedTeamSetup({ local }) {
             display: 'inline-flex', alignItems: 'center',
             fontFamily: MONO, fontSize: 9.5, fontWeight: 820,
             letterSpacing: '0.08em', color: 'rgba(250,250,249,0.82)',
-            background: 'rgba(255,255,255,0.055)', border: '1px solid rgba(255,255,255,0.10)' }}>BANK AG / AWS-1042</span>
+            background: 'rgba(255,255,255,0.055)', border: '1px solid rgba(255,255,255,0.10)' }}>HANSA / ERP-2042</span>
         </div>
         <div style={{ marginTop: 7, fontFamily: DISPLAY, fontWeight: 790,
-          fontSize: 38, color: TEXT, letterSpacing: '-0.026em', lineHeight: 0.98 }}>AWS Cloud Transformation</div>
+          fontSize: 38, color: TEXT, letterSpacing: '-0.026em', lineHeight: 0.98 }}>{ERP_CASE.opportunity}</div>
         <div style={{ marginTop: 6, fontFamily: MONO, fontSize: 10,
           fontWeight: 820, letterSpacing: '0.11em', textTransform: 'uppercase',
-          color: 'rgba(250,250,249,0.58)' }}>Einsatzplanung · Security Cloud Team</div>
+          color: 'rgba(250,250,249,0.58)' }}>Einsatzplanung · ERP & Prozess Team</div>
       </div>
       <div style={{ position: 'absolute', right: 80, top: 16, height: 30, borderRadius: 999,
         padding: '0 12px', display: 'flex', alignItems: 'center', gap: 8,
@@ -4412,6 +4330,7 @@ function ConsultingOSExplainer({ local }) {
   const l = local - OS_EXPLAINER_START;
   const exit = rise(local, OS_EXPLAINER_EXIT - 0.68, 0.68);
   const line1 = 1;
+  const osLine = rise(l, 0.42, 0.72);
   const textLine = (text, p, top, warm = false) => (
     <div style={{ position: 'absolute', left: 230, right: 230, top,
       textAlign: 'center', fontFamily: DISPLAY, fontWeight: 800,
@@ -4427,6 +4346,7 @@ function ConsultingOSExplainer({ local }) {
       pointerEvents: 'none' }}>
       {/* jules: "Consulting Intelligence" eyebrow removed */}
       {textLine('Senior-Zeit gehört zum Kunden.', line1, 348)}
+      {textLine('Das AI-native Consulting OS.', osLine, 438, true)}
     </div>
   );
 }
@@ -4554,7 +4474,7 @@ function ProjectBundleSceneEntry({ local }) {
           textAlign: 'center' }}>
           <div style={{ fontFamily: DISPLAY, fontWeight: 790, fontSize: 31 * scale,
             lineHeight: 1.02, color: APP_TEXT, letterSpacing: '-0.018em' }}>
-            AWS Transformation · Bank AG
+            {ERP_CASE.project} · {ERP_CASE.accountShort}
           </div>
           <div style={{ marginTop: 10 * scale, fontFamily: MONO, fontSize: 10.4 * scale,
             textTransform: 'uppercase', letterSpacing: '0.16em', color: APP_MUTED }}>
@@ -4770,18 +4690,18 @@ function VertriebBackground({ local, hideProjectBundle = false }) {
     { label: 'Analyse', color: '#8fbfd8', w: 0.64 },
     { label: 'Risiko', color: '#e8655a', w: 0.50 },
   ];
-  const promptDraftText = 'Bereite mir das Status-Meeting mit BankAG vor';
+  const promptDraftText = 'Bereite das ERP-Steering für Hansa vor';
   const referenceItems = [
-    { label: 'Projektkontext', meta: 'Bank AG', icon: 'briefcase', color: '#74c69d' },
-    { label: 'Security Scope', meta: 'IAM / GuardDuty', icon: 'shield', color: '#8fbfd8' },
-    { label: 'Risiko Review', meta: 'DORA / BaFin', icon: 'clock', color: '#e8655a' },
+    { label: 'Projektkontext', meta: ERP_CASE.accountShort, icon: 'briefcase', color: '#74c69d' },
+    { label: 'ERP-Prozessdaten', meta: 'O2C / Mapping', icon: 'database', color: '#8fbfd8' },
+    { label: 'Risiko Review', meta: 'Cutover / Werksstillstand', icon: 'clock', color: '#e8655a' },
   ];
   const commentThreads = [
     { author: 'Consultry Intelligence', text: 'Projektpaket analysiert. Meeting-Fragen, Risiken und nächste Schritte sind ableitbar.', color: '#8fbfd8' },
-    { author: 'Lena', text: 'Bitte Status-Meeting mit BankAG vorbereiten und die offenen Security-Punkte priorisieren.', color: WARM },
+    { author: 'Lena', text: 'Bitte ERP-Steering vorbereiten und die offenen Mapping- und Cutover-Punkte priorisieren.', color: WARM },
   ];
   const integrations = [
-    { label: 'GitHub', meta: 'Repos', src: 'assets/tech-icons/github.svg', color: '#8fbfd8', x: 1660, y: 430, ax: 1652, ay: 466, t: 4.05 },
+    { label: 'ERP-Export', meta: 'Prozessdaten', src: 'assets/tech-icons/microsoft-excel.svg', color: '#8fbfd8', x: 1660, y: 430, ax: 1652, ay: 466, t: 4.05 },
     { label: 'Jira', meta: 'Issues', src: 'assets/tech-icons/jira.svg', color: WARM, x: 1660, y: 504, ax: 1652, ay: 530, t: 4.34 },
     { label: 'Confluence', meta: 'Wissen', src: 'assets/tech-icons/confluence.svg', color: '#e8655a', x: 1660, y: 674, ax: 1652, ay: 696, t: 9.04 },
     { label: 'Word', meta: 'Draft', src: 'assets/tech-icons/microsoft-word.svg', color: '#8fbfd8', x: 1660, y: 748, ax: 1652, ay: 760, t: 9.36 },
@@ -4938,11 +4858,11 @@ function VertriebBackground({ local, hideProjectBundle = false }) {
                       fontFamily: MONO, fontSize: 9.2, fontWeight: 760, letterSpacing: '0.08em',
                       textTransform: 'uppercase', color: APP_MUTED,
                       background: APP_RAISED,
-                      border: `1px solid ${APP_LINE}` }}>Bank AG</span>
+                      border: `1px solid ${APP_LINE}` }}>{ERP_CASE.accountShort}</span>
                   </div>
                   <div style={{ fontFamily: DISPLAY, fontWeight: 795, fontSize: 40,
                     lineHeight: 0.98, color: APP_TEXT, letterSpacing: '-0.018em',
-                    whiteSpace: 'nowrap' }}>AWS Transformation</div>
+                    whiteSpace: 'nowrap' }}>{ERP_CASE.project}</div>
                 </div>
               </div>
               <div style={{ position: 'absolute', left: 28, right: 28, bottom: 17, height: 3,
@@ -5208,19 +5128,19 @@ function VertriebEditSidebar({ local, state = offerEditSidebarState(local) }) {
   if (op <= 0.001) return null;
 
   const contextActive = band(local, WORK_PROMPT_PANEL_START, WORK_PROMPT_VISUAL_START + 0.58, 0.34);
-  const promptText = 'Bereite mir das Status-Meeting mit BankAG vor';
+  const promptText = 'Bereite das ERP-Steering für Hansa vor';
   const nextActions = [
-    { kind: 'Lösen', text: 'IAM-Findings schließen', meta: '2 offen · GuardDuty', icon: 'shield', color: '#e8655a' },
-    { kind: 'Abrufen', text: 'Security Baseline & Scope', meta: 'Projektakte · v3', icon: 'file', color: '#8fbfd8' },
-    { kind: 'Planen', text: 'Status-Meeting vorbereiten', meta: 'Agenda-Entwurf bereit', icon: 'calendar', color: WARM },
+    { kind: 'Lösen', text: 'Mapping-Freigaben schließen', meta: '2 offen · Datenqualität', icon: 'database', color: '#e8655a' },
+    { kind: 'Abrufen', text: 'ERP-Zielbild & Prozessdaten', meta: 'Projektakte · v3', icon: 'file', color: '#8fbfd8' },
+    { kind: 'Planen', text: 'ERP-Steering vorbereiten', meta: 'Agenda-Entwurf bereit', icon: 'calendar', color: WARM },
   ];
   const referenceItems = [
-    { label: 'Projektkontext', meta: 'Bank AG', icon: 'briefcase', color: '#74c69d' },
-    { label: 'Security Scope', meta: 'IAM / GuardDuty', icon: 'shield', color: '#8fbfd8' },
+    { label: 'Projektkontext', meta: ERP_CASE.accountShort, icon: 'briefcase', color: '#74c69d' },
+    { label: 'ERP-Prozessdaten', meta: 'O2C / Mapping', icon: 'database', color: '#8fbfd8' },
   ];
   const contextMeetings = [
-    { day: 'DO', date: '12', title: 'Status-Meeting · Bank AG', meta: '10:00 – 10:45 · Teams · mit Lena & Max', badge: 'in 2 Tagen', highlight: true },
-    { day: 'FR', date: '13', title: 'Security Review · IAM Findings', meta: '14:00 · intern', highlight: false },
+    { day: 'DO', date: '12', title: 'ERP-Steering · Hansa Maschinenbau', meta: '10:00 – 10:45 · Teams · Fachbereich & PMO', badge: 'in 2 Tagen', highlight: true },
+    { day: 'FR', date: '13', title: 'Datenqualität Review · Mapping', meta: '14:00 · intern', highlight: false },
   ];
 
   return (
@@ -5252,12 +5172,12 @@ function VertriebEditSidebar({ local, state = offerEditSidebarState(local) }) {
               fontFamily: MONO, fontSize: 8.6, fontWeight: 820, letterSpacing: '0.08em',
               textTransform: 'uppercase', color: APP_MUTED,
               background: APP_RAISED, border: `1px solid ${APP_LINE}` }}>
-              Bank AG
+              {ERP_CASE.accountShort}
             </span>
           </div>
           <div style={{ marginTop: 6, ...appTyped({ fontSize: 17.5, fontWeight: 820, color: APP_TEXT,
             whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }) }}>
-            AWS Transformation
+            {ERP_CASE.project}
           </div>
         </div>
         <span style={{ height: 30, borderRadius: 999, display: 'inline-flex',
@@ -5376,7 +5296,7 @@ function VertriebEditSidebar({ local, state = offerEditSidebarState(local) }) {
             </div>
             <div style={{ marginTop: 11, display: 'flex', justifyContent: 'space-between' }}>
               <span style={appTyped({ fontSize: 10.2, fontWeight: 780, color: '#3f7b56' })}>Kickoff</span>
-              <span style={appTyped({ fontSize: 10.2, fontWeight: 780, color: '#9a6a2e' })}>Security Review · W3</span>
+              <span style={appTyped({ fontSize: 10.2, fontWeight: 780, color: '#9a6a2e' })}>Cutover Review · W3</span>
               <span style={appTyped({ fontSize: 10.2, fontWeight: 760, color: APP_FAINT })}>Go-Live · W4</span>
             </div>
           </div>
@@ -5402,7 +5322,7 @@ function VertriebEditSidebar({ local, state = offerEditSidebarState(local) }) {
             ))}
           </div>
           <span style={appTyped({ fontSize: 10, fontWeight: 760, color: APP_FAINT,
-            whiteSpace: 'nowrap' })}>Woche 2 von 4 · Security Review W3</span>
+            whiteSpace: 'nowrap' })}>Woche 2 von 4 · Cutover Review W3</span>
         </div>
       </div>
 
@@ -5619,9 +5539,9 @@ function ConsultantWorkDetailJump({ local, start = WORK_DETAIL_START, end = WORK
   const githubQuickClick = band(l, 1.50, 1.96, 0.13);
   const deckQuickClick = band(l, 2.30, 2.76, 0.13);
   const repoFiles = [
-    { name: 'landing-zone', icon: 'folder', color: '#8fbfd8' },
-    { name: 'sentinel.tf', icon: 'file', color: WARM },
-    { name: 'policy.yaml', icon: 'file', color: '#e8655a' },
+    { name: 'order-to-cash', icon: 'folder', color: '#8fbfd8' },
+    { name: 'material_mapping.csv', icon: 'file', color: WARM },
+    { name: 'cutover_rules.yaml', icon: 'file', color: '#e8655a' },
   ];
   const repoLines = [
     { n: '18', w: 0.72, c: '#8fbfd8', indent: 0 },
@@ -5663,13 +5583,13 @@ function ConsultantWorkDetailJump({ local, start = WORK_DETAIL_START, end = WORK
             textTransform: 'uppercase', color: APP_FAINT, whiteSpace: 'nowrap' }}>Wissen · Meeting Prep</span>
           <span style={{ width: 3, height: 3, borderRadius: 99, background: APP_FAINT, opacity: 0.6 }} />
           <span style={{ fontFamily: MONO, fontSize: 12.5, fontWeight: 820, letterSpacing: '0.13em',
-            textTransform: 'uppercase', color: '#9a6a2e', whiteSpace: 'nowrap' }}>Bank AG · AWS Transformation</span>
+            textTransform: 'uppercase', color: '#9a6a2e', whiteSpace: 'nowrap' }}>{ERP_CASE.accountShort} · {ERP_CASE.project}</span>
           <span style={{ flex: 1 }} />
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 9,
             ...appTyped({ fontSize: 14, fontWeight: 740, color: APP_MUTED, whiteSpace: 'nowrap' }) }}>
             <span style={{ width: 8, height: 8, borderRadius: 99, background: '#74c69d',
               boxShadow: '0 0 10px rgba(116,198,157,0.45)' }} />
-            Status-Meeting · DO 10:00 · Teams · mit Lena & Max
+            ERP-Steering · DO 10:00 · Teams · Fachbereich & PMO
           </span>
         </div>
         <div style={{ marginTop: 16, fontFamily: DISPLAY, fontWeight: 790, fontSize: 46,
@@ -5684,9 +5604,9 @@ function ConsultantWorkDetailJump({ local, start = WORK_DETAIL_START, end = WORK
           textTransform: 'uppercase', color: APP_FAINT }}>Status · Workstreams</div>
         <div style={{ marginTop: 14, display: 'grid', gap: 12 }}>
           {[
-            { title: 'Landing Zone & IAM', sub: 'on track · Übergabe W2', jira: 'BANK-131', active: 0, color: '#74c69d' },
-            { title: 'Security Baseline', sub: '2 GuardDuty-Findings offen', jira: 'BANK-142', active: 1, color: WARM },
-            { title: 'Migration & Betrieb', sub: 'Risiko · Zeitfenster Kernsysteme', jira: 'BANK-155', active: 2, color: '#e8655a' },
+            { title: 'Readiness & ERP-Zielbild', sub: 'on track · Freigabe W2', jira: 'HMA-131', active: 0, color: '#74c69d' },
+            { title: 'Process Mining · O2C', sub: '2 Mapping-Freigaben offen', jira: 'HMA-142', active: 1, color: WARM },
+            { title: 'Datenmigration & Cutover', sub: 'Risiko · Werksstillstand', jira: 'HMA-155', active: 2, color: '#e8655a' },
           ].map((row, i) => {
             const rp = rise(l, 0.42 + i * 0.10, 0.56) * left;
             return (
@@ -5726,9 +5646,9 @@ function ConsultantWorkDetailJump({ local, start = WORK_DETAIL_START, end = WORK
           textTransform: 'uppercase', color: APP_FAINT }}>Unterlagen & Referenzen</div>
         <div style={{ marginTop: 14, display: 'grid', gap: 10 }}>
           {[
-            { icon: 'confluence.svg', title: 'AWS Zielarchitektur · Konzept v3', sub: 'Confluence · gestern aktualisiert', pulse: 0 },
+            { icon: 'confluence.svg', title: 'ERP-Zielarchitektur · Konzept v3', sub: 'Confluence · gestern aktualisiert', pulse: 0 },
             { icon: 'microsoft-powerpoint.svg', title: 'Konzept-Präsentation', sub: 'PPTX · 12 Folien · Entwurf', pulse: deckQuickClick },
-            { icon: 'github.svg', title: 'bank-ag / aws-transformation', sub: 'GitHub · terraform / security.tf', pulse: 0 },
+            { icon: 'microsoft-excel.svg', title: 'ERP-Extrakt · Process Mining', sub: 'O2C · Mapping · freigegeben', pulse: 0 },
           ].map((doc) => (
             <div key={doc.title} style={{ height: 60, borderRadius: 14,
               display: 'grid', gridTemplateColumns: '40px minmax(0,1fr) 22px', alignItems: 'center',
@@ -5764,20 +5684,20 @@ function ConsultantWorkDetailJump({ local, start = WORK_DETAIL_START, end = WORK
               <Icon name="sparkles" size={14} color="#9a6a2e" sw={2.1} />
             </span>
             <span style={appTyped({ fontSize: 13.5, fontWeight: 740, color: APP_MUTED,
-              whiteSpace: 'nowrap' })}>Wo ist die aktuelle Security-Policy definiert?</span>
+              whiteSpace: 'nowrap' })}>Wo ist das aktuelle Mapping für Materialstämme?</span>
           </div>
           <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 10, paddingLeft: 40 }}>
             <span style={appTyped({ fontSize: 13.5, fontWeight: 740, color: APP_TEXT,
-              whiteSpace: 'nowrap' })}>Im Repo der Bank AG, Modul Security:</span>
+              whiteSpace: 'nowrap' })}>Im verbundenen ERP-Extrakt der Hansa:</span>
             <span style={{ height: 32, borderRadius: 999, padding: '0 13px 0 9px',
               display: 'inline-flex', alignItems: 'center', gap: 8,
               transform: `scale(${1 - githubQuickClick * 0.03})`,
               background: '#1c1a18',
               border: githubQuickClick > 0.01 ? '1px solid rgba(240,168,94,0.7)' : '1px solid #1c1a18',
               boxShadow: githubQuickClick > 0.01 ? `0 0 ${14 + githubQuickClick * 18}px rgba(240,168,94,0.35)` : '0 8px 18px rgba(45,38,32,0.18)' }}>
-              <img src="assets/tech-icons/github.svg" alt="" style={{ width: 15, height: 15, display: 'block', filter: 'invert(1)', opacity: 0.9 }} />
+              <img src="assets/tech-icons/microsoft-excel.svg" alt="" style={{ width: 15, height: 15, display: 'block', filter: 'invert(1)', opacity: 0.9 }} />
               <span style={{ fontFamily: MONO, fontSize: 11.5, fontWeight: 800, letterSpacing: '0.03em',
-                color: '#fdfaf5' }}>security.tf · L18</span>
+                color: '#fdfaf5' }}>Material_Mapping.xlsx · Zeile 18</span>
               <Icon name="arrowUR" size={13} color="#f0a85e" sw={2.3} />
             </span>
           </div>
@@ -6010,10 +5930,10 @@ function ConsultantWorkExternalWindows({ local, start = -0.90, end = 4.65 }) {
             <span style={{ width: 32, height: 32, borderRadius: 999,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(240,246,252,0.12)' }}>
-              <img src="assets/tech-icons/github.svg" alt="" style={{ width: 20, height: 20, opacity: 0.86, filter: 'invert(1)' }} />
+              <img src="assets/tech-icons/microsoft-excel.svg" alt="" style={{ width: 20, height: 20, opacity: 0.86 }} />
             </span>
             <span style={{ fontFamily: INTER, fontSize: 15, fontWeight: 700, color: '#f0f6fc' }}>
-              bank-ag / aws-transformation
+              hansa / erp-process-data
             </span>
             <span style={{ height: 24, borderRadius: 999, padding: '0 10px', display: 'flex',
               alignItems: 'center', fontFamily: MONO, fontSize: 10.5, letterSpacing: '0.04em',
@@ -6023,7 +5943,7 @@ function ConsultantWorkExternalWindows({ local, start = -0.90, end = 4.65 }) {
           <div style={{ position: 'absolute', right: 22, top: 18, display: 'flex', alignItems: 'center', gap: 8,
             fontFamily: MONO, fontSize: 10.5, letterSpacing: '0.08em', color: '#8fbfd8' }}>
             <Icon name="file" size={14} color="#8fbfd8" sw={1.9} />
-            terraform / security.tf
+            ERP-Export / Material Mapping
           </div>
         </div>
         <div style={{ position: 'absolute', left: 22, top: 76, width: 222, bottom: 24,
@@ -6054,7 +5974,7 @@ function ConsultantWorkExternalWindows({ local, start = -0.90, end = 4.65 }) {
             gap: 8, borderBottom: '1px solid rgba(240,246,252,0.08)',
             color: 'rgba(240,246,252,0.58)', fontFamily: MONO, fontSize: 11 }}>
             <Icon name="file" size={14} color={WARM} sw={1.8} />
-            <span>security.tf</span>
+            <span>material_mapping.csv</span>
             <span style={{ marginLeft: 'auto', display: 'flex', gap: 6 }}>
               {[0, 1, 2].map((dot) => (
                 <span key={dot} style={{ width: 4.5, height: 4.5, borderRadius: 99,
@@ -6497,17 +6417,17 @@ function PersistentPromptAgentBridge() {
   const op = band(t, typeStart - 0.12, end, 0.42);
   if (op <= 0.001) return null;
 
-  const query = 'Bereite mir das Status-Meeting mit BankAG vor';
+  const query = 'Bereite das ERP-Steering für Hansa vor';
   const promptIn = rise(t, typeStart - 0.10, 0.54);
   const promptMorph = Easing.easeInOutCubic(clamp((t - typeStart) / 0.50, 0, 1));
   const displayQuery = query;
   const caretOn = Math.floor(t * 2.4) % 2 === 0;
   const sources = [
-    { k: 'Risiko', icon: 'clock', color: '#e8655a', ...WORK_PROMPT_SOURCE_ANCHORS.Risiko },
-    { k: 'Konzepte', icon: 'search', color: '#8fbfd8', ...WORK_PROMPT_SOURCE_ANCHORS.Konzepte },
-    { k: 'Projekt', icon: 'azure', color: '#8fbfd8', ...WORK_PROMPT_SOURCE_ANCHORS.Projekt },
-    { k: 'Code', icon: 'file', color: WARM, ...WORK_PROMPT_SOURCE_ANCHORS.Code },
-    { k: 'Scope', icon: 'briefcase', color: '#c65bb0', ...WORK_PROMPT_SOURCE_ANCHORS.Scope },
+    { k: 'ERP-Daten', icon: 'database', color: '#e8655a', ...WORK_PROMPT_SOURCE_ANCHORS.Risiko },
+    { k: 'Wissen', icon: 'search', color: '#8fbfd8', ...WORK_PROMPT_SOURCE_ANCHORS.Konzepte },
+    { k: 'Projekt', icon: 'briefcase', color: '#8fbfd8', ...WORK_PROMPT_SOURCE_ANCHORS.Projekt },
+    { k: 'Methodik', icon: 'file', color: WARM, ...WORK_PROMPT_SOURCE_ANCHORS.Code },
+    { k: 'Scope', icon: 'workflow', color: '#c65bb0', ...WORK_PROMPT_SOURCE_ANCHORS.Scope },
   ];
   const sidebarBox = OFFER_EDIT_PROMPT_BAR;
   const largeBox = { x: 278, y: 246, w: 1364, h: 206 };
@@ -6701,14 +6621,14 @@ function SceneVertriebAppContent({ local }) {
         <StableVertriebBackground local={local} />
       </div>
       <VertriebEditSidebar local={local} state={sidebarState} />
-      <Chapter n={3} label="Angebot" op={eb} />
+      <Chapter n={3} label="Projektarbeit" op={eb} />
     </>
   );
 }
 
 function SceneVertrieb(local) {
   // Don't mount the Vertrieb project-bundle background until the offer bridge's delayed
-  // "Deal closed" phase is effectively resolved.
+  // Internal approval phase is effectively resolved.
   const mountGate = rise(local, (LOGO_BRIDGE_END - 0.20) - SCENE_VERTRIEB_START, 0.62);
   return (
     <div style={{ position: 'absolute', inset: 0, background: 'transparent', overflow: 'hidden', opacity: mountGate }}>
@@ -7502,10 +7422,8 @@ function PersistentLogo() {
   );
 }
 
-function OfferOutreachAppScene() {
-  // m0018: two workspace visits — 1) empty → first-outreach draft generated from the
-  // linked sources (drawer) → Team finden; 2) after the team scene: CV drafts generate
-  // + CV preview, then the offer bridge takes over.
+function OpportunityWorkflowAppScene() {
+  // Two workspace visits: evidence/needs first, then named-team CV generation.
   return (
     <React.Fragment>
       <WorkspaceVisit visit={1} />
@@ -7527,21 +7445,21 @@ function OpportunityCanvas() {
   const tipIn = Easing.easeOutCubic(rise(cl, 5.0, 0.55));
   const CX = 748, CY = 396;
   const nodes = [
-    { id: 'hub', dx: 0, dy: 0, color: '#3fa376', icon: 'briefcase', label: 'AWS Transformation', sub: 'Bank AG · Projektkontext', i: 0, hub: true },
-    { id: 'signal', dx: -352, dy: -156, color: '#e0863f', icon: 'target', label: 'Signal-Cluster', i: 1 },
-    { id: 'team', dx: 316, dy: -150, color: '#5f97bf', icon: 'users', label: 'Team', i: 2 },
-    { id: 'cvs', dx: 372, dy: 120, color: '#5f97bf', icon: 'file', label: 'CV-Entwürfe', i: 3 },
-    { id: 'outreach', dx: -356, dy: 138, color: '#c07f4f', icon: 'arrowUR', label: 'Outreach', i: 4 },
-    { id: 'angebot', dx: 4, dy: 262, color: '#d59433', icon: 'file', label: 'Angebot & Vertrag', i: 5, glow: true },
-    { id: 'sig1', dx: -560, dy: -252, color: '#e0863f', label: 'Financial Times', leaf: true, i: 6 },
-    { id: 'sig2', dx: -600, dy: -92, color: '#e0863f', label: 'Ausschreibung', leaf: true, i: 7 },
+    { id: 'hub', dx: 0, dy: 0, color: '#3fa376', icon: 'briefcase', label: ERP_CASE.opportunity, sub: `${ERP_CASE.accountShort} · Opportunity`, i: 0, hub: true },
+    { id: 'signal', dx: -352, dy: -156, color: '#e0863f', icon: 'database', label: 'EvidencePack', i: 1 },
+    { id: 'team', dx: 316, dy: -150, color: '#5f97bf', icon: 'users', label: 'Team-Erweiterung', i: 2, glow: true },
+    { id: 'cvs', dx: 372, dy: 120, color: '#5f97bf', icon: 'file', label: 'CVs', i: 3 },
+    { id: 'outreach', dx: -356, dy: 138, color: '#c07f4f', icon: 'file', label: 'Grounded Draft · bei Bedarf', i: 4 },
+    { id: 'angebot', dx: 4, dy: 262, color: '#d59433', icon: 'workflow', label: 'ConceptPlan · optional', i: 5 },
+    { id: 'sig1', dx: -560, dy: -252, color: '#e0863f', label: 'Vertragsoption', leaf: true, i: 6 },
+    { id: 'sig2', dx: -600, dy: -92, color: '#e0863f', label: 'NeedMap · intern', leaf: true, i: 7 },
     { id: 'max', dx: 548, dy: -246, color: '#5f97bf', label: 'Max', leaf: true, i: 8 },
     { id: 'lena', dx: 612, dy: -128, color: '#5f97bf', label: 'Lena', leaf: true, i: 9 },
     { id: 'jonas', dx: 520, dy: -20, color: '#5f97bf', label: 'Jonas', leaf: true, i: 10 },
     { id: 'cv1', dx: 632, dy: 74, color: '#c05b52', label: 'CV · Max', leaf: true, i: 11 },
     { id: 'cv2', dx: 648, dy: 182, color: '#4a7fb5', label: 'CV · Lena', leaf: true, i: 12 },
     { id: 'cv3', dx: 560, dy: 252, color: '#c05b52', label: 'CV · Jonas', leaf: true, i: 13 },
-    { id: 'em', dx: -600, dy: 236, color: '#c07f4f', label: 'E-Mail', leaf: true, i: 14 },
+    { id: 'em', dx: -600, dy: 236, color: '#c07f4f', label: 'ReviewIssues · 2', leaf: true, i: 14 },
   ];
   const byId = {};
   nodes.forEach((n) => { byId[n.id] = n; });
@@ -7575,7 +7493,7 @@ function OpportunityCanvas() {
             textTransform: 'uppercase', color: APP_FAINT, whiteSpace: 'nowrap' }}>Consulting Workspace</span>
           <span style={{ width: 3, height: 3, borderRadius: 99, background: APP_FAINT, opacity: 0.6 }} />
           <span style={{ fontFamily: MONO, fontSize: 9.6, fontWeight: 820, letterSpacing: '0.13em',
-            textTransform: 'uppercase', color: '#9a6a2e', whiteSpace: 'nowrap' }}>Opportunity · Bank AG</span>
+            textTransform: 'uppercase', color: '#9a6a2e', whiteSpace: 'nowrap' }}>Opportunity · {ERP_CASE.accountShort}</span>
           <span style={{ flex: 1 }} />
           <span style={{ height: 26, borderRadius: 999, padding: '0 11px', display: 'inline-flex',
             alignItems: 'center', gap: 7, background: '#e8f4ec', border: '1px solid rgba(116,198,157,0.34)',
@@ -7666,7 +7584,7 @@ function OpportunityCanvas() {
             gap: 8, background: '#332c25', boxShadow: '0 10px 24px rgba(45,38,32,0.28)',
             opacity: tipIn, transform: 'translateY(' + ((1 - tipIn) * 10) + 'px)', whiteSpace: 'nowrap' }}>
             <Icon name="sparkles" size={13} color={WARM} sw={2.2} />
-            <span style={{ ...appTyped({ fontSize: 11.5, fontWeight: 780, color: '#f5efe6', whiteSpace: 'nowrap' }) }}>KI · Angebot aus dem Canvas erstellen</span>
+            <span style={{ ...appTyped({ fontSize: 11.5, fontWeight: 780, color: '#f5efe6', whiteSpace: 'nowrap' }) }}>Optional · nur bei komplexem Bedarf</span>
           </div>
         </div>
       </div>
@@ -7689,9 +7607,9 @@ function WorkspaceVisit({ visit }) {
   const rowAccentSoft = 'rgba(217,154,85,0.58)';
   const rowTint = '#fbf4ea';
   const consultants = [
-    { name: 'Sr. Architect - Max', role: 'Landing Zone', color: rowAccent, photo: 'assets/people/max.jpg', avatar: 0, skin: '#d7ad86', hair: '#3b2a24', certs: ['AZ-500', 'AWS-SAA'], score: '96%', availability: 0.78 },
-    { name: 'Sec. Engineer - Lena', role: 'IAM / GuardDuty', color: rowAccent, photo: 'assets/people/lena.jpg', avatar: 1, skin: '#c9916c', hair: '#2b2425', certs: ['SC-200', 'AWS-SCS'], score: '91%', availability: 0.66 },
-    { name: 'Platform Eng. - Jonas', role: 'Terraform / Kubernetes', color: rowAccent, photo: 'assets/people/jonas.jpg', avatar: 2, skin: '#e1bd93', hair: '#5a382d', certs: ['CKA', 'TF-ASSOC'], score: '84%', availability: 0.58 },
+    { name: 'ERP Architect - Max', role: 'ERP-Zielarchitektur', color: rowAccent, photo: 'assets/people/max.jpg', avatar: 0, skin: '#d7ad86', hair: '#3b2a24', certs: ['SAP ACT', 'S/4'], score: '96%', availability: 0.78 },
+    { name: 'Process Lead - Lena', role: 'Process Mining / O2C', color: rowAccent, photo: 'assets/people/lena.jpg', avatar: 1, skin: '#c9916c', hair: '#2b2425', certs: ['CELONIS', 'BPMN'], score: '91%', availability: 0.66 },
+    { name: 'Data Migration - Jonas', role: 'Data Quality / Cutover', color: rowAccent, photo: 'assets/people/jonas.jpg', avatar: 2, skin: '#e1bd93', hair: '#5a382d', certs: ['DATA', 'ETL'], score: '84%', availability: 0.58 },
   ];
   const panelOpacity = op * (1 - exit);
   return (
@@ -7843,13 +7761,13 @@ function WorkspaceVisit({ visit }) {
                   <span style={{ width: 3, height: 3, borderRadius: 99, background: APP_FAINT, opacity: 0.6 }} />
                   <span style={{ fontFamily: MONO, fontSize: 9.6, fontWeight: 820,
                     letterSpacing: '0.13em', textTransform: 'uppercase', color: '#9a6a2e',
-                    whiteSpace: 'nowrap' }}>New Opportunity · Bank AG</span>
+                    whiteSpace: 'nowrap' }}>New Opportunity · {ERP_CASE.accountShort}</span>
                   <span style={{ flex: 1 }} />
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7,
                     ...appTyped({ fontSize: 11, fontWeight: 800, color: v2 ? '#3f7b56' : '#9a6a2e',
                       whiteSpace: 'nowrap' }) }}>
                     <Icon name={v2 ? 'check' : 'sparkles'} size={12} color={v2 ? '#3f7b56' : '#9a6a2e'} sw={2.4} />
-                    {v2 ? 'Team bestätigt · 3 Consultants' : 'aus Signal angelegt'}
+                    {v2 ? 'Team bestätigt · 3 Consultants' : afterDraft > 0.5 ? 'menschlich validiert' : 'EvidencePack bereit · Review offen'}
                   </span>
 
                 </div>
@@ -7891,12 +7809,12 @@ function WorkspaceVisit({ visit }) {
                 </div>
                 <div style={{ marginTop: 16, paddingTop: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    {sectionLabel('Outreach · Entwurf')}
+                    {sectionLabel('EvidencePack · Bedarf')}
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5,
                       whiteSpace: 'nowrap',
                       ...appTyped({ fontSize: 10, fontWeight: 800, color: '#9a6a2e' }) }}>
                       <Icon name="sparkles" size={11} color="#9a6a2e" sw={2.4} />
-                      {afterDraft > 0.5 ? 'aus Signal & Referenzen personalisiert' : 'wird aus Signal & Referenzen personalisiert'}
+                      {afterDraft > 0.5 ? 'menschlich geprüft · Quellen nachvollziehbar' : '4 Quellen verbunden · Review erforderlich'}
                     </span>
                   </div>
                   {(() => {
@@ -7916,13 +7834,13 @@ function WorkspaceVisit({ visit }) {
                             <span style={{ width: 38, height: 38, borderRadius: 999, display: 'flex',
                               alignItems: 'center', justifyContent: 'center',
                               background: '#fffaf3', border: `1.6px dashed ${APP_LINE_STRONG}` }}>
-                              <Icon name="pencil" size={16} color={APP_FAINT} sw={2.1} />
+                              <Icon name="database" size={16} color={APP_FAINT} sw={2.1} />
                             </span>
                             <span style={{ ...appTyped({ fontSize: 12.5, fontWeight: 810, color: APP_MUTED,
-                              whiteSpace: 'nowrap' }) }}>Noch kein Entwurf</span>
+                              whiteSpace: 'nowrap' }) }}>EvidencePack bereit</span>
                             <span style={{ ...appTyped({ fontSize: 10.5, fontWeight: 700, color: APP_FAINT,
                               whiteSpace: 'nowrap' }) }}>
-                              {drawerIn > 0.02 ? 'Entwurf wird aus Quellen generiert…' : 'Erstellen aus Signal & Referenzen'}
+                              {drawerIn > 0.02 ? 'Opportunity und Evidenz werden geöffnet…' : '4 Quellen · menschliche Validierung erforderlich'}
                             </span>
                           </div>
                         )}
@@ -7942,18 +7860,18 @@ function WorkspaceVisit({ visit }) {
                                   <ConsultantAvatar person={{ avatar: 1, skin: '#cfa17f', hair: '#352728' }}
                                     size={26} selected={0} />
                                 </span>
-                                An: Dr. S. Weber · CIO Bank AG
+                                Bedarf · {ERP_CASE.need}
                               </span>
                               <span style={{ height: 34, borderRadius: 999, padding: '0 13px 0 10px', flexShrink: 0,
                                 display: 'inline-flex', alignItems: 'center', gap: 8,
                                 background: 'rgba(74,127,181,0.10)', border: '1px solid rgba(74,127,181,0.36)',
                                 ...appTyped({ fontSize: 12.5, fontWeight: 800, color: '#3a6ea8' }) }}>
-                                <img src="assets/tech-icons/microsoft-outlook.svg" alt="" style={{ width: 17, height: 17, display: 'block' }} />
-                                Outlook · E-Mail
+                                <Icon name="database" size={17} color="#3a6ea8" sw={2.1} />
+                                4 freigegebene Quellen
                               </span>
                               <span style={{ ...appTyped({ fontSize: 15, fontWeight: 840, color: APP_TEXT,
                                 whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }) }}>
-                                AWS Cloud Transformation – Anknüpfung an Versicherer Z
+                                {ERP_CASE.opportunity}
                               </span>
                               {v2 && (
                                 <span style={{ marginLeft: 'auto', display: 'inline-flex', alignItems: 'center',
@@ -7962,7 +7880,7 @@ function WorkspaceVisit({ visit }) {
                                     whiteSpace: 'nowrap' }) }}>
                                   <span style={{ width: 6, height: 6, borderRadius: 99, background: '#74c69d',
                                     boxShadow: '0 0 9px rgba(116,198,157,0.55)' }} />
-                                  bestätigt · Versand geplant
+                                  geprüft · intern verwendbar
                                 </span>
                               )}
                             </div>
@@ -7975,7 +7893,7 @@ function WorkspaceVisit({ visit }) {
                             <span style={{ display: 'block', marginTop: 8, height: 4.5, borderRadius: 99,
                               width: '58%', background: 'rgba(45,38,32,0.07)' }} />
                             <div style={{ marginTop: 13, display: 'flex', alignItems: 'center', gap: 8 }}>
-                              {['Signal-Bezug: FT-Artikel', 'Referenz: Versicherer Z'].map((chip) => (
+                              {['Trigger: Vertragsoption', `Workspace: ${ERP_CASE.owner}`].map((chip) => (
                                 <span key={chip} style={{ height: 24, borderRadius: 999, padding: '0 10px',
                                   display: 'inline-flex', alignItems: 'center', gap: 6,
                                   background: '#ffffff', border: `1px solid ${APP_LINE}`,
@@ -7991,7 +7909,7 @@ function WorkspaceVisit({ visit }) {
                                   whiteSpace: 'nowrap' }) }}>
                                 <span style={{ width: 6, height: 6, borderRadius: 99, background: '#74c69d',
                                   boxShadow: '0 0 9px rgba(116,198,157,0.55)' }} />
-                                bestätigt · Versand geplant
+                                menschlich validiert
                               </span>
                             </div>
                             </React.Fragment>
@@ -8005,20 +7923,56 @@ function WorkspaceVisit({ visit }) {
                 <div style={{ marginTop: 12, paddingTop: 14, borderTop: `1px solid ${APP_LINE}`,
                   opacity: s2, transform: `translateY(${(1 - s2) * 10}px)` }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    {sectionLabel('Angebot & Vertrag')}
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5,
-                      whiteSpace: 'nowrap', height: 24, borderRadius: 999, padding: '0 9px',
-                      background: 'transparent', border: `1px dashed ${APP_LINE_STRONG}`,
-                      ...appTyped({ fontSize: 10, fontWeight: 780, color: APP_MUTED }) }}>
-                      Entwurf folgt
+                    {sectionLabel('Empfohlener nächster Schritt')}
+                    <span style={{ height: 26, borderRadius: 999, padding: '0 10px',
+                      display: 'inline-flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap',
+                      background: afterDraft > 0.5 || v2 ? 'rgba(240,168,94,0.14)' : APP_RAISED,
+                      border: afterDraft > 0.5 || v2 ? '1px solid rgba(240,168,94,0.34)' : `1px dashed ${APP_LINE_STRONG}`,
+                      ...appTyped({ fontSize: 10.5, fontWeight: 800,
+                        color: afterDraft > 0.5 || v2 ? '#9a6a2e' : APP_MUTED }) }}>
+                      <Icon name={afterDraft > 0.5 || v2 ? 'sparkles' : 'clock'} size={12}
+                        color={afterDraft > 0.5 || v2 ? '#9a6a2e' : APP_MUTED} sw={2.3} />
+                      {afterDraft > 0.5 || v2 ? 'Team-Erweiterung empfohlen' : 'nach menschlicher Validierung'}
                     </span>
                   </div>
-                  <div style={{ marginTop: 11, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 9 }}>
+                  <div style={{ marginTop: 11, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 9 }}>
                     {[
-                      { icon: 'briefcase', label: 'Leistung' },
-                      { icon: 'file', label: 'Vertrag' },
-                      { icon: 'euro', label: 'Konditionen' },
-                    ].map((slot) => emptyDocSlot(`offer-empty-${slot.label}`, slot.icon, slot.label))}
+                      { key: 'conversation', icon: 'calendar', label: 'Kundengespräch', meta: 'Bedarf gemeinsam prüfen', color: '#74c69d' },
+                      { key: 'team', icon: 'users', label: 'Team-Erweiterung', meta: '96 % Fit · empfohlen', color: WARM, recommended: true },
+                      { key: 'change', icon: 'file', label: 'Angebot / Change Request', meta: 'wenn Scope bestätigt', color: '#8fbfd8' },
+                      { key: 'concept', icon: 'workflow', label: 'Optionale Ausarbeitung', meta: 'ConceptPlan · bei Bedarf', color: '#c65bb0', optional: true },
+                    ].map((step) => {
+                      const available = afterDraft > 0.5 || v2;
+                      const selected = available && step.recommended;
+                      return (
+                        <div key={`next-step-${step.key}`} style={{ height: 112, padding: '11px 12px',
+                          boxSizing: 'border-box', display: 'grid', gridTemplateColumns: '34px 1fr',
+                          columnGap: 10, alignItems: 'start',
+                          ...appSelectionCard({ color: step.color, selected, disabled: !available }) }}>
+                          <span style={{ width: 32, height: 32, borderRadius: 8, display: 'flex',
+                            alignItems: 'center', justifyContent: 'center',
+                            background: `${step.color}16`, border: `1px solid ${step.color}38` }}>
+                            <Icon name={step.icon} size={16} color={step.color} sw={2.1} />
+                          </span>
+                          <span style={{ minWidth: 0, display: 'grid', alignContent: 'start' }}>
+                            <span style={appTyped({ fontSize: 13.5, fontWeight: 840, color: APP_TEXT,
+                              whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' })}>{step.label}</span>
+                            <span style={appTyped({ marginTop: 5, fontSize: 10.5, fontWeight: 720,
+                              color: APP_MUTED, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' })}>{step.meta}</span>
+                            {(step.recommended || step.optional) && (
+                              <span style={{ marginTop: 8, justifySelf: 'start', height: 21, borderRadius: 999,
+                                padding: '0 8px', display: 'inline-flex', alignItems: 'center',
+                                background: selected ? 'rgba(240,168,94,0.16)' : APP_RAISED,
+                                border: `1px solid ${selected ? 'rgba(240,168,94,0.38)' : APP_LINE}`,
+                                fontFamily: MONO, fontSize: 9.2, fontWeight: 840, letterSpacing: '0.08em',
+                                textTransform: 'uppercase', color: selected ? '#9a6a2e' : APP_FAINT }}>
+                                {step.recommended ? 'Empfohlen' : 'Optional'}
+                              </span>
+                            )}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
                 <div style={{ marginTop: 12 * (1 - drawerIn), paddingTop: 12 * (1 - drawerIn),
@@ -8035,7 +7989,7 @@ function WorkspaceVisit({ visit }) {
                       letterSpacing: '0.14em', textTransform: 'uppercase', color: APP_MUTED,
                       whiteSpace: 'nowrap' }}>Referenzen & Quellen</span>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
-                      {['Versicherer Z · AWS Landing Zone', 'Bank XY · SOC-Aufbau'].map((refName) => (
+                      {['Industrie Nord · ERP Readiness', 'Werkgruppe West · Process Mining'].map((refName) => (
                         <span key={`ref-chip-${refName}`} style={{ height: 26, borderRadius: 999,
                           display: 'inline-flex', alignItems: 'center', gap: 6, padding: '0 10px',
                           background: '#ffffff', border: `1px solid ${APP_LINE}` }}>
@@ -8125,7 +8079,7 @@ function WorkspaceVisit({ visit }) {
                   background: v2 ? '#ffffff' : 'rgba(240,168,94,0.06)',
                   border: v2 ? `1px solid ${APP_LINE}` : '1.6px dashed rgba(240,168,94,0.55)',
                   opacity: s4, transform: `translateY(${(1 - s4) * 10}px)` }}>
-                  {sectionLabel(v2 ? 'Team · 3 Consultants' : 'Team · 3 Rollen offen')}
+                  {sectionLabel(v2 ? 'Team · 3 Consultants' : afterDraft > 0.5 ? 'Team-Erweiterung · empfohlen' : 'Team · nach Validierung')}
                   <span style={{ display: 'inline-flex', alignItems: 'center' }}>
                     {[0, 1, 2].map((slot) => (
                       <span key={`team-slot-${slot}`} style={{ width: 34, height: 34, borderRadius: 999,
@@ -8140,7 +8094,7 @@ function WorkspaceVisit({ visit }) {
                   </span>
                   <span style={{ ...appTyped({ fontSize: 12, fontWeight: 740, color: APP_MUTED,
                     whiteSpace: 'nowrap' }) }}>
-                    {v2 ? 'Max · Lena · Jonas zugeordnet · Security & Platform' : 'noch keine Consultants zugeordnet · Security & Platform'}
+                    {v2 ? 'Max · Lena · Jonas zugeordnet · ERP & Prozess' : afterDraft > 0.5 ? '3 Rollen aus der validierten Opportunity ableitbar' : 'noch nicht verfügbar · menschliche Validierung offen'}
                   </span>
                   {v2 ? (
                     <span style={{ height: 36, borderRadius: 999, padding: '0 14px',
@@ -8152,18 +8106,20 @@ function WorkspaceVisit({ visit }) {
                       Team bestätigt · 96 % Match
                     </span>
                   ) : (
-                    <span style={{ height: 36, borderRadius: 999, padding: '0 14px',
+                    <span style={{ height: 36, borderRadius: 8, padding: '0 14px',
                       display: 'inline-flex', alignItems: 'center', gap: 8,
                       transform: `scale(${1 - teamFindClick * 0.04})`,
-                      background: 'rgba(240,168,94,0.14)',
-                      border: '1px solid rgba(240,168,94,0.30)',
+                      background: afterDraft > 0.5 ? 'rgba(240,168,94,0.14)' : APP_RAISED,
+                      border: afterDraft > 0.5 ? '1px solid rgba(240,168,94,0.30)' : `1px solid ${APP_LINE}`,
                       boxShadow: teamFindClick > 0.01
                         ? `0 0 ${16 + teamFindClick * 18}px rgba(240,168,94,0.45)`
                         : 'none',
-                      ...appTyped({ fontSize: 12.5, fontWeight: 820, color: '#9a6a2e',
+                      opacity: afterDraft > 0.5 ? 1 : 0.62,
+                      ...appTyped({ fontSize: 12.5, fontWeight: 820, color: afterDraft > 0.5 ? '#9a6a2e' : APP_MUTED,
                         whiteSpace: 'nowrap' }) }}>
-                      <Icon name="arrowUR" size={13} color="#9a6a2e" sw={2.4} />
-                      Team finden · Consultants matchen
+                      <Icon name={afterDraft > 0.5 ? 'arrowUR' : 'clock'} size={13}
+                        color={afterDraft > 0.5 ? '#9a6a2e' : APP_MUTED} sw={2.4} />
+                      {afterDraft > 0.5 ? 'Empfehlung übernehmen · Team matchen' : 'nach Validierung verfügbar'}
                     </span>
                   )}
                 </div>
@@ -8307,8 +8263,8 @@ function WorkspaceVisit({ visit }) {
                                   { icon: 'jira.svg', name: 'Jira', connected: true },
                                   { icon: 'confluence.svg', name: 'Confluence', connected: true },
                                   { icon: 'microsoft-teams.svg', name: 'Teams', connected: true },
-                                  { icon: 'github.svg', name: 'GitHub', connected: false },
-                                  { icon: 'terraform.svg', name: 'Terraform', connected: false },
+                                  { icon: 'microsoft-excel.svg', name: 'ERP-Export', connected: true },
+                                  { icon: 'microsoft-word.svg', name: 'Methoden', connected: true },
                                 ].map((tool) => (
                                   <div key={tool.name} style={{ height: 74, borderRadius: 13,
                                     display: 'grid', justifyItems: 'center', alignContent: 'center', rowGap: 5,
@@ -8369,7 +8325,7 @@ function WorkspaceVisit({ visit }) {
                 </div>
                 {(() => {
                   if (drawerIn <= 0.001) return null;
-                  const showCV = v2; // visit 1: outreach e-mail draft · visit 2: CV draft
+                  const showCV = v2; // visit 1: Opportunity + EvidencePack review · visit 2: CV draft
                   const swapDip = 0;
                   const confirmed = confirmP > 0.5;
                   // m0018: the draft assembles from the linked sources while the drawer is open
@@ -8396,7 +8352,7 @@ function WorkspaceVisit({ visit }) {
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <span style={{ ...appTyped({ fontSize: 11, fontWeight: 840, color: APP_FAINT,
                           textTransform: 'uppercase', letterSpacing: '0.12em', whiteSpace: 'nowrap' }) }}>
-                          {showCV ? 'Vorschau · CV-Entwurf' : 'Vorschau · Outreach-Entwurf'}
+                          {showCV ? 'Vorschau · CV-Entwurf' : 'Opportunity + EvidencePack · Review'}
                         </span>
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 9 }}>
                           {!showCV && (
@@ -8435,7 +8391,7 @@ function WorkspaceVisit({ visit }) {
                             <Icon name="sparkles" size={14} color="#9a6a2e" sw={2.2} />
                             <span style={{ ...appTyped({ fontSize: 11, fontWeight: 800, color: '#9a6a2e',
                               whiteSpace: 'nowrap' }) }}>
-                              {showCV ? 'CV-Entwurf wird aus Profil & Projekthistorie generiert…' : 'Entwurf wird aus 4 verknüpften Quellen generiert…'}
+                              {showCV ? 'CV-Entwurf wird aus Profil & Projekthistorie generiert…' : 'EvidencePack wird aus 4 freigegebenen Quellen konsolidiert…'}
                             </span>
                             <span style={{ flex: 1 }} />
                             <span style={{ width: 90, height: 5, borderRadius: 99, position: 'relative',
@@ -8464,9 +8420,9 @@ function WorkspaceVisit({ visit }) {
                             </span>
                             <span style={{ display: 'grid', rowGap: 1 }}>
                               <span style={{ ...appTyped({ fontSize: 11.5, fontWeight: 830, color: APP_TEXT,
-                                whiteSpace: 'nowrap' }) }}>Anpassung übernommen</span>
+                                whiteSpace: 'nowrap' }) }}>Validierung übernommen</span>
                               <span style={{ ...appTyped({ fontSize: 9, fontWeight: 720, color: APP_MUTED,
-                                whiteSpace: 'nowrap' }) }}>Betreff & Text personalisiert</span>
+                                whiteSpace: 'nowrap' }) }}>Opportunity menschlich validiert</span>
                             </span>
                           </div>
                         );
@@ -8493,7 +8449,7 @@ function WorkspaceVisit({ visit }) {
                               <span style={{ display: 'grid', justifyItems: 'center', rowGap: 3,
                                 ...appTyped({ fontSize: 12, fontWeight: 830, color: '#fdfaf5',
                                   whiteSpace: 'nowrap' }) }}>
-                                Entwurf generieren
+                                EvidencePack prüfen
                                 <span style={{ fontFamily: MONO, fontSize: 7.8, fontWeight: 820,
                                   letterSpacing: '0.10em', textTransform: 'uppercase', color: 'rgba(240,168,94,0.85)' }}>
                                   aus 4 Quellen
@@ -8518,7 +8474,7 @@ function WorkspaceVisit({ visit }) {
                               </span>
                               <span style={{ fontFamily: MONO, fontSize: 9.5, fontWeight: 840,
                                 letterSpacing: '0.13em', textTransform: 'uppercase', color: '#9a6a2e' }}>
-                                Entwurf wird erstellt…
+                                EvidencePack wird konsolidiert…
                               </span>
                               <span style={{ display: 'grid', rowGap: 9, width: '100%', justifyItems: 'start' }}>
                                 {[0.9, 0.72, 0.55].map((w, li) => (
@@ -8541,7 +8497,7 @@ function WorkspaceVisit({ visit }) {
                               )}
                               <span style={{ ...appTyped({ fontSize: 10, fontWeight: 800, color: APP_MUTED,
                                 whiteSpace: 'nowrap' }) }}>
-                                {cvPrevIn > 0.05 ? 'CV_Max.pdf' : 'CV-Entwürfe · Team Bank AG'}
+                                {cvPrevIn > 0.05 ? 'CV_Max.pdf' : `CV-Entwürfe · Team ${ERP_CASE.accountShort}`}
                               </span>
                               <span style={{ flex: 1 }} />
                               {cvPrevIn > 0.05 && (
@@ -8674,9 +8630,9 @@ function WorkspaceVisit({ visit }) {
                               </span>
                               <span style={{ minWidth: 0 }}>
                                 <div style={{ ...appTyped({ fontSize: 13.5, fontWeight: 840, color: APP_TEXT,
-                                  whiteSpace: 'nowrap' }) }}>Sr. Architect - Max</div>
+                                  whiteSpace: 'nowrap' }) }}>ERP Architect - Max</div>
                                 <div style={{ marginTop: 3, ...appTyped({ fontSize: 10.5, fontWeight: 720,
-                                  color: APP_MUTED, whiteSpace: 'nowrap' }) }}>Landing Zone · AZ-500 · AWS-SAA</div>
+                                  color: APP_MUTED, whiteSpace: 'nowrap' }) }}>ERP-Zielarchitektur · SAP Activate · S/4</div>
                               </span>
                               <span style={{ marginLeft: 'auto', height: 24, borderRadius: 999, padding: '0 10px',
                                 display: 'inline-flex', alignItems: 'center', gap: 6, flexShrink: 0,
@@ -8687,10 +8643,10 @@ function WorkspaceVisit({ visit }) {
                               padding: '4px 16px 12px', boxSizing: 'border-box', overflow: 'hidden',
                               filter: 'blur(2.6px)', opacity: 0.88 * cvPrevIn, pointerEvents: 'none' }}>
                               {[
-                                { h: 'Profil', body: 'Senior Cloud Architect mit 12+ Jahren Erfahrung in AWS-Transformationen f\u00fcr Banken und Versicherer. Schwerpunkte: Landing Zone Design, IAM-Architektur, Security Baseline und regulatorische Anforderungen (DORA, BaFin). Nachweislich 14 erfolgreiche Migrationen im Finanzsektor.' },
-                                { h: 'Berufserfahrung', body: '2021 \u2013 heute \u00b7 Senior Architect, Consultry Partner GmbH \u2014 Lead-Architekt f\u00fcr Cloud-Migrationen im Finanzsektor; Landing Zone, Control Tower, Security Hub.\n2016 \u2013 2021 \u00b7 Cloud Engineer, Versicherer Z \u2014 Aufbau AWS Landing Zone, Terraform-Module, CI/CD-Pipelines, Kostenoptimierung.' },
-                                { h: 'Projekte (Auszug)', body: 'Bank XY \u00b7 SOC-Aufbau \u2014 GuardDuty, Sentinel-Integration, DORA-Audit bestanden.\nVersicherer Z \u00b7 AWS Landing Zone \u2014 Multi-Account-Setup, Security Baseline, 6 Wochen.' },
-                                { h: 'Zertifizierungen', body: 'AZ-500 \u00b7 AWS-SAA \u00b7 AWS-SAP \u00b7 Terraform Associate \u00b7 Scrum Master' },
+                                { h: 'Profil', body: 'ERP Architect mit 12+ Jahren Erfahrung in Transformationen im Maschinenbau. Schwerpunkte: Zielarchitektur, Migrationswellen, Prozessharmonisierung und Cutover. Nachweislich 14 erfolgreiche ERP-Programme.' },
+                                { h: 'Berufserfahrung', body: '2021 \u2013 heute \u00b7 ERP Architect, Consultry Partner GmbH \u2014 Lead-Architekt f\u00fcr ERP-Migrationen; Zielbild, Datenstrategie, Wellenplanung.\n2016 \u2013 2021 \u00b7 Transformation Lead, Industrie Nord \u2014 S/4 Readiness, Process Mining, Cutover-Steuerung.' },
+                                { h: 'Projekte (Auszug)', body: 'Werkgruppe West \u00b7 Process Mining \u2014 acht Kernprozesse analysiert und priorisiert.\nIndustrie Nord \u00b7 ERP Readiness \u2014 Zielbild, Datenqualit\u00e4t und Wellenplan in sechs Wochen.' },
+                                { h: 'Methoden & Zertifikate', body: 'SAP Activate \u00b7 S/4 Transformation \u00b7 TOGAF \u00b7 BPMN \u00b7 Scrum Master' },
                               ].map((sec) => (
                                 <div key={`cv-sec-${sec.h}`} style={{ marginTop: 11 }}>
                                   <div style={{ fontFamily: MONO, fontSize: 8.4, fontWeight: 840,
@@ -8755,7 +8711,7 @@ function WorkspaceVisit({ visit }) {
                             <div style={{ padding: '12px 14px 0', display: 'grid', gap: 8, position: 'relative' }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: 8,
                                 opacity: gA, transform: `translateY(${(1 - gA) * 6}px)` }}>
-                                <span style={{ ...appTyped({ fontSize: 10, fontWeight: 780, color: APP_FAINT }) }}>An:</span>
+                                <span style={{ ...appTyped({ fontSize: 10, fontWeight: 780, color: APP_FAINT }) }}>Opportunity:</span>
                                 <span style={{ height: 26, borderRadius: 999, padding: '0 10px 0 4px',
                                   display: 'inline-flex', alignItems: 'center', gap: 7,
                                   background: APP_RAISED, border: `1px solid ${APP_LINE_STRONG}`,
@@ -8765,7 +8721,7 @@ function WorkspaceVisit({ visit }) {
                                     <ConsultantAvatar person={{ avatar: 1, skin: '#cfa17f', hair: '#352728' }}
                                       size={20} selected={0} />
                                   </span>
-                                  Dr. S. Weber · CIO Bank AG
+                                  Hansa Maschinenbau · ERP-Migration
                                 </span>
                               </div>
                               {(() => {
@@ -8780,8 +8736,8 @@ function WorkspaceVisit({ visit }) {
                                         backgroundColor: `rgba(240,168,94,${(subjPulse * 0.16).toFixed(3)})`,
                                         backgroundImage: `linear-gradient(90deg, rgba(74,127,181,0.26) ${(selVis * 100).toFixed(1)}%, rgba(74,127,181,0) ${(selVis * 100).toFixed(1)}%)` }}>
                                         {editApply > 0.55
-                                          ? 'AWS Cloud Transformation – Anknüpfung an Versicherer Z'
-                                          : 'AWS Cloud Transformation – nächste Schritte für Security & DORA'}
+                                          ? 'Opportunity validiert · Next Step ableitbar'
+                                          : 'Opportunity + EvidencePack · Review'}
                                       </span>
                                     </div>
                                     {quickOptIn > 0.001 && (
@@ -8821,7 +8777,7 @@ function WorkspaceVisit({ visit }) {
                               <div style={{ fontFamily: INTER, fontSize: 10.4, fontWeight: 600,
                                 lineHeight: 1.55, color: 'rgba(45,38,32,0.88)',
                                 opacity: gB1, transform: `translateY(${(1 - gB1) * 6}px)` }}>
-                                Sehr geehrter Herr Dr. Weber,
+                                Validierungsgrundlage
                               </div>
                               {(() => {
                                 const swapPulse = Math.sin(Math.PI * clamp(editApply, 0, 1));
@@ -8832,30 +8788,28 @@ function WorkspaceVisit({ visit }) {
                                     opacity: gB2 * (1 - swapPulse * 0.45),
                                     transform: `translateY(${(1 - gB2) * 6}px)` }}>
                                     {editApply > 0.5
-                                      ? 'Unser Consultant Max hat bei Versicherer Z die AWS Landing Zone aufgebaut – diese Erfahrung bringen wir gern für die Bank AG ein.'
-                                      : 'mit Interesse haben wir gelesen, dass die Bank AG ihre Kernsysteme bis 2027 in die AWS Cloud verlagert.'}
+                                      ? `${ERP_CASE.accountOwner} bestätigt als Account Owner den Bestandskundenkontext und Tobias’ Hinweis, dass die Timeline im laufenden Migrationsprojekt beschleunigt werden soll.`
+                                      : 'Die verbundene Evidenz weist auf einen Bedarf für ERP-Migration und Prozessmanagement hin; die menschliche Bestätigung steht noch aus.'}
                                   </div>
                                 );
                               })()}
                               <div style={{ marginTop: 6, filter: 'blur(2.4px)', opacity: 0.85 * gB3,
                                 fontFamily: INTER, fontSize: 10.4, fontWeight: 560, lineHeight: 1.55,
                                 color: 'rgba(45,38,32,0.82)' }}>
-                                Genau f\u00fcr diese Phase haben wir mit Versicherer Z eine AWS Landing Zone
-                                inklusive Security Baseline in sechs Wochen aufgebaut \u2014 DORA-konform und
-                                mit bestandenem Audit. F\u00fcr Ihr Vorhaben sehen wir drei konkrete
-                                Ansatzpunkte: Landing Zone & IAM, Security Baseline mit GuardDuty sowie
-                                die DORA-Compliance-Dokumentation. Unser Security-Cloud-Team (drei
-                                zertifizierte Consultants) w\u00e4re ab W1 verf\u00fcgbar.
+                                Das EvidencePack verbindet Vertragsoption, LinkedIn Mail, freigegebenes
+                                Projektwissen und ERP-Prozessdaten. ReviewIssues bleiben als sekund\u00e4re
+                                Metadaten sichtbar und werden bei der menschlichen Pr\u00fcfung ber\u00fccksichtigt.
                                 <br /><br />
-                                Gern stellen wir Ihnen die Referenzarchitektur in einem kurzen Termin vor.
+                                Die Validierung erzeugt kein Konzept. Sie gibt die Opportunity frei und
+                                erm\u00f6glicht eine nachvollziehbare Empfehlung f\u00fcr den n\u00e4chsten Schritt.
                                 <br /><br />
-                                Mit freundlichen Gr\u00fc\u00dfen<br />
-                                Max Muster \u00b7 Senior Architect
+                                Menschliche Entscheidung erforderlich<br />
+                                {ERP_CASE.accountOwner} \u00b7 Account Owner Review
                               </div>
                             </div>
                             <div style={{ position: 'absolute', left: 14, right: 14, bottom: 12,
                               display: 'flex', alignItems: 'center', gap: 8, opacity: gC }}>
-                              {['Signal-Bezug: FT-Artikel', 'Referenz: Versicherer Z'].map((chip) => (
+                              {['Vertragsoption', 'Workspace · Tobias R.', 'ERP-Prozessdaten'].map((chip) => (
                                 <span key={`draft-${chip}`} style={{ height: 22, borderRadius: 999, padding: '0 9px',
                                   display: 'inline-flex', alignItems: 'center', gap: 5,
                                   background: '#fff8ef', border: '1px solid rgba(240,168,94,0.36)',
@@ -8873,7 +8827,7 @@ function WorkspaceVisit({ visit }) {
                               borderTop: `1px solid ${APP_LINE}` }}>
                               <span style={{ fontFamily: MONO, fontSize: 8.4, fontWeight: 800,
                                 letterSpacing: '0.08em', color: APP_FAINT, whiteSpace: 'nowrap' }}>
-                                {genP <= 0.001 ? 'BEREIT · 0 WÖRTER' : genDone < 0.98 ? 'ENTWURF WIRD ERSTELLT…' : '142 WÖRTER · DEUTSCH'}
+                                {genP <= 0.001 ? 'BEREIT · 4 QUELLEN' : genDone < 0.98 ? 'EVIDENCEPACK WIRD KONSOLIDIERT…' : '4 QUELLEN · DEUTSCH'}
                               </span>
                               <span style={{ flex: 1 }} />
                               {genDone > 0.98 && (
@@ -8891,8 +8845,8 @@ function WorkspaceVisit({ visit }) {
                       <div style={{ marginTop: 12, display: 'flex', gap: 7, flexWrap: 'wrap',
                         opacity: showCV ? cvPrevIn : genDone }}>
                         {(showCV
-                          ? ['Referenzen prüfen', 'Layout Bank AG', 'Verfügbarkeit']
-                          : ['Kürzer fassen', 'Formeller Ton', 'Preise prüfen']).map((quick) => (
+                          ? ['Referenzen prüfen', 'Layout Hansa', 'Verfügbarkeit']
+                          : ['Quellen prüfen', 'Bestandskunden-Kontext', 'ReviewIssues']).map((quick) => (
                           <span key={quick} style={{ height: 28, borderRadius: 999, padding: '0 12px',
                             display: 'inline-flex', alignItems: 'center',
                             background: APP_RAISED, border: `1px solid ${APP_LINE_STRONG}`,
@@ -8906,16 +8860,16 @@ function WorkspaceVisit({ visit }) {
                         <div style={{ marginTop: 12, height: 44, borderRadius: 13, display: 'flex',
                           alignItems: 'center', gap: 8, padding: '0 12px', boxSizing: 'border-box',
                           background: APP_RAISED, border: `1px solid ${APP_LINE}`, opacity: genDone }}>
-                          {/* m0070: connector / channel gets decided below the native editor */}
+                          {/* Source provenance remains visible below the grounded editor. */}
                           <span style={{ fontFamily: MONO, fontSize: 9.4, fontWeight: 840,
                             letterSpacing: '0.12em', textTransform: 'uppercase', color: APP_MUTED,
-                            whiteSpace: 'nowrap' }}>Kanal</span>
+                            whiteSpace: 'nowrap' }}>Quellen</span>
                           <span style={{ height: 30, borderRadius: 999, padding: '0 12px 0 9px',
                             display: 'inline-flex', alignItems: 'center', gap: 7,
                             background: 'rgba(74,127,181,0.10)', border: '1px solid rgba(74,127,181,0.36)',
                             ...appTyped({ fontSize: 11.5, fontWeight: 800, color: '#3a6ea8' }) }}>
-                            <img src="assets/tech-icons/microsoft-outlook.svg" alt="" style={{ width: 15, height: 15, display: 'block' }} />
-                            Outlook · E-Mail
+                            <Icon name="file" size={15} color="#3a6ea8" sw={2.1} />
+                            Vertragsoption
                             <Icon name="check" size={11} color="#3a6ea8" sw={2.6} />
                           </span>
                           <span style={{ height: 30, borderRadius: 999, padding: '0 12px 0 9px',
@@ -8923,28 +8877,28 @@ function WorkspaceVisit({ visit }) {
                             background: '#ffffff', border: `1px solid ${APP_LINE}`,
                             ...appTyped({ fontSize: 11.5, fontWeight: 760, color: APP_FAINT }) }}>
                             <LinkedInMark size={15} />
-                            InMail
+                            LinkedIn Mail
                           </span>
                           <span style={{ height: 30, borderRadius: 999, padding: '0 12px 0 9px',
                             display: 'inline-flex', alignItems: 'center', gap: 7, opacity: 0.6,
                             background: '#ffffff', border: `1px solid ${APP_LINE}`,
                             ...appTyped({ fontSize: 11.5, fontWeight: 760, color: APP_FAINT }) }}>
-                            <img src="assets/tech-icons/xing.svg" alt="" style={{ width: 15, height: 15, display: 'block' }} />
-                            XING
+                            <Icon name="users" size={15} color={APP_FAINT} sw={2.1} />
+                            Workspace Log
                           </span>
                           <span style={{ height: 30, borderRadius: 999, padding: '0 12px 0 9px',
                             display: 'inline-flex', alignItems: 'center', gap: 7, opacity: 0.6,
                             background: '#ffffff', border: `1px solid ${APP_LINE}`,
                             ...appTyped({ fontSize: 11.5, fontWeight: 760, color: APP_FAINT }) }}>
                             <Icon name="file" size={13} color={APP_FAINT} sw={2.2} />
-                            Cold Call · Skript
+                            ERP-Daten
                           </span>
                           <span style={{ flex: 1 }} />
                           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5,
                             whiteSpace: 'nowrap',
                             ...appTyped({ fontSize: 10, fontWeight: 800, color: '#9a6a2e' }) }}>
                             <Icon name="sparkles" size={11} color="#9a6a2e" sw={2.4} />
-                            aus Kontakt-Präferenz
+                            freigegeben & nachvollziehbar
                           </span>
                         </div>
                       )}
@@ -8960,7 +8914,7 @@ function WorkspaceVisit({ visit }) {
                           {confirmed && <Icon name="check" size={15} color="#3f7b56" sw={2.6} />}
                           <span style={{ ...appTyped({ fontSize: 12.5, fontWeight: 830,
                             color: confirmed ? '#3f7b56' : '#fdfaf5', whiteSpace: 'nowrap' }) }}>
-                            {confirmed ? 'Entwurf bestätigt · bereit zum Versand' : 'Entwurf bestätigen'}
+                            {confirmed ? 'Validiert · Next Step freigegeben' : 'Opportunity menschlich validieren'}
                           </span>
                         </div>
                       )}
@@ -9045,7 +8999,7 @@ function WorkspaceVisit({ visit }) {
                         })()}
                         {(() => {
                           // m0045/m0054: linked-context marker + spoken edit wish (live transcription)
-                          const promptWords = 'Bitte personalisieren: auf bestehende Zusammenarbeit eingehen – unser Consultant Max ist bei Versicherer Z im Einsatz.'.split(' ');
+                          const promptWords = 'Bitte ergänzen: Bestandskundenbezug bestätigen und den internen Bedarf von Tobias als validiert markieren.'.split(' ');
                           const nWords = Math.floor(clamp(typeP, 0, 1) * promptWords.length);
                           const typed = promptWords.slice(0, nWords).join(' ');
                           const fadeOut = clamp(editApply * 2.2, 0, 1);
@@ -9069,7 +9023,7 @@ function WorkspaceVisit({ visit }) {
                                 ...appTyped({ fontSize: 10, fontWeight: 800, color: '#3a6ea8',
                                   whiteSpace: 'nowrap' }) }}>
                                 <span style={{ width: 5, height: 5, borderRadius: 99, background: '#3a6ea8' }} />
-                                Betreff · verknüpft
+                                Review · verknüpft
                               </span>
                               <span style={{ position: 'relative', flex: 1, minWidth: 0, height: 20,
                                 overflow: 'hidden' }}>
@@ -9118,11 +9072,11 @@ function SceneProjectDashboardContent({ local }) {
   ];
   // m0123: day-basis Gantt — 6 Wochen × 5 Tage, Bars aus Jira / ServiceNow synchronisiert
   const ganttTasks = [
-    { label: 'Kickoff & Zugänge', src: 'jira', key: 'BANK-322', d0: 0, d1: 3, state: 'done' },
-    { label: 'Landing Zone & IAM', src: 'jira', key: 'BANK-331', d0: 2, d1: 10, state: 'done' },
-    { label: 'Security Baseline · GuardDuty', src: 'jira', key: 'BANK-342', d0: 7, d1: 17, state: 'active' },
-    { label: 'Migration Kernsysteme', src: 'snow', key: 'CHG0042', d0: 15, d1: 25, state: 'next' },
-    { label: 'Go-Live & Übergabe', src: 'snow', key: 'CHG0051', d0: 25, d1: 30, state: 'next' },
+    { label: 'Kickoff & Datenzugänge', src: 'jira', key: 'HMA-322', d0: 0, d1: 3, state: 'done' },
+    { label: 'Readiness & ERP-Zielbild', src: 'jira', key: 'HMA-331', d0: 2, d1: 10, state: 'done' },
+    { label: 'Process Mining · Order-to-Cash', src: 'jira', key: 'HMA-342', d0: 7, d1: 17, state: 'active' },
+    { label: 'Datenmigration · Pilot', src: 'snow', key: 'CHG2042', d0: 15, d1: 25, state: 'next' },
+    { label: 'Cutover · Welle 1', src: 'snow', key: 'CHG2051', d0: 25, d1: 30, state: 'next' },
   ];
   const TODAY_D = 9.6; // DI · W2
   const heutePulse = 0.5 + 0.5 * Math.sin(local * 3.2);
@@ -9135,11 +9089,16 @@ function SceneProjectDashboardContent({ local }) {
       zIndex: 24, transform: `translateY(${(1 - p) * 16}px)` }}>
       <div style={{ position: 'absolute', left: 234, top: 76, width: 1568, height: 886, boxSizing: 'border-box' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ height: 26, borderRadius: 999, padding: '0 11px', display: 'inline-flex',
+            alignItems: 'center', background: 'rgba(240,168,94,0.14)',
+            border: '1px solid rgba(240,168,94,0.36)', fontFamily: MONO, fontSize: 9.2,
+            fontWeight: 840, letterSpacing: '0.11em', textTransform: 'uppercase',
+            color: '#9a6a2e', whiteSpace: 'nowrap' }}>Später · im gewonnenen Projekt</span>
           <span style={{ fontFamily: MONO, fontSize: 9.6, fontWeight: 820, letterSpacing: '0.13em',
             textTransform: 'uppercase', color: APP_FAINT, whiteSpace: 'nowrap' }}>Consulting Workspace</span>
           <span style={{ width: 3, height: 3, borderRadius: 99, background: APP_FAINT, opacity: 0.6 }} />
           <span style={{ fontFamily: MONO, fontSize: 9.6, fontWeight: 820, letterSpacing: '0.13em',
-            textTransform: 'uppercase', color: '#9a6a2e', whiteSpace: 'nowrap' }}>Projekt · Bank AG</span>
+            textTransform: 'uppercase', color: '#9a6a2e', whiteSpace: 'nowrap' }}>Projekt · {ERP_CASE.accountShort}</span>
           <span style={{ flex: 1 }} />
           <span style={{ height: 26, borderRadius: 999, padding: '0 11px', display: 'inline-flex',
             alignItems: 'center', gap: 7, background: '#e8f4ec', border: '1px solid rgba(116,198,157,0.34)',
@@ -9152,9 +9111,9 @@ function SceneProjectDashboardContent({ local }) {
         </div>
         <div style={{ marginTop: 14, display: 'flex', alignItems: 'baseline', gap: 14 }}>
           <span style={{ fontFamily: DISPLAY, fontWeight: 780, fontSize: 30, letterSpacing: '-0.018em',
-            color: APP_TEXT, whiteSpace: 'nowrap' }}>AWS Transformation</span>
+            color: APP_TEXT, whiteSpace: 'nowrap' }}>{ERP_CASE.project}</span>
           <span style={{ ...appTyped({ fontSize: 13, fontWeight: 740, color: APP_MUTED,
-            whiteSpace: 'nowrap' }) }}>Security & Platform · 3 Consultants · Σ 7 PT / 2 W</span>
+            whiteSpace: 'nowrap' }) }}>ERP & Prozessmanagement · 3 Rollen · Σ 7 PT / 2 W</span>
         </div>
         <div style={{ marginTop: 18, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
           <div style={{ height: 138, borderRadius: 16, background: '#ffffff', border: `1px solid ${APP_LINE}`,
@@ -9174,17 +9133,16 @@ function SceneProjectDashboardContent({ local }) {
             padding: '14px 16px', boxSizing: 'border-box', opacity: s(1),
             transform: `translateY(${(1 - s(1)) * 10}px)` }}>
             {kpiLabel('Team')}
-            <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center' }}>
-              {team.map((person, ti) => (
-                <span key={`dash-team-${ti}`} style={{ width: 38, height: 38, borderRadius: 999,
-                  marginLeft: ti === 0 ? 0 : -9, overflow: 'hidden', display: 'inline-flex',
-                  border: '2px solid #ffffff', background: '#fffaf3' }}>
-                  <ConsultantAvatar person={person} size={34} selected={0} />
-                </span>
+            <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              {['ERP', 'PROC', 'DATA'].map((role) => (
+                <span key={`dash-role-${role}`} style={{ height: 30, borderRadius: 999, padding: '0 10px',
+                  display: 'inline-flex', alignItems: 'center', background: APP_RAISED,
+                  border: `1px solid ${APP_LINE_STRONG}`, fontFamily: MONO, fontSize: 8.5,
+                  fontWeight: 840, letterSpacing: '0.08em', color: APP_MUTED }}>{role}</span>
               ))}
             </div>
             <div style={{ marginTop: 10, ...appTyped({ fontSize: 11, fontWeight: 760, color: APP_MUTED,
-              whiteSpace: 'nowrap' }) }}>Max · Lena · Jonas</div>
+              whiteSpace: 'nowrap' }) }}>3 Rollen besetzt</div>
             <div style={{ marginTop: 4, ...appTyped({ fontSize: 10, fontWeight: 700, color: '#3f7b56',
               whiteSpace: 'nowrap' }) }}>alle verfügbar · W2</div>
           </div>
@@ -9196,7 +9154,7 @@ function SceneProjectDashboardContent({ local }) {
             {kpiLabel('Nächstes Meeting')}
             <div style={{ marginTop: 12, ...appTyped({ fontSize: 14.5, fontWeight: 830, color: APP_TEXT,
               whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }) }}>
-              Status-Meeting · Bank AG
+              ERP-Steering · {ERP_CASE.accountShort}
             </div>
             <div style={{ marginTop: 5, ...appTyped({ fontSize: 10.5, fontWeight: 720, color: APP_MUTED,
               whiteSpace: 'nowrap' }) }}>DO 10:00 · Teams · mit Lena & Max</div>
@@ -9214,9 +9172,9 @@ function SceneProjectDashboardContent({ local }) {
             {kpiLabel('Offene Punkte')}
             <div style={{ marginTop: 12, ...appTyped({ fontSize: 26, fontWeight: 850, color: APP_TEXT }) }}>3</div>
             <div style={{ marginTop: 10, ...appTyped({ fontSize: 11, fontWeight: 760, color: APP_MUTED,
-              whiteSpace: 'nowrap' }) }}>IAM-Findings · Security Review</div>
+              whiteSpace: 'nowrap' }) }}>Mapping-Freigaben · Datenqualität</div>
             <div style={{ marginTop: 4, ...appTyped({ fontSize: 10, fontWeight: 700, color: '#c2803a',
-              whiteSpace: 'nowrap' }) }}>2 fällig vor dem Status-Meeting</div>
+              whiteSpace: 'nowrap' }) }}>2 fällig vor dem ERP-Steering</div>
           </div>
         </div>
         <div style={{ marginTop: 14, borderRadius: 16, background: APP_RAISED, border: `1px solid ${APP_LINE}`,
@@ -9348,16 +9306,16 @@ function SceneProjectDashboardContent({ local }) {
               height: 234 }}>
               {[
                 { head: 'Offen', tone: APP_FAINT, cards: [
-                  { t: 'IAM-Findings schließen', key: 'BANK-347', src: 'jira', a: 'M' },
-                  { t: 'Change-Fenster W4 klären', key: 'CHG0042', src: 'snow', a: 'L' },
+                  { t: 'Mapping-Freigaben einholen', key: 'HMA-347', src: 'jira', a: 'ERP' },
+                  { t: 'Cutover-Fenster W4 klären', key: 'CHG2042', src: 'snow', a: 'PMO' },
                 ] },
                 { head: 'In Arbeit', tone: '#9a6a2e', cards: [
-                  { t: 'GuardDuty Triage 12 → 3', key: 'BANK-342', src: 'jira', a: 'M' },
-                  { t: 'Security Review W2', key: 'BANK-351', src: 'jira', a: 'L' },
+                  { t: 'O2C-Varianten 12 → 3', key: 'HMA-342', src: 'jira', a: 'PROC' },
+                  { t: 'Datenqualität Review W2', key: 'HMA-351', src: 'jira', a: 'DATA' },
                 ] },
                 { head: 'Done', tone: '#3f7b56', cards: [
-                  { t: 'Landing Zone Doku', key: 'BANK-322', src: 'jira', a: 'J', done: true },
-                  { t: 'Kickoff Protokoll', key: 'BANK-301', src: 'jira', a: 'L', done: true },
+                  { t: 'ERP-Zielbild v1', key: 'HMA-322', src: 'jira', a: 'ERP', done: true },
+                  { t: 'Kickoff Protokoll', key: 'HMA-301', src: 'jira', a: 'PMO', done: true },
                 ] },
               ].map((col) => (
                 <div key={`kb-${col.head}`} style={{ borderRadius: 10, background: 'rgba(45,38,32,0.045)',
@@ -9398,15 +9356,17 @@ function SceneProjectDashboardContent({ local }) {
             {kpiLabel('Arbeit & Insights')}
             <div style={{ marginTop: 13, display: 'grid', rowGap: 11 }}>
               {[
-                { ti: 0, text: 'security.tf · IAM-Module aktualisiert', when: 'vor 2 h' },
-                { ti: 1, text: 'GuardDuty-Findings triagiert · 12 → 3', when: 'gestern' },
-                { ti: 2, text: 'Namenskonzept Ressourcen dokumentiert', when: 'DI' },
+                { ti: 0, text: 'ERP-Extrakt · Datenqualität aktualisiert', when: 'vor 2 h' },
+                { ti: 1, text: 'O2C-Varianten priorisiert · 12 → 3', when: 'gestern' },
+                { ti: 2, text: 'Migrationsobjekte & Mapping dokumentiert', when: 'DI' },
               ].map((row) => (
                 <div key={row.text} style={{ display: 'grid', gridTemplateColumns: '24px 1fr auto',
                   alignItems: 'center', columnGap: 9 }}>
-                  <span style={{ width: 24, height: 24, borderRadius: 999, overflow: 'hidden',
-                    display: 'inline-flex', background: '#fffaf3', border: `1px solid ${APP_LINE}` }}>
-                    <ConsultantAvatar person={team[row.ti]} size={22} selected={0} />
+                  <span style={{ width: 24, height: 24, borderRadius: 8, overflow: 'hidden',
+                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    background: '#fffaf3', border: `1px solid ${APP_LINE}` }}>
+                    <Icon name={row.ti === 0 ? 'database' : row.ti === 1 ? 'workflow' : 'file'}
+                      size={12} color="#9a6a2e" sw={2.1} />
                   </span>
                   <span style={{ ...appTyped({ fontSize: 11.5, fontWeight: 740, color: APP_TEXT,
                     whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }) }}>{row.text}</span>
@@ -9425,19 +9385,19 @@ function SceneProjectDashboardContent({ local }) {
               </span>
               <div style={{ marginTop: 6, ...appTyped({ fontSize: 11.5, fontWeight: 740, color: APP_TEXT,
                 lineHeight: 1.45 }) }}>
-                Migration W4 kollidiert mit dem Change-Freeze der Bank — Puffer +1 Woche empfohlen.
+                Cutover W4 kollidiert mit dem Werksstillstand — Puffer +1 Woche empfohlen.
               </div>
             </div>
           </div>
           <div style={{ height: 296, borderRadius: 16, background: '#ffffff', border: `1px solid ${APP_LINE}`,
             padding: '15px 17px', boxSizing: 'border-box', opacity: s(7),
             transform: `translateY(${(1 - s(7)) * 10}px)` }}>
-            {kpiLabel('To-Do · vor dem Status-Meeting')}
+            {kpiLabel('To-Do · vor dem ERP-Steering')}
             <div style={{ marginTop: 13, display: 'grid', rowGap: 12 }}>
               {[
-                { done: true, text: 'Landing-Zone Doku ablegen', due: '' },
-                { done: false, text: 'IAM-Findings schließen', due: 'fällig MI' },
-                { done: false, text: 'Security Review terminieren', due: 'fällig DO' },
+                { done: true, text: 'ERP-Zielbild v1 ablegen', due: '' },
+                { done: false, text: 'Mapping-Freigaben schließen', due: 'fällig MI' },
+                { done: false, text: 'Datenqualität Review terminieren', due: 'fällig DO' },
                 { done: false, text: 'Statusbericht W2 versenden', due: '' },
               ].map((todo) => (
                 <div key={todo.text} style={{ display: 'grid', gridTemplateColumns: '18px 1fr auto',
@@ -9482,11 +9442,11 @@ function SceneProjectDashboardContent({ local }) {
           </div>
           <div style={{ marginTop: 11, display: 'flex', gap: 9 }}>
             {[
-              { icon: 'file', title: 'AWS Zielarchitektur', sub: 'Konzept v3' },
-              { icon: 'book', title: 'security.tf', sub: 'bank-ag/aws-transformation' },
-              { icon: 'briefcase', title: 'Konzept-Präsentation', sub: '12 Folien' },
-              { icon: 'shield', title: 'DORA-Anforderungen', sub: 'Bank AG · Compliance' },
-              { icon: 'book', title: 'Runbook Landing Zone', sub: 'übergeben W2' },
+              { icon: 'file', title: 'ERP-Zielarchitektur', sub: 'Konzept v3' },
+              { icon: 'database', title: 'Process Mining · O2C', sub: 'ERP-Extrakt · W2' },
+              { icon: 'briefcase', title: 'ConceptPlan', sub: '12 Arbeitspakete' },
+              { icon: 'workflow', title: 'Migrationsobjekte', sub: 'Mapping · freigegeben' },
+              { icon: 'book', title: 'Cutover-Runbook', sub: 'Entwurf · W2' },
             ].map((doc) => (
               <span key={doc.title} style={{ flex: 1, minWidth: 0, height: 46, borderRadius: 12,
                 background: '#ffffff', border: `1px solid ${APP_LINE}`, padding: '0 12px',
@@ -9536,7 +9496,7 @@ function PitchVideo(props) {
         {/* cc-3/m0047: Wissen knowledge-graph dropped; the agent's concrete output ("Smart Matched Code") is recovered as a short beat right after the send. */}
         <Scene start={SCENE_MATCHED_START} end={SCENE_MATCHED_END}>{(l, dur) => <SceneMatchedCodeAppContent local={l} dur={dur} />}</Scene>
         <Scene start={PROJECT_DASH_START} end={PROJECT_DASH_END}>{(l) => <SceneProjectDashboardContent local={l} />}</Scene>
-        <OfferOutreachAppScene />
+        <OpportunityWorkflowAppScene />
         <PersistentPromptAgentBridge />
       </ConsultryAppExperienceFrame>
       <Scene start={SCENE_MATCHED_START} end={SCENE_MATCHED_END}>{(l, dur) => <ConsultantWorkExternalWindows local={l} start={-0.90} end={dur - 0.35} />}</Scene>
@@ -9550,32 +9510,36 @@ function PitchVideo(props) {
   );
 }
 
-// ── Persistent stage indicator (jules): ONE element, mounted once (never remounts). It debuts as the
-//    intro workflow grid, then morphs into the left app sidebar so the shell itself becomes the active
-//    stage indicator (Signal -> Team -> Angebot -> Projekt -> Faktura).
+// ── Adaptive journey rail: three product-level outcomes in the intro, then the
+//    expanded human-in-the-loop workflow once the app shell is visible.
 const STAGE_RAIL = [
-  { key: 'Signal',  icon: 'target',   color: '#f0a85e', start: SIGNAL_START },              // ~12.85
-  { key: 'Team',    icon: 'users',    color: '#8fbfd8', start: SIGNAL_START + 12.15 },       // ~25.0
-  { key: 'Angebot', icon: 'file',     color: '#d69a4d', start: SCENE_VERTRIEB_START },        // ~38.05
-  { key: 'Projekt', icon: 'briefcase', color: '#c65bb0', start: SCENE_VERTRIEB_START + WORK_PROMPT_VISUAL_START - 0.20 },
-  { key: 'Faktura', icon: 'euro',     color: '#e8655a', start: SCENE_FINANZ_START },          // ~65.5
+  { key: 'Signal',           icon: 'target',    color: '#f0a85e', start: SIGNAL_START },
+  { key: 'Opportunity',      icon: 'sparkles',  color: '#e98c54', start: SIGNAL_START + SIGNAL_BEAT_DKB_ACTIVE },
+  { key: 'EvidencePack',     label: 'Evidence Pack', icon: 'database', color: '#74c69d', start: WS_ABS_START },
+  { key: 'Validierung',      icon: 'check',     color: '#3fa376', start: WS_ABS_START + 16.15 },
+  { key: 'Nächster Schritt', icon: 'arrowUR',   color: '#d69a4d', start: WS_ABS_START + 17.85 },
+  { key: 'Team',             label: 'Team-Erweiterung', icon: 'users', color: '#8fbfd8', start: WS_ABS_START + 19.25 },
+  { key: 'Freigabe',         icon: 'check',     color: '#e8655a', start: LOGO_BRIDGE_START },
+  { key: 'Projekt',          icon: 'briefcase', color: '#c65bb0', start: LOGO_BRIDGE_PROJECT_MORPH_START },
+  { key: 'Wirkung',          icon: 'euro',      color: '#df735d', start: SCENE_FINANZ_START },
+];
+const STAGE_MACRO = [
+  { key: 'Gewinnen', icon: 'target', color: '#f0a85e', start: SIGNAL_START },
+  { key: 'Arbeiten', icon: 'workflow', color: '#8fbfd8', start: SCENE_VERTRIEB_START },
+  { key: 'Wirkung', icon: 'euro', color: '#e8655a', start: SCENE_FINANZ_START },
 ];
 const STAGE_INTRO_APPEAR = OS_EXPLAINER_START + 2.42;   // ~8.47 — the beat the old flow strip used
 const STAGE_DOCK_START   = OS_EXPLAINER_EXIT - 1.15;    // ~11.2 — begins flying up as the intro leaves
 const STAGE_DOCK_DUR     = 1.35;
 const STAGE_RAIL_OUT     = SCENE_CTA_START - 0.40;      // clears before the closing CTA
-// jules: intro presentation is a 3x2 grid of bigger rounded-square cards (3 on top, 2 centred below)
-//        that then morphs into the left app rail. No connecting line.
+// Intro presentation uses the highest useful abstraction level.
 const STAGE_CARD_W = 210, STAGE_CARD_H = 158, STAGE_CARD_R = 26;
 const STAGE_COL_STEP = STAGE_CARD_W + 34;   // 244
-const STAGE_ROW_STEP = STAGE_CARD_H + 30;   // 188
 const STAGE_GRID_CX = 960, STAGE_GRID_CY = 748;
 const STAGE_GRID_POS = [
-  { x: STAGE_GRID_CX - STAGE_COL_STEP,     y: STAGE_GRID_CY - STAGE_ROW_STEP / 2 }, // Signal  r0c0
-  { x: STAGE_GRID_CX,                      y: STAGE_GRID_CY - STAGE_ROW_STEP / 2 }, // Team    r0c1
-  { x: STAGE_GRID_CX + STAGE_COL_STEP,     y: STAGE_GRID_CY - STAGE_ROW_STEP / 2 }, // Angebot r0c2
-  { x: STAGE_GRID_CX - STAGE_COL_STEP / 2, y: STAGE_GRID_CY + STAGE_ROW_STEP / 2 }, // Projekt r1
-  { x: STAGE_GRID_CX + STAGE_COL_STEP / 2, y: STAGE_GRID_CY + STAGE_ROW_STEP / 2 }, // Faktura r1
+  { x: STAGE_GRID_CX - STAGE_COL_STEP, y: STAGE_GRID_CY },
+  { x: STAGE_GRID_CX,                  y: STAGE_GRID_CY },
+  { x: STAGE_GRID_CX + STAGE_COL_STEP, y: STAGE_GRID_CY },
 ];
 const STAGE_SIDE_SIZE = APP_SIDEBAR_ITEM_SIZE;
 const STAGE_SIDE_LEFT = APP_FRAME_LEFT + APP_SIDEBAR_ITEM_LEFT;
@@ -9592,14 +9556,14 @@ function PersistentStageIndicator() {
   if (introOverlay <= 0.001) return null;
   const hexA = (hex, a) => hex + Math.round(clamp(a, 0, 1) * 255).toString(16).padStart(2, '0');
   const litOf = (i) => {
-    const a = clamp((t - STAGE_RAIL[i].start) / 0.55, 0, 1);
-    const nextStart = i < STAGE_RAIL.length - 1 ? STAGE_RAIL[i + 1].start : STAGE_RAIL_OUT + 2;
+    const a = clamp((t - STAGE_MACRO[i].start) / 0.55, 0, 1);
+    const nextStart = i < STAGE_MACRO.length - 1 ? STAGE_MACRO[i + 1].start : STAGE_RAIL_OUT + 2;
     const b = clamp((t - nextStart) / 0.55, 0, 1);
     return a * (1 - b) * dock;
   };
   return (
     <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 46, opacity: out * introOverlay }}>
-      {STAGE_RAIL.map((s, i) => {
+      {STAGE_MACRO.map((s, i) => {
         const chipIn = rise(t, STAGE_INTRO_APPEAR + i * 0.10, 0.56);
         if (chipIn <= 0.001) return null;
         const lit = litOf(i);

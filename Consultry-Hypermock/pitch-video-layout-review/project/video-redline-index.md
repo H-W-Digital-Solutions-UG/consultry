@@ -5,7 +5,7 @@
 **Journey graph:** [`graph.md`](./graph.md)  
 **Questions and uncertainties:** [`video-redline-qa.md`](./video-redline-qa.md)  
 **Current calculated runtime:** **118.16 s**  
-**Analysis date:** 2026-07-10
+**Analysis date:** 2026-07-11
 
 ## 1. Reading guide
 
@@ -23,9 +23,21 @@ This index describes the **current source**, not the older timing summary in `HA
 
 ### Approved narrative posture
 
-This is a **Product Vision refinement film**. Existing H1/H2/H3 boundaries are non-governing for the redline and will be finalised after the Product Vision is complete:
+This is a **Product Vision refinement film for the full Consulting Operating System**. Existing H1/H2/H3 boundaries describe rollout depth, not the narrative or product boundary. The film is one vertical proof path through the OS, not an exhaustive scope map:
 
-> A contract signal, a consultant-logged need from active project work and LinkedIn Mail converge into a human-approved Opportunity. The workspace connects evidence, deep Knowledge/Project Data, named team matching, People Scores, CVs, ConceptPlan and a grounded draft. After human approval and a visible time jump, the same previously won ERP project becomes the Work context.
+> A shared Consulting Context connects Project/Knowledge, consultant input, Offer/Service/Product Portfolio, CRM/customer data, Contracts, People/Capacity and Finance/Operations. From any credible operational event, Consultry produces explainable intelligence and coordinates responsible humans across Sales, Team Leads/Managers, Staffing, Backoffice, Finance, consultants and management. The selected action continues into delivery, learning and economic impact and updates the shared context.
+
+`Opportunity-to-Concept` is a starting wedge and optional branch within this demo, not the Whole Product scope. The narrative posture is **context-centred, multi-role and entry-point-flexible**.
+
+The technical narrative is `Second Brain / Context Graph → Consultry Engine → HarnessPack → virtualized or local Harness → approved Tools/RAG/MCP → verification/approval/audit`. An adapted Hermes fork may be the initial Harness base. Backoffice/Finance is a Vision-Core domain with high automation potential across expenses/travel, business meals, billing/invoices, licenses/subscriptions and vendor/cost workflows, even if the current proof path does not execute every operator.
+
+The Team Lead / Team Management module is also Vision-Core: role-based team, staffing and structure views combine ProjectStatus, People/Capacity, Contracts/SOWs, Time/Expense and Finance/Billing into intelligent dashboards. It exposes invoice-readiness and delivery gaps and proposes sourced, approval-aware responses rather than silently mutating staffing or commercial records.
+
+Personal Development / Capability Planning is Vision-Core as well. It connects evidence-backed consultant skills with signals, weighted Opportunities, contracted work, the active order/project pipeline, Offer/Service/Product trends and source-bound market indicators. The current ERP example may show rising demand for a specific ERP migration capability and the resulting training, certification, Academy, hiring-profile or partner-capacity recommendations.
+
+Demand weighting is Bestandskunden-first. Consultants act as distributed human sensing nodes inside customer projects; their intentionally logged observations and contracted work outrank external market evidence. Approved LinkedIn/XING/jobboard/customer-career-page and certification-provider data may reinforce which skills or certifications are being sought — especially by existing customers, and only later by potential customers. External sources remain secondary, Terms-compliant, source-bound, freshness- and confidence-marked.
+
+Project/Knowledge Intelligence must also prove **cross-project compounding**. Parallel project work may become an explained `ProblemPattern` and `SymbiosisLink`, but only a human-validated `ReuseCandidate` may enter Assetization. Cross-account use requires abstraction, de-identification, Contract/IP/Confidentiality/Usage-Rights review, versioned `ReusableAsset`, explicit `ReuseApplication` and Approval/Audit. Repeated applications may inform a `ServiceBundleCandidate` and a contract-aware `ReuseValueCase`; T&M always reflects actual worked/billed effort.
 
 Approved main case (vendor-neutral ERP; O2C first migration wave, with P2P and master data in the NeedMap):
 
@@ -38,19 +50,19 @@ All account names, people, references, clauses and scenario figures are intentio
 | # | Current window | Current beat | Recommended beat | Redline |
 |---:|---:|---|---|---|
 | 00 | 00.00–06.30 | Positioning: “Senior-Zeit gehört zum Kunden.” | Keep positioning; add canonical Win + Work framing only if needed. | KEEP |
-| 01 | 06.80–10.35 | Signal Radar / feed | Contract signal + consultant workspace signal + LinkedIn Mail + connected project evidence. | REPLACE |
-| 02 | 10.35–15.15 | Signal-source analysis and selection | Evidence-backed qualification recommendation. | REPLACE |
-| 03 | 14.59–21.40 | “New Opportunity,” quick action, opportunity summary | Human Approval-Card creates active Opportunity. | REPLACE |
+| 01 | 06.80–10.35 | Signal Radar / feed | Hansa context pulse: project/knowledge, portfolio, CRM, contract, team and finance inputs converge around the ERP/process need. | REPLACE |
+| 02 | 10.35–15.15 | Signal-source analysis and selection | Show why the need matters differently to consultants, Sales, Team Leads/Managers and Backoffice/Finance; an explainable action object emerges. | REPLACE |
+| 03 | 14.59–21.40 | “New Opportunity,” quick action, opportunity summary | Consultant validates the connected context; Opportunity + EvidencePack becomes the decision object. | REPLACE |
 | 04 | 18.65–21.40 | Team/profile preview | Opportunity brief + NeedMap preview leading into named team matching. | REPLACE |
-| 05 | 21.40–41.96 | Opportunity Workspace visit 1; outreach draft | EvidencePack → NeedMap → concept section draft/edit/review. | REPLACE |
+| 05 | 21.40–41.96 | Opportunity Workspace visit 1; outreach draft | EvidencePack → human validation → recommended next step; Team-Erweiterung selected. | REPLACE |
 | 06 | 41.60–47.52 | Named team matching and staffing confirmation | Keep named matching and People Scores; reframe for ERP/process roles. | PRESERVE/REPLACE |
 | 07 | 47.52–60.32 | Opportunity Workspace visit 2; named CV generation | Keep CV generation; replace cloud/security CV content with ERP/process evidence. | PRESERVE/REPLACE |
-| 08 | 60.32–69.58 | Opportunity Canvas graph; offer-from-canvas action | Opportunity-to-Concept graph with approval and internal export. | REPLACE |
-| 09 | 68.72–75.84 | Offer bundle, contract, “Deal closed” | Evidence + team/CVs + ConceptPlan + GroundedDraft; human approval/export readiness. | REMOVE/REPLACE |
+| 08 | 60.32–69.58 | Opportunity Canvas graph; offer-from-canvas action | Opportunity graph with selected team route; ConceptPlan/Grounded Draft remain optional nodes. | REPLACE |
+| 09 | 68.72–75.84 | Offer bundle, contract, “Deal closed” | EvidencePack + selected next step + team/CVs; internal approval readiness. | REMOVE/REPLACE |
 | 10 | 67.72–90.92 | AWS project context and meeting-prep prompt | Same previously won ERP project after an explicit time jump. | REPLACE |
-| 11 | 88.92–96.12 | Named-person AWS project dashboard | Deep Knowledge/Project Data view; no person activity in the default status view. | REPLACE |
-| 12 | 95.62–102.12 | Matched code/knowledge output | Grounded meeting-prep output with source links and human edit. | KEEP/REPLACE |
-| 13 | 101.62–113.12 | Business-case chart / Consultry cost | Preserve scene content; use Wirkung in the extensible rail. | KEEP |
+| 11 | 88.92–96.12 | Named-person AWS project dashboard | Active ERP Project 360 plus explained match to a parallel migration problem; no person activity in the default status view. | REPLACE |
+| 12 | 95.62–102.12 | Matched code/knowledge output | `ProblemPattern → SymbiosisLink → ReuseCandidate`; human review, abstraction/rights status and target asset preview. | REPLACE |
+| 13 | 101.62–113.12 | Business-case chart / Consultry cost | Traceable `ReusableAsset → ReuseApplication/ServiceBundleCandidate → ReuseValueCase`; separate actual T&M effort from fixed-price/outcome/accelerated-delivery value. | REPLACE LATER |
 | 14 | 112.12–118.16 | “Weniger Tools. Mehr Effizienz. Mehr Beratung.” | Keep; connect to proof slice and human responsibility. | KEEP |
 
 ## 3. Global replacements
@@ -63,17 +75,20 @@ Current:
 
 Recommended adaptive structure:
 
-- **Macro:** `Gewinnen → Arbeiten → Wirkung`
-- **Expanded:** `Signal → Opportunity → Kontext → Team → Konzept → Freigabe → Projekt → Wirkung`
+- **OS cycle:** `Capture ↔ Understand ↔ Decide ↔ Coordinate ↔ Execute ↔ Reuse ↔ Learn & Steer`
+- **Expanded demo path:** `Consulting Context → Observation → Signal & EvidencePack → Decision → ActionCase → Team/Commercials/Delivery → Approval → Active Project → ProblemPattern/SymbiosisLink → ReusableAsset/ReuseApplication → Value/Learning → Consulting Context`
 
 Reasons:
 
-- `Opportunity` is the central demand node and currently disappears from the rail.
-- `Kontext` makes the deep Knowledge/Project Data core use case explicit.
-- `Team` deserves its own stage because matching, People Scores and CVs remain substantial beats.
+- `Consulting Context` establishes the category by synchronizing Project/Knowledge, portfolio, CRM, contracts, people/capacity and finance.
+- No single role or entry point defines the product; the demo may enter through an operational need, signal, staffing issue, commercial decision or financial variance.
+- `Observation` is the low-friction consultant/source input; `Signal` is the enriched and routed hypothesis, not an automatic Opportunity.
+- `Decision → ActionCase` keeps Delivery, Customer, Team, Capability and Commercial paths on the same operating loop; only the commercial branch creates Opportunity/ChangeCase.
+- `Team/Commercials` represents orchestration across OS domains; matching, People Scores and CVs remain substantial beats.
 - `Freigabe` separates human responsibility from automated-looking generation.
 - `Projekt` begins only after the visible previously-won-project time jump.
-- `Wirkung` accurately labels the existing business-case scene without requiring content rework.
+- `Reuse` makes the cross-project compounding loop visible without turning Symbiosis into a navigation module.
+- `Value/Learning` must trace effects to exact project, asset/application version and contract/pricing basis.
 - The rail may collapse to macro chapters during overview moments and expand during operational scenes.
 
 ### 3.2 Global copy dictionary
@@ -102,13 +117,13 @@ Reasons:
 **Source components:** `ConsultingOSExplainer`, shared app-intro shell  
 **Current hero copy:** “Senior-Zeit gehört zum Kunden.”
 
-**KEEP** the core line. It is consistent with the product’s pain thesis and the Opportunity-to-Concept proof.
+**KEEP** the core line. It is consistent with the product’s pain thesis and the full Consulting-OS vision.
 
 Suggested optional supporting line:
 
-> `Consultry verbindet Gewinnen und Arbeiten — quellengebunden, editierbar, verantwortet.`
+> `Das AI-native Consulting OS verbindet Kunden, Teams, Projekte, Wissen und Wirkung.`
 
-If “AI operating system” language is used, treat it as Product Vision framing and keep it consistent with the canonical product terms; phase labels do not govern this redline.
+“AI-native Consulting Operating System” is the Product Vision category. The following ERP story is one proof path through it; phase labels and the Opportunity-to-Concept wedge do not govern the film’s product scope.
 
 **Product links:** [Alignment naming](../../../product-definition/Consultry-Alignment-Control-Plane-v1.0.md), [Product Vision §1–4](../../../product-definition/Consultry-Product-Vision-v1.0.md).
 
@@ -125,7 +140,7 @@ If “AI operating system” language is used, treat it as Product Vision framin
 | Source card | Proposed copy | Provenance treatment |
 |---|---|---|
 | `Kundenvertrag · Klausel 12.3` | `Optionsfenster öffnet in 120 Tagen` | Firm-Fact, clause citation required. |
-| `Consultry Workspace · Consultant Worklog` | `Bedarf X im laufenden Projekt erkannt und gemeldet` | Human-authored internal project signal with author/time/source. |
+| `Consultry Workspace · Projektsignal` | `Migrations-Timeline soll beschleunigt werden` | Tobias logs the observation from the active project with author/time/source; Consultry binds customer/project context and routes it to the responsible account owner. |
 | `LinkedIn Mail · Kunde` | `ERP- und Prozessinitiative im Gespräch` | Relationship/context source retained in the Product Vision. |
 | `Projekt- & ERP-Daten · verbunden` | `Stammdatenbrüche und manuelle Übergaben` | Deep Knowledge/Project Data connection; core use case. |
 
@@ -139,7 +154,7 @@ Header/filter replacements:
 
 Keep `LinkedIn Mail` as an explicit source. Show the contract and consultant worklog as the two primary signals; LinkedIn Mail and connected project data strengthen the hypothesis.
 
-**User action:** open the top account cluster and see the contract trigger converge with the consultant-logged need from active project work.
+**User action:** open the top account cluster and see the contract trigger converge with Tobias’ consultant-logged timeline-acceleration signal from active project work; the signal is assigned to the responsible account owner for validation.
 
 **Product links:** [F1 Account Growth](../../../product-definition/Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), [Domain: Signal](../../../product-definition/Consultry-Business-Domain-Definition-v1.0.md).
 
@@ -229,14 +244,14 @@ This is the film’s most important redline. **REPLACE the outbound-email workfl
 
 - `Opportunity Workspace` → keep.
 - `New Opportunity · Bank AG` → `Aktive Opportunity · Hansa Maschinenbau AG`.
-- Progress stages: `Evidence 4/4` · `NeedMap in Review` · `Konzept noch offen`.
+- Progress stages: `EvidencePack 4/4` · `Validierung offen` · `Nächster Schritt nach Review`.
 
 #### Main sections
 
 | Current section | Replacement |
 |---|---|
 | Outreach · Entwurf | `EvidencePack · 4 Quellen` |
-| Angebot & Vertrag | `ConceptPlan · noch nicht erstellt` |
+| Angebot & Vertrag | `Empfohlener nächster Schritt` |
 | Meetings | `Review & offene Fragen` |
 | Team · 3 Rollen offen | `Team-Matching · 3 ERP-/Prozessrollen` |
 | Agent fragen | Keep as a context-bound assistant trigger. |
@@ -245,12 +260,11 @@ This is the film’s most important redline. **REPLACE the outbound-email workfl
 
 1. Open `EvidencePack`.
 2. Inspect contract clause and workshop-note citations.
-3. Click `NeedMap erstellen`.
-4. AI produces draft needs with source chips.
-5. User selects an ambiguous need and asks for clarification.
-6. AI marks a contextual source gap: `Standort-Scope bestätigen` (supporting review metadata, not a primary payoff card).
-7. User accepts the supported needs.
-8. Click `Konzeptplan starten`.
+3. Human confirms the existing-client context and consultant-logged need.
+4. The system recommends the next step from Kundengespräch, Team-Erweiterung, Angebot/Change Request or optional ConceptPlan.
+5. User selects the recommended Team-Erweiterung route.
+6. Named team matching and People Scores become available.
+7. ReviewIssues remain supporting metadata, not a primary payoff card.
 
 #### Suggested draft content
 
@@ -462,6 +476,8 @@ The assistant connects and reasons across Knowledge, Project Data and work artef
 
 - Connect Jira/project tasks, ERP extracts, DMS/SharePoint, project artefacts, decisions, methods and consultant worklogs.
 - Surface process dependencies, data-quality conflicts, reusable assets and opportunity/project feedback loops.
+- Detect a fictional parallel SAP S/4HANA migration context with similar data-mapping/cutover work and explain shared versus different traits.
+- Create only a suggested `ProblemPattern`/`SymbiosisLink`; do not imply automatic Cross-Customer knowledge transfer.
 - Show why each insight exists with source links.
 - Treat this depth as a core Product Vision use case, not a future-preview badge.
 
@@ -475,45 +491,52 @@ The assistant connects and reasons across Knowledge, Project Data and work artef
 
 ---
 
-### Scene 12 — Grounded meeting-prep output
+### Scene 12 — Cross-project Symbiosis & Assetization review
 
 **Window:** 95.62–102.12  
 **Source:** `ConsultantWorkDetailJump`, `ConsultantWorkExternalWindows`  
 **Current:** AWS meeting preparation, GitHub `security.tf`, PowerPoint and Jira issue references.
 
-**KEEP** the source-aware work pattern; **REPLACE** artefacts:
+**REPLACE** the isolated meeting-prep payoff with an F11 `Symbiosis & Assetization` frame using the same source-aware interaction grammar.
 
-| Current | Replacement |
-|---|---|
-| `security.tf` | `o2c-process-map.bpmn` or `migration-rules.md` |
-| AWS target architecture | `ERP-Zielbild & Integrationslandkarte` |
-| AWS presentation | `Steuerkreis · ERP-Migration Welle 1` |
-| GuardDuty findings | `3 offene Prozess- und Migrationsentscheidungen` |
-| GitHub repo | read-only knowledge/project repository or SharePoint source |
-| “Where is policy defined?” | `Wo ist die Freigabelogik für Preisabweichungen im Order-to-Cash-Prozess definiert?` |
+Hero-frame content:
 
-Output sections:
+- Source projects: `Hansa · ERP-Migration Welle 1` and fictional `Industrie Nord · S/4HANA Cutover`.
+- Explained pattern: `Migration Readiness · Datenmapping & Cutover`.
+- Shared traits and important differences; no opaque similarity score as sole explanation.
+- `ReuseCandidate`: `S/4HANA Migration Readiness & Cutover Blueprint`.
+- Candidate asset type: Blueprint + Quality Gate + Template.
+- `RightsState: Review erforderlich`; `ReuseScope: Project/Account only` until abstraction and review complete.
+- Primary action: `Assetization prüfen` / `ReuseCandidate bestätigen`.
+- Secondary actions: merge, correct, reject, open sources.
+- Human owner: Practice/Knowledge Lead; Contract/Governance review remains explicit.
 
-- Agenda.
-- Status by deliverable.
-- Decisions needed.
-- Risks and proposed mitigations.
-- Sources and freshness.
-- `Als Entwurf übernehmen` with human approval.
+Do not show raw customer text from one account inside the other project. The visual should communicate abstraction and governed lineage, not file copying.
 
-No connector writeback should occur.
+**Product links:** [UX F11 and object flow](../../../product-definition/Consultry-UX-Operating-Model-v0.1.md), [Project Intelligence v1.1 requirements](../../../product-definition/Consultry-Project-Intelligence-Symbiosis-Graph-v1.0.md).
 
 ---
 
-### Scene 13 — Business case / effect
+### Scene 13 — Reuse application, service productization & value learning
 
 **Window:** 101.62–113.12  
 **Source:** `SceneFinanz`  
 **Current:** `MEHRWERT UND PIPELINE VS. CONSULTRY-KOSTEN`, running adviser count and annual values.
 
-**KEEP** the existing business-case scene content unchanged in the current pass. Only rename the persistent rail stage from `Faktura` to `Wirkung`.
+**DOCUMENTATION TARGET; VISIBLE IMPLEMENTATION PAUSED.** Replace the generic isolated ROI story with a traceable `ReuseValueCase` when the user resumes visible work.
 
-Finance numbers, ROI framing, footnotes and product-proof metrics are explicitly outside this redline pass.
+Required relationships:
+
+- published/approved `ReusableAsset v1.0` with exact owner, rights state, applicability and exclusions;
+- `ReuseApplication` in the target project with Fit, adaptation plan, reviewer and version pin;
+- optional `ServiceBundleCandidate`: `Accelerated ERP Migration Readiness` with Delivery Model, Pricing Model and Proof;
+- Baseline versus actual internal effort and delivery time;
+- quality/rework/customer-outcome evidence where available;
+- price/revenue/cost/margin effects with assumptions and Contract/Pricing model;
+- explicit T&M rule: actual worked/billed effort only; saved hours are not billed as worked;
+- feedback into Knowledge, Offer Portfolio, Capability Planning and Management/Finance context.
+
+No unsupported ROI percentage or margin number should be shown as real. Fictional demo figures must be labelled fictional/illustrative and traceable to their assumptions.
 
 ---
 
@@ -527,7 +550,7 @@ Finance numbers, ROI framing, footnotes and product-proof metrics are explicitly
 
 Optional proof line before the final hold:
 
-> `Von der belegten Chance zum verantworteten Konzept.`
+> `Die Arbeit aus einem Projekt macht das nächste besser.`
 
 The CTA should not claim autonomous delivery, full operating system replacement or closed deals.
 
@@ -540,13 +563,16 @@ The CTA should not claim autonomous delivery, full operating system replacement 
 | Individual availability/collisions | Keep | Preserve in team-matching scene. |
 | Named CV generation | Keep | Reframe CVs for ERP/process work and internal methods. |
 | Outreach “Versand geplant” | Remove from primary narrative | Replace with EvidencePack/NeedMap/concept work. |
-| Offer pricing/conditions and contract cards | Replace primary payoff | Use EvidencePack, team/People Scores, CVs, ConceptPlan and GroundedDraftSection. |
+| Offer pricing/conditions and contract cards | Replace primary payoff | Use EvidencePack, human validation, selected next step and team/People Scores/CVs; keep ConceptPlan/GroundedDraftSection optional. |
 | ReviewIssues | Do not use as primary payoff | Keep only as optional contextual review metadata. |
 | “Deal closed” | Not an AI/product action; hides customer decision and approval | Replace with internal approval. |
 | Deep Jira/ERP/DMS/Knowledge intelligence | Core Product Vision use case | Keep and strengthen; no future-preview badge. |
 | Individual activity feed | Not in default view | Allow only in an intentionally opened detail/drill-down. |
-| Faktura rail stage | Rename approved | Rename to `Wirkung`; do not rework business-scene content. |
-| Business-case scene | Preserve | No number, ROI or footnote rework in this pass. |
+| Universal `Signal → Opportunity` flow | Superseded by UX canon | Use `Observation → Signal → Decision → ActionCase`; Opportunity/ChangeCase only on the commercial branch. |
+| Project Symbiosis / Assetization | Product-Vision-Core | Show explained pattern, human-reviewed candidate, abstraction/rights gate, versioned asset and target application. |
+| Cross-customer raw reuse | Prohibited | Reuse only through approved `ReusableAsset` with abstraction, de-identification, RightsState, ReuseScope, Approval and Audit. |
+| Faktura rail stage | Superseded by OS cycle | Use `Reuse` and `Value/Learning` as narrative chapters; do not expose workflow states as navigation modules. |
+| Business-case scene | Documentation target revised; visible work paused | Later replace isolated ROI with a traceable `ReuseValueCase`; keep T&M actuals distinct from fixed-price/outcome/accelerated-delivery economics. |
 
 ## 6. Self-evaluation and docs grill
 
@@ -574,11 +600,11 @@ The proposal was challenged against the current context anchor, canonical naming
 
 ### Grill result 5 — Is Project Intelligence represented honestly?
 
-**Result:** deep Knowledge, Project Data, Jira/ERP/DMS/Confluence and work-artifact connections are a core use case. They should be explicit and source-explainable, not labelled as a side preview.
+**Result:** deep Knowledge, Project Data, Jira/ERP/DMS/Confluence and work-artifact connections are a core use case. The target now extends beyond retrieval: parallel work becomes an explained `ProblemPattern`/`SymbiosisLink`, then a human-reviewed and rights-gated Assetization flow. Raw customer artefacts never cross accounts automatically.
 
 ### Grill result 6 — Is every binding AI action human-approved?
 
-**Result:** yes in the proposed journey. Opportunity activation and ProposalDraft adoption each have explicit ApprovalEvents. External send, scheduling and writeback are absent.
+**Result:** yes in the proposed journey. Signal Decision/ActionCase, Opportunity/ChangeCase activation, ReuseCandidate validation, Rights Review, ReusableAsset publication, ReuseApplication and ServiceBundle approval each have named human owners and AuditEvents. External send, scheduling and writeback remain absent unless separately authorized.
 
 ### Grill result 7 — Are sources and provenance visible enough?
 
@@ -586,7 +612,7 @@ The proposal was challenged against the current context anchor, canonical naming
 
 ### Grill result 8 — Does the rail match product scope?
 
-**Result:** the rail is explicitly extensible. Recommended macro chapters are `Gewinnen → Arbeiten → Wirkung`; the expanded journey is `Signal → Opportunity → Kontext → Team → Konzept → Freigabe → Projekt → Wirkung`. Business-scene content remains unchanged.
+**Result:** the rail is explicitly extensible and circular. The current canonical chapters are `Capture ↔ Understand ↔ Decide ↔ Coordinate ↔ Execute ↔ Reuse ↔ Learn & Steer`; the ERP demo is one path through them. Frames and domain objects must not become primary navigation modules.
 
 ### Grill result 9 — Are all proposed facts safe to present as real?
 
@@ -594,7 +620,7 @@ The proposal was challenged against the current context anchor, canonical naming
 
 ### Grill result 10 — Is the source/runtime internally coherent?
 
-**Result:** the current JSX calculates 118.16 seconds and has voiceover/music muted. Length is preserved for now, the `.dc.html` project remains, `HANDOVER.md` is refreshed, and future verification markers must be regenerated from dynamic source timing rather than a permanent timestamp list.
+**Result:** the current JSX remains the runtime authority and has not been changed in this documentation-first pass. The visible HyperFrames implementation and validation are explicitly paused. When resumed, preserve current duration/audio posture unless the user revises them and regenerate verification markers from dynamic source timing.
 
 ## 7. Definition-of-ready for implementation
 
@@ -605,7 +631,11 @@ The proposal was challenged against the current context anchor, canonical naming
 - [x] Named staffing, People Scores and CVs retained.
 - [x] Same previously won project confirmed with visible time jump.
 - [x] Signal sources approved: contract + consultant worklog + LinkedIn Mail + project data.
-- [x] Business-scene rework excluded.
+- [x] Project Symbiosis/Assetization object flow documented.
+- [x] Rights, customer-boundary, T&M and value-accounting guardrails documented.
+- [x] Documentation-first hold approved; no visible HyperFrames change or validation in this pass.
+- [ ] Exact fictional parallel ERP project, source objects, ProblemPattern, overlap/difference evidence and ReusableAsset copy approved.
+- [ ] Illustrative ReuseValueCase assumptions approved before any visible numbers are changed.
 - [x] Voiceover and music remain muted.
 - [ ] Exact fictional contract clause, consultant-observed need `X` and LinkedIn Mail copy drafted.
 - [ ] Optional ERP vendor naming confirmed if the implementation names one.
@@ -616,13 +646,19 @@ The proposal was challenged against the current context anchor, canonical naming
 - [ ] All AWS/Bank/cloud/security strings replaced or intentionally retained.
 - [ ] Named ERP/process team matching, People Scores, availability/collisions and CV generation remain functional and are source-explainable.
 - [ ] Outreach draft/channel selection is removed from the primary flow.
-- [ ] Primary payoff uses EvidencePack, team/People Scores, CVs, ConceptPlan and GroundedDraftSection; ReviewIssues stays secondary.
+- [ ] Primary payoff uses EvidencePack, human validation, the selected next step and team/People Scores/CVs; ConceptPlan/GroundedDraftSection stay optional and ReviewIssues secondary.
 - [ ] `Deal closed` is replaced with human-owned internal approval/export readiness.
 - [ ] Approval is visible at Opportunity activation and ProposalDraft adoption.
 - [ ] Provenance/source badges are visible in qualification and drafting.
 - [ ] Work transition shows the same previously won project after an explicit time jump.
 - [ ] Deep Knowledge/Project Data Intelligence is clearly presented as a core use case.
+- [ ] Project Intelligence explains a fictional parallel ERP problem through source-bound shared and different traits.
+- [ ] `ProblemPattern → SymbiosisLink → ReuseCandidate` remains a suggestion/review flow, not autonomous asset creation.
+- [ ] Assetization shows abstraction, de-identification, RightsState, ReuseScope, owner, version, Approval and Audit before cross-account reuse.
+- [ ] ReuseApplication pins the exact asset version, target project, Fit and Adaptation Plan.
+- [ ] ServiceBundleCandidate and ReuseValueCase remain optional governed projections; no automatic publication or unsupported economic claims.
+- [ ] T&M actual effort is visually and semantically separated from fixed-price/outcome/accelerated-delivery economics.
 - [ ] Default ProjectStatus excludes person-specific activity; detail views may drill down.
-- [ ] Rail supports macro and expanded modes without treating either as a fixed product boundary.
+- [ ] Rail uses Capture/Understand/Decide/Coordinate/Execute/Reuse/Learn without treating frames or objects as primary app navigation.
 - [ ] Current runtime/timing handover refreshed again after source edits.
 - [ ] Visual review points regenerated from the current timing constants after each timing change.
