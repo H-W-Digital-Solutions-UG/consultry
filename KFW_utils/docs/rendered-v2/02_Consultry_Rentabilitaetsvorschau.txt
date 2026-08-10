@@ -1,0 +1,180 @@
+                           Rentabilitätsvorschau | KfW StartGeld 067 | ENTWURF
+
+Rentabilitätsvorschau
+Geschäftsjahre 1 bis 3 | Beträge in TEUR, netto, ohne AfA
+ ENTWURF. Alle nicht belegten Zahlen sind Planannahmen. Vor Bankeinreichung sind Registerdaten, Geschäftsführergehälter,
+ Steuerbehandlung, Umsatzsteuer, Pilot- und Context-Activation-Verträge zu bestätigen.
+
+
+
+Umsatztreiber
+Treiber                                      Jahr 1                                Jahr 2                                 Jahr 3
+
+zahlende Endkunden zum Jahresende
+                                                                               4                                    12                                         24
+(exkl. Design-Partner)
+
+Design-Partner zum API-Token-
+                                                                               2                                     2                                          2
+Selbstkostenpreis
+
+Preis je aktivem Seat / Monat                                     50 EUR Pilot                              ab 69 EUR                                  ab 69 EUR
+
+bezahlte Seats je kommerziellem
+                                                                           45                                       45                                         45
+Endkunden
+
+End-ARR                                                                 108,0                                    406,1                                     853,2
+
+SaaS-/Pilotumsatz im Geschäftsjahr                                        36,0                                    257,0                                     614,1
+
+Context-Activation-Pakete                                                 20,0                                     40,0                                      60,0
+
+realisierter Nettoumsatz gesamt                                          56,0                                    297,0                                     674,1
+
+
+
+ Herleitung
+ Jahr 1 enthält vier zahlende Kunden ab M6/M8/M10/M12 mit 45 Seats zu 50 EUR pro Monat sowie vier Context-Activation-Pakete zu je 5 TEUR. Die
+ zwei vorhandenen Design-Partner-LOIs laufen ausschließlich zum API-Token-Selbstkostenpreis und sind nicht als Umsatz enthalten. Ab Jahr 2 gilt 69
+ EUR nur für neue kommerzielle Kohorten. Jahresvorauszahlungen, Win-Fees und unbewiesene Reuse-/Erfolgsumsätze sind nicht angesetzt.
+
+
+Personalkosten Jahr 1
+Rolle                                 Brutto M1-3                Brutto M4-6                      Brutto M7-12                     AG-Kosten Jahr 1
+
+CEO / Commercial                                           0,0                              0,0                             0,0                               0,0
+
+CTO / Security & Engineering                               0,0                              0,0                             0,0                               0,0
+
+CPO / Product                                              0,0                              0,0                             0,0                               0,0
+
+Verbindliche
+Personalkosten im Base-                                    0,0                              0,0                             0,0                               0,0
+Case
+
+Konditionaler
+Personalrahmen nach                                          -                                -                     max. 80,0               nicht im Base-Case
+Zusatzförderung
+
+
+Ergebnisvorschau
+Position                                     Jahr 1                                Jahr 2                                 Jahr 3
+
+1. Nettoumsatz                                                            56,0                                    297,0                                     674,1
+
+2. Direkter Wareneinsatz / variable
+                                                                           4,3                                     30,8                                      73,7
+Cloud- und LLM-COGS
+
+3. Rohertrag / Rohgewinn                                                 51,7                                    266,2                                     600,4
+
+4.1 Personalkosten inkl.
+                                                                           0,0                                    198,6                                     351,0
+Lohnnebenkosten
+
+4.1.1 davon
+Gründer-/Geschäftsführergehälter inkl.                                     0,0                                    165,6                                     165,6
+AG-Anteil
+
+4.2 Miete / Coworking                                                      3,0                                      8,0                                      12,0
+
+4.3 Heizung, Strom, Wasser                                                 0,5                                      1,0                                       2,0
+
+4.4 Werbung                                                                6,0                                     12,0                                      25,0
+
+4.5 Kraftfahrzeugkosten                                                    0,0                                      0,0                                       0,0
+
+4.6 Reisekosten                                                            4,0                                      8,0                                      15,0
+
+
+
+
+                                                                                                                     Consultry Software GmbH | 12.07.2026 | Seite 1
+                              Rentabilitätsvorschau | KfW StartGeld 067 | ENTWURF
+
+Position                                    Jahr 1                                  Jahr 2                       Jahr 3
+
+4.7 Telefon, Internet                                                         1,5                          3,0                                       5,0
+
+4.8 Büromaterial                                                              0,5                          1,0                                       2,0
+
+4.9 Verpackung                                                                0,0                          0,0                                       0,0
+
+4.10 Reparatur / Instandhaltung                                               0,5                          1,0                                       2,0
+
+4.11 Versicherungen                                                           2,5                          4,0                                       6,0
+
+4.12 Beiträge / Kammern                                                       0,5                          1,0                                       2,0
+
+4.13 Leasing                                                                  0,0                          0,0                                       0,0
+
+4.14 Buchführung / Beratung                                                   6,0                         10,0                                      15,0
+
+4.15 Sonstige Aufwendungen inkl. fixer
+                                                                             13,0                         11,0                                      19,0
+Tech-Stack
+
+Summe Aufwendungen 4.1 bis 4.15                                             38,0                        258,6                                     456,0
+
+5. Ergebnis vor Steuern, AfA und
+                                                                            13,7                          7,6                                     144,4
+Zinsen
+
+6. Zinsen                                                                     9,0                          9,0                                       8,5
+
+7. Ertragsteuern - vorläufig nach
+                                                                              0,0                          0,0                                       0,0
+Verlustvortrag
+
+8. Jahresüberschuss / -defizit vor
+                                                                             4,6                          -1,4                                    135,9
+AfA
+
+9. Tilgung - nur Liquidität                                                   0,0                          0,0                                      25,0
+
+10. Private Versicherungen - GmbH
+                                                                              0,0                          0,0                                       0,0
+nicht angesetzt
+
+11. Verfügbarer Betrag nach
+                                                                             4,6                          -1,4                                    110,9
+Tilgung
+
+
+
+Planungslogik
+End-ARR: 108,0 / 406,1 / 853,2 TEUR. Zahlende Kunden am Jahresende: 4 / 12 / 24, jeweils zusätzlich zu den zwei Token-Selbstkosten-Design-
+Partnern. Der Umsatz entsteht aus expliziten Startmonaten, Seats und Preisen. Wareneinsatz umfasst 12 Prozent der wiederkehrenden Umsätze; fixe
+Cloud-/Tech-Kosten stehen unter sonstigen Aufwendungen. Die Kf W-Vorlage weist das Ergebnis ohne AfA aus.
+
+
+
+Personal- und Kosten-Gates
+Jahr 1 enthält keine festen Gründergehälter und keine verbindlichen Personalkosten. Ein Personalrahmen bis maximal 80 TEUR darf erst nach
+gesonderter zusätzlicher Förderung und Gesellschafterfreigabe ausgelöst werden; er ist nicht im Base-Case finanziert. Ab Jahr 2 werden
+Gründergehälter angesetzt; erster Engineer ab M20, Customer Success ab M28 und Sales ab M31. Personalkosten im Base-Case: 0,0 / 198,6 / 351,0
+TEUR.
+
+
+
+Vor Einreichung
+Vor Einreichung sind private Lebensunterhaltssicherung, zeitlicher Gründerumfang, Sozialversicherung sowie das Fehlen nachträglich fälliger oder
+gestundeter Gehaltsansprüche zu belegen. Das positive Jahr-1-EBITDA ist nicht normalisiert, sondern beruht auf unentgeltlicher Gründerarbeit.
+Steuerberater muss Verlustvortrag, Körperschaftsteuer, Gewerbesteuer, Aktivierung und Abschreibung der Software sowie Umsatzsteuer bestätigen.
+Der Kapitaldienst in Jahr 3 beträgt bei 10/2/10 und 4,52 Prozent rund 33,5 TEUR; vereinfachter EBITDA-DSCR ca. 4,3x. Cash-Steuern sind vorläufig
+mit null angesetzt, weil die steuerliche Abschreibung/Aktivierung des Softwarepakets das niedrige Jahr-1-Ergebnis vor AfA voraussichtlich
+überlagert; Steuerberater muss dies bestätigen.
+
+
+
+Quellenbasis
+Kf W-Formular 600 000 5284; Kf W-Merkblatt 067, Stand 18.06.2026; KfW-Produktseite abgerufen 12.07.2026; Consultry Product Vision v2.7, MVP-
+PRD, GTM Decisions und Onboarding-/Korpus-Ritual. Die OmniSEC-Arbeitsmappe wurde nur als strukturelle Inspiration für Treiber-, Rollen- und
+Szenariologik verwendet; keine OmniSEC-Zahl wurde übernommen.
+
+
+
+
+                                                                                                            Consultry Software GmbH | 12.07.2026 | Seite 2
+

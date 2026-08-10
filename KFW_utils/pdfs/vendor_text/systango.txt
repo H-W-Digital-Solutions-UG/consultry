@@ -1,0 +1,418 @@
+Proposal for Provider-Agnostic Wallet Base
+    Architecture (RFP-T-BACK-0006)
+    Submitted by: Systango Technologies Limited
+1. Executive Summary
+1.1 Introduction
+Systango Technologies Limited (Systango) is pleased to submit this proposal in response to Polity’s
+Request for Proposal for the Provider-Agnostic Wallet Base Architecture (RFP-T-BACK-0006,
+V.2.3.1). We understand that this engagement forms the foundational trust, evidence, and control layer
+of the R1.3.2 wallet infrastructure stack.
+
+Our primary objective is to deliver a robust, provider-neutral foundation that isolates provider-specific
+logic, secures credentials behind the Polity Vault REST gateway, enforces strict idempotency, and
+utilizes Temporal workflow orchestration to make wallet operations deterministic, reviewable, and
+governable.
+
+Our key architectural and safety commitments include:
+
+    ●   Zero-Leakage Credential Boundaries: Eliminating direct secret-store or Infiscal Access
+        from the Wallet Infrastructure Service (WIS), ensuring provider credentials are resolved
+        strictly at Activity execution time via the Polity Vault REST gateway.
+    ●   Fail-Closed Security Gates: Engineering a multi-tier gate precedence matrix (evaluating
+        global enablement, provider state, environment lanes, and a sensitive-operation kill switch)
+        before any Temporal execution occurs.
+    ●   Strangler Fig Coexistence: Preserving all current read/display structures for legacy DFNS
+        and Safeheron surfaces while introducing a clean, unified API bridge.
+    ●   Three-Part Sensitive-Operation Proof: Delivering static code scans, runtime API
+        inventories, and attestation logs to guarantee no unapproved custodial, signing, or transaction-
+        execution paths are reachable.
+
+
+1.2 Systango: Your Trusted Systems Engineering Partner
+Systango is a publicly listed digital engineering company (NSE) with an 18-year history of delivering
+secure, high-availability enterprise backend architectures. Our ISO 27001 certification and verified
+cloud partnerships across AWS, GCP, and Azure underscore our readiness to manage sensitive
+transaction layers and high-integrity infrastructure.
+
+We fully accept and embrace Polity's AI-assisted coding productivity baseline. Our engineering
+workflows are optimized for interactive code assistants and agentic environments, managed under
+strict prompt hygiene and confidentiality guidelines to guarantee that no payload context or code
+provenance is compromised.
+
+
+2.Detailed Approach and Methodology:
+
+Our technical delivery treats the codebase as an active enterprise system, avoiding sudden
+replacements in favor of a strictly controlled migration path.
+
+
+2.1 Overall Scope & Delivery Framework
+
+The implementation is structured into six logical review boundaries matching the mandated MR-
+BASE namespaces. Each milestone requires verifiable evidence artifacts linked directly to the Work
+Breakdown Structure (WBS).
+
+
+   Phase / Namespace                Scope & Key Activities                Key Deliverables & Artifacts
+                          Freeze current-state source; execute
+ MR-BASE-01:                                                            Route & Table Inventory; Exception
+                          complete route, table, and credential
+ Discovery & Freeze                                                     Log; Baseline Contract Freeze Note
+                          inventory within the existing WIS
+                          repository.
+                          Implement ProviderAdapter and
+                                                                        Core Go Interface Package; Type-
+ MR-BASE-02: Contract     ProviderCredentials interfaces; wire up the
+                                                                        Conformance Compile Proofs;
+ & Gates                  AdapterRegistry and multi-tier feature flag
+                                                                        Failure-Gate Unit Tests
+                          kill switches.
+                          Execute reversible formigrate scripts for
+                                                                        Up/Down Migration Logs;
+ MR-BASE-03:              provider-neutral schemas; build the
+                                                                        Database Unique Constraint
+ Persistence Layer        WALLET_OPERATIONS ledger and
+                                                                        Verification; Rollback Package
+                          concurrency controls.
+                          Bootstrap Temporal Go SDK client/worker       ExecuteWorkflow Integration Tests;
+ MR-BASE-04: Resilient
+                          boundaries; implement deterministic           Local Worker Smoke Logs; History
+ Execution
+                          workflows and activity-time Vault access.     Secret-Redaction Scan
+                          Deploy /api/wallets/v1/* unified bridge;      OpenAPI Route Fate Matrix;
+ MR-BASE-05: Unified
+                          implement fail-closed webhook envelope        Negative Capability Tests;
+ Routing
+                          and sensitive-operation constraints.          Webhook Verification Logs
+                          Finalize CSV-ready documentation, cross-      Complete CSV Traceability Index;
+ MR-BASE-06: Closure
+                          component verification, and downstream        Operational Runbook; Provider
+ & Handoff
+                          provider integration checklists.              Handoff Pack
+2.2 Core Technical Alignment
+
+Our backend engineering directly fulfills the requirements of the BASE-REQ architecture:
+
+    ●   The Interface Dispatch Boundary: The AdapterRegistry is implemented as an explicit
+        startup-time check that rejects duplicate provider registrations and converts unknown requests
+        into controlled canonical errors.
+    ●   Temporal & SAGA Topology: Tier 1 workflows (ProvisionWalletWorkflow and
+        RegisterAccountWorkflow) are separated from Tier 3 Activities. Long-running provisioning
+        chains use forward-recovery and reverse-order compensation logic driven by the temporal-
+        saga-go framework.
+    ●   Fail-Closed Webhook Boundary: The inbound boundary normalizes payloads to raw bytes
+        to preserve signatures while validating authenticity, replay protection, and sequence
+        timestamps prior to mutating any internal state.
+
+
+2.3 QA and Evidence Methodology
+
+We do not treat quality assurance as an afterthought; a task is only complete when its machine-
+verifiable evidence is generated.
+
+    ●   Static Vulnerability & Route Scans: Regular executions of golangci-lint and automated
+        structural search tools to ensure no unapproved routing parameters or exposed admin methods
+        escape isolation.
+    ●   History Replay Validation: Programmatic testing of workflow definitions against historical
+        mock logs to prove absolute determinism and verify that zero secret tokens leak into the
+        Temporal execution state.
+    ●   Data Consistency Testing: Live dry-runs of data schema migrations and structural rolling
+        rollbacks to confirm that historical records remain safe and clean during deployment.
+
+
+2.4 DevOps & Governance Alignment
+
+    ●   Version Control: Git branching per Polity DevOps and development workflow baseline.
+        Branch naming follows MR-BASE-NN convention (e.g. feature/wallet-base/base-01-
+        inventory-contract-freeze).
+    ●   MR Standards: Single-purpose MR packages; oversized MRs carry written rationale tied to
+        migration atomicity, Temporal boundary integrity, or sensitive-operation closure.
+    ●   Stop Conditions: Each MR description records the stop condition, any blocked-condition
+        register entries, and variance against the accepted repository state.
+●   Traceability: Full audit trail from BASE-REQ/BASE-FR/BASE-NFR → WBS row →
+    MR-BASE package → test evidence → QA checklist → evidence index, without
+    orphaned entries.
+●   AI-Assisted Coding Controls: We will apply prompt-hygiene controls per the
+    Confidentiality and NDA metadata row. No Polity Confidential Information, secrets, Vault
+    references, workflow history, signing payloads, raw provider keys, or live database extracts
+    will be transmitted to any third-party AI provider. All AI-produced artefacts are reviewed and
+    owned by our engineers.
+3. Deliverables and QA Artefacts
+
+Acceptance will be driven by an indexed delivery pack containing the following hard engineering
+components:
+
+    ●   Codebase Adaptations: Modular, Vite-clean/Go-conforming packages within the
+        authoritative WIS repository covering interfaces, registries, and workers.
+    ●   Database Migration Suite: Verified up/down gormigrate execution logs demonstrating clean
+        schema instantiation and rollback capabilities.
+    ●   Route Fate Matrix: A comprehensive documentation map listing the status (preserved,
+        wrapped, or blocked) of every production endpoint.
+    ●   Static & Dynamic Sanitization Proofs: Automated file scans proving that no reference
+        credentials, static tokens, or private signing keys exist in the persistent store, console output,
+        or tracking history.
+    ●   CSV-Ready Traceability Index: A complete spreadsheet cross-referencing every WBS line
+        item directly to its corresponding requirement token, merge block, and confirmation log.
+
+
+3.1 Out of scope
+
+    ●   Provider SDK/runtime activation and production provider accounts
+    ●   Production signing, payment, raw broadcast, WalletConnect, or transaction execution
+    ●   Temporal Server / EKS / Helm / ArgoCD provisioning (platform scope)
+    ●   Nexus activation
+    ●   Direct WIS access to Infisical; secrets in workflow inputs, history, logs, or ordinary wallet
+        rows
+    ●   Frontend production cutover via the new base service until provider RFPs complete
+    ●   New chains or payment rails outside the approved release chain set without governance
+        approval
+
+
+4. Architecture
+4.1 High-Level View
+Today, wallet behavior is directly tied to DFNS and Safeheron paths across routing, services, and
+tables. The target architecture establishes a single provider-neutral operation path while keeping
+legacy routes alive as compatibility wrappers during the transition phase (Strangler Fig Migration
+strategy).
+
+Current State: Fragmented Integration Architecture
+
+
+
+
+                                Current State Architecture
+Target State : Request Flow (Unified Operation Lifecycle)
+
+Every single wallet change or lifecycle event follows an unyielding, deterministic execution pipeline
+before mutating downstream state
+
+
+
+
+                                 Target State Architecture
+4.2 Target Layer Matrix
+
+
+       Layer                                           System Responsibility
+                   Validates caller context, runs feature and security gates, and exposes the unified /api/
+       API         wallets/v1/* surface or bridges to legacy read routes.
+
+                   Handles structural request validation and creates or reuses WALLET_OPERATIONS
+    Service        ledger entries prior to triggering any external side effects.
+                   Orchestrates downstream lifecycle loops through direct Temporal Go SDK execution;
+   Workflow        carries deterministic, non-secret payloads only.
+                   Executes all external platform side effects: Vault gateway invocations, provider adapter
+   Activities      routing, database updates, and callback handling.
+                   Enforces a robust, provider-neutral database schema combined with a strict operational
+       Data        ledger to prevent replay or race conditions.
+
+   Providers       Downstream provider workstreams (Fireblocks, DFNS, Safeheron RFPs) plug cleanly into
+    (Later)        the frozen base interface contract without redefining the shared core.
+
+
+
+
+Core Building Blocks
+   ●     WalletOperationsService: Exposes 12 canonical operations. Account management, wallet
+         structures, and asset lifecycles are fully active in R1.3.2; transaction capabilities are defined at
+         the contract level but explicitly deferred.
+   ●     ProviderAdapter & AdapterRegistry: Forms a single execution-time dispatch boundary for
+         all provider modules. The registry automatically rejects duplicate provider registrations at
+         boot time and returns failure-safe unknown-provider errors for unmapped targets. Fireblocks
+         is introduced purely as a disabled baseline fixture.
+   ●     The Seven-Tier Safety Gates: Compels every request to pass a sequence of checks before
+         workflow execution can begin: (1) Global Wallet status, (2) Provider enablement, (3)
+         Operation permission, (4) Environment/segment lane constraints, (5) Sensitive-operation kill
+         switch status, (6) Provider technical capability, and (7) Idempotency/state validation.
+   ●     Polity Vault REST Integration: Restricts all credential resolution to Activity execution time.
+         Workflows and persistent database fields store tokenized reference references only—never
+         raw secrets, private keys, or API credentials.
+4.3 Coexistence & Strangler Fig Transition Mechanics
+
+To keep the production system completely stable while re-architecting the base layers, the execution
+pipeline enforces strict isolation between legacy models and unified endpoints.
+
+
+
+
+                Coexistence & Strangler Fig Transition Mechanics
+    ●   Read Compatibility Guarantee: Existing DFNS and Safeheron wallet read pathways remain
+        actively supported through an isolated database and routing compatibility bridge to ensure
+        zero client-side breakage.
+   ●      Sensitive Route Elimination: Prohibited and custodial endpoint families (such as active
+          token payment execution, message signing, and WalletConnect invocation paths) are
+          explicitly removed, deactivated, or configured to fail closed under negative capability testing.
+   ●      Downstream Provider Isolation: Provider-specific crypto engines, sandbox configurations,
+          and web SDK bridges remain completely deferred to downstream work packages, ensuring
+          zero scope creep during base architecture construction.
+
+
+          5. Tech Stack:
+
+       Layer                     Technology                               Role in this engagement
+
+Language                           Go 1.24                   Matches current wallet-infrastructure-service
+                                                             Existing WIS entrypoints; new unified routes
+HTTP API                   fasthttp, fasthttp/router         added alongside legacy
+                                                             New provider-neutral migrations; reversible up/
+Database            PostgreSQL, GORM, gormigrate v2
+                                                             down
+                                                             Existing use; credential handling moves to
+Cache                          Redis (go-redis)              reference-only at Activity boundary
+                                                             Workflows, activities, worker; local Docker
+Orchestration             Temporal Go SDK (new)              Compose for proof
+                       Polity Vault REST (providers/         Activity-time credential access; no direct Infisical
+Secrets                          polityVault)                from WIS
+
+Feature flags                  Viper (flagger/)              Extended into full gate precedence matrix
+Auth                JWT/RBAC in WIS; Dynamic v4 on           Non-regression samples/tests only; no frontend
+(compatibility)                    frontend                  redesign
+
+Quality               go test, golangci-lint, static scans   Per WBS-BASE-26 and MR evidence packs
+
+Integration             polity_tests (where in scope)        Supporting evidence for release boundary
+                       internal/contract, cmd/worker/
+New code areas      main.go, provider-neutral migrations     Per RFP Appendix A contract shapes
+6. Project Plan and Timeline
+
+Our planning is explicitly calibrated against the 90 planned focused engineering hours baseline under
+the assumption of AI-assisted engineering productivity.
+
+
+                              Target
+          Milestone                                           Deliverables / Activities
+                             Timeline
+                                         Repository access validation, environment initialization, and
+ Project Kick-off               T
+                                         baseline sync.
+ Discovery & Contract                    Delivery of MR-BASE-01, concluding WBS items 01–03 with an
+                            T + 4 Days
+ Freeze                                  approved route inventory.
+                                         Integration of core contracts, registries, database migrations, and
+ Mid-Term Functional          T + 12
+                                         WALLET_OPERATIONS persistence (MR-BASE-02 and MR-
+ Delivery                      Days
+                                         BASE-03).
+                                         Successful execution of Temporal workflows, worker hooks,
+                              T + 20
+ Final QA Submission                     unified API bridge, and all negative capability verification vectors
+                               Days
+                                         (MR-BASE-04 and MR-BASE-05).
+
+ Final Acceptance & Sign-     T + 25     Processing of the final technical review, delivery of the CSV
+ off                           Days      index, runbooks, and handover signature (MR-BASE-06).
+7. Project Team and Expertise
+
+Every assigned member of our core squad brings extensive experience managing high-integrity
+backend data systems and distributed system state.
+
+
+             Role           Experience                            Responsibilities
+ Lead Backend &                          Responsible for building the Go interface contracts, wiring up
+ Distributed Systems        10+ Years    client-side Temporal execution loops, and configuring core
+ Developer                               SAGA orchestration mechanics.
+                                         Responsible for verifying strict idempotency constraints,
+ QA & System Validation
+                            10+ Years    generating negative capability proofs, organizing endpoint
+ Engineer
+                                         inventories, and running history replay tests.
+
+
+
+
+8. Commercial Proposal
+
+8.1 Fixed-Price Summary
+
+                                    Estimated         Blended Rate
+            Description                                                              Total (USD)
+                                        Hours            (USD/hr)
+
+   Total Development & QA
+                                         90                  38                           3,420
+              Effort
+
+Total Fixed Price (USD): $3,420
+(Inclusive of all vendor overheads, profit, and administrative costs.)
+8.2 Payment Milestones
+
+
+         Milestone              Percentage                             Condition
+          Kick-off                 20%                  Contract signing and environment setup
+    Mid-Term Delivery              20%             50% of WBS is complete with design validation
+    Final QA Submission            30%                 All items implemented and QA approved
+
+     Final Acceptance              30%           Final sign-off by Polity Design & Engineering Teams
+
+
+
+
+         9. Assumptions, Dependencies, and Blocked Conditions
+
+`        9.1 Assumptions
+
+     ●   Polity provides repository access, the engagement pack (TOR AC/Gate definitions, approved
+         release chain set), and written answers to clarifications within the RFP window.
+     ●   Polity Vault REST is available for integration testing, or Polity agrees to signed-off mocks for
+         Vault and provider fixtures.
+     ●   Local Temporal (Docker Compose or equivalent) is available for MR-BASE-04 proof.
+     ●   DFNS and Safeheron mock adapters are the primary acceptance path; live sandbox evidence
+         is additive.
+     ●   Delivery is remote; AI-assisted coding is used with the developer reviewing all generated
+         code.
+     ●   Work outside WBS-BASE-01..26 requires written change-control approval.
+
+     ●   All estimates and implementation commitments are based on the assumptions defined in the
+         Feature list with estimated hours and considerations
+9.2 Dependencies
+
+
+              Dependency                    Provided by                             If unavailable
+
+ Engagement pack and TOR gate                                      Evidence scope unclear; blocked register
+                                   Polity
+ definitions                                                       until resolved
+
+ Polity Vault REST or approved                                     BASE-08 and BASE-17 blocked or mock-
+                                   Polity / environment
+ mock                                                              only
+
+                                   Vendor setup / Polity
+ Local Temporal runtime                                            BASE-14..18: local proof + blocked note
+                                   docker-compose
+
+ Go 1.24 toolchain and golangci-
+                                   Environment                     BASE-26 incomplete
+ lint in CI
+
+ Dynamic / FE–Auth
+                                   Polity                          Compatibility evidence delayed
+ coordination for BASE-22
+
+
+
+
+10. Optional Support and Maintenance
+Systango Technologies Limited (Systango) can provide post-implementation technical support for one
+(1) month after final acceptance. This includes: - Minor UI/UX fixes - Bug resolution for R1.3.2
+features - Handover support to Polity’s R1.3.3 Circle Team
+
+               Item                Duration           Cost (USD)                        Description
+  Post-Go-Live Support             1 month                 $3040                Bug fixes and QA support
+
+
+
+
+11. Proposal Acceptance
+We thank Polity for this opportunity and affirm our commitment to delivering a secure, performant,
+and visually consistent frontend that aligns with the R1.3.2 objectives and standards.
+
+
+
+Authorised Signatory:
+Name: Alexander Sewell
+Designation: Director, Europe & Americas
+Vendor Company Name: Systango Ltd
+Email Address: alexander.sewell@systango.com
+Phone: +44-7741589104
+

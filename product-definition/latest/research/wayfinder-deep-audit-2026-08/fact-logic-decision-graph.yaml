@@ -1,0 +1,869 @@
+version: "0.1"
+as_of: "2026-08-02"
+scope: "Consultry Product and Business-Domain Wayfinder deep audit"
+status: "research-baseline-not-product-ratification"
+
+semantics:
+  node_types:
+    decision: "Ratified internal Product Truth; not empirical effect evidence."
+    local_finding: "Observation from a local current or historical artifact."
+    external_finding: "Finding from an external source with bounded population/method."
+    inference: "Reasoned conclusion supported by one or more nodes."
+    hypothesis: "Claim requiring customer or product-effect evidence."
+    conflict: "Claims that cannot both remain unqualified."
+    challenge: "Decision area containing atomic grill questions."
+  edge_types:
+    - supports
+    - indirectly_supports
+    - bounds
+    - contradicts
+    - exposes_gap_in
+    - motivates
+    - refines
+    - depends_on
+    - tests
+    - supersedes
+    - operationalizes
+  confidence:
+    - high
+    - medium
+    - low
+    - not_applicable
+
+nodes:
+  - id: D-001
+    type: decision
+    label: "AI-native Consulting Operating System"
+    status: ratified
+    confidence: not_applicable
+    statement: "Consultry is the first consulting-specific Product Blueprint of a reusable AI-native OS Platform direction; chat, Harness and Opportunity-to-Concept are not the product boundary."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-consultry-product-and-platform-destination.md"
+      - "product-definition/latest/_CONTEXT-AND-MEMORY.md#0-was-ist-consultry-ein-atemzug"
+
+  - id: D-002
+    type: decision
+    label: "Two first-class consultancy archetypes"
+    status: ratified
+    confidence: not_applicable
+    statement: "Partner-led Specialist Boutique and Growing Specialist Consultancy are first-class; size is only an indicator for operating structure, authority, handoffs and maturity."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-first-consultancy-operating-archetypes.md"
+      - "product-definition/latest/_CONTEXT-AND-MEMORY.md:66"
+
+  - id: D-003
+    type: decision
+    label: "Target-Consultancy outcome hierarchy"
+    status: ratified
+    confidence: not_applicable
+    statement: "Expert Knowledge-to-Action is the immediate user outcome and value mechanism; Blind-Spot Coverage, Work Effectiveness & Efficiency and Synergy & Reuse are observable organizational effects."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-product-problem-and-outcome-hierarchy.md"
+      - "product-definition/latest/_CONTEXT-AND-MEMORY.md:62-64"
+
+  - id: D-004
+    type: decision
+    label: "Object/work-centered app; optional Harness"
+    status: ratified
+    confidence: not_applicable
+    statement: "The guided Consultry App is default; conversation is one interaction form and the technical Harness client is optional and adds no authority."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/reject-a-chat-only-product-and-make-the-harness-optional.md"
+
+  - id: D-005
+    type: decision
+    label: "Product before technology"
+    status: ratified
+    confidence: not_applicable
+    statement: "Problems, actors, business flows, journeys, product behavior, requirements and acceptance are ratified before technical architecture, persistence, ADRs or implementation issues."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/put-product-and-business-domain-definition-before-technical-planning.md"
+      - "product-definition/latest/_CONTEXT-AND-MEMORY.md:104"
+
+  - id: D-006
+    type: decision
+    label: "Opportunity-to-Project is the full commercial value path"
+    status: ratified_scope_direction
+    confidence: not_applicable
+    statement: "Concept/Proposal is an intermediate state and possible proof milestone, not the final product or lifecycle boundary."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/map.md:13"
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-the-proposal-aggregate-lifecycle.md:23"
+
+  - id: D-007
+    type: decision
+    label: "Customer and client levels"
+    status: ratified
+    confidence: not_applicable
+    statement: "Target Consultancy/Consultry Customer Organization buys and adopts Consultry; Consultancy Client/Client Organization is the consultancy's customer."
+    sources:
+      - "product-definition/latest/_CONTEXT-AND-MEMORY.md:62"
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-product-problem-and-outcome-hierarchy.md"
+
+  - id: D-008
+    type: decision
+    label: "Human responsibility before binding effect"
+    status: ratified_guardrail
+    confidence: not_applicable
+    statement: "AI may inform, draft, challenge, validate or execute within bounds; it is not accountable owner or approver and cannot create binding effect by itself."
+    sources:
+      - "product-definition/latest/Consultry-Product-Vision-v1.0.md:182-189"
+      - "product-definition/latest/Consultry-Business-Domain-Definition-v1.0.md:194-203"
+
+  - id: D-009
+    type: decision
+    label: "ReusableAsset productization boundary"
+    status: ratified
+    confidence: not_applicable
+    statement: "ReusableAsset is a governed, versioned Productization aggregate with applicability, rights and release, referencing exact knowledge/skill versions."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-the-reusable-asset-boundary.md"
+
+  - id: D-010
+    type: decision
+    label: "Project facts and judgment remain separate"
+    status: ratified
+    confidence: not_applicable
+    statement: "ProjectStatusSnapshot is a rebuildable facts projection; ProjectStatusAssessment is a responsible human judgment with rationale and basis."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-project-status-authority.md"
+
+  - id: D-011
+    type: decision
+    label: "Core Skill Graph distinct from human capability evidence"
+    status: ratified_semantic_boundary
+    confidence: not_applicable
+    statement: "Executable AI skill definitions and evidence-backed human/team/firm capability are distinct concepts."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/separate-the-core-skill-graph-from-capability-evidence.md"
+
+  - id: D-012
+    type: decision
+    label: "Variable Core Value Proof contract"
+    status: ratified_definition
+    confidence: not_applicable
+    statement: "A real material case with own inputs must create responsible, reviewable progress over the current workaround while source, uncertainty and human responsibility remain visible."
+    sources:
+      - "product-definition/latest/_CONTEXT-AND-MEMORY.md:64"
+
+  - id: L-001
+    type: local_finding
+    label: "Business-domain baseline is wedge-narrow"
+    status: observed
+    confidence: high
+    statement: "The current Business Domain Definition centers its context map and core lifecycle on Signal/Tender to Opportunity to ProposalDraft."
+    sources:
+      - "product-definition/latest/Consultry-Business-Domain-Definition-v1.0.md:70-100"
+      - "product-definition/latest/Consultry-Business-Domain-Definition-v1.0.md:182-190"
+
+  - id: L-002
+    type: local_finding
+    label: "Product Vision and UX cover a broader operating system"
+    status: observed_candidate
+    confidence: high
+    statement: "Current Vision/UX include Customer, Delivery, People, Knowledge/Reuse, Commercials, Operations, Governance and cross-role work beyond the wedge."
+    sources:
+      - "product-definition/latest/Consultry-Product-Vision-v1.0.md:20-57"
+      - "product-definition/latest/Consultry-UX-Operating-Model-v0.1.md:55-68"
+
+  - id: L-003
+    type: local_finding
+    label: "Flow artifacts lack full journey contracts"
+    status: observed
+    confidence: high
+    statement: "Many current flows are feature lists or happy paths without consistent triggers, actors, preconditions, handoffs, reject/recovery paths, state changes and outcomes."
+    sources:
+      - "product-definition/archive/superseded-product-baseline-2026-08/Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md"
+
+  - id: L-004
+    type: local_finding
+    label: "Personas are pre-pivot and omit the Boutique"
+    status: observed
+    confidence: high
+    statement: "The persona set models a larger specialized consultancy and mixes job titles, authorities and feature scenarios; it is not current evidence."
+    sources:
+      - "product-definition/archive/superseded-product-baseline-2026-08/Consultry-Target-Personas-v1.0.md"
+      - "product-definition/latest/Consultry-Priority-Problem-Evidence-and-Assumption-Register-v0.1.md:108"
+
+  - id: L-005
+    type: local_finding
+    label: "Acceptance baseline stops at Concept and activity"
+    status: observed
+    confidence: high
+    statement: "The Measurement Spec strongly defines a five-day Concept proof, but does not establish Opportunity-to-Project, Project/Delivery, Management/Operations, Retention or Compounding outcomes."
+    sources:
+      - "product-definition/latest/Consultry-MVP-Measurement-Spec-v1.0.md:5-17"
+      - "product-definition/latest/Consultry-Priority-Problem-Evidence-and-Assumption-Register-v0.1.md:20"
+
+  - id: L-006
+    type: local_finding
+    label: "Onboarding is upload- and wedge-centered"
+    status: observed
+    confidence: high
+    statement: "The guided corpus ritual is useful but does not cover role/authority mapping, maturity, connected-system paths, training, change governance or ongoing configuration."
+    sources:
+      - "product-definition/latest/Consultry-Onboarding-Corpus-Ritual-v1.0.md:11-17"
+
+  - id: L-007
+    type: local_finding
+    label: "Feature and source artifacts contain stale contradictions"
+    status: observed
+    confidence: high
+    statement: "Conflicts include global no-unsourced-claims versus risk-based review, proposal generation in/out, TimeEntry scope, stale ProjectStatus wording and chat/canvas framing."
+    sources:
+      - "product-definition/archive/superseded-product-baseline-2026-08/Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md"
+      - "product-definition/latest/Consultry-Priority-Problem-Evidence-and-Assumption-Register-v0.1.md:99-113"
+
+  - id: L-008
+    type: local_finding
+    label: "Compounding outcomes are intended, not observed"
+    status: observed
+    confidence: high
+    statement: "ProblemPattern, ReuseApplication, ServiceBundle and margin/quality effects are product concepts without Consultry production evidence."
+    sources:
+      - "product-definition/latest/Consultry-Project-Intelligence-Symbiosis-Graph-v1.0.md:184-195"
+      - "product-definition/latest/Consultry-Priority-Problem-Evidence-and-Assumption-Register-v0.1.md:112"
+
+  - id: L-009
+    type: local_finding
+    label: "Open Wayfinder tickets are not one-decision clean"
+    status: observed
+    confidence: high
+    statement: "Actors, operating loop, Core, lifecycle, journeys, interaction, implementation, acceptance and horizons each combine multiple independently ratifiable questions."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/"
+
+  - id: L-010
+    type: local_finding
+    label: "Coverage and acceptance form a semantic dependency cycle"
+    status: observed
+    confidence: high
+    statement: "Coverage promises Acceptance Evidence/Horizon while Acceptance depends on Coverage and Horizons follow Acceptance."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/derive-the-product-capability-feature-and-requirement-coverage-map.md:17-21"
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-product-outcomes-acceptance-and-learning-requirements.md:10-14"
+
+  - id: L-011
+    type: local_finding
+    label: "Technical decisions remain mixed into the product map"
+    status: observed
+    confidence: high
+    statement: "Physical graph/release/service/persistence decisions remain listed beside Product Decisions despite the product-before-technology gate."
+    sources:
+      - "product-definition/latest/wayfinder/consultry-product-platform-baseline/map.md:30-41"
+
+  - id: E-001
+    type: external_finding
+    label: "SME AI adoption is heterogeneous"
+    status: supported_external
+    confidence: high
+    statement: "SMEs differ materially in AI adoption, skills, training, core-business use and constraints."
+    limitations: "Cross-industry OECD evidence; no Consultry effect."
+    sources:
+      - "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/12/ai-adoption-by-small-and-medium-sized-enterprises_9c48eae6/426399c1-en.pdf"
+
+  - id: E-002
+    type: external_finding
+    label: "SME GenAI can reduce or add workload"
+    status: supported_external
+    confidence: high
+    statement: "Among GenAI-using SMEs, reported workload effects run in both directions; staffing need is usually unchanged and training is limited."
+    limitations: "Self-report and cross-industry."
+    sources:
+      - "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/11/generative-ai-and-the-sme-workforce_83bafdfb/2d08b99d-en.pdf"
+
+  - id: E-003
+    type: external_finding
+    label: "Functional overload can impair learning"
+    status: indirect_external
+    confidence: medium
+    statement: "Owner-manager functional overload can constrain learning/empowerment, and added support may still increase coordination burden."
+    limitations: "Family SMEs, not consultancies."
+    sources:
+      - "https://doi.org/10.1108/JKM-08-2020-0657"
+
+  - id: E-004
+    type: external_finding
+    label: "Small KIBS knowledge maturity differs beyond size"
+    status: indirect_external
+    confidence: medium
+    statement: "Knowledge needs, practice intensity, barriers and attitudes form distinct clusters among small/micro KIBS."
+    limitations: "Exploratory Polish sample with low response."
+    sources:
+      - "https://doi.org/10.1002/kpm.1723"
+
+  - id: E-005
+    type: external_finding
+    label: "KIBS value is client co-produced"
+    status: supported_mechanism
+    confidence: medium
+    statement: "Diagnosis, solution creation, resource organization, conflict management and implementation commonly involve supplier and buyer contributions."
+    limitations: "Broad KIBS research from 2012, not AI-specific."
+    sources:
+      - "https://doi.org/10.1016/j.indmarman.2011.11.008"
+
+  - id: E-006
+    type: external_finding
+    label: "Professional-service productization has contextual trade-offs"
+    status: supported_mechanism
+    confidence: medium
+    statement: "Standardization and modularity can improve coordination/reuse but need common language, trust, aligned goals and fit to knowledge characteristics."
+    limitations: "Conceptual synthesis and small case studies."
+    sources:
+      - "https://doi.org/10.1016/j.jbusres.2021.08.033"
+      - "https://doi.org/10.1108/JOSM-01-2015-0004"
+      - "https://doi.org/10.1002/kpm.1538"
+
+  - id: E-007
+    type: external_finding
+    label: "AI can bridge functional perspectives on bounded tasks"
+    status: supported_mechanism
+    confidence: medium
+    statement: "In a preregistered product-innovation experiment, AI helped integrate commercial and technical perspectives and raised tested individual performance."
+    limitations: "One large consumer-goods firm; task- and version-specific sample reporting."
+    sources:
+      - "https://doi.org/10.1287/orsc.2025.20702"
+
+  - id: E-008
+    type: external_finding
+    label: "AI benefit is jagged and task-dependent"
+    status: supported_external
+    confidence: high
+    statement: "BCG consultants improved on inside-frontier tasks but were materially less correct on an outside-frontier task."
+    limitations: "One large strategy consultancy and experimental assignments."
+    sources:
+      - "https://www.hbs.edu/ris/Publication%20Files/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717.pdf"
+
+  - id: E-009
+    type: external_finding
+    label: "Explanations can increase deference without quality gain"
+    status: supported_mechanism
+    confidence: medium
+    statement: "Narrative AI explanations increased evaluator alignment without improving quality versus black-box AI and may suppress unconventional ideas."
+    limitations: "Early-stage innovation evaluation context."
+    sources:
+      - "https://aisel.aisnet.org/icis2025/conf_theme/conf_theme/7"
+
+  - id: E-010
+    type: external_finding
+    label: "Individual AI access does not create operating transformation"
+    status: supported_external
+    confidence: high
+    statement: "A six-month randomized field experiment found bounded communication-time changes but no broad shift in task composition."
+    limitations: "Cross-industry and tool-access intervention."
+    sources:
+      - "https://www.nber.org/papers/w33795"
+
+  - id: E-011
+    type: external_finding
+    label: "Structured workflows need bounded states and evaluation"
+    status: supported_design_heuristic
+    confidence: medium
+    statement: "StateFlow and graph-workflow research favor explicit states/transitions and task-specific evaluation over unbounded free loops."
+    limitations: "Benchmarks, not real Consultry work."
+    sources:
+      - "https://arxiv.org/abs/2403.11322"
+      - "https://proceedings.iclr.cc/paper_files/paper/2025/hash/5492ecbce4439401798dcd2c90be94cd-Abstract-Conference.html"
+
+  - id: E-012
+    type: external_finding
+    label: "More agent/graph complexity is not uniformly better"
+    status: supported_design_warning
+    confidence: medium
+    statement: "Graph orchestration studies show task-dependent gains and note robust lower-overhead simple baselines."
+    limitations: "Research/demo benchmarks; no production causality."
+    sources:
+      - "https://aclanthology.org/2025.acl-demo.11/"
+      - "https://arxiv.org/abs/2604.11378"
+
+  - id: E-013
+    type: external_finding
+    label: "Agent evaluation should inspect process as well as output"
+    status: supported_design_heuristic
+    confidence: medium
+    statement: "Agent-as-a-Judge evaluates intermediate work processes in addition to final outcomes."
+    limitations: "Small proof-of-concept code benchmark; an AI judge is not authority."
+    sources:
+      - "https://proceedings.mlr.press/v267/zhuge25a.html"
+
+  - id: E-014
+    type: external_finding
+    label: "Agent authority requires identity and least privilege"
+    status: emerging_governance
+    confidence: medium
+    statement: "NIST identifies agent identity, binding to human/organization authority and least-privilege tool/data access as core open control questions."
+    limitations: "2026 concept paper, not a standard."
+    sources:
+      - "https://www.nccoe.nist.gov/sites/default/files/2026-02/accelerating-the-adoption-of-software-and-ai-agent-identity-and-authorization-concept-paper.pdf"
+
+  - id: E-015
+    type: external_finding
+    label: "Validation can structure claims, evidence and defeaters"
+    status: supported_design_heuristic
+    confidence: medium
+    statement: "Assurance-case approaches distinguish claims, arguments, supporting evidence, counterevidence/defeaters and unresolved needs."
+    limitations: "Safety/assurance contexts; use proportionally for business validation."
+    sources:
+      - "https://www.aisi.gov.uk/research/safety-case-template-for-frontier-ai-a-cyber-inability-argument-2"
+
+  - id: E-016
+    type: external_finding
+    label: "Assembled agent system needs system-level evaluation"
+    status: supported_design_warning
+    confidence: medium
+    statement: "Model, planning, tools, memory and policy jointly shape agent behavior, while public agent-specific evaluations remain sparse."
+    limitations: "Transparency index, not a causal product study."
+    sources:
+      - "https://aiagentindex.mit.edu/data/2025-AI-Agent-Index.pdf"
+
+  - id: E-017
+    type: external_finding
+    label: "Direct consulting evidence shows size-related but non-uniform management challenges"
+    status: direct_external
+    confidence: medium
+    statement: "Quality, service, knowledge management, training, specialization and coordination differ across professional-service firms, but size alone is too coarse."
+    limitations: "Older sector-specific consulting population and response limitations."
+    sources:
+      - "https://sophora.id/wp-content/uploads/2013/04/jom-examining-the-characteristics-and-managerial-challenges-of-professional-services-an-empirical-study-of-management-consultancy-in-the-travel-tourism-and-hospitality-sector.pdf"
+
+  - id: E-018
+    type: external_finding
+    label: "Consulting knowledge reuse can save time or harm differentiation"
+    status: direct_external
+    confidence: medium
+    statement: "Repository use and expert advice have different benefits, while poor contextual fit or high differentiation needs can make reuse harmful."
+    limitations: "One large consultancy and older observational data."
+    sources:
+      - "https://faculty.wharton.upenn.edu/wp-content/uploads/2012/05/Haas-Hansen_SMJ_2007.pdf"
+      - "https://ecommons.cornell.edu/entities/publication/1e665fe8-ff36-433e-ad02-4500a4aa3958"
+
+  - id: E-019
+    type: external_finding
+    label: "Human-AI combinations are not generally synergistic"
+    status: supported_external
+    confidence: high
+    statement: "Across a preregistered meta-analysis, Human+AI beat Human-only but not the better individual actor on average; decision tasks had negative synergy."
+    limitations: "Heterogeneous tasks; does not prescribe a specific workflow."
+    sources:
+      - "https://www.nature.com/articles/s41562-024-02024-1"
+
+  - id: E-020
+    type: external_finding
+    label: "Agent-system performance depends on task topology"
+    status: emerging_external
+    confidence: medium
+    statement: "Multi-agent configurations can improve decomposable/parallel tasks and strongly degrade sequential planning."
+    limitations: "2026 preprint and benchmark tasks."
+    sources:
+      - "https://arxiv.org/abs/2512.08296"
+
+  - id: E-021
+    type: external_finding
+    label: "Multi-agent failures include specification, coordination, verification and termination"
+    status: supported_benchmark
+    confidence: medium
+    statement: "MAST classifies 14 failure modes; tool-agent benchmarks also expose repeated-reliability and prompt-injection risks."
+    limitations: "Benchmark/dataset evidence, not consulting outcomes."
+    sources:
+      - "https://proceedings.neurips.cc/paper_files/paper/2025/hash/b1041e52d3be19f0a9bc491657488e4a-Abstract-Datasets_and_Benchmarks_Track.html"
+      - "https://proceedings.iclr.cc/paper_files/paper/2025/hash/1b126cc38b8638e07bef37e7b2bb72bf-Abstract-Conference.html"
+      - "https://proceedings.nips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html"
+
+  - id: E-022
+    type: external_finding
+    label: "Skill taxonomies are vocabulary, not capability proof"
+    status: supported_standard
+    confidence: high
+    statement: "ESCO and O*NET provide official concepts/relations for skills, knowledge, tasks and work context but do not establish subject capability or authority."
+    sources:
+      - "https://esco.ec.europa.eu/en/about-esco"
+      - "https://www.onetcenter.org/content.html"
+
+  - id: E-023
+    type: external_finding
+    label: "Model routing gains depend on labeled tasks and stable distributions"
+    status: supported_benchmark
+    confidence: medium
+    statement: "RouteLLM, FrugalGPT and BEST-Route show benchmark quality/cost gains while leaving rights, residency, actions and governance unresolved."
+    limitations: "Benchmark and distribution dependent."
+    sources:
+      - "https://proceedings.iclr.cc/paper_files/paper/2025/hash/5503a7c69d48a2f86fc00b3dc09de686-Abstract-Conference.html"
+      - "https://arxiv.org/abs/2305.05176"
+      - "https://proceedings.mlr.press/v267/ding25d.html"
+
+  - id: I-001
+    type: inference
+    label: "Role Compression requires separate actor, role, participation and authority concepts"
+    status: provisional
+    confidence: high
+    statement: "A person can hold several responsibilities without collapsing decision rights or separation-of-duties requirements."
+
+  - id: I-002
+    type: inference
+    label: "Maturity must complement archetype size"
+    status: provisional
+    confidence: high
+    statement: "Operating and knowledge maturity should route onboarding, defaults and configuration alongside the two archetypes."
+
+  - id: I-003
+    type: inference
+    label: "Consultancy Client participation needs first-class journey semantics"
+    status: provisional
+    confidence: high
+    statement: "Client input, decision, review and acceptance must be explicit where consulting value is co-produced."
+
+  - id: I-004
+    type: inference
+    label: "Context needs a Knowledge-to-Action contract"
+    status: provisional
+    confidence: high
+    statement: "Retrieval/graph coverage becomes value only through credibility, applicability, responsible interpretation and effect."
+
+  - id: I-005
+    type: inference
+    label: "Blind-Spot Coverage must include AI-induced blind spots"
+    status: provisional
+    confidence: high
+    statement: "The product must challenge false assurance, homogenization and automation bias as well as human/context gaps."
+
+  - id: I-006
+    type: inference
+    label: "Meaningful oversight needs more than approval"
+    status: provisional
+    confidence: high
+    statement: "Decision ownership, independent judgment, alternatives, counterevidence, abstention, override/stop and sufficient review capacity are required."
+
+  - id: I-007
+    type: inference
+    label: "Whole-product grammar must allow multiple triggers and branch objects"
+    status: provisional
+    confidence: high
+    statement: "Observation/Signal is useful but cannot be forced onto requests, obligations, scheduled work, exceptions or accepted commitments."
+
+  - id: I-008
+    type: inference
+    label: "Opportunity-to-Project is two coupled lifecycles"
+    status: provisional
+    confidence: medium
+    statement: "Commercial commitment and engagement/project readiness should be separately stateful and explicitly coupled."
+
+  - id: I-009
+    type: inference
+    label: "Consultry Core is a continuity-obligation backbone"
+    status: provisional
+    confidence: high
+    statement: "Identity, attention/context, responsibility/authority, decision/commitment, work/handoff, evidence/validation and outcome/learning continuity define the Core more sharply than a module catalogue."
+
+  - id: I-010
+    type: inference
+    label: "Many implementations need an invariant/variation contract"
+    status: provisional
+    confidence: high
+    statement: "Tenant variation must preserve authority, evidence, identity, audit and outcome semantics while allowing controlled operating-model differences."
+
+  - id: I-011
+    type: inference
+    label: "Business state and obligation model precedes graph implementation"
+    status: provisional
+    confidence: high
+    statement: "Product Definition should describe states, transitions, obligations, recovery and exit before selecting graph/loop technology."
+
+  - id: I-012
+    type: inference
+    label: "Execution and Validation are distinct product views"
+    status: provisional
+    confidence: high
+    statement: "Execution records what happened; Validation evaluates output/process/policy/evidence obligations; human authority disposes the result."
+
+  - id: I-013
+    type: inference
+    label: "Acceptance must measure net work and real progress"
+    status: provisional
+    confidence: high
+    statement: "Generated output or clicks cannot establish value without review/rework/coordination burden and an observable business state or outcome change."
+
+  - id: I-014
+    type: inference
+    label: "Human-AI contract must precede the representative interaction prototype"
+    status: provisional
+    confidence: high
+    statement: "Portfolio-wide responsibility semantics and one-case surface validation are separate decisions."
+
+  - id: I-015
+    type: inference
+    label: "Implementation journey must inform domain and requirements"
+    status: provisional
+    confidence: high
+    statement: "Onboarding, first value, variation and configuration-change authority create business objects and requirements and cannot remain after final coverage."
+
+  - id: I-016
+    type: inference
+    label: "Consultry must prove marginal backbone value against generic AI"
+    status: provisional
+    confidence: high
+    statement: "The non-chat Product Direction is justified by desired state/authority/continuity behavior, but performance superiority needs same-task comparison with generic AI where applicable."
+
+  - id: I-017
+    type: inference
+    label: "Human-AI work allocation must be task-specific"
+    status: provisional
+    confidence: high
+    statement: "Generation, evidence search, challenge, validation, decision and effect authority need separate allocation per task and risk."
+
+  - id: I-018
+    type: inference
+    label: "Skill resolution is a multi-stage evidence and authority chain"
+    status: provisional
+    confidence: high
+    statement: "TaskRequirement, SkillDefinition, CapabilityClaim/Evidence, Authority and accepted Assignment cannot collapse into one graph truth."
+
+  - id: I-019
+    type: inference
+    label: "Model Bridge starts at UseCaseRequirement"
+    status: provisional
+    confidence: high
+    statement: "Quality/cost routing must be bounded by capability, data, contract, tool, action, audit and fallback requirements and real task evaluations."
+
+  - id: H-001
+    type: hypothesis
+    label: "Missing-function support is a strong Boutique entry value"
+    status: unvalidated
+    confidence: low
+
+  - id: H-002
+    type: hypothesis
+    label: "Cross-team blind-spot coverage is a strong Growing Consultancy entry value"
+    status: unvalidated
+    confidence: low
+
+  - id: H-003
+    type: hypothesis
+    label: "Consultry Knowledge-to-Action beats search, colleagues and generic AI"
+    status: unvalidated
+    confidence: low
+
+  - id: H-004
+    type: hypothesis
+    label: "Repeated work effectiveness and blind-spot coverage drive retention"
+    status: unvalidated
+    confidence: low
+
+  - id: H-005
+    type: hypothesis
+    label: "Governed reuse produces compounding value"
+    status: unvalidated
+    confidence: low
+
+  - id: H-006
+    type: hypothesis
+    label: "Opportunity-to-Project is the best first commercial value path"
+    status: unvalidated
+    confidence: low
+
+  - id: H-007
+    type: hypothesis
+    label: "Core continuity materially reduces context and handoff loss"
+    status: unvalidated
+    confidence: low
+
+  - id: H-008
+    type: hypothesis
+    label: "Separate Execution/Validation improves quality and trust net of review cost"
+    status: unvalidated
+    confidence: low
+
+  - id: H-009
+    type: hypothesis
+    label: "Controlled variation scales to many consultancy implementations"
+    status: unvalidated
+    confidence: low
+
+  - id: H-010
+    type: hypothesis
+    label: "Model Bridge has separately monetizable module value"
+    status: unvalidated
+    confidence: low
+
+  - id: C-001
+    type: conflict
+    label: "Boutique first-class versus old anti-ICP"
+    status: current_truth_supersedes_history
+    confidence: high
+
+  - id: C-002
+    type: conflict
+    label: "Unified outcome hierarchy versus equal Win/Work heroes"
+    status: current_truth_supersedes_history
+    confidence: high
+
+  - id: C-003
+    type: conflict
+    label: "Opportunity-to-Project versus wedge-ending lifecycle"
+    status: unresolved_business_states
+    confidence: high
+
+  - id: C-004
+    type: conflict
+    label: "Risk-based provenance versus global no-unsourced-claims"
+    status: current_truth_supersedes_history
+    confidence: high
+
+  - id: C-005
+    type: conflict
+    label: "Work/TimeEntry included versus declared out of Phase 1"
+    status: deferred_to_horizon_rebaseline
+    confidence: high
+
+  - id: C-006
+    type: conflict
+    label: "Object/work-centered app versus copilot/chat/canvas framing"
+    status: current_truth_supersedes_history
+    confidence: high
+
+  - id: C-007
+    type: conflict
+    label: "External stakeholder simplification versus client co-production"
+    status: open_product_decision
+    confidence: medium
+
+  - id: C-008
+    type: conflict
+    label: "Broad Consulting OS vision versus narrow current domain canon"
+    status: open_reconciliation
+    confidence: high
+
+  - id: C-009
+    type: conflict
+    label: "Product-before-technology versus technical decisions in current map"
+    status: open_map_cleanup
+    confidence: high
+
+  - id: C-010
+    type: conflict
+    label: "Non-chat Product Direction versus unproven performance superiority"
+    status: bounded_claim_not_product_reversal
+    confidence: high
+
+  - id: CH-ACTOR
+    type: challenge
+    label: "Actor, responsibility, role compression and authority"
+    status: next
+    confidence: not_applicable
+
+  - id: CH-LOOP
+    type: challenge
+    label: "Operating grammar, handoff, commitment and recovery"
+    status: blocked_by_actor
+    confidence: not_applicable
+
+  - id: CH-CORE
+    type: challenge
+    label: "Consultry Core continuity obligations and record authority"
+    status: blocked_by_loop
+    confidence: not_applicable
+
+  - id: CH-VARIATION
+    type: challenge
+    label: "Product invariants, tenant variation and implementation journey"
+    status: blocked_by_core
+    confidence: not_applicable
+
+  - id: CH-JOURNEY
+    type: challenge
+    label: "Journey portfolio and detailed business flows"
+    status: blocked_by_core_and_variation
+    confidence: not_applicable
+
+  - id: CH-HUMAN-AI
+    type: challenge
+    label: "Human-AI responsibility, meaningful oversight and interaction"
+    status: blocked_by_authority
+    confidence: not_applicable
+
+  - id: CH-DOMAIN
+    type: challenge
+    label: "Business-domain and lifecycle canon"
+    status: blocked_by_journeys
+    confidence: not_applicable
+
+  - id: CH-ACCEPTANCE
+    type: challenge
+    label: "Requirements, acceptance, learning and horizons"
+    status: blocked_by_domain
+    confidence: not_applicable
+
+edges:
+  - { from: D-002, relation: supports, to: I-001, rationale: "Archetypes require role-compression semantics beyond size." }
+  - { from: E-003, relation: indirectly_supports, to: I-001, rationale: "Functional overload exposes the cost of compressed responsibilities." }
+  - { from: E-001, relation: supports, to: I-002, rationale: "SME adoption/maturity is heterogeneous." }
+  - { from: E-004, relation: supports, to: I-002, rationale: "Small KIBS differ in knowledge practices and attitudes." }
+  - { from: E-017, relation: supports, to: I-002, rationale: "Direct consulting evidence shows size is meaningful but insufficient." }
+  - { from: E-005, relation: supports, to: I-003, rationale: "Consulting/KIBS value is jointly produced." }
+  - { from: D-007, relation: bounds, to: I-003, rationale: "Client participation must not collapse the customer/client distinction." }
+  - { from: D-003, relation: motivates, to: I-004, rationale: "Knowledge-to-Action is the ratified mechanism." }
+  - { from: L-002, relation: supports, to: I-004, rationale: "The Vision supplies the shared-context candidate." }
+  - { from: E-007, relation: supports, to: I-005, rationale: "AI can add cross-functional perspective." }
+  - { from: E-008, relation: bounds, to: I-005, rationale: "Task-frontier failures create new blind spots." }
+  - { from: E-009, relation: supports, to: I-005, rationale: "Explanation can induce over-alignment and homogenization." }
+  - { from: E-009, relation: supports, to: I-006, rationale: "Visible explanation alone does not ensure oversight quality." }
+  - { from: D-008, relation: motivates, to: I-006, rationale: "Human responsibility needs operational semantics." }
+  - { from: E-014, relation: supports, to: I-006, rationale: "Identity and least privilege bound agent authority." }
+  - { from: L-002, relation: motivates, to: I-007, rationale: "The broad Vision contains multiple domain branches." }
+  - { from: E-011, relation: supports, to: I-007, rationale: "Explicit bounded process states are useful." }
+  - { from: D-006, relation: motivates, to: I-008, rationale: "The extended path needs a full business lifecycle." }
+  - { from: L-001, relation: exposes_gap_in, to: D-006, rationale: "The existing lifecycle stops before commitment and activation." }
+  - { from: D-001, relation: motivates, to: I-009, rationale: "An OS needs cross-domain continuity beyond a wedge." }
+  - { from: D-003, relation: refines, to: I-009, rationale: "The Core must operationalize Knowledge-to-Action and organizational effects." }
+  - { from: L-002, relation: supports, to: I-009, rationale: "Vision identifies shared context and role work across domains." }
+  - { from: D-002, relation: motivates, to: I-010, rationale: "Two archetypes imply legitimate variation." }
+  - { from: E-006, relation: bounds, to: I-010, rationale: "Productization and modularity require contextual fit." }
+  - { from: L-006, relation: exposes_gap_in, to: I-010, rationale: "Current onboarding does not define the variation contract." }
+  - { from: E-011, relation: supports, to: I-011, rationale: "State/workflow research favors explicit process grounding." }
+  - { from: E-012, relation: bounds, to: I-011, rationale: "Complex graph orchestration is not universally superior." }
+  - { from: E-020, relation: supports, to: I-011, rationale: "Agent performance depends on decomposable versus sequential task topology." }
+  - { from: E-021, relation: bounds, to: I-011, rationale: "Coordination, verification and termination failures must be specified." }
+  - { from: D-005, relation: supports, to: I-011, rationale: "Product semantics must precede technical representation." }
+  - { from: E-013, relation: supports, to: I-012, rationale: "Intermediate process evaluation differs from outcome evaluation." }
+  - { from: E-015, relation: supports, to: I-012, rationale: "Claims/evidence/defeaters form a validation argument." }
+  - { from: D-008, relation: bounds, to: I-012, rationale: "Validator result cannot replace human authority." }
+  - { from: E-002, relation: supports, to: I-013, rationale: "GenAI can add as well as reduce workload." }
+  - { from: E-010, relation: supports, to: I-013, rationale: "Individual tool use does not imply organization-level change." }
+  - { from: L-005, relation: exposes_gap_in, to: I-013, rationale: "Current metrics do not cover net work or whole-product outcomes." }
+  - { from: D-004, relation: motivates, to: I-014, rationale: "Surface equivalence needs a shared responsibility contract." }
+  - { from: I-006, relation: supports, to: I-014, rationale: "Meaningful oversight must be defined before prototype behavior." }
+  - { from: L-006, relation: supports, to: I-015, rationale: "Implementation creates Product Journey gaps." }
+  - { from: L-010, relation: supports, to: I-015, rationale: "Current ticket order incorrectly places implementation after coverage." }
+  - { from: D-004, relation: motivates, to: I-016, rationale: "The chosen product form needs an explicit value contract." }
+  - { from: E-008, relation: bounds, to: I-016, rationale: "Generic AI performs well on suitable isolated consulting tasks." }
+  - { from: E-019, relation: supports, to: I-017, rationale: "Human-AI combinations are not generally synergistic." }
+  - { from: E-022, relation: supports, to: I-018, rationale: "Taxonomies do not establish contextual capability or authority." }
+  - { from: D-011, relation: motivates, to: I-018, rationale: "The semantic split needs an explicit resolution chain." }
+  - { from: E-023, relation: supports, to: I-019, rationale: "Routing gains require task labels/evals and do not solve governance." }
+  - { from: H-001, relation: tests, to: D-003, rationale: "Tests Boutique entry mechanism, not the ratified outcome definition itself." }
+  - { from: H-002, relation: tests, to: D-003, rationale: "Tests Growing Consultancy entry mechanism." }
+  - { from: H-003, relation: tests, to: I-004, rationale: "Compares the full Knowledge-to-Action contract to alternatives." }
+  - { from: H-004, relation: tests, to: D-003, rationale: "Tests retention value cadence." }
+  - { from: H-005, relation: tests, to: D-009, rationale: "Tests economic/product effect of governed reuse." }
+  - { from: H-006, relation: tests, to: D-006, rationale: "Tests market priority of the chosen path." }
+  - { from: H-007, relation: tests, to: I-009, rationale: "Tests the Core continuity mechanism." }
+  - { from: H-008, relation: tests, to: I-012, rationale: "Tests validation value net of review cost." }
+  - { from: H-009, relation: tests, to: I-010, rationale: "Tests scaling without product fragmentation." }
+  - { from: C-001, relation: contradicts, to: L-004, rationale: "Old personas/ICP do not represent the ratified Boutique." }
+  - { from: D-002, relation: supersedes, to: C-001, rationale: "Boutiques are now first-class." }
+  - { from: D-003, relation: supersedes, to: C-002, rationale: "The new outcome hierarchy replaces equal-hero language as Product Truth." }
+  - { from: D-006, relation: contradicts, to: L-001, rationale: "The current domain lifecycle ends too early." }
+  - { from: D-004, relation: supersedes, to: C-006, rationale: "Chat/canvas is not the default product model." }
+  - { from: E-008, relation: supports, to: C-010, rationale: "Chat-like generic AI can already create substantial task value." }
+  - { from: I-016, relation: refines, to: D-004, rationale: "Product Direction stays, but superiority becomes a testable bounded claim." }
+  - { from: L-011, relation: supports, to: C-009, rationale: "Technical decisions remain mixed in the product map." }
+  - { from: I-001, relation: motivates, to: CH-ACTOR, rationale: "Actor ontology must be decided first." }
+  - { from: I-003, relation: motivates, to: CH-ACTOR, rationale: "External client participation belongs in actor semantics." }
+  - { from: CH-LOOP, relation: depends_on, to: CH-ACTOR, rationale: "Business transitions require ownership and authority." }
+  - { from: CH-CORE, relation: depends_on, to: CH-LOOP, rationale: "Core continuity depends on operating and handoff semantics." }
+  - { from: CH-VARIATION, relation: depends_on, to: CH-CORE, rationale: "Variation requires a stable invariant Core." }
+  - { from: CH-JOURNEY, relation: depends_on, to: CH-CORE, rationale: "Journey portfolio must inherit Core behavior." }
+  - { from: CH-JOURNEY, relation: depends_on, to: CH-VARIATION, rationale: "Journey variants need an explicit variation envelope." }
+  - { from: CH-HUMAN-AI, relation: depends_on, to: CH-ACTOR, rationale: "AI roles and human oversight depend on authority." }
+  - { from: CH-DOMAIN, relation: depends_on, to: CH-JOURNEY, rationale: "Domain canon synthesizes ratified flows instead of inventing them." }
+  - { from: CH-ACCEPTANCE, relation: depends_on, to: CH-DOMAIN, rationale: "Coverage and acceptance trace to stable objects, rules and journeys." }
+  - { from: I-013, relation: motivates, to: CH-ACCEPTANCE, rationale: "Acceptance must include net work and real outcome progress." }

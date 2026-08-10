@@ -1,0 +1,471 @@
+---
+title: "Consultry Software GmbH"
+subtitle: "Geschäftskonzept / Businessplan"
+date: "Planungsstand: 12.07.2026"
+lang: de-DE
+---
+
+> **ENTWURF ZUR BANKPRÜFUNG**  
+> Beantragtes Programm: ERP-Gründerkredit - StartGeld (067)  
+> Finanzierungswunsch: 200.000 EUR  
+> Vor Einreichung zu bestätigen: exakte Registerfirma, Sitz, HRB, Gründungsdatum, Datum erster Umsatzerzielung, Beteiligungsquoten, Geschäftsführerstatus, bestehendes Stammkapital, private Lebensunterhaltssicherung und Pilotbelege.
+
+# Inhalt
+
+1. Executive Summary
+2. Geschäftsidee
+3. Persönliche Voraussetzungen und Gründerteam
+4. Markteinschätzung
+5. Wettbewerbssituation
+6. Produktions- und Dienstleistungsfaktoren
+7. Standortwahl
+8. Rechtsform, Gesellschafter, Genehmigungen und Versicherungen
+9. Zukunftsaussichten und Meilensteine
+10. Geschäftsmodell und Vertrieb
+11. Finanzierungsbedarf und Mittelverwendung
+12. Rentabilität und Liquidität
+13. Risiken und Gegenmaßnahmen
+14. Vor Einreichung zu ergänzende Nachweise
+15. Quellen
+
+# Executive Summary
+
+Die Consultry Software GmbH entwickelt das **AI-native Consulting Operating System** für kleine und mittlere IT-, Digitalisierungs- und Security-Beratungen in Deutschland und Österreich. Consultry verbindet Kunden-, Projekt-, Team-, Wissens-, Angebots-, Vertrags- und Wirtschaftskontext, ohne die vorhandenen CRM-, Projekt-, DMS-, PSA- oder Finance-Systeme vollständig zu ersetzen. Rollenbezogene Workspaces stellen jeder verantwortlichen Person die nächste begründete Arbeit aus einem gemeinsamen, tenant-isolierten Consulting Context Graph bereit.
+
+Der wirtschaftliche Markteintritt bleibt bewusst enger als die Gesamtvision. Im ersten Kreditvorhaben wird der Starting Wedge **Opportunity-to-Concept** umgesetzt: Ein quellengebundenes Bestandskundensignal oder ein Tender wird nach menschlicher Validierung zu einer begründeten Opportunity und zu einem intern editierbaren Konzept-/Proposal-Artefakt. Der allgemeinere Produktfluss lautet `Observation -> Signal -> Decision -> ActionCase -> Outcome`; nur der qualifizierte kommerzielle Ast erzeugt eine Opportunity oder einen Change Case. Jede faktische Aussage wird mit einer Firmenquelle oder einer überprüfbaren öffentlichen Quelle verknüpft, markiert oder blockiert. Der Mensch bleibt Autor und Freigabeverantwortlicher.
+
+Der primäre Zielkunde beschäftigt operativ etwa 15 bis 80 Mitarbeitende, arbeitet projektbasiert und verfügt weder über eine eigene große Tooling-Organisation noch über eine durchgängig gepflegte Wissens-, Projekt- und Angebotsplattform. Das Pilotpreismodell beträgt 50 EUR je bezahltem Seat und Monat. Hinzu kommt für Kunden mit vollem Aktivierungsumfang ein einmaliges **Context-Activation-Paket zu 5.000 EUR netto**. Es umfasst den geführten Korpus-Start, Quellen-/Berechtigungs- und Governance-Setup, einen freigegebenen Importweg, ein initiales Evidence Pack und den begleiteten Fünf-Tage-Proof. Nach Product-Market-Fit ist ein Core-Preis ab 69 EUR je Seat mit zusätzlichen Leistungsstufen vorgesehen. Zielvertragswerte liegen abhängig von der Unternehmensgröße grob zwischen 15.000 und 45.000 EUR pro Jahr zuzüglich einmaliger Aktivierung; diese Werte sind durch Pilotverträge und Zahlungsbereitschaft weiter zu belegen.
+
+Zum Planungsstand liegen zwei Letters of Intent vor: von der **H&W Digital Solutions UG** als gründernahes Dogfood-/Design-Partner-Unternehmen und von der **Krallmann AG** als externem Design-Partner. Beide Partner nutzen die Design-Partner-Version zum reinen Selbstkostenpreis der tatsächlich verbrauchten API-Tokens. Es fallen in dieser Phase weder reguläre Seat-Gebühren noch das 5.000-EUR-Context-Activation-Paket an. Die LOIs belegen damit Zugang zu realen Anwendungskontexten und Bereitschaft zur Produktvalidierung, aber keine Zahlungsbereitschaft für das spätere Preismodell und keinen eingeplanten Umsatz.
+
+Die Gründer verbinden Beratungs-, Vertriebs-, Security-, Software- und Produkterfahrung. Der technische MVP wird als EU-orientierte Multi-Tenant-SaaS aufgebaut. Der Consulting Context Graph bzw. das Second Brain dient als source-bound Informationsschicht; die Consultry Engine kompiliert daraus job-spezifische Context-/Harness-Pakete für begrenzte virtuelle oder lokale Ausführung. Zentrale Qualitätsmechanismen sind Tenant-Isolation, Quellenbindung, Faithfulness-Prüfung, Capability-/Connector-Scopes, Audit-Protokoll und menschliche Freigabe. Vollständige Project-Symbiosis-/Assetization-Flows, Proposal-Versand, Pricing Engine, Vertragsautomatisierung, Rechnungswesen und personenscharfes Staffing sind ausdrücklich nicht Teil des ersten Kreditvorhabens.
+
+Beantragt werden 200.000 EUR ERP-Gründerkredit - StartGeld. Der vorgeschlagene Verwendungsrahmen umfasst 120.000 EUR mittel- bis langfristige Investitionen und 80.000 EUR Betriebsmittel. Die Investitionsposition besteht vor allem aus einem extern beauftragten, abnahmefähigen Software-/IP-Paket mit vollständiger Rechteübertragung an Consultry. Die Anerkennung dieser Position als Investition muss die Hausbank vor Beauftragung bestätigen. Empfohlen werden zehn Jahre Laufzeit und zwei tilgungsfreie Anlaufjahre.
+
+Der Bank-Base-Case plant 56.000 EUR Nettoumsatz in Jahr 1, 297.040 EUR in Jahr 2 und 674.115 EUR in Jahr 3. Er basiert auf vier zahlenden Kunden im ersten Jahr und 4/12/24 zahlenden Kunden zum jeweiligen Jahresende; die beiden Design-Partner werden zusätzlich geführt und bleiben umsatzfrei bis auf die Weitergabe tatsächlicher API-Token-Kosten. Das Ergebnis vor Zinsen, Steuern und Abschreibungen beträgt 13.680 EUR, 7.595 EUR und 144.421 EUR. Das positive Jahr-1-Ergebnis ist nicht normalisiert: Es entsteht nur, weil die Gründer bis zu einer gesonderten zusätzlichen Förderung ohne feste Gehälter arbeiten. Der verbindliche Base-Case weist deshalb 0 EUR Personalkosten in Jahr 1 aus; ein Personalrahmen bis maximal 80.000 EUR darf erst nach zusätzlicher Förderung freigegeben werden und ist nicht im Kredit finanziert. Unter dieser Prämisse ist der 36-Monats-Plan mit dem 200.000-EUR-Kredit ohne zusätzliches Eigenkapital geschlossen.
+
+# 1. Geschäftsidee
+
+## 1.1 Ausgangsproblem
+
+Beratungsarbeit entsteht heute häufig aus persönlicher Erfahrung, älteren Dokumenten, manuell gesuchten Referenzen, Excel-Staffing-Listen und kurzfristigen Abstimmungen über mehrere Quellsysteme hinweg. Vier Probleme treten regelmäßig gemeinsam auf:
+
+- Relevantes Wissen ist vorhanden, aber nicht schnell auffindbar oder nicht aktuell eingeordnet.
+- Ein neuer Entwurf muss unter Zeitdruck erstellt und mehrfach mit Fachverantwortlichen abgestimmt werden.
+- Verfügbare Fähigkeiten und Kapazität werden oft erst spät geprüft, wodurch fachlich überzeugende, operativ aber schwer lieferbare Angebote entstehen können.
+- Beobachtungen, Entscheidungen und bewährte Lösungsbestandteile aus laufenden Projekten fließen nicht systematisch an die richtigen Rollen oder in die nächste Kundenarbeit zurück.
+
+Das Investorendeck schätzt den Aufwand einer kleineren Beratung auf 50 bis 100 Personentage pro Jahr. Diese Zahl ist eine interne Beobachtung und wird im Pilotprogramm durch Zeitmessung validiert. Der dafür verwendete durchschnittliche Tagessatz von 1.300 EUR ist durch die BDU-Studie "Honorare im Consulting 2025" belegt.
+
+## 1.2 Lösung
+
+Der rollenübergreifende Produktfluss lautet:
+
+1. Ein Consultant oder ein freigegebenes Quellsystem erfasst eine `Observation` im Kunden-/Projektkontext.
+2. Consultry verbindet sie mit Vertrag, Projekt, Korpus und verantwortlichen Rollen und erzeugt ein source-bound `Signal`.
+3. Ein benannter Mensch validiert, korrigiert, verwirft oder routet das Signal.
+4. Die Entscheidung erzeugt einen `ActionCase` für Delivery, Kundengespräch, Team/Capability oder Commercials.
+5. Nur der kommerzielle Ast wird zu Opportunity oder Change Case. Im Starting Wedge strukturiert Consultry Bedarf bzw. Tenderkriterien und baut ein Evidence Pack.
+6. Eine anonyme Team-Shape beschreibt benötigte Rollen, Skills und Seniorität ohne personenscharfes Scoring.
+7. Die Concept Suite erstellt einen intern editierbaren, quellengebundenen Konzept-/Proposal-Entwurf. Ein externer Versand erfolgt im MVP nicht automatisch.
+
+Langfristig erkennt Consultry ähnliche Problemstellungen über Projekte hinweg. Nach fachlicher, vertraglicher, IP- und Vertraulichkeitsprüfung können daraus abstrahierte, versionierte Reusable Assets und später productisierte Service-Bundles entstehen. Dieser Compounding Loop ist Teil der Produktvision, aber nicht als vollständiger H1-Lieferumfang kalkuliert.
+
+## 1.3 Produktumfang des Kreditvorhabens
+
+**Im MVP enthalten:**
+
+- Upload/Paste von Tenderunterlagen und dünnes, read-only TED/eForms-Polling;
+- ein Bestandskundensignal: Options- oder Verlängerungsfenster;
+- Opportunity Brief und Bid-/No-Bid-Unterstützung;
+- Korpus-Ingest mit Quellen-, Versions- und Eigentümerbezug;
+- gemeinsames Objektfundament für Observation, Signal, Decision, ActionCase, Opportunity und Evidence Pack;
+- Concept & Proposal Canvas mit internen Entwürfen und Versionierung;
+- anonyme Team-Shape und aggregierte Kapazitätsaussage;
+- Beraterprofile aus Upload/Microsoft-365-Quellen, vom Consultant bestätigt;
+- leichter Work-Agent/Time-Capture und aggregierter Projektstatus;
+- CitationLink-Gate, Faithfulness-Prüfung, AuditEvent und Human Approval;
+- job-spezifischer, begrenzter Context-/Harness-Vertrag ohne freien Tenant- oder Internetzugriff;
+- interner PDF-/Markdown-Export.
+
+**Nicht im MVP enthalten:**
+
+- automatischer Proposal-Versand oder autonome Kundenkommunikation;
+- Pricing-/Kalkulations-Engine und Contract Drafting;
+- personenscharfes Staffing, People Scores und Workforce-Optimierung;
+- DATEV, ELSTER, Rechnungsstellung oder vollständiges ERP;
+- vollständige projektübergreifende Symbiosis-, Assetization-, Service-Productization- und Reuse-Value-Flows;
+- offene autonome Multi-Step-Agentik nach außen;
+- Schweiz-Rollout und vollständige nationale Vergabeportalabdeckung.
+
+Diese Abgrenzung ist für Zeitplan, Budget und Kreditwürdigkeit wesentlich. Das Whole Product ist das AI-native Consulting Operating System; finanziert wird zunächst eine abnahmefähige Operating Spine mit Opportunity-to-Concept, minimaler Work Foundation, Context Graph, begrenzter Engine-/Harness-Ausführung und Trust Layer.
+
+## 1.4 Kundennutzen
+
+Der messbare Nutzen soll während der ersten Pilotkohorte belegt werden:
+
+- erste verwendbare Konzeptfassung innerhalb von höchstens fünf Arbeitstagen nach Onboarding;
+- geringere aktive Erstellungs- und Suchzeit pro Angebot;
+- jede externe oder firmeninterne Behauptung mit nachvollziehbarer Quelle;
+- weniger Neuformulierung, höhere Wiederverwendung geprüfter Inhalte;
+- frühzeitige Erkennung fehlender Skills oder Kapazität;
+- kürzere Review-Schleifen durch klaren Kontext und Freigaben;
+- wiederholbarer Zugriff auf Bestandskunden-Optionen und Verlängerungsfenster.
+- extrem reibungsarme Erfassung einer Projektbeobachtung sowie nachvollziehbares Routing an die verantwortliche Rolle;
+- technische Grundlage, damit freigegebenes Projektwissen später als abstrahierte Firmenfähigkeit wiederverwendet werden kann.
+
+Das Produkt ersetzt nicht die fachliche Verantwortung des Beraters. AI-Ausgaben sind Entwürfe und Entscheidungsvorlagen. Binding Actions und externe Kommunikation benötigen menschliche Freigabe.
+
+# 2. Persönliche Voraussetzungen und Gründerteam
+
+## 2.1 Caspar Hertel - CEO / Commercial
+
+Caspar Hertel verbindet Consulting, Vertrieb und Softwareentwicklung. Laut Gründerprofil arbeitet er als Head of Sales & Development und Senior Consultant, baute ein KI-Geschäftsfeld auf und begleitet komplexe Lösungen von Akquise und Workshop bis zur Vertragsverhandlung. Technisch verfügt er über Erfahrung mit Python/FastAPI, RAG-Agenten, KI- und RPA-Automatisierung.
+
+**Verantwortung bei Consultry:** Vertrieb, Design-Partner, Marktpositionierung, Finanzierung, kaufmännische Steuerung und gemeinsam mit dem CPO die Übersetzung von Kundenproblemen in Produktanforderungen.
+
+## 2.2 Julian Weber - CTO / Security & Engineering
+
+Julian Weber verfügt über Cyber-Defense-Erfahrung in regulierten Branchen, unter anderem zu DORA, ISO 27001 und IT-Grundschutz. Er entwickelt Software seit 2017 mit Spring Boot, React und Cloud-Infrastruktur als Code und leitete Entwicklungsteams als Solutions Architect. Mit H&W Digital Solutions führt er eine eigene IT- und Cybersecurity-Beratung und kennt damit den Alltag eines Beratungsbetriebs aus eigener Praxis.
+
+**Verantwortung bei Consultry:** technische Architektur, Security, Engineering Delivery, Cloud-/Datenplattform, Modellintegration, Qualitäts- und Betriebsprozesse. Laut Deck ist Vollzeit ab Tag 1 geplant.
+
+## 2.3 Paul Hannemann - CPO / Product
+
+Paul Hannemann verantwortet seit rund neun Jahren Produkte in der Konzern-IT, zunächst in Business-Analyse und Test, später als Product Owner. Er gründete H&W Digital Solutions mit und berät zu IT und Projektmanagement.
+
+**Verantwortung bei Consultry:** Produktstrategie, Discovery, Backlog, Qualität der User Journeys und Pilotfeedback. Laut Deck erfolgt der Einstieg zunächst neben einer bestehenden Tätigkeit.
+
+## 2.4 Ergänzende Nachweise vor Einreichung
+
+Dem Kreditantrag werden drei tabellarische Lebensläufe, Zeugnisse/Zertifikate, ausgewählte Projektreferenzen, Geschäftsführerbestellungen sowie ein schriftlicher Vollzeit-/Teilzeit- und Gehaltsplan beigefügt. Parallele Beteiligungen und Tätigkeiten - insbesondere H&W Digital Solutions - werden transparent dargestellt. Für jeden Schlüsselbereich wird eine Vertretungsregel festgelegt.
+
+Die kaufmännische Qualifikation wird zusätzlich durch konkrete Verantwortungen für Budget, P&L, Vertrieb, Verträge und Unternehmenssteuerung belegt. Der Gründerkreis beschließt vor Antrag, ob die voraussichtliche persönliche quotale Mithaftung akzeptiert wird.
+
+# 3. Markteinschätzung
+
+## 3.1 Zielkundensegment
+
+Der erste ICP umfasst:
+
+- IT-, Digitalisierungs- und Security-Beratungen;
+- primär Deutschland und Österreich;
+- etwa 15 bis 80 Mitarbeitende im operativen MVP-Band;
+- regelmäßige Ausschreibungen und/oder hohes Bestandskundengeschäft;
+- fragmentierte Dokument-, Wissens- und Staffing-Prozesse;
+- keine eigene größere Produkt-/Tooling-Abteilung;
+- Bereitschaft zu EU-Multi-Tenant-SaaS, AVV und Human-in-the-loop-Prozessen.
+
+Nicht priorisiert werden Solo-Beratungen, sehr kleine Boutiquen ohne Prozessvolumen, große Multi-Entity-Konzerne, reine Personalvermittlung, die Schweiz sowie Unternehmen mit zwingender Customer-Cloud-/On-premise-Anforderung im ersten Schritt.
+
+## 3.2 Marktbelege
+
+Der Bundesverband Deutscher Unternehmensberatungen meldet für 2025 einen Marktumsatz von 49,0 Mrd. EUR und erwartet für 2026 51,1 Mrd. EUR. IT-Beratung soll 2026 um 4,7 Prozent wachsen; AI-Leistungen zählen zu den Wachstumstreibern. Gleichzeitig sanken die IT-Beratungstagessätze 2025 um 3 Prozent bei durchschnittlich 1.300 EUR fakturiertem Tagessatz. AI wirkt daher als Kundenanforderung und interner Produktivitätshebel.
+
+Eine ältere BDU-KPI-Studie zeigt die strukturelle Bedeutung von Bestandskunden: Im Gesamtmarkt wurden 80 Prozent des Umsatzes mit Bestandskunden erzielt; kleinere Beratungen lagen bei 62 Prozent. Consultry adressiert deshalb nicht nur neue Tender, sondern auch Verlängerungs- und Folgegeschäft.
+
+## 3.3 Marktgröße
+
+Das Investorendeck nennt eine interne, Eurostat-basierte Schätzung von rund 14.500 IT-Dienstleistern im Zielsegment und ein SAM von 360 Mio. EUR ARR. Diese Zahl wird vor Bankeinreichung durch ein reproduzierbares Datenblatt mit NACE-Codes, Länder-/Größenklassen und Rechenweg belegt. Für die Kapitaldienstplanung wird keine hohe Marktdurchdringung benötigt: Der Bank-Base-Case erreicht im dritten Jahr 24 zahlende Kunden.
+
+## 3.4 Kundenzugang
+
+Der Vertrieb beginnt gründergeführt und warm-path-orientiert:
+
+1. **H&W Digital Solutions UG:** LOI liegt vor; gründernaher Dogfood-/Design-Partner #0 zum API-Token-Selbstkostenpreis, deshalb technischer Realitätscheck, aber kein unabhängiger Preis- oder Marktnachweis;
+2. **Krallmann AG:** LOI liegt vor; externer Design-Partner zum API-Token-Selbstkostenpreis und erster unabhängiger Nutzungs-/Problembeleg, jedoch kein Preisnachweis;
+3. mindestens ein weiterer externer Design-Partner, um das Mindestziel von drei Pilotbelegen zu erreichen;
+4. insgesamt drei bis fünf Design-Partner, davon mindestens einer klar bestandskunden-/projektorientiert;
+5. standardisierte Context Activation mit dokumentierten Ergebniskennzahlen;
+6. Umwandlung in Jahresverträge und referenzbasierte Expansion.
+
+Breites Paid Marketing ist zunächst nicht vorgesehen. Die LOIs werden als Anlagen beigefügt; API-Token-Erstattungen bleiben außerhalb des Umsatzes. Die geplanten 36.000 EUR SaaS-Umsatz und vier Context-Activation-Pakete in Jahr 1 müssen durch eine getrennte kommerzielle Kohorte mit Starts in M6/M8/M10/M12 oder durch ausdrücklich bepreiste Konversionsverträge belegt werden.
+
+# 4. Wettbewerbssituation
+
+Der Wettbewerb besteht aus spezialisierten RFP-/Bid-Lösungen, Professional-Services-Automation-Plattformen und horizontalen Toolchains.
+
+| Anbieter/Kategorie | Schwerpunkt | Abgrenzung Consultry |
+|---|---|---|
+| Loopio | RFP-Automatisierung, Content Library, First Draft und Review | Opportunity-to-Concept ist nur ein Einstieg in den DACH-Consulting-Context- und Arbeitsloop |
+| AutogenAI | AI-gestütztes Bid-/Proposal-Writing und Knowledge Retrieval | projekt- und bestandskundenorientierter Einstieg, rollenbezogene Arbeit und Governance über den Draft hinaus |
+| Productive | Ressourcen, Projekte, Finanzen, CRM, Zeit und Reporting | Consultry orchestriert Kontext und verantwortete Arbeit über verbundene Quellsysteme und baut kein vollständiges PSA nach |
+| Kantata | Professional Services Cloud und Ressourcen-/Finanzmanagement | mid-to-small DACH, source-bound Arbeitsobjekte und begrenzte AI-Operatoren |
+| Microsoft 365/Copilot plus CRM/PSA | horizontale Standardwerkzeuge | vorverdrahtete Consulting-Objekte, Context Graph, Rollenübergaben, Freigaben und Audit-Trail |
+
+Consultry behauptet nicht, in jeder Einzelfunktion breiter als etablierte Anbieter zu sein. CRM, Projektmanagement, DMS, PSA und Finance bleiben angebundene Quellen und Ausführungssysteme. Die Differenzierungshypothese liegt in vorverdrahteten Consulting-Objekten und Rollenübergaben, dem source-bound Context Graph, begrenzten Engine-/Harness-Operatoren, Human Approval und dem langfristigen Compounding von freigegebener Projektarbeit zu wiederverwendbarer Firmenfähigkeit.
+
+Die Differenzierung gilt erst dann als bewiesen, wenn Pilotkunden schneller zu real verwendeten Entwürfen gelangen, weniger neu schreiben und für die Lösung bezahlen. Das Produkt verfügt deshalb über ein explizites Kill-/Pivot-Kriterium.
+
+# 5. Produktions- und Dienstleistungsfaktoren
+
+## 5.1 Leistungserstellung
+
+Consultry ist ein Cloud-Softwareunternehmen. Die Wertschöpfung umfasst:
+
+- Product Discovery und Consulting-Domain-Modellierung;
+- Softwareentwicklung und Qualitätssicherung;
+- sichere Datenaufnahme, Indexierung und Quellenbindung;
+- LLM-Inferenz über EU-orientierte Enterprise-Dienste;
+- Pilot-Onboarding, Support und Customer Success;
+- Durchführung und Abnahme des Context-Activation-Pakets;
+- Betrieb, Monitoring, Incident- und Release-Management;
+- Datenschutz-, Vertrags- und Security-Management.
+
+Ein abgegrenzter Teil der MVP-Implementierung wird extern beauftragt. Der Vertrag liefert Quellcode, Tests, technische Dokumentation, Betriebs-/Übergabehandbuch und ausschließliche Nutzungsrechte an die Consultry Software GmbH. Product Ownership, Architekturhoheit, Abnahme und Kundenbeziehung verbleiben intern.
+
+## 5.2 Technische Grundlage
+
+Die MVP-Baseline ist eine Multi-Tenant-EU-SaaS. Aurora PostgreSQL Serverless v2 mit pgvector ist die Source-of-Truth-Basis für Korpus, Consulting-Objekte, SourceBindings und graphfähige Beziehungen. Die Consultry Engine kompiliert aus dem Context Graph begrenzte, job-spezifische Context-/Harness-Pakete. Eine virtuelle beziehungsweise später lokale Harness-Ausführung erhält nur freigegebene Quellen, Tools und Connector-Scopes; kein Modell erhält freien Tenant-, Datenbank- oder Internetzugriff. Anthropic über AWS Bedrock EU/Frankfurt ist der primäre Inferenzpfad; eine Abstraktion ermöglicht später alternative EU-Provider.
+
+Wichtige Betriebsprinzipien:
+
+- keine Nutzung von Kundendaten zum Modelltraining;
+- AVV/DPA und dokumentierte Unterauftragnehmer;
+- keine Vermischung von Tenant-Daten;
+- externe Research-Queries ohne personenbezogene oder sensible Kundendaten;
+- menschliche Freigabe vor verbindlichen Handlungen;
+- rollenbasierter Zugriff und nachvollziehbare Audit-Events;
+- Works-Council-Mode für besonders sensible personenbezogene Auswertungen.
+
+## 5.3 Personalplan
+
+Im 12-Monats-Kreditplan wird kein Founding Engineer ab Monat 7 fest zugesagt. Priorität haben Gründerarbeit, das externe Investitionspaket und klar definierte Spezialleistungen. Neueinstellungen erfolgen erst nach dem Gate von mindestens zwei zahlenden Piloten und nach positiver 13-Wochen-Liquiditätsvorschau.
+
+In Jahr 1 werden keine festen Gründergehälter, keine Mitarbeitergehälter und keine später fälligen Gehaltsstundungen eingegangen. Die Gründerarbeit wird bis zu einer gesonderten zusätzlichen Förderung unentgeltlich eingebracht. Das ist nur bankfähig, wenn private Lebensunterhaltssicherung, zeitliche Verfügbarkeit, Sozialversicherung und ein entsprechender Gesellschafterbeschluss nachvollziehbar belegt werden.
+
+| Rolle | Brutto M1-3 | Brutto M4-6 | Brutto M7-12 | Arbeitgeberkosten Jahr 1 |
+|---|---:|---:|---:|---:|
+| CEO / Commercial | 0 EUR/Monat | 0 EUR/Monat | 0 EUR/Monat | 0 EUR |
+| CTO / Security & Engineering | 0 EUR/Monat | 0 EUR/Monat | 0 EUR/Monat | 0 EUR |
+| CPO / Product | 0 EUR/Monat | 0 EUR/Monat | 0 EUR/Monat | 0 EUR |
+| **Verbindlicher Base-Case** | **0 EUR** | **0 EUR** | **0 EUR** | **0 EUR** |
+
+Ein konditionaler Personalrahmen bis 80.000 EUR ist eine Obergrenze, keine bestehende Verpflichtung. Er darf nur nach einer separaten Förder-/Finanzierungszusage und erneuter Liquiditätsfreigabe ausgelöst werden. Im Base-Case beginnen Gründergehälter ab Jahr 2; einschließlich Engineer ab M20 werden 198.600 EUR in Jahr 2 und mit Customer Success/Sales 351.000 EUR in Jahr 3 geplant. Anstellungsverträge, Beschäftigungsumfang, Sozialversicherung und Arbeitgeberanteile sind vor Aktivierung durch Lohnbüro und Steuerberater zu bestätigen.
+
+## 5.4 Lieferanten und Abhängigkeiten
+
+Kritische Lieferantenkategorien sind Cloud, Inferenzmodelle, E-Mail/Identity, externe Softwareentwicklung, Datenschutz-/Rechtsberatung und Buchhaltung. Für die externe MVP-Entwicklung werden zwei bis drei vergleichbare Angebote eingeholt. Cloud- und LLM-Kosten werden über Budgets, Logging, Modellrouting und Nutzungsgrenzen kontrolliert.
+
+# 6. Standortwahl
+
+Die operative Gesellschaft und der Investitionsort müssen in Deutschland liegen. Der genaue Sitz und die Geschäftsanschrift werden vor Antrag aus dem Handelsregister übernommen. Das Unternehmen arbeitet software- und remote-orientiert; große Gewerbeflächen, Werkstatt oder Warenlager sind nicht erforderlich.
+
+Standortkriterien:
+
+- verlässliche Geschäftsadresse und Arbeitsmöglichkeiten für das Kernteam;
+- gute Erreichbarkeit für Kundenworkshops und Gründer;
+- Zugang zu IT-/Beratungsnetzwerk und Fachkräften;
+- belastbare Datenschutz- und IT-Infrastruktur;
+- geringe langfristige Mietbindung in der Validierungsphase.
+
+Der geringe Flächenbedarf hält Fixkosten niedrig und ermöglicht eine schnelle Anpassung des Kostenpfads.
+
+# 7. Rechtsform, Gesellschafter, Genehmigungen und Versicherungen
+
+## 7.1 Rechtsform und Struktur
+
+Vorgesehen ist die Consultry Software GmbH als operative Gesellschaft. Das Investorendeck beschreibt drei persönliche Holdings als Gesellschafter. Exakte Beteiligungsquoten, Satzung, Stimmrechte und Geschäftsführer werden vor Einreichung dokumentiert. Wegen bestehender Beteiligungen und H&W Digital Solutions prüft die Hausbank, ob für die KMU-Erklärung verbundene oder Partnerunternehmen einzubeziehen sind.
+
+Der Antrag soll durch die operative GmbH erfolgen, sofern sie gegründet, eingetragen und antragsfähig ist. Dadurch verbleiben Kredit, Vermögenswerte und laufende Kosten in derselben Gesellschaft. Die KfW-Vorgaben zu Geschäftsführerstatus, aktiver Leitung und hinreichendem unternehmerischem Einfluss müssen erfüllt sein.
+
+## 7.2 Genehmigungen und Compliance
+
+Für den Betrieb einer B2B-SaaS ist voraussichtlich keine besondere branchenspezifische Betriebserlaubnis erforderlich. Zu erfüllen sind insbesondere Gewerbe-/Steuerregistrierung, Datenschutzrecht, Vertragsrecht, Informationssicherheit und die für AI-Funktionen einschlägigen Pflichten. Die rechtliche Einordnung wird vor Pilotbetrieb durch Fachberatung bestätigt.
+
+## 7.3 Versicherungen
+
+Vor erstem zahlenden Pilot werden Angebote geprüft für:
+
+- Betriebshaftpflicht und Vermögensschadenhaftpflicht/IT-Haftpflicht;
+- Cyberversicherung;
+- D&O für Geschäftsführer, soweit wirtschaftlich angemessen;
+- Rechtsschutz und gegebenenfalls Vertrauensschaden;
+- gesetzlich notwendige Unfall-/Arbeitgeberabsicherung.
+
+# 8. Zukunftsaussichten und Meilensteine
+
+| Zeitraum | Ziel | Nachweis |
+|---|---|---|
+| Monat 1-2 | externer MVP-Scope, EU-Baseline, Investitionsstart | Pflichtenheft, zulässiger Vertrag, Abnahmekriterien |
+| Monat 3 | Dogfood und Quellen-/Audit-Flow | Demo mit freigegebenen Testdaten |
+| Status 12.07.2026 | 2 Design-Partner-LOIs vorhanden | H&W Digital Solutions UG (gründernah) und Krallmann AG (extern), jeweils API-Token-Selbstkostenmodell |
+| Monat 4-5 | 3-5 Design-Partner | mindestens ein weiterer externer LOI/Pilotvertrag; Nutzungs- und PMF-Nachweise |
+| Monat 5-6 | erster real verwendeter quellengebundener Entwurf | innerhalb fünf Arbeitstagen je aktivem Partner |
+| Monat 6-12 | kommerzielle Kohorte getrennt von Design-Partnern | vier zahlende Kunden starten in M6/M8/M10/M12; Vertrag, Zahlungsziel und Abnahme je Kohorte |
+| Monat 10-12 | wiederholbarer Founder-led Sales | vier zahlende Kunden und 108.000 EUR End-ARR, zusätzlich zwei oder mehr Design-Partner |
+| Jahr 2 | operativer Break-even-Korridor | zwölf zahlende Kunden und 406.080 EUR End-ARR; EBITDA knapp positiv |
+| Jahr 3 | sichere Kapitaldienstfähigkeit | 24 zahlende Kunden und 853.200 EUR End-ARR; Kapitaldienstdeckung über 4x |
+
+Langfristig realisiert Consultry schrittweise die Tiefe des Consulting Operating Systems: Project Intelligence und Symbiosis, verantwortete Assetization, Team-Lead- und Capability-Workspaces, tiefere Commercials sowie Finance-/Backoffice-Operatoren. Die Concept Suite bleibt eine Proof Surface und ist nicht die Produktgrenze. Jede Realisierungstiefe ist an Nutzungs-, Governance- und Zahlungsbelege gebunden. Wird das zentrale PMF-Signal verfehlt, werden Wedge und Grounding-Tiefe überarbeitet, bevor weitere Capabilities finanziert werden.
+
+# 9. Geschäftsmodell und Vertrieb
+
+## 9.1 Erlösmodell
+
+- B2B-SaaS pro bezahltem Seat;
+- Pilotpreis 50 EUR je Seat/Monat;
+- zwei Backoffice-Seats im Pilot frei;
+- Pilot zunächst monatlich, danach Jahresvertrag;
+- einmaliges **Context-Activation-Paket zu 5.000 EUR netto** bei jedem regulär zahlenden Neukunden im Base-Case; vier Pakete in Jahr 1, acht in Jahr 2 und zwölf in Jahr 3;
+- post-PMF ab 69 EUR Core plus validierte Tiers;
+- keine erfolgsabhängige Win-Fee im aktuellen Modell.
+
+Beispielhafte ACVs aus der internen GTM-Spezifikation:
+
+| Unternehmensgröße | bezahlte Seats | Jahresvertragswert bei 50 EUR |
+|---|---:|---:|
+| 30 Köpfe | ca. 25 | ca. 15.000 EUR |
+| 50 Köpfe | ca. 45 | ca. 27.000 EUR |
+| 80 Köpfe | ca. 75 | ca. 45.000 EUR |
+
+Die Annahme funktioniert nur, wenn Consultants aktive Nutzer sind. Deshalb misst Consultry neben der Konzeptnutzung die wöchentliche Aktivität im Work-Layer. Kollabiert die Nutzung auf wenige Partner-/Sales-Seats, wird das Pricing oder Produkt angepasst.
+
+### 9.2 Context-Activation-Paket
+
+Das einmalige Paket ist eine eigenständige, abnahmefähige Einführungsleistung und kein verdeckter SaaS-Aufschlag. Es umfasst:
+
+1. Tenant-, Rollen-, Sichtbarkeits-, AVV/DPA- und Source-Scope-Kickoff;
+2. geführte Korpus-Aktivierung nach dem Seed-Treppen-Modell: mindestens ein aktiver Vertrag, aktive Vertrags-/Bestandskundenunterlagen sowie drei bis fünf jüngere Proposals beziehungsweise gleichwertige Referenz-/Capability-Unterlagen;
+3. automatische Dokumentklassifikation, SourceBinding, Freshness-, Eigentümer- und Rechtekennzeichnung;
+4. Einrichtung eines freigegebenen Upload-/Snapshot-Pfads; kundenspezifische Connector-Entwicklung ist nicht enthalten;
+5. initiales Evidence Pack beziehungsweise Need-/Criteria-Map und sichtbare Review Issues;
+6. begleiteten Proof: ein real verwendbarer, quellengebundener Konzept-/Proposal-Abschnitt innerhalb von fünf Arbeitstagen;
+7. Aktivierungsbericht, Admin-Handover und vereinbarte nächste Korpusstufe.
+
+Der Festpreis beträgt 5.000 EUR netto. Vorgesehen sind 50 Prozent bei Beauftragung und 50 Prozent nach Abnahme des Aktivierungsberichts und Proof-Artefakts. Umsatzrealisierung, Umsatzsteuer und Anzahlungen sind vom Steuerberater zu bestätigen. Individuelle Datenbereinigung, vollständige CRM-/DMS-Migration, neue kundenspezifische Connectoren und Rechtsberatung sind nicht enthalten und bedürfen eines separaten Angebots.
+
+## 9.3 Vertriebsprozess
+
+1. qualifiziertes Gründer-Intro;
+2. 45-60-minütige Problem- und Datenreife-Discovery;
+3. Pilotangebot mit Seat-Preis und - bei vollem Aktivierungsbedarf - separat ausgewiesenem Context-Activation-Paket;
+4. geführte Aktivierung und Fünf-Tage-Proof aus dem eigenen Firmenkorpus;
+5. Erfolgsmessung zu Zeit, Quellenqualität, Edit-Distanz und Nutzung;
+6. Review mit Geschäftsführung und Consultants;
+7. Jahresvertrag mit dokumentiertem Daten-/Security-Setup;
+8. Expansion mit wachsenden Seats und weiteren Workspaces.
+
+# 10. Finanzierungsbedarf und Mittelverwendung
+
+## 10.1 Kapitalbedarf
+
+Der verbindliche Finanzierungsbedarf beträgt 200.000 EUR. Er wird vollständig über den ERP-Gründerkredit - StartGeld geplant. Nach aktuellem KfW-Merkblatt dürfen vom Kredit höchstens 80.000 EUR Betriebsmittel sein; deshalb werden 120.000 EUR als mittel- bis langfristige Investitionen und 80.000 EUR als Betriebsmittel abgegrenzt. Der Base-Case enthält in Jahr 1 keine festen Gründer- oder Mitarbeitergehälter. Ein späterer Personalrahmen bis 80.000 EUR gehört nicht zu diesem Finanzierungsbedarf und darf erst nach zusätzlicher Förderung freigegeben werden.
+
+| Verwendungszweck | Betrag |
+|---|---:|
+| externes, abnahmefähiges MVP-Software-/IP-Paket | 110.000 EUR |
+| Entwicklungs-, Test- und Security-Hardware | 10.000 EUR |
+| LLM-API, EU-Cloud und technische SaaS-Werkzeuge | 24.000 EUR |
+| Design-Partner-Onboarding, Vertrieb, Marketing und Reisen | 20.000 EUR |
+| Recht, Datenschutz, Buchführung und Versicherungen | 12.000 EUR |
+| Arbeitsplatz, Kommunikation und allgemeine Tools | 6.000 EUR |
+| externe Aktivierungs-/Datenvorbereitung und Support | 10.000 EUR |
+| Betriebsmittelpuffer | 8.000 EUR |
+| feste Gründer-/Personalkosten Jahr 1 | 0 EUR |
+| **Gesamter Finanzierungsbedarf** | **200.000 EUR** |
+
+Die Hausbank muss die 120.000-EUR-Investitionsposition vor Beauftragung bestätigen. Wird sie nicht anerkannt, ist ein 200.000-EUR-StartGeld-Antrag in dieser Form nicht tragfähig; dann muss der Kredit reduziert oder ein anderer Finanzierungsmix gewählt werden.
+
+## 10.2 Finanzierungsstruktur
+
+| Finanzierungsquelle | Betrag | Status |
+|---|---:|---|
+| ERP-Gründerkredit - StartGeld | 200.000 EUR | beantragt |
+| zusätzliche Eigenmittel/Kapitalrücklage im Base-Case | 0 EUR | bestehendes gesetzliches Stammkapital separat nachweisen |
+| **Finanzierung des Gesamtbedarfs** | **200.000 EUR** | entspricht dem verbindlichen Base-Case |
+
+Im ersten Geschäftsjahr werden 56.000 EUR Umsatz ergebniswirksam geplant: 36.000 EUR SaaS aus vier zeitversetzt startenden Kunden und 20.000 EUR aus vier Context-Activation-Paketen. Wegen eines Monats Zahlungsziel fließen davon im Jahr 1 nur 47.000 EUR als Kunden-Cash ein. Es werden keine Jahresvorauszahlungen, LOI-Umsätze oder späteren Vollpreis-Konversionen der Design-Partner zur Finanzierung unterstellt. Das frühere Investorendeck beschreibt ein größeres 400.000-EUR-Programm über 18 Monate einschließlich Founding Engineer; der vorliegende Plan ersetzt dies für die Kreditprüfung durch einen eigenen, kohortenbasierten 36-Monats-Pfad.
+
+## 10.3 Kreditkonditionen und Kapitaldienst
+
+Empfohlen werden zehn Jahre Laufzeit und zwei tilgungsfreie Anlaufjahre. Auf Basis des Sollzinses von 4,52 Prozent am 10.07.2026 entstehen zunächst rund 753 EUR Zins pro Monat. Ab Monat 25 beträgt die gleich hohe monatliche Tilgung 2.083,33 EUR zuzüglich fallender Zinsen; die erste Gesamtrate liegt bei rund 2.836,67 EUR. Der Kapitaldienst in Jahr 3 beträgt rund 33.522 EUR.
+
+# 11. Rentabilität und Liquidität - Zusammenfassung
+
+Alle Beträge in TEUR, netto und vor Abschreibung:
+
+| Position | Jahr 1 | Jahr 2 | Jahr 3 |
+|---|---:|---:|---:|
+| Nettoumsatz | 56,0 | 297,0 | 674,1 |
+| direkte Cloud-/LLM-Kosten | -4,3 | -30,8 | -73,7 |
+| Personalkosten inkl. Geschäftsführer | 0,0 | -198,6 | -351,0 |
+| fixe betriebliche Aufwendungen gesamt | -38,0 | -60,0 | -105,0 |
+| **Ergebnis vor Zinsen, Steuern und AfA** | **13,7** | **7,6** | **144,4** |
+| Zinsen | -9,0 | -9,0 | -8,5 |
+| **Ergebnis vor Steuern und AfA** | **4,6** | **-1,4** | **135,9** |
+
+Im Base-Case endet das erste Jahr nach 200.000 EUR Kredit, 0 EUR zusätzlichen Eigenmitteln, 47.000 EUR Kundenzahlungen, 120.000 EUR Investitionen, 42.320 EUR operativen Auszahlungen und 9.040 EUR Zins mit 75.640 EUR Liquidität. Die Endliquidität beträgt 49.355 EUR in Jahr 2 und 122.994 EUR in Jahr 3; der Tiefpunkt des 36-Monats-Pfads liegt bei 41.046 EUR in Jahr 2. Eine monatliche 13-Wochen-Vorschau ergänzt den offiziellen Liquiditätsplan. Wird der konditionale Personalrahmen von 80.000 EUR ohne Zusatzförderung vollständig ausgeschöpft, sinkt der 36-Monats-Tiefpunkt auf rund -38.954 EUR; zur Einhaltung des 30.000-EUR-Puffers wären mindestens rund 68.954 EUR zusätzliche Liquidität erforderlich.
+
+# 12. Risiken und Gegenmaßnahmen
+
+| Risiko | Gegenmaßnahme |
+|---|---|
+| Softwareentwicklung wird nicht als Investition anerkannt | Bank-Vorabprüfung; alternativ Kredit auf 80.000 EUR reduzieren |
+| Pilotumsätze verspäten sich | harte Gates, keine Neueinstellung oder feste Gründergehälter vor separater Zusatzförderung |
+| unentgeltliche Gründerarbeit ist privat oder rechtlich nicht tragfähig | private Lebensunterhaltsnachweise, Gesellschafterbeschluss, keine Gehaltsstundung, steuer-/sozialversicherungsrechtliche Prüfung |
+| Produktversprechen zu breit | verbindliche MVP-Matrix und Demo-Kennzeichnung "heute / Vorhaben / später" |
+| zu geringe Zahlungsbereitschaft | bezahlte Piloten, LOIs, Zeit-/Qualitätsmessung, Kill-/Pivot-Kriterium |
+| Design-Partner validieren Nutzung, aber nicht den regulären Preis | Token-Selbstkosten-LOIs nicht als Umsatz oder Preisbeleg buchen; separate kommerzielle Pilotangebote mit SaaS-/Paketpreis, Abnahmeplan und Zahlungsziel akquirieren |
+| Datenschutz/Security blockiert Kunden | AVV, EU-Verarbeitung, No-Training, Tenant-Isolation und Security-Review vor Pilot #1 |
+| AI liefert unbelegte/falsche Aussagen | CitationLink-Gate, Faithfulness, AuditEvent und Human Approval |
+| Cloud-/LLM-Kosten steigen | COGS-Budgets je Tenant/Seat, Modellrouting und Nutzungsgrenzen |
+| Gründer-/Schlüsselpersonenrisiko | klare Rollen, Dokumentation, Vertretung und Key-Person-Plan |
+| persönliche Bürgschaftsbelastung | Gründerbeschluss, private Selbstauskunft und quotale Begrenzung verhandeln |
+| Wettbewerb integriert ähnliche AI-Funktionen | DACH-Vertikalisierung, Korpus-/Workflow-Verankerung und messbare Outcomes |
+
+Kostensteuerung erfolgt über vier Trigger: weniger als drei Design-Partner Ende Monat 4, kein erster zahlender Kunde bis Ende Monat 6, weniger als vier zahlende Kunden beziehungsweise End-ARR unter 108.000 EUR Ende Monat 12 und eine voraussichtliche Liquidität unter 30.000 EUR innerhalb von 90 Tagen. Vor zusätzlicher Förderung entstehen keine festen Gründergehälter; der konditionale Personalrahmen wird nicht teilweise oder vollständig freigegeben. Bei Auslösung werden außerdem Hiring, noch nicht abgenommene externe Entwicklungstranchen und nicht zwingende Ausgaben gestoppt oder reduziert.
+
+# 13. Vor Einreichung zu ergänzende Nachweise
+
+- exakte Registerfirma, Sitz, HRB, Gründungsdatum und erster Umsatz;
+- Gesellschafterliste, Beteiligungsquoten, Stimmrechte und Geschäftsführerstatus;
+- Organigramm einschließlich Holdings und H&W Digital Solutions;
+- KMU- und De-minimis-Einordnung;
+- Nachweis des bestehenden gesetzlichen Stammkapitals; keine zusätzliche Eigenmitteleinlage im Base-Case unterstellt;
+- private Lebensunterhaltssicherung aller unbezahlt mitarbeitenden Gründer und Gesellschafterbeschluss ohne gestundete Gehaltsansprüche;
+- drei Gründer-CVs, Nachweise und private Vermögens-/Schuldenübersichten;
+- schriftliche Zustimmung zur voraussichtlichen quotalen Mithaftung;
+- zwei bis drei Angebote, Pflichtenheft und IP-/Abnahmebedingungen für das Investitionspaket;
+- zwei vorhandene LOIs von H&W Digital Solutions UG und Krallmann AG als Anlagen;
+- mindestens ein weiterer externer Design-Partner-LOI bzw. Pilotvertrag;
+- separate kommerzielle Pilotangebote außerhalb der beiden Token-Selbstkosten-LOIs mit ausdrücklicher Bestätigung von Seat-Preis, Context-Activation-Leistung, 5.000-EUR-Preis, Abnahme und Zahlungsziel;
+- monatlicher Customer-Cohort-, Personal- und COGS-Plan;
+- Steuerberater-Plausibilisierung von Umsatzsteuer, Steuern, Aktivierung und Abschreibung;
+- reproduzierbare Marktgrößenrechnung;
+- konsistente Kreditversion des Investorendecks und klare POC-Feature-Matrix.
+
+# 14. Quellen
+
+## Förderprogramm
+
+- KfW: ERP-Gründerkredit - StartGeld (067), https://www.kfw.de/067
+- KfW: Merkblatt 067, Bestellnummer 600 000 2258, Stand 18.06.2026, https://www.kfw.de/PDF/Download-Center/F%C3%B6rderprogramme-%28Inlandsf%C3%B6rderung%29/PDF-Dokumente/6000002258_M_067_StartGeld.pdf
+- KfW: Konditionenübersicht, Stand 10.07.2026, https://www.kfw-formularsammlung.de/KonditionenanzeigerINet/KonditionenAnzeiger
+- KfW: Unterlagen für die Risikoprüfung, https://www.kfw.de/microsites/Microsite/static/checklisten/Checkliste-Risikopruefung.html
+
+## Markt
+
+- BDU: Facts & Figures zum Consultingmarkt 2026, https://www.bdu.de/news/deutsche-unternehmensberatungen-erwarten-2026-eine-rueckkehr-zum-wachstumskurs/
+- BDU: Honorare im Consulting 2025, https://www.bdu.de/news/studie-honorare-im-consulting-2025-tagessaetze-leicht-ruecklaeufig/
+- BDU: Consultants erzielen 80 Prozent des Umsatzes mit Bestandskunden, https://www.bdu.de/news/consultants-erzielen-80-des-umsatzes-mit-bestandskunden/
+
+## Wettbewerb
+
+- Loopio, https://loopio.com/rfp-automation-software/
+- AutogenAI, https://autogenai.com/uk/
+- Productive, https://productive.io/
+- Kantata, https://www.kantata.com/
+
+## Interne Consultry-Grundlagen
+
+- Consultry MVP-PRD v1.0, aktueller Build-Scope
+- Consultry Product Vision v2.7, Stand 12.07.2026
+- Consultry Alignment Control Plane v1.1, Stand 12.07.2026
+- Consultry UX Operating Model v0.1, Stand 12.07.2026
+- Consultry Project Intelligence, Symbiosis & Assetization v1.1, Stand 12.07.2026
+- Consultry GTM Decisions v1.0, aktualisiert 12.07.2026
+- Consultry Onboarding- & Korpus-Ritual v1.0
+- Consultry MVP Technical Foundation v1.0
+- Consultry Investor Deck v3, Stand Juli 2026
+- Consultry HyperMock Narrative Graph/Handover, Stand Juli 2026

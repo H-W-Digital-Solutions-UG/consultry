@@ -1,0 +1,43 @@
+schema_version: 1
+archive_root: "product-definition/archive"
+authority: "historical_provenance_only"
+
+known_missing_historical_companions:
+  - "Consultry-Design-System-v1.3.md"
+  - "design/screen-specs/_SCREEN-SPEC-INDEX.md"
+  - "Consultry-User-Journeys-v1.0.md"
+  - "Kritische-Analyse-Design-vs-Product-v1.0.md"
+  - "Consultry-Module-Refinement-v1.0.md"
+
+collections:
+  - path: "legacy-v3/"
+    archived_reason: "pre-current product direction and obsolete launch/UI assumptions"
+    artifacts:
+      - "Consultry-PRD-v3.0-Final.md"
+      - "Kritische-Analyse-PRD-v3.0-vs-Personas-Journeys.md"
+
+  - path: "pre-pivot-gen-a/"
+    archived_reason: "previously superseded pre-pivot and Generation-A baseline"
+    artifacts:
+      - "Consultry-DACH-Market-Thesis-v1.0.md"
+      - "Consultry-PRD-v4.0-DACH-Operating-System.md"
+      - "Consultry-PRD-v5.0-Software-Layered.md"
+      - "Consultry-Product-Document-v1.0.md"
+      - "Consultry-Roadmap-v1.0-MVP-and-Phasing.md"
+      - "feature-specs/"
+
+  - path: "superseded-product-baseline-2026-08/"
+    archived_reason: "no longer an authority after the product-first Wayfinder reset"
+    artifacts:
+      - path: "Consultry-MVP-PRD-v1.0.md"
+        superseded_by: "../../latest/wayfinder/ and ../../latest/Consultry-Product-Vision-v1.0.md"
+      - path: "Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md"
+        superseded_by: "future journey and requirements baseline derived through Wayfinder"
+      - path: "Consultry-Target-Personas-v1.0.md"
+        superseded_by: "Wayfinder archetype, actor, responsibility and role-compression decisions"
+      - path: "Consultry-Feature-Pain-Map-v1.0.md"
+        superseded_by: "../../latest/Consultry-Priority-Problem-Evidence-and-Assumption-Register-v0.1.md"
+      - path: "Consultry-MVP-Backend-IaC-Grill-Me-v1.0.md"
+        superseded_by: "later product handoff and technical Wayfinder"
+      - path: "Consultry-LinkedIn-Research-Source-Plan-v1.0.md"
+        superseded_by: "../../latest/research/wayfinder-deep-audit-2026-08/source-register.md"

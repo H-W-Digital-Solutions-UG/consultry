@@ -1,0 +1,117 @@
+                        Investitionsplan | KfW StartGeld 067 | ENTWURF
+
+Investitionsplan
+Kapitalbedarf und Finanzierung | Beträge netto
+ ENTWURF. Alle nicht belegten Zahlen sind Planannahmen. Vor Bankeinreichung sind Registerdaten, Geschäftsführergehälter,
+ Steuerbehandlung, Umsatzsteuer, Pilot- und Context-Activation-Verträge zu bestätigen.
+
+
+Der modellierte Finanzierungsbedarf beträgt 340.000 EUR. Davon werden 200.000 EUR über den ERP-Gründerkredit - StartGeld und
+140.000 EUR über echte Eigenmittel/Kapitalrücklage finanziert. Der Kf W-Anteil enthält höchstens 80.000 EUR Betriebsmittel. Die
+frühere 30.000-EUR-Eigenmittelannahme schließt den 36-Monats-Cashflow nicht.
+
+A. Investitionen
+Position                                           Betrag                                          Nachweis
+
+                                                                                                              Angebote, Pflichtenheft, IP-Übertragung,
+Externes, abnahmefähiges MVP-Software-/IP-Paket                                      110.000 EUR
+                                                                                                                                Aktivierung, Abnahme
+Entwicklungs-, Test- und Security-Hardware                                            10.000 EUR                           Angebote, Inventarisierung
+                                                                                                              bankseitige Förderfähigkeitsbestätigung
+Zwischensumme Investitionen                                                          120.000 EUR
+                                                                                                                                          erforderlich
+
+A.1 Arbeitsstruktur des externen Software-/IP-Pakets
+Abnahmefähiges Arbeitspaket                                               Betrag
+
+Source-bound Context Graph, Korpus- und Consulting-Objektmodell                                                                            28.000 EUR
+Consultry Engine, HarnessPack-Vertrag, Authentisierung und Security                                                                        25.000 EUR
+Opportunity-to-Concept, Evidence Pack und Grounding-Pipeline                                                                               25.000 EUR
+Rollen-Workspace, anonyme TeamShape und Human Approval                                                                                     16.000 EUR
+Tests, technische Dokumentation, Deployment und Rechteübergabe                                                                             16.000 EUR
+
+Summe externes Software-/IP-Paket                                                                                                       110.000 EUR
+
+
+
+ Beschaffungs- und Abnahmeregel
+ Der Dienstleistervertrag muss Fest-/Meilensteinpreise, objektive Abnahmekriterien, vollständige Quellcode-, Dokumentations- und
+ Nutzungsrechtsübertragung sowie Zahlung nach dokumentierter Teilabnahme enthalten. Interne Gründerarbeit ist nicht Bestandteil der 110.000-
+ EUR-Investitionsposition. Das graphfähige Fundament darf spätere Project-Symbiosis-/Assetization-Flows ermöglichen; deren vollständige
+ Realisierung ist nicht Bestandteil des H1-Pakets.
+
+
+B. Betriebsmittel- und Liquiditätsbedarf
+Position                                           Betrag                                          Einordnung
+
+Personalkosten - KfW-finanzierter Anteil                                              50.000 EUR                                         Betriebsmittel
+LLM-API, EU-Cloud und technische SaaS-
+                                                                                      12.000 EUR                                         Betriebsmittel
+Werkzeuge
+Design-Partner, Vertrieb, Marketing und Reisen                                         8.000 EUR                                         Betriebsmittel
+Recht, Datenschutz, Buchführung und
+                                                                                       5.000 EUR                                         Betriebsmittel
+Versicherungen
+Arbeitsplatz, Kommunikation und allgemeine Tools                                       2.000 EUR                                         Betriebsmittel
+Liquiditäts-/Unvorhergesehenes-Puffer                                                  3.000 EUR                                         Betriebsmittel
+
+KfW-finanzierter Betriebsmittelanteil                                               80.000 EUR                               Programmobergrenze
+
+                                                                                                         Cash-Runway und 30-TEUR-Mindestreserve;
+zusätzliche Eigenmittel/Kapitalrücklage                                              140.000 EUR
+                                                                                                                                  nachzuweisen
+
+verfügbare Betriebs-/Anlaufliquidität nach
+                                                                                   220.000 EUR       80.000 EUR KfW + 140.000 EUR Eigenmittel
+Investition
+
+C. Gesamtbedarf und Finanzierung
+Finanzierung                                       Betrag                                          Erläuterung
+
+                                                                                                                     120.000 Investition + 220.000
+Gesamter Finanzierungsbedarf                                                       340.000 EUR
+                                                                                                                        Betriebs-/Anlaufliquidität
+
+
+
+                                                                                                           Consultry Software GmbH | 12.07.2026 | Seite 1
+                       Investitionsplan | KfW StartGeld 067 | ENTWURF
+
+Finanzierung                                      Betrag                                             Erläuterung
+
+ERP-Gründerkredit - StartGeld                                                          200.000 EUR   120.000 Investition + maximal 80.000 Betriebsmittel
+                                                                                                            kein Gesellschafter-Fremdkapital unterstellt;
+Eigenmittel/Kapitalrücklage                                                            140.000 EUR
+                                                                                                                                    Struktur bestätigen
+
+                                                                                                                     vollständig finanziert nur nach
+Finanzierungssumme                                                                   340.000 EUR
+                                                                                                                               Eigenmittelnachweis
+
+
+
+Entscheidende Förderbedingung
+Die Hausbank muss vor Beauftragung bestätigen, dass das 110.000-EUR-Software-/IP-Paket und die 10.000-EUR-Hardware als mittel-/langfristige
+Investitionen anerkannt werden. Wird dies abgelehnt, ist der 200.000-EUR-Antrag in dieser Form nicht tragfähig; dann den Kredit reduzieren oder die
+Investition separat mit Eigenkapital finanzieren.
+
+
+
+Abgrenzung zum Jahresbudget
+Die 220.000 EUR Betriebs-/Anlaufliquidität sind nicht als Aufwandspauschale zu verstehen. Das 36-Monats-Modell verknüpft 
+Investitionsmeilensteine, 149,4 TEUR Jahr-1-Personal, fixe Kosten, variable COGS, monatliche Kundenzahlungen und Kapitaldienst. Bei 140 TEUR
+Eigenmitteln beträgt die Endliquidität Jahr 1 66,240 TEUR; der Cash-Tiefpunkt liegt mit 31,646 TEUR in Jahr 2. Mit nur 30 TEUR Eigenmitteln ist die
+Planung nicht geschlossen.
+
+
+
+Quellenbasis
+Kf W-Formular 600 000 5282; Kf W-Merkblatt 067, Stand 18.06.2026; KfW-Produktseite abgerufen 12.07.2026; Consultry Businessplan, Product Vision
+v2.7, Alignment Control Plane v1.1 und MVP-PRD. Die modulare Entwicklungsdarstellung ist von der Struktur der OmniSEC-Planung inspiriert;
+Umfang und Beträge sind ausschließlich Consultry-Planannahmen und durch Angebote zu ersetzen.
+
+
+
+
+                                                                                                             Consultry Software GmbH | 12.07.2026 | Seite 2
+

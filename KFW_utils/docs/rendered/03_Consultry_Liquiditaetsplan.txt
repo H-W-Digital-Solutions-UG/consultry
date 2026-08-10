@@ -1,0 +1,114 @@
+                          Liquiditätsplan | KfW StartGeld 067 | ENTWURF
+
+Liquiditätsplan
+Monate 1 bis 12 | Beträge in TEUR | Planungsansicht netto
+ ENTWURF. Alle nicht belegten Zahlen sind Planannahmen. Vor Bankeinreichung sind Registerdaten, Geschäftsführergehälter, Steuerbehandlung, Umsatzsteuer, Pilot- und Context-Activation-Verträge zu
+ bestätigen.
+
+
+Position             M1               M2               M3              M4             M5             M6             M7               M8              M9              M10              M11             M12                Summe
+
+1.1 SaaS-
+Zahlungseingänge               0,00             0,00            0,00           0,00           0,00           0,00             2,25            2,25            4,50             4,50            6,75               6,75              27,00
+(1 Monat Lag)
+
+1.2 Context-
+Activation-                    0,00             0,00            0,00           0,00           0,00           5,00             0,00            5,00            0,00             5,00            0,00               5,00              20,00
+Zahlungseingänge
+
+1.3 KfW-Darlehen              200,0              0,0             0,0            0,0            0,0            0,0              0,0             0,0             0,0              0,0             0,0                0,0              200,0
+
+1.4 Eigenmittel /
+                               50,0              0,0             0,0           50,0            0,0            0,0             40,0             0,0             0,0              0,0             0,0                0,0              140,0
+Stammkapital
+
+1.5 Summe
+Liquiditätszugan             250,0              0,0              0,0           50,0            0,0            5,0            42,2              7,2             4,5             9,5              6,8               11,8             387,0
+g
+
+2.1
+Anlageinvestitione             26,0              0,0            20,0            4,0           20,0            0,0             20,0             0,0            15,0              0,0            15,0                0,0              120,0
+n
+
+2.2 Personal                   10,2             10,2            10,2           12,0           12,0           12,0             13,8            13,8            13,8             13,8            13,8               13,8              149,4
+
+2.3 fixe
+                              3,167            3,167           3,167          3,167          3,167          3,167            3,167           3,167           3,167            3,167           3,167              3,167             38,000
+Betriebsausgaben
+
+2.4 variable
+                              0,000            0,000           0,000          0,000          0,000          0,270            0,270           0,540           0,540            0,810           0,810              1,080              4,320
+Cloud-/LLM-COGS
+
+2.5 sonstige
+                                0,0              0,0             0,0            0,0            0,0            0,0              0,0             0,0             0,0              0,0             0,0                0,0                0,0
+Auszahlungen
+
+2.6 Kredittilgung               0,0              0,0             0,0            0,0            0,0            0,0              0,0             0,0             0,0              0,0             0,0                0,0                0,0
+
+2.7 Zinsen                    0,753            0,753           0,753          0,753          0,753          0,753            0,753           0,753           0,753            0,753           0,753              0,753              9,040
+
+2.8 Summe
+Liquiditätsabgan            40,120           14,120           34,120        19,920         35,920          16,190          37,990          18,260          33,260           18,530          33,530             18,800            320,760
+g
+
+3. Monatlicher
+                           209,880          -14,120          -34,120        30,080         -35,920        -11,190           4,260          -11,010         -28,760          -9,030          -26,780            -7,050             66,240
+Liquiditätssaldo
+
+4. Liquidität
+                           209,880          195,760          161,640        191,720        155,800        144,610         148,870         137,860         109,100          100,070          73,290             66,240             66,240
+kumuliert
+
+
+
+
+ Ergebnis
+ Endliquidität Jahr 1: 66,240 TEUR. Der niedrigste Cashbestand im 36-Monats-Base-Case liegt bei 31,646 TEUR in Jahr 2 und damit knapp über dem internen 30-TEUR-Puffer. Das erfordert 140 TEUR echte Eigenmittel/Kapitalrücklage
+ zusätzlich zum 200-TEUR-Kredit. Vier zahlende Kunden starten in M6/M8/M10/M12; SaaS-Zahlungen laufen mit einem Monat Verzögerung. Die zwei Token-Selbstkosten-Design-Partner sind nicht als Umsatz enthalten.
+
+
+                                                                                                                                                                                            Consultry Software GmbH | 12.07.2026 | Seite 1
+                        Liquiditätsplan | KfW StartGeld 067 | ENTWURF
+
+
+
+ Steuer- und Einreichungshinweis
+ Die Kf W-Vorlage verlangt Umsätze inklusive Umsatzsteuer sowie Steuerzahlungen. Diese Planungsansicht ist netto. Vor Einreichung müssen deutsche Umsatzsteuer, B2B-Reverse-Charge in Österreich, Vorsteuer, Zahlungsziele,
+ Körperschaft-/Gewerbesteuer und der tatsächliche Darlehensabruf monatlich durch den Steuerberater eingearbeitet werden.
+
+
+
+ Liquiditätssteuerung
+ Zusätzlich wird rollierend eine 13-Wochen-Vorschau geführt. Bei erwarteter Liquidität unter 30 TEUR innerhalb von 90 Tagen gelten Spend-Freeze, Hiring-Stopp und Gesellschafterentscheidung. Die 140 TEUR Eigenmittel müssen vor
+ Einreichung verbindlich nachgewiesen werden; sind sie nicht verfügbar, ist der 200-TEUR-Plan nicht geschlossen.
+
+
+Szenario-Test Jahr 1
+Position                                                                    TEUR                                                                         Annahme / Maßnahme
+
+Base: 4 zahlende Kunden / 4 Activations                                                                                                          66,24                              140 TEUR Eigenmittel, 47 TEUR Kundenzahlungen
+Downside: 50 % kommerzieller Cash, 15 % Fixkosten-Gate                                                                                           50,60                                                   Gründerpersonal unverändert
+Nur LOIs: kein Paid-Customer-Cash, 20 % Fixkosten-Gate                                                                                           31,16                                  Design-Partner validieren Nutzung, nicht Preis
+
+Mindestliquidität 36-Monats-Base                                                                                                                31,65                            Tiefpunkt Jahr 2; 30-TEUR-Management-Puffer
+
+Erforderliche Eigenmittel Base                                                                                                                 140,00                    30 TEUR reichen nicht; keine Vorauszahlung unterstellt
+
+
+
+ Voraussetzung des Downside-Tests
+ Der Downside reduziert keine Gründergehälter. Er nutzt nur kündbare/freigabefähige Nicht-Personalkosten. Jahresvorauszahlungen, zusätzliche bezahlte Kunden und Umsätze der zwei Design-Partner sind nicht zur Schließung des
+ Base-Case unterstellt. Das Ergebnis ist deshalb eine echte Finanzierungsanforderung, kein Umsatz-Plug.
+
+
+
+ Quellenbasis
+ Kf W-Formular 600 000 5283; Kf W-Merkblatt 067, Stand 18.06.2026; KfW-Produktseite abgerufen 12.07.2026; Consultry Businessplan, GTM Decisions und Onboarding-/Korpus-Ritual. OmniSEC diente ausschließlich als Inspiration für
+ Burn-, Cash- und Downside-Darstellung.
+
+
+
+
+                                                                                                                                                                                            Consultry Software GmbH | 12.07.2026 | Seite 2
+
