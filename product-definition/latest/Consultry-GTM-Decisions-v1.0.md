@@ -11,6 +11,8 @@
 > **Update 28.06.2026:** Die [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md) normalisiert die Begriffe: **Opportunity-to-Concept** ist der Starting Wedge; **Projekt-Wachstum & -Akquise** ist der Kundennutzen/Job; **Concept Suite** ist die Proof Surface.
 >
 > **Update 12.07.2026:** Product Vision v2.7 und Alignment Control Plane v1.1 führen **AI-native Consulting Operating System** als Whole-Product-Kategorie sowie `Observation → Signal → Decision → ActionCase` und Project Symbiosis/Assetization als kanonische Operating-/Compounding-Loops. Diese erweitern die Produkt- und Präsentationserzählung; die GTM-Einstiegssequenz bleibt Bestandskunden-/projekt-led und der aktuelle Build-Scope separat.
+>
+> **Update 13.08.2026:** Die bisherige Annahme eines einheitlichen Preises von 50 Euro je Nutzer und Monat sowie separat ausbaubarer Module ist als aktuelle Preis-/Paketierungsrichtung überholt. Neue interne Arbeitshypothese: **ein zusammenhängendes Kernprodukt**, tarifabhängige und nicht übertragbare KI-Nutzungskontingente je Nutzerlizenz sowie eine Kostenobergrenze, die auch bei vollständiger Kontingentausschöpfung einen positiven Deckungsbeitrag sicherstellt. Konkrete Preise und Kontingente bleiben bis zum Kostenmodell und zur Zahlungsbereitschaftsprüfung offen und gehören vorerst nur in interne Notizen, nicht sichtbar in die Investorenpräsentation.
 
 ---
 
@@ -116,14 +118,32 @@ Das Whole Product umfasst das vollständige Consulting OS; im Erstgespräch füh
 
 ---
 
-## 4. Pricing & Packaging
+## 4. Preisgestaltung und Paketierung
 
 | Element | Entscheidung |
 |---|---|
-| **Kernmodell (Umsatz)** | **Seat-basiert** — **je Consultant- und Sales-Seat kostenpflichtig, 2 Backoffice-Seats frei.** Seats skalieren mit der billable Headcount → eine 50-Personen-Firma ≈ 45 Seats (nicht 3). **NRR wächst mit der Firma**, ohne separate Usage-Achse. |
-| **Win-Fee** | **Vorerst gestrichen (Entscheidung 30.05.).** Attributions-Komplexität („haben *wir* gewonnen oder die Bestandsbeziehung?"), lumpiger Umsatz und SME-Widerstand überwiegen den Land-Vorteil. Pricing bleibt **seat-only**. Kann später als optionaler Hebel reevaluiert werden, ist aber **nicht Teil von Phase-1-GTM**. |
-| **Pilot-Pricing** | **Niedrige Pilot-Gebühr** (kein Gratis-Pilot) — filtert auf echte Kaufabsicht, bessere Konversion (siehe §3.4). |
-| **Packaging-Prinzip** | **Lead-with-one, upsell-the-rest** — ein Einstiegs-Wedge sichtbar, weitere Module als Ausbau (passt zur OS-Vision als *Wachstumspfad*, nicht als Einstiegs-Pitch). |
+| **Kernmodell (Umsatz)** | **Je Nutzerlizenz mit tarifabhängig enthaltenem KI-Nutzungskontingent.** Das Kontingent ist je Lizenz kalkuliert und nicht unternehmensweit übertragbar; dadurch bleibt intensive Nutzung dem passenden Tarif und seinen Kosten zugeordnet. Nutzerzahl und Nutzungsintensität sind getrennte Umsatz- und Kostenhebel. |
+| **Kernprodukt** | Opportunity, Project Work und Steering sind verbundene Nutzungskreisläufe **eines Produkts**, keine separat zu kaufenden Module. Tarifunterschiede entstehen durch enthaltene KI-Kapazität und später gegebenenfalls Automatisierungs-, Integrations-, Regel- und Unterstützungsumfang. |
+| **Tarifstufen** | Mehrere Nutzungsstufen sind vorgesehen. 69 Euro für ein begrenzteres und 159 Euro für ein sehr hohes Nutzungskontingent sind **unverbindliche interne Rechenbeispiele**, keine beschlossene oder extern validierte Preisliste. Zusatzkontingente müssen nach derselben Kostenregel kalkuliert werden. |
+| **Erfolgsgebühr** | **Vorerst gestrichen (Entscheidung 30.05.).** Schwierige Erfolgszuordnung („haben *wir* gewonnen oder die Bestandsbeziehung?"), schwankender Umsatz und Widerstand kleiner und mittlerer Beratungen überwiegen den möglichen Einstiegsvorteil. Das Erlösmodell bleibt nutzerbezogen und wird durch tarifabhängig enthaltene KI-Nutzung abgesichert. Eine Erfolgsgebühr kann später neu bewertet werden, ist aber nicht Teil des ersten Markteintritts. |
+| **Erprobungspreis** | **Niedrige Gebühr für die Erprobung** statt kostenloser Erprobung — filtert auf echte Kaufabsicht und liefert ein stärkeres Überführungssignal (siehe §3.4). |
+| **Paketierungsprinzip** | **Ein Kernprodukt, ein fokussierter Einstieg.** Opportunity-to-Project öffnet den Markt, während Project Work und Steering bereits als reale Lern- und Entscheidungsschleifen enthalten sind. Spätere Tarifdifferenzierung schneidet diese drei Kernkreisläufe nicht künstlich auseinander. |
+
+### 4.1 Interne Kosten- und Margenleitplanke — kein sichtbarer Präsentationsinhalt
+
+Das enthaltene Nutzungskontingent jeder Nutzerlizenz wird vom maximal tragbaren direkt nutzungsabhängigen Aufwand her bestimmt. Bei vollständiger Ausschöpfung zählen mindestens:
+
+- Sprachmodell- und Agentennutzung,
+- Einbettungen und Wissenssuche,
+- Rechenleistung und Datenspeicherung,
+- externe Programmschnittstellen,
+- nutzungsabhängige Überwachung und Verarbeitung.
+
+**Arbeitsregel:** Die Summe dieser direkt nutzungsabhängigen Kosten darf bei vollständiger Ausschöpfung des enthaltenen Kontingents höchstens **70 % des Netto-Lizenzpreises** betragen. Damit verbleibt selbst im ungünstigsten enthaltenen Nutzungsfall ein Deckungsbeitrag von mindestens 30 %. Durchschnittliche Nutzung muss eine deutlich höhere Marge ermöglichen. Teurere Modelle oder Vorgänge verbrauchen entsprechend mehr interne Nutzungseinheiten; Zusatzkontingente folgen derselben Kalkulationsregel.
+
+Ein unternehmensweit frei übertragbarer Verbrauchstopf ist vorerst verworfen, weil wenige Intensivnutzer das für günstigere Lizenzen kalkulierte Kontingent aufbrauchen und die Marge unkontrolliert reduzieren könnten. Vor Kundinnen und Kunden wird der Nutzen als enthaltene KI-Kapazität beschrieben, nicht über technische Tokenmengen.
+
+Die BDU-Referenz von etwa 162,50 Euro je fakturierbarer Stunde ist eine wirtschaftliche Vergleichsgröße, keine behauptete Consultry-Wirkung. Consultry behauptet nicht vorab, eine bestimmte Zahl von Stunden einzusparen. Die tatsächliche Wirkung wird erst in realer Nutzung gemessen.
 
 ---
 
@@ -214,10 +234,10 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 | G2 | DACH-Reichweite | ✅ **DE + AT ab Tag 1; CH verschoben** (§3.3) |
 | G3 | Design-Partner-Ziel & Konversions-Artefakt | ✅ **3–5 Partner, niedrige Pilot-Gebühr, ein Before/After-Artefakt** (§3.4) |
 | G4 | Extraktions-Genauigkeit Vertragssignale: Messbar-Bar + Quell-Klausel-Bindung als Akzeptanzkriterium | ✅ Messlogik in [MVP Measurement Spec §3](./Consultry-MVP-Measurement-Spec-v1.0.md); F1-Spec setzt Implementierungsdetails |
-| G5 | Win-Fee-Mechanik | ✅ **gestrichen — Pricing bleibt seat-only** (§4) |
+| G5 | Win-Fee-Mechanik | ✅ **gestrichen — Erlösmodell bleibt nutzerbasiert, ergänzt um tarifabhängig enthaltene KI-Nutzung** (§4) |
 | G6 | Distribution: konkrete 30-Tage-Zahl, um von ~3 (1–2 warm + eigene Firma #0) auf **3–5 externe** Design-Partner zu kommen | offen (§3.6) |
 | G7 | Dogfood-Guardrail: ≥ 1 externer **Bestandskunden-led** Design-Partner in Kohorte 1, um Over-Fit auf die eigene (tender-lastige) Cybersecurity-Firma zu vermeiden | offen (§3.6) |
-| G8 | **Business-Spec-Zahlen** | ✅ **€50/Seat/Mo → ACV €15–45k**; Motion ökonomisch tragfähig ([MVP-PRD §6](../archive/superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md)). Pilot-Fee-Betrag offen. |
+| G8 | **Preis- und Kostenmodell** | in Überarbeitung — frühere Annahme 50 Euro je Nutzer und Monat ist überholt. Tarifstufen, Kontingente, Zusatznutzung, Jahresvertragswert und Zahlungsbereitschaft werden nach §4.1 und dem offenen Kostenmodell geprüft. Pilotgebühr bleibt offen. |
 | G9 | **PMF-Aktivierung** | ✅ **1 reviewfähiger Opportunity-to-Concept Proof Slice aus eigenem Korpus in 5 Business-Tagen** (+ Sean-Ellis ≥ 40 % als Bestätigung) ([MVP-PRD §5](../archive/superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md), [Measurement Spec](./Consultry-MVP-Measurement-Spec-v1.0.md)) |
 
 > **Doc-Stack:** [Product Vision (komplett, wohin)](./Consultry-Product-Vision-v1.0.md) ↔ [MVP-Doc (was zuerst)](../archive/superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) + [Alignment Control Plane](./Consultry-Alignment-Control-Plane-v1.0.md) + [Technical-Foundation](./Consultry-MVP-Technical-Foundation-v1.0.md). Der **MVP = Dual-Hero (Win + Work)**; Starting Wedge = **Opportunity-to-Concept**; Proof Surface = **Concept Suite**.
@@ -230,7 +250,7 @@ Sobald wir „AI-Tender + RFP-Response in DACH" sagen, treten wir gegen Speziali
 2. **Spine:** Tender- + Bestandskunden-Intake → Opportunity → belegbares Konzept-/Proposal-Artefakt in der Concept Suite.
 3. **Bestandskunden:** intelligentes CRM über loser Basis (kein CRM nötig); **Hero-Signal = Vertrags-Options-/Verlängerungsfenster, quellengebunden.**
 4. **GTM-Sequenz:** mid-to-small zuerst; **Bestandskunden öffnet die Tür, Tender ist der Big Swing.** **DE+AT ab Tag 1, CH verschoben.** 3–5 Design-Partner, niedrige Pilot-Gebühr.
-5. **Pricing:** **seat-only**, je Consultant + Sales kostenpflichtig, 2 Backoffice frei (Win-Fee gestrichen).
+5. **Preislogik:** nutzerbasierte Tarife mit nicht übertragbarem, kostenbegrenztem KI-Nutzungskontingent; ein gemeinsames Kernprodukt statt separat verkaufter Kernmodule; Erfolgsgebühr gestrichen. Konkrete Preise bleiben unvalidierte interne Annahmen.
 9. **Founder-Market-Fit:** eigene Cybersecurity-Beratung = Design-Partner #0 + Showcase-Demo (Tender-led); Guardrail = ≥ 1 externer Bestandskunden-led Partner.
 10. **Retention/Compounding:** Der Bestandskunden-/Projekt-Loop öffnet die Tür. Dauerhafte Nutzung entsteht aus `My Work`, aktiven Projekten, Knowledge/Reuse, Approvals, Team/Capability, Operations und Project Symbiosis/Assetization; das Signal-Board ist eine Projektion, nicht die alleinige Retention-Spine.
 6. **Scope-Schnitt:** **F6 → Option A** (nur aggregierter Deliverability-Check fürs Bid-Gate; echtes Staffing → Phase 1.5).
