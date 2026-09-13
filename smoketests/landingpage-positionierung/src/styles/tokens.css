@@ -1,0 +1,518 @@
+/*
+ * Consultry Marketing tokens v2 (smoke pages, 13.09.2026).
+ * Same palette as the Marketing DS, simplified: warm dark hero with the amber
+ * glow, one gradient CTA, one static card per hero, hairlines instead of
+ * nested boxes, weights 400/500/600, radius ≤ 16px.
+ * The brand gradient stays a single :root custom property (logo mark, hero CTA,
+ * two 2px dividers per page) so misuse is greppable.
+ */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+
+  /* brand: the pill, the active-tab underline, the focus ring. warm lives only inside the gradient. */
+  --color-brand: #bf5347;
+  --color-brand-light: #ca7168;
+  --color-brand-dark: #a2463c;
+  --color-warm: #e8913a;
+
+  /* surfaces: paper, warm paper, white card, and the two warm darks */
+  --color-surface-light: #fffbf9;
+  --color-surface-warm: #fff5f0;
+  --color-surface-card: #ffffff;
+  --color-surface-dark: #2c2926; /* dark sections */
+  --color-surface-hero: #1e1b18; /* hero and closing block */
+  --color-surface-elevated: #35312d; /* one tonal step on dark */
+
+  /* ink on light */
+  --color-ink-strong: #1e1b18; /* display */
+  --color-ink: #2c2926; /* body */
+  --color-ink-soft: #6b6560; /* ledes, provenance (5.6:1 on light) */
+  --color-ink-mute: #736c66; /* labels, captions (5.0:1 on light) */
+
+  /* on dark */
+  --color-on-dark: #fafaf9;
+  --color-on-dark-soft: rgba(250, 250, 249, 0.72);
+  --color-on-dark-mute: rgba(250, 250, 249, 0.55);
+
+  /* hairlines */
+  --color-hair: #eddfd7;
+  --color-hair-2: #e2d3ca;
+  --color-hair-dark: rgba(250, 250, 249, 0.1);
+
+  /* status: text on wash, AA at 13px */
+  --color-ok-text: #256b42;
+  --color-ok-wash: #e6f3ea;
+  --color-warning-text: #8a4b00;
+  --color-warning-wash: #fdf0dd;
+  --color-blocked-text: #a2463c;
+  --color-blocked-wash: #f8e5e2;
+  /* status on dark surfaces */
+  --color-ok-dark: #8fd3a8;
+  --color-warning-dark: #f0a85e;
+  --color-blocked-dark: #e8877b;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-xs: 0 1px 2px rgba(30, 27, 24, 0.05);
+  --shadow-sm: 0 1px 2px rgba(30, 27, 24, 0.04), 0 12px 32px -12px rgba(30, 27, 24, 0.1);
+  --shadow-hero: 0 24px 64px -16px rgba(0, 0, 0, 0.45);
+
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 600ms;
+}
+
+/* Gradient budget: logo mark, the hero CTA, and two 2px dividers per page. Never text or borders. */
+:root {
+  --gradient-brand: linear-gradient(135deg, #e8913a, #e8655a, #9b59b6);
+  /* the Consultry hero atmosphere: warm terracotta/amber tint fading into the hero dark */
+  --hero-background:
+    radial-gradient(55% 60% at 22% 32%, rgba(232, 145, 58, 0.17), transparent 70%),
+    radial-gradient(40% 45% at 80% 30%, rgba(191, 84, 71, 0.1), transparent 70%),
+    linear-gradient(180deg, #221611 0%, #1e1b18 100%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface-light text-ink font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+    overflow-x: clip;
+  }
+  ::selection {
+    background: rgba(191, 83, 71, 0.18);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  #so-funktioniert-es,
+  #warteliste {
+    scroll-margin-top: 80px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* type scale (weights 400/500/600 only) */
+  .t-display-xl {
+    font-weight: 700;
+    font-size: clamp(2.5rem, 1.5rem + 4vw, 4.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    color: var(--color-ink-strong);
+  }
+  .t-display-lg {
+    font-weight: 700;
+    font-size: clamp(2rem, 1.25rem + 2.5vw, 2.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .t-display-md {
+    font-weight: 600;
+    font-size: clamp(1.625rem, 1.25rem + 1.2vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+  .t-heading {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+  .t-lede {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  @media (min-width: 768px) {
+    .t-lede {
+      font-size: 1.0625rem;
+    }
+  }
+  .t-body {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .t-body-sm {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .t-eyebrow {
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+  .t-caption {
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    color: var(--color-ink-mute);
+  }
+  .t-stat {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: clamp(2.25rem, 1.5rem + 2vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .t-mono {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* frame: the only raised container (hero card, section-4 widget) */
+  .frame {
+    background: var(--color-surface-card);
+    border: 1px solid var(--color-hair);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: clip;
+  }
+
+  /* card typography (hero cards and section-4 widgets) */
+  .card-q {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+  }
+  .card-a {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    font-weight: 500;
+    color: var(--color-ink-strong);
+  }
+  .card-p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+  }
+  .card-l {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--color-ink-mute);
+  }
+  .card-t {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+  }
+  .card-row {
+    padding-block: 1rem;
+    border-top: 1px solid var(--color-hair);
+  }
+  .card-row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  /* text tabs: the one control in section-4 widgets */
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+  }
+  .tab {
+    position: relative;
+    padding-block: 0.625rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-ink-soft);
+    min-height: 44px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition: color var(--duration-fast) var(--ease-brand);
+  }
+  .tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--color-brand);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-fast) var(--ease-brand);
+  }
+  .tab[aria-pressed="true"] {
+    color: var(--color-ink-strong);
+  }
+  .tab[aria-pressed="true"]::after {
+    transform: scaleX(1);
+  }
+
+  /* accordion rows (corpus staircase, run ledger) */
+  .row-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+  .reveal {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--duration-fast) var(--ease-brand);
+  }
+  .reveal[data-open="true"] {
+    grid-template-rows: 1fr;
+  }
+  .reveal > div {
+    overflow: hidden;
+  }
+
+  .link-arrow {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-ink-soft);
+    text-underline-offset: 4px;
+    transition: color var(--duration-fast) var(--ease-brand);
+  }
+  .link-arrow:hover {
+    color: var(--color-ink);
+    text-decoration: underline;
+  }
+  .link-arrow-dark {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-on-dark-soft);
+    text-underline-offset: 4px;
+    transition: color var(--duration-fast) var(--ease-brand);
+  }
+  .link-arrow-dark:hover {
+    color: var(--color-on-dark);
+    text-decoration: underline;
+  }
+
+  .gradient-divider {
+    height: 2px;
+    background: var(--gradient-brand);
+  }
+  .logo-mark {
+    background: var(--gradient-brand);
+  }
+  /* Hero CTA: the brand gradient, purple stop pushed past the edge so the ink label
+     stays ≥ 4.5:1 on every pixel (white on the amber stop was ~2.7:1). */
+  .btn-hero-gradient {
+    background: linear-gradient(135deg, #e8913a 0%, #e8655a 60%, #9b59b6 130%);
+    color: var(--color-ink-strong);
+    font-weight: 600;
+    box-shadow: 0 12px 32px -12px rgba(232, 101, 90, 0.55);
+  }
+  .btn-hero-gradient:hover {
+    filter: brightness(1.06);
+  }
+  .hero-surface {
+    background: var(--hero-background);
+    color: var(--color-on-dark);
+  }
+  /* the dark frame: one tonal step on the hero, hairline, deep soft shadow */
+  .frame-dark {
+    background: #322b27;
+    border: 1px solid rgba(250, 250, 249, 0.12);
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), var(--shadow-hero);
+    overflow: clip;
+  }
+  .card-dark {
+    background: rgba(58, 53, 49, 0.72);
+    border: 1px solid rgba(250, 250, 249, 0.12);
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* status chips: colour carries meaning, never decoration */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 6px;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+  .chip-ok {
+    background: var(--color-ok-wash);
+    color: var(--color-ok-text);
+  }
+  .chip-warning {
+    background: var(--color-warning-wash);
+    color: var(--color-warning-text);
+  }
+  .chip-blocked {
+    background: var(--color-blocked-wash);
+    color: var(--color-blocked-text);
+  }
+  .fade-swap {
+    animation: fade-swap var(--duration-fast) var(--ease-brand);
+  }
+  @keyframes fade-swap {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* Card typography inside the dark hero frame. Unlayered on purpose so it wins over utilities. */
+.frame-dark .card-q,
+.frame-dark .card-p {
+  color: var(--color-on-dark-soft);
+}
+.frame-dark .card-a,
+.frame-dark .card-t {
+  color: var(--color-on-dark);
+}
+.frame-dark .card-l {
+  color: var(--color-on-dark-mute);
+}
+.frame-dark .card-row {
+  border-top-color: var(--color-hair-dark);
+}
+.frame-dark .text-ink-mute,
+.frame-dark .text-ink-soft {
+  color: var(--color-on-dark-soft);
+}
+.frame-dark .text-ink-strong,
+.frame-dark .text-ink {
+  color: var(--color-on-dark);
+}
+.frame-dark .text-ok-text {
+  color: var(--color-ok-dark);
+}
+.frame-dark .text-warning-text {
+  color: var(--color-warning-dark);
+}
+.frame-dark .text-blocked-text {
+  color: var(--color-blocked-dark);
+}
+.frame-dark .divide-hair > :not(:last-child),
+.frame-dark .border-hair,
+.frame-dark .border-hair-2 {
+  border-color: var(--color-hair-dark);
+}
+.frame-dark .bg-ink-strong {
+  background-color: var(--color-on-dark);
+}
+
+/* ---------------------------------------------------------------------------
+ * App surface (product mock in "So funktioniert es"), mirroring the implemented
+ * Consultry App Design System dark scheme: shell #1E1B18, panel #252220,
+ * surface #2B2826, sunken #181615, dividers #4E4A47, on-dark text ramp,
+ * semantic colours raised for dark ground. Unlayered so it wins over utilities.
+ * ------------------------------------------------------------------------- */
+.app {
+  --app-shell: #1e1b18;
+  --app-panel: #252220;
+  --app-surface: #2b2826;
+  --app-sunken: #181615;
+  --app-divider: #4e4a47;
+  --app-divider-soft: #3a3734;
+  --app-text: #f6f4f1;
+  --app-text-2: #dcd8d4;
+  --app-text-3: #aca6a0;
+  --app-coral: #d66e60;
+  --app-success: #8eb468;
+  --app-warning: #d6aa4c;
+  --app-danger: #e8877b;
+  --app-info: #76afb5;
+  --app-accent-text: #f6c08a;
+  color: var(--app-text);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.app-shell { background: var(--app-shell); }
+.app-panel { background: var(--app-panel); }
+.app-surface { background: var(--app-surface); }
+.app-sunken { background: var(--app-sunken); }
+.app-divider { border-color: var(--app-divider-soft); }
+.app-text-2 { color: var(--app-text-2); }
+.app-text-3 { color: var(--app-text-3); }
+.app-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--app-accent-text); }
+.app-mono { font-family: var(--font-mono); font-size: 12px; color: var(--app-text-3); font-variant-numeric: tabular-nums; }
+
+/* outlined status badge with a leading dot (Status und Provenance) */
+.app-badge { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 999px; border: 1px solid color-mix(in srgb, currentColor 45%, transparent); font-size: 12px; font-weight: 500; white-space: nowrap; background: color-mix(in srgb, currentColor 8%, transparent); }
+.app-badge::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+.app-badge-ok { color: var(--app-success); }
+.app-badge-warn { color: var(--app-warning); }
+.app-badge-blocked { color: var(--app-danger); }
+.app-badge-info { color: var(--app-info); }
+.app-badge-neutral { color: var(--app-text-3); }
+
+/* segmented control (Tabs, Segmented Control) */
+.app-seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 10px; background: var(--app-sunken); }
+.app-seg > button { border: 0; background: none; color: var(--app-text-3); font: inherit; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 7px; min-height: 32px; cursor: pointer; transition: background-color var(--duration-fast) var(--ease-brand), color var(--duration-fast) var(--ease-brand); }
+.app-seg > button[aria-pressed="true"] { background: var(--app-surface); color: var(--app-text); box-shadow: inset 0 0 0 1px var(--app-divider-soft); }
+.app-seg > button:hover { color: var(--app-text-2); }
+
+/* rows (Queue Row / Selection Row) */
+.app-rows > * + * { border-top: 1px solid var(--app-divider-soft); }
+.app-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; align-items: center; padding: 11px 0; }
+.app-row-title { font-size: 14px; font-weight: 500; color: var(--app-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.app-row-meta { font-size: 12px; color: var(--app-text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 640px) { .app-row-title, .app-row-meta { white-space: normal; } }
+
+/* stepper (Progress Indicator) */
+.app-stepper { display: flex; align-items: flex-start; gap: 0; }
+.app-step { position: relative; flex: 1; min-width: 0; padding-top: 18px; text-align: left; background: none; border: 0; cursor: pointer; color: var(--app-text-3); font: inherit; }
+.app-step::before { content: ""; position: absolute; top: 5px; left: 0; width: 12px; height: 12px; border-radius: 999px; background: var(--app-shell); border: 2px solid var(--app-divider); box-sizing: border-box; }
+.app-step::after { content: ""; position: absolute; top: 10px; left: 14px; right: 6px; height: 2px; background: var(--app-divider-soft); }
+.app-step:last-child::after { display: none; }
+.app-step[data-done="true"]::before { background: var(--app-success); border-color: var(--app-success); }
+.app-step[aria-pressed="true"]::before { background: var(--app-coral); border-color: var(--app-coral); box-shadow: 0 0 0 4px color-mix(in srgb, var(--app-coral) 25%, transparent); }
+.app-step[aria-pressed="true"] { color: var(--app-text); }
+.app-step-label { display: block; font-size: 11.5px; font-weight: 500; padding-right: 6px; line-height: 1.25; overflow-wrap: anywhere; }
+.app-step-sub { display: block; font-size: 11px; color: var(--app-text-3); padding-right: 8px; margin-top: 2px; line-height: 1.3; }
+
+/* label / value rows (Prüfungen panel) */
+.app-kv { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 6px 12px; padding: 9px 0; font-size: 13px; }
+.app-kv-stacked, .app-rail .app-kv { grid-template-columns: 1fr; gap: 2px; }
+@media (max-width: 640px) { .app-kv { grid-template-columns: 1fr; gap: 4px; } }
+.app-badge { max-width: 100%; }
+.app-badge > * { min-width: 0; }
+.app-kv > dt { color: var(--app-text-3); }
+.app-kv > dd { color: var(--app-text-2); margin: 0; }
+.app-kv-ok > dd { color: var(--app-success); }
+
+/* nav item */
+.app-nav { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 12px; border-radius: 8px; font-size: 13px; color: var(--app-text-2); position: relative; }
+.app-nav[data-active="true"] { background: var(--app-surface); color: var(--app-text); font-weight: 600; }
+.app-nav[data-active="true"]::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; border-radius: 999px; background: var(--app-coral); }
+.app-nav-count { margin-left: auto; font-size: 12px; color: var(--app-text-3); font-variant-numeric: tabular-nums; }
