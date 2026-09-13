@@ -1555,3 +1555,16 @@ This is a non-exhaustive seed list for conversion into BibTeX later.
 The defensible claim is narrower and stronger:
 
 > Machine skill systems become safer and more scalable when they explicitly represent the obligations induced by intent, map them to actions and effects, track validator evidence, and calibrate the boundary between machine-dischargeable claims and human/expert judgment.
+
+---
+
+## 23. Research-Abgleich 13.09.2026: Harness, Graph und Ledger
+
+Die bisher ungeprüfte Inbox wurde ausgewertet. Detaillierte Befunde, Einschränkungen und Originalquellen stehen einmalig im [Research-Bericht](../product-definition/archive/research-2026-09-13-harness-graph-ledger/REPORT.md), mit [Quellen-/Ableitungsindex](../product-definition/archive/research-2026-09-13-harness-graph-ledger/EVIDENCE.json). Die Theorie-Spine dieses Dokuments wird dadurch nicht automatisch empirisch bestätigt. Für Consultry gelten [DECISIONS D-0913-R01–R08](../product-definition/DECISIONS.md), nicht die gesamte explorative Agency-Theorie.
+
+- **A*-Thought-V2:** modellinterne Forschung; keine Umsetzung von Manifold-Alignment, Graphvalidierung oder Ledger nachgewiesen. Die frühere Inbox vermischte Vergleichsbaselines für Genauigkeit und Längenreduktion; korrigierte Einordnung im Bericht. Kein Black-Box-API-Baustein.
+- **Procedural Graphs:** Anschluss an externe Verfahrensorientierung. Diese kann helfen oder schaden; nicht als Rechtfertigung starrer Workflowpflichten verwenden. Ausführung, Skillwissen und Ereignisledger getrennt halten.
+- **ASKS, SKILL.state, Harness-of-Harness und WikiSkill:** zusätzliche Primärquellen aus der code4AI-Spur; jeweils begrenzte Forschungsbelege für Wissensaufbau, Arbeitszustand, Ergebnisfortschreibung und Lernhilfen. Lizenz-/Verfügbarkeitsgrenzen im Bericht beachten.
+- **code4AI / Discover AI:** priorisierte Entdeckungsquelle, keine pauschale wissenschaftliche Autorität. Sechs konkrete Videozuordnungen sind gesichert; Metadaten/Beschreibungen geprüft, keine vollständige Video-/Transkriptanalyse behauptet.
+
+Lehre für die weitere Theoriearbeit: Eine verifizierbare Grenze beschreibt Ergebnis- oder Wirkungsanforderungen, nicht automatisch jeden zulässigen Denk- oder Lösungsweg. Zusätzliche Verfahrensvorgaben und Bewertungs-Agenten müssen ihren Nutzen gegen eine schlankere Ausführung zeigen. Stärkere Modelle können solche Hilfen entbehrlich machen; Datenrechte, tatsächliche Befugnisse und Herkunft sind eine andere Kategorie.
