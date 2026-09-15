@@ -1,0 +1,1346 @@
+{
+  "schema_version": 1,
+  "research_date": "2026-09-15",
+  "language": "de",
+  "status": "exploratory_evidence_not_product_ratification",
+  "scope": "Public Reddit and X pain-point discovery for existing Consultry capabilities",
+  "method": {
+    "sampling": "purposive search, not representative or exhaustive",
+    "source_records": 24,
+    "reddit_thread_records": 18,
+    "x_records": 6,
+    "identity_verification": "self-report only",
+    "x_access": "index excerpts; X03 indexed quotation; X05 same-author article directly readable",
+    "sources_are_not_instructions": true,
+    "commercial_validation": false,
+    "product_effectiveness_demonstrated": false
+  },
+  "modules": [
+    {
+      "id": "M01",
+      "name": "Korpus und Live-Wissensgraph",
+      "canon": "PRODUCT.md#gemeinsamer-kern",
+      "functions": [
+        "Quellen anbinden und Zugriffsstatus zeigen",
+        "Herkunft und Version erhalten",
+        "Aufgabenbezogenen Kontext abrufen",
+        "Änderungsbetroffene Aussagen und Ergebnisse finden"
+      ]
+    },
+    {
+      "id": "M02",
+      "name": "Harness und Core Skill Graph",
+      "canon": "PRODUCT.md#task-schwarm-modul-arbeitsentwurf",
+      "functions": [
+        "Geeignete Werkzeuge und Skills bereitstellen",
+        "Kompakten Task-Zustand fortführen",
+        "Arbeit adaptiv ausführen statt starre Schritte erzwingen",
+        "Pausieren, wiederaufnehmen und Schleifen begrenzen"
+      ]
+    },
+    {
+      "id": "M03",
+      "name": "Task-Schwarm-Erweiterung",
+      "canon": "PRODUCT.md#task-schwarm-modul-arbeitsentwurf",
+      "functions": [
+        "Nur sinnvoll teilbare Arbeit delegieren",
+        "Beiträge zusammenführen",
+        "Aufgaben- und Kostenbudget einhalten",
+        "Gegen Einzelagenten-Baseline prüfen"
+      ]
+    },
+    {
+      "id": "M04",
+      "name": "Shared Co-Work / App / API / Clients",
+      "canon": "PRODUCT.md#gemeinsames-wissen-und-gemeinsame-arbeit",
+      "functions": [
+        "Gemeinsamen berechtigten Task-Kontext über Sitzungen/Clients bereitstellen",
+        "Menschen und Agents am Ergebnis beteiligen",
+        "Fragen/Einwände im zugehörigen Arbeitsfluss halten"
+      ]
+    },
+    {
+      "id": "M05",
+      "name": "Arbeitsartefakte und Corporate Alignment",
+      "canon": "PRODUCT.md#gemeinsamer-kern",
+      "functions": [
+        "Vorhandene Vorlagen und Ergebnisse weiterbearbeiten",
+        "Inhalt, Zahlen, Sprache und Corporate Design ausrichten",
+        "Bearbeitbare nutzbare Ergebnisdateien liefern"
+      ]
+    },
+    {
+      "id": "M06",
+      "name": "Model Bridge und universeller Grundschutz",
+      "canon": "PRODUCT.md#grundschutz-für-alle-zusätzliche-isolation-optional",
+      "functions": [
+        "Zulässige Modell-/Tool-/Datenwege bestimmen",
+        "Delegierte Befugnisse zentral begrenzen",
+        "Konkrete externe Wirkungen kontrollieren",
+        "Geschützte Ausgabe/Weitergabe nach Empfänger prüfen"
+      ]
+    },
+    {
+      "id": "M07",
+      "name": "Outcome Tests und Validation Graph",
+      "canon": "PRODUCT.md#task-schwarm-modul-arbeitsentwurf",
+      "functions": [
+        "Task-Anforderungen mit Prüfevidenz verbinden",
+        "Prüfbare Werte/Dateieigenschaften testen",
+        "Fachliches Urteil und unprüfbare/later outcomes kennzeichnen",
+        "Gegenbelege und Lücken am Ergebnis zeigen"
+      ]
+    },
+    {
+      "id": "M08",
+      "name": "Arbeits- und Wissensledger",
+      "canon": "PRODUCT.md#gemeinsames-wissen-und-gemeinsame-arbeit",
+      "functions": [
+        "Verwendete Kontexte und akzeptierte/verwarfene Entscheidungen erhalten",
+        "Ergebnisversionen und Änderungen nachvollziehbar machen",
+        "Wiederaufnahme und Wirkungsnachweis unterstützen"
+      ]
+    },
+    {
+      "id": "M09",
+      "name": "Optional: P2P-/Blockchain-Protokoll",
+      "canon": "PRODUCT.md#task-schwarm-modul-arbeitsentwurf",
+      "functions": [
+        "Unabhängige organisationsübergreifende Annahme ausgewählter Zustände untersuchen"
+      ],
+      "evidence_gap": "Keine belastbare unabhängige Nachfrage in dieser Stichprobe; kein Sicherheitsersatz."
+    },
+    {
+      "id": "M10",
+      "name": "Optional: zusätzliche Isolation / private Modellbereitstellung",
+      "canon": "PRODUCT.md#grundschutz-für-alle-zusätzliche-isolation-optional",
+      "functions": [
+        "Zusätzliche geschützte Verarbeitungswege als Angebotsoption prüfen"
+      ],
+      "evidence_gap": "Datensensibilität belegt noch keine Nachfrage nach eigenem Hosting und keine Wirtschaftlichkeit."
+    }
+  ],
+  "pains": [
+    {
+      "id": "P01",
+      "pain": "Ich muss der KI meine Arbeit und frühere Entscheidungen immer wieder erklären.",
+      "segments": [
+        "Einzelnutzer",
+        "kleine Unternehmen",
+        "cross-client Power-User"
+      ],
+      "sources": [
+        "R05",
+        "R06",
+        "R07",
+        "R10"
+      ],
+      "strength": "mehrere eigenständige Selbstberichte",
+      "modules": [
+        "M01",
+        "M02",
+        "M04",
+        "M08"
+      ],
+      "functions": [
+        "Task beim nächsten Einstieg mit aktuellem Ziel, Entscheidungen, verworfenen Alternativen und Quellenstand fortsetzen",
+        "Nur relevante Vorarbeit bereitstellen; nicht die gesamte Historie in jeden Prompt kopieren"
+      ],
+      "fit": "direkter Anschluss",
+      "test": "Weniger Rebriefingzeit und erneut geöffnete entschiedene Fragen; Folgetask nutzt die richtigen Gründe/Quellen.",
+      "limit": "Ein kurzer gepflegter Entscheidungszettel kann ausreichen. Plattformnutzen muss darüber hinausgehen."
+    },
+    {
+      "id": "P02",
+      "pain": "Gespeichertes Wissen veraltet und wird trotzdem weiterverwendet.",
+      "segments": [
+        "kleine Teams",
+        "Engineering",
+        "dokumentenreiche Arbeit"
+      ],
+      "sources": [
+        "R08",
+        "R09",
+        "R10",
+        "R18"
+      ],
+      "strength": "mehrere eigenständige Selbstberichte",
+      "modules": [
+        "M01",
+        "M08",
+        "M07"
+      ],
+      "functions": [
+        "Stabile Regeln, veränderlichen Zustand und historische Entscheidungen trennen",
+        "Geänderte Grundlagen mit betroffenen Ergebnissen verbinden; gezielt aktualisieren oder als prüfbedürftig markieren"
+      ],
+      "fit": "direkter Anschluss; Graphmehrwert noch nachzuweisen",
+      "test": "Nach Quellenänderung werden betroffene Aussagen gefunden, nicht betroffene Arbeit bleibt erhalten; Pflegeaufwand sinkt.",
+      "limit": "Nicht alles automatisch zur neuen Firmenwahrheit erklären; einfache Dateien/Live-Statusskripte als Baseline."
+    },
+    {
+      "id": "P03",
+      "pain": "Ich habe die Informationen, aber die KI bekommt sie nicht zuverlässig.",
+      "segments": [
+        "kleine Unternehmen",
+        "Teams mit internen Quellen",
+        "IT-Betrieb"
+      ],
+      "sources": [
+        "R06",
+        "R13"
+      ],
+      "strength": "zwei unterschiedliche Anwendungsberichte",
+      "modules": [
+        "M01",
+        "M06",
+        "M07"
+      ],
+      "functions": [
+        "Quellen einfach anschließen; Sync-/Verbindungszustand und letzte erfolgreiche Nutzung zeigen",
+        "Nicht gefunden, nicht berechtigt, nicht synchronisiert und technischer Fehler unterscheiden",
+        "Retrieval in echter Nutzer-/Client-Konstellation testen"
+      ],
+      "fit": "direkter Anschluss",
+      "test": "Relevante Quelle wird unter tatsächlicher Identität gefunden; Fehler werden korrekt erklärt und nicht als fehlendes Wissen ausgegeben.",
+      "limit": "Ein berechtigtes Quellsystem garantiert noch kein korrektes Connector-Retrieval."
+    },
+    {
+      "id": "P04",
+      "pain": "Gute KI-Arbeit verlangt zu viel Einrichtung — oder bevormundet danach meinen Arbeitsstil.",
+      "segments": [
+        "weniger technische Unternehmer",
+        "Power-User",
+        "Enterprise-Adoption"
+      ],
+      "sources": [
+        "R05",
+        "R15",
+        "X02",
+        "X05",
+        "X06"
+      ],
+      "strength": "mehrere Berichte; X teils nur indexiert",
+      "modules": [
+        "M02",
+        "M04"
+      ],
+      "functions": [
+        "Geeignete Skills, Tools und Beispiele nach einfacher Wissensintegration bereitstellen",
+        "Proaktivität und Interventionsbedarf steuern; keine Pflicht zur dauernden nächsten-Schritt-Bestätigung",
+        "Wiederkehrende fachliche Voraussetzungen als getestete Hilfen verfügbar machen"
+      ],
+      "fit": "direkter Anschluss",
+      "test": "Zeit bis erstem akzeptiertem Ergebnis; Setup-/Pflegeaufwand und unnötige Unterbrechungen erfassen.",
+      "limit": "Nicht alle Nutzer wollen maximale Autonomie oder maximale Führung. Skills sind hilfreiche Methoden, keine Sicherheitsgrenze."
+    },
+    {
+      "id": "P05",
+      "pain": "Das Ergebnis sieht fertig aus, ist aber nicht arbeitsfähig oder nicht von uns.",
+      "segments": [
+        "Beratungen",
+        "Content-/Marketingarbeit",
+        "Kleinunternehmer"
+      ],
+      "sources": [
+        "R01",
+        "R02",
+        "R05"
+      ],
+      "strength": "mehrere eigenständige Selbstberichte",
+      "modules": [
+        "M05",
+        "M02",
+        "M07"
+      ],
+      "functions": [
+        "Bestehende Artefakte/Corporate-Vorlagen und gute Beispiele verwenden",
+        "Editierbare Ergebnisse erzeugen; Daten-/Chartbezüge und Zahlenkonsistenz prüfen",
+        "Sprache, Aussage und Format gemeinsam ausrichten"
+      ],
+      "fit": "direkter Anschluss; keine neue Office-Suite nötig",
+      "test": "Zeit bis zur nutzbaren Abgabe inklusive Korrektur; native Bearbeitbarkeit und Vorlagen-/Datenanforderungen prüfen.",
+      "limit": "Think-cell-Integration nicht automatisch MVP-Pflicht; mit einem tatsächlich benötigten Ergebnisformat starten."
+    },
+    {
+      "id": "P06",
+      "pain": "Plausibel und technisch fertig heißt nicht, dass die Geschäftsaufgabe richtig erfüllt ist.",
+      "segments": [
+        "Founder",
+        "operative Unternehmen",
+        "Projekt-/Engineeringverantwortliche"
+      ],
+      "sources": [
+        "R04",
+        "R16",
+        "R17",
+        "X01",
+        "X02",
+        "X05"
+      ],
+      "strength": "mehrere Berichte; konkrete X-Vorfälle indexgestützt",
+      "modules": [
+        "M07",
+        "M05",
+        "M02"
+      ],
+      "functions": [
+        "Ergebnisbedingungen mit fachlichen Anforderungen und Evidenz verbinden",
+        "Prüfbare Zahlen, Fälle und ausgeführte Wirkungen testen; unabhängige fachliche Lücken zeigen",
+        "Methoden nach aufgetretenen Fehlern gezielt verbessern statt bloß mehr Agenten abstimmen lassen"
+      ],
+      "fit": "direkter Anschluss",
+      "test": "Realistische Gegenfälle prüfen; falsche grüne Tests und fehlende Geschäftsbedingungen müssen auffallen.",
+      "limit": "Kein Wahrheitsbeweis durch Konsens. Bei urteilsabhängigen Ergebnissen bleibt Unsicherheit sichtbar."
+    },
+    {
+      "id": "P07",
+      "pain": "Wir arbeiten zusammen, aber jeder KI-Account hat seine eigene unvollständige Arbeitswelt.",
+      "segments": [
+        "Zwei-Personen-Unternehmen",
+        "Teams",
+        "wechselnde Clients"
+      ],
+      "sources": [
+        "R14",
+        "R07",
+        "R18"
+      ],
+      "strength": "direkter Kleinteam-Kaufkontext plus ergänzende Berichte",
+      "modules": [
+        "M04",
+        "M01",
+        "M06"
+      ],
+      "functions": [
+        "Gemeinsame Quellen, Projekte und Task-Ergebnisse bei getrennten Identitäten nutzen",
+        "Berechtigte Übergabe zwischen Menschen/Agents/Clients; gemeinsame Connectorverwaltung",
+        "Einstieg für reale kleine Teams ermöglichen"
+      ],
+      "fit": "direkter funktionaler und kommerzieller Anschluss",
+      "test": "Zweite berechtigte Person setzt Arbeit ohne Copy-paste fort; unberechtigte Person erhält auch keine geschützten Ableitungen.",
+      "limit": "Gemeinsamer Chat ist weder gemeinsame Berechtigung noch genügende Zusammenarbeit. Seat-Mindestzahlen des Wettbewerbs nicht als aktuell festgestellt darstellen."
+    },
+    {
+      "id": "P08",
+      "pain": "Das erlaubte Modell passt nicht zur Arbeit — andere Modelle werden trotzdem benutzt.",
+      "segments": [
+        "Enterprise-IT",
+        "Fachbereiche",
+        "geschützte Wissensarbeit"
+      ],
+      "sources": [
+        "R11",
+        "R12",
+        "R15"
+      ],
+      "strength": "mehrere Firmen-Selbstberichte",
+      "modules": [
+        "M06",
+        "M01"
+      ],
+      "functions": [
+        "Geeignete zugelassene Modelle über definierte Daten-/Toolwege nutzbar machen",
+        "Zentrale Grenzen für Inhalte und Empfänger mit verständlichen Alternativen statt bloß pauschaler Sperre"
+      ],
+      "fit": "direkter Anschluss an Model Bridge/Grundschutz",
+      "test": "Realer Fachauftrag mit zugelassenem Modell gelingt; unzulässiger Datenweg bleibt gesperrt.",
+      "limit": "Keine Behauptung, Consultry verhindere jede Nutzung außerhalb seines kontrollierten Pfads. Kein Hostingbedarf allein aus diesem Schmerz ableiten."
+    },
+    {
+      "id": "P09",
+      "pain": "Ein Agent kann reale Schäden auslösen; eine Anweisung ist keine verlässliche Begrenzung.",
+      "segments": [
+        "Agenten-Power-User",
+        "IT-Verantwortliche",
+        "Teams mit Schreib-/Versandaktionen"
+      ],
+      "sources": [
+        "X03",
+        "R12",
+        "X06"
+      ],
+      "strength": "ein indexgestützter Vorfallsbericht plus direkt gelesene Befürchtung; keine Prävalenz",
+      "modules": [
+        "M06",
+        "M02",
+        "M08"
+      ],
+      "functions": [
+        "Befugnisse außerhalb editierbarer Prompts am Aktionspunkt prüfen",
+        "Gefährliche Wirkung begrenzen; erreichbare Unterbrechung, Rechteentzug und nach Möglichkeit Wiederherstellung",
+        "Konkretes Veto vor konkreter Wirkung auswerten; Protokollierung ergänzt"
+      ],
+      "fit": "direkter Grundschutz; keine Premium-Sicherheitsfreischaltung",
+      "test": "Unzulässiges Löschen/Senden/Delegieren auch bei Alles-erlauben stoppen; erlaubte Arbeit ohne Dauerfreigaben ausführen.",
+      "limit": "Ein Ledger stoppt keine Aktion von allein; keine Garantie für unkontrollierte Kanäle oder bereits erfolgte Schäden."
+    },
+    {
+      "id": "P10",
+      "pain": "Mehr Agents verbrauchen mein Budget, ohne proportional mehr Ergebnis zu liefern.",
+      "segments": [
+        "zahlende Einzelnutzer",
+        "Teams mit gemischter Nutzung",
+        "Agentenbetreiber"
+      ],
+      "sources": [
+        "R03",
+        "R15"
+      ],
+      "strength": "direkter Schwarm-Einzelbericht plus Enterprise-Verbrauchsbericht",
+      "modules": [
+        "M03",
+        "M02",
+        "M06"
+      ],
+      "functions": [
+        "Schwarm selektiv einsetzen und Beiträge aufteilen statt dieselbe Arbeit wiederholen",
+        "Auftrags-/Nutzungsbudgets, Kostenklarheit und zulässige Modellwahl",
+        "Gültige Vorarbeit wiederverwenden, bevor erneut recherchiert wird"
+      ],
+      "fit": "direkter Anschluss; Schwarmleistung unbewiesen",
+      "test": "Akzeptierte Ergebnisqualität, Nacharbeit, Latenz und Gesamtkosten gegen starken Einzelagenten mit gleichem Kontext vergleichen.",
+      "limit": "Keine pauschale Token-/Kostenersparnis und keine ungeprüfte Billigmodellregel."
+    },
+    {
+      "id": "P11",
+      "pain": "Nach Fehler oder Unterbrechung weiß niemand sicher, was erledigt wurde.",
+      "segments": [
+        "Agentenbetreiber",
+        "langlaufende externe Toolarbeit"
+      ],
+      "sources": [
+        "R04"
+      ],
+      "strength": "kleiner Thread mit Selbstberichten/Engineering-Vorschlägen; begrenzte Belegdichte",
+      "modules": [
+        "M02",
+        "M08",
+        "M06"
+      ],
+      "functions": [
+        "Arbeitsstand und tatsächlich beobachtete Toolwirkungen erhalten",
+        "Wiederaufnehmen ohne stilles Überspringen oder doppelten Versand/Schreiben",
+        "Wiederholte Fehlerschleifen begrenzen und konkrete Hilfe anfordern"
+      ],
+      "fit": "direkter Anschluss, Bedarf pro Erstfall prüfen",
+      "test": "Lauf an mehreren Stellen unterbrechen; Ergebnisfortsetzung und externe Zustände prüfen.",
+      "limit": "Persistierter falscher Kontext bleibt falsch; nicht jede UI-Reconnect-Störung ist ein Agentencheckpointproblem."
+    },
+    {
+      "id": "P12",
+      "pain": "KI spart dem Ersteller Zeit und lädt die Nacharbeit bei Experten oder Kollegen ab.",
+      "segments": [
+        "Teamleads",
+        "Senior Reviewer",
+        "Fachverantwortliche"
+      ],
+      "sources": [
+        "R16",
+        "R17",
+        "X05"
+      ],
+      "strength": "mehrere eigenständige Selbstberichte",
+      "modules": [
+        "M04",
+        "M07",
+        "M05",
+        "M02"
+      ],
+      "functions": [
+        "Prüfbare kurze Ergebnisse und Diffs statt unstrukturierter Textmengen liefern",
+        "Relevante Annahmen und offene Fragen am Resultat sichtbar machen",
+        "Gesamte Team-Nacharbeit und akzeptierten Output beurteilen"
+      ],
+      "fit": "direkter Anschluss; nicht mit Quellenprüfungs-Sonderbereich verwechseln",
+      "test": "Erstellerzeit plus Reviewerzeit plus Fehlernacharbeit erfassen; mehr generierter Output allein zählt nicht.",
+      "limit": "Organisationskonflikte, unklare Zuständigkeit oder fehlende Fachexpertise löst eine Plattform nicht allein."
+    }
+  ],
+  "sources": [
+    {
+      "id": "R01",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/consulting/comments/1vg6vte/ai_powerpoint_thinkcell/",
+      "date": "2026-08-05",
+      "date_basis": "Suchindex: Thread und verwendete August-Kommentare; Originalseite relativ datiert",
+      "title": "AI, powerpoint & Thinkcell",
+      "access": "Originalthread samt verwendeten Kommentaren geöffnet",
+      "origin": "Consulting-Nutzer; Rollen und Unternehmenszugehörigkeit nicht extern verifiziert",
+      "observation": "Mehrmonatiger Versuch, Claude mit Think-cell zu nutzen. Ein Nutzer berichtet: chartbasierte Daten und Überschriften zur Kritik extrahieren funktioniert; generierte PPTX sehen dagegen richtig aus, enthalten aber nicht die benötigten editierbaren Think-cell-Objekte.",
+      "workaround": "Struktur/Kritik per KI; Charts und ausgewählte Seiten manuell bearbeiten.",
+      "pain_ids": [
+        "P05",
+        "P06"
+      ],
+      "limitations": "Beobachtungen über konkrete damalige Werkzeuge, kein aktueller genereller Leistungstest. Anbieterkommentare nicht als unabhängige Nachfrage gezählt.",
+      "locator": "Kommentar beginnt Something that worked better for me; Threadtext und Been trying to master this; Gegenbeleg tbh if AI can get me 50-70%",
+      "counterevidence": "Ein Nutzer will bei Daten/Charts bewusst beteiligt bleiben; teilautomatisierte Arbeit kann bereits wertvoll sein."
+    },
+    {
+      "id": "R02",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/consulting/comments/1isjaco/ai_for_powerpoint_that_works_for_consulting/",
+      "date": "2025-02-18",
+      "date_basis": "Threaddatum; verwendete Erstberichte vom 22.02.2025, Konventionsfrage vom 16.04.2026 laut Suchindex",
+      "title": "AI for PowerPoint that works for Consulting",
+      "access": "Originalthread samt verwendeten Kommentaren geöffnet",
+      "origin": "Selbstbezeichnete Boutique-Analysten/Consultants; Organisationen nicht bestätigt",
+      "observation": "Erzeugte Slides genügen dem benötigten Detailgrad und der Kontrolle nicht. Ein späterer Nutzer sucht Anpassung an organisationsspezifische Regeln anhand eigener früherer Decks.",
+      "workaround": "KI für Sprache/Analyse; bezahlte klassische Chart-/Formatierungswerkzeuge und bestehende Slides für Endergebnisse.",
+      "pain_ids": [
+        "P05"
+      ],
+      "limitations": "Historischer Werkzeugstand; viele Werbeantworten ausdrücklich ausgeschlossen. Nur ausgewählte nicht werbende Kommentare verwendet.",
+      "locator": "I find that AI tools ... level of detail; I'm in a boutique; my organisation has very specific rules",
+      "counterevidence": "Ein weiterer Nutzer berichtet gute Resultate mit Plus AI und wenig Nachbearbeitung; nicht jedes Team benötigt einen neuen Dokumentengenerator."
+    },
+    {
+      "id": "R03",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/kimi/comments/1ubioiv/how_i_wasted_my_kimi_agent_swarm_quota/",
+      "date": "2026-06-21",
+      "date_basis": "Suchindex; geöffnetes Original relativ datiert",
+      "title": "How I wasted my Kimi Agent Swarm quota",
+      "access": "Originalthread geöffnet",
+      "origin": "Selbstbericht eines zahlenden Individualnutzers, keine Firmenzugehörigkeit angegeben",
+      "observation": "Recherche-/Schreibaufträge verbrauchen unerwartet viel gemeinsames Schwarmkontingent.",
+      "workaround": "Schwarm nur für geeignete breite Recherche, sonst einzelner Thinking-Agent.",
+      "pain_ids": [
+        "P10"
+      ],
+      "limitations": "Abrechnungs- und Leistungszahlen sind unkontrollierte Nutzerschätzungen; keine überprüften Tarif- oder Effizienzangaben. Nur ein Thread.",
+      "locator": "How I manage now; This is my personal experience",
+      "counterevidence": "Gegenbeleg zu Schwarm-by-default: Nutzer erreicht brauchbare Ergebnisse mit Einzelagenten und klarer Aufgabe."
+    },
+    {
+      "id": "R04",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1u0bp9v/how_are_you_handling_recovery_when_ai_agents_fail/",
+      "date": "2026-06-08",
+      "date_basis": "Suchindex Thread und ausgewählte Kommentare 08.–10.06.2026",
+      "title": "How are you handling recovery when AI agents fail mid-task in production?",
+      "access": "Originalthread mit Extraktions-/Recovery-Kommentaren geöffnet; Naboo-Kommentar nur im ausführlichen Suchindex sichtbar",
+      "origin": "Agentenentwickler/-betreiber laut Kommentaren; Naboo-Zuordnung nur Suchindex, nicht als unabhängig bestätigte Firmenaussage",
+      "observation": "Lange Venue-Sourcing-/Kundenempfehlungsaufträge neu zu starten kostet Zeit/Tokens. Weiterer Erfahrungsbericht nennt fortgesetzte Verarbeitung bereits falsch extrahierter Dokumentwerte.",
+      "workaround": "Persistenter Zustand/Checkpoints; wiederholte Fehler an Menschen eskalieren; tatsächlich ausgeführte externe Aktionen getrennt prüfen.",
+      "pain_ids": [
+        "P06",
+        "P11"
+      ],
+      "limitations": "Anonyme Selbstangaben, sehr kleine Diskussion. Ably-Anbieterkommentar über Transport-SDK nicht als Kundenbeleg gezählt. Technische Empfehlungen der Kommentare nicht pauschal übernommen. Der Naboo-Kommentar fehlte in der geöffneten Threadansicht; deshalb ist genau dieser Teil nur indexgestützt.",
+      "locator": "We run an AI planner at Naboo; ive seen pipelines where confidence scores looked fine",
+      "counterevidence": "Ein Checkpoint macht fehlerhafte Ausgangsdaten nicht richtig."
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R05",
+      "date": "2026-02-10",
+      "url": "https://www.reddit.com/r/Entrepreneur/comments/1r17dwg/looking_for_ai_tool_recommendations_are_these/",
+      "title": "Looking for AI Tool Recommendations — Are These Issues Universal or Tool-Specific?",
+      "origin": "Inhaber eines kleinen Crochet-Design-/Blogging-Unternehmens",
+      "observation": "Wiederholt Kontext und Korrekturen; hochgeladene Brand-Voice-Dokumente werden laut Bericht ignoriert. Unerbetene nächste Schritte und Workflow-Steuerung stören die Arbeit.",
+      "workaround": "Wiederholtes Prompting; sucht zuverlässigeres Werkzeug und äußert Zahlungsbereitschaft.",
+      "pain_ids": [
+        "P01",
+        "P04",
+        "P05"
+      ],
+      "counterevidence": "Ein anderer Nutzer kommt mit Claude Projects, eigenen Textbeispielen und aufwendiger Einrichtung gut zurecht.",
+      "limitations": "Keine objektiv nachgewiesene Modellverschlechterung, keine allgemeine Zahlungsbereitschaft. Keine eigene Produktwerbung im OP erkannt.",
+      "locator": "OP My Main Issues; Kommentar Doug-Mansfield beginnt I use Claude projects"
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R06",
+      "date": "2025-10-28",
+      "url": "https://www.reddit.com/r/Entrepreneur/comments/1oiogxk/how_are_you_giving_ai_chat_agents_chatgpt_claude/",
+      "title": "How are you giving AI chat agents real context about your small business?",
+      "origin": "Selbstbezeichneter Kleinunternehmer, Nutzung ausdrücklich intern",
+      "observation": "Custom GPTs, PDFs und Markdown liefern Kontext nur mit manueller Pflege; fragt nach Anbindung von Kunden-/Preis-/Geschäftsinformationen aus CRM, Notion und ERP.",
+      "workaround": "Manuelle Kontextpakete; erwägt MCP, kein funktionierender automatischer Datenfluss berichtet.",
+      "pain_ids": [
+        "P01",
+        "P03"
+      ],
+      "limitations": "Keine notwendige Breite aller Integrationen bewiesen; umgebende Anbieterantworten nicht als Nachfrage verwendet.",
+      "locator": "OP und Klarstellung internal-facing"
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R07",
+      "date": "2026-07-14",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1uwm4jj/how_do_you_maintain_context_across_claude_chat/",
+      "title": "How do you maintain context across Claude Chat, Projects, and Claude Code?",
+      "origin": "Claude-Team-/Code-/ChatGPT-Nutzer; Teamgröße und Beruf offen",
+      "observation": "Wiederholt Architekturgrenzen, Begrifflichkeiten, Präferenzen und verworfene Lösungsansätze beim Wechsel zwischen Umgebungen.",
+      "workaround": "Fragt nach Aufteilung auf Preferences, Projects und CLAUDE.md; Antwort beschreibt manuelles Spiegeln einer Repo-Markdown-Datei.",
+      "pain_ids": [
+        "P01",
+        "P07"
+      ],
+      "limitations": "Kein bestätigtes teamweites Problem allein aus Team-Abonnement ableiten. Werbeantworten ausgeschlossen.",
+      "locator": "OP; Agent007_MI9-Kommentar im geöffneten Parent; Einzelkommentar oxkwo49 nicht separat abrufbar"
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R08",
+      "date": "2026-07-21",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1v2t4xf/who_actually_maintains_your_md_context_files_ours/",
+      "title": "Who actually maintains your md context files? Ours went stale in three weeks",
+      "origin": "Fünf-Personen-Team laut OP",
+      "observation": "Refactoring und Deploymentänderung fehlen in CLAUDE.md; Agent nutzt veraltete Regeln. Vereinbarte Updatepflege wird unter Zeitdruck ausgelassen.",
+      "workaround": "Anweisung zur Aktualisierung ergänzt, aber Nachkontrolle bleibt liegen.",
+      "pain_ids": [
+        "P02"
+      ],
+      "counterevidence": "Ein Kommentator mit einem Kollegen pflegt Dateien manuell und berichtet, dass dies genügt.",
+      "limitations": "Kein nachgewiesener Produktionsschaden; Aussagen über fremde größere Teams nicht verwendet.",
+      "locator": "OP; poodlini-Kommentar im Parent, Einzelpermalink oyy8jry nicht separat abrufbar"
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R09",
+      "date": "2026-08-04",
+      "url": "https://www.reddit.com/r/ClaudeCode/comments/1vf9vsa/my_claudemd_stopped_going_out_of_date_when_i/",
+      "title": "My CLAUDE.md stopped going out of date when I stopped putting changing information in it",
+      "origin": "Coding-Agent-Nutzer, Organisation nicht genannt",
+      "observation": "Kontextdatei nennt React 19, Lockfile 18.3; Agent folgt laut Bericht der veralteten Datei. Auch ein alter Startstatus führt die Folgesession fehl.",
+      "workaround": "Stabile Regeln getrennt von dynamischem Zustand; Handoff, Index und Statusskripte.",
+      "pain_ids": [
+        "P02"
+      ],
+      "counterevidence": "Gezielte Dateiorganisation statt neuer Plattform hilft dem Autor bereits.",
+      "limitations": "Skripte sind nicht automatisch aktuell oder fehlerfrei; Verbesserung nur Selbstbericht.",
+      "locator": "OP Version-/START-HERE-Beispiele"
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R10",
+      "date": "2026-06-12",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1u47om5/i_started_keeping_a_decisions_file_that_i_paste/",
+      "title": "I started keeping a decisions file that I paste at the top of every session",
+      "origin": "Einzelnutzer, Beruf/Teamgröße nicht angegeben",
+      "observation": "Agent widerspricht früheren Entscheidungen; erneute Erklärungen nötig.",
+      "workaround": "Etwa 30 Zeilen Entscheidungen und Gründe in einfachem Text, manuell vor jede Session gesetzt.",
+      "pain_ids": [
+        "P01",
+        "P02"
+      ],
+      "counterevidence": "Laut Autor genügt dieser einfache Workaround; kein Bedarf an Graphplattform bewiesen.",
+      "limitations": "Gamma-Erwähnung, Affiliation unbekannt; keine eigene Produktverlinkung/-offenlegung im gelesenen OP."
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R11",
+      "date": "2025-11-30",
+      "url": "https://www.reddit.com/r/sysadmin/comments/1pa5jeg/are_you_allowing_any_ai_tools_to_touch_production/",
+      "title": "Are you allowing any AI tools to touch production?",
+      "origin": "Engineer nach Wechsel von Startup in restriktivere Organisation",
+      "observation": "Offiziell nur Copilot; Kollegen nutzen laut OP dennoch andere Modelle heimlich.",
+      "workaround": "Diskussion über freigegebene Werkzeuge und Datenklassen; keine erfolgreiche Abhilfe des OP belegt.",
+      "pain_ids": [
+        "P08"
+      ],
+      "limitations": "Kein unabhängig bestätigter Policyverstoß; besonders drastische Nebenkommentare nicht als Vorfallnachweis verwendet."
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R12",
+      "date": "2026-08-30",
+      "url": "https://www.reddit.com/r/sysadmin/comments/1w2xacg/managing_ai_in_enterprise_environment/",
+      "title": "Managing AI in enterprise environment",
+      "origin": "Enterprise-IT-/Admin-Beteiligter",
+      "observation": "Organisation sperrt Alternativen zu Copilot; Management verlangt Claude für einen Bereich. Admin arbeitet an DLP/SSO und befürchtet Upload sensibler Dateien.",
+      "workaround": "Prüft Purview-/Defender-Kontrollen, Okta-SSO vorhanden.",
+      "pain_ids": [
+        "P08",
+        "P09"
+      ],
+      "limitations": "Befürchteter Datenabfluss, nicht beobachteter Leak. Keine Aussage über heutige Wirksamkeit einer konkreten Konfiguration."
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R13",
+      "date": "2026-07-28",
+      "url": "https://www.reddit.com/r/copilotstudio/comments/1v90akq/copilot_studio_agent_problems_connecting_to/",
+      "title": "Copilot Studio agent problems connecting to SharePoint",
+      "origin": "Betreiber eines in Teams eingesetzten Agents",
+      "observation": "Zuvor funktionierendes Retrieval schlägt trotz laut OP vorhandener Quellenrechte fehl. Weiterer Nutzer meldet Unterschied zwischen Testoberfläche und Produktion.",
+      "workaround": "Ein anderer Betreiber konsolidiert Verbindungsreferenzen; nicht als universelle Lösung bestätigt.",
+      "pain_ids": [
+        "P03"
+      ],
+      "limitations": "Konkreter damaliger Betriebsfehler; kopierter Microsoft-Incidenttext nicht unabhängig geprüft. Kein allgemeiner Copilot-Befund."
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R14",
+      "date": "2026-07-16",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1uxoj5k/small_business_in_need_of_2_individual_claude/",
+      "title": "Small business in need of 2 individual Claude accounts with shared business context",
+      "origin": "Zwei-Personen-Bootstrap-Unternehmen",
+      "observation": "Separate Accounts fragmentieren Firmenkontext; will gemeinsame Wissensquellen, Projekte, Connectoren und Administration. Berichteter Mindestkauf von fünf Seats passt nicht zur Größe.",
+      "workaround": "Prüft ChatGPT Business; geteilte Dateien allein reichen laut OP nicht für gewünschte Connector-/Adminfunktion.",
+      "pain_ids": [
+        "P07"
+      ],
+      "limitations": "Historische Kauf-/Tariferfahrung, keine aktuell verifizierte Preis- oder Seat-Angabe. Kein verbindliches Consultry-Kaufinteresse.",
+      "counterevidence": "Im selben Thread berichten andere bereits von zwei verfügbaren Seats. Die konkrete Seat-Grenze ist daher kein belastbarer aktueller Wettbewerbsvorteil; der Bedarf an gemeinsamer Arbeit bleibt."
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R15",
+      "date": "2026-05-13",
+      "url": "https://www.reddit.com/r/GithubCopilot/comments/1tbuneg/enterprise_perspective_on_copilots_usagebased/",
+      "title": "Enterprise perspective on Copilot usage-based billing",
+      "origin": "Beteiligter an Toolentscheidung, berichtet ca. 300 IT-Mitarbeiter und ungleich verteilte Nutzung",
+      "observation": "Wenige Power-User treiben Verbrauch; Freigabe/Wechsel benötigt mehrere Funktionen, On-prem-DevOps begrenzt Integration. Alle Ergebnisse werden geprüft.",
+      "workaround": "Nutzungsanalyse, geplante Caps und Schulung zu Modell-/Promptwahl.",
+      "pain_ids": [
+        "P04",
+        "P08",
+        "P10",
+        "P12"
+      ],
+      "counterevidence": "Vorhandene Modellwahl, Abrechnung und Governance machen Copilot laut Bericht wertvoll und schwer zu ersetzen.",
+      "limitations": "Umstrittene Kostenrechnung nicht verwendet; Selbstbericht, keine unabhängigen Nutzungsdaten."
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R16",
+      "date": "2025-07-10",
+      "url": "https://www.reddit.com/r/ExperiencedDevs/comments/1lwk503/study_experienced_devs_think_they_are_24_faster/",
+      "title": "Firsthand review-burden comment in study discussion",
+      "origin": "Kommentar: SWE und faktischer Projektlead bei ML-/DL-Produktanbieter",
+      "observation": "Plausible, subtil falsche KI-PRs von Kollegen verschieben erheblichen Aufwand zur Prüfung.",
+      "workaround": "PRs vorübergehend blockieren und detailliert prüfen.",
+      "pain_ids": [
+        "P06",
+        "P12"
+      ],
+      "limitations": "Nur Kommentar RadicalDwntwnUrbnite verwendet; keine Forschungsbehauptung aus dem Titel. Separater Kommentar n2fhqw9 nicht abrufbar, Text im Parent gelesen.",
+      "locator": "RadicalDwntwnUrbnite-Kommentar"
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R17",
+      "date": "2026-08-08",
+      "url": "https://www.reddit.com/r/sysadmin/comments/1vik84c/aiobsessed_coworkers_are_becoming_a_massive/",
+      "title": "AI-obsessed coworkers are becoming a massive problem",
+      "origin": "Datensicherheitsmitarbeiter in neuem Team laut OP",
+      "observation": "Lange KI-Antworten verfehlen Fragen; Mitarbeiter kann erzeugte Skripte nicht erklären. Vorgesetzter fördert Nutzung, Nacharbeit fällt bei Reviewer an.",
+      "workaround": "Keine erfolgreiche Abhilfe belegt.",
+      "pain_ids": [
+        "P06",
+        "P12"
+      ],
+      "limitations": "Subjektive Belastungs-/Verdopplungsangaben nicht als gemessenen Effekt übernehmen; Arbeitgeber nicht verifiziert."
+    },
+    {
+      "platform": "Reddit",
+      "access": "Originalthread mit verwendeten Passagen geöffnet",
+      "date_basis": "Absolutes Datum aus indexierter Reddit-Darstellung; Originalseiten teilweise nur relativ datiert",
+      "identity_status": "Selbstbeschreibung, nicht unabhängig bestätigt",
+      "id": "R18",
+      "date": "2024-11-29",
+      "url": "https://www.reddit.com/r/ExperiencedDevs/comments/1h2n8zt/claude_projects_for_each_teamproject/",
+      "title": "Claude Projects for each team/project",
+      "origin": "Engineering-Teammitglied laut OP",
+      "observation": "Interne Dokumente, Migrationsbeispiele und Testkonventionen verbessern laut Autor Stiltreue und Refactoring; wünscht wiederverwendbaren Projektkontext.",
+      "workaround": "Bestehende Claude Projects; Kommentar bündelt Source/Tests/Docs/Prompts per Git/Repomix.",
+      "pain_ids": [
+        "P02",
+        "P04",
+        "P07"
+      ],
+      "counterevidence": "Nützliche Teamarbeit bereits mit vorhandenen Werkzeugen möglich.",
+      "limitations": "Älterer Anwendungsbericht, kein Audit heutiger Produktfunktionen; positive Selbsteinschätzung."
+    },
+    {
+      "id": "X01",
+      "platform": "X",
+      "url": "https://x.com/elvissun/status/2025044631407468689",
+      "date": "2026-02-20",
+      "date_basis": "Indexierte Postdarstellung",
+      "title": "Billing failure after design intent was missed",
+      "origin": "Elvis Sun, kommerzieller Founder; Vorfall-Selbstbericht statt direkter Produktpitch",
+      "access": "X-Original gesperrt/leer; indexierter Posttext",
+      "observation": "Berichtet Dreifachabrechnung eines Kunden: Agent folgte Boilerplate statt Flat-Rate-Designdokument; Einladungsfall war in eigener Prüfung nicht abgedeckt.",
+      "workaround": "Fix, Erstattung und Entschuldigung; nutzt Agents weiter.",
+      "pain_ids": [
+        "P06"
+      ],
+      "limitations": "Keine Rechnungen, Code oder Logs geprüft; Vorfall und Ursache nicht unabhängig bestätigt. Kein Beleg, dass Ledger oder Veto den Fehler verhindert hätten."
+    },
+    {
+      "id": "X02",
+      "platform": "X",
+      "url": "https://x.com/thespearing/status/2032312816367964364",
+      "date": "2026-03-13",
+      "date_basis": "Postdatum; geschilderte Arbeit vom 04.–05.03.2026",
+      "title": "Remodeling lead missed property-ownership prerequisite",
+      "origin": "Nathan Spearing, Remodeling-Business laut Selbstbericht",
+      "access": "X-Original gesperrt/leer; indexierter Posttext",
+      "observation": "Agent bearbeitet Interessentenanfrage; erst im Gespräch fällt auf, dass Person die Immobilie nicht besitzt und Auftrag nicht erteilen kann.",
+      "workaround": "Eigentumsprüfung als fachliche Voraussetzung ergänzt.",
+      "pain_ids": [
+        "P06",
+        "P04"
+      ],
+      "limitations": "Einzelbericht; keine Bestätigung der behaupteten dauerhaft fehlerfreien Wiederholung. Eigentümerdaten müssen rechts-/zweckkonform genutzt werden, hier keine Integrationsentscheidung."
+    },
+    {
+      "id": "X03",
+      "platform": "X",
+      "url": "https://x.com/summeryue0/status/2025774069124399363",
+      "date": "2026-02-23",
+      "date_basis": "UTC; manche Darstellungen 22.02.2026",
+      "title": "Inbox action despite confirm-before-acting instruction",
+      "origin": "Summer Yue, persönliche Agentennutzung; nicht als Arbeitgebervorfall eingeordnet",
+      "access": "Original nicht direkt lesbar; indexierte Zitierung des verlinkten Originals",
+      "corroboration_url": "https://x.com/_avichawla/status/2037958091032191189",
+      "observation": "Berichtet beginnendes Löschen von Inbox-Inhalten trotz Bestätigungsanweisung; Stoppen über Mobilgerät misslingt, Eingriff am lokalen Rechner nötig.",
+      "workaround": "Manueller lokaler Eingriff.",
+      "pain_ids": [
+        "P09"
+      ],
+      "limitations": "Keine Löschmenge, dauerhafter Datenverlust oder Root Cause verifiziert. Werbende Proxy-Empfehlung des Zitierenden nicht übernommen."
+    },
+    {
+      "id": "X04",
+      "platform": "X",
+      "url": "https://x.com/bobbyhansenjr/status/2023246258438095287",
+      "date": "2026-02-16",
+      "date_basis": "UTC; Indexdarstellung 15.02.2026",
+      "title": "Agent setup and memory activity without useful business progress",
+      "origin": "Bobby Hansen Jr., betreibt SquadOps AI; kommerzieller Interessenkonflikt",
+      "access": "X-Original gesperrt/leer; indexierter Artikeltext",
+      "observation": "Berichtet übermäßige Erinnerungsablage, nach Kompaktierung verlorenen Dashboardkontext und erfundene Prospects; viel Aktivität ohne entsprechende Verkaufsgespräche.",
+      "workaround": "Eigene Konfiguration/Prüfung; keine Verbesserungszahlen als Nachweis übernommen.",
+      "pain_ids": [
+        "P01",
+        "P04",
+        "P06",
+        "P11"
+      ],
+      "limitations": "Anbieterperspektive, nicht als unabhängiger Käufer gezählt; keine quantitative Wirkungs-/Kostenbehauptung übernommen.",
+      "evidence_role": "Ergänzende Hypothese mit kommerziellem Interesse"
+    },
+    {
+      "id": "X05",
+      "platform": "X + Autorenartikel",
+      "url": "https://x.com/kaxil/status/2037503513350005134",
+      "date": "2026-03-27",
+      "date_basis": "X-Post; zugänglicher Autorenartikel vom 22.03.2026",
+      "title": "I Haven't Written a Line of Code in 4 Months",
+      "origin": "Kaxil Naik, Astronomer-Engineering-Leader/Airflow-Beitragender laut Autorenartikel",
+      "access": "X indexiert; zugehöriger Autorenartikel direkt geöffnet",
+      "corroboration_url": "https://kaxil.substack.com/p/i-havent-written-a-line-of-code-in",
+      "observation": "Berichtet hohen Zeitaufwand für Skills, Hooks, CLIs und Integrationen; Review und Abstimmung bleiben Engpässe, Tests können trotz falscher Lösung bestehen.",
+      "workaround": "Geteilte Engineering-Skills, integrierte Systeme, Tests und eigene Reviewarbeit.",
+      "pain_ids": [
+        "P04",
+        "P06",
+        "P12"
+      ],
+      "counterevidence": "Autor bewertet Setupinvestition als lohnend und berichtet umfangreiche nutzbare Arbeit.",
+      "limitations": "Eigenbericht mit fachlichem/commercial Interesse an Agententooling; Produktivität nicht unabhängig gemessen."
+    },
+    {
+      "id": "X06",
+      "platform": "X",
+      "url": "https://x.com/Steve_Yegge/status/1937620952747315308",
+      "date": "2025-06-24",
+      "date_basis": "Indexierte Postdarstellung",
+      "title": "Permission friction and checkpoint-based workflow",
+      "origin": "Steve Yegge, erfahrener Power-User und Agententool-Ökosystemteilnehmer",
+      "access": "X-Original gesperrt/leer; indexierter Posttext",
+      "observation": "Berichtet Geschwindigkeitsgewinn bei abgeschalteten Berechtigungsabfragen über mehrere Wochen und keine neuen Probleme in diesem Zeitraum.",
+      "workaround": "Häufige Checkpoints, separate Repo-Kopien.",
+      "pain_ids": [
+        "P04",
+        "P09"
+      ],
+      "counterevidence": "Dauerbestätigungen werden von manchen erfahrenen Nutzern abgelehnt.",
+      "limitations": "Kein Sicherheitsbeweis und keine Empfehlung, Kontrollen auszuschalten; historische individuelle Nutzung, keine Firmenanforderung.",
+      "evidence_role": "Gegenbeleg zur Annahme jeder wolle mehr Freigabedialoge"
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "XCL01",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/AgentsOfAI/comments/1r8veka/solving_the_swarm_tax_and_race_conditions_my/",
+      "date": "2026-02-19",
+      "title": "Solving the Swarm Tax and Race Conditions",
+      "access": "Suchindex",
+      "observation": "Anbieter stellt eigenes Orchestrierungs-/Sicherheitstool vor.",
+      "excluded_reason": "Lösungsmarketing, kein unabhängiger Kundenbedarfsbeleg.",
+      "pain_ids": []
+    },
+    {
+      "id": "XCL02",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/AutoGPT/comments/1u7zcyp/the_missing_piece_for_truly_autonomous_agents/",
+      "date": "2026-06-17",
+      "title": "The missing piece for truly autonomous agents: economic infrastructure",
+      "access": "Suchindex",
+      "observation": "Entwickler bewirbt eigenes Blockchain-Protokoll.",
+      "excluded_reason": "Keine unabhängige Nachfrage nach Blockchain/P2P in Consultrys Zielarbeit; Sicherheitsbehauptungen ungeprüft.",
+      "pain_ids": []
+    },
+    {
+      "id": "XCL03",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1vzy03q/everyone_on_my_team_uses_ai_and_teamwork_got/",
+      "title": "Everyone on my team uses AI and teamwork got worse",
+      "excluded_reason": "OP-Profil beschreibt Student-Founder mit Forschung zu Agenten-Teamwork. Nicht als unabhängiger Firmenkunde gezählt.",
+      "access": "Thread und öffentliches Profil geprüft durch Research-Teilagent",
+      "profile_source": "https://www.reddit.com/user/Brilliant_Most_2033/"
+    },
+    {
+      "id": "XCL04",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/sysadmin/comments/1lf6dsw/microsoft_preenterprise_rollout_of_copilot_how/",
+      "title": "Copilot oversharing-link concern",
+      "excluded_reason": "Ausgangsbehauptung im Thread korrigiert; OP bestätigt spätere gegenteilige Tests. Ursprüngliche Sicherheitsbehauptung nicht übernommen.",
+      "access": "Originalthread geprüft durch Research-Teilagent"
+    },
+    {
+      "id": "XCL05",
+      "platform": "Reddit",
+      "url": "https://www.reddit.com/r/AI_Agents/comments/1uyweaf/where_do_multi_agent_systems_actually_outperform/",
+      "title": "Where do multi-agent systems actually outperform?",
+      "excluded_reason": "Für starke Teams-Aussagen verantwortlicher Kommentator ist FetchSandbox-/AgentGovern-Anbieter; nicht unabhängige Käufernachfrage.",
+      "access": "Thread und öffentliches Profil geprüft durch Research-Teilagent",
+      "profile_source": "https://www.reddit.com/user/Common_Dream9420/"
+    }
+  ],
+  "relationships": {
+    "source_to_pain": [
+      {
+        "source_id": "R05",
+        "pain_id": "P01",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R06",
+        "pain_id": "P01",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R07",
+        "pain_id": "P01",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R10",
+        "pain_id": "P01",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R08",
+        "pain_id": "P02",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R09",
+        "pain_id": "P02",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R10",
+        "pain_id": "P02",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R18",
+        "pain_id": "P02",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R06",
+        "pain_id": "P03",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R13",
+        "pain_id": "P03",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R05",
+        "pain_id": "P04",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R15",
+        "pain_id": "P04",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X02",
+        "pain_id": "P04",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X05",
+        "pain_id": "P04",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X06",
+        "pain_id": "P04",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R01",
+        "pain_id": "P05",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R02",
+        "pain_id": "P05",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R05",
+        "pain_id": "P05",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R04",
+        "pain_id": "P06",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R16",
+        "pain_id": "P06",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R17",
+        "pain_id": "P06",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X01",
+        "pain_id": "P06",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X02",
+        "pain_id": "P06",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X05",
+        "pain_id": "P06",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R14",
+        "pain_id": "P07",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R07",
+        "pain_id": "P07",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R18",
+        "pain_id": "P07",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R11",
+        "pain_id": "P08",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R12",
+        "pain_id": "P08",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R15",
+        "pain_id": "P08",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X03",
+        "pain_id": "P09",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R12",
+        "pain_id": "P09",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X06",
+        "pain_id": "P09",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R03",
+        "pain_id": "P10",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R15",
+        "pain_id": "P10",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R04",
+        "pain_id": "P11",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R16",
+        "pain_id": "P12",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "R17",
+        "pain_id": "P12",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      },
+      {
+        "source_id": "X05",
+        "pain_id": "P12",
+        "relation": "self_report_supports_problem_or_counterexample_with_record_limits"
+      }
+    ],
+    "pain_to_module": [
+      {
+        "pain_id": "P01",
+        "module_id": "M01",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P01",
+        "module_id": "M02",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P01",
+        "module_id": "M04",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P01",
+        "module_id": "M08",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P02",
+        "module_id": "M01",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P02",
+        "module_id": "M08",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P02",
+        "module_id": "M07",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P03",
+        "module_id": "M01",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P03",
+        "module_id": "M06",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P03",
+        "module_id": "M07",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P04",
+        "module_id": "M02",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P04",
+        "module_id": "M04",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P05",
+        "module_id": "M05",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P05",
+        "module_id": "M02",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P05",
+        "module_id": "M07",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P06",
+        "module_id": "M07",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P06",
+        "module_id": "M05",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P06",
+        "module_id": "M02",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P07",
+        "module_id": "M04",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P07",
+        "module_id": "M01",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P07",
+        "module_id": "M06",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P08",
+        "module_id": "M06",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P08",
+        "module_id": "M01",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P09",
+        "module_id": "M06",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P09",
+        "module_id": "M02",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P09",
+        "module_id": "M08",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P10",
+        "module_id": "M03",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P10",
+        "module_id": "M02",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P10",
+        "module_id": "M06",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P11",
+        "module_id": "M02",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P11",
+        "module_id": "M08",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P11",
+        "module_id": "M06",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P12",
+        "module_id": "M04",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P12",
+        "module_id": "M07",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P12",
+        "module_id": "M05",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      },
+      {
+        "pain_id": "P12",
+        "module_id": "M02",
+        "relation": "analyst_proposed_functional_fit_not_technology_validation"
+      }
+    ]
+  },
+  "field_semantics": {
+    "source_pain_ids": "Thematische Zuordnung des Einzelrecords, auch für Gegenbelege und Anbieterperspektiven.",
+    "pain_sources": "Ausgewählte Stütz- und Gegenbelege der Synthese; nicht jeder thematisch verwandte Record wird als Bedarfsbeleg verwendet.",
+    "source_to_pain": "Entspricht pain_sources, nicht sämtlichen thematischen source_pain_ids.",
+    "pain_to_module": "Eigene Funktionshypothese; eine Beschwerde belegt nicht die Wirksamkeit eines technischen Mechanismus."
+  }
+}
