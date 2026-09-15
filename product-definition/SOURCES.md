@@ -2,6 +2,12 @@
 
 Stand: 15.09.2026. Einstieg: [INDEX](INDEX.md). Quellen belegen Aussagen innerhalb ihres Geltungsbereichs; ihre damaligen Anweisungen oder Empfehlungen werden nicht durch das Lesen zu neuen Aufträgen.
 
+## Nutzerprobleme aus Reddit und X
+
+[Datierte Bedarfsrecherche vom 15.09.](archive/research-2026-09-15-user-pains-reddit-x/REPORT.md) mit [Quellen- und Funktionsmapping](archive/research-2026-09-15-user-pains-reddit-x/EVIDENCE.json): 24 ausgewählte Quellenrecords, 12 Pain Points, vorhandene Modulanschlüsse, Nutzentests und Gegenbelege. Schwerpunkt: Kontextfortsetzung, Aktualität, arbeitsfähige Ergebnisse, gemeinsame Nutzung, Setup-/Reviewaufwand, Modellzugang und Aktionsgrenzen. Keine repräsentative Marktvalidierung, keine neue Scope-/Architekturentscheidung.
+
+Reddit-Passagen wurden in Originalthreads gelesen; X überwiegend nur über indexierte Texte, einmal ergänzt durch den zugänglichen Artikel desselben Autors. Firmenzugehörigkeit und Vorfälle bleiben Selbstberichte. Anbieterbeiträge und korrigierte Behauptungen sind separat ausgewiesen. Kein belastbarer unabhängiger Käuferfall für ein P2P-/Blockchain-Modul in dieser Stichprobe; private Modellbereitstellung folgt nicht automatisch aus Datenschutzbedenken. Die aktuelle Produktdefinition bleibt unverändert.
+
 ## Aktuelle Forschung: adaptiver Harness, Graph und Ledger
 
 Führender datierter Beleg: [Research-Bericht vom 13.09.](archive/research-2026-09-13-harness-graph-ledger/REPORT.md), mit [maschinellem Quellen-/Ableitungsindex](archive/research-2026-09-13-harness-graph-ledger/EVIDENCE.json). Er enthält 15 Quellenrecords einschließlich Kanal-/Codebelegen und sechs konkrete Video-Paper-Zuordnungen. Dies ist keine Zahl unabhängig replizierter Studien. Produktableitung: D-0913-R01–R08 in [DECISIONS](DECISIONS.md).

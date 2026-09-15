@@ -1,7 +1,7 @@
 schema_version: 1
 archive_root: "product-definition/archive"
 authority: "historical_provenance_only"
-updated: "2026-09-14"
+updated: "2026-09-15"
 current_entrypoint: "../INDEX.md"
 current_decisions: "../DECISIONS.md"
 
@@ -13,6 +13,11 @@ known_missing_historical_companions:
   - "Consultry-Module-Refinement-v1.0.md"
 
 collections:
+  - path: "research-2026-09-15-user-pains-reddit-x/"
+    archived_reason: "dated exploratory user-pain research, source limitations and candidate-function mapping; no product-scope ratification"
+    artifacts:
+      - "REPORT.md"
+      - "EVIDENCE.json"
   - path: "session-2026-09-14-framing-messaging/"
     archived_reason: "dated voice decisions and messaging source bank; current product authority remains in the six leading documents"
     artifacts:

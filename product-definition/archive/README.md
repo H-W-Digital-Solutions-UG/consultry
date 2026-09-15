@@ -4,6 +4,7 @@ Aktueller Einstieg: [INDEX](../INDEX.md). Dieser Baum bewahrt Herkunft und histo
 
 | Bereich | Inhalt |
 |---|---|
+| [research-2026-09-15-user-pains-reddit-x](research-2026-09-15-user-pains-reddit-x/REPORT.md) | datierte Nutzerproblem-Recherche: 24 Quellenrecords, 12 Pain Points, Modul-/Funktionsmapping und Gegenbelege; explorativ, keine Scope-Ratifikation |
 | [session-2026-09-14-framing-messaging](session-2026-09-14-framing-messaging/NOTES.md) | datierter Voice-Beleg: breiter Arbeitskern, Grundschutz/Zusatzangebot, aufbewahrte Formulierungen und Astro-Seitenzuordnung; Founder-Stories für später |
 | [research-2026-09-13-harness-graph-ledger](research-2026-09-13-harness-graph-ledger/REPORT.md) | datierte Primärquellenanalyse, sechs code4AI-Videozuordnungen und maschinelle Ableitungen; heutige Gültigkeit in DECISIONS |
 | [baseline-before-consolidation-2026-09-10](baseline-before-consolidation-2026-09-10/README.md) | vollständiger früherer `latest/`-Baum, 59 Tickets, Research, Bilder und Vision-One-Pager |
