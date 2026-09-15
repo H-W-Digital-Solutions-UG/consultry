@@ -1,0 +1,8 @@
+---
+interface Props { description?: string }
+const { description } = Astro.props;
+---
+<header class="chapter-heading" data-reveal>
+  <h2><slot /></h2>
+  {description && <p>{description}</p>}
+</header>

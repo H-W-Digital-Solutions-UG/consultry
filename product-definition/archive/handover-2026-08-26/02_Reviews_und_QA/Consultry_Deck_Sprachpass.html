@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultry · Deck-Sprachpass</title>
+<style>
+  :root{
+    --brand:#AD2764; --brand2:#D2397E; --rose:#F9E2EC; --paper:#FFFBF9; --sand:#EDDFD7;
+    --ink:#2B2226; --mut:#7A6A70; --ok:#2E7D52; --okbg:#E3F2E9; --warn:#B07C10; --warnbg:#FBF0D8; --bad:#B3261E; --badbg:#FBE3E1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--sand);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+  .wrap{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 2px 40px rgba(90,40,60,.14)}
+  .inner{padding:40px 56px 64px}
+  @media(max-width:760px){.inner{padding:24px 18px 40px}}
+
+  .kicker{font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--brand);text-transform:uppercase}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:40px;line-height:1.13;margin:10px 0 12px}
+  h1 em{font-style:normal;color:var(--brand)}
+  .lede{font-size:16.5px;max-width:76ch}
+  .meta{display:inline-block;margin-top:13px;background:var(--rose);border:1px solid #EFC9DB;border-radius:20px;padding:6px 14px;font-size:13px;color:#8A2352}
+
+  nav.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 8px}
+  nav.chips a{text-decoration:none;font-size:13px;font-weight:600;color:var(--brand);border:1.5px solid var(--brand2);border-radius:18px;padding:6px 13px;background:#fff}
+  nav.chips a:hover{background:var(--rose)}
+
+  section{margin-top:42px}
+  .sechead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--rose);padding-bottom:8px;margin-bottom:18px}
+  .secno{font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--brand)}
+  h2{font-family:Georgia,serif;font-size:25px}
+  .secnote{margin-left:auto;font-size:13px;color:var(--mut)}
+
+  .verdict{background:linear-gradient(135deg,#FDF4F8,#FFF9F4);border:1.5px solid #EFC9DB;border-radius:14px;padding:22px 26px;font-size:16px}
+  .verdict b{color:var(--brand)}
+
+  .hit{background:#fff;border:1px solid #EBD9E2;border-radius:14px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 8px rgba(120,40,70,.05)}
+  .hithead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+  .sev{font-size:11px;font-weight:800;letter-spacing:.14em;border-radius:14px;padding:4px 12px}
+  .sev.rot{background:var(--badbg);color:var(--bad)}
+  .hit h3{font-family:Georgia,serif;font-size:20px}
+  .hit .wo{font-size:12.5px;color:var(--mut);margin-left:auto;white-space:nowrap}
+  .hit p{margin:8px 0;font-size:14.5px}
+  .beleg{background:var(--rose);border-left:4px solid var(--brand2);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px;font-family:Georgia,serif;font-style:italic}
+  .fix{background:var(--okbg);border-left:4px solid var(--ok);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:14px}
+  .fix b{color:var(--ok)}
+
+  .vn{display:grid;grid-template-columns:52px 1fr 1fr;gap:0;background:#fff;border:1px solid #EBD9E2;border-radius:12px;overflow:hidden;margin-bottom:10px}
+  @media(max-width:720px){.vn{grid-template-columns:40px 1fr}.vn .nach{grid-column:2}}
+  .vn .f{background:var(--rose);color:var(--brand);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .vn .vor,.vn .nach{padding:11px 14px;font-size:13.5px}
+  .vn .vor{color:var(--mut)}
+  .vn .vor s{text-decoration-color:#C9A2B4}
+  .vn .vor small{display:block;color:#9A8A91;font-size:11.5px;margin-top:5px;line-height:1.45}
+  .vn .nach{border-left:1px solid #F3E7ED;font-weight:600}
+  .vn .nach::before{content:"besser: ";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ok);font-weight:800}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:12px;overflow:hidden}
+  .tblbox{overflow-x:auto;border:1px solid #EBD9E2;border-radius:12px}
+  th{background:var(--rose);color:#8A2352;text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px}
+  td{padding:9px 12px;border-top:1px solid #F3E7ED;vertical-align:top}
+  td.nr{font-weight:800;color:var(--brand);white-space:nowrap}
+  td.pl{font-family:Georgia,serif;font-style:italic}
+  .pill{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;border-radius:12px;padding:3px 10px;white-space:nowrap}
+  .pill.gruen{background:var(--okbg);color:var(--ok)}
+  .pill.gelb{background:var(--warnbg);color:var(--warn)}
+  .pill.rot{background:var(--badbg);color:var(--bad)}
+
+  .strip{border:1.5px dashed var(--brand2);border-radius:12px;background:#FFF6FA;padding:14px 18px;font-size:13.5px;margin-top:18px}
+  .strip b{color:var(--brand)}
+  footer{margin-top:48px;border-top:2px solid var(--rose);padding-top:16px;font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+
+<header>
+  <div class="kicker">Consultry · Investor-Deck · Sprachpass · vertraulich</div>
+  <h1>Dreizehn Stellen, <em>ein falsch lesbares Wort,</em> fünf Geschmacksfragen.</h1>
+  <p class="lede">Reiner Wortpass über alle fünfzehn Folien im heutigen Endstand, gelesen mit der härtesten Brille: ein kalter Investor, allein mit dem PDF, drei Minuten Zeit, keine Tonspur. Geprüft wurde dreierlei: Was <b>versteht er nicht</b> (Jargon, offene Bezüge), was <b>wirkt nicht</b> (schwache Verben, Substantivketten), und trägt auf jeder Folie <b>eine Zeile allein</b>. Die gute Nachricht vorweg: Das Punchline-Netz ist vollständig, der Grundton sitzt. Was bleibt, ist Feinschliff, und eine Zeile, die eine falsche Zahl in den Kopf setzt.</p>
+  <span class="meta">Stand 18. August 2026, nach dem Abend-Fix-Pass · Grundlage: Vollextraktion aller sichtbaren Folientexte</span>
+  <nav class="chips">
+    <a href="#s1">01 Verdikt</a><a href="#s2">02 Der rote Fund</a><a href="#s3">03 Jargon-Nester</a><a href="#s4">04 Politur</a><a href="#s5">05 Geschmacksfragen</a><a href="#s6">06 Punchline-Karte</a>
+  </nav>
+</header>
+
+<section id="s1">
+  <div class="sechead"><span class="secno">01</span><h2>Verdikt: der Ton sitzt, dreizehn Wörter nicht</h2></div>
+  <div class="verdict">
+    Das Deck spricht bereits eine erkennbare Sprache: kurze Verben, das Haus-Vokabular, ehrliche Marker, ein Punch je Folie. Dieser Pass findet deshalb <b>keine Baustellen, sondern Werkbankarbeit</b>: eine rote Stelle, die ein kalter Leser sachlich falsch mitnimmt (Folie 3), sechs Stellen, an denen Fachvokabular den Deck-only-Leser aussperrt oder der stärkste Satz seinen Anker verliert, und sechs Politurstellen für Konsistenz und Eleganz. Dazu fünf Geschmacksfragen, die bewusst keine Empfehlung tragen, sondern eure Stimme brauchen. Alles ist als Vorher-gegen-besser formuliert und in einem einzigen Patch-Lauf einbaubar.
+  </div>
+</section>
+
+<section id="s2">
+  <div class="sechead"><span class="secno">02</span><h2>Der rote Fund: die freie Woche, die keine ist</h2><span class="secnote">sachlich falsch lesbar, Folie 3</span></div>
+  <div class="hit">
+    <div class="hithead"><span class="sev rot">ROT · FALSCH LESBAR</span><h3>Ein Wort setzt die falsche Zahl in den Kopf</h3><span class="wo">Folie 3, Schlusszeile</span></div>
+    <div class="beleg">Und die freie Woche fließt zurück: Zeit beim Kunden, Qualität in der Arbeit.</div>
+    <p><b>Warum es weh tut:</b> „Die freie Woche" liest sich als eine ganze gewonnene Arbeitswoche. Tatsächlich stehen im Deck 3,5 plus 7,5, also <b>rund elf Stunden, gut ein Arbeitstag</b>. Der aufmerksame Investor stolpert und prüft nach (schlecht), der flüchtige nimmt „eine Woche frei" mit und zitiert sie weiter (schlimmer). Beides kostet genau die Währung, die das Deck sonst so sorgfältig verdient: Zahlenvertrauen. Die Formulierung ist ein Fossil aus der Zeit, als die Folie „die Woche" als Bild der ganzen Arbeitswoche erzählte.</p>
+    <div class="fix"><b>Fix:</b> Der gewonnene Tag fließt zurück: Zeit beim Kunden, Qualität in der Arbeit. <b>Warum diese Fassung:</b> „Der gewonnene Tag" ist korrekt (elf Stunden sind mehr als ein Arbeitstag, exakt wie die Notiz es vorrechnet), bleibt ein Bild statt einer Zahl, und „gewonnen" trägt mehr als „frei", denn frei klingt nach Freizeit, gewonnen nach Rendite.</div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="sechead"><span class="secno">03</span><h2>Jargon-Nester und verlorene Anker</h2><span class="secnote">sechs Stellen, an denen Deck-only-Leser aussteigen</span></div>
+
+  <div class="vn"><div class="f">F9</div><div class="vor"><s>Kunden, Fähigkeiten, Chancen, Zusagen und Projekte als verbundene Entitäten.</s><small>„Entitäten" ist Datenmodell-Vokabular. Der Techniker nickt, der Angel liest ein Fremdwort an der wichtigsten Stelle der wichtigsten Folie.</small></div><div class="nach">Kunden, Fähigkeiten, Chancen, Zusagen und Projekte, verbunden zu einem Modell statt verstreut in Dokumenten.</div></div>
+
+  <div class="vn"><div class="f">F9</div><div class="vor"><s>Grundlage, Unsicherheit und Auswirkung bleiben sichtbar.</s><small>Drei abstrakte Substantive ohne Anker. Ohne Tonspur bleibt offen, WAS da sichtbar bleibt.</small></div><div class="nach">Jede Erkenntnis zeigt, worauf sie beruht, wie belastbar sie ist und was sie bewirkt.</div></div>
+
+  <div class="vn"><div class="f">F9</div><div class="vor"><s>Es rechnet dort, wo eure Verträge schon sind.</s><small>Der stärkste Satz der Folie beginnt mit einem Bezug ins Leere: Wer ist „Es"? Der Live-Vortrag löst das, das PDF nicht.</small></div><div class="nach">Consultry rechnet dort, wo eure Verträge schon sind.</div></div>
+
+  <div class="vn"><div class="f">F12</div><div class="vor"><s>Wir entwickeln den ersten Produktpfad mit echten Beratungen</s><small>„Produktpfad" ist ein Insider-Kompositum, das außerhalb von Produktteams niemand benutzt. Der Titel verschenkt zudem seine eigentliche Aussage.</small></div><div class="nach">Wir bauen mit echten Beratungen, nicht im Labor.</div></div>
+
+  <div class="vn"><div class="f">F9</div><div class="vor"><s>AGENT-SANDBOX · Berater und Agenten am Task</s><small>„Sandbox" trägt die wertvolle Isolations-Konnotation und darf bleiben. „am Task" ist das einzige Denglisch im ganzen Deck.</small></div><div class="nach">AGENT-SANDBOX · Berater und Agenten an derselben Aufgabe</div></div>
+
+  <div class="vn"><div class="f">F13</div><div class="vor"><s>Bringt das Vertrauensnetzwerk für die ersten Piloten · Vollzeit ab Pilotstart</s><small>Terminologie-Drift: Folie 12 und 14 sagen dreimal „bezahlte Erprobung", Folie 13 sagt „Piloten". Ein Deck, ein Wort.</small></div><div class="nach">Eingebaut im Glow-up vom Abend, zusammen mit allen weiteren Zeilen der Teamfolie (neuer Titel, Drei-Seiten-Punch).</div></div>
+</section>
+
+<section id="s4">
+  <div class="sechead"><span class="secno">04</span><h2>Politur: sechs kleine Stellen</h2><span class="secnote">Konsistenz und Eleganz, je ein Wort</span></div>
+
+  <div class="vn"><div class="f">F7</div><div class="vor"><s>Der Vertrieb entscheidet, ob die Firma anbietet.</s><small>Das Deck sagt sonst überall „Haus" (Gedächtnis des Hauses, fürs ganze Haus, im Haus).</small></div><div class="nach">Der Vertrieb entscheidet, ob das Haus anbietet.</div></div>
+
+  <div class="vn"><div class="f">F4</div><div class="vor"><s>Chancen werden zu spät erkannt</s><small>Die einzige Passiv-Karte unter fünf aktiven Schwestern, und die Detailzeile liefert die aktive Fassung schon.</small></div><div class="nach">Chancen erreichen den Vertrieb zu spät</div></div>
+
+  <div class="vn"><div class="f">F12</div><div class="vor"><s>Systemprototyp</s><small>Nackt ist das Wort Insider-Sprech; Folie 14 erklärt es bereits richtig.</small></div><div class="nach">Prototyp über alle drei Kreisläufe (gleicher Wortlaut wie Folie 14)</div></div>
+
+  <div class="vn"><div class="f">F12</div><div class="vor"><s>Erster Wertbeitrag benannt</s><small>Produktsprech. Die eigene Notiz sagt es konkreter.</small></div><div class="nach">Bestätigt, welcher Schritt zuerst Wert bringt</div></div>
+
+  <div class="vn"><div class="f">F14</div><div class="vor"><s>Eine Entwicklungspartnerschaft mit realem Fall</s><small>„mit realem Fall" klingt nach Aktenzeichen; die Präposition macht den Unterschied.</small></div><div class="nach">Eine Entwicklungspartnerschaft am realen Fall</div></div>
+
+  <div class="vn"><div class="f">F3</div><div class="vor"><s>Beratung bleibt ein Beziehungsgeschäft, auch im Zeitalter der KI.</s><small>„Zeitalter" fällt zweimal in den ersten drei Folien (Cover: Zeitalter der Agenten). Wortdopplung an prominentester Stelle.</small></div><div class="nach">Beratung bleibt ein Beziehungsgeschäft. Auch mit KI.</div></div>
+</section>
+
+<section id="s5">
+  <div class="sechead"><span class="secno">05</span><h2>Fünf Geschmacksfragen</h2><span class="secnote">kein Fehler, eure Stimme entscheidet</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Stelle</th><th>Heute</th><th>Alternative</th><th>Abwägung</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">F4 Punch</td><td class="pl">Das Wissen arbeitet nicht durchgängig mit.</td><td class="pl">Das Wissen arbeitet nicht mit.</td><td>Kürzer und härter im Kontrast zu Folie 5; kostet die ehrliche Nuance, dass es punktuell ja mitarbeitet.</td></tr>
+      <tr><td class="nr">F8 Titel</td><td class="pl">Bestehende Werkzeuge lösen je ein Teil</td><td class="pl">Bestehende Werkzeuge lösen je ein Teilproblem</td><td>„ein Teil" klingt abgeschnitten; „Teilproblem" ist runder, eine Silbe schwerer.</td></tr>
+      <tr><td class="nr">F8 Baukästen</td><td class="pl">Braucht Experten oder Beraterzeit</td><td class="pl">Kostet genau die Zeit, die ihr verkauft.</td><td>Die Alternative ist der schärfste Satz-Kandidat der Folie, aber spürbar polemischer als der Fairness-Ton der Karten.</td></tr>
+      <tr><td class="nr">F9 Titel</td><td class="pl">Der Vorsprung wächst mit geprüftem Kontext und freigegebener KI</td><td class="pl">Der Vorsprung: modelliert, freigegeben, verifiziert</td><td>Die Alternative spiegelt exakt die drei Claims darunter; dafür abstrakter als der heutige Satz.</td></tr>
+      <tr><td class="nr">F11 Punch</td><td class="pl">Ein Preis, alles drin.</td><td class="pl">Alles drin: Token, Betrieb, Konnektoren.</td><td>Bekannter Wachsamkeitspunkt: „Ein Preis" neben zwei Tarifstufen plus Plattformgebühr ist wörtlich angreifbar; die Alternative zählt auf statt zu behaupten.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s6">
+  <div class="sechead"><span class="secno">06</span><h2>Die Punchline-Karte</h2><span class="secnote">trägt auf jeder Folie eine Zeile allein?</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Nr</th><th>Die tragende Zeile</th><th>Urteil</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">1</td><td class="pl">KI-Plattform für IT- und SAP-Beratungen · betrieben im Tenant des Kunden</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">2</td><td class="pl">Die zehn internen Stunden sind jetzt dran.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">3</td><td class="pl">Und die freie Woche fließt zurück …</td><td><span class="pill rot">ERST NACH FIX</span></td></tr>
+      <tr><td class="nr">4</td><td class="pl">Das Wissen arbeitet nicht durchgängig mit.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">5</td><td class="pl">Das Wissen der ganzen Firma arbeitet mit.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">6</td><td class="pl">Einzeln wäre jeder nur ein weiteres Werkzeug. Zusammen sind sie das Gedächtnis des Hauses.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">7</td><td class="pl">Heute bleibt dieser Satz wochenlang liegen, bis ihn jemand zufällig aufgreift.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">8</td><td class="pl">Ein Werkzeug je Prozess entlastet niemanden. Es verschiebt nur.</td><td><span class="pill gruen">BESTE ZEILE</span></td></tr>
+      <tr><td class="nr">9</td><td class="pl">Es rechnet dort, wo eure Verträge schon sind …</td><td><span class="pill gelb">ANKER FEHLT</span></td></tr>
+      <tr><td class="nr">10</td><td class="pl">Der Plan ist konservativ. Der Markt ist es nicht.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">11</td><td class="pl">Unsere Kunden sind IT-Beratungen: die geborenen Partner.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">12</td><td class="pl">Wir raten nicht, wir prüfen: jeden Monat fällt eine Annahme, bis der erste Kunde zahlt.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">13</td><td class="pl">Consulting, Produkt, Sicherheit und KI in einem Team. Aus dem Markt, den wir bedienen.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">14</td><td class="pl">Der Ask ist durchgerechnet, nicht gewünscht · Einsteigen?</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+      <tr><td class="nr">15</td><td class="pl">Jede Freigabe macht den nächsten Agenten klüger.</td><td><span class="pill gruen">TRÄGT</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="strip"><b>Lesart:</b> Das Punchline-Netz steht auf allen fünfzehn Folien, zwei Zeilen brauchen den Eingriff aus Sektion 02 und 03. Auffällig positiv im Deck-only-Test: Folie 8 und 10 funktionieren komplett ohne Erklärung, Folie 12 rettet ihr schwacher Titel nicht, aber ihr Punch schon. Nach dem Patch-Lauf gibt es keine Folie mehr, deren tragende Zeile einen Vortrag braucht.</div>
+</section>
+
+<footer>
+  <b>Methode:</b> Vollextraktion aller sichtbaren Folientexte im Stand nach dem Abend-Fix-Pass, Lesung mit Deck-only-Brille (kalter Investor, PDF, keine Tonspur), Prüfung auf Verständlichkeit, Wirkung und Punchline-Abdeckung; Notizen bewusst außen vor, weil sie beim Weiterleiten nicht mitreisen. Alle Vorschläge sind zählgenau formuliert und gedankenstrichfrei; die Sektionen 02 bis 04 (dreizehn Stellen) baue ich auf Zuruf als einen Patch-Lauf mit Playwright-Kontrolle ein, die fünf Geschmacksfragen einzeln nach eurer Wahl.
+</footer>
+
+</div></div>
+</body>
+</html>

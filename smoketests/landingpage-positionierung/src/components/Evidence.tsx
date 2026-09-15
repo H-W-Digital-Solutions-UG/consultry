@@ -6,17 +6,20 @@ export interface Stat {
   source: string;
 }
 
-/** Two sourced statistics, stacked, terracotta mono numerals. Every number names its study. */
+/** The study figures remain explicitly sourced; the large numbers establish the reading order. */
 export function Evidence({ stats }: { stats: Stat[] }) {
   return (
-    <dl className="divide-y divide-hair border-y border-hair">
-      {stats.slice(0, 2).map((s) => (
-        <div key={s.label} className="py-6">
-          <dt className="t-stat text-brand">{fmtValue(s.value)}</dt>
-          <dd className="t-body mt-2 max-w-[36ch]">{s.label}</dd>
-          <dd className="t-body-sm mt-1 text-ink-mute">{s.source}</dd>
-        </div>
-      ))}
-    </dl>
+    <div className="story-evidence">
+      <p className="story-kicker">Was Studien über den Arbeitsalltag zeigen</p>
+      <dl>
+        {stats.slice(0, 2).map((s) => (
+          <div key={s.label} className="story-evidence-item story-reveal">
+            <dt className="story-evidence-number">{fmtValue(s.value)}</dt>
+            <dd className="story-evidence-description">{s.label}</dd>
+            <dd className="story-evidence-source">{s.source}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
   );
 }

@@ -1,21 +1,22 @@
-import type { MouseEvent } from "react";
+import { useEffect, useRef, type MouseEvent } from "react";
 import { track } from "@/lib/track";
+import { HeroSmokeObject } from "./HeroSmokeObject";
+import { HeroInsights } from "./HeroInsights";
+import { WaitlistProof } from "./WaitlistProof";
+import { scrollToSection, scrollToWaitlist } from "@/lib/sectionNavigation";
+import "@/styles/hero.css";
 
-/**
- * One generated brand object per positioning (GPT Image 2.5 via Higgsfield,
- * transparent PNG → AVIF/WebP at 720/480px, ≈30/16 KB). Purely decorative:
- * stands free above the card, which overlaps only the object's shadow zone.
- * Fixed box so it never shifts layout; eager + high priority (first viewport).
- */
-function HeroObject({ variant }: { variant: string }) {
-  const base = `/hero/${variant}`;
-  return (
-    <picture aria-hidden="true" className="pointer-events-none mx-auto block w-[260px] sm:w-[340px] lg:w-[480px]">
-      <source type="image/avif" srcSet={`${base}-480.avif 480w, ${base}-720.avif 720w`} sizes="(min-width: 1024px) 480px, 340px" />
-      <source type="image/webp" srcSet={`${base}-480.webp 480w, ${base}-720.webp 720w`} sizes="(min-width: 1024px) 480px, 340px" />
-      <img src={`${base}-480.png`} alt="" width={720} height={720} loading="eager" fetchPriority="high" decoding="async" className="h-auto w-full" />
-    </picture>
-  );
+const COMPOSITIONS: Record<string, { lines: string[]; caption: string }> = {
+  corpus: { lines: ["Vom ersten Dokument", "an nutzbar."], caption: "Ein Dokument. Der Anfang von mehr." },
+  brand: { lines: ["Eure Sprache. Eure Vorlagen.", "Eure Freigaben."], caption: "Drei Perspektiven. Eine stimmige Unterlage." },
+  ledger: { lines: ["Viele Agenten.", "Ein gemeinsamer Stand."], caption: "Wissen verbinden. Gemeinsam weiterarbeiten." },
+  brain: { lines: ["Das Wissen der ganzen Firma", "arbeitet mit."], caption: "Wissen im Zusammenhang." },
+  access: { lines: ["Berechtigungen gelten", "für Agenten wie für Menschen."], caption: "Rechte gelten bei jedem Abruf." },
+};
+
+function HeroPicture({ variant }: { variant: string }) {
+  const artwork = variant === "corpus" || variant === "brand" || variant === "ledger" ? `${variant}-scene` : variant;
+  return <img src={`/hero/${artwork}-720.webp`} srcSet={`/hero/${artwork}-480.webp 480w, /hero/${artwork}-720.webp 720w`} sizes="(min-width: 1024px) 720px, (min-width: 640px) 560px, 440px" alt="" width={720} height={720} loading="eager" fetchPriority="high" decoding="async" />;
 }
 
 export interface HeroProps {
@@ -25,71 +26,94 @@ export interface HeroProps {
   lede: string;
   cta: string;
   secondary: string;
-  /** Max headline measure in ch; pages with long compounds pass a smaller value. */
-  h1MaxCh?: number;
   trust: Array<{ label: string; fact: string; detail: string }>;
 }
 
-/**
- * Hero / Primary (Dark): the Consultry warm-dark surface with its amber glow,
- * eyebrow + H1 + one-sentence lede + one gradient pill + one text link on the
- * left, the variant's brand object on the right, then the three operating facts
- * as a labelled hairline strip (Linear / Popcorn pattern). No UI mock in the
- * hero; the product surface lives in "So funktioniert es". No entrance motion.
- */
-export function Hero({ variant, eyebrow, title, lede, cta, secondary, h1MaxCh = 16, trust }: HeroProps) {
-  const toWaitlist = () => {
+/** One composed scene; native scrolling changes depth, never the reading order. */
+export function Hero({ variant, eyebrow, title, lede, cta, secondary, trust }: HeroProps) {
+  const ref = useRef<HTMLElement>(null);
+  const composition = COMPOSITIONS[variant];
+  useEffect(() => {
+    const section = ref.current;
+    if (!section) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+    let visible = true;
+    const update = () => {
+      frame = 0;
+      const rect = section.getBoundingClientRect();
+      const progress = motion.matches ? 0 : Math.min(1, Math.max(0, -rect.top / rect.height));
+      section.style.setProperty("--hero-progress", progress.toFixed(4));
+    };
+    const schedule = () => {
+      if (visible && !document.hidden && !frame) frame = requestAnimationFrame(update);
+    };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (visible) schedule(); });
+    observer.observe(section);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    motion.addEventListener("change", update);
+    update();
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      motion.removeEventListener("change", update);
+    };
+  }, [variant]);
+  const toWaitlist = (event: MouseEvent) => {
+    event.preventDefault();
     track({ name: "cta_click", variant, location: "hero" });
-    document.getElementById("warteliste")?.scrollIntoView({ behavior: "smooth" });
+    scrollToWaitlist();
   };
-  const toHow = (e: MouseEvent) => {
-    e.preventDefault();
+  const toHow = (event: MouseEvent) => {
+    event.preventDefault();
     track({ name: "cta_click", variant, location: "hero_secondary" });
-    document.getElementById("so-funktioniert-es")?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("so-funktioniert-es");
   };
   return (
-    <section className="hero-surface overflow-hidden pb-16 pt-[calc(4rem+clamp(3.5rem,8vw,7rem))] md:pb-20">
-      <div className="mx-auto max-w-[1200px] px-4 md:px-8">
-        <div className="grid gap-10 lg:min-h-[29rem] lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center lg:gap-16">
-          <div>
-            <p className="t-eyebrow text-warm">{eyebrow}</p>
-            <h1 className="t-display-xl mt-4 text-on-dark" style={{ maxWidth: `${h1MaxCh}ch` }}>
-              {title}
-            </h1>
-            <p className="t-lede mt-5 max-w-[30rem] text-on-dark-soft">{lede}</p>
-            <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6">
-              <button
-                type="button"
-                onClick={toWaitlist}
-                className="btn-hero-gradient inline-flex h-13 w-full items-center justify-center rounded-full px-7 text-base whitespace-nowrap transition-[filter] duration-(--duration-fast) sm:w-auto"
-              >
-                {cta}
-              </button>
-              <a href="#so-funktioniert-es" onClick={toHow} className="link-arrow-dark inline-flex min-h-11 items-center sm:min-h-0">
-                {secondary} →
-              </a>
-            </div>
+    <section ref={ref} className="immersive-hero" data-variant={variant} data-scroll-scene>
+      <div className="hero-atmosphere" aria-hidden="true" />
+      <div className="hero-stage">
+        <header className="hero-copy">
+          <p className="hero-eyebrow"><span aria-hidden="true" />{eyebrow}</p>
+          <h1 className="hero-headline" aria-label={title}>
+            {(composition?.lines ?? [title]).map((line, index) => <span key={line} aria-hidden="true" className={index === (composition?.lines.length ?? 1) - 1 ? "hero-headline__last" : undefined}>{line}</span>)}
+          </h1>
+        </header>
 
+        <div className="hero-scene" aria-hidden="true">
+          <div className="hero-ground" />
+          <svg className="hero-connections" viewBox="0 0 1440 1120" fill="none" preserveAspectRatio="none">
+            <path d="M 300 484 H 400 L 522 566" />
+            <path d="M 954 550 L 1030 484 H 1140" />
+            <circle cx="522" cy="566" r="3" />
+            <circle cx="954" cy="550" r="3" />
+          </svg>
+          <div className="hero-art">
+            {variant === "corpus" || variant === "brand" || variant === "ledger" ? <HeroSmokeObject variant={variant} poster={<HeroPicture variant={variant} />} /> : <div className="hero-static-art"><HeroPicture variant={variant} /></div>}
           </div>
-
-          <div className="min-w-0">
-            <HeroObject variant={variant} />
-          </div>
+          <p className="hero-caption">{composition?.caption}</p>
         </div>
 
-        {/* the three operating facts as a labelled strip: mono index + label in warm, the fact, one line of detail */}
-        <ul className="mt-12 grid grid-cols-1 divide-y divide-hair-dark border-t border-hair-dark md:mt-14 md:grid-cols-3 md:divide-x md:divide-y-0" aria-label="Betriebsgrundsätze">
-          {trust.map((t, i) => (
-            <li key={t.fact} className="py-5 md:py-6 md:pr-8 md:pl-8 md:first:pl-0">
-              <p className="app-mono text-warm" style={{ color: "#e8913a" }}>
-                {String(i + 1).padStart(2, "0")} · {t.label}
-              </p>
-              <p className="mt-2 text-[17px] leading-snug font-medium text-on-dark">{t.fact}</p>
-              <p className="t-body-sm mt-1 text-on-dark-soft">{t.detail}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="hero-context">
+          <p className="hero-lede">{lede}</p>
+          <HeroInsights variant={variant} />
+        </div>
 
+        <div className="hero-conversion">
+          <div className="hero-actions">
+            <a href="#warteliste" onClick={toWaitlist} className="hero-cta" data-hero-cta>{cta}<span aria-hidden="true">↗</span></a>
+            <a href="#so-funktioniert-es" onClick={toHow} className="hero-secondary">{secondary}<span aria-hidden="true">↓</span></a>
+          </div>
+          <div className="hero-proof"><span className="hero-proof__mark" aria-hidden="true">100</span><div><WaitlistProof /><p className="hero-proof__note">E-Mail zur nächsten Erprobungsrunde. Jederzeit abmelden.</p></div></div>
+        </div>
+        <div className="hero-footnote">
+          <a href="#so-funktioniert-es" onClick={toHow} className="hero-discover"><span aria-hidden="true">↓</span> Im Detail entdecken</a>
+          <ul aria-label="Betriebsgrundsätze">{trust.map((item) => <li key={item.label}>{item.fact}</li>)}</ul>
+        </div>
+        <span className="hero-continuation" aria-hidden="true" />
       </div>
     </section>
   );

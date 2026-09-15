@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-05",
+  "role": "unchanged_input_snapshots_not_current_authority",
+  "files": [
+    {
+      "path": "Consultry-Wissenskonsolidierung-2026-09-04.zip",
+      "bytes": 7278179,
+      "sha256": "0a15b8f6ed78fa250207bd7ab53f85c0f75aff53fdeaec64507e258a74ea7043"
+    },
+    {
+      "path": "did-dag-context-security.html",
+      "bytes": 9723,
+      "sha256": "d56456fed75613e58f149863677b37f5fe7c5901d1ccdde7baa681c6e04add7e"
+    },
+    {
+      "path": "did-dag-handover-paket.zip",
+      "bytes": 10337,
+      "sha256": "f3c37602012915b01a056b0f4c9815fab796f2f81b2751f745b0a969f107bd2f"
+    },
+    {
+      "path": "did-dag-handover.md",
+      "bytes": 15177,
+      "sha256": "e75c3d8279ca008e4fca4c207e3d0c1c8fb1b2309ddb728a792b97ebafc5fe25"
+    }
+  ]
+}

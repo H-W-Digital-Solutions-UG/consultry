@@ -1,0 +1,12 @@
+---
+interface Props { home: boolean; variant: string }
+const { home, variant } = Astro.props;
+---
+<div class="hero-conversion">
+  <div class="hero-actions">
+    <a class="button" data-waitlist-link href="#waitlist-form">Auf die Warteliste<span aria-hidden="true">↗</span></a>
+    <a class="text-link" href={home ? '#arbeitsbeispiel' : `#product-demo-${variant}`}>Beispiel erleben<span aria-hidden="true">↓</span></a>
+  </div>
+  <p class="proof"><span>100</span> Einträge auf der Warteliste.</p>
+  <p class="hero-conversion-note">Zur nächsten Erprobungsrunde.<br /> Abmeldung jederzeit.</p>
+</div>

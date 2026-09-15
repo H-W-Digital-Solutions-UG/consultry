@@ -41,9 +41,9 @@ Für den Antrag sollten Aussagen in dieser Reihenfolge behandelt werden:
 Interne Produktquellen:
 
 - [Consultry MVP-PRD](/Users/jules/dev/consultry/product-definition/archive/superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md), insbesondere §§ 1, 3, 5 und 6.
-- [Consultry Product Vision](/Users/jules/dev/consultry/product-definition/latest/Consultry-Product-Vision-v1.0.md), insbesondere §§ 4, 7 und 8.
-- [Consultry GTM Decisions](/Users/jules/dev/consultry/product-definition/latest/Consultry-GTM-Decisions-v1.0.md), insbesondere §§ 0, 3, 5, 6 und 7.
-- [Consultry Technical Foundation](/Users/jules/dev/consultry/product-definition/latest/Consultry-MVP-Technical-Foundation-v1.0.md), insbesondere §§ 1, 3, 5, 7 und 9.
+- [Consultry Product Vision](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-Product-Vision-v1.0.md), insbesondere §§ 4, 7 und 8.
+- [Consultry GTM Decisions](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md), insbesondere §§ 0, 3, 5, 6 und 7.
+- [Consultry Technical Foundation](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Technical-Foundation-v1.0.md), insbesondere §§ 1, 3, 5, 7 und 9.
 - [Investor Deck v3](/Users/jules/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/consultry-investor-deck-v3.html), Stand Juli 2026.
 - [HyperMock narrative graph](/Users/jules/dev/consultry/Consultry-Hypermock/pitch-video-layout-review/project/graph.md) und [HyperMock handover](/Users/jules/dev/consultry/Consultry-Hypermock/pitch-video-layout-review/project/HANDOVER.md).
 
@@ -125,7 +125,7 @@ Das externe Arbeitspaket soll nicht allgemein "Softwareentwicklung" heißen, son
 - automatisierte Tests, technische Dokumentation, Betriebs- und Übergabehandbuch;
 - vollständiger Quellcode und ausschließliche, zeitlich/räumlich unbeschränkte Nutzungsrechte für Consultry.
 
-Diese Bestandteile sind direkt aus der [MVP-PRD](/Users/jules/dev/consultry/product-definition/archive/superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md), [Technical Foundation](/Users/jules/dev/consultry/product-definition/latest/Consultry-MVP-Technical-Foundation-v1.0.md), [Product Vision v2.7](/Users/jules/dev/consultry/product-definition/latest/Consultry-Product-Vision-v1.0.md) und [Alignment Control Plane v1.1](/Users/jules/dev/consultry/product-definition/latest/Consultry-Alignment-Control-Plane-v1.0.md) ableitbar. Sie bilden einen deutlich engeren, bankfähigen Investitionsgegenstand als das gesamte langfristige Consulting Operating System. Vollständige Project-Symbiosis-, Assetization-, Finance- und personenscharfe Staffing-Flows bleiben außerhalb des H1-Abnahmeumfangs.
+Diese Bestandteile sind direkt aus der [MVP-PRD](/Users/jules/dev/consultry/product-definition/archive/superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md), [Technical Foundation](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Technical-Foundation-v1.0.md), [Product Vision v2.7](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-Product-Vision-v1.0.md) und [Alignment Control Plane v1.1](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-Alignment-Control-Plane-v1.0.md) ableitbar. Sie bilden einen deutlich engeren, bankfähigen Investitionsgegenstand als das gesamte langfristige Consulting Operating System. Vollständige Project-Symbiosis-, Assetization-, Finance- und personenscharfe Staffing-Flows bleiben außerhalb des H1-Abnahmeumfangs.
 
 #### B. Betriebsmittel aus dem KfW-Kredit - 80.000 EUR
 
@@ -614,12 +614,12 @@ Fehlt nur der erste Punkt, ist die klare Alternative ein Antrag bis 80.000 EUR B
 ### Consultry
 
 - [MVP-PRD](/Users/jules/dev/consultry/product-definition/archive/superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md).
-- [Product Vision v2.7](/Users/jules/dev/consultry/product-definition/latest/Consultry-Product-Vision-v1.0.md).
-- [Alignment Control Plane v1.1](/Users/jules/dev/consultry/product-definition/latest/Consultry-Alignment-Control-Plane-v1.0.md).
-- [UX Operating Model v0.1](/Users/jules/dev/consultry/product-definition/latest/Consultry-UX-Operating-Model-v0.1.md).
-- [Project Intelligence, Symbiosis & Assetization v1.1](/Users/jules/dev/consultry/product-definition/latest/Consultry-Project-Intelligence-Symbiosis-Graph-v1.0.md).
-- [GTM Decisions](/Users/jules/dev/consultry/product-definition/latest/Consultry-GTM-Decisions-v1.0.md).
-- [Onboarding- & Korpus-Ritual](/Users/jules/dev/consultry/product-definition/latest/Consultry-Onboarding-Corpus-Ritual-v1.0.md).
-- [Technical Foundation](/Users/jules/dev/consultry/product-definition/latest/Consultry-MVP-Technical-Foundation-v1.0.md).
+- [Product Vision v2.7](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-Product-Vision-v1.0.md).
+- [Alignment Control Plane v1.1](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-Alignment-Control-Plane-v1.0.md).
+- [UX Operating Model v0.1](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-UX-Operating-Model-v0.1.md).
+- [Project Intelligence, Symbiosis & Assetization v1.1](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-Project-Intelligence-Symbiosis-Graph-v1.0.md).
+- [GTM Decisions](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md).
+- [Onboarding- & Korpus-Ritual](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-Onboarding-Corpus-Ritual-v1.0.md).
+- [Technical Foundation](../../archive/baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Technical-Foundation-v1.0.md).
 - [Investor Deck v3](/Users/jules/Library/Mobile%20Documents/com~apple~CloudDocs/Downloads/consultry-investor-deck-v3.html).
 - [HyperMock narrative graph](/Users/jules/dev/consultry/Consultry-Hypermock/pitch-video-layout-review/project/graph.md).

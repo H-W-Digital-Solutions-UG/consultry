@@ -1,6 +1,6 @@
 # Kritische Analyse: PRD v3.0 vs. Target Personas v1.0 & User Journeys v1.0
 
-> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../../latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
+> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../baseline-before-consolidation-2026-09-10/latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
 
 **Datum:** 31. März 2026
 **Grundlage:** Consultry PRD v3.0-Final, Target Personas v1.0, User Journeys v1.0

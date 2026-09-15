@@ -1,17 +1,17 @@
 # Consultry — Phase 1 MVP: Feature-Specs, Flow-Sammlung & AI-Context-Canvas v1.0
 
-> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../../latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
+> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../baseline-before-consolidation-2026-09-10/latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
 
 ## Feature-Specs, Flow-Sammlung & AI-Context-Canvas (Dual-Hero)
 
 **Status:** Aktiv — dual-hero-aligned 13.06.2026
 **Datum:** 30. Mai 2026 · **Dual-Hero-Rework:** 13.06.2026
 **Scope:** MVP — **zwei gleichrangige Heroes (Win + Work)** auf geteiltem Engine-Fundament + Backbone.
-**Bezug:** [Product Vision (komplett)](../../latest/Consultry-Product-Vision-v1.0.md), [MVP-Doc](./Consultry-MVP-PRD-v1.0.md), [Alignment Control Plane](../../latest/Consultry-Alignment-Control-Plane-v1.0.md), [MVP-Technical-Foundation](../../latest/Consultry-MVP-Technical-Foundation-v1.0.md), [Business-Domain-Definition](../../latest/Consultry-Business-Domain-Definition-v1.0.md), [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md), [Target Personas](./Consultry-Target-Personas-v1.0.md).
+**Bezug:** [Product Vision (komplett)](../baseline-before-consolidation-2026-09-10/latest/Consultry-Product-Vision-v1.0.md), [MVP-Doc](./Consultry-MVP-PRD-v1.0.md), [Alignment Control Plane](../baseline-before-consolidation-2026-09-10/latest/Consultry-Alignment-Control-Plane-v1.0.md), [MVP-Technical-Foundation](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Technical-Foundation-v1.0.md), [Business-Domain-Definition](../baseline-before-consolidation-2026-09-10/latest/Consultry-Business-Domain-Definition-v1.0.md), [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md), [Target Personas](./Consultry-Target-Personas-v1.0.md).
 
 > **Lesehinweis.** Brücke zwischen Strategie (Vision/Pains) und Build (Surfaces, Objekte, AI-Verhalten, Prompts). Pro Feature: Spec + Flow-Sammlung (konkret + AI-dynamisch), dann Cross-Flows, Symbiose, Collab-Canvas. **Inline-Pain-Refs** (PW#/PK#) zeigen je Feature den belegten Schmerz aus der [Feature-Pain-Map](./Consultry-Feature-Pain-Map-v1.0.md).
 >
-> **Frühere Versionshistorie** (v1.1 F5/F6-Vorziehen, v1.2-Positionierung, v1.3-Korrekturen WC-OFF/TED-Polling) ist im [Decision-Log](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md) konsolidiert — hier sauber eingearbeitet, keine Patch-Notes mehr.
+> **Frühere Versionshistorie** (v1.1 F5/F6-Vorziehen, v1.2-Positionierung, v1.3-Korrekturen WC-OFF/TED-Polling) ist im [Decision-Log](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md) konsolidiert — hier sauber eingearbeitet, keine Patch-Notes mehr.
 
 ---
 
@@ -19,7 +19,7 @@
 
 ### 0.1 Die zwei Heroes auf geteiltem Fundament
 
-> Die historischen Feature-IDs **F1–F6** bleiben als Spec-Anker erhalten, sind aber jetzt zwei Heroes zugeordnet. Klammer-Thesis: *„Beratung im KI-Zeitalter"* — gewinnen **und** AI-nativ arbeiten ([Vision §1](../../latest/Consultry-Product-Vision-v1.0.md)).
+> Die historischen Feature-IDs **F1–F6** bleiben als Spec-Anker erhalten, sind aber jetzt zwei Heroes zugeordnet. Klammer-Thesis: *„Beratung im KI-Zeitalter"* — gewinnen **und** AI-nativ arbeiten ([Vision §1](../baseline-before-consolidation-2026-09-10/latest/Consultry-Product-Vision-v1.0.md)).
 
 **🟦 Hero 1 — „Win" (Opportunity-to-Concept)**
 
@@ -145,7 +145,7 @@ Default-Regeln:
 
 ### 2.3 In-Scope (Phase 1)
 
-- **Intelligentes CRM über loser Basis (kein CRM nötig):** Verträge + Dokumente werden hochgeladen, die AI extrahiert daraus Struktur und Signale. Eine bestehende CRM-Anbindung ist **optional**, keine Voraussetzung. (Siehe [GTM-Decisions §1/§W4](../../latest/Consultry-GTM-Decisions-v1.0.md).)
+- **Intelligentes CRM über loser Basis (kein CRM nötig):** Verträge + Dokumente werden hochgeladen, die AI extrahiert daraus Struktur und Signale. Eine bestehende CRM-Anbindung ist **optional**, keine Voraussetzung. (Siehe [GTM-Decisions §1/§W4](../baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md).)
 - **Hero-Signal — Vertrags-Options-/Verlängerungsfenster:** Das wichtigste Folgegeschäfts-Signal ist das sich öffnende Options-/Verlängerungs-/Ablauf-Fenster, extrahiert direkt aus dem hochgeladenen Vertrag und **an die konkrete Quell-Klausel gebunden** (gleiche Grounding-Regel wie F5-Tender). Demobar an Tag 1 aus *einem* Vertrag, ohne E-Mail-Graph → umgeht die Mitbestimmungs-/DSGVO-Grenze.
 - Account- & Stakeholder-Modell mit Tenant-Isolation.
 - **Weitere Signal/Trigger-Erfassung**: nativ (manuell, Notiz) + integriert (E-Mail/Kalender/DMS read-only, optional CRM-Import).
@@ -323,7 +323,7 @@ Default-Regeln:
 
 ### 4A.2 Feature-Spec F6 — Deliverability-Check (Option A · geschnitten 30.05.)
 
-> **⚠️ Scope-Schnitt 30.05. (siehe [GTM-Decisions §5](../../latest/Consultry-GTM-Decisions-v1.0.md)).** Volles Staffing & Forecasting ist **nicht** Phase 1 — es ist Delivery/Resourcing, nicht Akquise, und trägt die schwerste Mitbestimmungs-/AI-Act-Last. **Phase 1 behält nur den akquise-relevanten Rest:** einen **aggregierten „Können wir das liefern?"-Kapazitäts-Check**, der Bid/No-Bid (F5) und die Team-Zusammensetzung im Proposal (F4) speist. Echtes Staffing/Matching/Forecasting → **Phase 1.5+**.
+> **⚠️ Scope-Schnitt 30.05. (siehe [GTM-Decisions §5](../baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md)).** Volles Staffing & Forecasting ist **nicht** Phase 1 — es ist Delivery/Resourcing, nicht Akquise, und trägt die schwerste Mitbestimmungs-/AI-Act-Last. **Phase 1 behält nur den akquise-relevanten Rest:** einen **aggregierten „Können wir das liefern?"-Kapazitäts-Check**, der Bid/No-Bid (F5) und die Team-Zusammensetzung im Proposal (F4) speist. Echtes Staffing/Matching/Forecasting → **Phase 1.5+**.
 
 **One-Liner.** *Liefert einen **aggregierten Deliverability-Check** plus eine **anonyme Team-Zusammensetzung** (wie viele Personen, welche Skill-/Profil-Typen, welcher Seniority-Mix) als Realismus-Gate für Bid/No-Bid und Proposal — **niemals namentliche Personen.***
 
@@ -362,13 +362,13 @@ Mit F6 wird Consultry in Phase 1 **mitbestimmungs- und AI-Act-relevant**. Das is
 - **BetrVG §87/§94:** technische Systeme zur Verhaltens-/Leistungskontrolle und Beurteilungsgrundsätze sind **mitbestimmungspflichtig** → `Works-Council-Mode` muss echte Produktfunktion sein.
 - **BDSG §26 / DSGVO:** Beschäftigtendaten nur zweckgebunden, datenminimiert, Consent freiwillig.
 
-**Produktentscheidung (revidiert 12.06.2026, T6):** `Works-Council-Mode = AUS` (Default-OFF). Der Schalter gated — wenn AN — personenbezogene Auswertung + Aktivitäts-Auto-Feed (Domain-Def GI-9b/GI-16). F6-MVP-Sichten bleiben **ohnehin aggregiert/anonym** (TeamShape ohne Personen) — schalterunabhängig. Bei Kunden mit aktivem Betriebsrat → AN; Restrisiko bewusst akzeptiert („ein blockierter Deal, kein Lawsuit"). ~~Frühere Auslegung „Default AN"~~ aufgehoben; verbindliche Linie: [MVP-PRD §3.1-Platform](./Consultry-MVP-PRD-v1.0.md) + [Foundation-Decisions T6](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md).
+**Produktentscheidung (revidiert 12.06.2026, T6):** `Works-Council-Mode = AUS` (Default-OFF). Der Schalter gated — wenn AN — personenbezogene Auswertung + Aktivitäts-Auto-Feed (Domain-Def GI-9b/GI-16). F6-MVP-Sichten bleiben **ohnehin aggregiert/anonym** (TeamShape ohne Personen) — schalterunabhängig. Bei Kunden mit aktivem Betriebsrat → AN; Restrisiko bewusst akzeptiert („ein blockierter Deal, kein Lawsuit"). ~~Frühere Auslegung „Default AN"~~ aufgehoben; verbindliche Linie: [MVP-PRD §3.1-Platform](./Consultry-MVP-PRD-v1.0.md) + [Foundation-Decisions T6](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md).
 
 ---
 
 ## 4B. Hero 2 „Work" — AI-native Operating Foundation (Feature-Specs)
 
-> **Hochgestuft 13.06. zu co-gleichrangigem Hero (T8).** Die „neue Arbeitsweise": der Consultant arbeitet täglich *mit* der AI, statt Doku nachzutragen. Killt die chronischen Work-Pains (PK1–PK6) und liefert die **Seat-Utilization-PMF-Bar** (T12). Domänenregeln: [Domain-Def §3.5/§3.8/§3.9](../../latest/Consultry-Business-Domain-Definition-v1.0.md); Entities: [Technical-Foundation §2.4/§2.5](../../latest/Consultry-MVP-Technical-Foundation-v1.0.md).
+> **Hochgestuft 13.06. zu co-gleichrangigem Hero (T8).** Die „neue Arbeitsweise": der Consultant arbeitet täglich *mit* der AI, statt Doku nachzutragen. Killt die chronischen Work-Pains (PK1–PK6) und liefert die **Seat-Utilization-PMF-Bar** (T12). Domänenregeln: [Domain-Def §3.5/§3.8/§3.9](../baseline-before-consolidation-2026-09-10/latest/Consultry-Business-Domain-Definition-v1.0.md); Entities: [Technical-Foundation §2.4/§2.5](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Technical-Foundation-v1.0.md).
 
 ### 4B.1 F-Profile — Auto-ConsultantProfile
 
@@ -691,11 +691,11 @@ flowchart LR
 4. ✅ **Personenbezug (Works-Council-Default)**: **revidiert 12.06. (T6)** — Works-Council-Mode = **AUS** (Default-OFF); F6 bleibt aggregiert/anonym; der Schalter gated personenbezogene Auswertung + Auto-Feed bei Kunden mit Betriebsrat (§4A.3).
 5. ✅ **Canvas-Form**: Mermaid (eingebettet) reicht vorerst; FigJam auf Zuruf — **entschieden 30.05.**
 6. ✅ **Tender in Phase 1, F6 geschnitten** (§4A): **bestätigt 30.05.** — F5 (Tender Ingest) bleibt; **F6 → Option A**: nur aggregierter Deliverability-Check als Bid-Gate, **kein personenscharfes Matching** (volles Staffing/Forecasting → Phase 1.5+).
-7. ✅ **Headline-Job, Starting Wedge & GTM** (→ [GTM-Decisions v1.0](../../latest/Consultry-GTM-Decisions-v1.0.md), [Alignment Control Plane](../../latest/Consultry-Alignment-Control-Plane-v1.0.md)): **bestätigt 30.05., normalisiert 28.06.** — Job = *Projekt-Wachstum & -Akquise*; Starting Wedge = **Opportunity-to-Concept**; Tender + Bestandskunden = zwei Intake-Oberflächen; **Bestandskunden öffnet die Tür, Tender = Big Swing**; ICP = mid-to-small zuerst; OS = Vision, nicht Headline.
+7. ✅ **Headline-Job, Starting Wedge & GTM** (→ [GTM-Decisions v1.0](../baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md), [Alignment Control Plane](../baseline-before-consolidation-2026-09-10/latest/Consultry-Alignment-Control-Plane-v1.0.md)): **bestätigt 30.05., normalisiert 28.06.** — Job = *Projekt-Wachstum & -Akquise*; Starting Wedge = **Opportunity-to-Concept**; Tender + Bestandskunden = zwei Intake-Oberflächen; **Bestandskunden öffnet die Tür, Tender = Big Swing**; ICP = mid-to-small zuerst; OS = Vision, nicht Headline.
 8. ✅ **Bestandskunden-Mechanik & F1-Hero** (§2.3): **bestätigt 30.05.** — intelligentes CRM über loser Basis (kein CRM nötig); Hero-Signal = **Vertrags-Options-/Verlängerungsfenster, quellengebunden**.
 9. ✅ **Pricing & Markt** (→ GTM-Decisions §3.3–§4): **bestätigt 30.05.** — **seat-only** (Win-Fee gestrichen); **DE+AT ab Tag 1, CH verschoben**; 3–5 Design-Partner mit niedriger Pilot-Gebühr.
 
-> **Alle Phase-1-Scope- und GTM-Kern-Entscheidungen bestätigt (Stand 30.05.).** Offene GTM-Detailpunkte (Onboarding-Ritual, AT/CH-Reichweite, Design-Partner-Ziel, Win-Fee-Mechanik) sind in [GTM-Decisions §8](../../latest/Consultry-GTM-Decisions-v1.0.md) als G1–G5 getrackt. Nächster Schritt: Verfeinerung je Feature in Build-Tickets.
+> **Alle Phase-1-Scope- und GTM-Kern-Entscheidungen bestätigt (Stand 30.05.).** Offene GTM-Detailpunkte (Onboarding-Ritual, AT/CH-Reichweite, Design-Partner-Ziel, Win-Fee-Mechanik) sind in [GTM-Decisions §8](../baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md) als G1–G5 getrackt. Nächster Schritt: Verfeinerung je Feature in Build-Tickets.
 
 ---
 

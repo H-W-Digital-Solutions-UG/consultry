@@ -9,7 +9,7 @@ export const access: PageContent = {
   },
   hero: {
     title: "Berechtigungen gelten für Agenten wie für Menschen.",
-    lede: "Consultry läuft in eurem Tenant. Ein Agent sieht genau das, was sein Auftraggeber sehen darf.",
+    lede: "Euer Tenant. Eure Rechte. Auch für Agenten.",
     cta: "Auf die Warteliste",
     secondary: "So funktioniert es",
     h1MaxCh: 14,
@@ -26,11 +26,6 @@ export const access: PageContent = {
       { icon: "access-1", title: "Rechte gelten beim Abruf", text: "Quellen werden gefiltert, bevor sie im Kontext landen." },
       { icon: "access-2", title: "Ein Paket je Lauf", text: "Quellen, Rechte und Werkzeuge sind klar begrenzt." },
       { icon: "access-3", title: "Freigegebene Wege", text: "Sensibles bleibt lokal, wird minimiert oder blockiert." },
-    ],
-    kpis: [
-      { value: "0", label: "Quellen außerhalb der Rechte im Kontext", kind: "Regel" },
-      { value: "4", label: "Datenklassen, von öffentlich bis kundenvertraulich", kind: "Regel" },
-      { value: "5", label: "Ausgangsentscheidungen, von erlaubt bis blockiert, im Zweifel gesperrt", kind: "Regel" },
     ],
   },
   boundaries: {

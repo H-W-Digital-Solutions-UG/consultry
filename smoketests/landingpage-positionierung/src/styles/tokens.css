@@ -113,6 +113,20 @@
 }
 
 @layer components {
+  /* Native scroll craft: a small depth shift under the reading flow. Content is always visible. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+      .product-scroll-layer {
+        animation: product-depth linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 85%;
+      }
+      @keyframes product-depth {
+        from { transform: translateY(12px) scale(0.99); }
+        to { transform: translateY(0) scale(1); }
+      }
+    }
+  }
   /* type scale (weights 400/500/600 only) */
   .t-display-xl {
     font-weight: 700;
@@ -501,6 +515,52 @@
 .app-step-label { display: block; font-size: 11.5px; font-weight: 500; padding-right: 6px; line-height: 1.25; overflow-wrap: anywhere; }
 .app-step-sub { display: block; font-size: 11px; color: var(--app-text-3); padding-right: 8px; margin-top: 2px; line-height: 1.3; }
 
+/* A short, readable walkthrough of the actual example states. No looping. */
+.widget-demo { position: relative; min-width: 0; }
+.widget-demo-content { position: relative; }
+.widget-demo-focus { position: absolute; inset: 0 0 auto; height: 240px; max-height: 100%; pointer-events: none; }
+.widget-demo-header { margin-bottom: 16px; }
+.widget-demo-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; }
+.widget-demo-status { display: flex; align-items: center; gap: 7px; color: var(--app-text-3); font-size: 11px; white-space: nowrap; }
+.widget-demo-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--app-text-3); }
+.widget-demo[data-running="true"] .widget-demo-dot { background: var(--app-accent-text); }
+.widget-demo-count { margin-left: 4px; font-family: var(--font-mono); font-size: 10px; font-variant-numeric: tabular-nums; }
+.widget-demo-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 7px 10px; border: 1px solid var(--app-divider); border-radius: 6px; color: var(--app-text-2); background: transparent; font: inherit; font-size: 12px; cursor: pointer; }
+.widget-demo-toggle:hover { background: var(--app-surface); border-color: var(--app-accent-text); }
+.widget-demo button:focus-visible { outline: 2px solid var(--app-accent-text); outline-offset: 4px; }
+.widget-demo-caption { min-height: 3em; margin-block: 4px 10px; color: var(--app-text-2); font-size: 14px; font-weight: 400; line-height: 1.5; }
+.widget-demo-progress { display: flex; gap: 5px; }
+.widget-demo-progress > span { flex: 1; height: 2px; overflow: hidden; background: var(--app-divider-soft); border-radius: 3px; }
+.widget-demo-progress i { display: block; height: 100%; background: var(--app-accent-text); transform-origin: left; transform: scaleX(0); }
+.widget-demo-progress [data-current="true"] i { animation: demo-dwell var(--step-duration) linear both; animation-play-state: paused; }
+.widget-demo[data-running="true"] .widget-demo-progress [data-current="true"] i { animation-play-state: running; }
+.widget-demo-progress [data-complete="true"] i { animation: none; transform: scaleX(1); }
+.widget-demo[data-status="manual"] .widget-demo-progress,
+.widget-demo[data-status="manual"] .widget-demo-count { visibility: hidden; }
+.widget-demo-panels { display: grid; }
+.widget-demo-panels > * { grid-area: 1 / 1; min-width: 0; align-self: start; }
+.widget-demo-panels > [data-active="false"] { visibility: hidden; pointer-events: none; }
+.widget-demo .app-seg > button[aria-pressed="true"] { background: #49342b; color: #f6d8b9; box-shadow: inset 0 0 0 1px #bb89615c; }
+.widget-demo .app-step[aria-pressed="true"] .app-step-label { color: var(--app-accent-text); }
+.widget-demo .app-step { min-height: 44px; padding-bottom: 8px; }
+.widget-demo .app-step-label { font-size: 12px; }
+.widget-demo .app-kv dd { min-width: 0; }
+.widget-demo .app-kv .app-badge { height: auto; min-height: 24px; padding-block: 3px; white-space: normal; }
+.widget-demo .app-kv .app-badge::before { flex-shrink: 0; }
+@keyframes demo-dwell { to { transform: scaleX(1); } }
+@media (max-width: 480px) {
+  .widget-demo-status { gap: 5px; font-size: 10px; }
+  .widget-demo-count { margin-left: 1px; font-size: 9px; }
+  .widget-demo-toggle { padding-inline: 8px; font-size: 12px; }
+  .widget-demo .app-stepper { flex-wrap: wrap; row-gap: 18px; }
+  .widget-demo .app-step { flex-basis: 45%; }
+  .widget-demo .app-stepper:has(> :nth-child(5)) .app-step { flex-basis: 28%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .widget-demo .fade-swap { animation: none; }
+  .widget-demo-progress [data-current="true"] i { animation: none; transform: scaleX(1); }
+}
+
 /* label / value rows (Prüfungen panel) */
 .app-kv { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 6px 12px; padding: 9px 0; font-size: 13px; }
 .app-kv-stacked, .app-rail .app-kv { grid-template-columns: 1fr; gap: 2px; }
@@ -516,3 +576,110 @@
 .app-nav[data-active="true"] { background: var(--app-surface); color: var(--app-text); font-weight: 600; }
 .app-nav[data-active="true"]::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; border-radius: 999px; background: var(--app-coral); }
 .app-nav-count { margin-left: auto; font-size: 12px; color: var(--app-text-3); font-variant-numeric: tabular-nums; }
+
+/* hero object hotspots (ObjectHotspots): one button per block, mono numeral under it, glow only when hovered, focused or active */
+.hotspot {
+  position: absolute;
+  width: 15%;
+  min-width: 44px;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow var(--duration-fast) var(--ease-brand);
+}
+.hotspot:hover,
+.hotspot:focus-visible,
+.hotspot[data-active="true"] {
+  box-shadow:
+    0 0 0 1.5px rgba(232, 145, 58, 0.65),
+    0 0 0 7px rgba(232, 145, 58, 0.1),
+    0 0 36px 10px rgba(232, 145, 58, 0.28);
+}
+.hotspot:focus-visible {
+  outline: none;
+}
+.hotspot-num {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 5px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-on-dark-mute);
+  transition: color var(--duration-fast) var(--ease-brand);
+}
+.hotspot:hover .hotspot-num,
+.hotspot:focus-visible .hotspot-num,
+.hotspot[data-active="true"] .hotspot-num {
+  color: var(--color-warm);
+}
+
+/* the entry rail next to the object: six entries on one hairline, the current one warm; persistent, no box */
+.hero-rail-caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--color-on-dark-mute);
+}
+.hero-rail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 32px;
+  padding: 2px 0 2px 12px;
+  border-left: 1px solid rgba(250, 250, 249, 0.16);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-on-dark-mute);
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color var(--duration-fast) var(--ease-brand),
+    border-color var(--duration-fast) var(--ease-brand);
+}
+.hero-rail-label {
+  color: var(--color-on-dark-soft);
+  transition: color var(--duration-fast) var(--ease-brand);
+}
+.hero-rail-item:hover,
+.hero-rail-item:focus-visible,
+.hero-rail-item[aria-current="step"] {
+  color: var(--color-warm);
+  border-left-color: var(--color-warm);
+}
+.hero-rail-item:hover .hero-rail-label,
+.hero-rail-item:focus-visible .hero-rail-label,
+.hero-rail-item[aria-current="step"] .hero-rail-label {
+  color: var(--color-on-dark);
+}
+.hero-rail-item:focus-visible {
+  outline: none;
+}
+@media (min-width: 64rem) {
+  .hero-rail-item {
+    min-height: 26px;
+  }
+}
+@media (min-width: 80rem) {
+  .hero-rail-item {
+    min-height: 28px;
+    font-size: 14px;
+  }
+}
+.hero-step-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-warm);
+}

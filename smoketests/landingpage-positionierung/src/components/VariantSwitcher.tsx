@@ -12,7 +12,7 @@ export function VariantSwitcher() {
         <Link
           key={v.id}
           to={{ pathname: v.path, search }}
-          className={`rounded-sm px-2 py-1 font-mono text-xs ${pathname === v.path ? "bg-brand text-white" : "text-on-dark-muted hover:text-on-dark"}`}
+          className={`rounded-sm px-2 py-1 font-mono text-xs ${pathname === v.path ? "bg-brand text-white" : "text-on-dark-soft hover:text-on-dark"}`}
         >
           {v.id}
         </Link>

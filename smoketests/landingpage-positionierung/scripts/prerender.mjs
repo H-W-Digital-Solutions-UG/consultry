@@ -25,7 +25,8 @@ const escape = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/
 
 for (const { id, path } of ROUTES) {
   const { html, title, description } = render(path);
-  const heroPreload = `    <link rel="preload" as="image" type="image/avif" imagesrcset="/hero/${id}-480.avif 480w, /hero/${id}-720.avif 720w" imagesizes="(min-width: 1024px) 460px, 320px" />`;
+  const heroFormat = ["corpus", "brand", "ledger"].includes(id) ? "webp" : "avif";
+  const heroPreload = `    <link rel="preload" as="image" type="image/${heroFormat}" imagesrcset="/hero/${id}-480.${heroFormat} 480w, /hero/${id}-720.${heroFormat} 720w" imagesizes="(min-width: 1024px) 480px, 340px" />`;
   const page = template
     .replace("<title>Consultry</title>", `<title>${escape(title)}</title>`)
     .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escape(description)}" />`)

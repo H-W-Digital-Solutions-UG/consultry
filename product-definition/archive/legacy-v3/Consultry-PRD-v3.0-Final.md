@@ -1,6 +1,6 @@
 # Consultry — Product Requirements Document v3.1
 
-> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../../latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
+> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../baseline-before-consolidation-2026-09-10/latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
 
 ## AI-Native Consultancy CRM für den DACH-Markt
 

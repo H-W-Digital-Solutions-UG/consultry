@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-10",
+  "archive_files": 132,
+  "png_preserved": 13,
+  "tickets": {
+    "open": 32,
+    "closed": 27
+  },
+  "leading_files": [
+    "INDEX.md",
+    "CONTEXT.md",
+    "PRODUCT.md",
+    "DECISIONS.md",
+    "BACKEND-START.md",
+    "SOURCES.md"
+  ],
+  "active_and_routing_local_links": 109,
+  "broken_active_links": [],
+  "historical_missing_references": 30,
+  "archive_content_verified": "byte-identical to BEFORE.zip except deterministic link rebasing; original and relocated link targets reconciled",
+  "session_turns_read": 15,
+  "session_turns_selected": 11,
+  "session_hosting_turns_excluded": 4,
+  "model_hosting": "excluded from new session import; old sources preserved as history"
+}

@@ -1,6 +1,9 @@
 schema_version: 1
 archive_root: "product-definition/archive"
 authority: "historical_provenance_only"
+updated: "2026-09-14"
+current_entrypoint: "../INDEX.md"
+current_decisions: "../DECISIONS.md"
 
 known_missing_historical_companions:
   - "Consultry-Design-System-v1.3.md"
@@ -10,6 +13,55 @@ known_missing_historical_companions:
   - "Consultry-Module-Refinement-v1.0.md"
 
 collections:
+  - path: "session-2026-09-14-framing-messaging/"
+    archived_reason: "dated voice decisions and messaging source bank; current product authority remains in the six leading documents"
+    artifacts:
+      - "NOTES.md"
+  - path: "research-2026-09-13-harness-graph-ledger/"
+    archived_reason: "dated research evidence; current product implications owned by the six leading documents, not this snapshot"
+    artifacts:
+      - "REPORT.md"
+      - "EVIDENCE.json"
+  - path: "baseline-before-consolidation-2026-09-10/"
+    archived_reason: "former live latest tree frozen after reconciliation into six leading documents"
+    artifacts:
+      - "README.md"
+      - "latest/"
+      - "supplemental/Consultry_Vision.html"
+  - path: "session-2026-09-05-wissensledger/"
+    archived_reason: "dated conversation evidence; model-hosting turns excluded at user request"
+    artifacts:
+      - "INSIGHTS.md"
+      - "EXCERPTS.json"
+  - path: "migration-2026-09-10/"
+    archived_reason: "migration evidence, original bytes, ticket status snapshot and recovery mapping"
+    artifacts:
+      - "REPORT.md"
+      - "VERIFICATION.json"
+      - "BEFORE.zip"
+      - "BEFORE.json"
+      - "PATH-MAP.csv"
+      - "TICKETS-BEFORE.json"
+      - "proposal-review/"
+  - path: "handover-2026-08-26/"
+    archived_reason: "readable dated handover sources and original ZIP; reported pitch and exploration only"
+    artifacts:
+      - "00_START_HIER/"
+      - "01_Deck_fuehrend/"
+      - "02_Reviews_und_QA/"
+      - "03_Messaging_und_Vertrieb/"
+      - "05_Grundlagen_Architektur_Markt/"
+      - "original/Consultry_Handover_Paket_2026-08-26.zip"
+  - path: "intake-2026-09-05/"
+    archived_reason: "user-supplied knowledge-consolidation and DID-DAG source snapshots; current integration is tracked in ../PRODUCT.md and ../DECISIONS.md"
+    artifacts:
+      - "Consultry-Wissenskonsolidierung-2026-09-04.zip"
+      - "did-dag-handover-paket.zip"
+      - "did-dag-handover.md"
+      - "did-dag-context-security.html"
+      - "SOURCE-MANIFEST.json"
+      - "RECONCILIATION.md"
+
   - path: "legacy-v3/"
     archived_reason: "pre-current product direction and obsolete launch/UI assumptions"
     artifacts:
@@ -30,14 +82,14 @@ collections:
     archived_reason: "no longer an authority after the product-first Wayfinder reset"
     artifacts:
       - path: "Consultry-MVP-PRD-v1.0.md"
-        superseded_by: "../../latest/wayfinder/ and ../../latest/Consultry-Product-Vision-v1.0.md"
+        superseded_by: "current ../PRODUCT.md and ../DECISIONS.md; historical resolutions preserved in baseline-before-consolidation-2026-09-10/latest/wayfinder/"
       - path: "Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md"
         superseded_by: "future journey and requirements baseline derived through Wayfinder"
       - path: "Consultry-Target-Personas-v1.0.md"
         superseded_by: "Wayfinder archetype, actor, responsibility and role-compression decisions"
       - path: "Consultry-Feature-Pain-Map-v1.0.md"
-        superseded_by: "../../latest/Consultry-Priority-Problem-Evidence-and-Assumption-Register-v0.1.md"
+        superseded_by: "baseline-before-consolidation-2026-09-10/latest/Consultry-Priority-Problem-Evidence-and-Assumption-Register-v0.1.md (historical evidence)"
       - path: "Consultry-MVP-Backend-IaC-Grill-Me-v1.0.md"
         superseded_by: "later product handoff and technical Wayfinder"
       - path: "Consultry-LinkedIn-Research-Source-Plan-v1.0.md"
-        superseded_by: "../../latest/research/wayfinder-deep-audit-2026-08/source-register.md"
+        superseded_by: "baseline-before-consolidation-2026-09-10/latest/research/wayfinder-deep-audit-2026-08/source-register.md (historical evidence)"

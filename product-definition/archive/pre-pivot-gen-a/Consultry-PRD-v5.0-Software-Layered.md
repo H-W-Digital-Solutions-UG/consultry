@@ -2,7 +2,7 @@
 
 ## Compliance-grounded Knowledge Graph with a Supervised AI Collaborator
 
-**Status:** ⚠️ **ARCHIVIERT (12.06.2026)** — superseded durch [MVP-PRD v1.0](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) (Acquisition-to-Bid) + [MVP-Foundation-Decisions v1.0](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md) (T1)
+**Status:** ⚠️ **ARCHIVIERT (12.06.2026)** — superseded durch [MVP-PRD v1.0](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) (Acquisition-to-Bid) + [MVP-Foundation-Decisions v1.0](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md) (T1)
 **Datum:** 8. Mai 2026
 
 > **⚠️ Archiv-Hinweis.** Dieses Dokument gehört zur „Win-and-Deliver"-Generation (Gen A) und encodiert einen verworfenen MVP (Contract/eIDAS/DATEV, Boutique 10–30, Single-Tenant/Customer-Cloud, Graph-DB-Dual-Store, 12–18 Monate Time-to-Customer). Es ist **nicht mehr Quelle der Wahrheit für die Architektur.** Explizit übernommen (Salvage, Foundation-Decisions §4): AuditEvent-Schema (§6.3), Hybrid-Approval-UX (§6.2), Operator-Vokabular (§3), Liability-Regel (§6.1), Revisions-Disziplin (§13.1).
@@ -612,4 +612,4 @@ Jede Aussage in v5.0 lässt sich auf eines oder mehrere der folgenden Commitment
 
 ---
 
-**Ende v5.0.** ~~Dieses Dokument ist die Quelle der Wahrheit für die Architektur.~~ **Archiviert 12.06.2026** — Quelle der Wahrheit sind [MVP-PRD v1.0](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) + [MVP-Foundation-Decisions v1.0](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md).
+**Ende v5.0.** ~~Dieses Dokument ist die Quelle der Wahrheit für die Architektur.~~ **Archiviert 12.06.2026** — Quelle der Wahrheit sind [MVP-PRD v1.0](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) + [MVP-Foundation-Decisions v1.0](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md).

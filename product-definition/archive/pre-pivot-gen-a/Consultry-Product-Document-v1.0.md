@@ -1,6 +1,6 @@
 # Consultry — Product Document v1.0
 
-> **⚠️ SUPERSEDED ALS PRODUKT-SOURCE-OF-TRUTH (Stand 13.06.2026).** Dieses Dokument (12.04.2026) ist die **älteste Voll-OS-Rahmung** und widerspricht dem MVP an vielen Stellen (Modul-Set, Scope, ICP). **Nicht** als aktuelle Produktwahrheit lesen. Verbindlich: [MVP-Foundation-Decisions](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md) + [MVP-PRD](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md). **Rolle heute:** historische/H3-Vision-Referenz.
+> **⚠️ SUPERSEDED ALS PRODUKT-SOURCE-OF-TRUTH (Stand 13.06.2026).** Dieses Dokument (12.04.2026) ist die **älteste Voll-OS-Rahmung** und widerspricht dem MVP an vielen Stellen (Modul-Set, Scope, ICP). **Nicht** als aktuelle Produktwahrheit lesen. Verbindlich: [MVP-Foundation-Decisions](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md) + [MVP-PRD](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md). **Rolle heute:** historische/H3-Vision-Referenz.
 
 ## AI-native Operating System für DACH IT- und Digitalisierungsberatungen
 

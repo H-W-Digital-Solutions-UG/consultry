@@ -2,11 +2,11 @@ import { describe, expect, it } from "vitest";
 import { SAMPLE_CLAIMS, SAMPLE_CONTRIBUTIONS, consolidate } from "./ledger";
 
 describe("consolidate", () => {
-  it("bundles three agents citing the same source into one voice-bundle with one piece of evidence", () => {
+  it("counts three agent voices citing one source as one source", () => {
     const { bundles } = consolidate(SAMPLE_CONTRIBUTIONS);
     const b = bundles.find((x) => x.claimKey === "cutover-3-runs" && x.position === "stützt")!;
     expect(b.voices).toBe(3);
-    expect(b.independentEvidence).toBe(1);
+    expect(b.sourceCount).toBe(1);
   });
   it("retains material disagreement instead of averaging it away", () => {
     const { retainedDisagreements } = consolidate(SAMPLE_CONTRIBUTIONS);

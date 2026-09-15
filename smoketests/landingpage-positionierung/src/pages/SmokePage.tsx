@@ -4,24 +4,22 @@ import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { Evidence } from "@/components/Evidence";
 import { Steps } from "@/components/Steps";
-import { Kpis } from "@/components/Kpis";
 import { Boundaries } from "@/components/Boundaries";
 import { DataPaths } from "@/components/DataPaths";
 import { CtaBand } from "@/components/CtaBand";
 import { ProductSurface } from "@/components/ProductSurface";
-import { AmbientFilm } from "@/components/AmbientFilm";
 import { VariantSwitcher } from "@/components/VariantSwitcher";
-import { EYEBROW, PATHS_SECTION, TRUST_ITEMS } from "@/content/shared";
+import { EYEBROW, TRUST_ITEMS } from "@/content/shared";
 import type { PageContent } from "@/content/types";
 import { track, type ScrollDepth } from "@/lib/track";
+import { scrollToWaitlist } from "@/lib/sectionNavigation";
 
 const DEPTHS: ScrollDepth[] = [25, 50, 75];
 
 
 /**
- * One smoke variant (hero: claim + brand object, no UI mock). Surfaces top→bottom: hero dark → light (problem) →
- * warm (how + widget) → dark (paths) → light (boundaries) → hero dark (waitlist + footer).
- * Never two identical surfaces in a row.
+ * One composed opening joins the visual promise directly to its product example.
+ * The following paper sections explain evidence and boundaries; signup closes the story.
  */
 export function SmokePage({ content, widget }: { content: PageContent; widget: ReactNode }) {
   const { variant, meta, hero, problem, how, boundaries, band } = content;
@@ -57,7 +55,7 @@ export function SmokePage({ content, widget }: { content: PageContent; widget: R
 
   const toWaitlistHow = () => {
     track({ name: "cta_click", variant, location: "how" });
-    document.getElementById("warteliste")?.scrollIntoView({ behavior: "smooth" });
+    scrollToWaitlist();
   };
 
   return (
@@ -71,11 +69,17 @@ export function SmokePage({ content, widget }: { content: PageContent; widget: R
           lede={hero.lede}
           cta={hero.cta}
           secondary={hero.secondary}
-          h1MaxCh={hero.h1MaxCh}
           trust={TRUST_ITEMS}
         />
 
-        <Section surface="light" className="border-t-0">
+        <Section surface="dark" className="story-section story-section--how scene-continuation" id="so-funktioniert-es" title={how.title} lede={how.lede}>
+          <Steps steps={how.steps} sequence={how.sequence} />
+          <ProductSurface variant={variant} onCta={toWaitlistHow}>
+            {widget}
+          </ProductSurface>
+        </Section>
+
+        <Section surface="light" className="story-section story-section--evidence border-t-0">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
             <div>
               <h2 className="t-display-lg max-w-[20ch]">{problem.title}</h2>
@@ -85,29 +89,11 @@ export function SmokePage({ content, widget }: { content: PageContent; widget: R
           </div>
         </Section>
 
-        <Section surface="warm" id="so-funktioniert-es" title={how.title} lede={how.lede}>
-          <Steps steps={how.steps} sequence={how.sequence} />
-          <Kpis items={how.kpis} />
-          <ProductSurface variant={variant} onCta={toWaitlistHow}>
-            {widget}
-          </ProductSurface>
+        <Section surface="light" className="story-section story-section--paths">
+          <DataPaths />
         </Section>
 
-        {/* Betriebswege on the dark surface, the variant's object film as an ambient background element */}
-        <section className="relative overflow-hidden bg-surface-hero py-[clamp(4rem,8vw,6.5rem)] text-on-dark">
-          <AmbientFilm variant={variant} className="object-[70%_50%] opacity-80 md:object-[78%_50%]" />
-          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(90deg,rgba(30,27,24,0.96)_0%,rgba(30,27,24,0.85)_38%,rgba(30,27,24,0.25)_70%,rgba(30,27,24,0.15)_100%)]" />
-          <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-[linear-gradient(180deg,rgba(30,27,24,0)_0%,rgba(30,27,24,0.9)_100%)]" />
-          <div className="relative mx-auto max-w-[1200px] px-4 md:px-8">
-            <header className="mb-10 max-w-[34rem]">
-              <h2 className="t-display-lg">{PATHS_SECTION.title}</h2>
-              <p className="t-lede mt-4 text-on-dark-soft">{PATHS_SECTION.lede}</p>
-            </header>
-            <DataPaths />
-          </div>
-        </section>
-
-        <Section surface="light" title={boundaries.title}>
+        <Section surface="light" className="story-section story-section--boundaries" title={boundaries.title}>
           <Boundaries items={boundaries.items} />
         </Section>
 

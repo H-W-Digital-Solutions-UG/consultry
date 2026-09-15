@@ -1,11 +1,11 @@
 # Consultry - Backend/IaC Grill-Me Log v1.0
 
-> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../../latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
+> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../baseline-before-consolidation-2026-09-10/latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
 
 **Status:** Fragen- und Entscheidungslog fuer Architektur-Review - nicht Source of Truth.  
 **Datum:** 27.06.2026  
 **Rolle im Doc-Stack:** Sammelt die Grill-with-docs-Pruefung, offene Fragen, empfohlene Antworten und Risiken fuer den Backend-/IaC-MVP-Plan.  
-**Bezug:** [Backend/IaC Design](../../latest/Consultry-MVP-Backend-IaC-Software-Design-v1.0.md), [AWS & Hermes Architecture](../../latest/Consultry-MVP-AWS-Hermes-Architecture-v1.0.md), [MVP-PRD](./Consultry-MVP-PRD-v1.0.md), [Business-Domain-Definition](../../latest/Consultry-Business-Domain-Definition-v1.0.md).
+**Bezug:** [Backend/IaC Design](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Backend-IaC-Software-Design-v1.0.md), [AWS & Hermes Architecture](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-AWS-Hermes-Architecture-v1.0.md), [MVP-PRD](./Consultry-MVP-PRD-v1.0.md), [Business-Domain-Definition](../baseline-before-consolidation-2026-09-10/latest/Consultry-Business-Domain-Definition-v1.0.md).
 
 ---
 
@@ -63,7 +63,7 @@ Arbeitsregel:
 
 **Empfehlung:** Nicht hybrid bauen. Wenn AWS als Plattform gesetzt ist, T3 explizit zu `Aurora PostgreSQL Serverless v2 + pgvector` revidieren. RLS, pgvector, graph-ready Schema und SourceBinding bleiben identisch.
 
-**Status 28.06.:** ✅ Geloest durch [ADR-001](../../latest/Consultry-MVP-Architecture-ADR-v1.0.md). Aurora ersetzt Neon fuer die MVP-Implementierungsbaseline.
+**Status 28.06.:** ✅ Geloest durch [ADR-001](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Architecture-ADR-v1.0.md). Aurora ersetzt Neon fuer die MVP-Implementierungsbaseline.
 
 ### G2 - "Kein Agent-Runtime im MVP" vs Hermes Harness
 
@@ -71,7 +71,7 @@ Arbeitsregel:
 
 **Empfehlung:** Hermes strikt als Harness definieren: bounded job, read-only CorpusBundle, kein DB-Zugriff, kein freier Korpus, kein Internet, kein State Write. Damit ist Hermes kein autonomer Agent, sondern eine kontrollierte Ausfuehrungsschicht fuer Operatoren.
 
-**Status 28.06.:** ✅ Geloest durch [ADR-002](../../latest/Consultry-MVP-Architecture-ADR-v1.0.md). Hermes ist bounded Harness, kein autonomer Agent.
+**Status 28.06.:** ✅ Geloest durch [ADR-002](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Architecture-ADR-v1.0.md). Hermes ist bounded Harness, kein autonomer Agent.
 
 ### G3 - Work Layer darf nicht mit UI verwechselt werden
 
@@ -199,10 +199,10 @@ Diese Fragen gehoeren in PR-/ADR-Reviews:
 
 | ADR | Thema | Trigger |
 |---|---|---|
-| ADR-001 | AWS-native Aurora statt Neon | ✅ Erledigt 28.06. durch [MVP Architecture ADR](../../latest/Consultry-MVP-Architecture-ADR-v1.0.md) |
+| ADR-001 | AWS-native Aurora statt Neon | ✅ Erledigt 28.06. durch [MVP Architecture ADR](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Architecture-ADR-v1.0.md) |
 | ADR-002 | Fastify + Kysely Backend Stack | Vor erstem Backend-Code |
 | ADR-003 | Terraform als IaC Standard | Vor erstem Infra-Module-Merge |
-| ADR-004 | Hermes Harness Boundary | ✅ Erledigt 28.06. als ADR-002 in [MVP Architecture ADR](../../latest/Consultry-MVP-Architecture-ADR-v1.0.md) |
+| ADR-004 | Hermes Harness Boundary | ✅ Erledigt 28.06. als ADR-002 in [MVP Architecture ADR](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Architecture-ADR-v1.0.md) |
 | ADR-005 | Work Layer Source Hierarchy | Vor KnowledgeAsset/CompiledArtifact Schema |
 | ADR-006 | Virtual Harness Client + HarnessPack | Vor MCP/Connector/Harness implementation |
 | ADR-007 | Second Brain Graph/Triple/Hypergraph Layer | Vor Memory schema implementation |

@@ -57,6 +57,7 @@ function waitlistDevMock(): Plugin {
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), waitlistDevMock()],
+  build: { manifest: true },
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
   // Phone tests through a tunnel: allow ngrok hostnames on dev and preview servers.
   server: { allowedHosts: [".ngrok-free.dev", ".ngrok.app", ".ngrok.io", ".ngrok-free.app"] },

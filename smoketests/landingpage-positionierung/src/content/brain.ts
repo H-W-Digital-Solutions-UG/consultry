@@ -9,7 +9,7 @@ export const brain: PageContent = {
   },
   hero: {
     title: "Das Wissen der ganzen Firma arbeitet mit.",
-    lede: "Kunden, Angebote, Projekte und Entscheidungen als verbundene Fakten, jede mit Datum und Quelle.",
+    lede: "Verbundene Fakten. Mit Datum und Quelle.",
     cta: "Auf die Warteliste",
     secondary: "So funktioniert es",
   },
@@ -25,11 +25,6 @@ export const brain: PageContent = {
       { icon: "brain-1", title: "Verbundene Fakten", text: "Aus Dokumenten werden Fakten mit Bezug: wer, was, seit wann, woher." },
       { icon: "brain-2", title: "Jeder Fakt hat ein Datum", text: "Löst ein neues Handbuch das alte ab, weiß das System es zuerst." },
       { icon: "brain-3", title: "Erst geprüft, dann Firmenwissen", text: "Neues Wissen wird freigegeben, bevor es zählt." },
-    ],
-    kpis: [
-      { value: "100 %", label: "der Aussagen tragen eine Quelle oder sind als offene Frage markiert", kind: "Regel" },
-      { value: "2", label: "Zeitpunkte je Fakt: gültig seit, erfasst am", kind: "Regel" },
-      { value: "0", label: "stille Überschreibungen: Abgelöstes bleibt sichtbar", kind: "Regel" },
     ],
   },
   boundaries: {

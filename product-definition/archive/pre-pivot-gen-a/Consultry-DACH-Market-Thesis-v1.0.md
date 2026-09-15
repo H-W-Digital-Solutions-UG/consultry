@@ -1,6 +1,6 @@
 # Consultry - DACH Market Thesis v1.0
 
-> **⚠️ DATE-STALE / PRE-PIVOT (Stand 13.06.2026).** Pre-Pivot-Marktrahmung („volles Operating System"). Vermutliche Herkunft der unbelegten Deck-Platzhalter (~38k Beratungen, >60 %). **Aktuelle, gesourcte Marktzahlen** stehen in [Foundation-Decisions §5a/§8](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md) (BDU 2025: €1.300 Tagessatz, −2 %, AI +18,8 %) und [GTM-Decisions §3A](../../latest/Consultry-GTM-Decisions-v1.0.md). Diese Datei für Hintergrund, nicht für Zahlen verwenden.
+> **⚠️ DATE-STALE / PRE-PIVOT (Stand 13.06.2026).** Pre-Pivot-Marktrahmung („volles Operating System"). Vermutliche Herkunft der unbelegten Deck-Platzhalter (~38k Beratungen, >60 %). **Aktuelle, gesourcte Marktzahlen** stehen in [Foundation-Decisions §5a/§8](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md) (BDU 2025: €1.300 Tagessatz, −2 %, AI +18,8 %) und [GTM-Decisions §3A](../baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md). Diese Datei für Hintergrund, nicht für Zahlen verwenden.
 
 ## 1. Kurzthese
 

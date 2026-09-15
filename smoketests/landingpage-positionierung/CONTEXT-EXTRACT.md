@@ -18,6 +18,14 @@ Report (15.08.) und der Consultry Marketing DS (Figma-Skills). Status der Aussag
 
 ## Vokabular (verwendet in den Seiten)
 
+Ergänzung 13.09., Ledger-Seite v11: Der [aktuelle Produktkern](../../product-definition/PRODUCT.md)
+und [„Wissensledger integrieren“, L2–L5](../../product-definition/archive/session-2026-09-05-wissensledger/INSIGHTS.md)
+stellen die gemeinsame versionierte Arbeitsgrundlage, erhaltene Widersprüche und geprüfte Fortsetzung
+in den Mittelpunkt. Ein Arbeitskonsens belegt keine Wahrheit und erteilt keine Geschäftsfreigabe.
+Die akzeptierte Sicht bleibt an Aufgabe, Identität, Zweck und Rechte gebunden; konkrete Annahmeregeln
+und technische Konsensverfahren sind weiterhin offen. Der ältere Extrakt unten ist kein Beleg für
+einen inzwischen ausgewählten technischen Stack.
+
 | Begriff | Bedeutung |
 |---|---|
 | Firmengedächtnis / Brain | quellenbezogene, zugriffsgerechte Wissens- und Kontextschicht; keine Garantie objektiver Wahrheit |
@@ -28,6 +36,7 @@ Report (15.08.) und der Consultry Marketing DS (Figma-Skills). Status der Aussag
 | Egress-Entscheidung | ALLOW · ALLOW_SANITIZED · REQUIRE_REVIEW · LOCAL_ONLY · BLOCK; fail closed |
 | Corporate Alignment | drei getrennte Perspektiven: Wissen, Marke/CD, Governance/Freigabe; kein Gesamt-Score |
 | Challenge | quellengebundene Anfechtung durch Perspektiven (Delivery, Daten/Experte, Kunde/Abnahme, Betrieb/Risiko, Kommerziell); konsolidiert ohne falschen Konsens |
+| Wissensledger / Arbeitskonsens | nachvollziehbarer vereinbarter Wissensstand einer Aufgabe; frühere Versionen, Quellen und Gegenbelege bleiben erhalten, Folgearbeit nutzt den erlaubten Ausschnitt |
 
 ## Sprachregelungen (Deep Report B1–B12, Deck v10)
 

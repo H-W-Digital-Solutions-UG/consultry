@@ -1,0 +1,474 @@
+[
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/approve-the-definition-complete-three-slice-technical-poc-handoff.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/approve-the-definition-complete-three-slice-technical-poc-handoff.md",
+    "title": "Approve the Definition-complete Three-Slice Technical PoC Handoff",
+    "status": "open",
+    "closure": "",
+    "sha256": "6ef471654463eec18372b051baac149bd8995e14d383f2814127dada39257426"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/approve-the-product-definition-handoff.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/approve-the-product-definition-handoff.md",
+    "title": "Approve the product and business-domain handoff",
+    "status": "open",
+    "closure": "",
+    "sha256": "be6af1958edcc98ff79711dd6e6f3412f3a1772f163bd4211fae2e5746c9111c"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/choose-context-assertion-temporality-for-the-mvp.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/choose-context-assertion-temporality-for-the-mvp.md",
+    "title": "Choose Context Assertion temporality for the MVP",
+    "status": "closed",
+    "closure": "",
+    "sha256": "1261da82dfea81dfff3206d597a60b1cf820940186e228b628c2099c7073ad31"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/choose-the-architecture-and-data-adr-set.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/choose-the-architecture-and-data-adr-set.md",
+    "title": "Choose the Architecture and Data ADR delta set",
+    "status": "closed",
+    "closure": "out-of-scope",
+    "sha256": "847858d522ab966e7c6b027922f23dae02b23905a4a3d1d770228d7068e6eb7d"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/choose-the-mvp-kernel-persistence-boundary.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/choose-the-mvp-kernel-persistence-boundary.md",
+    "title": "Choose the MVP kernel persistence boundary",
+    "status": "closed",
+    "closure": "out-of-scope",
+    "sha256": "1f7f826e98def87fed02db815a91a9db053f2ff737671733639a020a3c3284cd"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/choose-the-tenant-extension-model.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/choose-the-tenant-extension-model.md",
+    "title": "Define the consultancy implementation and configuration experience",
+    "status": "open",
+    "closure": "",
+    "sha256": "19bae625dcddedfc77448f09258e1fa50463b51da054390a50010124db27c2c2"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/complete-the-final-product-traceability-matrix.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/complete-the-final-product-traceability-matrix.md",
+    "title": "Complete the Final Product Traceability Matrix",
+    "status": "open",
+    "closure": "",
+    "sha256": "46056404e55a0a9ebc1e60776d05b48d1b6b621928d699a127ae31de76000bfe"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-client-contract-as-the-business-term.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-client-contract-as-the-business-term.md",
+    "title": "Confirm Client Contract as the business term",
+    "status": "closed",
+    "closure": "",
+    "sha256": "63342981a62d29880c91ee62e709f5d20b3ecae5de28541bfdd28c1e408f1d43"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-project-status-authority.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-project-status-authority.md",
+    "title": "Confirm Project Status authority",
+    "status": "closed",
+    "closure": "",
+    "sha256": "5024a06a41aff23b8dc7d232af3ecd554e7e7685f8aeeb51c698f65ee187a9e7"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-the-proposal-aggregate-lifecycle.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-the-proposal-aggregate-lifecycle.md",
+    "title": "Specify the Opportunity-to-Project Representative Business Thread",
+    "status": "closed",
+    "closure": "",
+    "sha256": "912981985087b97020a4e3944cd04e00665da6cd1324afeb324acd47a65c7e00"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-the-reusable-asset-boundary.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/confirm-the-reusable-asset-boundary.md",
+    "title": "Confirm the Reusable Asset boundary",
+    "status": "closed",
+    "closure": "",
+    "sha256": "3a083bf1fdc3a00d32f29d66a6bb9cf6a21b284baff2d7083265d9d973368c2b"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/consolidate-the-three-slice-technical-poc-contract-and-gap-register.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/consolidate-the-three-slice-technical-poc-contract-and-gap-register.md",
+    "title": "Consolidate the Three-Slice Technical PoC Contract and Gap Register",
+    "status": "open",
+    "closure": "",
+    "sha256": "133f9c264cc1002357b3d401243f7689370eeb2f01fbc8a5508dbc8bfeeafd10"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/deep-audit-the-next-product-and-business-domain-challenges.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/deep-audit-the-next-product-and-business-domain-challenges.md",
+    "title": "Deep-audit the next product and business-domain Wayfinder challenges",
+    "status": "closed",
+    "closure": "",
+    "sha256": "78b5a4061effe9890b9064098655d8a31f243d8a7f4c9e165e8a7bdec32a21ec"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-canonical-responsibility-and-job-families.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-canonical-responsibility-and-job-families.md",
+    "title": "Define Consultancy Jobs and Responsibility Coverage",
+    "status": "closed",
+    "closure": "",
+    "sha256": "aa9e99ba9ee696af20be1909a6aad392c40fd043b1c6bbe690267041c3b8cb77"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-case-participation-authority-delegation-and-separation-of-duties.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-case-participation-authority-delegation-and-separation-of-duties.md",
+    "title": "Ratify the Minimum Decision and Effect Authority Spine",
+    "status": "closed",
+    "closure": "",
+    "sha256": "833a24eb2b17517f9390d0a525dae02cbcd6f3609de671568eb6c7ed4f4846f7"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-contextual-task-and-skill-product-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-contextual-task-and-skill-product-contract.md",
+    "title": "Define the Contextual Task and Skill Product Contract",
+    "status": "open",
+    "closure": "",
+    "sha256": "149702156c4d65106f1963774aaf1d7a5ca18865238cfe0c8916213c39054ac4"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-execution-and-validation-case-contracts.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-execution-and-validation-case-contracts.md",
+    "title": "Define Execution-Case and Validation/Assurance-Case Contracts",
+    "status": "open",
+    "closure": "",
+    "sha256": "286e32cb91267de82ce69a4111549d2efb0b7e4df1fa34109f94d9a4ce4c9715"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-handoff-commitment-recovery-and-outcome-semantics.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-handoff-commitment-recovery-and-outcome-semantics.md",
+    "title": "Define handoff, commitment, recovery, and outcome semantics",
+    "status": "open",
+    "closure": "",
+    "sha256": "753d436abc785b0a145eced671e70aff2534cd8fbad1d4f57c1aaf0a35add5e3"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-knowledge-to-action-and-blind-spot-finding-contracts.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-knowledge-to-action-and-blind-spot-finding-contracts.md",
+    "title": "Define Knowledge-to-Action and Blind-Spot Finding contracts",
+    "status": "open",
+    "closure": "",
+    "sha256": "e9f29d2973a5df32dc24c26845fa8813641e1d62b1bc701e57b8a246f1035c93"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-model-bridge-product-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-model-bridge-product-contract.md",
+    "title": "Define the Model Bridge Product Contract",
+    "status": "open",
+    "closure": "",
+    "sha256": "05ea06616756e4d69f7a492e187f043d75c21e1a1d89bf69d2cd8df8b2f5e5d1"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-native-and-federated-record-authority-principles.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-native-and-federated-record-authority-principles.md",
+    "title": "Define native and federated record-authority principles",
+    "status": "open",
+    "closure": "",
+    "sha256": "09da9cf4b61281e88c114debd55bd1308fd273be8ec5a25b66b535665549aa9c"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-paid-icp-and-buying-viability-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-paid-icp-and-buying-viability-contract.md",
+    "title": "Define the Paid ICP and Buying-Viability Contract",
+    "status": "open",
+    "closure": "",
+    "sha256": "dbdbdc5de23fed027011d1ce35169b7a0e819042e19a2f7e4d92937369f9d047"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-product-actors-role-compression-jobs-and-authority.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-product-actors-role-compression-jobs-and-authority.md",
+    "title": "Define the Product Actor Ontology",
+    "status": "closed",
+    "closure": "",
+    "sha256": "540335a3fc60d840d37b3a063f73e3feba107f1008b706b47133501da647c7b0"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-product-horizons-and-the-first-validation-and-mvp-business-slice.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-product-horizons-and-the-first-validation-and-mvp-business-slice.md",
+    "title": "Define product horizons and the first Full-Backend MVP business boundary",
+    "status": "open",
+    "closure": "",
+    "sha256": "afb4bdc9c23d04f621cc8c370fd56ac0ea2c26bd8a452bc5cea3c87743fe899d"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-product-outcomes-acceptance-and-learning-requirements.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-product-outcomes-acceptance-and-learning-requirements.md",
+    "title": "Define product outcomes, acceptance, and learning requirements",
+    "status": "open",
+    "closure": "",
+    "sha256": "c8aaceab1799fba76b5372c20d8dd686e8ab3a9f35cf4e3ea416a9091c48fb4c"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-active-client-work-journey-anatomy-and-ux-mode-coverage.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-active-client-work-journey-anatomy-and-ux-mode-coverage.md",
+    "title": "Define the Active Client Work journey anatomy and UX-mode coverage",
+    "status": "open",
+    "closure": "",
+    "sha256": "520caefc7e6f885f28c6cd9b89db00cddc36afbf750b504d9e796ae07758c5ba"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-business-domain-and-lifecycle-canon.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-business-domain-and-lifecycle-canon.md",
+    "title": "Define the business-domain and lifecycle canon",
+    "status": "open",
+    "closure": "",
+    "sha256": "7804426e9d205c46ec37fffea6484a35c251cfccdf8925fd171537f247d9c8a1"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-canonical-user-journey-portfolio.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-canonical-user-journey-portfolio.md",
+    "title": "Define the canonical user-journey portfolio",
+    "status": "closed",
+    "closure": "",
+    "sha256": "34924d930ff18f05d5b73b5f5caea3f77b00296fa9cdda5a9c38842c448944a4"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-consultry-core-product-boundary-and-module-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-consultry-core-product-boundary-and-module-contract.md",
+    "title": "Ratify the Consultry Core Continuity Obligations",
+    "status": "open",
+    "closure": "",
+    "sha256": "e4cfebeefd7f9a513763286a03e5f0b674bc1153519e750852a14329d9438f9f"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-consultry-product-and-platform-destination.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-consultry-product-and-platform-destination.md",
+    "title": "Define the Consultry product-and-platform destination",
+    "status": "closed",
+    "closure": "",
+    "sha256": "8a8cb1060143862313c2b3effc1fe2b0ad569bdbfc2427609e128ec5bc32c365"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-core-module-and-surface-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-core-module-and-surface-contract.md",
+    "title": "Define the Core, module, and surface contract",
+    "status": "open",
+    "closure": "",
+    "sha256": "91fb97b0aef58c2c7cfc4d0800d595d0fa0fc9114388ca90392889fc10b41f95"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-corporate-artifact-alignment-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-corporate-artifact-alignment-contract.md",
+    "title": "Define the Corporate Artifact Alignment Product Contract",
+    "status": "open",
+    "closure": "",
+    "sha256": "0f4f603ed1e5c1222dcb80db37d6a7563bc41446842c85c88963aa63b8e726f1"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-first-consultancy-operating-archetypes.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-first-consultancy-operating-archetypes.md",
+    "title": "Define the first consultancy operating archetypes",
+    "status": "closed",
+    "closure": "",
+    "sha256": "e3cf6d9cb97859a7036464a02fdf915994ae602f4007be7ff9bec4d2711b6aed"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-harness-framework-product-boundary.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-harness-framework-product-boundary.md",
+    "title": "Define the Consultry Harness Integration Boundary",
+    "status": "closed",
+    "closure": "",
+    "sha256": "101cf03733de9812eb56056e05ed6dceb62506d2027c0289b8d13287e1256310"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-human-ai-responsibility-and-meaningful-oversight-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-human-ai-responsibility-and-meaningful-oversight-contract.md",
+    "title": "Define the Human-AI responsibility and meaningful-oversight contract",
+    "status": "open",
+    "closure": "",
+    "sha256": "6f13b66587d7269eee76d36af18784ecd5544ae03f1126d99f72cd3452dae214"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-kernel-graph-governance-and-model-bridge-architecture.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-kernel-graph-governance-and-model-bridge-architecture.md",
+    "title": "Define the kernel graph, governance, and Model Bridge architecture",
+    "status": "closed",
+    "closure": "",
+    "sha256": "572278b046da33ad668961df7c9d3f4f22bbbd6ff41edc4b570e231ee1a7765b"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-product-invariant-and-tenant-variation-envelope.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-product-invariant-and-tenant-variation-envelope.md",
+    "title": "Define the Product invariant and tenant-variation envelope",
+    "status": "open",
+    "closure": "",
+    "sha256": "b405788b33328a1acbf29acffb6e8e74af9e2e148524916146ac4d86e7bf9c43"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-small-mvp-epic-set.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-small-mvp-epic-set.md",
+    "title": "Define the small MVP epic set",
+    "status": "closed",
+    "closure": "out-of-scope",
+    "sha256": "2e18442e85926b405c840f4af5530a63ef863df1462464ddffe9f90d6b292a20"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/derive-the-product-capability-feature-and-requirement-coverage-map.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/derive-the-product-capability-feature-and-requirement-coverage-map.md",
+    "title": "Derive the Product Coverage Skeleton",
+    "status": "open",
+    "closure": "",
+    "sha256": "daf224c03bc9e006eace73a45e056483c1bac33b1d09661c9c019717b7713089"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/map-remaining-whole-product-journey-families-and-specification-depth.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/map-remaining-whole-product-journey-families-and-specification-depth.md",
+    "title": "Audit residual whole-product journey coverage and specification depth",
+    "status": "open",
+    "closure": "",
+    "sha256": "742ca72a9a1473d49ee9b2a30355a40c7e304f7266710a0f4ae163c78dd16d89"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/map-role-compression-and-responsibility-distribution-by-archetype.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/map-role-compression-and-responsibility-distribution-by-archetype.md",
+    "title": "Map Role Compression for Marketing, Personas, and Journeys",
+    "status": "open",
+    "closure": "",
+    "sha256": "23245da66364b1059002d140aae97b8adc1c192d2029866d4a696fd7de488cce"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/place-the-three-slice-mock-ui-demo-gate-before-the-technical-poc.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/place-the-three-slice-mock-ui-demo-gate-before-the-technical-poc.md",
+    "title": "Place the Three-Slice Mock UI Demo Gate Before the Technical PoC",
+    "status": "closed",
+    "closure": "",
+    "sha256": "57efd1e69c523b87326ef274e7aceabdbebbf04cae1a5d5704f5d4846ba8ec23"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/prototype-the-role-aware-human-ai-interaction-and-responsibility-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/prototype-the-role-aware-human-ai-interaction-and-responsibility-contract.md",
+    "title": "Prototype the Systemic Consultry Platform Click Dummy",
+    "status": "open",
+    "closure": "",
+    "sha256": "3fa4d17ac97b268a83627f1769c7465380366c7eaf61e24b718f26b7d86edda7"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/put-product-and-business-domain-definition-before-technical-planning.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/put-product-and-business-domain-definition-before-technical-planning.md",
+    "title": "Put product and business-domain definition before technical planning",
+    "status": "closed",
+    "closure": "",
+    "sha256": "3e55f271d6bdd604233a44fc4aca679a72b35b032df1f283adef3deb7d6f4b64"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-consulting-work-primitive-and-composable-ux-grammar.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-consulting-work-primitive-and-composable-ux-grammar.md",
+    "title": "Ratify the consulting-work primitive and composable UX grammar",
+    "status": "closed",
+    "closure": "",
+    "sha256": "55bd1855617a75eb5f7363058b486f096d104f2ffcc4adccb95cefc8359e96d6"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-evidence-gated-product-to-prototype-route.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-evidence-gated-product-to-prototype-route.md",
+    "title": "Ratify the evidence-gated Product-to-Prototype route",
+    "status": "closed",
+    "closure": "",
+    "sha256": "e90885a2bae687016f4c5e3c52e8b1b5860f88d65f504560d72fc4f41aafb314"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-product-problem-and-outcome-hierarchy.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-product-problem-and-outcome-hierarchy.md",
+    "title": "Ratify the product problem and outcome hierarchy",
+    "status": "closed",
+    "closure": "",
+    "sha256": "6174bf4ee40cdf3037538f6bb7bdf1e22687468773e49d5bb764274d4852224f"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-whole-product-operating-loop-and-handoff-contract.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/ratify-the-whole-product-operating-loop-and-handoff-contract.md",
+    "title": "Ratify the Whole-Product Operating Grammar",
+    "status": "open",
+    "closure": "",
+    "sha256": "7f0a8c8d1f0c9bd7d358c6028e8dd88abe629b94a77d946772442a360112b7c0"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/reconcile-pre-pivot-personas-to-the-ratified-actor-model.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/reconcile-pre-pivot-personas-to-the-ratified-actor-model.md",
+    "title": "Reconcile pre-pivot personas to the ratified actor model",
+    "status": "open",
+    "closure": "",
+    "sha256": "3587c474fbfd6b72ce04e3b0e936967b08fdcb4e978011bde7aed77e9f34ad56"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/reconcile-the-canonical-model-into-source-documents.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/reconcile-the-canonical-model-into-source-documents.md",
+    "title": "Reconcile the product and business-domain canon into source documents",
+    "status": "open",
+    "closure": "",
+    "sha256": "d72d42c8e575b8b1ab25e515ebc47835cd37aa3600538d96ca40fadf7bf6c567"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/reject-a-chat-only-product-and-make-the-harness-optional.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/reject-a-chat-only-product-and-make-the-harness-optional.md",
+    "title": "Reject a chat-only product and make the harness optional",
+    "status": "closed",
+    "closure": "",
+    "sha256": "e92b702027c4651a10b61d4151d852b1310815d5eef99f71616db2f918fc1d28"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/separate-the-core-skill-graph-from-capability-evidence.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/separate-the-core-skill-graph-from-capability-evidence.md",
+    "title": "Separate the Core Skill Graph from capability evidence",
+    "status": "closed",
+    "closure": "",
+    "sha256": "48b76c6a2f317762199ab1c1e02e6a3229ae65f26efc26bf8ade354760c897ed"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-consultant-daily-work-and-project-delivery-journeys.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-consultant-daily-work-and-project-delivery-journeys.md",
+    "title": "Specify the Active Project/Delivery Blind-Spot and Rebuttal-Simulation Reference Thread",
+    "status": "closed",
+    "closure": "",
+    "sha256": "1cb8de133c6fb3d258a3e39806a51f5d34aae2c5c85f1251cc409dc46b3d9a39"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-corporate-artifact-alignment-reference-thread.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-corporate-artifact-alignment-reference-thread.md",
+    "title": "Specify the Knowledge/Reuse and Corporate Artifact Alignment Reference Thread",
+    "status": "closed",
+    "closure": "",
+    "sha256": "b2af4fe017ae421f9d6b9a5fefd71898ac538397dd901085773b90ba922591ec"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-governed-reuse-and-service-productization-journey.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-governed-reuse-and-service-productization-journey.md",
+    "title": "Specify governed reuse and service-productization journey",
+    "status": "open",
+    "closure": "",
+    "sha256": "a461126ae631d2af7964e8557845e72b5adf8449b04845906cc41d01ed6d9846"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-personal-daily-attention-and-capture-journey.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-personal-daily-attention-and-capture-journey.md",
+    "title": "Specify the Personal Daily Attention and Capture Journey",
+    "status": "open",
+    "closure": "",
+    "sha256": "1fb195228d7151953eccb8fd6c1a520e3163f2c503f4003d5ccfbf9e6825bcf9"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-the-existing-client-project-sensing-journey.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-the-existing-client-project-sensing-journey.md",
+    "title": "Specify the existing-client project-sensing journey",
+    "status": "open",
+    "closure": "",
+    "sha256": "f29d6177eced7e68efe9cfc986a0a8da3865edba90ac6689eda496234cb492dc"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-the-tender-to-review-ready-concept-journey.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/specify-the-tender-to-review-ready-concept-journey.md",
+    "title": "Specify the tender-to-review-ready-concept journey",
+    "status": "open",
+    "closure": "",
+    "sha256": "bea3a0ffd2f0b0d7743fd20a938dca299a16998883fa8698e0cc8979266b2ced"
+  },
+  {
+    "original": "product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/validate-the-priority-problem-evidence-and-assumption-register.md",
+    "archive": "product-definition/archive/baseline-before-consolidation-2026-09-10/latest/wayfinder/consultry-product-platform-baseline/tickets/validate-the-priority-problem-evidence-and-assumption-register.md",
+    "title": "Validate the priority-problem evidence and assumption register",
+    "status": "closed",
+    "closure": "",
+    "sha256": "e8f22546836c987e82c02ecfa64c9aff79fe1e3cba795f379d609937f3299b4c"
+  }
+]

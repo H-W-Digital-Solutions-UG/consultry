@@ -1,26 +1,18 @@
-# Consultry Product Definition — Archive
+# Consultry — Quellenarchiv
 
-**Status:** historische Provenienz; niemals Quelle für aktuellen Product Scope oder aktuelle Entscheidungen
+Aktueller Einstieg: [INDEX](../INDEX.md). Dieser Baum bewahrt Herkunft und historische Arbeitsstände. Die aktuelle Gültigkeit einer Aussage steht in [DECISIONS](../DECISIONS.md).
 
-Dies ist der einzige Archivbaum für die Consultry Product Definition. Inhalte werden nicht gelöscht, weil sie Herkunft, frühere Annahmen und verworfene oder superseded Lösungsstände dokumentieren. Ihre Aussagen gelten jedoch nicht ohne erneute explizite Ratifikation.
+| Bereich | Inhalt |
+|---|---|
+| [session-2026-09-14-framing-messaging](session-2026-09-14-framing-messaging/NOTES.md) | datierter Voice-Beleg: breiter Arbeitskern, Grundschutz/Zusatzangebot, aufbewahrte Formulierungen und Astro-Seitenzuordnung; Founder-Stories für später |
+| [research-2026-09-13-harness-graph-ledger](research-2026-09-13-harness-graph-ledger/REPORT.md) | datierte Primärquellenanalyse, sechs code4AI-Videozuordnungen und maschinelle Ableitungen; heutige Gültigkeit in DECISIONS |
+| [baseline-before-consolidation-2026-09-10](baseline-before-consolidation-2026-09-10/README.md) | vollständiger früherer `latest/`-Baum, 59 Tickets, Research, Bilder und Vision-One-Pager |
+| [session-2026-09-05-wissensledger](session-2026-09-05-wissensledger/INSIGHTS.md) | ausgewählte Originalnachrichten und belegte Ledger-Erkenntnisse; Modellhosting ausgenommen |
+| [migration-2026-09-10](migration-2026-09-10/REPORT.md) | Bestandsprüfung, Originalbytes, Pfadzuordnung, Rückweg und ursprünglicher Organisationsvorschlag |
+| [handover-2026-08-26](handover-2026-08-26/00_START_HIER/Consultry_Handover_Final.md) | einmalig übernommene lesbare Handover-Quellen und Original-ZIP |
+| [intake-2026-09-05](intake-2026-09-05/README.md) | Original-Konsolidierungspaket und DID-DAG-Handover samt damaligem Abgleich |
+| [legacy-v3](legacy-v3/) | frühe PRD-/Persona-Stände |
+| [pre-pivot-gen-a](pre-pivot-gen-a/) | frühere Generation-A-Produktdefinition und Feature-Specs |
+| [superseded-product-baseline-2026-08](superseded-product-baseline-2026-08/) | vor dem Product-first-Wayfinder abgelöste MVP-/Persona-/Scope-Dokumente |
 
-## Bereiche
-
-| Bereich | Inhalt | Warum archiviert |
-|---|---|---|
-| [`legacy-v3/`](./legacy-v3/) | PRD v3.1 und damalige Persona-/Journey-Kritik | Vor dem späteren DACH-OS-, Wedge- und Product-first-Stand; alte UI-/Scope-Annahmen. |
-| [`pre-pivot-gen-a/`](./pre-pivot-gen-a/) | PRD v4/v5, Product Document, DACH Market Thesis, alte Roadmap und Gen-A-Feature-Specs | Bereits als superseded markierter Pre-Pivot-/Gen-A-Stand. |
-| [`superseded-product-baseline-2026-08/`](./superseded-product-baseline-2026-08/) | früheres MVP-PRD, Phase-1-Specs, Personas, Pain Map, Research-Plan und Backend-Grill | Durch den Product-first-Wayfinder, neue Archetypen/Evidence-Arbeit oder einen späteren technischen Handoff als Autorität abgelöst. |
-
-## Regeln
-
-- Keine Datei in diesem Baum darf aktuellen Scope, Actor Model, Journey, Requirement oder Architekturentscheidung festlegen.
-- Aktuelle Dokumente dürfen auf Archivmaterial nur als **historische Herkunft** oder **zu prüfenden Input** verweisen.
-- Eine Wiederaufnahme erfordert eine neue Wayfinder-Entscheidung und ein aktuelles Artefakt unter [`../latest/`](../latest/); das Archivdokument wird nicht still reaktiviert.
-- Historisch defekte Links werden nur repariert, wenn sie für Provenienz relevant sind. Sie ändern den Autoritätsstatus nicht.
-
-## Bekannte fehlende historische Companion-Quellen
-
-Im Repository fehlen weiterhin die damaligen Dateien `Consultry-Design-System-v1.3.md`, `design/screen-specs/_SCREEN-SPEC-INDEX.md`, `Consultry-User-Journeys-v1.0.md`, `Kritische-Analyse-Design-vs-Product-v1.0.md` und `Consultry-Module-Refinement-v1.0.md`. Verweise darauf bleiben als Provenienzmarker bestehen; sie sind kein Fehler im aktuellen `latest`-Paket.
-
-Die Einzelklassifikation steht in [`MANIFEST.yaml`](./MANIFEST.yaml).
+Hostinginhalte in alten Quellen bleiben historische Records. Sie wurden auf Nutzerwunsch nicht als neue Erkenntnisse oder Entscheidungen in die Produktbasis vom 10.09. übernommen. Dokumente im Archiv werden nicht als parallele laufende Spezifikation gepflegt.

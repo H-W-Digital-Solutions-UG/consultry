@@ -1,0 +1,41 @@
+{
+  "inventory_files": 16582,
+  "inventory_bytes": 5332174533,
+  "repo_snapshots": 151,
+  "handover_members": 58,
+  "extracted_handover": 21,
+  "extracted_deck_slides": 15,
+  "distinct_external_urls": 376,
+  "ticket_statuses": {
+    "open": 32,
+    "closed": 27
+  },
+  "open_ticket_groups": {
+    "alte_mock_route_kennzeichnen": 3,
+    "durch_konsolidierung_verkuerzen": 4,
+    "onboarding_am_ersten_fall": 1,
+    "core_am_arbeitsfall_pruefen": 9,
+    "begriffe_minimal_integrieren": 5,
+    "kommerziell_parallel": 3,
+    "journey_referenz_bewahren": 7
+  },
+  "excluded_directories": [
+    ".claude",
+    ".codex",
+    ".git",
+    ".idea",
+    ".playwright-cli",
+    ".playwright-mcp",
+    ".vscode",
+    "KFW_utils/cap-table-inspect/node_modules",
+    "KFW_utils/docs/__pycache__",
+    "KFW_utils/financial-model/node_modules",
+    "marketing-site/.next",
+    "marketing-site/.playwright-cli",
+    "marketing-site/node_modules",
+    "nebius-bench-results/benchmarks/nebius-vllm/__pycache__",
+    "output/Consultry-Wissenskonsolidierung-2026-09-04"
+  ],
+  "duplicate_snapshot_groups": [],
+  "original_zip_sha256": "6048119a4f10f62755e081c9a498bedcf49aa6a04b6f7a146fbbbd7c43980c5f"
+}

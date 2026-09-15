@@ -1,8 +1,8 @@
 # Consultry — Target User Personas
 
-> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../../latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
+> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../baseline-before-consolidation-2026-09-10/latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
 
-> **⚠️ DATE-STALE / PRE-PIVOT (Stand 28.06.2026).** Personas vom 31.03.2026, **vor** dem Opportunity-to-Concept- und Dual-Hero-Pivot erstellt. Als **UX-/Journey-Input weiterhin nützlich**, aber gegen [MVP-PRD](./Consultry-MVP-PRD-v1.0.md) (ICP mid-to-small, Buyer = akquise-müder Partner) + [GTM-Decisions §3.5/§3A](../../latest/Consultry-GTM-Decisions-v1.0.md) + [Alignment Control Plane](../../latest/Consultry-Alignment-Control-Plane-v1.0.md) verifizieren, bevor als verbindlich behandelt.
+> **⚠️ DATE-STALE / PRE-PIVOT (Stand 28.06.2026).** Personas vom 31.03.2026, **vor** dem Opportunity-to-Concept- und Dual-Hero-Pivot erstellt. Als **UX-/Journey-Input weiterhin nützlich**, aber gegen [MVP-PRD](./Consultry-MVP-PRD-v1.0.md) (ICP mid-to-small, Buyer = akquise-müder Partner) + [GTM-Decisions §3.5/§3A](../baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md) + [Alignment Control Plane](../baseline-before-consolidation-2026-09-10/latest/Consultry-Alignment-Control-Plane-v1.0.md) verifizieren, bevor als verbindlich behandelt.
 
 ## Handlungsrelevante Personas für UX Design & User Journey Definition
 

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultry · Fragebogen Krallmann</title>
+<style>
+  :root{
+    --brand:#AD2764; --brand2:#D2397E; --rose:#F9E2EC; --paper:#FFFBF9; --sand:#EDDFD7;
+    --ink:#2B2226; --mut:#7A6A70; --ok:#2E7D52; --okbg:#E3F2E9; --warn:#B07C10; --warnbg:#FBF0D8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--sand);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;background:var(--paper);box-shadow:0 2px 40px rgba(90,40,60,.14)}
+  .inner{padding:40px 54px 60px}
+  @media(max-width:760px){.inner{padding:24px 18px 40px}}
+  @media print{body{background:#fff}.wrap{box-shadow:none;max-width:none}}
+
+  .kicker{font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--brand);text-transform:uppercase}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.14;margin:10px 0 12px}
+  h1 em{font-style:normal;color:var(--brand)}
+  .lede{font-size:16px;max-width:78ch}
+  .meta{display:inline-block;margin-top:12px;background:var(--rose);border:1px solid #EFC9DB;border-radius:20px;padding:6px 14px;font-size:13px;color:#8A2352}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px;align-items:center;font-size:13px;color:var(--mut)}
+  .tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;border-radius:11px;padding:3px 9px;white-space:nowrap}
+  .tag.s{background:var(--rose);color:#8A2352}
+  .tag.it{background:#E7EDF7;color:#2F4B7C}
+  .tag.gf{background:#EFE9DA;color:#7A5C12}
+  .tag.typ{background:#F1EDEA;color:#6E655F;font-weight:700}
+
+  section{margin-top:36px}
+  .sechead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--rose);padding-bottom:8px;margin-bottom:6px}
+  .secno{font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--brand)}
+  h2{font-family:Georgia,serif;font-size:23px}
+  .secziel{font-size:13.5px;color:var(--mut);margin:4px 0 14px}
+
+  .q{display:grid;grid-template-columns:46px 1fr;gap:0;background:#fff;border:1px solid #EEDFE7;border-radius:11px;margin-bottom:8px;overflow:hidden}
+  .q .n{background:var(--rose);color:var(--brand);font-family:Georgia,serif;font-weight:700;font-size:16px;display:flex;align-items:flex-start;justify-content:center;padding-top:11px}
+  .q .b{padding:10px 14px}
+  .q .t{font-size:14.5px;font-weight:600}
+  .q .chips{margin-top:5px;display:flex;flex-wrap:wrap;gap:6px}
+  .q .hint{font-size:12.5px;color:var(--mut);margin-top:4px}
+
+  .why{background:var(--okbg);border-left:4px solid var(--ok);border-radius:8px;padding:10px 14px;margin:12px 0 0;font-size:13.5px}
+  .why b{color:var(--ok)}
+
+  .strip{border:1.5px dashed var(--brand2);border-radius:12px;background:#FFF6FA;padding:15px 19px;font-size:13.5px;margin-top:30px}
+  .strip b{color:var(--brand)}
+  footer{margin-top:44px;border-top:2px solid var(--rose);padding-top:14px;font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+
+<header>
+  <div class="kicker">Consultry · Entwicklungspartnerschaft Krallmann · Gesprächsleitfaden VP</div>
+  <h1>Zweiundvierzig Fragen, <em>ein Pilot.</em></h1>
+  <p class="lede">Leitfaden für das Gespräch mit dem VP (Serdan), ausgelegt auf <b>60 bis 90 Minuten Kernpfad</b> plus asynchronen Rest. Das Bauprinzip: <b>Jede Antwort wird entweder eine Konfiguration</b> (Betriebsweg, Datenklassen, Konnektoren, Pilotgruppe) <b>oder sie fällt eine Annahme</b> (zehn interne Stunden, Angebotskosten, Signalweg). Keine Frage verlangt Mandanteninhalte; Beispiele dürfen anonymisiert bleiben. Am Ende spiegeln wir die Antworten als Einseiter zurück: So haben wir euch verstanden.</p>
+  <span class="meta">Stand 18. August 2026 · baut auf der Discovery-Kernfrage und dem Rückfragen-Test der Marktvalidierung auf</span>
+  <div class="legend">
+    Wer antwortet: <span class="tag s">S · VP DIREKT</span> <span class="tag it">IT · MIT IT-KOLLEGEN</span> <span class="tag gf">GF · GESCHÄFTSFÜHRUNG</span> · Typ: <span class="tag typ">ZAHL</span> <span class="tag typ">OFFEN</span> <span class="tag typ">AUSWAHL</span> <span class="tag typ">SKALA</span>
+  </div>
+</header>
+
+<section>
+  <div class="sechead"><span class="secno">01</span><h2>Das Haus in Zahlen</h2></div>
+  <p class="secziel">Die Baseline, gegen die der Pilot später gemessen wird. Ohne sie gibt es keinen Erfolgsnachweis.</p>
+  <div class="q"><div class="n">1</div><div class="b"><p class="t">Wie viele Beraterinnen und Berater arbeiten heute fakturierbar, wie viele Kolleginnen und Kollegen intern?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">ZAHL</span></div></div></div>
+  <div class="q"><div class="n">2</div><div class="b"><p class="t">Wie viele Angebote schreibt das Haus in einem normalen Monat, und wie viele davon gewinnt ihr?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">ZAHL</span></div></div></div>
+  <div class="q"><div class="n">3</div><div class="b"><p class="t">Wer schreibt Angebote heute konkret: Partner, Seniors, ein festes Duo, jeder mal?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">4</div><div class="b"><p class="t">Wie viele Personentage kostet ein mittleres Angebot, vom Anstoß bis zum Versand?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">ZAHL</span></div><p class="hint">Prüft unsere Annahme von zwei bis vier Senior-Tagen je Angebot.</p></div></div>
+  <div class="q"><div class="n">5</div><div class="b"><p class="t">Wie viele Stunden je Woche gehen bei einem typischen Senior für interne Arbeit drauf: Protokolle, Doku, Angebote, Reisekosten?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">ZAHL</span></div><p class="hint">Prüft die Zehn-Stunden-Annahme, die unser Wertversprechen trägt.</p></div></div>
+  <div class="q"><div class="n">6</div><div class="b"><p class="t">Welche drei internen Tätigkeiten nerven das Team am meisten, in Rangfolge?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="why"><b>Was wir daraus machen:</b> Die Antworten 4 und 5 validieren oder korrigieren die zwei tragenden Zahlen des Wertversprechens; 1, 2 und 6 liefern die Baseline und die Reihenfolge, in der der Agent Aufgaben übernimmt.</div>
+</section>
+
+<section>
+  <div class="sechead"><span class="secno">02</span><h2>Vom Signal zum Angebot</h2></div>
+  <p class="secziel">Der Kernablauf des Piloten: Signal, Entscheidung, belegter Entwurf. Hier entscheidet sich, wo der Agent andockt.</p>
+  <div class="q"><div class="n">7</div><div class="b"><p class="t">Woher kamen die letzten fünf gewonnenen Projekte: Bestandskunde, Empfehlung, Ausschreibung, Neukontakt?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">AUSWAHL</span></div></div></div>
+  <div class="q"><div class="n">8</div><div class="b"><p class="t">Erzähl den Weg des letzten Angebots von vorn: vom ersten Signal bis zum Versand, mit echten Zeitspannen je Station.</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div><p class="hint">Die wichtigste Erzählfrage des Gesprächs; hier nicht unterbrechen, nur nachhaken.</p></div></div>
+  <div class="q"><div class="n">9</div><div class="b"><p class="t">Wo landen Signale aus Kundenterminen heute: im Kopf, in Mails, im CRM, nirgends?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">AUSWAHL</span></div></div></div>
+  <div class="q"><div class="n">10</div><div class="b"><p class="t">Gab es in den letzten zwölf Monaten eine Chance, die zu spät erkannt wurde? Was hat sie gekostet?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div><p class="hint">Der Nebensatz-bleibt-liegen-Beweis im eigenen Haus; die Geschichte wird später der interne Pilot-Pitch.</p></div></div>
+  <div class="q"><div class="n">11</div><div class="b"><p class="t">Welche Bausteine verwendet ihr beim Angebot wieder (Profile, Referenzen, Leistungsbeschreibungen, Preistabellen), und wo liegen sie?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">12</div><div class="b"><p class="t">Wer entscheidet, ob angeboten wird, und wie lange dauert diese Entscheidung typischerweise?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">13</div><div class="b"><p class="t">Was unterscheidet eure gewonnenen Angebote von den verlorenen, wenn ihr ehrlich draufschaut?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="why"><b>Was wir daraus machen:</b> Frage 8 liefert die Prozesslandkarte, an die der Kernablauf andockt; 9 und 10 bestimmen den Signal-Konnektor; 11 definiert, was zuerst ins Firmengedächtnis importiert wird; 13 wird zum Qualitätsmaßstab des belegten Entwurfs.</div>
+</section>
+
+<section>
+  <div class="sechead"><span class="secno">03</span><h2>Wo das Wissen wirklich liegt</h2></div>
+  <p class="secziel">Import-Umfang, Quellbindung und der Anteil der Lokal-Spur. Die erste Frage ist die wichtigste des ganzen Bogens.</p>
+  <div class="q"><div class="n">14</div><div class="b"><p class="t">Wo liegen eure Projektdokumente wirklich: Microsoft 365 und SharePoint, Fileserver oder DMS, beim Mandanten? Bitte Anteile schätzen.</p><div class="chips"><span class="tag s">S</span><span class="tag it">IT</span><span class="tag typ">AUSWAHL</span></div><p class="hint">Die Discovery-Kernfrage. Fileserver ist kein Ausschluss, sondern ein Routing: Diese Bestände verarbeitet das tenant-lokale Modell.</p></div></div>
+  <div class="q"><div class="n">15</div><div class="b"><p class="t">Wie findet ein neuer Senior heute ein vergleichbares Altprojekt? Was macht er konkret, und wie lange braucht er?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">16</div><div class="b"><p class="t">Gibt es Blaupausen oder Methodendokumente je Projekttyp, und wie aktuell sind sie?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">17</div><div class="b"><p class="t">Was existiert heute nur in Köpfen und müsste eigentlich aufgeschrieben sein?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">18</div><div class="b"><p class="t">Welche Dokumente dürfen aus eurer Sicht nie in eine KI-Verarbeitung, egal wie abgesichert?</p><div class="chips"><span class="tag s">S</span><span class="tag gf">GF</span><span class="tag typ">OFFEN</span></div><p class="hint">Wird wörtlich zur ersten Sperrklassen-Liste; die Quelle schlägt bei uns den Inhalt.</p></div></div>
+  <div class="q"><div class="n">19</div><div class="b"><p class="t">Wie sind SharePoint beziehungsweise Fileserver strukturiert: nach Kunde, nach Projekt, nach Jahr, gewachsen?</p><div class="chips"><span class="tag it">IT</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="why"><b>Was wir daraus machen:</b> Frage 14 entscheidet den Anteil der Lokal-Spur und den ersten Konnektor; 15 bis 17 begründen den Tag-1-Wert des gefüllten Korpus; 18 wird unverändert in die Datenklassen-Matrix übernommen.</div>
+</section>
+
+<section>
+  <div class="sechead"><span class="secno">04</span><h2>Datengrenze, Mandanten, Regulatorik</h2></div>
+  <p class="secziel">Vorbelegung der Datenklassen, der Freigabepfad und die Frage, mit welcher Schutzstufe der Pilot startet.</p>
+  <div class="q"><div class="n">20</div><div class="b"><p class="t">Welche Mandantentypen prägen euer Geschäft, und wer davon stellt die härtesten Anforderungen an den Datenumgang?</p><div class="chips"><span class="tag s">S</span><span class="tag gf">GF</span><span class="tag typ">OFFEN</span></div><p class="hint">Ohne Namen; Branchen und Anforderungsniveau reichen völlig.</p></div></div>
+  <div class="q"><div class="n">21</div><div class="b"><p class="t">Fragen Mandanten heute schon nach eurem KI-Einsatz, etwa in Verträgen, Audits oder Dienstleisterfragebögen? Gibt es Vertraulichkeitsklauseln, die KI-Verarbeitung einschränken?</p><div class="chips"><span class="tag s">S</span><span class="tag gf">GF</span><span class="tag typ">OFFEN</span></div><p class="hint">Bei Finanzmandaten kommt diese Frage über kurz oder lang aus der Dienstleistersteuerung; wer hier eine Antwort mit Protokoll hat, gewinnt.</p></div></div>
+  <div class="q"><div class="n">22</div><div class="b"><p class="t">Gibt es eine KI-Richtlinie im Haus? Was ist erlaubt, was verboten, was geduldet?</p><div class="chips"><span class="tag s">S</span><span class="tag gf">GF</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">23</div><div class="b"><p class="t">Ehrliche Schätzung: Wie viel KI-Nutzung läuft heute ohne Freigabe, in privaten Tabs?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">SKALA</span></div><p class="hint">Skala: praktisch keine, vereinzelt, regelmäßig, täglich. Keine Falle, sondern der Grund, warum ein sanktionierter Weg gewinnen muss.</p></div></div>
+  <div class="q"><div class="n">24</div><div class="b"><p class="t">Wer entscheidet über Datenschutz-Freigaben, intern oder ein externer Beauftragter, und wie lange dauert so eine Freigabe üblicherweise?</p><div class="chips"><span class="tag gf">GF</span><span class="tag it">IT</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">25</div><div class="b"><p class="t">Welche Datenarten stecken in euren Projektdokumenten: personenbezogene Daten, Finanzdaten, Zugangsdaten, besonders geschützte Kategorien?</p><div class="chips"><span class="tag s">S</span><span class="tag it">IT</span><span class="tag typ">AUSWAHL</span></div></div></div>
+  <div class="why"><b>Was wir daraus machen:</b> 20 und 21 kalibrieren, wie prominent Nachweise und Auditlog im Piloten gezeigt werden; 24 bestimmt den kritischen Pfad im Zeitplan; 25 belegt die Datenklassen-Matrix vor und entscheidet, ob der Pilot mit offenen Klassen startet und die sensiblen nachzieht.</div>
+</section>
+
+<section>
+  <div class="sechead"><span class="secno">05</span><h2>Technik und Zugriff</h2></div>
+  <p class="secziel">Der IT-Block, gern im Folgetermin mit den IT-Kollegen. Bestimmt Betriebsweg und ersten Konnektor.</p>
+  <div class="q"><div class="n">26</div><div class="b"><p class="t">Läuft das Haus auf Microsoft 365, und mit welcher Lizenzstufe? Gibt es bereits eine Azure-Subscription?</p><div class="chips"><span class="tag it">IT</span><span class="tag typ">AUSWAHL</span></div></div></div>
+  <div class="q"><div class="n">27</div><div class="b"><p class="t">Verwaltet Entra ID alle Nutzer, und bilden Gruppen die Projekt-Berechtigungen ab, oder leben Rechte in den Ordnern?</p><div class="chips"><span class="tag it">IT</span><span class="tag typ">OFFEN</span></div><p class="hint">Grundlage für unser Prinzip: Jeder sieht nur, was er sehen darf, auch die KI.</p></div></div>
+  <div class="q"><div class="n">28</div><div class="b"><p class="t">Welches CRM, welches Ticket- oder Projektsystem nutzt ihr, und was davon hat eine offene Schnittstelle?</p><div class="chips"><span class="tag it">IT</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">29</div><div class="b"><p class="t">Wo läuft der Fileserver (im Haus, Azure Files, NAS), und wie greifen Mitarbeitende heute von außen zu?</p><div class="chips"><span class="tag it">IT</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">30</div><div class="b"><p class="t">Was ist der Copilot-Stand im Haus: im Einsatz, getestet und gestoppt, bewusst nie versucht? Falls gestoppt: Woran lag es genau?</p><div class="chips"><span class="tag it">IT</span><span class="tag s">S</span><span class="tag typ">OFFEN</span></div><p class="hint">Die Begründung wird wörtlich unser stärkstes internes Verkaufsargument.</p></div></div>
+  <div class="q"><div class="n">31</div><div class="b"><p class="t">Wer müsste technisch freigeben, damit eine Subscription im Tenant entsteht und ein Konnektor lesend auf einen Testbestand zugreift?</p><div class="chips"><span class="tag it">IT</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="why"><b>Was wir daraus machen:</b> 26 entscheidet den Betriebsweg (Azure-Standard oder Aufbau im bestehenden Microsoft-Vertrag); 27 die Rollen-Übernahme; 29 den Lokal-Spur-Zugang; 31 die Freigabekette bis zum ersten Testlauf.</div>
+</section>
+
+<section>
+  <div class="sechead"><span class="secno">06</span><h2>Menschen und erste Nutzer</h2></div>
+  <p class="secziel">Die Pilotgruppe und der erste Aha-Moment. Werkzeuge scheitern selten an Technik, meist an Woche 2.</p>
+  <div class="q"><div class="n">32</div><div class="b"><p class="t">Wer sind die drei bis fünf ersten Nutzer für den Piloten: Rollen, Projekte, Verfügbarkeit?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">33</div><div class="b"><p class="t">Wie ist die Stimmung im Team zu KI, von 1 (Abwehr) bis 5 (Ungeduld), und woran liegt sie?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">SKALA</span></div></div></div>
+  <div class="q"><div class="n">34</div><div class="b"><p class="t">Was würde einen skeptischen Senior überzeugen, das Werkzeug eine Woche lang ernsthaft zu nutzen?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div><p class="hint">Die Antwort entwirft unseren ersten Aha-Moment; wir bauen sie wortwörtlich nach.</p></div></div>
+  <div class="q"><div class="n">35</div><div class="b"><p class="t">Gibt es einen Betriebsrat oder Mitbestimmungsprozesse, die wir früh einbinden sollten?</p><div class="chips"><span class="tag gf">GF</span><span class="tag typ">AUSWAHL</span></div></div></div>
+  <div class="q"><div class="n">36</div><div class="b"><p class="t">Wie viel Einarbeitung ist realistisch, bevor es zu viel wird: eine Stunde, ein halber Tag?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">AUSWAHL</span></div></div></div>
+  <div class="why"><b>Was wir daraus machen:</b> Pilotgruppe, Einführungsformat und der interne Champion stehen fest; Frage 34 definiert das erste Erfolgserlebnis, auf das wir die Ersteinrichtung ausrichten.</div>
+</section>
+
+<section>
+  <div class="sechead"><span class="secno">07</span><h2>Erfolg, Budget, Fahrplan</h2></div>
+  <p class="secziel">Ihre Erfolgskriterien vor unseren, der Weg zur bezahlten Erprobung und der Terminpfad.</p>
+  <div class="q"><div class="n">37</div><div class="b"><p class="t">Woran macht ihr nach vier Wochen fest, dass der Pilot ein Erfolg war? Eure Worte, eure Zahlen.</p><div class="chips"><span class="tag s">S</span><span class="tag gf">GF</span><span class="tag typ">OFFEN</span></div><p class="hint">Zuerst offen anhören, dann erst gegen die Baseline aus Sektion 1 spiegeln.</p></div></div>
+  <div class="q"><div class="n">38</div><div class="b"><p class="t">Welche der Baseline-Zahlen aus Sektion 1 wollt ihr bewegt sehen, und um wie viel?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">ZAHL</span></div></div></div>
+  <div class="q"><div class="n">39</div><div class="b"><p class="t">Was wäre ein Abbruchgrund: Was darf auf keinen Fall passieren?</p><div class="chips"><span class="tag s">S</span><span class="tag gf">GF</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">40</div><div class="b"><p class="t">Aus welchem Topf würde eine bezahlte Erprobung bezahlt: Projektbudget, IT-Budget, Geschäftsführung direkt?</p><div class="chips"><span class="tag gf">GF</span><span class="tag typ">AUSWAHL</span></div><p class="hint">Es geht um das Budget-Vehikel und den Entscheidungsweg, nicht um den Preis.</p></div></div>
+  <div class="q"><div class="n">41</div><div class="b"><p class="t">Wer außer dir muss am Ende Ja sagen, und was braucht diese Person dafür?</p><div class="chips"><span class="tag s">S</span><span class="tag typ">OFFEN</span></div></div></div>
+  <div class="q"><div class="n">42</div><div class="b"><p class="t">Realistischer Start: Ab wann könnten Testbestand und erste Nutzer bereitstehen?</p><div class="chips"><span class="tag s">S</span><span class="tag it">IT</span><span class="tag typ">ZAHL</span></div></div></div>
+  <div class="why"><b>Was wir daraus machen:</b> Pilot-Erfolgskriterien in deren Sprache, gemessen gegen die Baseline; der Entscheidungsweg zur bezahlten Erprobung samt Sponsor und möglichen Blockern. Unsere internen Messlatten docken hier an: erster real genutzter Entwurf in unter fünf Tagen, strukturierte Zufriedenheits-Befragung nach vier Wochen.</div>
+</section>
+
+<div class="strip">
+  <b>Gesprächsökonomie für 60 Minuten:</b> Kernpfad sind die Fragen 4, 5, 8, 9, 10, 14, 18, 30 und die komplette Sektion 07; sie liefern Baseline, Pilotdesign und Entscheidungsweg. Alles andere kann Serdan asynchron ausfüllen oder in den IT-Folgetermin wandern (Sektion 05). Die grünen Boxen sind unsere interne Lesart und können vor dem Versand raus; sie können aber auch bewusst drinbleiben, denn zu zeigen, was wir mit jeder Antwort bauen, ist die transparenteste Form von Discovery.
+</div>
+
+<footer>
+  <b>Herkunft und Anschluss:</b> Baut auf der Discovery-Kernfrage (Wo liegen die Projektdokumente wirklich) und dem Rückfragen-Test der Marktvalidierung auf; die Pilot-Messlatten entsprechen dem Finanzplan (erster real genutzter Entwurf in unter fünf Tagen, Zufriedenheits-Befragung nach vier Wochen, Weg zur bezahlten Erprobung). Nach dem Gespräch entsteht aus den Antworten das Pilot-Konfigurationsblatt: Betriebsweg, Lokal-Spur-Anteil, Datenklassen-Vorbelegung, Rollenmodell, Pilotgruppe, Erfolgskriterien. Keine Frage verlangt Mandanteninhalte oder Kundennamen.
+</footer>
+
+</div></div>
+</body>
+</html>

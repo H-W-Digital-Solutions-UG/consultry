@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultry · Messaging-Memo: Drei Zurufe</title>
+<style>
+  :root{
+    --brand:#AD2764; --brand2:#D2397E; --rose:#F9E2EC; --paper:#FFFBF9; --sand:#EDDFD7;
+    --ink:#2B2226; --mut:#7A6A70; --ok:#2E7D52; --okbg:#E3F2E9; --warn:#B07C10; --warnbg:#FBF0D8; --bad:#B3261E; --badbg:#FBE3E1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--sand);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+  .wrap{max-width:1100px;margin:0 auto;background:var(--paper);box-shadow:0 2px 40px rgba(90,40,60,.14)}
+  .inner{padding:40px 54px 60px}
+  @media(max-width:760px){.inner{padding:24px 18px 40px}}
+  .kicker{font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--brand);text-transform:uppercase}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.14;margin:10px 0 12px}
+  h1 em{font-style:normal;color:var(--brand)}
+  .lede{font-size:16.5px;max-width:76ch}
+  .meta{display:inline-block;margin-top:12px;background:var(--rose);border:1px solid #EFC9DB;border-radius:20px;padding:6px 14px;font-size:13px;color:#8A2352}
+
+  .idee{background:#fff;border:1px solid #EBD9E2;border-radius:14px;padding:22px 26px;margin-top:26px;box-shadow:0 1px 8px rgba(120,40,70,.05)}
+  .ihead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .inum{font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--brand2)}
+  .idee h2{font-family:Georgia,serif;font-size:22px}
+  .orig{background:#F4F1F7;border-left:4px solid #9C8FB8;border-radius:8px;padding:9px 14px;margin:10px 0;font-size:13.5px;font-style:italic;color:#544B66}
+  .orig b{font-style:normal;font-size:11px;letter-spacing:.12em;color:#7A6F94;display:block;margin-bottom:2px}
+  .idee p{margin:9px 0;font-size:14.5px}
+  .kern b{color:var(--brand)}
+
+  .zeilen{margin:12px 0}
+  .zl{display:grid;grid-template-columns:150px 1fr;gap:0;background:#fff;border:1px solid #F0E2E9;border-radius:10px;overflow:hidden;margin-bottom:8px}
+  @media(max-width:640px){.zl{grid-template-columns:1fr}}
+  .zl .wo{background:var(--rose);color:#8A2352;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:10px 12px;display:flex;align-items:center}
+  .zl .tx{padding:10px 14px;font-size:14px;font-family:Georgia,serif;font-style:italic}
+  .zl .tx small{display:block;font-family:'Segoe UI',sans-serif;font-style:normal;font-size:12px;color:var(--mut);margin-top:3px}
+
+  .kanal{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 4px}
+  .kc{font-size:11.5px;font-weight:700;border-radius:14px;padding:4px 11px;letter-spacing:.04em}
+  .kc.ja{background:var(--okbg);color:var(--ok)}
+  .kc.nein{background:#F1EDEA;color:#8A8078;text-decoration:line-through}
+  .kc.drin{background:var(--okbg);color:var(--ok);border:1.5px solid var(--ok)}
+  .ehr{background:var(--warnbg);border-left:4px solid var(--warn);border-radius:8px;padding:9px 14px;margin-top:10px;font-size:13.5px}
+  .ehr b{color:var(--warn)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:12px;overflow:hidden}
+  .tblbox{overflow-x:auto;border:1px solid #EBD9E2;border-radius:12px;margin:12px 0}
+  th{background:var(--rose);color:#8A2352;text-align:left;font-size:11px;letter-spacing:.11em;text-transform:uppercase;padding:9px 12px}
+  td{padding:9px 12px;border-top:1px solid #F3E7ED;vertical-align:top}
+  .pill{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;border-radius:12px;padding:3px 9px;white-space:nowrap}
+  .pill.gruen{background:var(--okbg);color:var(--ok)}
+  .pill.gelb{background:var(--warnbg);color:var(--warn)}
+  .pill.rot{background:var(--badbg);color:var(--bad)}
+
+  .strip{border:1.5px dashed var(--brand2);border-radius:12px;background:#FFF6FA;padding:16px 20px;font-size:14px;margin-top:28px}
+  .strip b{color:var(--brand)}
+  .strip .zeile{display:block;margin-top:8px;background:#fff;border:1px solid #F0E2E9;border-radius:8px;padding:9px 12px;font-size:13.5px;font-family:Georgia,serif;font-style:italic}
+  footer{margin-top:40px;border-top:2px solid var(--rose);padding-top:14px;font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+
+<header>
+  <div class="kicker">Consultry · Messaging-Memo · vertraulich</div>
+  <h1>Drei Zurufe, drei Ebenen: <em>Sales-Satz, Positionierungs-Frame, Produkt-Prinzip.</em></h1>
+  <p class="lede">Deine drei Ideen sind nicht drei Varianten derselben Botschaft, sondern drei verschiedene Werkzeuge: Nummer eins ist ein <b>Verkaufsversprechen an Beratungen</b>, Nummer zwei ein <b>Positionierungs-Frame</b>, der unsere Datengrenze um die Eigen-IP-Perspektive erweitert, und Nummer drei ein <b>Produkt-Prinzip</b>, das nebenbei die wichtigste Investoren-Frage zur Marge beantwortet. Hier je Idee: der geschärfte Kern, die DACH-Fassungen je Kanal, wo sie tragen und wo nicht, plus der Ehrlichkeits-Marker.</p>
+  <span class="meta">Stand 18. August 2026 · zwei Notiz-Reserven daraus sind bereits im Deck · Nachtrag: der Kopfschmerz-Frame mit Implizit-Audit</span>
+</header>
+
+<div class="idee">
+  <div class="ihead"><span class="inum">01</span><h2>Abgabequalität als Verkaufsversprechen</h2></div>
+  <div class="orig"><b>Dein Zuruf</b>Amaze your clients with the Quality of your Deliverables</div>
+  <p class="kern"><b>Der Kern, geschärft:</b> Nicht die Beratung staunt über die KI, sondern der <b>Mandant über die Abgabe</b>. Das ist die richtige Blickrichtung für Sales, denn sie verkauft Wirkung statt Technik. Im DACH-Mittelstand kippt „Amaze" allerdings schnell in US-Ton; unsere Währung ist der Beleg. Die starke Fassung koppelt das Versprechen an den Mechanismus, der es glaubwürdig macht: Quellenpflicht, geprüfter Kontext, Feldversuchszahl.</p>
+  <div class="zeilen">
+    <div class="zl"><span class="wo">Sales-Headline</span><span class="tx">Abgaben, die auffallen. Belegt statt behauptet.</span></div>
+    <div class="zl"><span class="wo">Subline</span><span class="tx">Jede Aussage mit Quelle, jede Abgabe geprüft. Im Feldversuch stieg die bewertete Qualität je Aufgabe um gut 40 Prozent.<small>Fußnote: Dell'Acqua et al., Harvard und BCG 2023, 758 Berater, generische KI als Untergrenze</small></span></div>
+    <div class="zl"><span class="wo">LinkedIn-Baustein</span><span class="tx">Der Mandant merkt nicht, dass KI im Spiel war. Er merkt, dass die Abgabe besser ist.</span></div>
+  </div>
+  <div class="kanal">
+    <span class="kc ja">Krallmann- und Sales-Deck: Nutzen-Headline</span>
+    <span class="kc ja">Website: Benefit-Block</span>
+    <span class="kc ja">LinkedIn: Baustein in Säule 1 und 3</span>
+    <span class="kc nein">Investor-Deck: Folie 3 trägt es bereits nüchtern mit Zahl</span>
+  </div>
+  <div class="ehr"><b>Ehrlichkeits-Marker:</b> „Begeistern" ohne Beleg wäre genau die Behauptung, die wir anderen ankreiden. Die 40-Prozent-Zahl ist bewertete Qualität aus dem Feldversuch mit generischer KI, also Untergrenze und fremdes Setting: immer mit Fußnote führen, nie als eigenes Messergebnis.</div>
+</div>
+
+<div class="idee">
+  <div class="ihead"><span class="inum">02</span><h2>Eigen-IP: der zweite Schutzgrund neben der Verschwiegenheit</h2></div>
+  <div class="orig"><b>Dein Zuruf</b>Protect your IP, keep control of the data you put into AI</div>
+  <p class="kern"><b>Der Kern, geschärft:</b> Das ist mehr als eine Umformulierung der Datengrenze, es ist ein <b>zweiter Schutzgrund</b>. Bisher argumentieren wir treuhänderisch (Mandantendaten, Verschwiegenheit, Kundenvertrag). Neu dazu kommt die Eigentümer-Perspektive: Methoden, Templates, Kalkulationslogik und das Angebotsarchiv sind das <b>Kapital des Hauses</b>, und wer sie in freie Werkzeuge tippt, füttert damit potenziell fremde Modelle. Unser Modell beantwortet beides mit derselben Architektur, und zwar <b>nachweisbar</b>: Tenant-Betrieb, Abuse-Monitoring-Opt-out, Protokoll je Lauf. Für Geschäftsführer ist dieser zweite Grund oft der emotionalere, denn es geht um das eigene Lebenswerk, nicht um Compliance.</p>
+  <div class="zeilen">
+    <div class="zl"><span class="wo">Positionierung</span><span class="tx">Euer Wissen ist euer Kapital. Es trainiert kein fremdes Modell.</span></div>
+    <div class="zl"><span class="wo">Sales-Absatz</span><span class="tx">Methoden, Templates, Angebotsarchiv: Das Firmengedächtnis bleibt im eigenen Tenant. Keine Eingabe wird zu Trainingsdaten, und ihr könnt es nachweisen, Lauf für Lauf.</span></div>
+    <div class="zl"><span class="wo">LinkedIn-Hook</span><span class="tx">Euer Angebotsarchiv trainiert gerade ein fremdes Modell.<small>49 Zeichen, falztauglich · Kandidat für einen neuen Säule-1-Post (P15), Aufbau: Hook, Schatten-Nutzung, Eigen-IP-Argument, nachweisbarer Gegenentwurf</small></span></div>
+    <div class="zl"><span class="wo">Vision-Ergänzung</span><span class="tx">Die Grenze schützt zwei Dinge zugleich: das Mandat des Kunden und das Kapital des Hauses.</span></div>
+  </div>
+  <div class="kanal">
+    <span class="kc drin">Investor-Deck: als IP-Reserve in Notiz Folie 9 EINGEBAUT</span>
+    <span class="kc ja">LinkedIn: neuer Post-Kandidat P15</span>
+    <span class="kc ja">Website und Sales: Kern-Benefit</span>
+    <span class="kc ja">Vision und Datengrenze-Doku: zweiter Schutzgrund</span>
+  </div>
+  <div class="ehr"><b>Ehrlichkeits-Marker:</b> Der Satz ist voll belegbar (Opt-out-Nachweis, ContentLogging false, Tenant-Betrieb, Auditlog) und darf deshalb hart formuliert werden. Einzige Disziplin: „IP" im Wortlaut sparsam verwenden; der Ziel-GF sagt „unser Wissen" und „unsere Methoden", nicht „unsere IP".</div>
+</div>
+
+<div class="idee">
+  <div class="ihead"><span class="inum">03</span><h2>Routing auf zwei Achsen: Kostenprinzip mit Margen-Wirkung</h2></div>
+  <div class="orig"><b>Dein Zuruf</b>Save Costs and Pain: Intelligent prompt routing saves you tokens while preserving quality</div>
+  <p class="kern"><b>Der Kern, geschärft:</b> Unser Routing hatte bisher eine erzählte Achse, die <b>Schutzklasse</b> (wohin darf eine Aufgabe). Dein Zuruf ergänzt die zweite Achse, die <b>Aufgabenschwere</b> (was kostet sie): Der Orchestrator schickt jede Aufgabe auf das günstigste Modell, das die Qualitätsschwelle erfüllt; die Standardlast trägt das tenant-lokale Modell, Frontier rechnet nur, wo es die Aufgabe verlangt. Das ist dreifach verwertbar: als <b>Kundenargument</b> (deshalb ist „Ein Preis, alles drin" möglich), als <b>Investorenantwort</b> auf die Margenfrage (so wird die interne 70-Prozent-Kostengrenze gehalten) und als <b>Architektur-Baustein</b> neben der Kontextschleuse. Wichtig für die Reihenfolge im Satz: Bei uns kommt die Schutzklasse immer zuerst, Kostenrouting findet nur innerhalb der freigegebenen Wege statt.</p>
+  <div class="zeilen">
+    <div class="zl"><span class="wo">Produkt-Prinzip</span><span class="tx">Routing auf zwei Achsen: Die Schutzklasse entscheidet, wohin eine Aufgabe darf. Die Aufgabenschwere entscheidet, was sie kostet.</span></div>
+    <div class="zl"><span class="wo">Kunden-Satz</span><span class="tx">Jede Aufgabe läuft auf dem kleinsten Modell, das sie nachweislich gut löst. Das hält die Kosten im Kontingent, ohne Qualität zu opfern.</span></div>
+    <div class="zl"><span class="wo">LinkedIn-Hook</span><span class="tx">Das teuerste Modell ist selten das beste für die Aufgabe.<small>56 Zeichen, falztauglich · Kandidat für die A-Reihe (Säule 2), Paar-Logik mit A2 Kleine Modelle, große Arbeit</small></span></div>
+    <div class="zl"><span class="wo">Bauplan-Baustein</span><span class="tx">Baustein 11, Kosten-Router: Aufgabenklassifikation je Task, Qualitätsschwelle aus dem Eval-Harness, Routing-Entscheidung im Auditlog neben der Schleusen-Bilanz.<small>Vorschlag für das Architektur-Papier, auf Zuruf ausformuliert</small></span></div>
+  </div>
+  <div class="kanal">
+    <span class="kc drin">Investor-Deck: als Margen-Antwort in Notiz Folie 11 EINGEBAUT</span>
+    <span class="kc ja">Bauplan und Datengrenze-Doku: neuer Baustein</span>
+    <span class="kc ja">Website: How-it-works-Punkt</span>
+    <span class="kc ja">LinkedIn: A-Reihe-Kandidat</span>
+    <span class="kc nein">Keine Prozent-Ersparnis behaupten, solange keine Eval-Runs gemessen sind</span>
+  </div>
+  <div class="ehr"><b>Ehrlichkeits-Marker:</b> „Preserving quality" ist eine Behauptung, bis der Eval-Harness sie misst. Deshalb formulieren wir die Mechanik (Qualitätsschwelle, nachweislich) statt einer Ersparnis-Prozentzahl. Sobald erste Eval-Runs laufen, wird daraus eine messbare Aussage, und erst dann gehört eine Zahl in Sales-Material.</div>
+</div>
+
+<div class="strip">
+  <b>Bereits eingebaut, zwei Notiz-Reserven im Deck (zählgeprüft, unsichtbar im Vortrag, bereit fürs Q&amp;A):</b>
+  <span class="zeile">Notiz Folie 9: IP-Reserve, falls die Frage nach dem eigenen Wissen kommt: Das Firmengedächtnis mit Methoden, Templates und Angebotsbausteinen ist die IP des Hauses; es bleibt im Tenant, keine Eingabe wird zu Trainingsdaten eines fremden Modells, und der Nachweis steht im Protokoll und im Abuse-Monitoring-Opt-out.</span>
+  <span class="zeile">Notiz Folie 11: Gehalten wird die 70-Prozent-Grenze durch Routing auf zwei Achsen: Schutzklasse entscheidet, wohin eine Aufgabe darf; Aufgabenschwere entscheidet, was sie kostet. Der Orchestrator routet jede Aufgabe auf das günstigste Modell, das die Qualitätsschwelle des Eval-Harness erfüllt.</span>
+</div>
+
+<div class="idee">
+  <div class="ihead"><span class="inum">04</span><h2>Nachtrag · Der Kopfschmerz-Frame und das Implizit-Audit</h2></div>
+  <div class="orig"><b>Dein Zuruf</b>KI-Arbeit ohne Kopfschmerzen wegen Modellwahl, Token und Kosten, KI-Slop, Hosting und Deployment, DSGVO und DORA und AI Act, personenbasiertem Datenzugriff. Ich glaube, das ist alles etwas zu implizit, oder?</div>
+  <p class="kern"><b>Die ehrliche Antwort ist dreigeteilt.</b> Für <b>Sales und Website</b> stimmt deine Diagnose voll: Dort kauft ein Geschäftsführer die Abwesenheit von Sorgen, und wir benennen die Sorgen bisher nicht, wir lösen sie nur. Für das <b>Investor-Deck</b> ist implizit richtig so: Eine Sechs-Punkte-Sorgenliste liest sich dort defensiv, und fünf der sechs Antworten liegen bereits als Q-und-A-Reserven in den Notizen. Und <b>zwei der sechs sind echte Lücken überall</b>: Der Vertrauensverlust durch KI-Slop ist nirgends benannt, obwohl er der Consulting-spezifischste Schmerz von allen ist. Und der personenbasierte Zugriff steckt nur in einem SVG-Label, obwohl er die direkte Antwort auf den größten Copilot-Blockierer ist, das Oversharing.</p>
+  <div class="tblbox"><table>
+    <thead><tr><th>Kopfschmerz</th><th>Wo es heute steckt</th><th>Urteil</th></tr></thead>
+    <tbody>
+      <tr><td><b>Modellwahl</b></td><td>Notiz Folie 9: Modellwahl ist Konfiguration, nicht Architektur; Souveränitätssatz (Modell wechseln, nicht Datenraum)</td><td><span class="pill gelb">NOTIZ-EBENE</span></td></tr>
+      <tr><td><b>Token und Kosten</b></td><td>Folie 11: Ein Preis, alles drin; seit heute die Routing-Mechanik in der Notiz</td><td><span class="pill gruen">HALB EXPLIZIT</span></td></tr>
+      <tr><td><b>KI-Slop und Vertrauensverlust</b></td><td>Die Mechanik dagegen existiert (Quellenpflicht, Freigabe, Firmengedächtnis), aber der Schmerz selbst wird nirgends ausgesprochen</td><td><span class="pill rot">FEHLT</span></td></tr>
+      <tr><td><b>Hosting und Deployment</b></td><td>Cover und Folie 9 sagen, wo es läuft (im Tenant, wir hosten nichts); dass der Kunde damit keinen Betrieb am Hals hat, steht nur in der Faktor-20-Rechnung der Folie-8-Notiz</td><td><span class="pill gelb">NOTIZ-EBENE</span></td></tr>
+      <tr><td><b>DSGVO, DORA, AI Act</b></td><td>Bewusst leise (Leitplanke: keine Pauschal-Compliance); Kleingedrucktes-Doku, Auditlog je Lauf, Schleusen-Bilanz</td><td><span class="pill gelb">BEWUSST LEISE</span></td></tr>
+      <tr><td><b>Personenbasierter Zugriff</b></td><td>Seit 18.08. auf Folie 9 als Satz in Claim 2 (Berechtigungen gelten für Agenten wie für Menschen), verstärktes Diagramm-Label, Rolle in der Folie-6-Kette, Oversharing-Antwort in der Notiz</td><td><span class="pill gruen">JETZT EXPLIZIT</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="kern"><b>Die expliziten Zeilen für Sales und Website</b> (der Block kann dort wörtlich „Sechs Dinge, die ihr abgebt" heißen):</p>
+  <div class="zeilen">
+    <div class="zl"><span class="wo">1 · Modellwahl</span><span class="tx">Welches Modell rechnet? Nicht mehr eure Frage. Der freigegebene Weg je Kunde bestimmt es, und der Betrieb wechselt Modelle wie Konfiguration.</span></div>
+    <div class="zl"><span class="wo">2 · Kosten</span><span class="tx">Kein Token-Zählen. Ein Sitz, ein Preis, Kontingent drin. Das Routing hält die Kosten im Rahmen, nicht ihr.</span></div>
+    <div class="zl"><span class="wo">3 · KI-Slop</span><span class="tx">Euer Mandant erkennt KI-Einheitsbrei, und er merkt ihn sich. Bei uns trägt jede Abgabe Quellen und eine menschliche Freigabe, bevor sie das Haus verlässt.<small>LinkedIn-Hook dazu: „Ihr Mandant erkennt KI-Texte. Und er merkt sie sich." (52 Zeichen, falztauglich, Kandidat Säule 1 oder 3)</small></span></div>
+    <div class="zl"><span class="wo">4 · Betrieb</span><span class="tx">Keine GPU, kein Deployment, kein Patchen. Es läuft in eurem Tenant, betrieben von uns.</span></div>
+    <div class="zl"><span class="wo">5 · Regulatorik</span><span class="tx">Keine Compliance-Parolen, sondern Nachweise: jeder Lauf protokolliert, jede Freigabe dokumentiert, jede Datenklasse mit ihrem Weg. Prüffest für die Fragen, die DSGVO, DORA und der AI Act an euch und eure Mandanten stellen.<small>Für Beratungen mit Finanzkunden zieht DORA besonders: Deren Prüfer fragen nach dem KI-Einsatz der Dienstleister, und ihr habt dann eine Antwort mit Protokoll statt einer Beteuerung.</small></span></div>
+    <div class="zl"><span class="wo">6 · Zugriff</span><span class="tx">Jeder sieht nur, was er sehen darf. Auch die KI. Berechtigungen gelten für Agenten wie für Menschen, je Nutzer, je Mandat.<small>LinkedIn-Hook dazu: „Copilot scheitert selten am Modell, meist an Rechten." (53 Zeichen, Kandidat Säule 1, spielt direkt gegen den Oversharing-Blockierer)</small></span></div>
+  </div>
+  <div class="kanal">
+    <span class="kc ja">Sales-Deck und Website: als Sechser-Block, Titel „Sechs Dinge, die ihr abgebt"</span>
+    <span class="kc ja">LinkedIn: zwei neue Hook-Kandidaten (Slop, Rechte)</span>
+    <span class="kc nein">Investor-Deck: keine Sorgenliste auf die Folien, Antworten liegen in den Notizen</span>
+  </div>
+  <div class="ehr"><b>Ehrlichkeits-Marker:</b> Die Regulatorik-Zeile arbeitet mit Nachweis-Sprache statt Konformitäts-Versprechen, das ist Absicht und bleibt so. Vor Publikation auf Website oder im Sales-Deck gehören die DORA- und AI-Act-Bezüge einmal juristisch gegengelesen; die Leitplanke „keine pauschale Rechtskonformität behaupten" gilt auch im Marketing. Und der Slop-Punkt braucht keinen Beleg, aber Konsequenz: Wer den Einheitsbrei-Schmerz benennt, muss die eigene Freigabe-Mechanik im selben Atemzug zeigen können.</div>
+</div>
+
+<footer>
+  <b>Nächste Schritte auf Zuruf:</b> P15 (Eigen-IP) und der A-Reihen-Post (Routing) als volle LinkedIn-Texte im Julian-Ton mit Falz-Prüfung und erstem Kommentar; Baustein 11 Kosten-Router als Abschnitt im Architektur-Papier; die Nutzen-Headline aus Idee 1 als Startpunkt für das separate Krallmann- und Sales-Deck. Alle Zeilen dieses Memos sind gedankenstrichfrei und folgen den Consultry-Sprachregeln: Beleg vor Behauptung, Zielannahmen markiert, kein Superlativ-Ton.
+</footer>
+
+</div></div>
+</body>
+</html>

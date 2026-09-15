@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultry · Finales Session-Handover</title>
+<style>
+  :root{--brand:#AD2764;--brand2:#D2397E;--rose:#F9E2EC;--paper:#FFFBF9;--sand:#EDDFD7;--ink:#2A1E24;--mut:#8A7580;--ok:#2E7D50;--okbg:#E7F3EC;--warn:#9A6A1B;--warnbg:#FBF0DC;--bad:#B3261E;--badbg:#FBE7E5}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--sand);color:var(--ink);font-size:15px;line-height:1.62}
+  .wrap{padding:34px 16px}
+  .inner{max-width:1060px;margin:0 auto;background:var(--paper);border-radius:22px;padding:46px 52px;box-shadow:0 4px 30px rgba(120,40,70,.10)}
+  header{border-bottom:3px solid var(--rose);padding-bottom:22px;margin-bottom:34px}
+  .kicker{font-size:11.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brand2);margin-bottom:10px}
+  h1{font-family:Georgia,serif;font-size:33px;line-height:1.2;margin-bottom:12px}
+  h1 em{font-style:italic;color:var(--brand)}
+  .lede{font-size:15.5px;max-width:74ch}
+  .lede b{color:var(--brand)}
+  .meta{display:inline-block;margin-top:12px;font-size:12.5px;color:var(--mut);background:var(--rose);border-radius:16px;padding:5px 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chips a{font-size:12px;font-weight:700;color:var(--brand);background:#fff;border:1px solid #EBD9E2;border-radius:16px;padding:5px 12px;text-decoration:none}
+  .chips a:hover{background:var(--rose)}
+  section{margin-bottom:38px}
+  .sechead{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+  .secno{font-family:Georgia,serif;font-size:15px;font-weight:700;color:#fff;background:var(--brand);border-radius:10px;padding:3px 11px;letter-spacing:.08em}
+  .sechead h2{font-family:Georgia,serif;font-size:23px}
+  .secnote{font-size:12.5px;color:var(--mut)}
+  .verdict{background:#fff;border:1px solid #EBD9E2;border-left:5px solid var(--brand);border-radius:12px;padding:16px 20px;font-size:14.5px}
+  .verdict b{color:var(--brand)}
+  h3.sub{font-family:Georgia,serif;font-size:17.5px;margin:18px 0 8px;color:var(--brand)}
+  p.norm{font-size:14.5px;margin:8px 0;max-width:88ch}
+  p.norm b{color:var(--brand)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:12px;overflow:hidden}
+  .tblbox{overflow-x:auto;border:1px solid #EBD9E2;border-radius:12px;margin-top:10px}
+  th{background:var(--rose);color:#8A2352;text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px}
+  td{padding:9px 12px;border-top:1px solid #F3E7ED;vertical-align:top}
+  td.nr{font-weight:800;color:var(--brand);overflow-wrap:anywhere}
+  #s0 td.nr, #s4 td.nr{white-space:nowrap}
+  td code, .mono{font-family:Consolas,Menlo,monospace;font-size:12.5px;background:#F7EDF2;border-radius:6px;padding:1px 6px}
+  .pill{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;border-radius:12px;padding:3px 9px;white-space:nowrap}
+  .pill.gruen{background:var(--okbg);color:var(--ok)}
+  .pill.gelb{background:var(--warnbg);color:var(--warn)}
+  .pill.rot{background:var(--badbg);color:var(--bad)}
+  .pill.blau{background:#E7EDF7;color:#2F4B7C}
+  .pill.brand{background:var(--rose);color:var(--brand)}
+  ul.k{list-style:none;margin:8px 0}
+  ul.k li{position:relative;padding-left:26px;margin:7px 0;font-size:14.5px;max-width:90ch}
+  ul.k li::before{content:"";position:absolute;left:2px;top:.72em;width:13px;height:2px;background:var(--brand2)}
+  ul.k li b{color:var(--brand)}
+  .strip{border:1.5px dashed var(--brand2);border-radius:12px;background:#FFF6FA;padding:15px 19px;font-size:13.5px;margin-top:16px}
+  .strip b{color:var(--brand)}
+  .hit{background:#fff;border:1px solid #EBD9E2;border-radius:14px;padding:16px 20px;margin-bottom:12px;box-shadow:0 1px 8px rgba(120,40,70,.05)}
+  .hit h3{font-family:Georgia,serif;font-size:17px;margin-bottom:5px}
+  .hit p{font-size:14px;margin:5px 0}
+  .hit p b{color:var(--brand)}
+  .qa{background:#fff;border:1px solid #EBD9E2;border-radius:12px;padding:12px 16px;margin-bottom:9px;font-size:14px}
+  .qa b.f{display:block;color:var(--brand);margin-bottom:3px}
+  footer{margin-top:46px;border-top:2px solid var(--rose);padding-top:16px;font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+
+<header>
+  <div class="kicker">Consultry · Session-Handover · Dokumentationsgrundlage · vertraulich</div>
+  <h1>Ein Stand, alle Fakten: <em>das finale Handover der Pitch-Session.</em></h1>
+  <p class="lede">Dieses Dokument ist die <b>aligned Dokumentationsgrundlage</b> der gesamten Session: Kontext, kanonische Faktenbasis, Datei-Inventar mit Iterationsständen und IDs, Entscheidungs-Log, QA-Historie, Q&amp;A-Archiv, offene Punkte und die Arbeitsregeln für Folge-Agents. Es ersetzt das Handover vom 17./18.08. als Einstiegspunkt. Maschinenlesbare Zwillingsfassung: <span class="mono">Consultry_Handover_Final.md</span>. Grundregel für jeden Widerspruch: <b>v10 führt.</b></p>
+  <span class="meta">Stand 26. August 2026 · verifiziert gegen v10, Grill-Reihe, Sprachpass, PPT-Abgleich und Datei-Inventar</span>
+  <nav class="chips">
+    <a href="#s0">00 IDs</a><a href="#s1">01 Kontext</a><a href="#s2">02 Faktenbasis</a><a href="#s3">03 Datei-Inventar</a><a href="#s4">04 Entscheidungs-Log</a><a href="#s5">05 QA-Historie</a><a href="#s6">06 Q&amp;A-Archiv</a><a href="#s7">07 Offene Punkte</a><a href="#s8">08 Update-Pfade</a><a href="#s9">09 Arbeitsregeln</a>
+  </nav>
+</header>
+
+<section id="s0">
+  <div class="sechead"><span class="secno">00</span><h2>Session-Referenzen und IDs</h2><span class="secnote">sessioninterne Referenzen der Cowork-Umgebung</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Referenz</th><th>Wert</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">Session- und Uploads-ID</td><td><code>7b206817-1b22-5a1e-848f-f519a1c3f13a</code></td></tr>
+      <tr><td class="nr">Transcript (JSONL)</td><td><code>/root/.claude/projects/-home-claude/7b206817-1b22-5a1e-848f-f519a1c3f13a.jsonl</code></td></tr>
+      <tr><td class="nr">Arbeitsverzeichnis</td><td><code>/home/claude/</code></td></tr>
+      <tr><td class="nr">Upload Beautiful Autosaved.pptx (25.08.)</td><td><code>88bb7ffc-b419-471c-b2c4-5e9280505326</code></td></tr>
+      <tr><td class="nr">Letzte Lieferung PPT-Abgleich (25.08.)</td><td><code>ad6b4505-fcec-4337-ae62-740cc7e2c9b0</code></td></tr>
+      <tr><td class="nr">Nutzer</td><td>Julian Weber (CTO), remx.chark@gmail.com</td></tr>
+      <tr><td class="nr">Werkzeuge</td><td>Screenshots unter <code>/home/claude/shots/</code>, Playwright-Skripte unter <code>/opt/node-tools/</code></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s1">
+  <div class="sechead"><span class="secno">01</span><h2>Firmenkontext und Positionierung</h2></div>
+  <div class="verdict">
+    <b>Consultry</b> baut die KI-Plattform für <b>IT- und SAP-Beratungen mit 20 bis 200 Beratern im DACH-Raum</b>. Betriebsmodell <b>Managed In-Tenant</b>: die Plattform rechnet im Microsoft-Tenant des Kunden. Kernsatz: <b>„Wir hosten nichts."</b> Kategoriezeile: „KI-Plattform für IT- und SAP-Beratungen · betrieben im Tenant des Kunden".
+  </div>
+  <ul class="k">
+    <li><b>Produktlogik:</b> Drei Kreisläufe (Gewinnen, Liefern, Steuern) auf einem verifizierten Firmengedächtnis. Jede Aussage hat eine Quelle, jede Freigabe macht den nächsten Agenten klüger.</li>
+    <li><b>Routing auf zwei Achsen:</b> Die Schutzklasse entscheidet, wohin eine Aufgabe darf; die Aufgabenschwere entscheidet, was sie kostet; ein Eval-Harness hält die Qualitätsschwelle.</li>
+    <li><b>Zugriff:</b> „Berechtigungen gelten für Agenten wie für Menschen" (Entra, Sites.Selected); kein Weg, keine Verarbeitung.</li>
+    <li><b>Team (F13, Glow-up 24.08.):</b> Caspar verkauft heute an genau diese Zielkunden und ist Vollzeit ab der ersten bezahlten Erprobung, terminiert. Julian hat fünf Jahre Banken geschützt und baut die Plattform. Paul hat neun Jahre Beratung eingekauft (Konzern-IT, MBA). Punch: „Niemand muss uns den Kunden erklären."</li>
+    <li><b>Runde:</b> Pre-Seed, Business Angels DACH. Entwicklungspartner Krallmann AG; Absichtserklärung unterschrieben, bezahlter Pilot kommt danach, ehrlich genau so sagen. Nächster Termin: Krallmann-VP (Serdan), Fragebogen liegt bereit.</li>
+    <li><b>Beschluss 18.08.:</b> H&amp;W bleibt aus allen live verwendeten Pitch-Materialien draußen; Records unangetastet.</li>
+  </ul>
+</section>
+
+<section id="s2">
+  <div class="sechead"><span class="secno">02</span><h2>Kanonische Faktenbasis</h2><span class="secnote">immer identisch sprechen und schreiben; jede Abweichung in einem Bestand wird an dieser Sektion ausgerichtet</span></div>
+
+  <h3 class="sub">Preise und Einheiten (dritte und gültige Preiswelt)</h3>
+  <ul class="k">
+    <li><b>All-in-Sitz 149 Euro</b> je Monat (Standardweg) beziehungsweise <b>189 Euro</b> (EU-Weg), inklusive Token-Kontingent; Volumentarif ab dem Dreifachen; Plattformgebühr als Rechenannahme 500 Euro. Sichtbar bleibt die Struktur, Preise stehen im Datenraum.</li>
+    <li><b>ACV-Anker rund 25.000 Euro:</b> 11 All-in-Sitze plus Plattform ergibt 25.668 Euro im Jahr. ACV dreifach trennen: 25.000 SAM-Annahme, 15.000 blended im Plan, Krallmann auf Design-Partner-Konditionen.</li>
+    <li><b>Größenargumente:</b> 10 Sitze kosten 17.880 Euro im Jahr, unter 1 Prozent von 2 Millionen Umsatz. Ein Sitz kostet unter 7 Prozent des Kapazitätswerts (149 geteilt durch 2.275 ergibt 6,5 Prozent).</li>
+    <li><b>Kapazitätswert rund 2.275 Euro</b> je Berater und Monat (3,5 von 10 internen Stunden, Satz 162,50 Euro). <b>Immer Zielannahme</b>, nie gemessene Einsparung.</li>
+    <li>Ältere Preiswelten (49 und 99; später 50 auf 69) sind Historie und nur Q&amp;A-Wissen: „Wir haben früh zu billig gedacht und die Preislogik an den Kapazitätswert angepasst."</li>
+  </ul>
+
+  <h3 class="sub">Runde, Cap Table, Renditerechnung</h3>
+  <ul class="k">
+    <li><b>Ask 500.000 Euro für 17,5 Prozent</b>, post-money 2,86 Millionen. Alte 250k-Stände dürfen nirgends mehr auftauchen (roter PPT-Prüfpunkt).</li>
+    <li><b>Cap Table nach der Runde 73,5 / 9 / 17,5</b> (Gründer / ESOP / Angels); nach einer Seed mit 20 bis 25 Prozent Verwässerung halten die Gründer 55 bis 59 Prozent.</li>
+    <li><b>Multiples-Methodik 6 bis 8 mal Umsatz:</b> Basisfall 3 Millionen ARR ergibt 18 bis 24 Millionen; Zielplan 13 Millionen ARR (0,8 Prozent von 1,63 Milliarden EU-SAM, rund 800 Kunden) ergibt 78 bis 104 Millionen, 27 bis 36 mal aufs Post-Money. Verwässerungs-Caveat immer mitsprechen.</li>
+    <li><b>Break-even 20 bis 27 Kunden</b> gleich 0,14 bis 0,19 Prozent des Einstiegsmarkts, im Plan in Jahr 2. Infrastruktur trägt sich ab dem zweiten Kunden, jeder Kunde rechnet sich ab dem ersten Monat (Zielannahmen).</li>
+    <li><b>Jahr 1 rund 12 Kunden, rund 150.000 Euro ARR</b>, davon 10 referenzfähig. Jahr 3: 13 Millionen ARR (nicht 12).</li>
+  </ul>
+
+  <h3 class="sub">Markt</h3>
+  <ul class="k">
+    <li><b>Einstiegsmarkt DACH 14.500 Firmen</b>, bottom-up und bewusst konservativ (NACE-J62-Schnitt); bereinigt 18 bis 19 Tausend, Feinschnitt im Datenraum. Die Deck-Fußnote sagt genau das.</li>
+    <li>DACH mal ACV ergibt rund <b>360 Millionen Euro</b>; <b>EU-SAM rund 1,63 Milliarden</b>. Leitsatz: „Der Plan ist konservativ. Der Markt ist es nicht."</li>
+  </ul>
+
+  <h3 class="sub">Belege mit Ehrlichkeitsmarkern</h3>
+  <div class="tblbox"><table>
+    <thead><tr><th>Beleg</th><th>Zahl</th><th>Pflicht-Marker</th></tr></thead>
+    <tbody>
+      <tr><td>Harvard/BCG 2023 (758 Berater)</td><td>plus 40 Prozent bewertete Qualität je Aufgabe</td><td><span class="pill gelb">ZIELANNAHME</span> der Übertragung</td></tr>
+      <tr><td>Bitkom 2026</td><td>77 Prozent nennen Datenschutz als KI-Hemmnis</td><td>neutral</td></tr>
+      <tr><td>CoreView 2026</td><td>66 Prozent verschieben Copilot-Rollouts (Oversharing)</td><td><span class="pill gelb">HERSTELLERSTUDIE</span></td></tr>
+      <tr><td>Atlassian State of Teams</td><td>Kontextwechsel- und Suchzeit</td><td><span class="pill gelb">ANBIETERSTUDIE</span></td></tr>
+      <tr><td>Projekttermine</td><td>26,6 Prozent verfehlen den Termin, Überschreitung im Schnitt 11,3 Prozent</td><td>neutral</td></tr>
+      <tr><td>Schatten-KI</td><td>42,7 Prozent</td><td>nur Notizen</td></tr>
+      <tr><td>Accenture GenAI-Umpreisung</td><td>rund minus 18 Prozent</td><td>Sekundärbeleg, Backup-Folie</td></tr>
+      <tr><td>McKinsey Outcome-Fees</td><td>rund 25 Prozent (nicht 30)</td><td>Sekundärbeleg</td></tr>
+      <tr><td>EU-Präferenz</td><td>32,4 Prozent wählen EU preisunabhängig</td><td>neutral</td></tr>
+      <tr><td>Lünendonk</td><td>43 Prozent; Ersparnis bleibt Marge im Haus</td><td>neutral</td></tr>
+    </tbody>
+  </table></div>
+  <div class="strip"><b>Verbotene Formulierungen:</b> „maximal compliant" und jedes Pauschal-Compliance-Versprechen; „Personal einsparen" (Sprachregel: Kapazität freilegen); gemessene Einsparung behaupten, wo Zielannahme gilt.</div>
+
+  <h3 class="sub">Wettbewerbs- und Kategoriewissen</h3>
+  <p class="norm">Drei Werkzeugklassen, fair beschrieben (F8): generische Copiloten und Work-KI, AI-Baukästen, KI-CRMs, je erst Stärke, dann Grenze. <b>Riplo</b> (UK, 2,3 Millionen Pfund, „AI OS for consulting") ist auf PE-Diligence gepivotet: Pflicht-Notiz als Kategorie-Validierung plus Fokus-Warnung. <b>Microsoft-Antwort</b> nie defensiv: „Microsoft verdient an der Lizenz, wir am gelungenen Projekt"; keine Aussagen über Microsofts Roadmap. <b>DIY:</b> zwei bis drei Engineers dauerhaft gegen rund 25.000 Euro ACV, Faktor zwanzig. <b>PSA-Reserve:</b> Kantata und Rocketlane verwalten Arbeit, sie erledigen sie nicht.</p>
+</section>
+
+<section id="s3">
+  <div class="sechead"><span class="secno">03</span><h2>Datei-Inventar mit Iterationsständen</h2><span class="secnote">FÜHREND schlägt REFERENZ, REFERENZ schlägt ARCHIV; Records nie umschreiben</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Datei</th><th>Rolle</th><th>Stand</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">Consultry_Pitchdeck_v10.html</td><td>Das Investor-Deck: 15 Folien, Klickstufen, Sprechernotizen, rund 120 zählgeprüfte Patches</td><td>24.08.</td><td><span class="pill brand">FÜHREND</span></td></tr>
+      <tr><td class="nr">Consultry_Handover_Final.md / .html</td><td>dieses Handover, kanonische Faktenbasis</td><td>26.08.</td><td><span class="pill brand">FÜHREND · DOKU</span></td></tr>
+      <tr><td class="nr">Consultry_PPT_Investor_Abgleich.html</td><td>PPT gegen Master: 6 kundenlastige Stellen, Mapping, Betriebsmodell, Upload-Befund (Sektion 06)</td><td>25.08.</td><td><span class="pill gruen">REFERENZ</span></td></tr>
+      <tr><td class="nr">Consultry_Deck_Sprachpass.html</td><td>Wortebene: 13 Stellen, 5 Geschmacksfragen, Punchline-Karte</td><td>24.08.</td><td><span class="pill gelb">TEILS OFFEN</span></td></tr>
+      <tr><td class="nr">Consultry_Deck_Grill_v3.html</td><td>Review v3: Sweep-Nachprüfung, Q&amp;A-Matrix, offene Liste</td><td>22.08.</td><td><span class="pill gruen">REFERENZ</span></td></tr>
+      <tr><td class="nr">Consultry_Deck_Grill_v2.html</td><td>Review v2: „Notizen erzählen die Firma von gestern"</td><td>21.08.</td><td><span class="pill blau">ARCHIV</span></td></tr>
+      <tr><td class="nr">Consultry_Messaging_Memo_3_Ideen.html</td><td>Quality, IP, Routing plus Kopfschmerz-Frame mit Implizit-Audit</td><td>22.08.</td><td><span class="pill gruen">REFERENZ</span></td></tr>
+      <tr><td class="nr">Consultry_Fragebogen_Krallmann_VP.html</td><td>42 Fragen in 7 Sektionen für das Serdan-Gespräch</td><td>25.08.</td><td><span class="pill gruen">EINSATZBEREIT</span></td></tr>
+      <tr><td class="nr">Consultry_BSS_Kurzpitch.html</td><td>Kurzpitch, H&amp;W-bereinigt; Gedankenstrich-Pass offen</td><td>21.08.</td><td><span class="pill gruen">REFERENZ</span></td></tr>
+      <tr><td class="nr">Consultry_LinkedIn_Hub.html plus 6 MD-Dateien</td><td>Strategie, Kalender, 12 Posts, Playbook, Julian-Fassungen</td><td>18.08.</td><td><span class="pill gruen">REFERENZ</span></td></tr>
+      <tr><td class="nr">Consultry_Handover_Pitch.md</td><td>Vorgänger-Handover</td><td>17. bis 21.08.</td><td><span class="pill blau">ARCHIV</span></td></tr>
+      <tr><td class="nr">Datengrenze-Familie (Handover, Architektur, Visual)</td><td>Architektur-Track; Baustein 11 Kosten-Router als Angebot offen</td><td>17./18.08.</td><td><span class="pill gruen">REFERENZ</span></td></tr>
+      <tr><td class="nr">Bauplan_und_Preisueberschlag / Marktvalidierung / Vision_geschaerft (MD)</td><td>Zahlen- und Visionsgrundlagen</td><td>16./17.08.</td><td><span class="pill gruen">REFERENZ</span></td></tr>
+      <tr><td class="nr">Consultry_Deck_Review.md</td><td>PPT-Review der Beautiful-Linie (v8_2_9, v9): Bugs, Riplo, NACE</td><td>09.08.</td><td><span class="pill rot">RECORD</span></td></tr>
+      <tr><td class="nr">Grill v1 (Angels.md, Website.html)</td><td>erste Review-Runde, 28-Fixes-Basis</td><td>17.08.</td><td><span class="pill blau">ARCHIV</span></td></tr>
+      <tr><td class="nr">Kernsaetze_Zahlenkarte.pdf</td><td>Termin-Einseiter; vor Druck gegen Sektion 02 prüfen</td><td>17.08.</td><td><span class="pill gelb">PRÜFEN VOR NUTZUNG</span></td></tr>
+      <tr><td class="nr">Pitch-Übung (Transkripte, Highlight- und Deep-Report PDF)</td><td>Übung vom 15.08. plus Red-Team B1 bis B12</td><td>15.08.</td><td><span class="pill blau">ARCHIV</span></td></tr>
+      <tr><td class="nr">Beautiful_Autosaved.pptx</td><td>Upload 25.08.: leere Beautiful.ai-Vorlage als Bild-Export, kein Consultry-Inhalt</td><td>25.08.</td><td><span class="pill rot">KEINE QUELLE</span></td></tr>
+      <tr><td class="nr">deck_text_aktuell.txt, deck_notes_v10_neu.txt</td><td>Extraktionen; nach Patch-Läufen neu ziehen</td><td>24./21.08.</td><td><span class="pill gelb">WERKZEUG</span></td></tr>
+      <tr><td class="nr">Echte Consultry-PPTX (Beautiful.ai-Export)</td><td>für die verifizierte Nachzieh-Liste je Folie</td><td>ausstehend</td><td><span class="pill rot">EXTERN AUSSTEHEND</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s4">
+  <div class="sechead"><span class="secno">04</span><h2>Entscheidungs-Log</h2><span class="secnote">chronologisch; jede Zeile ist ein bindender Stand</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Datum</th><th>Entscheidung</th><th>Konsequenz</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">15.08.</td><td>Pitch-Übung transkribiert, Red-Team B1 bis B12</td><td>Grundlage der Grill-Reihe</td></tr>
+      <tr><td class="nr">16.08.</td><td>Marktvalidierung und Vision geschärft</td><td>Zahlenbasis für Deck und Handover</td></tr>
+      <tr><td class="nr">17.08.</td><td>Grill v1 plus 28-Fixes-Runde; erstes Handover</td><td>v10 wird Arbeitsstand</td></tr>
+      <tr><td class="nr">18.08.</td><td><b>H&amp;W raus aus allen Live-Pitch-Materialien</b>; LinkedIn-Familie, Datengrenze-Handover</td><td>Team-Folie umformuliert, BSS bereinigt</td></tr>
+      <tr><td class="nr">21.08.</td><td>Grill v2: Notizen erzählen die Firma von gestern. Beschluss: <b>Notizen-Sweep und Full Alignment, Deck authoritativ über Notizen</b></td><td>eine Preiswelt, ein Cap Table, eine Multiples-Methodik; Sweep-Nachprüfung veröffentlicht</td></tr>
+      <tr><td class="nr">21.08.</td><td><b>Ask endgültig 500k für 17,5 Prozent</b></td><td>alte 250k-Stände getilgt; PPT-Ask wird roter Prüfpunkt</td></tr>
+      <tr><td class="nr">22.08.</td><td>Grill v3 (Q&amp;A-Matrix, N1 bis N4); Nutzerwahl: <b>Zeitfenster sichtbar auf Folie 4, KI-Karte</b></td><td>Zeitfenster-Zeile eingebaut („besetzt die Kategorie")</td></tr>
+      <tr><td class="nr">22.08.</td><td>„Fix die Befunde": alle v3-Folienbefunde eingebaut; 3 EN-Ideen als Memo plus 2 Notiz-Reserven</td><td>Bühne 14 von 15 grün; Routing- und IP-Antworten stehen</td></tr>
+      <tr><td class="nr">24.08.</td><td>Kopfschmerz-Audit: <b>Sales explizit, Investor-Deck bewusst implizit</b>; Nutzerauftrag Rollen-Zugriff präsenter</td><td>F6-Kette und F9-Claim plus SVG-Label eingebaut; Slop-Lücke bleibt</td></tr>
+      <tr><td class="nr">24.08.</td><td>Sprachpass geliefert; <b>Founder-Glow-up F13 eingebaut</b></td><td>Restliste wartet auf „bau ein"</td></tr>
+      <tr><td class="nr">25.08.</td><td>Fragebogen Serdan; PPT-Abgleich; <b>Betriebsmodell: v10 führt, PPT nachziehen oder einfrieren</b></td><td>kundenlastige PPT-Folien werden Grundstock des Sales-Decks</td></tr>
+      <tr><td class="nr">25.08.</td><td>Upload „Beautiful [Autosaved]" verifiziert: <b>leere Vorlage, Bild-Export</b></td><td>echte Consultry-PPTX weiterhin ausstehend</td></tr>
+      <tr><td class="nr">26.08.</td><td>Dieses finale Handover</td><td>ersetzt Handover_Pitch.md als Einstieg</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s5">
+  <div class="sechead"><span class="secno">05</span><h2>Review- und QA-Historie</h2><span class="secnote">die Lineage mit Kernbefunden und Reststand</span></div>
+  <div class="hit"><h3>Grill v1 (17.08., Angels-Sicht)</h3><p>4 Treffer, 15-Folien-Ampel, 19 Formulierungs-Fixes; 28 Fixes eingebaut. Wichtigster Nachläufer: <b>LOI-Sprachregel</b> (Red-Team B6).</p></div>
+  <div class="hit"><h3>Grill v2 (21.08., Bühne gegen Souffleurkasten)</h3><p>Kernbefund: <b>Die Notizen erzählten die Firma von gestern</b> (drei Cap-Table-Stände, alte Runden-Multiples, drei Preiswelten). Folge: Notizen-Sweep und Full Alignment; T1/T2 erledigt, T4/T8 teilerledigt dokumentiert.</p></div>
+  <div class="hit"><h3>Grill v3 (22.08., mit v2 als Ausgangsreferenz)</h3><p>Sweep-Nachprüfung: alle gewobenen Zahlen nachgerechnet und bestätigt. Offene Liste: 1 bis 5, 7, 8, 9 <b>erledigt</b>; 6 teilerledigt (<b>Pipeline-Zahl bewusst offen</b>); 10 extern. <b>Q&amp;A-Matrix 8 von 10 grün</b>; GTM bewusst nur in Notizen; <b>Krallmann-Absprung bleibt Lücke</b>. Bühne: <b>14 von 15 Folien grün</b>, F12 wartet auf externe Angaben.</p></div>
+  <div class="hit"><h3>Sprachpass (24.08., Wortebene, Deck-only-Brille)</h3><p>13 Stellen (1 rot, 5 Jargon, 7 Politur) plus 5 Geschmacksfragen plus Punchline-Karte. Eingebaut: F13-Zeile im Glow-up. <b>Heute am v10 verifizierte offene Anker:</b> F3 „Und die freie Woche fließt zurück" (rot), F9 „Es rechnet dort", F12-Titel mit „Produktpfad", F12 „Systemprototyp" (2 Stellen, eine bereits mit Zusatz „über alle drei Kreisläufe"), F14 „mit realem Fall", F6 „verbundene Entitäten" (Wortlaut weicht vom Sprachpass-Anker ab, vor Patch frisch greppen).</p></div>
+  <div class="hit"><h3>PPT-Investor-Abgleich (25.08., Dokumentebene)</h3><p>6 kundenlastige Stellen mit Umzugsziel, 15-Zeilen-Mapping, Delta-Tabelle (7 fehlende Fortschritte), roter Punkt <b>Ask-Drift</b> (PPT mutmaßlich 250k für 10 Prozent). Sektion 06: <b>Upload war die leere Vorlage.</b> Prüfpunkte für die echte Datei: Ask-Stand, Platzhalter- und Higgsfield-Bugs der v8-Linie, neue Folien seit 09.08.</p></div>
+  <div class="hit"><h3>Kopfschmerz-Audit (24.08., Frame-Ebene)</h3><p>Sechs Sorgen (Modellwahl, Token-Kosten, KI-Slop, Hosting und Deployment, DSGVO/DORA/AI-Act, personenbasierter Kontext-Zugriff). Verdikt: Investor-Deck bewusst implizit, Sales-Material explizit. <b>Offen: die KI-Slop-Notiz</b> (ein Satz, F3 oder F7).</p></div>
+</section>
+
+<section id="s6">
+  <div class="sechead"><span class="secno">06</span><h2>Q&amp;A-Archiv</h2><span class="secnote">stehende Investor-Antworten; Langfassungen in den v10-Sprechernotizen</span></div>
+  <div class="qa"><b class="f">Ersetzt ihr Berater?</b>„Wir ersetzen keine Berater. Wir geben ihnen ihre Arbeit zurück."</div>
+  <div class="qa"><b class="f">Kann die Beratung das selbst bauen?</b>Prototyp ja, Produkt nein: zwei bis drei Engineers dauerhaft gegen rund 25.000 Euro ACV, Faktor zwanzig, und deren Stunden wären fakturierbar.</div>
+  <div class="qa"><b class="f">Macht das nicht Copilot?</b>66 Prozent verschieben Copilot wegen Datenschutz (CoreView, Herstellerstudie); das Problem ist Governance, genau die verkaufen wir. Keine Spekulation über Microsofts Roadmap; „Microsoft verdient an der Lizenz, wir am gelungenen Projekt."</div>
+  <div class="qa"><b class="f">Fressen Token die Marge?</b>Nein: gedeckeltes Kontingent im All-in-Sitz, Volumentarif ab dem Dreifachen, Routing auf zwei Achsen (Schutzklasse bestimmt wohin, Aufgabenschwere bestimmt was es kostet), Eval-Harness hält die Qualität. Software-Marge über 80 Prozent.</div>
+  <div class="qa"><b class="f">Was, wenn ein Anbieter sperrt oder zurückfällt?</b>„Fällt ein Anbieter aus, wechseln wir das Modell, nicht den Datenraum."</div>
+  <div class="qa"><b class="f">Woher kommt der Moat?</b>Verifiziertes Firmengedächtnis plus Freigabe-Lernschleife plus Eigen-IP (zweiter Schutzgrund neben der Datengrenze) plus Rollen-Zugriff: „Berechtigungen gelten für Agenten wie für Menschen."</div>
+  <div class="qa"><b class="f">Oversharing-Angst?</b>Kein Weg, keine Verarbeitung; jeder sieht nur, was er sehen darf (Entra, Sites.Selected).</div>
+  <div class="qa"><b class="f">Riplo?</b>Kategorie validiert, Fokus entscheidet: Riplo pivotierte zu PE-Diligence, wir bleiben auf der Beratungs-Wertschöpfung.</div>
+  <div class="qa"><b class="f">GTM?</b>Erste Erprobungen aus Caspars Bestandsnetzwerk und dem Umfeld des Entwicklungspartners; Pfad: Gespräch, Prototyp-Demo, bezahlte Erprobung. Pipeline-Zahl erst nennen, wenn belastbar.</div>
+  <div class="qa"><b class="f">LOI-Status?</b>Wörtlich: Absichtserklärung unterschrieben, bezahlter Pilot kommt danach. Nie mehr behaupten.</div>
+  <div class="qa"><b class="f">Compliance-Wording</b>Immer „dokumentierter, kundenspezifisch freigegebener Daten- und Modellweg", nie „maximal compliant".</div>
+  <div class="qa"><b class="f">Stellenabbau-Frage</b>„Kapazität freilegen, nie Personal einsparen."</div>
+  <div class="strip"><b>Bewusst dokumentierte Lücke:</b> Die Antwort auf einen möglichen Krallmann-Absprung fehlt noch (Grill v3). Vor dem nächsten Investorentermin schließen oder als Risiko aktiv ansprechen.</div>
+</section>
+
+<section id="s7">
+  <div class="sechead"><span class="secno">07</span><h2>Offene Punkte</h2><span class="secnote">getrennt nach einbaubar und extern</span></div>
+  <h3 class="sub">Im Deck, auf Zuruf einbaubar</h3>
+  <ul class="k">
+    <li><b>Sprachpass-Rest:</b> 12 Stellen plus 5 Geschmacksfragen; Zielformulierungen im Sprachpass, verifizierte Anker in Sektion 05.</li>
+    <li><b>KI-Slop-Notiz:</b> ein Satz gegen Slop-Vertrauensverlust, Platzwahl F3 oder F7.</li>
+    <li><b>Angebote der Session, unbeauftragt:</b> Eigen-IP- und Routing-Post als Julian-Volltexte; Baustein 11 (Kosten-Router) ins Architekturpapier; Sales-Deck-Start aus dem Sechser-Block; Wandel-Backup-Folie in den v10-Anhang (korrigierte Zahlen: rund minus 18 Prozent, rund 25 Prozent); BSS-Gedankenstrich-Pass; Pilot-Konfigurationsblatt nach dem Serdan-Gespräch; Tonproben-Feinschliff der 12 LinkedIn-Posts.</li>
+  </ul>
+  <h3 class="sub">Extern bei den Gründern</h3>
+  <ul class="k">
+    <li><b>LOI-Status fixieren</b> und einheitlich sprechen (F12, gefährlichster Red-Team-Punkt).</li>
+    <li><b>Krallmann-Logofreigabe</b> oder Textnennung entscheiden.</li>
+    <li><b>Gesprächszahl N</b> für F12 liefern.</li>
+    <li><b>Pipeline-Zahl</b> für die GTM-Notiz, sobald belastbar.</li>
+    <li><b>Echte Consultry-PPTX</b> exportieren und anhängen (verifizierte Nachzieh-Liste je Folie folgt dann).</li>
+  </ul>
+</section>
+
+<section id="s8">
+  <div class="sechead"><span class="secno">08</span><h2>Update-Pfade für lokale Bestände</h2><span class="secnote">wer zieht woraus nach; Alignment-Regel darunter</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Lokaler Bestand</th><th>Quelle der Wahrheit</th><th>Verfahren</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">PowerPoint (Beautiful-Linie)</td><td>v10 plus Abgleich Sektion 03</td><td>Folie für Folie nachziehen oder einfrieren und v10 als PDF versenden; Bild-Export beachten (Text nicht editierbar)</td></tr>
+      <tr><td class="nr">Sales- und Krallmann-Deck (neu)</td><td>kundenlastige PPT-Folien (6 Stellen) plus Kopfschmerz-Frame explizit plus All-in-Preiskarte</td><td>separates Vorhaben; Grundstock liegt im Abgleich</td></tr>
+      <tr><td class="nr">Kernsätze- und Zahlenkarte (PDF)</td><td>Sektion 02 dieses Handovers</td><td>vor jedem Druck gegenprüfen (Karte ist vom 17.08.)</td></tr>
+      <tr><td class="nr">LinkedIn (Hub, 12 Posts)</td><td>Hub plus Masterplan; Zahlen aus Sektion 02</td><td>Tonproben-Feinschliff offen; neue Posts (IP, Routing) auf Zuruf</td></tr>
+      <tr><td class="nr">Website- und Marketing-Texte</td><td>Sektion 02 plus Messaging-Memo (3 Ideen, Kopfschmerz-Frame)</td><td>Figma- und Webflow-Skills stehen in der Umgebung bereit</td></tr>
+      <tr><td class="nr">Architektur-Papier</td><td>Datengrenze-Familie</td><td>Baustein 11 auf Zuruf</td></tr>
+      <tr><td class="nr">Datenraum</td><td>Preise, Markt-Feinschnitt, Quellenblatt</td><td>Anhang-Aufgabe aus Handover v1 bleibt offen</td></tr>
+    </tbody>
+  </table></div>
+  <div class="strip"><b>Alignment-Regel:</b> Jede Zahl in jedem Bestand muss gegen Sektion 02 bestehen. Weicht ein Bestand ab, wird der Bestand geändert, nicht Sektion 02. Beschließen die Gründer neu, wird zuerst hier geändert und das Datum geloggt.</div>
+</section>
+
+<section id="s9">
+  <div class="sechead"><span class="secno">09</span><h2>Arbeitsregeln für Agents</h2><span class="secnote">verbindlich; zuerst lesen, dann patchen</span></div>
+  <h3 class="sub">Sprache und Stil</h3>
+  <ul class="k">
+    <li><b>Deutsch zuerst</b>; Keyword-Fettung sparsam (ein Fettwort je Satz); Punchlines müssen ohne Tonspur tragen.</li>
+    <li><b>Keine Gedankenstriche</b> im sichtbaren Text (kein em-Dash, kein en-Dash, auch keine CSS-Escapes wie <span class="mono">\2013</span>). Ersatz: Komma, Doppelpunkt, „bis", Balken-Bullets.</li>
+    <li>Ein Ding, ein Name: Firmengedächtnis, Kreislauf, Sitz, Haus. Verben statt Substantive auf -ung.</li>
+    <li><b>Ehrliche Quellen:</b> Zielannahmen kennzeichnen, Hersteller- und Anbieterstudien markieren, keine Pauschal-Compliance-Versprechen.</li>
+  </ul>
+  <h3 class="sub">Patch-Disziplin</h3>
+  <ul class="k">
+    <li>Vor jedem Patch den <b>exakten Anker frisch greppen</b>, nie aus Doku oder Gedächtnis ersetzen.</li>
+    <li>Python-Patches als <span class="mono">rep(old, new, count)</span> mit <b>Count-Assert</b>; ein Fehlschlag bricht ab, bevor geschrieben wird, das Skript ist gefahrlos wiederholbar.</li>
+    <li><b>Deutsche Anführungszeichen nie in Python-Match-Strings</b> (Encoding-Falle); solche Stellen mit dem Edit-Tool ändern.</li>
+    <li>Nach jedem Patch: Dash-Zählung (literal plus <span class="mono">\2013</span>), betroffene Folien rendern, Datei liefern.</li>
+  </ul>
+  <h3 class="sub">Playwright-Verifikation (Pflicht vor HTML-Lieferung)</h3>
+  <ul class="k">
+    <li>Chromium: <span class="mono">/opt/pw-browsers/chromium-1194/chrome-linux/chrome</span>.</li>
+    <li>Deck-Hash-Navigation: <span class="mono">goto(url#n)</span> und danach <b>reload()</b>; <span class="mono">domcontentloaded</span> plus 1.300 Millisekunden, <b>kein networkidle</b> (855.000-Zeichen-Deck).</li>
+    <li>Folien-Endzustand erzwingen: <span class="mono">data-stage</span> auf Maximum, <span class="mono">.on</span> setzen, für Tab-Panels zusätzlich <span class="mono">.cur</span>.</li>
+    <li>Overflow-Check ohne SVG-Elemente; vor Crops <span class="mono">scroll-behavior</span> auf auto und <span class="mono">scrollIntoView instant</span>.</li>
+    <li>Fertige Skripte unter <span class="mono">/opt/node-tools/</span> (allshots, fixshots, grillshot, abgleichshot und weitere).</li>
+  </ul>
+  <h3 class="sub">Werkzeuge und Governance</h3>
+  <ul class="k">
+    <li>PPTX lesen mit <span class="mono">markitdown</span>; Thumbnails mit eigenem Prefix. Beautiful.ai-Exporte können reine Bild-Folien sein: dann Sichtprüfung über die Medien-JPGs (<span class="mono">ppt/slides/_rels/</span> mappt Folie auf Bild).</li>
+    <li>Extraktionen (<span class="mono">deck_text_aktuell.txt</span>, <span class="mono">deck_notes_v10_neu.txt</span>) nach Patch-Läufen neu ziehen.</li>
+    <li>Neue Deliverables als eigenständige HTML in der Consultry-Palette (#AD2764, #D2397E, #F9E2EC, #FFFBF9, #EDDFD7; Segoe UI und Georgia), Nav-Chips, dash-frei, Playwright-geprüft.</li>
+    <li><b>v10 ist die einzige Quelle der Wahrheit</b> für Pitch-Inhalte; Notizen sind dem sichtbaren Deck untergeordnet (21.08.).</li>
+    <li>Records nie rückwirkend ändern; neue Erkenntnis heißt neues Dokument oder datierter Nachtrag.</li>
+    <li>Kein neues Governance-Vokabular erfinden; Dateien beim Namen nennen. „Investor-Master v10" meint exakt <span class="mono">Consultry_Pitchdeck_v10.html</span> (Lehre aus dem Missverständnis vom 25.08.).</li>
+    <li>H&amp;W taucht in keinem live verwendeten Material auf.</li>
+  </ul>
+</section>
+
+<footer>
+  <b>Geltung:</b> Bei Widersprüchen zwischen diesem Handover und einer Datei mit jüngerem Datum gilt die jüngere Datei, und dieses Handover bekommt einen datierten Nachtrag. Maschinenlesbare Zwillingsfassung: Consultry_Handover_Final.md (inhaltsgleich). Erstellt am 26.08.2026 in der Session 7b206817; Faktenstand verifiziert gegen v10 (Dash-Zählung 0/0, Anker-Greps vom 26.08.), Grill v2/v3, Sprachpass, Messaging-Memo, PPT-Abgleich und das Datei-Inventar.
+</footer>
+
+</div></div>
+</body>
+</html>

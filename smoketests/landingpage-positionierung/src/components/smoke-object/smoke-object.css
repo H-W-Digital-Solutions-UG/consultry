@@ -1,0 +1,20 @@
+.smoke-object { width: 100%; pointer-events: none; }
+.smoke-object__visual { position: relative; width: 100%; aspect-ratio: 1; --object-progress: 0; }
+.smoke-object__poster, .smoke-object__stage { position: absolute; inset: 0; }
+.smoke-object__poster { opacity: 1; }
+.smoke-object__poster img, .smoke-object__poster picture, .smoke-object canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
+.smoke-object canvas { touch-action: auto; pointer-events: none; }
+.smoke-object__stage { opacity: 0; }
+.smoke-object[data-status="ready"] .smoke-object__stage { opacity: 1; }
+.smoke-object[data-status="ready"] .smoke-object__poster { opacity: 0; }
+.smoke-object__annotations { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.smoke-object[data-status="ready"] .smoke-object__annotations { opacity: var(--scene-reveal, 0); }
+.smoke-object__annotation { position: absolute; display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #efc39280; border-radius: 50%; background: #261d19e8; color: #f2d3b1; font: 10px/1 var(--font-mono, monospace); transform: translate(-50%, -50%); box-shadow: 0 2px 8px #00000026; }
+.smoke-object__annotation--1 { left: var(--part-1-x, 50%); top: var(--part-1-y, 50%); }
+.smoke-object__annotation--2 { left: var(--part-2-x, 50%); top: var(--part-2-y, 50%); }
+.smoke-object__annotation--3 { left: var(--part-3-x, 50%); top: var(--part-3-y, 50%); }
+@media (prefers-reduced-motion: reduce) {
+  .smoke-object[data-status="ready"] .smoke-object__stage { opacity: 0; transition: none; }
+  .smoke-object[data-status="ready"] .smoke-object__poster { opacity: 1; transition: none; }
+  .smoke-object__annotations { display: none; }
+}

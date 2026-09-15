@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultry · Deck-Grill v3</title>
+<style>
+  :root{
+    --brand:#AD2764; --brand2:#D2397E; --rose:#F9E2EC; --paper:#FFFBF9; --sand:#EDDFD7;
+    --ink:#2B2226; --mut:#7A6A70; --ok:#2E7D52; --okbg:#E3F2E9; --warn:#B07C10; --warnbg:#FBF0D8; --bad:#B3261E; --badbg:#FBE3E1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--sand);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+  .wrap{max-width:1160px;margin:0 auto;background:var(--paper);box-shadow:0 2px 40px rgba(90,40,60,.14)}
+  .inner{padding:40px 56px 64px}
+  @media(max-width:760px){.inner{padding:24px 18px 40px}}
+
+  .kicker{font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--brand);text-transform:uppercase}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:42px;line-height:1.12;margin:10px 0 12px}
+  h1 em{font-style:normal;color:var(--brand)}
+  .lede{font-size:17px;max-width:76ch;color:var(--ink)}
+  .meta{display:inline-block;margin-top:14px;background:var(--rose);border:1px solid #EFC9DB;border-radius:20px;padding:6px 14px;font-size:13px;color:#8A2352}
+
+  nav.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 8px}
+  nav.chips a{text-decoration:none;font-size:13px;font-weight:600;color:var(--brand);border:1.5px solid var(--brand2);border-radius:18px;padding:6px 13px;background:#fff}
+  nav.chips a:hover{background:var(--rose)}
+
+  section{margin-top:44px}
+  .sechead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--rose);padding-bottom:8px;margin-bottom:20px}
+  .secno{font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--brand)}
+  h2{font-family:Georgia,serif;font-size:26px}
+  .secnote{margin-left:auto;font-size:13px;color:var(--mut)}
+
+  .verdict{background:linear-gradient(135deg,#FDF4F8,#FFF9F4);border:1.5px solid #EFC9DB;border-radius:14px;padding:22px 26px;font-size:16.5px}
+  .verdict b{color:var(--brand)}
+
+  .bilanz{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+  @media(max-width:900px){.bilanz{grid-template-columns:1fr 1fr}}
+  .bcard{background:#fff;border:1px solid #EEE0E7;border-radius:10px;padding:12px 14px;font-size:13px}
+  .bcard b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .bcard.done{border-left:4px solid var(--ok)} .bcard.done b{color:var(--ok)}
+  .bcard.teil{border-left:4px solid var(--warn)} .bcard.teil b{color:var(--warn)}
+  .bcard.offen{border-left:4px solid var(--bad)} .bcard.offen b{color:var(--bad)}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:12px;overflow:hidden}
+  .tblbox{overflow-x:auto;border:1px solid #EBD9E2;border-radius:12px}
+  th{background:var(--rose);color:#8A2352;text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px}
+  td{padding:10px 12px;border-top:1px solid #F3E7ED;vertical-align:top}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pill{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;border-radius:12px;padding:3px 10px;white-space:nowrap}
+  .pill.gruen{background:var(--okbg);color:var(--ok)}
+  .pill.gelb{background:var(--warnbg);color:var(--warn)}
+  .pill.rot{background:var(--badbg);color:var(--bad)}
+  .pill.grau{background:#ECEAF4;color:#4C4670}
+
+  .hit{background:#fff;border:1px solid #EBD9E2;border-radius:14px;padding:20px 24px;margin-bottom:18px;box-shadow:0 1px 8px rgba(120,40,70,.05)}
+  .hithead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+  .sev{font-size:11px;font-weight:800;letter-spacing:.14em;border-radius:14px;padding:4px 12px}
+  .sev.gelb{background:var(--warnbg);color:var(--warn)}
+  .sev.klein{background:#ECEAF4;color:#4C4670}
+  .hit h3{font-family:Georgia,serif;font-size:20px}
+  .hit .wo{font-size:12.5px;color:var(--mut);margin-left:auto;white-space:nowrap}
+  .hit p{margin:8px 0;font-size:14.5px}
+  .fix{background:var(--okbg);border-left:4px solid var(--ok);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:14px}
+  .fix b{color:var(--ok)}
+
+  ol.plan{counter-reset:p;list-style:none;margin-top:14px}
+  ol.plan li{counter-increment:p;position:relative;background:#fff;border:1px solid #EBD9E2;border-radius:12px;padding:13px 16px 13px 58px;margin-bottom:10px;font-size:14px}
+  ol.plan li::before{content:counter(p,decimal-leading-zero);position:absolute;left:16px;top:12px;font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--brand2)}
+  .auf{float:right;font-size:11px;font-weight:800;letter-spacing:.1em;background:#ECEAF4;color:#4C4670;border-radius:12px;padding:3px 10px;margin-left:10px}
+  .zeile{display:block;margin-top:6px;background:var(--rose);border-radius:6px;padding:7px 10px;font-size:13px;font-family:Georgia,serif;font-style:italic}
+
+  .strip{border:1.5px dashed var(--brand2);border-radius:12px;background:#FFF6FA;padding:14px 18px;font-size:13.5px;margin-top:18px}
+  .strip b{color:var(--brand)}
+  .done{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;border-radius:12px;padding:3px 10px;background:var(--okbg);color:var(--ok)}
+  .teil{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;border-radius:12px;padding:3px 10px;background:var(--warnbg);color:var(--warn)}
+  footer{margin-top:52px;border-top:2px solid var(--rose);padding-top:16px;font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+
+<header>
+  <div class="kicker">Consultry · Investor-Deck · Grill Nr. 3 · vertraulich</div>
+  <h1>Ein Deck, eine Wahrheit. <em>Der dünnste Faden ist jetzt der Weg zum Kunden.</em></h1>
+  <p class="lede">Dritte Review, Perspektive Business Angel. <b>Ausgangsreferenz ist der Grill v2 vom 18. August</b>, geprüft wird der Stand danach: 51 zählgeprüfte Patches seit dem 17. August (28 Folien-Patches, 6 mal H&amp;W raus, 17 Sweep und Alignment). Das Ergebnis in einem Satz: Die Konsistenzrisiken sind ausgeräumt, Bühne und Souffleurkasten erzählen dieselbe Firma. Was bleibt, sind <b>Entscheidungen statt Widersprüche</b>: fünf gelbe Felder auf der Bühne, zwei neue inhaltliche Befunde, und der dünnste Strang des Decks ist mit frischem Blick nicht mehr die Datengrenze, sondern die <b>Vertriebsmechanik</b>. <b>Nachtrag vom Abend:</b> Die Fixes 1 bis 5, 8 und 9 sind eingebaut, Prinzip Folien führen, Notizen folgen; Nr. 6 zur Hälfte. Die Statusmarken zeigen den Stand.</p>
+  <span class="meta">Stand 18. August 2026, nach Sweep und Alignment · Referenzkette: Grill v1 (17.08.) → Grill v2 (18.08.) → dieses Dokument</span>
+  <nav class="chips">
+    <a href="#s1">01 Bilanz</a><a href="#s2">02 Sweep-Nachprüfung</a><a href="#s3">03 Neue Befunde</a><a href="#s4">04 Offene Liste v3</a><a href="#s5">05 Q&amp;A-Matrix</a><a href="#s6">06 Delta-Ampel</a>
+  </nav>
+</header>
+
+<section id="s1">
+  <div class="sechead"><span class="secno">01</span><h2>Bilanz gegen die Referenz</h2><span class="secnote">was aus den acht Treffern des v2 wurde</span></div>
+  <div class="verdict">
+    Der v2 fand acht Treffer. Stand heute: <b>zwei erledigt, zwei teilerledigt, vier offen</b>. Entscheidend ist der Charakterwechsel der Restarbeit: Im v2 konnte ein Angel <b>Widersprüche finden</b> (drei Cap Tables, drei Preiswelten, Multiples der alten Runde). Das geht jetzt nicht mehr, jede Zahl existiert genau einmal. Die offenen Entscheidungen sind im Abend-Fix-Pass getroffen und eingebaut worden (Statusmarken in Sektion 04). Verbleibendes Risiko: die externen Klärungen der Validierungsfolie und die noch offene Pipeline-Zahl.
+  </div>
+  <div class="bilanz">
+    <div class="bcard done"><b>Erledigt · Treffer 1</b>Notizen-Fossilien: ein Cap Table (73,5/9/17,5), Multiples neu gerechnet, Basisfall und Zielplan getrennt, Cover-Notiz ist eine 30-Sekunden-Eröffnung.</div>
+    <div class="bcard done"><b>Erledigt · Treffer 2</b>Eine Preiswelt: All-in 149/189, 25k-Anker neu hergeleitet (elf Sitze plus Plattformgebühr), Geldweg über die Consultry-Rechnung benannt.</div>
+    <div class="bcard done"><b>Erledigt · Treffer 4 und 8</b>H&amp;W raus, Teamzeilen differenziert, Vollzeit-Zeile auf der Folie, alle Listenzeichen als Balken, Notizen strichfrei.</div>
+    <div class="bcard offen"><b>Offen · nur Treffer 5, extern</b>Validierungsfolie: Logofreigabe, Gesprächszahl, LOI-Status. Treffer 3, 6 und 7 sind im Abend-Fix-Pass eingebaut.</div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="sechead"><span class="secno">02</span><h2>Sweep-Nachprüfung: hält die eigene Arbeit dem Grill stand?</h2><span class="secnote">jede neue Zahl nachgerechnet</span></div>
+  <p style="font-size:14.5px;margin-bottom:14px">Eine neue Review muss zuerst die Reparatur selbst grillen. Alle im Sweep eingesetzten Zahlen wurden gegen die Folien und den Preisüberschlag nachgerechnet:</p>
+  <div class="tblbox"><table>
+    <thead><tr><th>Behauptung nach Sweep</th><th>Rechnung</th><th>Verdikt</th></tr></thead>
+    <tbody>
+      <tr><td>Cap Table 73,5 / 9 / 17,5</td><td class="num">73,5 + 9 + 17,5 = 100</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>Post-money rund 2,86 Mio.</td><td class="num">500k : 0,175 = 2,857 Mio.</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>Gründer nach Seed 55 bis 59 %</td><td class="num">73,5 × 0,75 = 55,1 · 73,5 × 0,80 = 58,8</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>Basisfall 6- bis 8-fach</td><td class="num">18 : 2,857 = 6,3 · 24 : 2,857 = 8,4</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>Zielplan 13 Mio., 27- bis 36-fach</td><td class="num">0,8 % × 1,63 Mrd. = 13,0 · 78 : 2,857 = 27,3 · 104 : 2,857 = 36,4</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>25k-Anker: elf Sitze plus Plattform</td><td class="num">11 × 149 × 12 + 12 × 500 = 25.668</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>Zehn Sitze rund 18k, unter 1 % vom Umsatz</td><td class="num">10 × 149 × 12 = 17.880 · 17.880 : 2 Mio. = 0,89 %</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>Sitz unter 7 % des Kapazitätswerts</td><td class="num">149 : 2.275 = 6,5 % (konservativ nur gegen die Zuarbeit gerechnet)</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>Stipendien-Rechnung 60k + 50k = 110k</td><td class="num">2 × 2.500 × 12 = 60k, Halbsatz zu Caspar steht jetzt dabei</td><td><span class="pill gruen">HÄLT</span></td></tr>
+      <tr><td>Folie 14: Break-even = 0,14 %</td><td class="num">20 : 14.500 = 0,138 % · aber 27 : 14.500 = 0,186 %</td><td><span class="pill gelb">FIX OFFEN</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="strip"><b>Selbstkritik am Sweep, zwei Wachsamkeitspunkte:</b> Die neue Teamzeile endet auf <b>Modellbetrieb</b>, und ein wacher Angel kann fragen, wie das zu Wir hosten nichts passt. Die Antwort liegt bereit und gehört in die Folie-13-Notiz: Betrieb ja, aber im Tenant des Kunden, die Verträge bleiben beim Kunden. Und der Folie-11-Punch <b>Ein Preis, alles drin</b> steht neben zwei Tarifstufen plus Plattformgebühr; wer es wörtlich nimmt, zählt drei Preiselemente. Alternative Zeile, falls gewünscht: Alles drin: Token, Betrieb, Konnektoren. Keine versteckten Kosten.</div>
+</section>
+
+<section id="s3">
+  <div class="sechead"><span class="secno">03</span><h2>Neue Befunde mit frischem Blick</h2><span class="secnote">was v2 nicht auf dem Zettel hatte</span></div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev gelb">Neu 1 · GELB</span><h3>Die Vertriebsmechanik ist der dünnste Strang des Decks</h3><span class="wo">Notiz Folie 10, Folie 12 und 14</span></div>
+    <p>Nach dem Sweep fällt mit Abstand am meisten auf, was <b>nicht</b> da ist. Die Mittelverwendung verspricht drei bis fünf bezahlte Erprobungen und den Weg zu zehn Referenzkunden. Die gesamte Antwort auf die Frage, <b>woher diese Kunden kommen</b>, ist ein einziger Notiz-Satz: GTM: Vertrauensnetzwerk, 3 bis 5 bezahlte Piloten, Referenzen. Das ist eine Behauptung, kein Mechanismus. Der Mechanismus existiert real (Caspar verhandelt heute im Zielmarkt, sein Netzwerk ist die Startliste, Krallmann bringt Konzernzugänge), aber er steht nirgends als Vertriebslogik, nur verstreut als Teamzeile und Partnernotiz. Ein Angel, der Datengrenze und Preismodell abgehakt hat, stellt genau diese Frage als nächste, und sie ist im Q&amp;A derzeit die schwächste Antwort.</p>
+    <div class="fix"><b>Fix ohne neue Folie:</b> Drei Sätze in die Notiz zu Folie 12 (und als Echo in Folie 14): Erstens die Quelle der ersten Erprobungen benennen (Caspars Bestandsnetzwerk plus Krallmann-Umfeld), zweitens den Pipeline-Stand mit echter Zahl (N geführte Gespräche, davon X mit benanntem nächstem Schritt), drittens der Umwandlungspfad (Gespräch, Prototyp-Demo, bezahlte Erprobung). Die Platzhalter nur mit belastbaren Zahlen füllen, sonst weglassen; ein erfundener Pipeline-Stand wäre schlimmer als keiner.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev gelb">Neu 2 · GELB</span><h3>Das Warum-jetzt bleibt implizit</h3><span class="done">ERLEDIGT 18.08.</span><span class="wo">Folie 4 und 9, Übergang</span></div>
+    <p>Die Bausteine des Zeitfenster-Arguments liegen alle im Deck: Die KI-Nutzung hat sich verdoppelt (41 nach 17 Prozent), 77 Prozent nennen Datenschutz als Hemmnis, zwei Drittel verschieben Copilot. Aber die Folgerung wird nie ausgesprochen: <b>Genau diese Lücke zwischen verdoppelter Nutzung und blockierter Freigabe ist das Zeitfenster</b>, und es schließt sich, sobald jemand anderes den sicheren Weg zur Kategorie macht. Angels investieren in Fenster, nicht in Probleme. Der Satz kostet eine Notizzeile und beantwortet die Frage, warum dieses Team das in diesem Jahr bauen muss und nicht in zwei Jahren.</p>
+    <div class="fix"><b>Umgesetzt am 18.08., auf Beschluss sichtbar auf der Folie:</b> Die KI-Karte auf Folie 4 trägt jetzt die dritte Zeile Diese Lücke ist das Zeitfenster: Wer den sicheren Weg zuerst anbietet, besetzt die Kategorie. Dazu der Übergangs-Satz in der Notiz. Damit liest auch der asynchrone Datenraum-Leser die Folgerung, nicht nur die Belege.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev klein">Neu 3 · KLEIN</span><h3>Die 0,8-Prozent-Stolperfalle</h3><span class="wo">Notiz Folie 10</span></div>
+    <p>Der Zielplan sagt 0,8 Prozent des EU-SAM, rund 800 Kunden. Die 0,8 Prozent sind <b>wertbasiert</b> (13 Mio. von 1,63 Mrd.), aber 800 von 65.000 Firmen sind <b>1,2 Prozent der Firmen</b>. Beides ist korrekt, doch wer die Prozentzahl im Gespräch auf die Firmenzahl anwendet, rechnet sich in fünf Sekunden in einen scheinbaren Widerspruch. Ein Halbsatz in der Notiz schließt die Falle: 0,8 Prozent des Marktvolumens, das entspricht rund 1,2 Prozent der Zielfirmen, weil der Plan mit einem Vertragswert unter dem SAM-Schnitt rechnet.</p>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev klein">Neu 4 · KLEIN</span><h3>Zehn gegen zwölf</h3><span class="wo">Folie 14 gegen Notiz Folie 10</span></div>
+    <p>Die Mittelverwendung nennt den Weg zu <b>zehn Referenzkunden</b>, die Notiz rechnet Jahr 1 mit <b>rund zwölf Kunden</b> nach. Das ist verteidigbar (nicht jeder Kunde ist referenzfähig), aber unbeschriftet sieht es nach Drift aus. Ein Halbsatz in der Notiz zu Folie 10 genügt: von den rund zwölf Kunden des ersten Jahres sind zehn als Referenz nutzbar, der Rest anonym.</p>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="sechead"><span class="secno">04</span><h2>Die offene Liste v3, einbaufertig</h2><span class="secnote">S unter einer Stunde · E extern · kursiv = fertige Zeile</span></div>
+  <ol class="plan">
+    <li><span class="auf">S</span><b>Folie 14, Risiko-Block drehen</b> <span class="done">ERLEDIGT 18.08.</span> (Treffer 3, wichtigster offener Folien-Fix): Blocktitel und Break-even-Zeile ersetzen, damit die Seed nicht vom Angel entdeckt werden muss.<span class="zeile">WARUM DIE RECHNUNG TRÄGT · Break-even bei 20 bis 27 Kunden: 0,14 bis 0,19 % des Einstiegsmarkts, im Plan in Jahr 2</span></li>
+    <li><span class="auf">S</span><b>Folie 13, drei Restzeilen</b> <span class="done">ERLEDIGT 18.08.</span> (Rest aus Treffer 4; Modul 1 steht auf Folie und in der Notiz, zwei Stellen):<span class="zeile">Verhandelt heute die Angebote, die Kreislauf 1 morgen baut</span><span class="zeile">Julian: Baut seit zwei Jahren agentische Workflows für Beratungsarbeit · Paul: Übersetzt seit zwei Jahren KI-Workflows in Produkt- und Geschäftsentscheidungen</span><span class="zeile">Caspar, neue Zeile: Vollzeit ab Pilotstart, terminiert. Bis dahin lebendes Product Discovery im Zielmarkt.</span></li>
+    <li><span class="auf">S</span><b>Folie 4, Statistik drehen und kennzeichnen</b> <span class="done">ERLEDIGT 18.08.</span> (Treffer 6):<span class="zeile">Gut jedes vierte Projekt verfehlt den Termin, die Überschreitung kostet im Schnitt 11,3 % (SPI Research 2025)</span> Dazu das sichtbare Kürzel an der Copilot-Zeile: (CoreView 2026, Herstellerstudie) und der Anbieterstudien-Hinweis in der Atlassian-Quellzeile.</li>
+    <li><span class="auf">S</span><b>Folie 3, Fußnote disziplinieren</b> <span class="done">ERLEDIGT 18.08.</span> (Treffer 7): in den Content-Rahmen von Folie 2 setzen, Marker ergänzen (Zielannahme, keine gemessene Einsparung), Statlabel schärfen:<span class="zeile">gut +40 % bewertete Qualität je Aufgabe</span></li>
+    <li><span class="auf">S</span><b>Folie 10, Fußnoten-Halbsatz zur konservativen Zählung</b> <span class="done">ERLEDIGT 18.08.</span>:<span class="zeile">Einstiegsmarkt bewusst konservativ gezählt (J62-Schnitt); der bereinigte Schnitt 62.02 + 70.22 läge bei 18 bis 19 Tsd., Feinschnitt im Datenraum</span></li>
+    <li><span class="auf">S</span><b>Vertriebsmechanik in die Notizen</b> (Neu 1) <span class="teil">TEILERLEDIGT 18.08.</span>: Mechanik und Pfad stehen in den Notizen zu Folie 12 und 14; die Pipeline-Zahl bleibt bewusst offen, bis sie belastbar ist.</li>
+    <li><span class="auf">S</span><b>Fenster-Satz</b> (Neu 2) <span class="done">ERLEDIGT 18.08.</span>: sichtbar als dritte Zeile der KI-Karte auf Folie 4, dazu der Übergangs-Satz in der Notiz.</li>
+    <li><span class="auf">S</span><b>Zwei Halbsätze in die Notiz zu Folie 10</b> (Neu 3 und 4) <span class="done">ERLEDIGT 18.08.</span>: 0,8-Prozent-Klarstellung und zehn-gegen-zwölf stehen drin.</li>
+    <li><span class="auf">S</span><b>Drei CSS-Listenzeichen</b> <span class="done">ERLEDIGT 18.08.</span>: alle Marker zeichnen jetzt Balken; der Modellbetrieb-Satz steht in der Notiz zu Folie 13. Offen als Geschmacksfrage: die alternative Punch-Zeile auf Folie 11.</li>
+    <li><span class="auf">E</span><b>Extern, unverändert aus v2:</b> LOI-Status vor Versand fixieren, Krallmann-Logofreigabe schriftlich oder Logos zu Textnamen, Gesprächszahl N auf die Validierungsfolie.</li>
+  </ol>
+</section>
+
+<section id="s5">
+  <div class="sechead"><span class="secno">05</span><h2>Die Q&amp;A-Matrix: zehn Angel-Fragen, zehn Antwortorte</h2><span class="secnote">neu in v3: wo das Deck antwortet und wo nicht</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Frage, die kommen wird</th><th>Wo die Antwort liegt</th><th>Zustand</th></tr></thead>
+    <tbody>
+      <tr><td>Warum baut Microsoft das nicht einfach selbst?</td><td>Folie 8 plus Notiz (Lizenz-gegen-Projekt-Satz, Salesforce-neben-Oracle-Muster)</td><td><span class="pill gruen">SITZT</span></td></tr>
+      <tr><td>Was kostet es und wie verdient ihr?</td><td>Folie 11 Struktur, eine Preiswelt in Notiz und Datenraum, 70-Prozent-Kostengrenze intern</td><td><span class="pill gruen">SITZT</span></td></tr>
+      <tr><td>Was existiert heute wirklich?</td><td>Folie 12, ehrlich als Maschine zur Risikoreduktion gerahmt</td><td><span class="pill gruen">SITZT</span></td></tr>
+      <tr><td>Warum verliert ihr nicht gegen n8n plus Freelancer?</td><td>Folie 8 Block 2 plus Faktor-20-Rechnung in der Notiz (jetzt mit 25k ACV)</td><td><span class="pill gruen">SITZT</span></td></tr>
+      <tr><td>Was verdiene ich als Angel dabei?</td><td>Notiz Folie 14: Methodik 6 bis 8 mal Umsatz, 27- bis 36-fach im Zielplan, Verwässerungs-Caveat</td><td><span class="pill gruen">SITZT</span></td></tr>
+      <tr><td>Ist der CEO Vollzeit dabei?</td><td>Seit 18.08. auf der Folie: Vollzeit ab Pilotstart, terminiert; die Notiz erklärt den Modus</td><td><span class="pill gruen">SITZT</span></td></tr>
+      <tr><td>Warum gerade jetzt?</td><td>Seit 18.08. sichtbar: Zeitfenster-Zeile in der KI-Karte auf Folie 4 plus Übergangs-Satz in der Notiz</td><td><span class="pill gruen">SITZT</span></td></tr>
+      <tr><td>Wann seid ihr Break-even, reicht das Geld?</td><td>Seit 18.08. ehrlich auf der Folie: 20 bis 27 Kunden, 0,14 bis 0,19 Prozent, im Plan in Jahr 2</td><td><span class="pill gruen">SITZT</span></td></tr>
+      <tr><td>Woher kommen die ersten fünf zahlenden Kunden?</td><td>Mechanik und Pfad stehen seit 18.08. in den Notizen zu Folie 12 und 14; die Pipeline-Zahl fehlt noch</td><td><span class="pill gelb">NUR NOTIZ</span></td></tr>
+      <tr><td>Was, wenn Krallmann abspringt?</td><td>Nirgends; Reserve-Satz gehört in die Notiz zu Folie 12, aber nur mit belastbarem Inhalt (zweiter Partner, Pipeline)</td><td><span class="pill rot">LÜCKE</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="strip"><b>Lesart:</b> Acht von zehn sitzen; offen bleiben nur die Pipeline-Zahl (eure Hausaufgabe) und die Krallmann-Reserve. Das ist der messbare Fortschritt gegenüber v2: Dort war die Gefahr, dass ein Angel <b>Widersprüche findet</b>. Heute ist die Gefahr nur noch, dass er <b>zweimal nachfragen muss</b>.</div>
+</section>
+
+<section id="s6">
+  <div class="sechead"><span class="secno">06</span><h2>Delta-Ampel: nur die gelben Felder</h2><span class="secnote">alles andere steht auf grün/grün</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Nr</th><th>Folie</th><th>Bühne</th><th>Souffleur</th><th>Was fehlt</th></tr></thead>
+    <tbody>
+      <tr><td>3</td><td>Beziehungsgeschäft</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Erledigt 18.08.: Fußnote gerahmt, Zielannahmen-Marker ergänzt, Label bewertete Qualität.</td></tr>
+      <tr><td>4</td><td>Der Faden reißt</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Erledigt 18.08.: Beleg gedreht auf 26,6 Prozent verfehlen den Termin, CoreView- und Atlassian-Kennzeichnung sichtbar.</td></tr>
+      <tr><td>12</td><td>Validierung</td><td><span class="pill gelb">GELB</span></td><td><span class="pill gruen">GRÜN</span></td><td>Extern: Logofreigabe, Gesprächszahl, LOI-Status (Fix Nr. 10); die GTM-Mechanik steht in der Notiz, die Zahl fehlt.</td></tr>
+      <tr><td>13</td><td>Team</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Erledigt 18.08.: Kreislauf 1, differenzierte Zeilen, Vollzeit-Zeile auf der Folie.</td></tr>
+      <tr><td>14</td><td>Ask</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Erledigt 18.08.: Blocktitel Warum die Rechnung trägt, Break-even-Spanne mit Jahr-2-Einordnung.</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:12px;font-size:14px">Nach dem Abend-Fix-Pass steht die Bühne auf <b>14 von 15 grün</b>, der Souffleurkasten auf <b>15 von 15</b>; einzig Folie 12 wartet auf die externen Klärungen. Als Geschmacksfragen bleiben das SAP-Logo auf Folie 8 und die alternative Punch-Zeile auf Folie 11.</p>
+</section>
+
+<footer>
+  <b>Methode:</b> Ausgangsreferenz Grill v2 (18.08.), geprüft wurde der Deck-Stand nach 51 zählgeprüften Patches: Vollextraktion aller Folientexte und Speaker-Notes im Ist-Zustand, Playwright-Render, Nachrechnung jeder im Sweep gesetzten Zahl (Tabelle in Sektion 02), Zustandsmarker per Musterzählung direkt in der Datei (0,14-Prozent-Zeile, zehn Referenzkunden, Modul 1 an zwei Stellen, null Gedankenstriche im Text, drei CSS-Listenzeichen offen). Neue Befunde aus frischem Durchgang über die in v2 grün gewerteten Bereiche. Diese Review ändert nichts am Deck; alle Zeilen in Sektion 04 sind Vorschläge zum Freigeben und werden auf Zuruf als zählgeprüfte Patches eingebaut. Update 18.08.: Fix Nr. 7 ist umgesetzt und auf Beschluss sichtbar auf die Folie gehoben; die Q-und-A-Matrix steht damit auf sieben von zehn. Zweiter Nachtrag vom Abend: Fix-Pass 1 bis 5, 8 und 9 mit 26 weiteren zählgeprüften Patches umgesetzt, Matrix auf acht von zehn, Bühne 14 von 15, das Deck ist erstmals komplett frei von Gedankenstrich-Zeichen.
+</footer>
+
+</div></div>
+</body>
+</html>

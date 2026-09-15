@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "status": "dated_research_evidence_not_live_product_spec",
+  "checked_on": "2026-09-13",
+  "report": "REPORT.md",
+  "canonical_decisions": "../../DECISIONS.md",
+  "scope": {
+    "requested": [
+      "2609.07821",
+      "2609.09153",
+      "code4AI"
+    ],
+    "purpose": "Consultry consultancy knowledge core, graphs, ledger, adaptive harness",
+    "excluded": [
+      "model hosting selection",
+      "benchmark execution",
+      "production dependency installation",
+      "architecture ratification"
+    ],
+    "independent_replication": false
+  },
+  "sources": [
+    {
+      "id": "PG",
+      "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+      "authors": [
+        "Yuxing Lu",
+        "Yicheng Chen",
+        "Shanchan Wu",
+        "Sercan Ö. Arık"
+      ],
+      "date": "2026-09-08",
+      "version": "v1",
+      "url": "https://arxiv.org/html/2609.09153v1",
+      "type": "research_preprint",
+      "locations": [
+        "3",
+        "5 Tables 1–3",
+        "B.1",
+        "B.6",
+        "D",
+        "E"
+      ],
+      "access": "full_text_reviewed",
+      "code_status": "no_official_repository_verified",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "AT",
+      "title": "A*-Thought-V2: Efficient Latent Reasoning via Geometric Dynamics of LLM",
+      "authors": [
+        "Xiaoang Xu et al."
+      ],
+      "date": "2026-09-07",
+      "version": "v1",
+      "url": "https://arxiv.org/html/2609.07821v1",
+      "type": "research_preprint",
+      "locations": [
+        "3",
+        "4 Table 1",
+        "5",
+        "training/inference appendices"
+      ],
+      "access": "full_text_reviewed",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "YT",
+      "title": "Discover AI / @code4AI",
+      "publisher": "Discover AI",
+      "url": "https://www.youtube.com/@code4AI",
+      "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=UCfOvNb3xj28SNqPQ_JIbumg",
+      "type": "discovery_channel",
+      "access": "public_atom_feed_titles_dates_descriptions; channel_html_footer_only",
+      "entries_reviewed": 15,
+      "range": [
+        "2026-08-26",
+        "2026-09-11"
+      ],
+      "videos_watched": false,
+      "transcripts_reviewed": false,
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "AT-CODE",
+      "title": "AStar-Thought",
+      "publisher": "AI9Stars",
+      "date": "2026-09-09",
+      "version": "cd18ca43f0f097c1fa2b2d18c35df14bdf06bb53",
+      "url": "https://github.com/AI9Stars/AStar-Thought/commit/cd18ca43f0f097c1fa2b2d18c35df14bdf06bb53",
+      "type": "author_repository",
+      "access": "README_and_repository_metadata_tree_reviewed",
+      "license_status": "no_root_license_found; directory_license_does_not_establish_repository_wide_permission",
+      "executed": false,
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "ASKS",
+      "title": "LLMs Interpret, Embeddings Organize, Graphs Emerge: Agent-Driven Compilation of Scientific Knowledge",
+      "authors": [
+        "Shi-Ju Ran",
+        "Kun Zhang",
+        "Xi Wu",
+        "Liu-Si Yang",
+        "Wen-Jun Li"
+      ],
+      "date": "2026-08-30",
+      "version": "v1",
+      "url": "https://arxiv.org/html/2608.29612v1",
+      "type": "research_preprint",
+      "locations": [
+        "2–3",
+        "5.4",
+        "6",
+        "Code and Data Availability",
+        "Appendices A–E"
+      ],
+      "access": "method_results_limitations_reviewed",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "STATE",
+      "title": "SKILL.state: Scalable Long-Horizon Agent Skills",
+      "authors": [
+        "Sanket Badhe",
+        "Priyanka Tiwari",
+        "Jonghyun Chung"
+      ],
+      "date": "2026-08-26",
+      "revision_date": "2026-09-02",
+      "version": "v3",
+      "url": "https://arxiv.org/html/2608.26263v3",
+      "type": "research_paper",
+      "venue_note": "arxiv_metadata_reports_accepted_at_EMNLP; proceedings_not_independently_checked",
+      "locations": [
+        "3",
+        "5",
+        "7"
+      ],
+      "access": "method_experiments_limitations_reviewed",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "HOH",
+      "title": "Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement",
+      "authors": [
+        "Haoyang Yan et al."
+      ],
+      "date": "2026-09-01",
+      "version": "v1",
+      "url": "https://arxiv.org/html/2609.01481v1",
+      "type": "research_preprint",
+      "locations": [
+        "3.2–3.4",
+        "4",
+        "B.2"
+      ],
+      "access": "method_experiments_limitations_reviewed",
+      "code_url": "https://github.com/Flesymeb/HarnessOfHarness",
+      "code_status": "HoH-lite_announced_as_upcoming_at_access; not_a_verified_available_integration",
+      "dependency_selected": false,
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "WIKI",
+      "title": "WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution",
+      "authors": [
+        "Liyan Tang et al."
+      ],
+      "date": "2026-08-27",
+      "version": "v1",
+      "url": "https://arxiv.org/html/2608.27454v1",
+      "type": "research_preprint",
+      "locations": [
+        "3",
+        "4",
+        "Limitations"
+      ],
+      "access": "method_experiments_limitations_reviewed",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "ASKS-CODE",
+      "title": "Ran-ASKS v0.2.0",
+      "publisher": "ranshiju",
+      "date": "2026-08-30",
+      "version": "v0.2.0; paper artifact 1.0.0",
+      "url": "https://github.com/ranshiju/Ran-ASKS/releases/tag/v0.2.0",
+      "type": "author_release",
+      "locations": [
+        "Frozen paper artifact",
+        "Licensing"
+      ],
+      "access": "release_reviewed",
+      "code_license": "PolyForm Noncommercial License 1.0.0",
+      "artifact_license": "CC BY-NC 4.0",
+      "dependency_selected": false,
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "H-CHANGE",
+      "title": "Harness design for long-running application development",
+      "authors": [
+        "Prithvi Rajasekaran"
+      ],
+      "publisher": "Anthropic",
+      "date": "2026-03-24",
+      "url": "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+      "type": "first_party_engineering_report",
+      "locations": [
+        "Removing the sprint construct"
+      ],
+      "access": "article_reviewed",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "H-STATE",
+      "title": "Scaling Managed Agents: Decoupling the brain from the hands",
+      "authors": [
+        "Lance Martin",
+        "Gabe Cemaj",
+        "Michael Cohen"
+      ],
+      "publisher": "Anthropic",
+      "date": "2026-04-08",
+      "url": "https://www.anthropic.com/engineering/managed-agents",
+      "type": "first_party_engineering_report",
+      "locations": [
+        "Decouple the brain from the hands",
+        "The session is not Claude’s context window"
+      ],
+      "access": "article_reviewed",
+      "scope": "interface_and_security_principles_only; no_service_or_hosting_selection",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "CONTEXT",
+      "title": "Effective context engineering for AI agents",
+      "publisher": "Anthropic",
+      "date": "2025-09-29",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "type": "first_party_engineering_report",
+      "locations": [
+        "Context retrieval and agentic search"
+      ],
+      "access": "article_reviewed",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "PI",
+      "title": "Pi Agent Harness",
+      "publisher": "Pi Maintainers",
+      "url": "https://github.com/earendil-works/pi",
+      "documentation_url": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/agent/README.md",
+      "previous_url": "https://github.com/badlogic/pi-mono",
+      "version": "main_at_access; not_pinned_for_implementation",
+      "type": "official_repository_documentation",
+      "access": "README_and_agent_core_documentation_reviewed",
+      "repository_license": "MIT",
+      "dependency_selected": false,
+      "executed": false,
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "ZEP",
+      "title": "Zep: A Temporal Knowledge Graph Architecture for Agent Memory",
+      "authors": [
+        "Preston Rasmussen",
+        "Pavlo Paliychuk",
+        "Travis Beauvais",
+        "Jack Ryan",
+        "Daniel Chalef"
+      ],
+      "date": "2025-01-20",
+      "version": "v1",
+      "url": "https://arxiv.org/html/2501.13956v1",
+      "type": "vendor_authored_research",
+      "locations": [
+        "2.2.3"
+      ],
+      "access": "targeted_temporal_model_review",
+      "scope": "older_supplemental_reference; no_vendor_selection",
+      "checked_on": "2026-09-13"
+    },
+    {
+      "id": "EVAL",
+      "title": "Demystifying evals for AI agents",
+      "publisher": "Anthropic",
+      "date": "2026-01-09",
+      "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+      "type": "first_party_engineering_report",
+      "locations": [
+        "outcome definition",
+        "Types of graders for agents"
+      ],
+      "access": "targeted_evaluation_sections_reviewed",
+      "checked_on": "2026-09-13"
+    }
+  ],
+  "videos": [
+    {
+      "id": "It_8QWMQvaA",
+      "published_at": "2026-09-11T13:30:37Z",
+      "title": "What Happens When AI Stops Thinking in Words?",
+      "url": "https://www.youtube.com/watch?v=It_8QWMQvaA",
+      "discovery_source": "YT",
+      "paper": "AT",
+      "verification": "feed_description_to_primary_source",
+      "caveat": null
+    },
+    {
+      "id": "0NvD6qNapiU",
+      "published_at": "2026-09-10T13:30:12Z",
+      "title": "NEW Procedural Graphs: AI’s Missing Control Layer",
+      "url": "https://www.youtube.com/watch?v=0NvD6qNapiU",
+      "discovery_source": "YT",
+      "paper": "PG",
+      "verification": "feed_description_to_primary_source",
+      "caveat": null
+    },
+    {
+      "id": "c_QzwZO0dd8",
+      "published_at": "2026-09-04T13:45:10Z",
+      "title": "Claude Code Improves Massively w/ 2nd Harness",
+      "url": "https://www.youtube.com/watch?v=c_QzwZO0dd8",
+      "discovery_source": "YT",
+      "paper": "HOH",
+      "verification": "feed_description_to_primary_source",
+      "caveat": null
+    },
+    {
+      "id": "gDPJI1cp0gw",
+      "published_at": "2026-09-03T13:30:07Z",
+      "title": "Agentic Skills + Knowledge Graphs = AI’s Scientific Operating System",
+      "url": "https://www.youtube.com/watch?v=gDPJI1cp0gw",
+      "discovery_source": "YT",
+      "paper": "ASKS",
+      "verification": "feed_description_to_primary_source",
+      "caveat": null
+    },
+    {
+      "id": "PtcK1MnW8GM",
+      "published_at": "2026-08-31T13:30:21Z",
+      "title": "AI Just Escaped the Context Window (Skill.state)",
+      "url": "https://www.youtube.com/watch?v=PtcK1MnW8GM",
+      "discovery_source": "YT",
+      "paper": "STATE",
+      "verification": "feed_description_to_primary_source",
+      "caveat": "video_predates_reviewed_v3; do_not_attribute_v3_to_video"
+    },
+    {
+      "id": "sHeITqLW2BY",
+      "published_at": "2026-08-30T13:15:01Z",
+      "title": "NEW Persistent Skill Compiler: WIKISKILL (Google)",
+      "url": "https://www.youtube.com/watch?v=sHeITqLW2BY",
+      "discovery_source": "YT",
+      "paper": "WIKI",
+      "verification": "feed_description_to_primary_source",
+      "caveat": null
+    }
+  ],
+  "claims": [
+    {
+      "id": "F1",
+      "kind": "source_finding",
+      "sources": [
+        "PG"
+      ],
+      "text": "Lokale weiche Verfahrensorientierung; Evolution getrennt von laufender Episode.",
+      "limit": "Keine Enterprise-Zugriffs- oder Großgraphvalidierung."
+    },
+    {
+      "id": "F2",
+      "kind": "source_finding",
+      "sources": [
+        "AT"
+      ],
+      "text": "Trainierte modellinterne Latent-Kompression.",
+      "limit": "Kein externer Graph-/Ledger-Mechanismus; Rohmodell- und SFT-Vergleiche unterscheiden."
+    },
+    {
+      "id": "F3",
+      "kind": "source_finding",
+      "sources": [
+        "ASKS"
+      ],
+      "text": "Quellbezogene Graphänderungen mit Herkunft.",
+      "limit": "56-Paper-Demonstration, keine allgemeine Beratungswirksamkeit."
+    },
+    {
+      "id": "F4",
+      "kind": "source_finding",
+      "sources": [
+        "STATE"
+      ],
+      "text": "Kompakter Ausführungszustand statt voller Gesprächswiederholung.",
+      "limit": "Keine untersuchten parallelen Mehragenten-Schreibkonflikte."
+    },
+    {
+      "id": "F5",
+      "kind": "source_finding",
+      "sources": [
+        "HOH",
+        "WIKI"
+      ],
+      "text": "Vorhandene Ausführung und beobachtete Erfahrung lassen sich um Verbesserungsschleifen ergänzen.",
+      "limit": "Domänen-/Evaluationsgrenzen im Bericht; kein allgemeiner Zuverlässigkeitsbeweis."
+    },
+    {
+      "id": "F6",
+      "kind": "source_finding",
+      "sources": [
+        "H-CHANGE"
+      ],
+      "text": "Modellfortschritt kann bisherige Ablaufhilfen entbehrlich machen.",
+      "limit": "Engineering-Erfahrung, keine universelle Aussage über Constraints."
+    },
+    {
+      "id": "F7",
+      "kind": "source_finding",
+      "sources": [
+        "H-STATE",
+        "CONTEXT",
+        "PI"
+      ],
+      "text": "Dauerhafter Zustand, Kontextbereitstellung und konkrete Ausführung sind trennbare Anliegen.",
+      "limit": "Keine ausgewählte Runtime oder Hosting-Entscheidung."
+    },
+    {
+      "id": "F8",
+      "kind": "source_finding",
+      "sources": [
+        "ASKS-CODE"
+      ],
+      "text": "Release hat nichtkommerzielle Code-/Artefaktlizenzen.",
+      "limit": "Keine freigegebene kommerzielle Consultry-Abhängigkeit."
+    },
+    {
+      "id": "P1",
+      "kind": "consultry_proposal",
+      "derived_from": [
+        "F1",
+        "F6"
+      ],
+      "text": "Prozedurale Sicht als optionale Unterstützung im Core Skill Graph; keine starre Schrittpflicht.",
+      "decision": "D-0913-R02"
+    },
+    {
+      "id": "P2",
+      "kind": "consultry_proposal",
+      "derived_from": [
+        "F3",
+        "F4",
+        "F7"
+      ],
+      "text": "Quellengebundene Änderungen, kompakter Task-Zustand und abrufbare Historie zusammenführen.",
+      "decision": "D-0913-R03"
+    },
+    {
+      "id": "P3",
+      "kind": "consultry_proposal",
+      "derived_from": [
+        "F1",
+        "F5"
+      ],
+      "text": "Lernänderungen separat prüfen, versionieren und gegebenenfalls zurücknehmen.",
+      "decision": "D-0913-R04"
+    },
+    {
+      "id": "P4",
+      "kind": "consultry_proposal",
+      "derived_from": [
+        "F6",
+        "F7"
+      ],
+      "text": "Austauschbare vorhandene Ausführung anbinden; Verfahrenshilfen bei Modellwechsel erneut bewerten.",
+      "decision": "D-0913-R02"
+    },
+    {
+      "id": "P5",
+      "kind": "consultry_proposal",
+      "derived_from": [
+        "F1",
+        "F4",
+        "F5",
+        "F6"
+      ],
+      "text": "Schlanken Agenten, direkten lokalen Abruf und zusätzliche Guidance separat vergleichen.",
+      "decision": "D-0913-R07"
+    },
+    {
+      "id": "B1",
+      "kind": "retained_product_boundary",
+      "sources": [
+        "local:PRODUCT",
+        "local:DECISIONS"
+      ],
+      "text": "Autonomer Lösungsweg erweitert weder Rechte noch geschäftliche Befugnis; kein zweiter Mensch als Universalpflicht.",
+      "decision": "D-0913-R01"
+    },
+    {
+      "id": "B2",
+      "kind": "non_inference",
+      "derived_from": [
+        "F2"
+      ],
+      "text": "A*-Thought-V2 weder Ledger-Beleg noch direkt umsetzbarer Black-Box-API-Wrapper.",
+      "decision": "D-0913-R05"
+    },
+    {
+      "id": "B3",
+      "kind": "non_inference",
+      "derived_from": [
+        "F8"
+      ],
+      "text": "ASKS dient als Architektur-Inspiration; keine ungeklärte kommerzielle Codeübernahme.",
+      "decision": "D-0913-R06"
+    }
+  ]
+}

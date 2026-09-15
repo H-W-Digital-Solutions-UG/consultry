@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { SmokePage } from "@/pages/SmokePage";
 import { brain } from "@/content/brain";
@@ -10,16 +11,22 @@ import { CorpusStaircase } from "@/widgets/CorpusStaircase";
 import { AlignmentLenses } from "@/widgets/AlignmentLenses";
 import { RunLedger } from "@/widgets/RunLedger";
 import { AccessSwitch } from "@/widgets/AccessSwitch";
-import { VARIANTS } from "@/lib/variants";
+import { VARIANTS, type VariantId } from "@/lib/variants";
+import type { PageContent } from "@/content/types";
+
+interface Page {
+  content: PageContent;
+  widget: ReactNode;
+}
 
 /** Per variant: the one-gesture product widget in "So funktioniert es". The hero carries no UI mock. */
-export const PAGES = {
+export const PAGES: Record<VariantId, Page> = {
   brain: { content: brain, widget: <AssertionExplorer /> },
   corpus: { content: corpus, widget: <CorpusStaircase /> },
   brand: { content: brand, widget: <AlignmentLenses /> },
   ledger: { content: ledger, widget: <RunLedger /> },
   access: { content: access, widget: <AccessSwitch /> },
-} as const;
+};
 
 /** Route table without a router, so the same tree renders in the browser and at prerender time. */
 export function AppRoutes() {

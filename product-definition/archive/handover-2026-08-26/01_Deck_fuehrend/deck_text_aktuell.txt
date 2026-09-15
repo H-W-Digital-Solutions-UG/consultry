@@ -1,0 +1,347 @@
+==================================================================
+FOLIE 1
+==================================================================
+Consulting im Zeitalter der Agenten
+ Die richtigen Projekte gewinnen. Verlässlich liefern. Profitabel steuern.
+ KI-Plattform für IT- und SAP-Beratungen · betrieben im Tenant des Kunden
+
+==================================================================
+FOLIE 2
+==================================================================
+Zehn Stunden jeder Beraterwoche sind intern. Kein Kunde bezahlt sie. 
+ 30 H FAKTURIERBAR
+ 10 H INTERN
+ JE FAKTURIERBARER STUNDE
+ Ø 162,50 €
+ JEDE WOCHE DIESELBEN SCHLEIFEN
+ Angebote
+ Recherche
+ Meetings
+ Dokumentation
+ repetitiv heißt: automatisierbar
+ mit dem Agenten: 3,5 h wieder fakturierbar
+ × 162,50 €/h
+ × 4 Wochen
+ JE BERATER UND MONAT
+ ≈ 2.275 €
+ Ø-Tagessatz 1.300 € · BDU, Honorare im Consulting 2025 · Rechenbasis 4 Arbeitswochen je Monat · zehn interne Stunden: Annahme aus Kundengesprächen, oft eher mehr · 35 % davon sind die Zielannahme für den Consultry-Agenten, keine gemessene Einsparung
+ Über ein Drittel der Zuarbeit wird wieder fakturierbar. Die zehn internen Stunden sind jetzt dran.
+
+==================================================================
+FOLIE 3
+==================================================================
+Beratung bleibt ein Beziehungsgeschäft , auch im Zeitalter der KI.
+ CONSULTRY AGENT
+ MEETINGS UND WORKSHOPS
+ KUNDE
+ BERATER
+ +40 % bewertete Qualität je Aufgabe 
+ bessere Arbeit beim Kunden 
+ ≈ 7,5 h je Woche zurück 
+ mehr Zeit beim Kunden 
+ Der Agent macht die Zuarbeit. Der Berater sitzt beim Kunden. 
+ Die Beziehung führt der Berater. Der Agent bleibt im Hintergrund.
+ Und die freie Woche fließt zurück: Zeit beim Kunden, Qualität in der Arbeit. 
+ Feldversuch: Dell’Acqua et al., Harvard und BCG 2023, 758 Berater, +12,2 % mehr Aufgaben, 25,1 % schneller, gut 40 % höhere Qualität je Aufgabe · Tempowert: 7,5 h × 162,50 € × 4 Wochen ≈ 4.875 € je Berater und Monat, wirkt als Marge und Qualität · zusammen mit der Zuarbeit der Folie davor über 7.100 € je Monat · Zielannahmen, keine gemessene Einsparung
+
+==================================================================
+FOLIE 4
+==================================================================
+Zwischen Gewinnen, Liefern und Steuern reißt der Faden
+ 01
+ Chancen werden zu spät erkannt 
+ 02
+ Zusagen verlieren sich beim Start 
+ 03
+ Erkenntnisse bleiben im Projekt 
+ 04
+ Steuerung reagiert nur 
+ 05
+ KI bleibt vor der Tür 
+ Was der Kunde nebenbei erwähnt, erreicht den Vertrieb erst Wochen später .
+ Erfahrung, Fähigkeiten und Kapazität kommen nicht rechtzeitig zusammen .
+ 80 %
+ der Abschlüsse gehen an den Anbieter, der schon vor dem ersten Gespräch Favorit war 6sense, B2B Buyer Experience Report 2025, rund 4.000 Käufer 
+ Annahmen, Risiken und offene Fragen stehen im Angebot, nicht im Projekt.
+ Das Team startet mit Suchen statt mit Arbeiten.
+ 47 %
+ der Wissensarbeiter finden die Informationen nicht, die sie für ihre Arbeit brauchen Gartner Digital Worker Experience Survey 2023, 4.861 Beschäftigte 
+ =
+ ×2
+ Die dritte S/4HANA-Migration , und noch immer keine Blaupause im Haus.
+ Gelerntes landet im Archiv , statt das nächste Projekt schneller zu machen.
+ 50 %
+ der Wissensarbeiter sagen: Teams im eigenen Haus arbeiten unwissentlich an denselben Dingen Atlassian, State of Teams 2025, 12.000 Wissensarbeiter, Deutschland eingeschlossen, Anbieterstudie 
+ 20:30
+ Chancen, Auslastung, Marge und Projektrisiken bleiben getrennte Sichten .
+ Abweichungen fallen auf, wenn sie schon Geld gekostet haben .
+ 26,6 %
+ der Projekte verfehlen den Termin , Überschreitung im Schnitt 11,3 % SPI Research, Professional Services Maturity Benchmark 2025 
+ KI
+ Kundendaten dürfen nicht in frei zugängliche KI-Werkzeuge .
+ Zwei Drittel verschieben sogar Copilot wegen Datenschutzrisiken (CoreView 2026, Herstellerstudie) .
+ Diese Lücke ist das Zeitfenster : Wer den sicheren Weg zuerst anbietet, besetzt die Kategorie .
+ 77 %
+ der Unternehmen nennen Datenschutz als Hemmnis , bei verdoppelter KI-Nutzung Bitkom, KI in Deutschland 2026, 604 Unternehmen ab 20 Beschäftigten 
+ Das Wissen arbeitet nicht durchgängig mit .
+
+==================================================================
+FOLIE 5
+==================================================================
+MIT CONSULTRY
+ Das Wissen der ganzen Firma arbeitet mit .
+
+==================================================================
+FOLIE 6
+==================================================================
+Ein Produkt. Drei Kreisläufe, die voneinander lernen.
+ EIN KERNPRODUKT
+ Verifiziertes Firmengedächtnis
+ Kunden · Fähigkeiten · Angebote · Projekte · Entscheidungen
+ Freigegebene Daten- und Modellwege
+ Schutzklasse · Rolle · Anbieter · Region · Aufbewahrung · Protokollierung
+ KREISLAUF 1
+ Geschäftschancen
+ Signale erkennen, belegt anbieten.
+ KREISLAUF 2
+ Projektarbeit
+ Zusagen umsetzen, Wissen sichern.
+ KREISLAUF 3
+ Steuerung
+ Abweichungen sehen, entscheiden.
+ Einzeln wäre jeder nur ein weiteres Werkzeug. Zusammen sind sie das Gedächtnis des Hauses.
+ Vor jeder KI-Verarbeitung gilt der Weg, den dieser Kunde freigegeben hat.
+ Was einmal erarbeitet wurde, bleibt im Haus. Das nächste Projekt fängt nicht bei null an.
+ Jedes Projekt verbessert die nächste Entscheidung.
+
+==================================================================
+FOLIE 7
+==================================================================
+Vom Signal zum belegten Angebot
+ SCHRITT 1
+ KUNDE
+ BERATER
+ Wir stellen bald auf
+ SAP S/4HANA um.
+ Nebensatz im Termin Der Kunde sagt es nebenbei . Der Agent erfasst das Signal .
+ SCHRITT 2
+ Entscheidung am selben Tag Der Vertrieb entscheidet , ob die Firma anbietet.
+ Tag 0
+ SCHRITT 3
+ Rahmenvertrag
+ SAP-Projektbericht
+ Offene Frage
+ Entwurf mit Belegen Jede Aussage hat eine Quelle oder ist als offene Frage markiert.
+ Stunden
+ Heute bleibt dieser Satz wochenlang liegen , bis ihn jemand zufällig aufgreift.
+
+==================================================================
+FOLIE 8
+==================================================================
+Bestehende Werkzeuge lösen je ein Teil
+ ?
+ Copiloten und Assistenz-KI 
+ Stark bei Suche, Texten und freien Abläufen
+ Eine Freigabe fürs ganze Haus kennt keinen einzelnen Kundenvertrag 
+ Kontext muss jedes Mal neu mitgegeben werden
+ M365 Copilot
+ ChatGPT
+ Claude
+ ✓ Consultry: Ergebnisse im Arbeitsschritt, auf geprüftem Kontext.
+ KI-Baukästen 
+ Stark bei frei konfigurierbaren Agenten-Abläufen
+ Jeder Ablauf ist Bau- und Wartungsarbeit 
+ Braucht Experten oder Beraterzeit 
+ n8n
+ Make
+ ✓ Consultry: Der Kreislauf kommt fertig, gewartet, mit Freigaben.
+ ENTSCHEIDUNG
+ ANGEBOT
+ PROJEKT
+ ?
+ Angebots- und Projektsoftware 
+ Stark bei Antwortbibliotheken, Ressourcen und Prognose
+ Endet beim Angebot oder beginnt erst im Projekt 
+ Der Weg zur Entscheidung bleibt außerhalb
+ ✓ Consultry: Ein Kontext von der Chance bis zur Entscheidung.
+ Ein Werkzeug je Prozess entlastet niemanden. Es verschiebt nur.
+
+==================================================================
+FOLIE 9
+==================================================================
+Der Vorsprung wächst mit geprüftem Kontext und freigegebener KI
+ 1 BERATUNGSMODELL
+ Wir modellieren die Beratung, nicht nur Dokumente. 
+ Kunden, Fähigkeiten, Chancen, Zusagen und Projekte als verbundene Entitäten . Erst darauf können Agenten planen und Engpässe erkennen .
+ 2 FREIGEGEBENE KI
+ Jede Verarbeitung läuft über einen erlaubten Weg. 
+ Schutzklasse, Modell, Anbieter, Region und Kundenvertrag bestimmen, was zulässig ist. Kein Weg, keine Verarbeitung. Und jeder sieht nur, was er sehen darf: Berechtigungen gelten für Agenten wie für Menschen .
+ 3 VERIFIZIERTES LERNEN
+ Erst geprüft, dann Firmenwissen. 
+ Grundlage, Unsicherheit und Auswirkung bleiben sichtbar. Bindende Entscheidungen brauchen eine menschliche Freigabe .
+ IM TENANT DES KUNDEN · WIR HOSTEN NICHTS
+ 77 % NENNEN DATENSCHUTZ ALS KI-HEMMNIS · BITKOM 2026
+ QUELLEN
+ CRM · Dateien · Kommunikation
+ FIRMENGEDÄCHTNIS
+ Berater · Skills · Projekte
+ AGENT-SANDBOX
+ Berater und Agenten am Task
+ ENTSCHEIDUNGEN
+ Ergebnis · Beleg · neues Wissen
+ FREIGEGEBENER WEG
+ JE KUNDE
+ EU-Bereitstellung
+ Im Vertrag des Kunden
+ Kundeneigener Betrieb
+ 1
+ 2
+ 3
+ Berater · Skills · Projekte
+ 1
+ EU-Bereitstellung
+ Im Vertrag des Kunden
+ Kundeneigener Betrieb
+ 2
+ Ergebnis · Beleg · neues Wissen
+ 3
+ ZUGRIFF JE NUTZER UND ROLLE
+ Es rechnet dort, wo eure Verträge schon sind. Die Daten überschreiten keine weitere Grenze.
+
+==================================================================
+FOLIE 10
+==================================================================
+Von unten gerechnet: 14.500 Beratungen im Einstiegsmarkt
+ Jahr 1
+ DACH-Fokus
+ Jahr 2
+ Expansion Europa (EU)
+ Jahr 3+
+ International, Partner-Ökosystem
+ 14.500 Beratungen
+ Einstiegsmarkt: SAP, IT, Digitalisierung, Prozesse
+ Jahr 1 · adressierbar
+ €360 Mio.
+ ≈ 4 × DACH
+ rund 65.000 Management- und IT-Beratungen in Europa, ohne Softwarehäuser
+ Jahr 2 · erreichbarer Markt (SAM)
+ ≈ €1,6 Mrd.
+ ≈ 20 × DACH
+ International über Partner: der Weltmarkt für Beratung
+ Jahr 3+ · Honorarvolumen der Branche, zur Einordnung · kein SAM
+ €300 Mrd.+
+ Der Plan ist konservativ. Der Markt ist es nicht .
+ Bottom-up: Zahl der Beratungen × ≈ 25 T€ Jahresvertragswert · Zielkunden: Beratungen ab 5 Beschäftigten oder 750 T€ Umsatz · SAM: Eurostat 2024, 70.22 Unternehmensberatung + 62.02 IT-Beratung ab 5 Beschäftigten, ohne Softwareentwicklung (62.01) und PR (70.21) · BDU 2025 · Einstiegsmarkt konservativ gezählt (J62-Schnitt), bereinigt 18 bis 19 Tsd., Feinschnitt im Datenraum · Darstellung nicht maßstabsgetreu
+
+==================================================================
+FOLIE 11
+==================================================================
+Partner-Ökosystem und Erlösmodell
+ PARTNER-ÖKOSYSTEM
+ Aus Kunden werden Vertriebspartner. 
+ Consultry SAP
+ Consultry Legal
+ Consultry Public
+ …
+ Fundament
+ %
+ Partner
+ deren Netzwerke
+ ERLÖSMODELL
+ Wiederkehrende Sitze, eine feste Plattformgebühr. Ein Preis, alles drin. 
+ JE SITZ UND MONAT
+ Token-Kontingent enthalten
+ 1×
+ VOLUMENTARIF JE SITZ
+ Dreifaches Token-Kontingent
+ 3×
+ PLATTFORM JE MONAT
+ Betrieb und Konnektoren
+ fix
+ Software-Marge über 80 %
+ · Preise im Datenraum
+ Unsere Kunden sind IT-Beratungen: die geborenen Partner .
+
+==================================================================
+FOLIE 12
+==================================================================
+Wir entwickeln den ersten Produktpfad mit echten Beratungen
+ VALIDIERT
+ Gespräche mit Beratungen 
+ Problem und heutiger Arbeitsablauf bestätigt
+ Erster Wertbeitrag benannt
+ Quelle: Experten- und Partnergespräche 
+ ENTWICKLUNGSPARTNER
+ Krallmann: erster Entwicklungspartner 
+ Krallmann: IT-Beratung Berlin seit 2006 , 380+ Projekte
+ Krallmann-Kunden u. a. DZ PRIVATBANK
+ Absichtserklärung (LOI) unterschrieben
+ NÄCHSTER NACHWEIS
+ €
+ Vom Prototyp zur bezahlten Erprobung 
+ Systemprototyp 
+ Reale Nutzung beim Entwicklungspartner
+ Bezahlte Erprobung 
+ Wir raten nicht, wir prüfen: jeden Monat fällt eine Annahme , bis der erste Kunde zahlt.
+
+==================================================================
+FOLIE 13
+==================================================================
+Das Gründerteam
+ CEO, VERTRIEB
+ Caspar Hertel 
+ Verkauft heute IT-Beratung im Einstiegsmarkt
+ Verhandelt heute die Angebote, die Kreislauf 1 morgen baut
+ Bringt das Vertrauensnetzwerk für die ersten Piloten
+ Vollzeit ab Pilotstart, terminiert; bis dahin lebendes Product Discovery
+ CTO, TECHNIK
+ Julian Weber 
+ Fünf Jahre Cybersecurity-Consulting zum Schutz systemrelevanter Finanzsysteme
+ Baut seit zwei Jahren agentische Workflows für Beratungsarbeit
+ Baut die Plattform: Agenten, Datengrenze, Modellbetrieb
+ CPO, PRODUKT
+ Paul Hannemann 
+ Neun Jahre Konzern-IT, Millionenprojekte in Versicherung, Automotive und Logistik
+ Übersetzt seit zwei Jahren KI-Workflows in Produkt- und Geschäftsentscheidungen
+ MBA: Management, Innovation, Entrepreneurship
+ Consulting, Produkt, Sicherheit und KI in einem Team. Aus dem Markt, den wir bedienen.
+
+==================================================================
+FOLIE 14
+==================================================================
+Der Ask ist durchgerechnet, nicht gewünscht
+ €500k für 17,5 %
+ 17,5 %
+ für €500k
+ Investoren 17,5 %
+ Gründer  73,5 %
+ Mitarbeiter-Pool  9 %
+ Nach Pre-Seed, vor Seed-Verwässerung.
+ Cap Table im Datenraum.
+ MITTELVERWENDUNG
+ Systemprototyp über alle drei Kreisläufe
+ Eine Entwicklungspartnerschaft mit realem Fall
+ Drei bis fünf bezahlte Erprobungen 
+ Gemessene Nutzung und Zahlungsbereitschaft 
+ Nachvollziehbarer Weg zu zehn Referenzkunden 
+ Aufteilung und Runway im Finanzplan.
+ WARUM DIE RECHNUNG TRÄGT
+ Infrastruktur trägt sich ab dem zweiten Kunden 
+ Jeder Kunde rechnet sich ab dem ersten Monat 
+ Break-even bei 20 bis 27 Kunden : 0,14 bis 0,19 % des Einstiegsmarkts, im Plan in Jahr 2
+ Zielannahmen aus dem Preisüberschlag, keine Messwerte.
+ Einsteigen?
+ contact@consultry.de
+
+==================================================================
+FOLIE 15
+==================================================================
+Jedes Projekt verbessert die nächste Entscheidung .
+ Jede Freigabe macht den nächsten Agenten klüger.
+ Caspar Hertel, CEO  |  contact@consultry.de
+ Vollbild 
+ Notizen 
+ ← 
+ 1 / 15
+ → 
+ .slide{position:static;visibility:visible;opacity:1;transform:none}.hud,.fsbtn{display:none}.sw{opacity:1}

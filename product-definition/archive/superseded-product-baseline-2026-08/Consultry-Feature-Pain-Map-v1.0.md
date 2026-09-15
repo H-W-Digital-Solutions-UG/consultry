@@ -1,8 +1,8 @@
 # Consultry — Feature ↔ Pain Map v1.1
 
-> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../../latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
+> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../baseline-before-consolidation-2026-09-10/latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
 
-**Status:** Aktiv. Die **Brücke** zwischen den Markt-Pains ([Vision §7/§8](../../latest/Consultry-Product-Vision-v1.0.md)) und den Features ([Phase-1-Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md)). Auch Sales-/Discovery-Asset.
+**Status:** Aktiv. Die **Brücke** zwischen den Markt-Pains ([Vision §7/§8](../baseline-before-consolidation-2026-09-10/latest/Consultry-Product-Vision-v1.0.md)) und den Features ([Phase-1-Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md)). Auch Sales-/Discovery-Asset.
 **Datum:** 13.06.2026 · **Project-Symbiosis-Update:** 12.07.2026
 **Logik:** Jedes MVP-Feature existiert, weil es einen **konkreten, belegten Schmerz** killt — zugeordnet zu Persona, Hero (Win/Work) und PMF-Metrik. Pains sind **quellenmarkiert**: ✓ belegt · † Annahme-zu-validieren.
 
@@ -90,4 +90,4 @@
 
 ---
 
-*Ende v1.1. Inline referenziert aus den Feature-Specs (Pain-IDs PW#/PK#). Pains-Quelle: [Vision §7/§8](../../latest/Consultry-Product-Vision-v1.0.md). PK8 bleibt als Discovery-/Dogfood-Hypothese zu validieren; keine erfundene Einspar-/Margenzahl.*
+*Ende v1.1. Inline referenziert aus den Feature-Specs (Pain-IDs PW#/PK#). Pains-Quelle: [Vision §7/§8](../baseline-before-consolidation-2026-09-10/latest/Consultry-Product-Vision-v1.0.md). PK8 bleibt als Discovery-/Dogfood-Hypothese zu validieren; keine erfundene Einspar-/Margenzahl.*

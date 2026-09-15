@@ -9,7 +9,7 @@ export const brand: PageContent = {
   },
   hero: {
     title: "Eure Sprache. Eure Vorlagen. Eure Freigaben.",
-    lede: "Consultry kennt eure Begriffe, Vorlagen und Freigaben und prüft jede Unterlage aus drei Blickwinkeln.",
+    lede: "Drei Blickwinkel. Eine stimmige Unterlage.",
     cta: "Auf die Warteliste",
     secondary: "So funktioniert es",
   },
@@ -25,11 +25,6 @@ export const brand: PageContent = {
       { icon: "brand-1", title: "Wissen", text: "Ist die Fassung aktuell und belegt?" },
       { icon: "brand-2", title: "Marke und Design", text: "Folgt sie euren Begriffen und Vorlagen?" },
       { icon: "brand-3", title: "Freigabe", text: "Darf sie so nach außen?" },
-    ],
-    kpis: [
-      { value: "3", label: "Blickwinkel je Unterlage, getrennt sichtbar", kind: "Regel" },
-      { value: "0", label: "Gesamt-Score, keine Ampel", kind: "Regel" },
-      { value: "1", label: "Person entscheidet über die Verwendung", kind: "Regel" },
     ],
   },
   boundaries: {

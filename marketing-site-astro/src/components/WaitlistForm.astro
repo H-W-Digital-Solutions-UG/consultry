@@ -1,0 +1,81 @@
+---
+interface Props {
+  source: string;
+  id?: string;
+  title?: string;
+  description?: string;
+}
+const {
+  source,
+  id = "warteliste",
+  title = "Zur nächsten Erprobungsrunde.",
+  description = "Trag dich ein. Wir melden uns, sobald die nächste Runde startet.",
+} = Astro.props;
+---
+
+<form id={id} class="waitlist-form" data-waitlist-form data-source={source} aria-labelledby={`${id}-title`}>
+  <div class="waitlist-content" data-form-content>
+    <div class="waitlist-introduction">
+      <h2 id={`${id}-title`}>{title}</h2>
+      <p class="waitlist-description">{description}</p>
+      <p class="waitlist-proof"><span aria-hidden="true">100</span> Bereits 100 Einträge auf der Warteliste.</p>
+    </div>
+    <div class="waitlist-fields">
+    <label class="waitlist-email-label" for={`${id}-email`}>Geschäftliche E-Mail</label>
+    <input id={`${id}-email`} name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@beratung.de" maxlength="254" required aria-describedby={`${id}-status`} />
+    <div class="waitlist-honeypot" aria-hidden="true" inert>
+      <label for={`${id}-website`}>Website</label>
+      <input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+    <label class="waitlist-consent">
+      <input name="newsletterConsent" type="checkbox" required />
+      <span>Ich möchte E-Mails von Consultry zu Launch-Info, Produkt-Updates und Pilotplätzen erhalten. Versand und Verwaltung erfolgen über Loops (USA). Hinweise zur Verarbeitung, zu Datentransfers und meinen Rechten stehen in der <a href="/legal/datenschutz">Datenschutzerklärung</a>. Ich kann meine Einwilligung jederzeit über den Abmeldelink widerrufen.</span>
+    </label>
+    <button type="submit" disabled data-submit>Auf die Warteliste <span aria-hidden="true">↗</span></button>
+    <p class="waitlist-note">Du erhältst zunächst eine Bestätigungs-E-Mail.</p>
+    </div>
+  </div>
+  <p id={`${id}-status`} class="waitlist-status" role="status" aria-live="polite" data-form-status>Warteliste wird geprüft …</p>
+  <noscript><p>Bitte aktiviere JavaScript, um die Verfügbarkeit der Warteliste zu prüfen und dich einzutragen.</p></noscript>
+</form>
+
+<script>
+  import "../scripts/waitlist";
+</script>
+
+<style>
+  .waitlist-form { position: relative; width: 100%; max-width: none; padding: clamp(1.4rem, 4.2vw, 3.5rem); border: 0; border-top: 3px solid #bd795c; border-radius: 0; background: #f3efe7; color: #171513; color-scheme: light; scroll-margin-top: 0; }
+  .waitlist-content { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(2rem, 5vw, 5rem); }
+  .waitlist-content[hidden] { display: none; }
+  .waitlist-introduction, .waitlist-fields { min-width: 0; }
+  h2 { max-width: 14ch; margin: 0; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.08; letter-spacing: -.055em; }
+  .waitlist-description { max-width: 33ch; margin: 1rem 0 0; color: #75695d; font-size: .88rem; line-height: 1.6; }
+  .waitlist-proof { display: flex; align-items: center; gap: 1rem; max-width: 20rem; margin: 1.7rem 0 0; font-size: .75rem; line-height: 1.55; color: #736455; }
+  .waitlist-proof span { flex-shrink: 0; color: #9a6648; font-size: 2.8rem; line-height: 1; font-weight: 400; letter-spacing: -.08em; }
+  .waitlist-email-label { display: block; margin-bottom: .7rem; font-size: .83rem; font-weight: 500; }
+  input[type="email"] { box-sizing: border-box; width: 100%; min-height: 3.5rem; border: 1px solid #cbbdad; border-radius: .2rem; background: #fffdf8; padding: 1rem; font: inherit; font-size: 1rem; color: #29251f; }
+  .waitlist-consent { display: flex; align-items: flex-start; gap: .75rem; margin: 1.15rem 0 1.5rem; font-size: .75rem; line-height: 1.65; color: #716558; cursor: pointer; }
+  .waitlist-consent input { width: 1.15rem; height: 1.15rem; margin: .15rem 0 0; accent-color: #855338; flex: 0 0 auto; }
+  a { color: #59432f; text-decoration: underline; text-underline-offset: .2em; }
+  button { display: flex; width: 100%; min-height: 3.5rem; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border: 1px solid #282019; border-radius: .2rem; background: #282019; color: #fff8ef; font: inherit; font-size: .93rem; font-weight: 500; text-align: left; cursor: pointer; }
+  button span { font-size: 1.4rem; line-height: 1; }
+  button:disabled { background: #d1c3b4; border-color: #d1c3b4; color: #695b4e; cursor: not-allowed; }
+  button:not(:disabled):hover { background: #574131; }
+  :is(input, button, a):focus-visible { outline: 2px solid #995534; outline-offset: 4px; }
+  input[aria-invalid="true"] { border-color: #9b3d2f; }
+  .waitlist-note { margin: .8rem 0 0; font-size: .73rem; color: #75695c; }
+  .waitlist-status { margin: 1.5rem 0 0; padding-top: 1rem; border-top: 1px solid #d9ccbe; font-size: .8rem; line-height: 1.6; color: #776350; }
+  .waitlist-status:empty { display: none; }
+  .waitlist-status[data-state="error"] { color: #963c2b; }
+  .waitlist-status[data-state="success"] { margin: 0; padding: 1rem; border: 0; border-radius: .2rem; background: #e7eee3; color: #344c31; }
+  .waitlist-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  @media (max-width: 700px) {
+    .waitlist-content { grid-template-columns: 1fr; gap: 1.8rem; }
+    .waitlist-kicker { margin-bottom: .8rem; }
+    h2 { max-width: 19ch; }
+    .waitlist-description { max-width: 41ch; }
+    .waitlist-proof { margin-top: 1.2rem; max-width: 23rem; }
+    .waitlist-proof span { font-size: 2.3rem; }
+    .waitlist-consent { font-size: .72rem; }
+  }
+</style>

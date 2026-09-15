@@ -1,6 +1,6 @@
 # Consultry — Phased Roadmap & MVP Scope v1.0
 
-**Status:** ⚠️ **ARCHIVIERT (12.06.2026)** — superseded durch [MVP-PRD v1.0](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) + [MVP-Foundation-Decisions v1.0](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md) (T1)
+**Status:** ⚠️ **ARCHIVIERT (12.06.2026)** — superseded durch [MVP-PRD v1.0](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) + [MVP-Foundation-Decisions v1.0](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md) (T1)
 **Datum:** 5. Mai 2026
 
 > **⚠️ Archiv-Hinweis.** Dieses Dokument beschreibt den verworfenen „Win-and-Deliver"-MVP (6 Module bis DATEV-Handoff, Gen A). Der verbindliche MVP ist die **Acquisition-to-Bid-Linie** (MVP-PRD v1.0). Noch gültig bleiben einzelne Hintergrund-Inhalte: das Skizze↔PRD-Mapping (§2), QA-Layer-als-Sub-System (§5.1, → H2), Markt-Intelligence = Phase 2 (§5.2), Marketing-CMS out-of-OS-scope (§5.3).
@@ -436,4 +436,4 @@ Für die bilinguale UX muss jeder Begriff aus der Skizze ein konsistentes EN-Pen
 
 ---
 
-**Ende v1.0.** ~~Bei Konflikten gilt PRD v4.1 als Quelle der Wahrheit.~~ **Archiviert 12.06.2026** — bei Konflikten gelten [MVP-PRD v1.0](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) + [MVP-Foundation-Decisions v1.0](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md).
+**Ende v1.0.** ~~Bei Konflikten gilt PRD v4.1 als Quelle der Wahrheit.~~ **Archiviert 12.06.2026** — bei Konflikten gelten [MVP-PRD v1.0](../superseded-product-baseline-2026-08/Consultry-MVP-PRD-v1.0.md) + [MVP-Foundation-Decisions v1.0](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md).

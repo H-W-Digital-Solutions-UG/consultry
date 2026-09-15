@@ -63,7 +63,7 @@ export const STATS = {
 } satisfies Record<string, Stat>;
 
 export const PATHS_SECTION = {
-  title: "Es rechnet dort, wo eure Verträge schon sind.",
+  title: "Euer Datenraum. Euer Betriebsweg.",
   lede: "Fällt ein Anbieter aus, wechselt das Modell, nicht der Datenraum.",
 };
 

@@ -1,0 +1,18 @@
+ M CLAUDE.md
+ M product-definition/README.md
+ M product-definition/archive/MANIFEST.yaml
+ M product-definition/archive/README.md
+ M product-definition/latest/CONTEXT.md
+ M product-definition/latest/MANIFEST.yaml
+ M product-definition/latest/README.md
+ M product-definition/latest/_CONTEXT-AND-MEMORY.md
+ M product-definition/latest/wayfinder/consultry-product-platform-baseline/map.md
+ M product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-core-module-and-surface-contract.md
+ M product-definition/latest/wayfinder/consultry-product-platform-baseline/tickets/define-the-human-ai-responsibility-and-meaningful-oversight-contract.md
+?? KFW_utils/docs/__pycache__/
+?? nebius-bench-results/benchmarks/nebius-vllm/__pycache__/
+?? product-definition/archive/intake-2026-09-05/
+?? product-definition/archive/migration-2026-09-10/
+?? product-definition/archive/session-2026-09-05-wissensledger/
+?? product-definition/latest/Consultry-Agent-Knowledge-Ledger-Integration-v0.1.md
+?? product-definition/latest/handoffs/Consultry-Pitchdeck-v10.185-Foerderung-Investoren-Handover-v0.1.md

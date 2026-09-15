@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { legalDocuments, type LegalDocument } from "../../content/legal";
+
+export const prerender = true;
+export function getStaticPaths() {
+  return legalDocuments.map((document) => ({ params: { slug: document.slug }, props: { document } }));
+}
+interface Props { document: LegalDocument; }
+const { document } = Astro.props;
+---
+
+<BaseLayout title={document.title} description={document.description} path={`/legal/${document.slug}`}>
+  <main class="legal-copy" id="inhalt">
+    <nav aria-label="Rechtliche Dokumente">
+      <a href="/">Consultry</a>
+      {legalDocuments.map((item) => <a href={`/legal/${item.slug}`} aria-current={item.slug === document.slug ? "page" : undefined}>{item.slug === "agb" ? "AGB" : item.slug === "datenschutz" ? "Datenschutz" : item.title}</a>)}
+    </nav>
+    <header>
+      <p>Rechtliches</p>
+      <h1>{document.title}</h1>
+      {document.metaItems.length > 0 && <dl>{document.metaItems.map((item) => <div><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl>}
+      {document.intro && <div set:html={document.intro} />}
+    </header>
+    {document.sections.map((section) => <section><h2>{section.title}</h2><div set:html={section.html} /></section>)}
+    <p>Stand: {document.lastUpdated}</p>
+  </main>
+</BaseLayout>

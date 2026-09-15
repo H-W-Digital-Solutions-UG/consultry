@@ -1,11 +1,11 @@
 # Consultry — MVP-PRD v1.0 (Opportunity-to-Concept)
 
-> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../../latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
+> **ARCHIVSTATUS 02.08.2026:** Historische Provenienz; kein aktueller Product Canon, Scope oder freigegebener Build-Plan. Aktueller Einstieg: [`product-definition/latest`](../baseline-before-consolidation-2026-09-10/latest/README.md). Reaktivierung nur über eine explizite Wayfinder-Entscheidung.
 
 **Status:** Entwurf zur Bestätigung
-**Rolle im Doc-Stack:** **Das MVP-Fokus-Doc — was wir ZUERST bauen (und was NICHT).** Gegenstück: [Product Vision (komplett)](../../latest/Consultry-Product-Vision-v1.0.md) = *wohin insgesamt*. Technische Tiefe: [MVP-Technical-Foundation](../../latest/Consultry-MVP-Technical-Foundation-v1.0.md). Begründungen: [Foundation-Decisions (Decision-Log)](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md).
+**Rolle im Doc-Stack:** **Das MVP-Fokus-Doc — was wir ZUERST bauen (und was NICHT).** Gegenstück: [Product Vision (komplett)](../baseline-before-consolidation-2026-09-10/latest/Consultry-Product-Vision-v1.0.md) = *wohin insgesamt*. Technische Tiefe: [MVP-Technical-Foundation](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Technical-Foundation-v1.0.md). Begründungen: [Foundation-Decisions (Decision-Log)](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md).
 **Datum:** 30. Mai 2026
-**Bezug:** [Alignment Control Plane](../../latest/Consultry-Alignment-Control-Plane-v1.0.md), [GTM-Decisions](../../latest/Consultry-GTM-Decisions-v1.0.md), [Onboarding-Korpus-Ritual](../../latest/Consultry-Onboarding-Corpus-Ritual-v1.0.md), [Phase-1 MVP Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), [Measurement Spec](../../latest/Consultry-MVP-Measurement-Spec-v1.0.md), **[MVP-Foundation-Decisions v1.0](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md) (verbindliche Klärungen 12.06. + Architektur-Revision 28.06.)**
+**Bezug:** [Alignment Control Plane](../baseline-before-consolidation-2026-09-10/latest/Consultry-Alignment-Control-Plane-v1.0.md), [GTM-Decisions](../baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md), [Onboarding-Korpus-Ritual](../baseline-before-consolidation-2026-09-10/latest/Consultry-Onboarding-Corpus-Ritual-v1.0.md), [Phase-1 MVP Specs](./Consultry-Phase-1-MVP-Specs-and-Flow-Canvas-v1.0.md), [Measurement Spec](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Measurement-Spec-v1.0.md), **[MVP-Foundation-Decisions v1.0](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md) (verbindliche Klärungen 12.06. + Architektur-Revision 28.06.)**
 
 > **Auftrag dieser Datei: NEIN sagen.** Die Vision ist groß. Diese MVP-PRD ist absichtlich klein. Alles, was hier nicht explizit *In-Scope* steht, ist **out** — egal wie verlockend.
 
@@ -19,7 +19,7 @@
 
 ## 1. Die Wette (PMF-Hypothese) — Dual-Hero unter einer Thesis
 
-> **Revidiert 13.06.2026 ([Foundation-Decisions T8/T11/T12](../../latest/Consultry-MVP-Foundation-Decisions-v1.0.md)).** Der MVP verfolgt **zwei gleichrangige Heroes**, vereint unter einer Thesis: **Consultry macht DACH-Beratungen AI-native — sie gewinnen mehr *und* arbeiten AI-nativ.**
+> **Revidiert 13.06.2026 ([Foundation-Decisions T8/T11/T12](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Foundation-Decisions-v1.0.md)).** Der MVP verfolgt **zwei gleichrangige Heroes**, vereint unter einer Thesis: **Consultry macht DACH-Beratungen AI-native — sie gewinnen mehr *und* arbeiten AI-nativ.**
 
 **Übergeordnete Thesis („Beratung im KI-Zeitalter"):** Kunden hinterfragen zunehmend hohe Tagessätze — die Antwort ist nicht „billiger werden", sondern **AI-nativ werden**: bessere Ergebnisse in weniger Zeit, und damit zu den Beratungen gehören, die im KI-Zeitalter *wachsen* (BDU 2025: AI = +18,8 % Wachstumstreiber; Rate-Druck ist Vorwärtstrend). Consultry liefert diese Arbeitsweise an zwei Fronten:
 
@@ -100,7 +100,7 @@ Beide teilen sich **dieselbe Grounding-/Approval-/Audit-Engine** und denselben K
 | **Work-Agent / Time-Capture** (Harvest-orientiert) | Leichte Zeiterfassung (BAG-pflichtig); Agent schlägt `TimeEntry`s aus In-Tool-Arbeit vor, Consultant bestätigt. Privater `PersonalNote`-Layer = Retention-Driver. | Daily-Driver + Capture |
 | **Project Observability** | Deliverable-zentrierter `ProjectStatus`/Burn aus **aggregierten TimeEntries**. **Nie personen-attribuiert** im Default; Personenbezug nur unter Works-Council-Mode. | Management-Substrat |
 
-> **Compliance-Posture (Entscheidung 30.05. — „move fast, ein Schalter"):** Wir **optimieren nicht auf §87** — Wette: Erst-ICP hat überwiegend **keinen Betriebsrat.** Einzige Versicherung = **Works-Council-Mode** (Default-OFF), der personenbez. Auswertung **und den Aktivitäts-Auto-Feed** (GI-9b) gated. Restrisiko bei Kunden *mit* aktivem BR **bewusst akzeptiert**. Zeiterfassung-Capture ist ohnehin BAG-pflichtig/legitim. Details: [Domain-Def §5 Punkt 9, GI-7..16](../../latest/Consultry-Business-Domain-Definition-v1.0.md).
+> **Compliance-Posture (Entscheidung 30.05. — „move fast, ein Schalter"):** Wir **optimieren nicht auf §87** — Wette: Erst-ICP hat überwiegend **keinen Betriebsrat.** Einzige Versicherung = **Works-Council-Mode** (Default-OFF), der personenbez. Auswertung **und den Aktivitäts-Auto-Feed** (GI-9b) gated. Restrisiko bei Kunden *mit* aktivem BR **bewusst akzeptiert**. Zeiterfassung-Capture ist ohnehin BAG-pflichtig/legitim. Details: [Domain-Def §5 Punkt 9, GI-7..16](../baseline-before-consolidation-2026-09-10/latest/Consultry-Business-Domain-Definition-v1.0.md).
 
 ### 3.1a Die anderen vier (Acquisition-Linie) bewusst dünn (um den Hero zu finanzieren)
 
@@ -145,13 +145,13 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 ## 3.4 Foundation- & Technical-Entscheidungen (T1–T12, eingearbeitet 13.06.2026)
 
-> Diese Entscheidungen waren bis 13.06. in einer separaten Datei (`Consultry-MVP-Foundation-Decisions`). Sie sind **hier eingearbeitet** — dieses Doc ist die **eine MVP-Quelle**. Die Foundation-Datei bleibt als **Decision-Log/Changelog** (Begründungen, Salvage-Details, Markt-Evidenz-Tabelle, Quellen). Technische Tiefe (Datenmodell, Architektur) → [MVP-Technical-Foundation](../../latest/Consultry-MVP-Technical-Foundation-v1.0.md).
+> Diese Entscheidungen waren bis 13.06. in einer separaten Datei (`Consultry-MVP-Foundation-Decisions`). Sie sind **hier eingearbeitet** — dieses Doc ist die **eine MVP-Quelle**. Die Foundation-Datei bleibt als **Decision-Log/Changelog** (Begründungen, Salvage-Details, Markt-Evidenz-Tabelle, Quellen). Technische Tiefe (Datenmodell, Architektur) → [MVP-Technical-Foundation](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Technical-Foundation-v1.0.md).
 
 | # | Entscheidung | Verbindlich |
 |---|---|---|
 | **T1** | Doc-Authority | Gen-A archiviert (PRD v5.0, Roadmap v1.0, feature-specs); selektiver Salvage → Technical-Foundation. |
 | **T2** | Tenancy/Hosting | **Multi-Tenant SaaS, EU-Region**, Postgres Row-Level-Security. Compliance = AVV/DPA + No-Training. Single-Tenant/Customer-Cloud → H2+. |
-| **T3** | Data Layer | **Revidiert 28.06. durch [ADR-001](../../latest/Consultry-MVP-Architecture-ADR-v1.0.md): Aurora PostgreSQL Serverless v2 + pgvector** ersetzt Neon als AWS-native MVP-Implementierungsbaseline. RLS, graph-ready Edge-Tabellen und Graph-DB-deferred bleiben. |
+| **T3** | Data Layer | **Revidiert 28.06. durch [ADR-001](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Architecture-ADR-v1.0.md): Aurora PostgreSQL Serverless v2 + pgvector** ersetzt Neon als AWS-native MVP-Implementierungsbaseline. RLS, graph-ready Edge-Tabellen und Graph-DB-deferred bleiben. |
 | **T4** | AI-Reliability-Minimum | (1) **Evidence-/Review-State auf Datenebene** und `CitationLink` für policy-relevante Claims, (2) **Faithfulness-Check (D6)** für verwendete Quellen, (3) **versionierte Prompts** (Git), (4) **AuditEvent je AI-Call**. Kein globaler Citation-Hard-Pass, kein Drift-Monitor/Eval-CI/PII-Router im MVP. |
 | **T5** | Inference / Grund-Compliance | **Revidiert 12.07.2026:** **Microsoft Foundry / Azure AI Foundry ist der bevorzugte Managed-AI-Pfad.** Bevorzugte Familie = **GPT-5.6**; Default für PMF-kritische komplexe Reasoning-/Synthese-Jobs = **`gpt-5.6-sol`**, initial auf Katalogversion `2026-07-09` gepinnt. `gpt-5.6-terra` und `gpt-5.6-luna` sind optionale eval-gated Effizienzrouten. AWS Bedrock bleibt unterstützte Alternative/Fallback-Basiskomponente. Grund-Compliance je Pfad: Enterprise-Vertrag/AVV-DPA, No-Training, freigegebene Region/Data-Zone und Retention, IAM/Tenant-Isolation und Audit. Der `ModelGateway` bleibt provider-neutral; Modell-/Versionswahl ist Policy-Konfiguration, kein Hardcode. |
 | **T6** | Works-Council-Mode | **Default-OFF.** Schalter gated (wenn AN) personenbez. Auswertung + Auto-Feed. MVP-Sichten ohnehin aggregiert/anonym. |
@@ -159,7 +159,7 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 | **T8** | **Dual-Hero** | Zwei gleichrangige Heroes (Win + Work, §3/§3.1b), geteiltes Engine-Fundament. „Core-Vorrang"-Lesart bewusst aufgehoben. |
 | **T9** | Build-Kapazität | Experten vorhanden, Hiring nach Idee-Bestätigung (Dogfood #0 + 1. Partner). Build-Zeit ist nicht der binding constraint; Dual-Hero tragbar. |
 | **T10** | Deck-Ehrlichkeit | NL-Cockpit-Slide + „Profile aus LinkedIn" raus; Profile-Quellen = M365/Credly/Upload; Markt-Platzhalter → BDU-Zahlen. *(Deck-Edit offen.)* |
-| **T11** | Thesis „Beratung im KI-Zeitalter" | Objection-Reframe auf den Tagessatz-Einwand; Win+Work-Klammer; gesourcte Evidenz (BDU/Productive). Frame co-gleichrangig mit Win. → [GTM §3A](../../latest/Consultry-GTM-Decisions-v1.0.md). |
+| **T11** | Thesis „Beratung im KI-Zeitalter" | Objection-Reframe auf den Tagessatz-Einwand; Win+Work-Klammer; gesourcte Evidenz (BDU/Productive). Frame co-gleichrangig mit Win. → [GTM §3A](../baseline-before-consolidation-2026-09-10/latest/Consultry-GTM-Decisions-v1.0.md). |
 | **T12** | **Dual-PMF** | Hero 1: 5-Tage-Draft (§5). Hero 2: Seat-Utilization-Adoption (≥ 60 % Consultant-Seats wöchentlich aktiv + Work-Agent-Bestätigungs-Rate). **PMF-Primat (13.06.): Win ist das Survival-Signal (go/no-go), Work ist Retention-Verstärker** — verfehlt Win, wird pivotiert, unabhängig von Work. |
 | **T13** | **Pricing-Reconciliation** | **€50/Seat = Pilot-Land-Preis** (filtert auf Kaufabsicht); **€69 Core + Tiers = post-PMF-Pricebook** (final aus T14-COGS). Die self-host-Ära-Tiers (€119 Dev/€150–189 Dedicated) werden gegen das Foundry-/GPT-5.6-Kostenmodell neu bewertet. Deck/GTM/§6 sagen ab jetzt einheitlich „€50 Pilot → €69+ Modell". |
 | **T14** | **COGS-Basis** | **Foundry/GPT-5.6 per-token = bevorzugtes Kostenmodell**, mit `gpt-5.6-sol` als Quality-/Complexity-Lane und Terra/Luna nur nach Eval; Bedrock ist Alternative/Fallback-Vergleich (lineare variable Kosten, kein GPU-Break-even). **Self-hosted (H200/B200, Qwen via vLLM) = teure strategische Spätoption**, wenn Open-Weight weiter aufschließt → als Appendix/Crossover-Analyse. Der frühere „Pricing & Architecture Report v5" (self-host) ist **kein Kostenkanon mehr**, nur Self-Host-Referenz. |
@@ -181,7 +181,7 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 
 ## 5. PMF — Nordstern-Metrik & Kill-Kriterium
 
-> **Messbasis:** Details stehen in der [MVP Measurement Spec](../../latest/Consultry-MVP-Measurement-Spec-v1.0.md). G9 ist fuer Hero 1 geschlossen; Work-Schwellen bleiben T12-Hypothesen bis zur Design-Partner-Kalibrierung.
+> **Messbasis:** Details stehen in der [MVP Measurement Spec](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Measurement-Spec-v1.0.md). G9 ist fuer Hero 1 geschlossen; Work-Schwellen bleiben T12-Hypothesen bis zur Design-Partner-Kalibrierung.
 
 **Dual-Hero-Aktivierung (revidiert 13.06., T12 — zwei Signale):**
 - **Hero 1 „Win":** **≥ 1 real verwendeter, reviewfähiger Konzept-/Proposal-Abschnitt aus eigenem Korpus pro Design-Partner — innerhalb von 5 Business-Tagen.** Das schärfste Leading-Signal: sticht der Painkiller schnell?
@@ -237,8 +237,8 @@ Proposal-**Versand**, Pricing-/Kalkulations-Engine, Contract Drafting · **perso
 | G6 | Zwei direkte Zielkundenkontakte in Discovery/LOI überführen | **KRALLMANN AG + MHP identifiziert; noch keine Termine oder LOIs.** MHP ist Enterprise-Lighthouse, daher bleibt ein zweiter mid-to-small ICP-Partner offen. |
 | G7 | ≥ 1 Bestandskunden-led Partner als Dogfood-Guardrail | offen |
 | G8 | ACV/Sales-Cycle | ✅ **€50/Seat/Mo, ACV €15–45k** (§6); Pilot-Fee-Betrag noch zu setzen |
-| G9 | PMF-Aktivierung | ✅ **1 reviewfähiger Opportunity-to-Concept Proof Slice aus eigenem Korpus in 5 Business-Tagen** (§5 + [Measurement Spec](../../latest/Consultry-MVP-Measurement-Spec-v1.0.md)) |
-| — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, **Grounding-Split §1.3**, **Zuschlagskriterien-Optimierung §1.3**, **Eval-Harness für Grounding @ Long-Form**) | zu schärfen — **nach Business-Domain-Definition** ✅ ([Domain-Def](../../latest/Consultry-Business-Domain-Definition-v1.0.md) fertig) → Concept-Suite-Spec als nächstes |
+| G9 | PMF-Aktivierung | ✅ **1 reviewfähiger Opportunity-to-Concept Proof Slice aus eigenem Korpus in 5 Business-Tagen** (§5 + [Measurement Spec](../baseline-before-consolidation-2026-09-10/latest/Consultry-MVP-Measurement-Spec-v1.0.md)) |
+| — | Concept & Proposal Suite: eigenes Feature-Spec (Lösungs-/Arbeitskonzept-Struktur, Vorlagen, **Grounding-Split §1.3**, **Zuschlagskriterien-Optimierung §1.3**, **Eval-Harness für Grounding @ Long-Form**) | zu schärfen — **nach Business-Domain-Definition** ✅ ([Domain-Def](../baseline-before-consolidation-2026-09-10/latest/Consultry-Business-Domain-Definition-v1.0.md) fertig) → Concept-Suite-Spec als nächstes |
 | G6 | Design-Partner-Kohorte | ✅ **Kohorte = 1 starker Warm-Path-Partner (+ #0 eigene Firma) für jetzt.** Stage-0: Usefulness tief validieren, dann skalieren. → PMF-Metrik bei n=1 = „nützlich + zahlungsbereit + 5-Tage-Draft", nicht Markt-Validierung. |
 | G7 | Dogfood-Guardrail | später (greift erst bei Kohorten-Erweiterung) |
 | G10 | Eval/Quality | ✅ **frontier-getrieben für Prosa/Struktur; lightweight Harness = Partner-Edit-Distanz + Review-Recall für materielle Claims + Faithfulness-Stichprobe** (§1.3). Kein schweres ML-Eval-Suite und kein globaler Citation-Hard-Pass. |

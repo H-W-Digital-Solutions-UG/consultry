@@ -9,7 +9,7 @@ export const corpus: PageContent = {
   },
   hero: {
     title: "Vom ersten Dokument an nutzbar.",
-    lede: "Euer Firmenwissen beginnt im Kickoff mit einem Vertrag und wächst Woche für Woche. Lücken werden angezeigt, nicht erraten.",
+    lede: "Ein Vertrag genügt für den Anfang.",
     cta: "Auf die Warteliste",
     secondary: "So funktioniert es",
   },
@@ -26,11 +26,6 @@ export const corpus: PageContent = {
       { icon: "corpus-1", title: "Kickoff: ein Vertrag", text: "Ein Dokument, sofort ein Ergebnis: Fristen, Optionen, nächste Chance." },
       { icon: "corpus-2", title: "Woche 1: Verträge und Angebote", text: "Wiederverwendbare Bausteine aus dem, was schon gewonnen hat." },
       { icon: "corpus-3", title: "Ab Woche 2: Referenzen und Profile", text: "Eignung für Ausschreibungen und Teamplanung, danach der Rest per read-only-Anbindung." },
-    ],
-    kpis: [
-      { value: "1", label: "Dokument genügt für den Start", kind: "Regel" },
-      { value: "< 15 min", label: "vom Kickoff bis zum ersten Ergebnis", kind: "Ziel" },
-      { value: "4", label: "Stufen bis zum vollen Firmenwissen, jede mit eigenem Nutzen", kind: "Regel" },
     ],
   },
   boundaries: {

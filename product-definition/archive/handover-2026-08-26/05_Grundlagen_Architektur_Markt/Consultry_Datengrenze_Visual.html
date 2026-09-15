@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consultry · Die Datengrenze als Architektur</title>
+<style>
+  :root{
+    --accent:#AD2764; --pink:#D2397E; --wash:#F9E2EC; --paper:#FFFBF9;
+    --ink:#2C2926; --soft:#6B6560; --hair:#EDDFD7; --ok:#1E7A46;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:#F3EAE3}
+  body{
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink); background:var(--paper); max-width:1240px; margin:24px auto; padding:56px 64px 40px;
+    box-shadow:0 8px 40px rgba(60,40,30,.12); border-radius:6px;
+  }
+  .kick{font-size:13px;letter-spacing:.22em;font-weight:700;color:var(--pink);text-transform:uppercase}
+  h1{font-size:38px;line-height:1.12;margin:10px 0 6px;font-weight:800;letter-spacing:-.01em}
+  h1 b{color:var(--accent)}
+  .sub{font-family:Georgia,"Times New Roman",serif;font-size:20px;color:var(--ink);margin-bottom:10px}
+  .sub b{color:var(--accent)}
+  .meta{font-size:13px;color:var(--soft);border:1px solid var(--hair);display:inline-block;
+        padding:5px 12px;border-radius:999px;background:#fff}
+  section{margin-top:44px}
+  .seck{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--hair);padding-bottom:8px;margin-bottom:20px}
+  .secn{font-size:14px;font-weight:800;color:var(--pink);letter-spacing:.18em}
+  .sect{font-size:21px;font-weight:800}
+  .secs{font-size:14px;color:var(--soft);margin-left:auto}
+
+  /* Steuerungsebene */
+  .ctrl{background:var(--accent);color:#fff;border-radius:14px;padding:18px 22px;display:flex;gap:18px;align-items:center}
+  .ctrl .t{font-size:15px;font-weight:800;letter-spacing:.14em}
+  .ctrl .chips{display:flex;flex-wrap:wrap;gap:8px;flex:1}
+  .ctrl .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);
+              padding:5px 11px;border-radius:999px;font-size:13.5px;white-space:nowrap}
+  .ctrl .never{background:#fff;color:var(--accent);font-weight:800;font-size:14px;
+               padding:10px 14px;border-radius:10px;text-align:center;line-height:1.3}
+  .ctrl .lh{font-size:12.5px;color:#FBD9E8;max-width:250px;line-height:1.45}
+  .ctrl .lh b{color:#fff}
+
+  /* connectors */
+  .conn{display:grid;grid-template-columns:1fr 1fr 1fr;height:64px;margin:2px 30px}
+  .conn .c{position:relative}
+  .conn svg{position:absolute;inset:0;width:100%;height:100%}
+  .connleg{display:flex;justify-content:space-between;font-size:12.5px;color:var(--soft);margin:0 34px}
+  .connleg b{color:var(--accent)}
+
+  /* three way cards */
+  .ways{display:grid;grid-template-columns:1.15fr 1.35fr .95fr;gap:18px;align-items:stretch}
+  .way{border:1.5px solid var(--hair);border-radius:14px;background:#fff;padding:16px 16px 14px;position:relative;display:flex;flex-direction:column}
+  .way.a{border-color:var(--pink);box-shadow:0 3px 18px rgba(210,57,126,.10)}
+  .wayhead{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+  .wtag{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--accent)}
+  .badge{font-size:11.5px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:999px;text-transform:uppercase}
+  .badge.std{background:var(--accent);color:#fff}
+  .badge.eu{background:var(--wash);color:var(--accent);border:1px solid var(--pink)}
+  .badge.rq{background:#fff;color:var(--soft);border:1px solid var(--hair)}
+  .wtitle{font-size:17.5px;font-weight:800;margin-bottom:10px}
+  .box{border:1px solid var(--hair);border-radius:9px;padding:8px 11px;margin-bottom:7px;background:var(--paper)}
+  .box .bt{font-size:13.5px;font-weight:700}
+  .box .bs{font-size:12.5px;color:var(--soft);line-height:1.4}
+  .box.gw{background:var(--wash);border-color:var(--pink)}
+  .box.gw .bt{color:var(--accent)}
+  .bound{position:absolute;top:-9px;left:14px;background:#fff;padding:0 8px;font-size:11.5px;
+         font-weight:800;letter-spacing:.12em;color:var(--pink)}
+  .wfoot{margin-top:auto;padding-top:9px;border-top:1px dashed var(--hair);font-size:13px;line-height:1.45;color:var(--ink)}
+  .wfoot b{color:var(--accent)}
+  .bsplit{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:7px}
+  .mini{border-radius:9px;padding:9px 10px;border:1px solid var(--hair)}
+  .mini.ded{background:var(--wash);border-color:var(--pink)}
+  .mini h4{font-size:12.5px;letter-spacing:.09em;font-weight:800;color:var(--accent);margin-bottom:5px}
+  .mini ul{list-style:none}
+  .mini li{font-size:12.5px;line-height:1.42;color:var(--ink);padding-left:11px;position:relative;margin-bottom:3px}
+  .mini li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--pink)}
+  .mini.srv li::before{background:#C9BFB7}
+  .chiprow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+  .chiprow .chip{border:1px solid var(--hair);border-radius:999px;font-size:12px;padding:3px 9px;color:var(--soft);background:#fff}
+
+  .statement{margin:26px 4px 0;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  .statement .q{font-family:Georgia,serif;font-size:23px;line-height:1.3}
+  .statement .q b{color:var(--accent)}
+  .statement .n{font-size:13px;color:var(--soft)}
+
+  /* matrix */
+  .mgrid{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;border:1.5px solid var(--hair);border-radius:12px;overflow:hidden;background:#fff}
+  .mgrid>div{padding:11px 14px;border-bottom:1px solid var(--hair);display:flex;align-items:center;gap:10px;font-size:14px}
+  .mgrid .h{background:var(--paper);font-weight:800;font-size:13px;letter-spacing:.08em;color:var(--accent);justify-content:center;text-align:center}
+  .mgrid .h.first{justify-content:flex-start}
+  .mgrid .kl{flex-direction:column;align-items:flex-start;gap:1px}
+  .mgrid .kl b{font-size:14.5px}
+  .mgrid .kl span{font-size:12.5px;color:var(--soft)}
+  .mgrid .cell{justify-content:center}
+  .mgrid>div:nth-last-child(-n+4){border-bottom:none}
+  .dot{width:15px;height:15px;border-radius:50%;background:var(--pink);display:inline-block}
+  .dot.cond{background:#fff;border:2.5px solid var(--pink)}
+  .no{color:#B9AFa7;font-weight:800;font-size:16px}
+  .cellnote{font-size:11.5px;color:var(--soft)}
+  .legend{display:flex;gap:22px;margin-top:10px;font-size:13px;color:var(--soft);align-items:center;flex-wrap:wrap}
+  .audit{margin-top:16px;background:var(--paper);border:1px dashed var(--pink);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .audit .at{font-size:12.5px;font-weight:800;letter-spacing:.14em;color:var(--accent)}
+  .audit .step{border:1px solid var(--hair);background:#fff;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600;white-space:nowrap;flex:0 0 auto}
+  .audit .arr{color:var(--pink);font-weight:800}
+  .audit .ax{margin-left:auto;font-size:12.5px;color:var(--soft)}
+
+  /* economics */
+  .eco{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .card{border:1.5px solid var(--hair);border-radius:14px;background:#fff;padding:16px 18px 10px}
+  .card h3{font-size:15.5px;font-weight:800;margin-bottom:2px}
+  .card .cs{font-size:12.5px;color:var(--soft);margin-bottom:8px}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+  .tile{background:var(--wash);border-radius:12px;padding:14px 16px;text-align:center}
+  .tile .tv{font-size:23px;font-weight:800;color:var(--accent);letter-spacing:-.01em}
+  .tile .tl{font-size:12.5px;color:var(--ink);margin-top:3px;line-height:1.35}
+
+  /* wissensbasis */
+  .kb{display:grid;grid-template-columns:1fr 200px 1fr;gap:14px;align-items:stretch}
+  .kbcard{border:1.5px solid var(--hair);border-radius:14px;background:#fff;padding:14px 16px}
+  .kbcard.src{border-color:var(--pink);box-shadow:0 3px 18px rgba(210,57,126,.08)}
+  .kbcard h4{font-size:12.5px;letter-spacing:.1em;font-weight:800;color:var(--accent);margin-bottom:4px}
+  .kbcard .kt{font-size:16px;font-weight:800;margin-bottom:7px}
+  .kbcard ul{list-style:none}
+  .kbcard li{font-size:13px;line-height:1.45;padding-left:12px;position:relative;margin-bottom:4px;color:var(--ink)}
+  .kbcard li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--pink)}
+  .kbcard li b{color:var(--accent)}
+  .kbmid{display:flex;flex-direction:column;justify-content:center;gap:8px;text-align:center;padding:6px 2px}
+  .kbmid .ar{font-size:12.5px;color:var(--soft);line-height:1.35}
+  .kbmid .ar b{color:var(--accent)}
+  .kbmid svg{display:block;margin:0 auto}
+  .drift{margin-top:14px;background:var(--paper);border:1px dashed var(--pink);border-radius:12px;padding:11px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:13px}
+  .drift b{color:var(--accent);font-size:12.5px;letter-spacing:.14em}
+
+  /* systemdiagramm + fluesse */
+  .sysleg{display:flex;gap:24px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--soft);margin:10px 4px 0}
+  .sysleg svg{vertical-align:middle}
+  .flow{border:1.5px solid var(--hair);border-radius:14px;background:#fff;padding:14px 18px 12px;margin-bottom:14px}
+  .flowh{font-size:12.5px;font-weight:800;letter-spacing:.13em;color:var(--accent);margin-bottom:12px}
+  .steps{display:flex;align-items:flex-start;gap:4px}
+  .flow .step{width:152px;text-align:center;border:none;background:none;border-radius:0;padding:0;white-space:normal}
+  .stepn{width:30px;height:30px;border-radius:50%;background:var(--pink);color:#fff;font-weight:800;font-size:14.5px;display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
+  .flow .step.b .stepn{background:var(--accent)}
+  .stept{font-size:12.5px;font-weight:700;line-height:1.3}
+  .steps small{display:block;font-size:11.5px;font-weight:400;color:var(--soft);line-height:1.35;margin-top:2px}
+  .sarr{color:var(--pink);font-weight:800;font-size:16px;margin-top:6px}
+  svg text{font-family:"Segoe UI",Arial,sans-serif}
+
+  footer{margin-top:34px;border-top:2px solid var(--hair);padding-top:12px;font-size:12.5px;color:var(--soft);line-height:1.55}
+  footer b{color:var(--ink)}
+  @media print{body{box-shadow:none;margin:0;max-width:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kick">Consultry · Technisches Zielbild · vertraulich</div>
+  <h1>Die Datengrenze als <b>Architektur</b></h1>
+  <div class="sub">Steuerung zentral. Betrieb zentral. Hosting: keins. <b>Daten nie.</b></div>
+  <span class="meta">Überschlag · Stand 16. August 2026 · Zielannahmen gekennzeichnet · Details im Papier „Bauplan und Preisüberschlag"</span>
+</header>
+
+<section>
+  <div class="seck"><span class="secn">01</span><span class="sect">Eine Steuerungsebene, drei Betriebswege</span><span class="secs">Modellwahl ist Konfiguration, nicht Architektur</span></div>
+
+  <div class="ctrl">
+    <div>
+      <div class="t">STEUERUNGSEBENE</div>
+      <div style="font-size:12.5px;opacity:.85;margin-top:2px">Consultry · EU</div>
+    </div>
+    <div class="chips">
+      <span class="chip">Workflow-Definitionen</span>
+      <span class="chip">Datenklassen-Policies</span>
+      <span class="chip">Signierte Releases</span>
+      <span class="chip">Routing-Tabellen</span>
+      <span class="chip">Lizenz und Abrechnung</span>
+      <span class="chip">Health-Telemetrie</span>
+    </div>
+    <div class="lh"><b>Betrieb zentral über Azure Lighthouse:</b> Betriebsrollen ja, Data-Plane-Rollen nein, Break-Glass nur mit Kundenfreigabe.</div>
+    <div class="never">Sieht nie<br>Inhalte.</div>
+  </div>
+
+  <div class="connleg"><span><b>&#8595;</b> Policies und Versionen · signiert · per Pull</span><span><b>&#8593;</b> Metriken und Health · nie Inhalte</span></div>
+  <div class="conn">
+    <div class="c"><svg viewBox="0 0 100 64" preserveAspectRatio="none">
+      <line x1="42" y1="4" x2="42" y2="52" stroke="#D2397E" stroke-width="2"/><path d="M38 50 L42 60 L46 50 Z" fill="#D2397E"/>
+      <line x1="58" y1="60" x2="58" y2="12" stroke="#C9BFB7" stroke-width="2" stroke-dasharray="4 4"/><path d="M54 14 L58 4 L62 14 Z" fill="#C9BFB7"/>
+    </svg></div>
+    <div class="c"><svg viewBox="0 0 100 64" preserveAspectRatio="none">
+      <line x1="42" y1="4" x2="42" y2="52" stroke="#D2397E" stroke-width="2"/><path d="M38 50 L42 60 L46 50 Z" fill="#D2397E"/>
+      <line x1="58" y1="60" x2="58" y2="12" stroke="#C9BFB7" stroke-width="2" stroke-dasharray="4 4"/><path d="M54 14 L58 4 L62 14 Z" fill="#C9BFB7"/>
+    </svg></div>
+    <div class="c"><svg viewBox="0 0 100 64" preserveAspectRatio="none">
+      <line x1="42" y1="4" x2="42" y2="52" stroke="#D2397E" stroke-width="2"/><path d="M38 50 L42 60 L46 50 Z" fill="#D2397E"/>
+      <line x1="58" y1="60" x2="58" y2="12" stroke="#C9BFB7" stroke-width="2" stroke-dasharray="4 4"/><path d="M54 14 L58 4 L62 14 Z" fill="#C9BFB7"/>
+    </svg></div>
+  </div>
+
+  <div class="ways">
+    <div class="way a">
+      <span class="bound">GRENZE DES KUNDEN-TENANTS</span>
+      <div class="wayhead"><span class="wtag">WEG A</span><span class="badge std">Standard</span></div>
+      <div class="wtitle">Im Tenant des Kunden</div>
+      <div class="box gw"><div class="bt">Gateway</div><div class="bs">Policy-Durchsetzung und Modell-Routing, ruft nur Endpunkte im Tenant</div></div>
+      <div class="box"><div class="bt">Kontextschleuse (vorgelagertes 27B)</div><div class="bs">prüft jeden Kontext gegen die Zielroute: entfernen, pseudonymisieren, hochstufen, blockieren</div></div>
+      <div class="box"><div class="bt">Worker und Orchestrator</div><div class="bs">Ingest über Graph (Sites.Selected) und On-Prem-Connector (Fileserver, DMS), eigene Workflow-Runtime</div></div>
+      <div class="box"><div class="bt">pgvector · Index und Auditlog</div><div class="bs">Embeddings bleiben Daten, Log append-only</div></div>
+      <div class="box"><div class="bt">Foundry-Modelle im Tenant</div><div class="bs">EU-Datenzone, Abuse-Monitoring-Opt-out im Onboarding</div></div>
+      <div class="box gw"><div class="bt">GPU-VM · Qwen3.8 27B</div><div class="bs">vier Rollen: K4-Klartext · Schleuse · Anonymisierung · Korpus-Kompilierung</div></div>
+      <div class="wfoot"><b>„Keine weitere Grenze" gilt wörtlich.</b> Bestehende Microsoft-AVV deckt alles, Token zahlt der Kunde in seiner Cloud. Spiegelbild für AWS: Bedrock.</div>
+    </div>
+
+    <div class="way">
+      <div class="wayhead"><span class="wtag">WEG B</span><span class="badge eu">EU · Kundenvertrag</span></div>
+      <div class="wtitle">EU-souverän, im Vertrag des Kunden</div>
+      <div class="box gw"><div class="bt">Gateway</div><div class="bs">Datenklassen-Policy entscheidet die Betriebsform, technisch erzwungen</div></div>
+      <div class="bsplit">
+        <div class="mini ded">
+          <h4>B-DEDIZIERT · K3 K4</h4>
+          <ul>
+            <li><b>vLLM auf 1x H200</b> im GPU-Konto des Kunden</li>
+            <li>Nullspeicherung <b>als Bauweise</b>, keine Inhaltslogs</li>
+            <li>1.000 bis 1.600 € je Monat im Kundenvertrag, ≈ 50 Sitze</li>
+            <li>70B-Klasse nach Eval-Harness</li>
+          </ul>
+        </div>
+        <div class="mini srv">
+          <h4 style="color:var(--soft)">B-SERVERLESS · K1 K2</h4>
+          <ul>
+            <li>AI Studio im Kundenkonto, ab 0,08 $/M</li>
+            <li>Nullspeicherung nur <b>vertraglich</b>, geteilte Endpunkte</li>
+            <li>nur mit expliziter Kundenfreigabe</li>
+            <li>Frontier-offen (Kimi K3) für freigegebene Klassen</li>
+          </ul>
+        </div>
+      </div>
+      <div class="chiprow"><span class="chip">BYOK</span><span class="chip">kundeneigene Konten</span><span class="chip">EU-Objektspeicher</span><span class="chip">delegierter Betrieb</span></div>
+      <div class="wfoot"><b>Consultry hostet nichts.</b> Verträge und Rechnungen laufen beim Kunden; Consultry rollt aus und betreibt per delegiertem Zugriff.</div>
+    </div>
+
+    <div class="way">
+      <div class="wayhead"><span class="wtag">WEG C</span><span class="badge rq">Auf Nachfrage</span></div>
+      <div class="wtitle">Dediziert bis on-prem</div>
+      <div class="box"><div class="bt">Eigene Instanz je Kunde</div><div class="bs">dedizierte gemietete Kapazität bis ins Rechenzentrum des Kunden</div></div>
+      <div class="box"><div class="bt">Vertrauliches Rechnen</div><div class="bs">H100/H200-TEE, attestierte Enklaven · Roadmap-Option, kein Versprechen</div></div>
+      <div class="box"><div class="bt">On-Prem-Security-Filter</div><div class="bs">vorgelagertes Prüfmodell beim Kunden, buchbarer Baustein</div></div>
+      <div class="wfoot"><b>Gilt wörtlich, notfalls physisch.</b> Nie beworben, nur beantwortet. Preis: Infrastruktur × 1,5, Enterprise-Plattform.</div>
+    </div>
+  </div>
+
+  <div class="statement">
+    <div class="q">„Fällt ein Anbieter aus, wechseln wir das <b>Modell</b>, nicht den Datenraum."</div>
+    <div class="n">Anbieterwechsel = ein Routing-Eintrag im Gateway. Kein Umzug, keine neue Vertragskette.</div>
+  </div>
+</section>
+
+<section>
+  <div class="seck"><span class="secn">02</span><span class="sect">Systemübersicht, technisch</span><span class="secs">Zonen = Vertragsräume des Kunden</span></div>
+  <svg viewBox="0 0 1160 630" width="100%" height="auto" role="img" aria-label="Systemübersicht">
+    <defs>
+      <marker id="mP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#D2397E"/></marker>
+      <marker id="mG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#C9BFB7"/></marker>
+    </defs>
+
+    <!-- Steuerungsebene -->
+    <rect x="20" y="16" width="1120" height="86" rx="14" fill="#AD2764"/>
+    <text x="44" y="52" font-size="16" font-weight="800" fill="#fff" letter-spacing=".08em">STEUERUNGSEBENE</text>
+    <text x="44" y="74" font-size="12.5" fill="#FBD9E8">Consultry · EU · sieht nie Inhalte</text>
+    <g font-size="12.5" fill="#fff">
+      <rect x="330" y="36" width="185" height="28" rx="14" fill="rgba(255,255,255,.13)" stroke="rgba(255,255,255,.4)"/><text x="422" y="54" text-anchor="middle">Policy- und Routing-Editor</text>
+      <rect x="527" y="36" width="180" height="28" rx="14" fill="rgba(255,255,255,.13)" stroke="rgba(255,255,255,.4)"/><text x="617" y="54" text-anchor="middle">Release-Registry · signiert</text>
+      <rect x="719" y="36" width="165" height="28" rx="14" fill="rgba(255,255,255,.13)" stroke="rgba(255,255,255,.4)"/><text x="801" y="54" text-anchor="middle">Lizenz und Abrechnung</text>
+      <rect x="896" y="36" width="158" height="28" rx="14" fill="rgba(255,255,255,.13)" stroke="rgba(255,255,255,.4)"/><text x="975" y="54" text-anchor="middle">Health · nur Metriken</text>
+    </g>
+    <line x1="130" y1="102" x2="130" y2="144" stroke="#D2397E" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#mP)"/>
+    <text x="142" y="124" font-size="12" fill="#6B6560">Policies · signiert · per Pull</text>
+    <line x1="790" y1="146" x2="790" y2="106" stroke="#C9BFB7" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#mG)"/>
+    <text x="778" y="124" font-size="12" fill="#6B6560" text-anchor="end">Metriken · nie Inhalte</text>
+
+    <!-- Kunden-Tenant -->
+    <rect x="20" y="150" width="800" height="462" rx="16" fill="#FFFDFB" stroke="#D2397E" stroke-width="1.5"/>
+    <rect x="36" y="141" width="212" height="18" fill="#FFFDFB"/>
+    <text x="44" y="154" font-size="12.5" font-weight="800" fill="#D2397E" letter-spacing=".1em">KUNDEN-TENANT · AZURE</text>
+    <rect x="490" y="141" width="316" height="18" fill="#FFFDFB"/>
+    <text x="798" y="154" font-size="12" fill="#6B6560" text-anchor="end">Vertrag: Kunde und Microsoft · bestehende DPA</text>
+
+    <circle cx="66" cy="192" r="9" fill="none" stroke="#2C2926" stroke-width="2"/>
+    <path d="M50 218 q16 -16 32 0" fill="none" stroke="#2C2926" stroke-width="2"/>
+    <text x="92" y="192" font-size="13.5" font-weight="800" fill="#2C2926">Berater</text>
+    <text x="92" y="208" font-size="11.5" fill="#6B6560">Entra-SSO · Rechte aus M365</text>
+
+    <rect x="48" y="240" width="190" height="62" rx="10" fill="#F9E2EC" stroke="#D2397E" stroke-width="1.5"/>
+    <text x="58" y="264" font-size="14" font-weight="800" fill="#AD2764">Gateway</text>
+    <text x="58" y="281" font-size="11.5" fill="#6B6560">Routing + Policy-Enforcement</text>
+
+    <rect x="48" y="330" width="190" height="62" rx="10" fill="#fff" stroke="#D2397E" stroke-width="1.5"/>
+    <text x="58" y="354" font-size="14" font-weight="800" fill="#AD2764">Kontextschleuse</text>
+    <text x="58" y="371" font-size="11.5" fill="#6B6560">klassifiziert · 4 Entscheidungen</text>
+
+    <rect x="48" y="420" width="190" height="58" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="58" y="443" font-size="13.5" font-weight="800" fill="#2C2926">Worker + Orchestrator</text>
+    <text x="58" y="460" font-size="11.5" fill="#6B6560">Ingest · Delta · eigene Workflows</text>
+
+    <rect x="290" y="240" width="200" height="62" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="300" y="264" font-size="13.5" font-weight="800" fill="#2C2926">pgvector · Index + Audit</text>
+    <text x="300" y="281" font-size="11.5" fill="#6B6560">append-only · exportierbar</text>
+
+    <rect x="290" y="340" width="200" height="52" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="300" y="362" font-size="13.5" font-weight="800" fill="#2C2926">Key Vault</text>
+    <text x="300" y="378" font-size="11.5" fill="#6B6560">Schlüssel · Pseudonym-Map</text>
+
+    <rect x="290" y="420" width="200" height="58" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="300" y="443" font-size="13.5" font-weight="800" fill="#2C2926">SharePoint · OneDrive</text>
+    <text x="300" y="460" font-size="11.5" fill="#6B6560">Quellen · Sites.Selected</text>
+
+    <rect x="540" y="240" width="250" height="76" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="552" y="263" font-size="14" font-weight="800" fill="#2C2926">Foundry-Endpunkte</text>
+    <text x="552" y="281" font-size="11.5" fill="#6B6560">EU-Datenzone · Zero-Retention (Opt-out)</text>
+    <text x="552" y="297" font-size="11.5" fill="#6B6560">geschlossene und offene Modelle</text>
+
+    <rect x="540" y="350" width="250" height="96" rx="10" fill="#F9E2EC" stroke="#D2397E" stroke-width="2"/>
+    <text x="552" y="374" font-size="14.5" font-weight="800" fill="#AD2764">GPU-VM · Qwen3.8 27B</text>
+    <text x="552" y="392" font-size="11.5" fill="#2C2926">K4-Klartext · Lokal-Spur</text>
+    <text x="552" y="408" font-size="11.5" fill="#2C2926">Schleusen-Klassifikator · Anonymisierung</text>
+    <text x="552" y="424" font-size="11.5" fill="#2C2926">Korpus-Kompilierung · scale-to-zero</text>
+
+    <rect x="540" y="470" width="250" height="46" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="552" y="490" font-size="13" font-weight="800" fill="#2C2926">Embedding-Modell im Tenant</text>
+    <text x="552" y="506" font-size="11.5" fill="#6B6560">Embeddings sind Daten</text>
+
+    <line x1="110" y1="222" x2="110" y2="234" stroke="#D2397E" stroke-width="2" marker-end="url(#mP)"/>
+    <line x1="143" y1="302" x2="143" y2="324" stroke="#D2397E" stroke-width="2" marker-end="url(#mP)"/>
+    <line x1="238" y1="271" x2="284" y2="271" stroke="#D2397E" stroke-width="1.5" marker-end="url(#mP)"/>
+    <text x="262" y="264" font-size="11" fill="#6B6560" text-anchor="middle">Audit</text>
+    <line x1="238" y1="361" x2="284" y2="361" stroke="#D2397E" stroke-width="1.5" marker-end="url(#mP)"/>
+    <text x="262" y="354" font-size="11" fill="#6B6560" text-anchor="middle">Map</text>
+    <line x1="290" y1="449" x2="244" y2="449" stroke="#D2397E" stroke-width="1.5" marker-end="url(#mP)"/>
+    <text x="266" y="470" font-size="11" fill="#6B6560" text-anchor="middle">Graph · Delta</text>
+    <path d="M238 435 H265 V285 H284" fill="none" stroke="#D2397E" stroke-width="1.5" marker-end="url(#mP)"/>
+    <path d="M200 330 V318 H515 V282 H530" fill="none" stroke="#D2397E" stroke-width="2" marker-end="url(#mP)"/>
+    <text x="368" y="312" font-size="11.5" fill="#6B6560" text-anchor="middle">K1 bis K3 · freigegebener Kontext</text>
+    <path d="M238 380 H262 V404 H530" fill="none" stroke="#D2397E" stroke-width="2" marker-end="url(#mP)"/>
+    <text x="396" y="399" font-size="11.5" fill="#6B6560" text-anchor="middle">K4 · Lokal-Spur · pseudonymisiert</text>
+    <line x1="665" y1="346" x2="665" y2="322" stroke="#D2397E" stroke-width="2" marker-end="url(#mP)"/>
+    <text x="676" y="338" font-size="11.5" fill="#6B6560">Freigabe nach Prüfpass</text>
+
+    <!-- On-Prem -->
+    <rect x="850" y="150" width="290" height="196" rx="14" fill="#FFFDFB" stroke="#C9BFB7" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <rect x="866" y="141" width="222" height="18" fill="#FFFDFB"/>
+    <text x="874" y="154" font-size="12" font-weight="800" fill="#6B6560" letter-spacing=".08em">KUNDEN-STANDORT · ON-PREM</text>
+    <rect x="870" y="182" width="250" height="52" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="882" y="204" font-size="13.5" font-weight="800" fill="#2C2926">Fileserver · DMS</text>
+    <text x="882" y="220" font-size="11.5" fill="#6B6560">NTFS-Rechte bleiben führend</text>
+    <rect x="870" y="262" width="250" height="58" rx="10" fill="#fff" stroke="#D2397E" stroke-width="1.5"/>
+    <text x="882" y="285" font-size="13.5" font-weight="800" fill="#AD2764">Connector</text>
+    <text x="882" y="302" font-size="11.5" fill="#6B6560">read-only · nur ausgehend · TLS</text>
+    <line x1="995" y1="234" x2="995" y2="256" stroke="#D2397E" stroke-width="2" marker-end="url(#mP)"/>
+    <path d="M870 291 H800 V592 H143 V484" fill="none" stroke="#D2397E" stroke-width="2" marker-end="url(#mP)"/>
+    <text x="470" y="586" font-size="11.5" fill="#6B6560" text-anchor="middle">Volltext zur Laufzeit · ephemer · nichts persistiert</text>
+
+    <rect x="850" y="366" width="290" height="74" rx="10" fill="none" stroke="#C9BFB7" stroke-width="1.5" stroke-dasharray="5 5"/>
+    <text x="866" y="390" font-size="12.5" font-weight="800" fill="#6B6560" letter-spacing=".08em">AUSBAUSTUFE · WEG C LIGHT</text>
+    <text x="866" y="408" font-size="11.5" fill="#6B6560">27B als On-Prem-Instanz neben dem Fileserver,</text>
+    <text x="866" y="424" font-size="11.5" fill="#6B6560">wenn transiente Tenant-Verarbeitung zu weit geht</text>
+
+    <!-- Weg B -->
+    <rect x="850" y="458" width="290" height="154" rx="14" fill="#FFFDFB" stroke="#D2397E" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <text x="866" y="478" font-size="12" font-weight="800" fill="#D2397E" letter-spacing=".08em">WEG B · EU-KONTO DES KUNDEN</text>
+    <rect x="866" y="490" width="258" height="50" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="878" y="510" font-size="13" font-weight="800" fill="#2C2926">vLLM dediziert · offene Gewichte</text>
+    <text x="878" y="526" font-size="11.5" fill="#6B6560">BYOK · Nullspeicherung als Bauweise</text>
+    <rect x="866" y="552" width="258" height="44" rx="10" fill="#fff" stroke="#EDDFD7" stroke-width="1.5"/>
+    <text x="878" y="570" font-size="13" font-weight="800" fill="#2C2926">AI Studio serverless</text>
+    <text x="878" y="586" font-size="11.5" fill="#6B6560">nur K1, K2 · nur mit Freigabe</text>
+    <text x="866" y="608" font-size="11" font-style="italic" fill="#6B6560">gleiche Bausteine, anderes Grundstück</text>
+  </svg>
+  <div class="sysleg">
+    <span><svg width="34" height="8"><line x1="2" y1="4" x2="32" y2="4" stroke="#D2397E" stroke-width="2.5"/></svg>&nbsp; Inhalte-Fluss</span>
+    <span><svg width="34" height="8"><line x1="2" y1="4" x2="32" y2="4" stroke="#D2397E" stroke-width="2" stroke-dasharray="6 4"/></svg>&nbsp; Steuerung · signiert, per Pull</span>
+    <span><svg width="34" height="8"><line x1="2" y1="4" x2="32" y2="4" stroke="#C9BFB7" stroke-width="2" stroke-dasharray="6 4"/></svg>&nbsp; Telemetrie ohne Inhalte / optionale Zonen</span>
+    <span>Zonenrahmen = Vertragsräume des Kunden</span>
+  </div>
+  <div class="audit" style="margin-top:14px">
+    <span class="at">VERTRAGSRÄUME</span>
+    <span class="step">Kunde · Microsoft: DPA + Verbrauch</span>
+    <span class="step">Kunde · EU-Anbieter: nur Weg B</span>
+    <span class="step">Kunde · Consultry: Software, Metadaten-AVV, Rechnung im All-in-Tarif</span>
+  </div>
+</section>
+
+<section>
+  <div class="seck"><span class="secn">03</span><span class="sect">Die drei Datenflüsse</span><span class="secs">jeder Lauf endet im Audit</span></div>
+
+  <div class="flow">
+    <div class="flowh">FLUSS 1 · STANDARDAUFGABE (K1 BIS K3, M365-QUELLEN)</div>
+    <div class="steps">
+      <div class="step"><div class="stepn">1</div><div class="stept">Auftrag<small>Berater startet Workflow</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step"><div class="stepn">2</div><div class="stept">Retrieval<small>Index, ACL-getrimmt</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step b"><div class="stepn">3</div><div class="stept">Kontextschleuse<small>Kontext gegen Zielroute</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step"><div class="stepn">4</div><div class="stept">Foundry im Tenant<small>EU-Datenzone, Zero-Retention</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step b"><div class="stepn">5</div><div class="stept">Freigabe<small>der Berater entscheidet</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step"><div class="stepn">6</div><div class="stept">Audit + Lernen<small>Vorschlag ins Firmengedächtnis</small></div></div>
+    </div>
+  </div>
+
+  <div class="flow">
+    <div class="flowh">FLUSS 2 · LOKAL-SPUR UND K4 (FILESERVER, DMS, HOCHSENSIBEL)</div>
+    <div class="steps">
+      <div class="step"><div class="stepn">1</div><div class="stept">Auftrag<small>betrifft lokale Quelle oder K4</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step"><div class="stepn">2</div><div class="stept">Connector<small>Volltext zur Laufzeit, read-only</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step b"><div class="stepn">3</div><div class="stept">27B tenant-lokal<small>kein Index, keine Inhaltslogs</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step b"><div class="stepn">4</div><div class="stept">Freigabe<small>der Berater entscheidet</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step"><div class="stepn">5</div><div class="stept">Audit<small>Rechenort: tenant-lokal</small></div></div>
+    </div>
+  </div>
+
+  <div class="flow">
+    <div class="flowh">FLUSS 3 · FRONTIER-FREIGABE (PSEUDONYMISIERT)</div>
+    <div class="steps">
+      <div class="step"><div class="stepn">1</div><div class="stept">Schleuse findet<small>K4-Fragmente im Kontext</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step b"><div class="stepn">2</div><div class="stept">27B pseudonymisiert<small>Map nur im Key Vault</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step b"><div class="stepn">3</div><div class="stept">Prüfpass<small>Rest-Risiko bewerten</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step"><div class="stepn">4</div><div class="stept">Frontier-Aufruf<small>Foundry bzw. EU-Route</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step"><div class="stepn">5</div><div class="stept">Rückübersetzung<small>tenant-lokal</small></div></div>
+      <div class="sarr">&#8594;</div>
+      <div class="step"><div class="stepn">6</div><div class="stept">Audit-Bilanz<small>ersetzt · entfernt · hochgestuft</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="seck"><span class="secn">04</span><span class="sect">Datenklassen entscheiden den Weg</span><span class="secs">durchgesetzt im Gateway, nicht in der Oberfläche</span></div>
+  <div class="mgrid">
+    <div class="h first">DATENKLASSE</div><div class="h">WEG A · TENANT</div><div class="h">B-DEDIZIERT</div><div class="h">B-SERVERLESS</div>
+    <div class="kl"><b>K1 · öffentlich</b><span>Marketing, Publikationen</span></div><div class="cell"><span class="dot"></span></div><div class="cell"><span class="dot"></span></div><div class="cell"><span class="dot"></span></div>
+    <div class="kl"><b>K2 · intern</b><span>Vorlagen, Methoden, Playbooks</span></div><div class="cell"><span class="dot"></span></div><div class="cell"><span class="dot"></span></div><div class="cell"><span class="dot cond"></span>&nbsp;<span class="cellnote">nur mit Freigabe</span></div>
+    <div class="kl"><b>K3 · vertraulich</b><span>Kundenprojekte, Angebote, Kalkulationen</span></div><div class="cell"><span class="dot"></span></div><div class="cell"><span class="dot"></span></div><div class="cell"><span class="no">✕</span></div>
+    <div class="kl"><b>K4 · besonders schützenswert</b><span>Mandanten- und Personaldaten</span></div><div class="cell"><span class="dot cond"></span>&nbsp;<span class="cellnote">Filterpflicht · tenant-lokales 27B</span></div><div class="cell"><span class="dot cond"></span>&nbsp;<span class="cellnote">Filterpflicht</span></div><div class="cell"><span class="no">✕</span></div>
+    <div class="kl"><b>Sperrklasse</b><span>Verschlusssachen, besondere Kategorien ohne Rechtsgrundlage</span></div><div class="cell"><span class="no">✕</span></div><div class="cell"><span class="no">✕</span></div><div class="cell"><span class="no">✕</span></div>
+  </div>
+  <div class="legend">
+    <span><span class="dot" style="vertical-align:-2px"></span>&nbsp; erlaubt</span>
+    <span><span class="dot cond" style="vertical-align:-2px"></span>&nbsp; erlaubt mit Bedingung (Pseudonymisierung beziehungsweise explizite Freigabe)</span>
+    <span><span class="no">✕</span>&nbsp; technisch gesperrt, kein Agent kann es aufrufen</span>
+    <span>Sperrklasse: der Agent arbeitet nur mit Struktur und Metadaten, Quelle schlägt Inhalt</span>
+    <span>Quellbindung (Lokal-Spur): Inhalte von Fileserver und DMS rechnen nur auf dem tenant-lokalen 27B, ephemer als Default</span>
+  </div>
+  <div class="audit">
+    <span class="at">AUDITWEG · JE LAUF</span>
+    <span class="step">Agent</span><span class="arr">&#8594;</span>
+    <span class="step">Quellen</span><span class="arr">&#8594;</span>
+    <span class="step">Filter</span><span class="arr">&#8594;</span>
+    <span class="step">Modell</span><span class="arr">&#8594;</span>
+    <span class="step">Rechenort</span><span class="arr">&#8594;</span>
+    <span class="step">Freigabe</span>
+    <span class="ax">exportierbar: der Bericht, den die Beratung ihrem Mandanten vorlegt</span>
+  </div>
+  <div class="audit" style="margin-top:10px">
+    <span class="at">FREIGABE AN FRONTIER</span>
+    <span class="step">erkennen</span><span class="arr">&#8594;</span>
+    <span class="step">ersetzen</span><span class="arr">&#8594;</span>
+    <span class="step">Rest-Risiko prüfen</span><span class="arr">&#8594;</span>
+    <span class="step">Frontier-Aufruf</span><span class="arr">&#8594;</span>
+    <span class="step">zurückübersetzen</span>
+    <span class="ax">die Zuordnung bleibt im Key Vault des Kunden, der Anbieter sieht nie den Schlüssel</span>
+  </div>
+  <div class="statement"><div class="q">„Wir bringen die KI zum <b>Wissen</b>, nicht das Wissen zur KI."</div></div>
+</section>
+
+<section>
+  <div class="seck"><span class="secn">05</span><span class="sect">Ein Korpus, zwei Lesarten</span><span class="secs">die Wahrheit gabelt sich nie</span></div>
+  <div class="kb">
+    <div class="kbcard src">
+      <h4>QUELLE DER WAHRHEIT</h4>
+      <div class="kt">Menschenlesbare Basis</div>
+      <ul>
+        <li>Wiki, Vorlagen, Methodenhandbuch</li>
+        <li>gepflegt von Beratern, wie bisher</li>
+        <li>Freigaben aus Agentenläufen kommen als <b>Vorschlag</b> hierher zurück</li>
+      </ul>
+    </div>
+    <div class="kbmid">
+      <div class="ar"><b>27B kompiliert</b><br>delta-getrieben, bei jeder Änderung neu</div>
+      <svg width="130" height="46" viewBox="0 0 130 46" aria-hidden="true">
+        <line x1="12" y1="14" x2="104" y2="14" stroke="#D2397E" stroke-width="2.5"/><path d="M102 8 L118 14 L102 20 Z" fill="#D2397E"/>
+        <line x1="118" y1="34" x2="26" y2="34" stroke="#C9BFB7" stroke-width="2" stroke-dasharray="4 4"/><path d="M28 28 L12 34 L28 40 Z" fill="#C9BFB7"/>
+      </svg>
+      <div class="ar">Vorschläge zurück,<br><b>nur über Freigabe</b></div>
+    </div>
+    <div class="kbcard">
+      <h4>BUILD-ARTEFAKT · NIE HANDGEPFLEGT</h4>
+      <div class="kt">Agentenlesbare Fassung</div>
+      <ul>
+        <li>aufgabenbezogene Kontextpakete</li>
+        <li>Metadaten: Quelle, Version, Zuständiger, <b>Datenklasse geerbt</b></li>
+        <li>direkt editieren: per Design unmöglich</li>
+      </ul>
+    </div>
+  </div>
+  <div class="drift"><b>DRIFT-WÄCHTER</b><span>prüft: kein Kontextpaket älter als seine Quelle · Quellen-Widersprüche gehen als Findung an den fachlich Zuständigen, nie an die Maschine</span></div>
+  <div class="statement"><div class="q">„Wir befähigen <b>Berater</b>, wir ersetzen sie nicht."</div><div class="n">Widersprüche entscheidet der Mensch. Der Agent bereitet vor.</div></div>
+</section>
+
+<section>
+  <div class="seck"><span class="secn">06</span><span class="sect">Die Ökonomie dahinter</span><span class="secs">Überschlag, alle Annahmen im Begleitpapier</span></div>
+  <div class="eco">
+    <div class="card">
+      <h3>GPU-Kosten je Sitz fallen mit der Flotte, beim Kunden</h3>
+      <div class="cs">B-dediziert: Sockel im Kundenvertrag, umgelegt auf Sitze · Referenzen: Sitzpreis 149 €, serverless ≈ 14 € (nur K1, K2)</div>
+      <svg viewBox="0 0 520 240" width="100%" height="auto" role="img" aria-label="COGS je Sitz">
+        <line x1="55" y1="205" x2="505" y2="205" stroke="#EDDFD7" stroke-width="2"/>
+        <line x1="55" y1="205" x2="55" y2="18" stroke="#EDDFD7" stroke-width="2"/>
+        <text x="47" y="209" font-size="12" fill="#6B6560" text-anchor="end">0 €</text>
+        <line x1="55" y1="142.5" x2="505" y2="142.5" stroke="#F4ECE5" stroke-width="1"/>
+        <text x="47" y="146" font-size="12" fill="#6B6560" text-anchor="end">50 €</text>
+        <line x1="55" y1="80" x2="505" y2="80" stroke="#F4ECE5" stroke-width="1"/>
+        <text x="47" y="84" font-size="12" fill="#6B6560" text-anchor="end">100 €</text>
+        <line x1="55" y1="18.7" x2="505" y2="18.7" stroke="#AD2764" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="500" y="34" font-size="13" font-weight="700" fill="#AD2764" text-anchor="end">Sitzpreis 149 €</text>
+        <rect x="115" y="105" width="76" height="100" rx="6" fill="#D2397E"/>
+        <text x="153" y="97" font-size="15" font-weight="800" fill="#AD2764" text-anchor="middle">80 €</text>
+        <text x="153" y="223" font-size="12.5" fill="#6B6560" text-anchor="middle">20 B-Sitze</text>
+        <rect x="240" y="165" width="76" height="40" rx="6" fill="#D2397E"/>
+        <text x="278" y="157" font-size="15" font-weight="800" fill="#AD2764" text-anchor="middle">32 €</text>
+        <text x="278" y="223" font-size="12.5" fill="#6B6560" text-anchor="middle">50 B-Sitze</text>
+        <rect x="365" y="185" width="76" height="20" rx="6" fill="#D2397E"/>
+        <text x="403" y="177" font-size="15" font-weight="800" fill="#AD2764" text-anchor="middle">16 €</text>
+        <text x="403" y="223" font-size="12.5" fill="#6B6560" text-anchor="middle">100 B-Sitze</text>
+        <line x1="55" y1="187.5" x2="505" y2="187.5" stroke="#C9BFB7" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text x="502" y="178" font-size="12" fill="#6B6560" text-anchor="end">14 €</text>
+      </svg>
+    </div>
+    <div class="card">
+      <h3>Break-even: das X liegt beim Team, nicht bei der Technik</h3>
+      <div class="cs">Deckungsbeitrag ≈ 1.450 € je Kunde und Monat (Ø 10 Sitze) gegen Fixkosten</div>
+      <svg viewBox="0 0 520 240" width="100%" height="auto" role="img" aria-label="Break-even">
+        <line x1="60" y1="205" x2="505" y2="205" stroke="#EDDFD7" stroke-width="2"/>
+        <line x1="60" y1="205" x2="60" y2="16" stroke="#EDDFD7" stroke-width="2"/>
+        <text x="60" y="222" font-size="12" fill="#6B6560" text-anchor="middle">0</text>
+        <text x="208" y="222" font-size="12" fill="#6B6560" text-anchor="middle">10</text>
+        <text x="356" y="222" font-size="12" fill="#6B6560" text-anchor="middle">20</text>
+        <text x="504" y="222" font-size="12" fill="#6B6560" text-anchor="middle">30</text>
+        <text x="282" y="238" font-size="12" fill="#6B6560" text-anchor="middle">Kunden (Ø 10 Sitze)</text>
+        <text x="52" y="91" font-size="12" fill="#6B6560" text-anchor="end">25 T€</text>
+        <text x="52" y="27" font-size="12" fill="#6B6560" text-anchor="end">40 T€</text>
+        <line x1="60" y1="196.5" x2="505" y2="196.5" stroke="#C9BFB7" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text x="500" y="190" font-size="12" fill="#6B6560" text-anchor="end">Infrastruktur ≈ 1,8 T€ (Inhalte hostet Consultry nie)</text>
+        <line x1="60" y1="87" x2="505" y2="87" stroke="#AD2764" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="500" y="103" font-size="13" font-weight="700" fill="#AD2764" text-anchor="end">Team-Burn ≈ 25 T€</text>
+        <line x1="60" y1="205" x2="466" y2="16" stroke="#D2397E" stroke-width="3" stroke-linecap="round"/>
+        <text x="255" y="150" font-size="13" font-weight="700" fill="#D2397E" text-anchor="middle">Deckungsbeitrag der Flotte</text>
+        <circle cx="79" cy="196.5" r="6" fill="#fff" stroke="#D2397E" stroke-width="3"/>
+        <text x="86" y="178" font-size="12.5" font-weight="700" fill="#2C2926" text-anchor="middle">1 bis 2</text>
+        <circle cx="316" cy="87" r="7" fill="#AD2764"/>
+        <text x="316" y="67" font-size="14" font-weight="800" fill="#AD2764" text-anchor="middle">X ≈ 17</text>
+        <rect x="60" y="16" width="256" height="189" fill="#AD2764" opacity="0.045"/>
+        <text x="74" y="34" font-size="12" fill="#6B6560">bewusst unprofitabel · vom Ask getragen</text>
+      </svg>
+    </div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="tv">0 €</div><div class="tl">eigene Inhalte-Infrastruktur: Consultry hostet nichts</div></div>
+    <div class="tile"><div class="tv">1.000 bis 1.600 €</div><div class="tl">GPU-Sockel je Monat, läuft im Vertrag des Kunden</div></div>
+    <div class="tile"><div class="tv">über 80 %</div><div class="tl">Software-Marge; Infrastruktur als gedeckelter Durchlaufposten im All-in-Sitz</div></div>
+    <div class="tile"><div class="tv">15 bis 25 Kunden</div><div class="tl">Break-even inklusive schlankem Team</div></div>
+  </div>
+</section>
+
+<footer>
+  <b>Annahmen (Ziel, keine Messwerte):</b> 25 Mio. Token je Berater und Monat · Modellmix 0,62 $/M blended · Nebius-Preise Stand 16.08.2026 (H200 4,50 $/h on-demand, Spot 2,45 $/h; AI Studio 0,08 bis 3,11 $/M) · 1 $ ≈ 0,90 € · Deckungsbeitrag 1.450 € je Kunde (Ø 10 Sitze) · Team-Burn 23 bis 25 T€ je Monat · K4-Standard: Qwen3.8 27B auf 1x A100-VM im Kunden-Tenant (Spot 0,68 $/h). Ab dem Piloten beim Design-Partner werden Tokenverbrauch, Support-Stunden und Auslastung gemessen und ersetzen diese Annahmen. Vollständige Herleitung: „Consultry Bauplan und Preisüberschlag".
+</footer>
+
+</body>
+</html>

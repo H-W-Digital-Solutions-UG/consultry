@@ -1,0 +1,21 @@
+---
+import { heroOutcomes, type HeroOutcomeVariant } from '../content/hero-outcomes';
+interface Props { variant: HeroOutcomeVariant; aspects: string[] }
+const { variant, aspects } = Astro.props;
+---
+<div class="hero-signals" data-hero-signals>
+  <svg class="hero-signal-lines" data-signal-lines aria-hidden="true">
+    {[1,2,3].map(part => <path data-signal-connection={part} pathLength="1" />)}
+  </svg>
+  <div class="hero-signal-stack">
+  {aspects.map((aspect, index) => (
+    <article class="hero-signal" data-signal-note={index + 1} data-signal-side="left">
+      <span class="hero-signal-index" aria-hidden="true">0{index + 1}</span>
+      <div>
+        <h2>{aspect}</h2>
+        <p>{heroOutcomes[variant][index + 1].context}</p>
+      </div>
+    </article>
+  ))}
+  </div>
+</div>

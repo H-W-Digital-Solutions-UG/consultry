@@ -74,3 +74,9 @@ presentation/consultry-hyperframes-second-brain-video/renders/*
 /Consultry APP UI Mockups/
 /Consultry-Hypermock-MotionVid/
 /Motion-Teaser-Video-Consultry/
+
+# Generated caches, test output and editor lock files
+__pycache__/
+*.pyc
+smoketests/**/output/
+~$*

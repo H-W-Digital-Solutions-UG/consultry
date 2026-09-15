@@ -1,0 +1,38 @@
+---
+const tasks = [
+  { href: '#product-demo-corpus', current: true, tags: [['doc', 'Korpus'], ['ai', 'Agent']], title: 'Ein Gespräch vorbereiten', text: 'Aus Vertrag und früherem Angebot wird ein Briefing.' },
+  { href: '/produkt/agenten-ledger#product-demo-ledger', tags: [['branch', 'Mehrere Agenten'], ['ai', 'Ledger']], title: 'Einen Plan abstimmen', text: 'Beiträge und Gegenbelege werden zu einem Stand.' },
+  { href: '/produkt/corporate-alignment#product-demo-brand', tags: [['doc', 'Unterlage'], ['ai', 'Alignment']], title: 'Eine Unterlage überarbeiten', text: 'Inhalt, Sprache und Freigabe in einer Folie.' },
+];
+---
+<nav class="demo-task-picker" aria-label="Eine Beispielaufgabe auswählen">
+  <p>Was steht als Nächstes an?</p>
+  <div>
+    {tasks.map(task => <a href={task.href} aria-current={task.current ? 'location' : undefined}>
+      <span class="tp-tags">{task.tags.map(([kind, label]) => <span class="tp-tag" data-kind={kind}>{label}</span>)}</span>
+      <strong>{task.title}</strong>
+      <span class="tp-text">{task.text}</span>
+    </a>)}
+  </div>
+</nav>
+<style>
+  .demo-task-picker { max-width: 1220px; margin: 0 auto 18px; }
+  p { margin: 0 0 10px; color: #a1978b; font-size: .82rem; }
+  .demo-task-picker > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  a { display: flex; flex-direction: column; gap: 7px; min-height: 92px; padding: 12px 14px; border: 1px solid #3d362f; border-radius: 10px; background: #1e1a17; color: #cfc5b9; text-decoration: none; transition: border-color 160ms, background 160ms; }
+  a[aria-current], a:hover { background: #faf8f5; border-color: #c9bfb5; color: #1b1917; }
+  a strong { font-size: .92rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.3; }
+  .tp-text { color: #a1978b; font-size: .76rem; line-height: 1.45; }
+  a[aria-current] .tp-text, a:hover .tp-text { color: #6f675f; }
+  .tp-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tp-tag { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 999px; font-size: .68rem; line-height: 1.4; }
+  .tp-tag::before { content: ''; width: 6px; height: 6px; border-radius: 2px; background: currentColor; opacity: .8; }
+  .tp-tag[data-kind='doc'] { background: #21332b; color: #9fd3ae; }
+  .tp-tag[data-kind='ai'] { background: #2e2740; color: #c1aee6; }
+  .tp-tag[data-kind='branch'] { background: #3a2f1a; color: #e6c274; }
+  a[aria-current] .tp-tag[data-kind='doc'], a:hover .tp-tag[data-kind='doc'] { background: #e9f3e9; color: #2f6b3f; }
+  a[aria-current] .tp-tag[data-kind='ai'], a:hover .tp-tag[data-kind='ai'] { background: #ece7f1; color: #6a5280; }
+  a[aria-current] .tp-tag[data-kind='branch'], a:hover .tp-tag[data-kind='branch'] { background: #fbf0dd; color: #8a6224; }
+  @media(max-width:760px) { .demo-task-picker > div { display: flex; overflow-x: auto; scrollbar-width: thin; padding-bottom: 5px; } a { flex: 0 0 240px; } }
+  @media(prefers-reduced-motion:reduce) { a { transition: none; } }
+</style>

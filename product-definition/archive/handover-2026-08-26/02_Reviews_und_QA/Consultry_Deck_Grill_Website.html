@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Consultry · Deck-Grill aus der Angel-Brille</title>
+<style>
+  :root{
+    --accent:#AD2764; --pink:#D2397E; --wash:#F9E2EC; --paper:#FFFBF9;
+    --ink:#2C2926; --soft:#6B6560; --hair:#EDDFD7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:#F3EAE3}
+  body{
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink); background:var(--paper); max-width:1240px; margin:24px auto; padding:56px 64px 40px;
+    box-shadow:0 8px 40px rgba(60,40,30,.12); border-radius:6px;
+  }
+  .kick{font-size:13px;letter-spacing:.22em;font-weight:700;color:var(--pink);text-transform:uppercase}
+  h1{font-size:38px;line-height:1.12;margin:10px 0 6px;font-weight:800;letter-spacing:-.01em}
+  h1 b{color:var(--accent)}
+  .sub{font-family:Georgia,"Times New Roman",serif;font-size:19px;color:var(--ink);margin-bottom:10px}
+  .sub b{color:var(--accent)}
+  .meta{font-size:13px;color:var(--soft);border:1px solid var(--hair);display:inline-block;
+        padding:5px 12px;border-radius:999px;background:#fff}
+  section{margin-top:40px}
+  .seck{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--hair);padding-bottom:8px;margin-bottom:18px}
+  .secn{font-size:14px;font-weight:800;color:var(--pink);letter-spacing:.18em}
+  .sect{font-size:21px;font-weight:800}
+  .secs{font-size:14px;color:var(--soft);margin-left:auto}
+
+  /* urteil hero */
+  .heroes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .hero{border:1.5px solid var(--pink);border-radius:14px;background:#fff;padding:16px 18px;position:relative}
+  .hero.crit{background:var(--wash);border-color:var(--accent)}
+  .htag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.12em;padding:3px 10px;border-radius:999px;
+        background:var(--accent);color:#fff;margin-bottom:9px}
+  .hero .hh{font-size:16.5px;font-weight:800;line-height:1.35;margin-bottom:7px}
+  .hero .hh b{color:var(--accent)}
+  .hero .hf{font-size:13px;line-height:1.5;color:var(--ink)}
+  .hero .hf b{color:var(--accent)}
+
+  /* folienliste */
+  .srow{display:grid;grid-template-columns:54px 168px 168px 1fr;gap:14px;align-items:start;
+        padding:11px 14px;border-bottom:1px solid var(--hair)}
+  .srow:nth-child(odd){background:#fff}
+  .srow:last-child{border-bottom:none}
+  .sn{width:38px;height:38px;border-radius:10px;background:var(--paper);border:1.5px solid var(--hair);
+      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:var(--accent)}
+  .sname{font-size:14.5px;font-weight:800;padding-top:8px}
+  .badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.09em;padding:4px 10px;border-radius:999px;
+         margin-top:6px;white-space:nowrap}
+  .b-crit{background:var(--accent);color:#fff}
+  .b-warn{background:var(--wash);color:var(--accent);border:1px solid var(--pink)}
+  .b-ok{background:#fff;color:var(--soft);border:1px solid var(--hair)}
+  .stx{font-size:13px;line-height:1.55;color:var(--ink);padding-top:7px}
+  .stx b{color:var(--accent)}
+  .slist{border:1.5px solid var(--hair);border-radius:14px;overflow:hidden;background:var(--paper)}
+
+  /* einbauliste */
+  .fix{display:flex;gap:16px;align-items:flex-start;padding:11px 4px;border-bottom:1px dashed var(--hair)}
+  .fix:last-child{border-bottom:none}
+  .fixn{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:var(--pink);color:#fff;
+        display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+  .fix.top .fixn{background:var(--accent)}
+  .fixt{font-size:13.5px;line-height:1.55;padding-top:6px}
+  .fixt b{color:var(--accent)}
+
+  /* formulierungen */
+  .wlist{border:1.5px solid var(--hair);border-radius:14px;overflow:hidden;background:var(--paper)}
+  .wrow{display:grid;grid-template-columns:0.95fr 0.9fr 1.05fr;gap:16px;padding:12px 16px;border-bottom:1px solid var(--hair)}
+  .wrow:nth-child(odd){background:#fff}
+  .wrow:last-child{border-bottom:none}
+  .wq{font-family:Georgia,serif;font-style:italic;font-size:13.5px;line-height:1.5}
+  .wq .wf{font-family:"Segoe UI",Arial,sans-serif;font-style:normal;font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--pink);display:block;margin-bottom:3px}
+  .wk{font-size:12.5px;line-height:1.5;color:var(--soft)}
+  .wb{font-size:13px;line-height:1.5;color:var(--ink)}
+  .wb b{color:var(--accent)}
+  .whead{display:grid;grid-template-columns:0.95fr 0.9fr 1.05fr;gap:16px;padding:9px 16px;background:var(--paper);
+         font-size:11.5px;font-weight:800;letter-spacing:.12em;color:var(--accent);border-bottom:1.5px solid var(--hair)}
+  .rules{margin-top:16px;background:var(--wash);border-radius:12px;padding:14px 18px}
+  .rules h4{font-size:12.5px;letter-spacing:.13em;font-weight:800;color:var(--accent);margin-bottom:8px}
+  .rules p{font-size:13px;line-height:1.6;color:var(--ink)}
+  .rules b{color:var(--accent)}
+
+  footer{margin-top:34px;border-top:2px solid var(--hair);padding-top:12px;font-size:12.5px;color:var(--soft);line-height:1.6}
+  footer b{color:var(--ink)}
+  @media print{body{box-shadow:none;margin:0;max-width:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kick">Consultry · Deck-Review · vertraulich</div>
+  <h1>Der Grill-Report: <b>Investor-Deck v10</b></h1>
+  <div class="sub">Aus der Brille von Business Angels. <b>Vier Treffer tun weh, der Rest ist Feinschliff.</b></div>
+  <span class="meta">Abgleich mit Pitch-Transkript, Red-Team, Marktvalidierung und den Architektur- und Preisentscheidungen · Stand 17. August 2026 · Krallmann-Deck separat</span>
+</header>
+
+<section>
+  <div class="seck"><span class="secn">01</span><span class="sect">Das Urteil: die vier Treffer</span><span class="secs">Effekt × Dringlichkeit</span></div>
+  <div class="heroes">
+    <div class="hero crit">
+      <span class="htag">FOLIE 9 · BAUSTELLE NR. 1</span>
+      <div class="hh">Die Folie erzählt die Firma von vorgestern: „EU-Perimeter" klingt nach Consultry-Hosting, dem Gegenteil eurer Position.</div>
+      <div class="hf"><b>Der Fix:</b> „Läuft im Tenant des Kunden. Wir hosten nichts." als Zeile, Kicker „Die Daten überschreiten keine weitere Grenze.", Statbox 77 % (Bitkom 2026), Formel und Souveränitätssatz in die Notizen.</div>
+    </div>
+    <div class="hero crit">
+      <span class="htag">FOLIE 12 · DD-RISIKO</span>
+      <div class="hh">„LOI unterschrieben" prüft ein Angel mit einem Anruf bei Krallmann. Im Pitch-Training klang es nach „eventuell, wenn alles gut läuft".</div>
+      <div class="hf"><b>Der Fix:</b> Status vor jedem Termin fixieren und einheitlich sprechen, notfalls ehrlich „in finaler Abstimmung". Dazu die Messgrößen zeigen: Tokenverbrauch, Support-Stunden, Onboarding-Dauer.</div>
+    </div>
+    <div class="hero">
+      <span class="htag">FOLIE 14 · ASK</span>
+      <div class="hh">„Euer Investment zahlt sich aus" ist Floskel. Das beste De-Risking-Argument des Jahres fehlt komplett.</div>
+      <div class="hf"><b>Der Fix:</b> Drei Zahlen auf die Folie: Infrastruktur trägt sich ab Kunde 2, jeder Kunde ab Tag 1 deckungsbeitragspositiv, Team-Break-even bei ≈ 20 bis 27 Kunden. Headline: „500 T€ tragen bis zu zehn Referenzen."</div>
+    </div>
+    <div class="hero">
+      <span class="htag">FOLIE 11 · UNTER WERT</span>
+      <div class="hh">„Preise im Datenraum" versteckt genau das, was Angels hören wollen.</div>
+      <div class="hf"><b>Der Fix:</b> Zwei Zeilen auf die Folie: „Ein Preis, alles drin" als Standard (All-in-Sitz, eine Rechnung) und „Software-Marge strukturell über 80 %, Verbrauch läuft in Verträgen des Kunden".</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="seck"><span class="secn">02</span><span class="sect">Folie für Folie</span><span class="secs">15 Folien, drei Ampelstufen</span></div>
+  <div class="slist">
+    <div class="srow"><div class="sn">1</div><div class="sname">Cover</div><div><span class="badge b-warn">KLEINER FIX</span></div>
+      <div class="stx">„Zeitalter der Agenten" ist Stimmung, keine Kategorie. Eine Zeile ergänzen: <b>„KI-Plattform für IT- und SAP-Beratungen, betrieben im Tenant des Kunden."</b> Ein Angel muss in zehn Sekunden wissen, was ihr seid.</div></div>
+    <div class="srow"><div class="sn">2</div><div class="sname">Wandel</div><div><span class="badge b-ok">TONSPUR</span></div>
+      <div class="stx">Stärkste Folie, Zahlendisziplin sitzt. In die Tonspur: <b>Lünendonk 2026, 43 % sehen keine KI-Preiswirkung</b>, also bleiben die 2.275 € als Marge im Haus. Das beantwortet „warum zahlt die Beratung dafür" ökonomisch.</div></div>
+    <div class="srow"><div class="sn">3</div><div class="sname">Statement</div><div><span class="badge b-warn">UPGRADE</span></div>
+      <div class="stx">Klickstufe 2 aus der Vision fehlt: <b>„Und die ganze Wertschöpfung läuft durch dieselbe Person."</b> In die Notizen die Leitplanke als Antwort auf die Ersatz-Frage: „Wir ersetzen keine Berater. Wir geben ihnen ihre Arbeit zurück."</div></div>
+    <div class="srow"><div class="sn">4</div><div class="sname">Problem</div><div><span class="badge b-warn">UPGRADE</span></div>
+      <div class="stx">Belege sind generisch-amerikanisch. Punkt 05 „KI bleibt vor der Tür" verdient die frischen deutschen Zahlen: <b>77 % Datenschutz-Hemmnis (Bitkom), 66 % Copilot-Stopps (CoreView)</b>, Schatten-KI 42,7 % in die Tonspur. Zugleich euer Why-now: Nutzung verdoppelt auf 41 %.</div></div>
+    <div class="srow"><div class="sn">5</div><div class="sname">Leitsatz</div><div><span class="badge b-ok">BLEIBT</span></div>
+      <div class="stx">Bleibt unangetastet.</div></div>
+    <div class="srow"><div class="sn">6</div><div class="sname">Kreisläufe</div><div><span class="badge b-warn">EINE ZEILE</span></div>
+      <div class="stx">Es fehlt die Zeile, die aus Feature-Scope eine Engpasslogik macht: <b>„Drei Kreisläufe, eine Person."</b></div></div>
+    <div class="srow"><div class="sn">7</div><div class="sname">Produkt-Loop</div><div><span class="badge b-ok">BLEIBT</span></div>
+      <div class="stx">Story trägt. Fürs Q&amp;A das Tripping-Wires-Playbook in die Notizen (bestes Beispiel gegen den Chatbot-Vergleich). Mehr Produkttiefe gehört ins Krallmann-Deck.</div></div>
+    <div class="srow"><div class="sn">8</div><div class="sname">Wettbewerb</div><div><span class="badge b-warn">PUNCHLINE FEHLT</span></div>
+      <div class="stx">Fair, aber ohne Satz, der hängen bleibt. Auf die Folie: <b>„Ein Werkzeug je Prozess entlastet niemanden. Es verschiebt nur."</b> In die Notizen: die DIY-Antwort (Faktor zwanzig, fakturierbare Stunden als Opportunitätskosten) und „Microsoft verdient an der Lizenz, wir am gelungenen Projekt."</div></div>
+    <div class="srow"><div class="sn">9</div><div class="sname">Verbund</div><div><span class="badge b-crit">BAUSTELLE NR. 1</span></div>
+      <div class="stx">Veraltet, wichtigste Korrektur des Decks: „EU-Perimeter, je Kunde getrennt" liest sich als Consultry-Hosting. Neu: <b>„Läuft im Tenant des Kunden. Wir hosten nichts."</b> plus Kicker „keine weitere Grenze", 77-%-Statbox, Formel und „Fällt ein Anbieter aus, wechseln wir das Modell, nicht den Datenraum" in die Notizen.</div></div>
+    <div class="srow"><div class="sn">10</div><div class="sname">Markt</div><div><span class="badge b-warn">FUSSNOTEN</span></div>
+      <div class="stx">Struktur gut. Zwei Red-Team-Punkte: Die <b>14.500 (NACE-J62-Schnitt) vor den Terminen entscheiden</b> (sauber wären eher 18 bis 19 Tausend) und in den Notizen die ACV-Dreifachtrennung sprechen. Ziel Jahr 3 heißt 13 Mio. ARR, nicht 12.</div></div>
+    <div class="srow"><div class="sn">11</div><div class="sname">Erlösmodell</div><div><span class="badge b-crit">UNTER WERT</span></div>
+      <div class="stx">„Preise im Datenraum" ist zu schüchtern. Auf die Folie: <b>„Ein Preis, alles drin"</b> als Standard und <b>„Software-Marge über 80 %, Verbrauch in Verträgen des Kunden"</b>. Zwei Zeilen, Details im Datenraum.</div></div>
+    <div class="srow"><div class="sn">12</div><div class="sname">Validierung</div><div><span class="badge b-crit">DD-RISIKO</span></div>
+      <div class="stx"><b>LOI-Wording fixieren, vor jedem Termin.</b> Eine Diskrepanz kostet nicht die Folie, sondern das Vertrauen ins ganze Deck. Plus Messdisziplin zeigen: was ab dem Piloten gemessen wird.</div></div>
+    <div class="srow"><div class="sn">13</div><div class="sname">Team</div><div><span class="badge b-warn">KONSISTENZ</span></div>
+      <div class="stx">Founder-Market-Fit sichtbar. Aber die Break-even-Rechnung nimmt 2 Gründer an, die Folie zeigt 3: <b>Burn eher 28 bis 29 T€, X bei 20 bis 27 Kunden.</b> Vor dem ersten Termin angleichen, ein Angel mit Excel findet es in fünf Minuten.</div></div>
+    <div class="srow"><div class="sn">14</div><div class="sname">Ask</div><div><span class="badge b-crit">AUFRÜSTEN</span></div>
+      <div class="stx">Floskel-Headline raus, De-Risking rein: <b>Infra trägt sich ab Kunde 2 · DB-positiv ab Tag 1 · Break-even ≈ 20 bis 27 Kunden.</b> Bewertung (2,86 Mio. post) ist für DACH-Pre-Seed unauffällig, gut so.</div></div>
+    <div class="srow"><div class="sn">15</div><div class="sname">Close</div><div><span class="badge b-ok">BLEIBT</span></div>
+      <div class="stx">Bleibt.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="seck"><span class="secn">03</span><span class="sect">Formulierungen unter dem Messer</span><span class="secs">Ist · Diagnose · besser</span></div>
+  <div class="wlist">
+    <div class="whead"><span>SO STEHT ES DA</span><span>WAS DARAN HAKT</span><span>SO WIRD ES SCHARF</span></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 1</span>„Consulting im Zeitalter der Agenten"</div><div class="wk">Geliehener Rahmen, jedes dritte KI-Deck 2026 trägt ein „Zeitalter". Sagt nicht, was ihr seid.</div><div class="wb">Kategorie-Zeile ergänzen und den eigenen Satz aufs Cover: <b>„Der Agent macht die Zuarbeit. Der Berater macht den Unterschied."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 2</span>„Die andere Seite der Woche kommt jetzt."</div><div class="wk">Im Vortrag ein Punch, allein gelesen ein Rätsel. Angels lesen das Deck vorab ohne Tonspur.</div><div class="wb"><b>„Die zehn internen Stunden sind jetzt dran."</b> Steht auch ohne Stimme.</div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 3</span>„+40 % Qualitätssteigerung"</div><div class="wk">Substantiv-Amtsdeutsch mitten im stärksten Moment. Die Fußnote sagt es längst besser.</div><div class="wb"><b>„+40 % Qualität je Aufgabe"</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 3</span>„Und die frei gewordene Woche zahlt ein: Zeit und Qualität arbeiten ihm zu."</div><div class="wk">Zwei Metaphern in einem Satz, und „ihm" hat keinen klaren Bezug.</div><div class="wb"><b>„Die freie Woche fließt zurück: Zeit beim Kunden, Qualität in der Arbeit."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 3</span>„mehr Zeit für Kunde und Beziehung"</div><div class="wk">Doppelt gemoppelt, die Beziehung ist die zum Kunden.</div><div class="wb"><b>„mehr Zeit beim Kunden"</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 4</span>„Zwischen Gewinnen, Liefern und Steuern reißt der Zusammenhang"</div><div class="wk">Das Bild ist schief, ein Zusammenhang reißt nicht.</div><div class="wb"><b>„Zwischen Gewinnen, Liefern und Steuern reißt der Faden."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 4</span>„Chancen entstehen zu spät"</div><div class="wk">Logikfehler: Die Chance entsteht rechtzeitig, erkannt wird sie zu spät.</div><div class="wb"><b>„Chancen werden zu spät erkannt."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 6</span>„Einzeln würde keiner davon Sinn ergeben."</div><div class="wk">Defensiv formuliert, redet das eigene Produkt klein.</div><div class="wb"><b>„Einzeln wären es drei Werkzeuge. Zusammen sind sie ein Gedächtnis."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 6 + 9</span>„Verifizierter Firmenkontext" vs. „Firmengedächtnis"</div><div class="wk">Zwei Namen für das Kernstück im selben Deck. Angels merken sich höchstens einen.</div><div class="wb">Ein Begriff überall: <b>„Firmengedächtnis"</b>. Es ist das stärkere Wort.</div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 7</span>„Entwurf mit Belegen … Jede Aussage belegt oder als offene Frage markiert."</div><div class="wk">„Beleg" doppelt sich im Satzpaar.</div><div class="wb"><b>„Jede Aussage hat eine Quelle, oder sie ist als offene Frage markiert."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 8</span>„Bestehende Werkzeuge lösen Teile"</div><div class="wk">Abgehackt, „Teile" wovon?</div><div class="wb"><b>„Bestehende Werkzeuge lösen je ein Teil. Niemand verbindet sie."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 8</span>„Die Unternehmensfreigabe kennt nicht jeden Kundenvertrag"</div><div class="wk">„Unternehmensfreigabe" ist ein Wortungetüm, der Punkt geht verloren.</div><div class="wb"><b>„Eine Freigabe fürs ganze Haus kennt keinen einzelnen Kundenvertrag."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 9</span>„… und kontrollierter KI"</div><div class="wk">Widerspricht dem eigenen Label darunter („Freigegebene KI") und klingt nach Zwang statt Souveränität.</div><div class="wb"><b>„… und freigegebener KI"</b>. „Kein Weg, keine Verarbeitung." bleibt, der beste Vier-Wort-Satz des Decks.</div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 11</span>„Wiederkehrende Nutzerlizenzen, dazu eine feste Plattformgebühr."</div><div class="wk">„Nutzerlizenzen" ist Software-Sprech von 2015; euer ganzes Material sagt „Sitze".</div><div class="wb"><b>„Wiederkehrende Sitze, eine feste Plattformgebühr. Ein Preis, alles drin."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 12</span>„Wir entwickeln den ersten Produktpfad mit echten Beratungen"</div><div class="wk">„Produktpfad" ist Insider-Vokabular, und „echt" verrät die Angst vor „unecht".</div><div class="wb"><b>„Wir bauen mit zahlenden Beratungen, nicht im Labor."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 12</span>„Erster Wertbeitrag benannt"</div><div class="wk">Floskel ohne Inhalt, benannt hat noch niemanden überzeugt.</div><div class="wb">Konkret oder raus: Zahl der Gespräche, und wenn wahr: <b>„Zahlungsbereitschaft ausgesprochen."</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 13</span>„… die Angebote, die Modul 1 baut"</div><div class="wk">Heißt überall sonst „Kreislauf 1". Begriffsbruch auf der Team-Folie.</div><div class="wb"><b>„… die Angebote, die Kreislauf 1 baut"</b></div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 13</span>„Führt mit H&amp;W den Nutzer #1 im Einstiegsmarkt"</div><div class="wk">Kryptisch: Wer ist H&amp;W, was ist Nutzer #1? Dazu bei CTO und CPO die identische Zeile („2+ Jahre AI-getriebene Workflows"), das liest sich wie Copy-Paste.</div><div class="wb"><b>„Betreibt mit H&amp;W bereits den ersten produktiven Nutzer."</b> Und die Doppelzeile je Person differenzieren.</div></div>
+    <div class="wrow"><div class="wq"><span class="wf">FOLIE 15</span>„Projektwissen wird skalierbarer Firmenwert."</div><div class="wk">Doppel-Abstraktum als letzter Eindruck. Euer besserer Schlusssatz existiert längst.</div><div class="wb"><b>„Jede Entscheidung macht den nächsten Agenten klüger."</b></div></div>
+  </div>
+  <div class="rules">
+    <h4>SECHS SPRACHREGELN FÜRS GANZE DECK</h4>
+    <p><b>Ein Ding, ein Name:</b> Firmengedächtnis, Kreislauf, Sitz, Haus, überall gleich. · <b>Verben statt -ung:</b> „Qualitätssteigerung", „Wertbeitrag", „Unternehmensfreigabe" sind Amtsdeutsch, die stärksten Folien (2, 9) sind Verb-Sätze. · <b>Ein Fettwort je Satz,</b> sonst fettet nichts. · <b>„Zeitalter" nur einmal</b> (Cover und Folie 3 doppeln sich). · <b>Höchstens ein „im Datenraum":</b> dreimal liest es sich wie Ausweichen. · <b>Jeder Punch muss ohne Tonspur stehen:</b> Angels lesen das Deck vorab allein.</p>
+  </div>
+</section>
+
+<section>
+  <div class="seck"><span class="secn">04</span><span class="sect">Die Einbauliste, priorisiert</span><span class="secs">Effekt × Aufwand · Top 4 zuerst</span></div>
+  <div class="fix top"><div class="fixn">1</div><div class="fixt"><b>Folie 9 modernisieren:</b> Kicker „keine weitere Grenze", Zeile „Läuft im Tenant des Kunden. Wir hosten nichts.", 77-%-Statbox, Formel und Souveränitätssatz in die Notizen.</div></div>
+  <div class="fix top"><div class="fixn">2</div><div class="fixt"><b>Folie 14 aufrüsten:</b> De-Risking-Dreizeiler plus neue Headline „500 T€ tragen bis zu zehn Referenzen."</div></div>
+  <div class="fix top"><div class="fixn">3</div><div class="fixt"><b>Folie 12 LOI-Wording fixieren</b> und Messgrößen ergänzen. Vor jedem Termin prüfen.</div></div>
+  <div class="fix top"><div class="fixn">4</div><div class="fixt"><b>Folie 11 auf „Ein Preis, alles drin" heben</b> plus Margen-Satz.</div></div>
+  <div class="fix"><div class="fixn">5</div><div class="fixt"><b>Folie 4 mit 77 % / 66 % belegen,</b> Schatten-KI 42,7 % in die Tonspur, generische US-Statistiken prüfen.</div></div>
+  <div class="fix"><div class="fixn">6</div><div class="fixt"><b>Folie 8 Punchline</b> plus DIY- und Microsoft-Satz in die Notizen.</div></div>
+  <div class="fix"><div class="fixn">7</div><div class="fixt"><b>Folie 3 Klickstufe „dieselbe Person"</b> plus Leitplanken-Satz in die Notizen.</div></div>
+  <div class="fix"><div class="fixn">8</div><div class="fixt"><b>Folie 2 Tonspur:</b> Lünendonk-43-Prozent, die Ersparnis bleibt als Marge im Haus.</div></div>
+  <div class="fix"><div class="fixn">9</div><div class="fixt"><b>Konsistenz-Sweep:</b> 13 Mio. ARR, ACV-Dreifachtrennung, Personalannahme auf 3 Gründer, Einstiegsmarkt-Fußnote entscheiden.</div></div>
+  <div class="fix"><div class="fixn">10</div><div class="fixt"><b>Anhang bauen:</b> Betriebswege-Folie, Datengrenze-Visual als Datenraum-Artefakt, Quellenblatt (Bitkom, CoreView, Lünendonk, BDU, Dell'Acqua). Angels blättern selten hin, deren Anwälte immer.</div></div>
+</section>
+
+<footer>
+  <b>Abgrenzung:</b> Alles zu Betriebswegen, Datenklassen, Kontextschleuse und Lokal-Spur im Detail gehört ins separate Krallmann-Deck und in den Investoren-Anhang, nicht in die 15 Angel-Folien. Das Angel-Deck braucht die Sätze, das Partner-Deck die Diagramme. · Grundlage: Pitch-Transkript vom 15.08., Red-Team-Analyse B1 bis B12, Marktvalidierung mit Quellen, Bauplan und Preisüberschlag, Stand 17. August 2026.
+</footer>
+
+</body>
+</html>

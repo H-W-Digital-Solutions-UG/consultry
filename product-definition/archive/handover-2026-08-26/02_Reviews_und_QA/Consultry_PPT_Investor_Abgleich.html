@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultry · PPT gegen Investor-Master</title>
+<style>
+  :root{
+    --brand:#AD2764; --brand2:#D2397E; --rose:#F9E2EC; --paper:#FFFBF9; --sand:#EDDFD7;
+    --ink:#2B2226; --mut:#7A6A70; --ok:#2E7D52; --okbg:#E3F2E9; --warn:#B07C10; --warnbg:#FBF0D8; --bad:#B3261E; --badbg:#FBE3E1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--sand);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+  .wrap{max-width:1150px;margin:0 auto;background:var(--paper);box-shadow:0 2px 40px rgba(90,40,60,.14)}
+  .inner{padding:40px 56px 62px}
+  @media(max-width:760px){.inner{padding:24px 18px 40px}}
+
+  .kicker{font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--brand);text-transform:uppercase}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:39px;line-height:1.13;margin:10px 0 12px}
+  h1 em{font-style:normal;color:var(--brand)}
+  .lede{font-size:16.5px;max-width:78ch}
+  .meta{display:inline-block;margin-top:13px;background:var(--rose);border:1px solid #EFC9DB;border-radius:20px;padding:6px 14px;font-size:13px;color:#8A2352}
+
+  nav.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 8px}
+  nav.chips a{text-decoration:none;font-size:13px;font-weight:600;color:var(--brand);border:1.5px solid var(--brand2);border-radius:18px;padding:6px 13px;background:#fff}
+  nav.chips a:hover{background:var(--rose)}
+
+  section{margin-top:42px}
+  .sechead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--rose);padding-bottom:8px;margin-bottom:18px}
+  .secno{font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--brand)}
+  h2{font-family:Georgia,serif;font-size:25px}
+  .secnote{margin-left:auto;font-size:13px;color:var(--mut)}
+
+  .verdict{background:linear-gradient(135deg,#FDF4F8,#FFF9F4);border:1.5px solid #EFC9DB;border-radius:14px;padding:22px 26px;font-size:16px}
+  .verdict b{color:var(--brand)}
+
+  .crit{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+  @media(max-width:720px){.crit{grid-template-columns:1fr}}
+  .cbox{background:#fff;border:1px solid #EEE0E7;border-radius:12px;padding:14px 16px;font-size:13.5px}
+  .cbox b{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .cbox.kunde b{color:#2F4B7C}
+  .cbox.investor b{color:var(--brand)}
+  .cbox p{margin:5px 0}
+
+  .hit{background:#fff;border:1px solid #EBD9E2;border-radius:14px;padding:18px 22px;margin-bottom:14px;box-shadow:0 1px 8px rgba(120,40,70,.05)}
+  .hithead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .sev{font-size:11px;font-weight:800;letter-spacing:.14em;border-radius:14px;padding:4px 12px}
+  .sev.rot{background:var(--badbg);color:var(--bad)}
+  .sev.kunde{background:#E7EDF7;color:#2F4B7C}
+  .hit h3{font-family:Georgia,serif;font-size:19px}
+  .hit p{margin:7px 0;font-size:14.5px}
+  .ziel{background:var(--okbg);border-left:4px solid var(--ok);border-radius:8px;padding:9px 13px;margin-top:8px;font-size:13.5px}
+  .ziel b{color:var(--ok)}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:12px;overflow:hidden}
+  .tblbox{overflow-x:auto;border:1px solid #EBD9E2;border-radius:12px}
+  th{background:var(--rose);color:#8A2352;text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px}
+  td{padding:9px 12px;border-top:1px solid #F3E7ED;vertical-align:top}
+  td.nr{font-weight:800;color:var(--brand);white-space:nowrap}
+  .pill{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;border-radius:12px;padding:3px 9px;white-space:nowrap}
+  .pill.gruen{background:var(--okbg);color:var(--ok)}
+  .pill.gelb{background:var(--warnbg);color:var(--warn)}
+  .pill.rot{background:var(--badbg);color:var(--bad)}
+  .pill.blau{background:#E7EDF7;color:#2F4B7C}
+
+  .strip{border:1.5px dashed var(--brand2);border-radius:12px;background:#FFF6FA;padding:15px 19px;font-size:13.5px;margin-top:20px}
+  .strip b{color:var(--brand)}
+  footer{margin-top:48px;border-top:2px solid var(--rose);padding-top:16px;font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+
+<header>
+  <div class="kicker">Consultry · PowerPoint gegen Investor-Master · Struktur-Abgleich · vertraulich</div>
+  <h1>Zwei Decks, zwei Käufer: <em>das PPT verkauft noch an Kunden mit.</em></h1>
+  <p class="lede">Abgleich des PowerPoint-Stands (Beautiful-Familie, dokumentiert im Review der v8/v9-Fassungen) gegen den heutigen <b>Investor-Master</b> (15 Folien, Stand nach allen Fix-Pässen vom 17. und 18. August). Die Leitfrage: <b>Wo argumentiert das PPT wie ein Kunden-Pitch</b>, und was muss in die Investor-Erzählung. Wichtig zur Methode: Die Desktop-Brücke war nicht erreichbar, dieser Abgleich basiert auf dem dokumentierten Folienbestand; drei Punkte sind nur gegen die echte Datei verifizierbar und unten markiert. <b>Nachtrag 25.08.:</b> Die daraufhin angehängte Datei „Beautiful [Autosaved]“ ist geprüft: Sie ist <b>nicht das Consultry-PPT</b>, sondern die unbefüllte Beautiful.ai-Vorlage als Bild-Export, ohne ein einziges Consultry-Wort. Voller Befund und Folieninventar in <b>Sektion 06</b>.</p>
+  <span class="meta">Stand 18. August 2026 · Nachtrag 25. August 2026: Upload „Beautiful [Autosaved]“ verifiziert · Quellen: Deck-Review vom 09.08. (v8_2_9 und v9), Investor-Master v10, Datei-Upload vom 25.08.</span>
+  <nav class="chips">
+    <a href="#s1">01 Die Trennlinie</a><a href="#s2">02 Kundenlastige Stellen</a><a href="#s3">03 Folien-Mapping</a><a href="#s4">04 Was dem PPT fehlt</a><a href="#s5">05 Deck-Betriebsmodell</a><a href="#s6">06 Upload-Befund</a>
+  </nav>
+</header>
+
+<section id="s1">
+  <div class="sechead"><span class="secno">01</span><h2>Die Trennlinie: Was jeder der beiden Pitches verkauft</h2></div>
+  <div class="verdict">
+    Ein Kunden-Pitch und ein Investor-Pitch teilen die Fakten, aber nicht die Frage. Der Kunde fragt: <b>Was verändert das in meinem Betrieb, und kann ich euch trauen?</b> Der Investor fragt: <b>Warum wird das groß, warum jetzt, warum ihr, und was verdiene ich?</b> Jede Folie, die die erste Frage beantwortet, ohne auf die zweite einzuzahlen, ist im Investor-Deck Ballast, und umgekehrt. Das PPT stammt aus einer Zeit, in der ein Deck beide Jobs machen musste; der Investor-Master hat sich seitdem spezialisiert. Die gute Nachricht: <b>Nichts aus dem PPT ist wertlos.</b> Die kundenlastigen Folien sind der fertige Grundstock des separaten Sales-Decks, das für Krallmann ohnehin geplant ist.
+  </div>
+  <div class="crit" style="margin-top:14px">
+    <div class="cbox kunde"><b>Kunden-Pitch verkauft</b>
+      <p>Nutzen im Alltag: Vorher gegen Nachher, gesparte Stunden je Berater</p>
+      <p>Vertrauen: Compliance, Datenweg, Referenzen, Demo und Screenshots</p>
+      <p>Einstieg: Preise, Onboarding, Aufwand, Support</p>
+      <p>Risikofreiheit: Was sich NICHT ändert</p>
+    </div>
+    <div class="cbox investor"><b>Investor-Pitch verkauft</b>
+      <p>Das Fenster: Warum dieses Jahr, mit Datum und Beleg</p>
+      <p>Die Maschine: Wedge, Flywheel, Moat, Unit Economics</p>
+      <p>Das Team: Founder-Market-Fit als Beweis, Vollzeit-Ehrlichkeit</p>
+      <p>Die Rendite: Markt bottom-up, Ask durchgerechnet, Meilensteine zur Seed</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="sechead"><span class="secno">02</span><h2>Wo das PPT kundenlastig argumentiert</h2><span class="secnote">sechs Stellen, je mit Umzugsziel</span></div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev kunde">KUNDENLASTIG</span><h3>Die Vorher-Nachher-Folie (PPT Folie 6, Antworten)</h3></div>
+    <p>Features in Betriebsveränderung übersetzt: Das ist die beste Folie eines <b>Kundengesprächs</b> und die entbehrlichste eines Investor-Termins, denn sie beantwortet „Was habe ich davon" statt „Warum wird das groß". Der Investor-Master ersetzt sie durch die Drei-Kreisläufe-Folie, die dieselben Fähigkeiten als <b>System mit Lernschleife</b> zeigt, also als Moat-Mechanik.</p>
+    <div class="ziel"><b>Umzug:</b> Unverändert ins Sales-Deck, dort wird sie die Kernfolie. Im Investor-Master bleibt Folie 6 (Kreisläufe).</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev kunde">KUNDENLASTIG</span><h3>Sechs-Pain-Diagnose statt einer Ursache (PPT Folie 4)</h3></div>
+    <p>Sechs Schmerzfelder sind ein Verkäufer-Werkzeug: Der Kunde soll seinen eigenen Schmerz wiederfinden. Ein Investor liest sechs Pains als <b>fehlenden Fokus</b> (das Review vom 09.08. nannte es die Scope-Einladung). Der Master erzählt seitdem eine Ursache mit fünf Belegen: Zwischen Gewinnen, Liefern und Steuern reißt der Faden, plus Zeitfenster-Zeile.</p>
+    <div class="ziel"><b>Umzug:</b> Sechser-Raster als Diagnose-Seite ins Sales-Deck (dort darf der Kunde sich aussuchen, wo es weh tut). PPT-Folie 4 durch die Master-Fassung ersetzen.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev kunde">KUNDENLASTIG</span><h3>Produkt-Demo-Tiefe und Screenshot-Wunsch (PPT Folie 5)</h3></div>
+    <p>Der Produkt-Loop selbst ist stark (er lebt als Folie 7 im Master weiter). Kundenlastig ist die <b>Detailtiefe</b>: Screenshots, Klickwege und Feature-Nähe gehören in die Live-Demo und ins Sales-Deck. Im Investor-Deck reicht der eine echte Fall in drei Schritten; das Produkt beweist sich im Demo-Termin, nicht auf der Folie.</p>
+    <div class="ziel"><b>Umzug:</b> Screenshots und Ablaufdetails ins Sales-Deck und in die Demo. Investor-Folie bleibt bei Signal, Entscheidung, belegter Entwurf.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev kunde">KUNDENLASTIG</span><h3>Compliance als Verkaufsargument statt als Moat (PPT verteilt)</h3></div>
+    <p>EU-Hosting, AI-Act-Timing und Datenweg sind im PPT als <b>Beruhigungsargumente</b> formuliert, also in Kundensprache. Für Investoren ist dieselbe Substanz ein <b>Marktzugangs- und Moat-Argument</b>: 77 Prozent nennen Datenschutz als Hemmnis, zwei Drittel der Copilot-Rollouts stehen, und wer den freigegebenen Weg besitzt, besetzt die Kategorie. Der Master erzählt es so (Folie 4 und 9).</p>
+    <div class="ziel"><b>Umzug:</b> Beruhigungs-Fassung ins Sales-Deck (dort gehört sie hin). Investor-Fassung: Fenster plus Souveränität, wie im Master.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev kunde">KUNDENLASTIG</span><h3>Sichtbare Seat-Preise (PPT Folie 12, Geschäftsmodell)</h3></div>
+    <p>50 Euro je Sitz auf der Folie ist eine <b>Preisliste</b>, und Preislisten gehören ins Kundengespräch. Im Investor-Deck zählt die Struktur (wiederkehrende Sitze, Kontingent enthalten, Plattformgebühr) plus die eine Zahl, die Investoren wirklich prüfen: Software-Marge über 80 Prozent. Genau so macht es der Master auf Folie 11, Preise im Datenraum. Dazu kommt: Die PPT-Preise sind zwei Preiswelten alt (heute gilt All-in 149/189).</p>
+    <div class="ziel"><b>Umzug:</b> Preise raus aus der Investor-Folie, All-in-Preiskarte ins Sales-Deck und in den Datenraum.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev kunde">KUNDENLASTIG</span><h3>Der Betriebssystem-Claim als Produktversprechen (PPT Titelebene)</h3></div>
+    <p>„Das KI-Betriebssystem für Beratungen" ist Produktmarketing: groß, kategorial, kundentauglich. Vor Investoren öffnet er die Scope-Frage (Review 3.5) und kollidiert mit der 500k-Realität. Der Master löst es mit der nüchternen Kategoriezeile plus Wedge-zu-System-Erzählung in den Notizen; das große Wort fällt mündlich, wenn überhaupt.</p>
+    <div class="ziel"><b>Umzug:</b> OS-Claim ins Marketing-Vokabular (Website, Sales-Deck als Vision-Seite). Investor-Cover behält die Kategoriezeile.</div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="sechead"><span class="secno">03</span><h2>Folien-Mapping: PPT-Bestand gegen Investor-Master</h2><span class="secnote">v9-Reihenfolge laut Review vom 09.08.</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>PPT-Folie</th><th>Urteil</th><th>Ziel</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">1 Cover (mit Ask)</td><td><span class="pill rot">ASK-DRIFT</span></td><td>Kategoriezeile des Masters übernehmen; Ask-Höhe prüfen, siehe Sektion 04.</td></tr>
+      <tr><td class="nr">2 Wandel (Accenture, Umpreisung)</td><td><span class="pill gruen">INVESTOR-STARK</span></td><td>Die einzige PPT-Folie, die der Master nicht hat: als <b>Backup-Folie in den Anhang des Masters</b> übernehmen, Zahlen korrigiert (rund minus 18 Prozent, rund 25 Prozent Outcome-Fees). Das Fenster erzählt der Master auf Folie 4, die Wandel-Belege sind die Q-und-A-Munition dazu.</td></tr>
+      <tr><td class="nr">3 Statement</td><td><span class="pill gruen">PASST</span></td><td>Deckungsgleich mit Master-Dramaturgie.</td></tr>
+      <tr><td class="nr">4 Problem (6 Pains)</td><td><span class="pill blau">KUNDENLASTIG</span></td><td>Master-Folie 4 übernehmen (eine Ursache, fünf Belege, Zeitfenster); Sechser-Raster ins Sales-Deck.</td></tr>
+      <tr><td class="nr">5 Produkt-Loop</td><td><span class="pill gelb">HALB</span></td><td>Kern behalten (Master-Folie 7), Demo-Tiefe ins Sales-Deck.</td></tr>
+      <tr><td class="nr">6 Antworten (Vorher/Nachher)</td><td><span class="pill blau">KUNDENLASTIG</span></td><td>Komplett ins Sales-Deck; im Master ersetzt durch Drei Kreisläufe.</td></tr>
+      <tr><td class="nr">7 Leitsatz</td><td><span class="pill gruen">PASST</span></td><td>Bleibt.</td></tr>
+      <tr><td class="nr">8 Markt</td><td><span class="pill gelb">VERALTET</span></td><td>Master-Folie 10 übernehmen: bottom-up 14.500, Expansionslogik, „Der Plan ist konservativ. Der Markt ist es nicht.", konservative Zählweise in der Fußnote.</td></tr>
+      <tr><td class="nr">9 Wettbewerb</td><td><span class="pill gelb">VERALTET</span></td><td>Master-Folie 8 übernehmen (fairer Dreiklang plus Punch); Riplo-Antwort in die Notizen.</td></tr>
+      <tr><td class="nr">10 Lücke/Microsoft</td><td><span class="pill gelb">DREHEN</span></td><td>Von „Warum kaum jemand" auf Moat drehen: Master-Folie 9 (Verbund, Berechtigungen, keine weitere Grenze). Microsoft-Backup-Folie als Anhang behalten, sie ist stark.</td></tr>
+      <tr><td class="nr">11 Team</td><td><span class="pill gelb">VERALTET</span></td><td>Glow-up des Masters übernehmen: der Markt von drei Seiten, Vollzeit-Zeile, Dreiecks-Punch.</td></tr>
+      <tr><td class="nr">12 Geschäftsmodell (Preise, GTM)</td><td><span class="pill blau">KUNDENLASTIG</span></td><td>Master-Folie 11 (Struktur ohne Preise, Marge, Partner); Preise ins Sales-Deck und den Datenraum.</td></tr>
+      <tr><td class="nr">13 Roadmap</td><td><span class="pill gelb">AUFLÖSEN</span></td><td>In die Ask-Folie integrieren, wie im Master: Mittelverwendung ergebnisbezogen plus messbare Seed-Kriterien in den Notizen. Eine eigene Produkt-Roadmap lädt zur Feature-Diskussion ein.</td></tr>
+      <tr><td class="nr">14 Ask</td><td><span class="pill rot">ASK-DRIFT</span></td><td>Master-Folie 14 übernehmen: durchgerechneter Ask, Cap-Table-Donut, „Warum die Rechnung trägt" mit Break-even-Spanne.</td></tr>
+      <tr><td class="nr">15 Close</td><td><span class="pill gruen">PASST</span></td><td>Master-Klammer übernehmen („Jede Freigabe macht den nächsten Agenten klüger.").</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s4">
+  <div class="sechead"><span class="secno">04</span><h2>Was dem PPT für Investoren fehlt</h2><span class="secnote">das Delta zum Master, ein roter Punkt zuerst</span></div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev rot">ROT · VOR JEDEM VERSAND</span><h3>Der Ask-Stand im PPT ist mutmaßlich zwei Runden alt</h3></div>
+    <p>Der dokumentierte PPT-Stand trägt <b>250k für rund 10 Prozent</b>; der beschlossene Stand ist seit dem Master <b>500k für 17,5 Prozent</b> (post-money 2,86 Mio.), mit neu gerechneten Szenarien. Wenn das Beautiful-PPT irgendwo zirkuliert, während der Datenraum den neuen Stand erzählt, ist das exakt die Sorte Widerspruch, die wir diese Woche überall ausgebaut haben. Erster Handgriff nach dem Öffnen der Datei: Cover und Ask-Folie prüfen.</p>
+    <p style="margin-top:8px"><b>Nachtrag 25.08.:</b> Die hochgeladene Datei „Beautiful [Autosaved]“ trägt gar keinen Ask, sie ist die leere Vorlage (Sektion 06). Dieser Prüfpunkt bleibt offen und gilt der echten Consultry-Fassung.</p>
+  </div>
+
+  <p style="font-size:14.5px;margin:12px 0 8px">Dazu fehlen dem PPT alle Fortschritte seit dem 09.08., die der Master trägt:</p>
+  <div class="tblbox"><table>
+    <thead><tr><th>Fehlt im PPT</th><th>Wo es der Master hat</th></tr></thead>
+    <tbody>
+      <tr><td><b>Validierungsfolie</b> (Krallmann, LOI, Prototyp-Pfad, „jeden Monat fällt eine Annahme")</td><td>Folie 12</td></tr>
+      <tr><td><b>Zeitfenster sichtbar</b> (Lücke zwischen verdoppelter Nutzung und blockierter Freigabe)</td><td>Folie 4, KI-Karte</td></tr>
+      <tr><td><b>Moat als Mechanik</b> (Verbund, Rollen-Zugriff, „Berechtigungen gelten für Agenten wie für Menschen")</td><td>Folie 9</td></tr>
+      <tr><td><b>Unit Economics und Wertrechnung</b> (2.275 Euro je Berater und Monat, Kapazitätswert, Break-even-Spanne)</td><td>Folie 2, 3, 14</td></tr>
+      <tr><td><b>Team-Ehrlichkeit</b> (Vollzeit-Zeile, Dreiecks-Story, „Niemand muss uns den Kunden erklären")</td><td>Folie 13</td></tr>
+      <tr><td><b>Ehrlichkeits-Marker</b> (Zielannahmen gekennzeichnet, Herstellerstudien markiert, konservative Zählweise)</td><td>Fußnoten durchgehend</td></tr>
+      <tr><td><b>Q-und-A-Apparat</b> (Notizen: Preiswelt, Routing-Marge, Eigen-IP, Oversharing, Riplo, GTM-Pfad)</td><td>Speaker-Notes aller Folien</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s5">
+  <div class="sechead"><span class="secno">05</span><h2>Empfohlenes Deck-Betriebsmodell</h2><span class="secnote">ein Master, zwei Ableitungen</span></div>
+  <div class="verdict">
+    <b>Der Investor-Master (v10) ist die führende Quelle</b>, er trägt alle 100-plus zählgeprüften Patches dieser Woche. Das PPT sollte nicht parallel weiterleben, sondern eine von zwei Rollen bekommen: Entweder es wird <b>Folie für Folie auf den Master nachgezogen</b> (Mapping in Sektion 03 ist die Arbeitsliste), oder der Master wird als PDF exportiert und ersetzt das PPT als Versandfassung, während das PPT eingefroren wird. Parallelpflege erzeugt genau die Zwei-Wahrheiten-Risse, die der Grill v2 im Notizen-Apparat gefunden hat, nur diesmal zwischen Dateien. Die <b>kundenlastigen PPT-Folien</b> (Vorher/Nachher, Sechser-Diagnose, Demo-Tiefe, Preiskarte, Compliance-Beruhigung, OS-Vision) sind zusammen der <b>fertige Grundstock des Krallmann- und Sales-Decks</b>, sie werden nicht gelöscht, sie ziehen um.
+  </div>
+  <div class="strip">
+    <b>Stand nach dem Upload vom 25.08.:</b> Die drei Prüfpunkte sind an der hochgeladenen Datei geprüft und für sie <b>gegenstandslos</b>, denn die Datei ist die leere Vorlage; der volle Befund mit Folieninventar steht in <b>Sektion 06</b>. Für die echte Consultry-Fassung bleiben alle drei Punkte offen: der Ask-Stand auf Cover und Ask-Folie, die Platzhalter- und Branding-Bugs der v8-Linie, mögliche neue Folien seit dem 09.08.
+  </div>
+</section>
+
+<section id="s6">
+  <div class="sechead"><span class="secno">06</span><h2>Upload-Befund vom 25.08.: Die geprüfte Datei ist die leere Vorlage</h2><span class="secnote">alle 15 Folien einzeln gesichtet</span></div>
+  <div class="verdict">
+    Die Datei „Beautiful [Autosaved]“ (3,9 MB) wurde entpackt und Folie für Folie gesichtet. Ergebnis: Es ist die <b>unbefüllte Beautiful.ai-Vorlage „Seed Round Pitch Deck“</b>, nicht das Consultry-PPT. Kein Folientext, keine Zahl und kein Name darin stammt von Consultry; das Cover sagt es selbst („Seed Round Pitch Deck, Presentation Template“, Logo-Platzhalter „Your Logo“). Dazu ist die Datei ein <b>Bild-Export</b>: Jede Folie besteht aus genau einem Vollbild-JPG, es gibt <b>keinen editierbaren Text und keine Speaker-Notes</b> (einzige Notiz im ganzen Dokument ist ein Pexels-Videolink auf Folie 9). Ob auf dem anderen Desktop dasselbe Dokument offen war oder die echte Fassung, kann ich von hier nicht sehen; die hochgeladene Datei jedenfalls ist die Hülle.
+  </div>
+
+  <div class="tblbox" style="margin-top:14px"><table>
+    <thead><tr><th>Folie</th><th>Inhalt laut Sichtung (Vorlagen-Zustand, Originaltexte englisch)</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">1 Cover</td><td>„Seed Round Pitch Deck“, Untertitel „Presentation Template“, Platzhalter „Your Logo“</td></tr>
+      <tr><td class="nr">2 Mission</td><td>„Use this section for your mission statement.“</td></tr>
+      <tr><td class="nr">3 Problem</td><td>„Present The Problem“ mit Ausfüllanleitung: What, How painful, At what scale</td></tr>
+      <tr><td class="nr">4 Lösungssatz</td><td>„Condense your solution to a simple and powerful sentence.“</td></tr>
+      <tr><td class="nr">5 Lösung</td><td>„Your Solution“, Feature #1 bis #3 mit Blindtext, Telefon-Mockup</td></tr>
+      <tr><td class="nr">6 Traktion</td><td>Radialdiagramm Q-1 bis Q-4 mit Beispielwerten ($100, $76, $84, $45), Kachel „10,000 Daily Target“</td></tr>
+      <tr><td class="nr">7 Belege</td><td>„Supporting Data“: 72 % und 60 % als Beispielwerte</td></tr>
+      <tr><td class="nr">8 Zahlen</td><td>„Numbers“: Beispielbalken Costs $26m gegen Revenue $29m</td></tr>
+      <tr><td class="nr">9 Zielgruppe</td><td>Videofolie „We know our audience“ (Pexels-Link in der Notiz)</td></tr>
+      <tr><td class="nr">10 Marktgröße</td><td>„Market Size“: TAM 1B, SAM 660M, SOM 32.4M als Platzhalter; Fußzeile „©2022 Proprietary and Confidential“</td></tr>
+      <tr><td class="nr">11 GTM</td><td>„Our Go-To-Market Strategy“: drei Pfeile mit Ausfüllanleitung statt Inhalt</td></tr>
+      <tr><td class="nr">12 Segmente</td><td>„User Base Breakdown“: The Core group, Group 2, Group 3, Aufzählungen „group specifics“</td></tr>
+      <tr><td class="nr">13 Kundenmix</td><td>„Main Customer Breakdown“: Donut „Paid Users 2,400“ gegen „Free Users 4,800“</td></tr>
+      <tr><td class="nr">14 Roadmap</td><td>Generische Zeitleiste 2025 bis 2026: MVP, Beta Testing, Press + Hype, Refined Platform, User Growth, Product Changes</td></tr>
+      <tr><td class="nr">15 Team</td><td>„Meet the company“: sechs Stockfotos mit Vorlagen-Namen (Tina Boulde, Hank Star, Jeremy Winter, Fergus Hendy, George Price, Charlotte Lam)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="hit" style="margin-top:16px">
+    <div class="hithead"><span class="sev rot">WICHTIG</span><h3>Verwechslungsgefahr im Dateibestand</h3></div>
+    <p>Das Autosave mit dem Namen „Beautiful [Autosaved]“ enthält <b>kein Consultry-Material</b>. Wer das PPT nachziehen will, darf nicht in dieser Datei landen; sie taugt höchstens als Layout-Referenz der Vorlagenfamilie. Die echte Consultry-Fassung (im Review vom 09.08. als v8_2_9 mit Notizen und v9 dokumentiert) liegt woanders und war noch nicht hier.</p>
+  </div>
+  <div class="hit">
+    <div class="hithead"><h3>Bild-Export ist eine Sackgasse für das Nachziehen</h3></div>
+    <p>Beautiful.ai exportiert hier <b>Bilder statt Text</b>. Liegt auch die echte Fassung so vor, lässt sich in PowerPoint kein Wort ändern; Nachziehen hieße dann in Beautiful.ai selbst arbeiten oder die Folien nativ neu bauen. Der <b>Master liefert Text, Reihenfolge und Notizen fertig</b>, das macht den Neuaufbau zum Abschreiben statt zum Entwerfen. Für die reine Sichtprüfung (Ask-Stand, Platzhalter, Branding) ist ein Bild-Export dagegen kein Hindernis, wie diese Sektion zeigt.</p>
+  </div>
+  <div class="hit">
+    <div class="hithead"><h3>Was der Upload am Abgleich ändert: nichts, und das ist der Punkt</h3></div>
+    <p>Sektionen 02 bis 04 beschreiben die <b>dokumentierte v8/v9-Linie</b> aus dem Review vom 09.08., nicht diese Vorlagendatei; sie bleiben records-basiert gültig. Der Upload bestätigt nur, dass die echte Datei weiter aussteht. Solange sie fehlt, gilt das Betriebsmodell aus Sektion 05 unverändert: <b>v10 führt</b>, das PPT wird nachgezogen oder eingefroren.</p>
+    <div class="ziel"><b>Nächster Schritt:</b> In Beautiful.ai das Consultry-Deck öffnen, als PowerPoint exportieren und hier anhängen. Erkennbar ist die richtige Datei am Consultry-Cover statt „Seed Round Pitch Deck“. Dann folgt die verifizierte Nachzieh-Liste je Folie.</div>
+  </div>
+</section>
+
+<footer>
+  <b>Methode:</b> Struktur-Abgleich auf Basis des Deck-Reviews vom 09.08.2026 (v8_2_9 mit Speaker Notes und v9 Sketch, je 15 Folien, inklusive Slide-für-Slide-Notizen) gegen den Investor-Master v10 im Stand vom 18.08. abends. Die Desktop-Brücke zum PowerPoint-Fenster war in dieser Session nicht verbunden; alle Aussagen über den PPT-Bestand stützen sich auf die dokumentierte Fassung und sind bei Abweichung gegen die echte Datei zu verifizieren (drei Prüfpunkte in Sektion 05). Kundenlastig heißt hier nicht schlecht, sondern falsch adressiert: Jede blaue Folie ist im Sales-Deck wertvoll. <b>Nachtrag 25.08.:</b> Die Datei „Beautiful [Autosaved]“ (15 Folien, je ein Vollbild-JPG) wurde entpackt und vollständig gesichtet; Befund in Sektion 06. Die Aussagen über den Consultry-PPT-Bestand bleiben records-basiert.
+</footer>
+
+</div></div>
+</body>
+</html>

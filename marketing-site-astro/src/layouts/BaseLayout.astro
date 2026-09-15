@@ -1,0 +1,44 @@
+---
+import { products, siteOrigin, indexable } from '../content/products';
+import '../styles/global.css';
+import '../styles/hero-layout.css';
+import '../styles/hero-signals.css';
+interface Props { title: string; description?: string; path?: string; minimal?: boolean }
+const { title, description = 'Consultry verbindet Firmenwissen, Agenten und Verantwortung. Der KI-Arbeitskern für wissensintensive Unternehmen.', path = Astro.url.pathname, minimal = false } = Astro.props;
+const canonical = new URL(path, siteOrigin).href;
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" /><meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content={title} /><meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} /><meta property="og:image" content={`${siteOrigin}/hero/corpus-scene-720.webp`} />
+    <title>{title.includes('Consultry') ? title : `${title} · Consultry`}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt</a>
+    <header class="site-nav">
+      <div class="shell nav-inner">
+        <a class="wordmark" href="/" aria-label="Consultry Startseite"><img src="/images/consultry-logo.png" alt="" width="30" height="30" />Consultry</a>
+        {minimal ? <a class="back-link" href="/produkt">Produktübersicht</a> : <nav class="desktop-nav" aria-label="Hauptnavigation"><a href="/produkt" aria-current={path.startsWith('/produkt') ? 'page' : undefined}>Produkt</a><a href="/unternehmen" aria-current={path === '/unternehmen' ? 'page' : undefined}>Über Consultry</a><a href="/kontakt">Kontakt</a></nav>}
+        <a class="button button-small" data-waitlist-link href={minimal ? '#waitlist-form' : '/warteliste#waitlist-form'}>Auf die Warteliste<span aria-hidden="true">↗</span></a>
+        {!minimal && <details class="mobile-menu"><summary aria-label="Menü öffnen">Menü<span aria-hidden="true">+</span></summary><nav aria-label="Mobile Navigation"><a href="/produkt">Produkt entdecken</a><a href="/unternehmen">Über Consultry</a><a href="/kontakt">Kontakt</a><a data-waitlist-link href="/warteliste#waitlist-form">Auf die Warteliste</a></nav></details>}
+      </div>
+    </header>
+    <slot />
+    <footer class:list={['site-footer', { 'site-footer--minimal': minimal }]}>
+      <div class="shell">
+        {!minimal && <div class="footer-top"><div><a class="wordmark" href="/">Consultry</a><p>Wissen verbindet.<br />Verantwortung bleibt.</p></div><nav aria-label="Produktbereiche">{products.map(p => <a href={`/produkt/${p.slug}`}>{p.label}</a>)}</nav><nav aria-label="Unternehmen"><a href="/unternehmen">Über Consultry</a><a href="/kontakt">Kontakt</a><a data-waitlist-link href="/warteliste">Warteliste</a></nav></div>}
+        <div class="footer-bottom"><span>© 2026 H&W Digital Solutions UG</span><nav aria-label="Rechtliches"><a href="/legal/impressum">Impressum</a><a href="/legal/datenschutz">Datenschutz</a></nav></div>
+      </div>
+    </footer>
+    <script>import '../scripts/waitlist';</script>
+  </body>
+</html>

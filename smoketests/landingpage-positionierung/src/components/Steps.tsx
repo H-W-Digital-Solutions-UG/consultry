@@ -9,29 +9,29 @@ export interface Step {
 function StepIcon({ icon }: { icon: string }) {
   const base = `/hero/step-${icon}`;
   return (
-    <picture aria-hidden="true" className="-mt-2 -ml-2 block size-24">
-      <source type="image/avif" srcSet={`${base}-160.avif 160w, ${base}-320.avif 320w`} sizes="96px" />
-      <img src={`${base}-160.webp`} srcSet={`${base}-160.webp 160w, ${base}-320.webp 320w`} sizes="96px" alt="" width={160} height={160} loading="lazy" decoding="async" className="size-24" />
+    <picture aria-hidden="true" className="story-step-art">
+      <source type="image/avif" srcSet={`${base}-160.avif 160w, ${base}-320.avif 320w`} sizes="(min-width: 768px) 112px, 72px" />
+      <img src={`${base}-160.webp`} srcSet={`${base}-160.webp 160w, ${base}-320.webp 320w`} sizes="(min-width: 768px) 112px, 72px" alt="" width={160} height={160} loading="lazy" decoding="async" />
     </picture>
   );
 }
 
 /**
- * How-it-works as three concept columns: one object, a short title, one sentence.
+ * Compact concept columns become short editorial rows on mobile.
  * `sequence` adds an ordinal when the steps really are an order.
  */
 export function Steps({ steps, sequence }: { steps: Step[]; sequence: boolean }) {
   const Tag = sequence ? "ol" : "ul";
   return (
-    <Tag className="grid gap-8 md:grid-cols-3 md:gap-10">
+    <Tag className="story-steps">
       {steps.map((s, i) => (
-        <li key={s.title} className="border-t border-hair pt-5">
+        <li key={s.title} className="story-step">
+          <span className="story-index" aria-hidden={!sequence}>{String(i + 1).padStart(2, "0")}</span>
+          <div className="story-step-copy">
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
           {s.icon && <StepIcon icon={s.icon} />}
-          <h3 className="t-heading mt-2 flex items-baseline gap-2.5">
-            {sequence && <span className="t-mono text-brand-dark">{String(i + 1).padStart(2, "0")}</span>}
-            <span>{s.title}</span>
-          </h3>
-          <p className="t-body mt-2 max-w-[34ch] text-ink-soft">{s.text}</p>
         </li>
       ))}
     </Tag>

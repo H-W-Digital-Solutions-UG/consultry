@@ -6,7 +6,7 @@
  * consumers) and, only if `VITE_TRACK_ENDPOINT` is configured, to that endpoint
  * via `sendBeacon`. No identifiers, no cookies, no fingerprinting.
  */
-export type CtaLocation = "hero" | "hero_secondary" | "nav" | "how" | "band";
+export type CtaLocation = "hero" | "hero_secondary" | "nav" | "how" | "band" | "band_example";
 export type ScrollDepth = 25 | 50 | 75;
 
 export type TrackEvent =

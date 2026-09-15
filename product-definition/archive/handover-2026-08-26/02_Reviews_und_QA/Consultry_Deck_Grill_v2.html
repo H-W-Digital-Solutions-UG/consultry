@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultry · Deck-Grill v2</title>
+<style>
+  :root{
+    --brand:#AD2764; --brand2:#D2397E; --rose:#F9E2EC; --paper:#FFFBF9; --sand:#EDDFD7;
+    --ink:#2B2226; --mut:#7A6A70; --ok:#2E7D52; --okbg:#E3F2E9; --warn:#B07C10; --warnbg:#FBF0D8; --bad:#B3261E; --badbg:#FBE3E1;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--sand);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55}
+  .wrap{max-width:1160px;margin:0 auto;background:var(--paper);box-shadow:0 2px 40px rgba(90,40,60,.14)}
+  .inner{padding:40px 56px 64px}
+  @media(max-width:760px){.inner{padding:24px 18px 40px}}
+
+  .kicker{font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--brand);text-transform:uppercase}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:42px;line-height:1.12;margin:10px 0 12px}
+  h1 em{font-style:normal;color:var(--brand)}
+  .lede{font-size:17px;max-width:74ch;color:var(--ink)}
+  .meta{display:inline-block;margin-top:14px;background:var(--rose);border:1px solid #EFC9DB;border-radius:20px;padding:6px 14px;font-size:13px;color:#8A2352}
+
+  nav.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 8px}
+  nav.chips a{text-decoration:none;font-size:13px;font-weight:600;color:var(--brand);border:1.5px solid var(--brand2);border-radius:18px;padding:6px 13px;background:#fff}
+  nav.chips a:hover{background:var(--rose)}
+
+  section{margin-top:44px}
+  .sechead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--rose);padding-bottom:8px;margin-bottom:20px}
+  .secno{font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--brand)}
+  h2{font-family:Georgia,serif;font-size:26px}
+  .secnote{margin-left:auto;font-size:13px;color:var(--mut)}
+
+  .verdict{background:linear-gradient(135deg,#FDF4F8,#FFF9F4);border:1.5px solid #EFC9DB;border-radius:14px;padding:22px 26px;font-size:16.5px}
+  .verdict b{color:var(--brand)}
+
+  .wins{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  @media(max-width:860px){.wins{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.wins{grid-template-columns:1fr}}
+  .win{background:#fff;border:1px solid #EEE0E7;border-left:4px solid var(--ok);border-radius:10px;padding:12px 14px;font-size:13.5px}
+  .win b{display:block;font-size:12px;letter-spacing:.08em;color:var(--ok);text-transform:uppercase;margin-bottom:4px}
+
+  .hit{background:#fff;border:1px solid #EBD9E2;border-radius:14px;padding:20px 24px;margin-bottom:18px;box-shadow:0 1px 8px rgba(120,40,70,.05)}
+  .hithead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+  .sev{font-size:11px;font-weight:800;letter-spacing:.14em;border-radius:14px;padding:4px 12px}
+  .sev.rot{background:var(--badbg);color:var(--bad)}
+  .sev.gelb{background:var(--warnbg);color:var(--warn)}
+  .sev.klein{background:#ECEAF4;color:#4C4670}
+  .hit h3{font-family:Georgia,serif;font-size:20px}
+  .hit .wo{font-size:12.5px;color:var(--mut);margin-left:auto;white-space:nowrap}
+  .hit p{margin:8px 0;font-size:14.5px}
+  .beleg{background:var(--rose);border-left:4px solid var(--brand2);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13.5px}
+  .beleg .q{font-family:Georgia,serif;font-style:italic}
+  .beleg .src{display:block;margin-top:4px;font-size:12px;color:#8A2352;font-style:normal;letter-spacing:.04em}
+  .rechnung{background:#F7F3EE;border:1px dashed #D8C6BA;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13.5px;font-variant-numeric:tabular-nums}
+  .fix{background:var(--okbg);border-left:4px solid var(--ok);border-radius:8px;padding:10px 14px;margin-top:10px;font-size:14px}
+  .fix b{color:var(--ok)}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:12px;overflow:hidden}
+  .tblbox{overflow-x:auto;border:1px solid #EBD9E2;border-radius:12px}
+  th{background:var(--rose);color:#8A2352;text-align:left;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px}
+  td{padding:10px 12px;border-top:1px solid #F3E7ED;vertical-align:top}
+  td.nr{font-weight:800;color:var(--brand);white-space:nowrap}
+  .pill{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;border-radius:12px;padding:3px 10px;white-space:nowrap}
+  .pill.gruen{background:var(--okbg);color:var(--ok)}
+  .pill.gelb{background:var(--warnbg);color:var(--warn)}
+  .pill.rot{background:var(--badbg);color:var(--bad)}
+
+  .vn{display:grid;grid-template-columns:44px 1fr 1fr;gap:0;background:#fff;border:1px solid #EBD9E2;border-radius:12px;overflow:hidden;margin-bottom:10px}
+  @media(max-width:720px){.vn{grid-template-columns:36px 1fr}.vn .nach{grid-column:2}}
+  .vn .f{background:var(--rose);color:var(--brand);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .vn .vor,.vn .nach{padding:11px 14px;font-size:13.5px}
+  .vn .vor{color:var(--mut)}
+  .vn .vor s{text-decoration-color:#C9A2B4}
+  .vn .nach{border-left:1px solid #F3E7ED;font-weight:600}
+  .vn .nach::before{content:"besser: ";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ok);font-weight:800}
+
+  ol.plan{counter-reset:p;list-style:none;margin-top:14px}
+  ol.plan li{counter-increment:p;position:relative;background:#fff;border:1px solid #EBD9E2;border-radius:12px;padding:13px 16px 13px 58px;margin-bottom:10px;font-size:14px}
+  ol.plan li::before{content:counter(p,decimal-leading-zero);position:absolute;left:16px;top:12px;font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--brand2)}
+  .auf{float:right;font-size:11px;font-weight:800;letter-spacing:.1em;background:#ECEAF4;color:#4C4670;border-radius:12px;padding:3px 10px;margin-left:10px}
+
+  .strip{border:1.5px dashed var(--brand2);border-radius:12px;background:#FFF6FA;padding:14px 18px;font-size:13.5px;margin-top:18px}
+  .strip b{color:var(--brand)}
+  .done{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;border-radius:12px;padding:3px 10px;background:var(--okbg);color:var(--ok)}
+  .teil{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;border-radius:12px;padding:3px 10px;background:var(--warnbg);color:var(--warn)}
+  footer{margin-top:52px;border-top:2px solid var(--rose);padding-top:16px;font-size:12.5px;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="inner">
+
+<header>
+  <div class="kicker">Consultry · Investor-Deck · Grill Nr. 2 · vertraulich</div>
+  <h1>Die Bühne ist renoviert. <em>Der Souffleurkasten nicht.</em></h1>
+  <p class="lede">Zweiter Grill des Pitchdecks, Perspektive Business Angel, auf dem Stand nach den 28 Patches vom 17. August. Der Charakter dieses Grills ist anders als beim ersten: Auf den <b>Folien</b> gibt es kaum neue Baustellen. Das Risiko ist umgezogen und steckt jetzt in den <b>Speaker-Notes und im Zahlenraum dahinter</b>: alte Runde, alte Preise, drei Jahr-3-Ziele, drei Cap Tables. Ein Angel, der gut zuhört und einmal nachrechnet, findet den Riss zwischen Bühne und Textbuch. <b>Update vom selben Tag:</b> Notizen-Sweep und Preis-Alignment sind gefahren, H&amp;W ist auf Beschluss vorerst draußen. Die Statusmarken an den Treffern zeigen den neuen Stand.</p>
+  <span class="meta">Stand 18. August 2026, nach dem Sweep aktualisiert · Methode: Vollextraktion aller 15 Folien samt Notizen, Playwright-Render im Endzustand, Nachrechnung aller Geldzahlen</span>
+  <nav class="chips">
+    <a href="#s1">01 Verdikt</a><a href="#s2">02 Die acht Treffer</a><a href="#s3">03 Folien-Ampel v2</a><a href="#s4">04 Formulierungs-Nachschliff</a><a href="#s5">05 Einbauliste</a>
+  </nav>
+</header>
+
+<section id="s1">
+  <div class="sechead"><span class="secno">01</span><h2>Verdikt: investorenfest vorn, Fossilien hinten</h2><span class="secnote">erst das Lob, es ist verdient</span></div>
+  <div class="verdict">
+    Die Folien erzählen jetzt eine Geschichte mit einer Währung, und die Währung ist <b>Ehrlichkeit</b>: Zielannahmen sind markiert, Quellen stehen dran, der Ask ist hergeleitet. Damit hebt sich das Deck von fast jedem Pre-Seed-Deck ab. Genau deshalb wiegen die Restfunde schwer: Sie brechen ausgerechnet diese Währung, und zwar dort, wo Angels am genauesten hinsehen, bei <b>Geld, Markt und Notizen</b>. Nichts davon ist eine Neubau-Baustelle. Es ist ein Sweep: eine Wahrheit je Zahl, überall. Der Sweep ist seit dem 18. August gefahren, die Statusmarken unten zeigen, was noch offen ist.
+  </div>
+  <div class="wins">
+    <div class="win"><b>Cover</b>Die Kategoriezeile „KI-Plattform für IT- und SAP-Beratungen · betrieben im Tenant des Kunden" beantwortet die Was-ist-das-Frage in einer Zeile.</div>
+    <div class="win"><b>Folie 2</b>Die Fußnote ist das Vorbild des Decks: Zielannahme markiert, Quelle benannt, Rechenbasis offen. Der Punch setzt die Priorität.</div>
+    <div class="win"><b>Folie 8</b>Fairer Dreiklang, erst Stärke, dann Grenze. Und die beste neue Zeile des Decks: „Ein Werkzeug je Prozess entlastet niemanden. Es verschiebt nur."</div>
+    <div class="win"><b>Folie 9</b>Stärkste Folie: Tenant-Label im Bild, die 77 % als Statzeile, der Grenz-Punch. Die Notizen dazu sind Q&amp;A-fest.</div>
+    <div class="win"><b>Folie 14</b>„Der Ask ist durchgerechnet, nicht gewünscht" plus Zielannahmen-Marker direkt im Risiko-Block: genau der Ton.</div>
+    <div class="win"><b>Klammer</b>Folie 6 und Folie 15 schließen sauber: „Jedes Projekt verbessert die nächste Entscheidung. Jede Freigabe macht den nächsten Agenten klüger."</div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="sechead"><span class="secno">02</span><h2>Die acht Treffer</h2><span class="secnote">sortiert nach Sprengkraft im Q&amp;A</span></div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev rot">Treffer 1 · ROT</span><h3>Die Notizen erzählen die Firma von gestern</h3><span class="done">ERLEDIGT 18.08.</span><span class="wo">Notizen zu Folie 1, 6, 10, 14</span></div>
+    <p>Die Folien wurden am 17. August modernisiert, die Speaker-Notes nur teilweise. Wer mit Notizen präsentiert (der Notizen-Button ist eingebaut), liest an vier Stellen den Stand der Vorversion. Das ist der gefährlichste Einzelbefund des Decks: <b>Die Folie erzählt A, der Vortragende liest B.</b></p>
+    <div class="beleg"><span class="q">„Cap Table im Datenraum: Gründer 81 Prozent nach Pre-Seed" und im selben Notizblock „Gründer rund 66 Prozent nach Pre-Seed (Pool 9, Pre-Seed 25)". Die Folie zeigt: Gründer 73,5 %, Pool 9 %, Investoren 17,5 %.</span><span class="src">Notizen Folie 14 gegen Folie 14 · drei Cap Tables für dieselbe Runde</span></div>
+    <div class="rechnung"><b>Die Nachrechnung, die den Fossil-Beweis liefert:</b> Die Notiz nennt Renditeszenarien „das 37- bis 50-fache" bei Firmenwert 72 bis 96 Mio. Das passt nur zur alten Runde (500k für 25 %, post-money 2,0 Mio): 72 geteilt durch 2,0 ist 36, 96 geteilt durch 2,0 ist 48. Mit der heutigen Runde (500k für 17,5 %, post-money 2,86 Mio) sind es das 25- bis 34-fache. Ein Angel mit Taschenrechner findet das in einer Minute.</div>
+    <p>Dazu: Die Jahr-3-Zahl existiert dreifach (Notiz Folie 10 nennt als Ziel „rund 13 Mio. ARR", dieselbe Notiz weiter unten „der Jahr-3-Plan mit 3 Mio. ARR", Notiz Folie 14 „Zielplan 12 Mio."). Basisfall und Zielplan sind nicht getrennt beschriftet. Das Cover trägt als Notiz die komplette Regie einer Folie, die es nicht mehr gibt (die alte 11-Stunden-Kombirechnung mit 7.150 Euro). Die Notiz zu Folie 6 zitiert Folientext, der dort nicht mehr steht. Und die Stipendien-Rechnung („2 Gründer mal 12 Monate") braucht den erklärenden Halbsatz, warum der dritte Gründer nicht mitzählt, sonst stolpert das Q&amp;A auch hier.</p>
+    <div class="fix"><b>Fix:</b> Ein eigener Notizen-Sweep als Arbeitsgang: je Folie eine Wahrheit je Zahl. Cap Table auf 73,5/9/17,5 vereinheitlichen, „Pre-Seed 25" löschen, Multiples auf die 17,5-%-Welt neu rechnen (25- bis 34-fach bleibt eine starke Antwort) oder streichen, Jahr-3-Werte als Basisfall und Zielplan beschriften, Cover-Notiz durch eine echte 30-Sekunden-Eröffnung ersetzen. Umgesetzt am 18.08.: Cap Table einheitlich 73,5/9/17,5 mit Seed-Ausblick 55 bis 59 Prozent, Methodik sechs- bis achtfacher Umsatz (Basisfall 6- bis 8-fach, Zielplan 13 Mio. und 27- bis 36-fach, Verwässerungs-Caveat ergänzt), Cover-Notiz ist jetzt die 30-Sekunden-Eröffnung, Folie-6-Referenz korrigiert, Stipendien-Halbsatz zu Caspar ergänzt.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev rot">Treffer 2 · ROT</span><h3>Drei Preiswelten laufen parallel</h3><span class="done">ERLEDIGT 18.08.</span><span class="wo">Notizen Folie 10 und 11 gegen Preisüberschlag</span></div>
+    <p>Die Folie 11 selbst macht es richtig: Struktur zeigen, Preise in den Datenraum. Aber hinter der Folie existieren drei verschiedene Preisansagen, und je nachdem, wo ein Angel nachfragt, bekommt er eine andere:</p>
+    <div class="beleg"><span class="q">Notiz Folie 10: „50 Euro je Nutzer und Monat, 69 nach Produkt-Markt-Fit". Notiz Folie 11: „Basis 69 Euro, Volumen 139 Euro, dazu Plattformgebühr 500 Euro im Monat". Preisüberschlag im Datenraum: All-in-Sitz 149 beziehungsweise 189 Euro inklusive Token-Kontingent.</span><span class="src">drei Welten: 50/69 · 69/139 plus 500 · All-in 149/189</span></div>
+    <div class="rechnung"><b>Folgekette am 25k-Anker der Marktfolie:</b> Die Notiz leitet die 25.000 Euro Jahresvertragswert mit 23 Nutzern zu alten Preisen her (23 mal 69 mal 12 plus 6.000 ergibt 25.044). In der All-in-Welt tragen elf Sitze plus Plattformgebühr denselben Anker (11 mal 149 mal 12 plus 6.000 ergibt rund 25.700; ohne Plattformgebühr wären es 14 Sitze). Die Marktfolie hält, die Herleitung dahinter ist neu geschrieben.</div>
+    <div class="fix"><b>Fix:</b> Eine Preiswelt festlegen und überall durchziehen. Empfehlung: die All-in-Welt aus dem Preisüberschlag, denn „Ein Preis, alles drin" steht bereits auf der Folie, und der Beschluss, Modell- und Tokenkosten über die Consultry-Rechnung laufen zu lassen, stützt genau diese Welt. Umgesetzt am 18.08.: Die All-in-Welt steht in den Notizen zu Folie 10 und 11, der 25k-Anker ist neu hergeleitet (elf Sitze plus Plattformgebühr), die Folie-8-Notiz rechnet mit 25k ACV, Geldweg über die Consultry-Rechnung benannt. Offen bleibt nur der Datenraum-Abgleich vor dem Versand.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev rot">Treffer 3 · ROT im Q&amp;A</span><h3>Die Geldfolie verschweigt die Seed vor dem Break-even</h3><span class="wo">Folie 14 gegen Notizen Folie 10 und 14</span></div>
+    <p>Unter „Warum das Risiko klein ist" steht: „Break-even = 0,14 % des Einstiegsmarkts (20 bis 27 Kunden)". Die eigenen Notizen sagen aber: Jahr 1 endet bei rund 12 Kunden und 150k ARR, danach kommt die Seed über 1,5 bis 2,5 Mio. Der Break-even liegt also <b>planmäßig hinter der nächsten Finanzierungsrunde</b>. Ein Angel liest die Zeile deshalb andersherum: Das eigentliche Risiko ist die Seed, und der Block versucht, es wegzulächeln. Dazu die kleine Unsauberkeit: 0,14 % passt zu 20 Kunden, 27 Kunden sind 0,19 %.</p>
+    <div class="fix"><b>Fix:</b> Die Zeile ehrlich drehen: „Break-even bei 20 bis 27 Kunden (0,14 bis 0,19 % des Einstiegsmarkts), im Plan in Jahr 2". Und den Blocktitel von „Warum das Risiko klein ist" auf <b>„Warum die Rechnung trägt"</b> stellen. Die beiden ersten Zeilen (Infrastruktur ab Kunde 2, Deckungsbeitrag ab Monat 1) bleiben unverändert stark. Ehrlichkeit ist die Währung dieses Decks, ausgerechnet hier darf sie nicht wackeln.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev gelb">Treffer 4 · GELB</span><h3>Teamfolie: vier kleine Risse im besten Argument</h3><span class="teil">TEILERLEDIGT 18.08.</span><span class="wo">Folie 13</span></div>
+    <p>Das Team ist das stärkste Asset des Decks (zwei von drei stehen selbst im Einstiegsmarkt, der Dritte war neun Jahre die Einkäuferseite), aber die Folie leistet sich vier Unsauberkeiten: <b>Erstens</b> „Verhandelt genau die Angebote, die Modul 1 baut": Das Deck kennt seit dem 17. August nur noch Kreisläufe, „Modul 1" ist ein Fossil und für Fremde unlesbar. <b>Zweitens</b> „Führt mit H&amp;W den Nutzer #1": H&amp;W ist auf Beschluss vom 18.08. vorerst draußen, die Zeile heißt jetzt Baut die Plattform: Agenten, Datengrenze, Modellbetrieb; dieser Riss ist geschlossen. <b>Drittens</b> tragen Julian und Paul wortgleich dieselbe Zeile („2+ Jahre AI-getriebene Workflows im Beratungsbereich"), das wirkt wie Kopieren statt Profil. <b>Viertens</b> steht die Vollzeit-Frage (Caspar ab Monat 7) nur in den Notizen. Sie kommt im Gespräch immer, und wenn sie erst auf Nachfrage kommt, wirkt sie versteckt, obwohl die Notiz-Antwort stark ist.</p>
+    <div class="fix"><b>Fix:</b> Drei Zeilen bleiben zu ändern (Formulierungen in Sektion 04), die H&amp;W-Zeile ist bereits ersetzt. Die Vollzeit-Ehrlichkeit gehört als Pluspunkt auf die Folie: „Vollzeit ab Pilotstart, terminiert. Bis dahin lebendes Product Discovery im Zielmarkt."</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev gelb">Treffer 5 · GELB</span><h3>Validierungsfolie: fremde Logos, weiches „Validiert", LOI-Hold</h3><span class="wo">Folie 12</span></div>
+    <p>Auf der Trust-Folie prangen die Logos von DHL, DZ PRIVATBANK und wepa. Das sind <b>Kunden von Krallmann, nicht von Consultry</b>. Als abgedruckte Logos (nicht bloß Namensnennung) brauchen sie eine dokumentierte Freigabe, sonst ist die Vertrauensfolie selbst ein Vertrauensrisiko, und ein Angel mit Konzernvergangenheit fragt exakt danach. Zweitens: „VALIDIERT · Gespräche mit Beratungen" nennt keine Zahl. Ohne N liest ein Angel „wir haben geredet". Drittens bleibt der bekannte Hold: „Absichtserklärung (LOI) unterschrieben" darf erst raus, wenn der Status fix ist. Das ist kein neuer Fund, aber die Erinnerungsflagge gehört in jeden Grill, bis sie erledigt ist.</p>
+    <div class="fix"><b>Fix:</b> Krallmann-Freigabe für die Logo-Nutzung schriftlich einholen oder auf Namen in Textform wechseln. Gesprächszahl einsetzen („N Gespräche, davon X aus dem Einstiegsmarkt"), sonst das Wort „VALIDIERT" auf „GEPRÜFT" abrüsten. LOI-Zeile bleibt auf Hold bis Statusklärung.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev gelb">Treffer 6 · GELB</span><h3>Eine Statistik arbeitet gegen die eigene Karte</h3><span class="wo">Folie 4</span></div>
+    <p>Karte 4 („Steuerung reagiert nur") belegt sich mit: „73,4 % der Projekte kommen branchenweit pünktlich ans Ziel". Die Zahl arbeitet gegen die Karte: <b>Dreiviertel pünktlich klingt nach funktionierender Branche.</b> Erst die Drehung macht sie zum Beleg. Zweiter Fund auf derselben Folie: Die Kennzeichnungsregel wird nur halb gelebt. Folie 2 markiert ihre Zielannahme vorbildlich, aber „Zwei Drittel verschieben sogar Copilot" steht ohne sichtbare Quelle auf der Karte (CoreView, eine Herstellerstudie, steht nur in den Notizen), und die Atlassian-Statbox trägt keinen Anbieterstudien-Marker. Wer die eigene Sourcing-Disziplin zum Markenzeichen macht, muss sie auf jeder Folie zeigen.</p>
+    <div class="fix"><b>Fix:</b> Beleg drehen: „Gut jedes vierte Projekt verfehlt den Termin, die Überschreitung kostet im Schnitt 11,3 %" (beides aus demselben SPI-Benchmark, die 11,3 stehen schon in den Notizen). Quellkürzel „CoreView 2026, Herstellerstudie" sichtbar an die Copilot-Zeile, „Anbieterstudie" klein in die Atlassian-Quellzeile.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev klein">Treffer 7 · KLEIN</span><h3>Folie 3 bricht die eigene Fußnoten-Disziplin</h3><span class="wo">Folie 3</span></div>
+    <p>Zwei Dinge: Die Fußnote läuft randlos über die volle Breite bis an die Bildkante (auf kleineren Beamern klippt das Zeilenende), während Folie 2 den sauberen Rahmen vorführt. Und ihr fehlt genau der Marker, den Folie 2 hat: „Zielannahme, keine gemessene Einsparung". Dabei trägt Folie 3 die <b>stärkste Annahme des ganzen Zahlenteils</b>, die Übertragung des Feldversuchs auf alle 30 fakturierbaren Stunden. Kleiner Präzisionsgewinn obendrauf: Die Studie misst bewertete Qualität, nicht Qualität an sich.</p>
+    <div class="fix"><b>Fix:</b> Fußnote in den Content-Rahmen von Folie 2 setzen, Zielannahmen-Marker ergänzen, Statlabel auf „gut +40 % bewertete Qualität je Aufgabe" schärfen.</div>
+  </div>
+
+  <div class="hit">
+    <div class="hithead"><span class="sev klein">Treffer 8 · KLEIN</span><h3>Hausregel-Randfall: Gedankenstriche als Listenzeichen und in Notizen</h3><span class="teil">TEILERLEDIGT 18.08.</span><span class="wo">CSS und Notizen Folie 8</span></div>
+    <p>Der sichtbare Fließtext ist sauber. Aber drei CSS-Regeln zeichnen den Aufzählungspunkt als echtes Gedankenstrich-Zeichen (die Kartenlisten der Wettbewerbsfolie und zwei weitere Stellen, als CSS-Inhalt \2013 kodiert und damit für jeden Text-Check unsichtbar), und in den Notizen standen fünf echte Gedankenstriche; die Notizen sind seit dem 18.08. strichfrei. Wer die Hausregel ernst meint, zieht sie bis in die Listenzeichen durch, die Ask-Folie zeichnet ihre Marker bereits als neutrale Balken.</p>
+    <div class="fix"><b>Fix:</b> Die Notiz-Stellen sind umformuliert (erledigt 18.08.). Offen: drei CSS-Stellen auf Balken- oder Punktmarker umstellen, Aufwand Minuten.</div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="sechead"><span class="secno">03</span><h2>Folien-Ampel v2: Bühne und Souffleurkasten getrennt</h2><span class="secnote">neu in diesem Grill: zwei Ampeln je Folie</span></div>
+  <div class="tblbox"><table>
+    <thead><tr><th>Nr</th><th>Folie</th><th>Bühne (Folie)</th><th>Souffleur (Notizen)</th><th>Der eine Satz dazu</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">1</td><td>Cover</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Kategoriezeile sitzt; die Cover-Notiz ist seit dem Sweep eine echte 30-Sekunden-Eröffnung.</td></tr>
+      <tr><td class="nr">2</td><td>Zehn Stunden intern</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Das Vorbild: Rechnung offen, Zielannahme markiert, Punch gesetzt.</td></tr>
+      <tr><td class="nr">3</td><td>Beziehungsgeschäft</td><td><span class="pill gelb">GELB</span></td><td><span class="pill gruen">GRÜN</span></td><td>Fußnote randlos und ohne Zielannahmen-Marker, ausgerechnet bei der stärksten Annahme.</td></tr>
+      <tr><td class="nr">4</td><td>Der Faden reißt</td><td><span class="pill gelb">GELB</span></td><td><span class="pill gruen">GRÜN</span></td><td>Der 73,4-%-Beleg arbeitet gegen die Karte; Herstellerstudien-Marker fehlen sichtbar.</td></tr>
+      <tr><td class="nr">5</td><td>Leitsatz</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Tut genau eine Sache, und die richtig.</td></tr>
+      <tr><td class="nr">6</td><td>Drei Kreisläufe</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Folie stark; die Notiz nennt seit dem Sweep die echten Fundament-Bausteine.</td></tr>
+      <tr><td class="nr">7</td><td>Signal zum Angebot</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Caspars echter Fall, sauber erzählt, Demo-Anker inklusive.</td></tr>
+      <tr><td class="nr">8</td><td>Wettbewerb</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Fairness-Aufbau plus beste neue Zeile; Notizen bereinigt (Striche raus, ACV auf 25k), offen bleibt die SAP-Logo-Frage.</td></tr>
+      <tr><td class="nr">9</td><td>Verbund</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Beste Folie des Decks, Bild und Notizen Q&amp;A-fest.</td></tr>
+      <tr><td class="nr">10</td><td>Markt</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Folie hält; die Notiz führt jetzt eine Preiswelt und trennt Basisfall und Zielplan.</td></tr>
+      <tr><td class="nr">11</td><td>Partner und Erlös</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Struktur ohne Preise ist richtig; die Notiz nennt die All-in-Welt samt Q-und-A-Reserve.</td></tr>
+      <tr><td class="nr">12</td><td>Validierung</td><td><span class="pill gelb">GELB</span></td><td><span class="pill gruen">GRÜN</span></td><td>Fremde Logos ohne Freigabenachweis, „Validiert" ohne Zahl, LOI-Hold bleibt bestehen.</td></tr>
+      <tr><td class="nr">13</td><td>Team</td><td><span class="pill gelb">GELB</span></td><td><span class="pill gruen">GRÜN</span></td><td>Modul-1-Fossil, Doppelzeile, Vollzeit nur im Souffleurkasten; das H&amp;W-Rätsel ist seit dem 18.08. gelöst.</td></tr>
+      <tr><td class="nr">14</td><td>Ask</td><td><span class="pill gelb">GELB</span></td><td><span class="pill gruen">GRÜN</span></td><td>Risiko-Block verschweigt weiter die Seed vor dem Break-even (offen); die Notiz führt jetzt einen Cap Table und neu gerechnete Multiples.</td></tr>
+      <tr><td class="nr">15</td><td>Schluss</td><td><span class="pill gruen">GRÜN</span></td><td><span class="pill gruen">GRÜN</span></td><td>Klammer zu Folie 6 sauber geschlossen.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s4">
+  <div class="sechead"><span class="secno">04</span><h2>Formulierungs-Nachschliff</h2><span class="secnote">vorher gegen besser, einbaufertig</span></div>
+
+  <div class="vn"><div class="f">F13</div><div class="vor"><s>Verhandelt genau die Angebote, die Modul 1 baut</s></div><div class="nach">Verhandelt heute die Angebote, die Kreislauf 1 morgen baut</div></div>
+  <div class="vn"><div class="f">F13</div><div class="vor"><s>Führt mit H&amp;W den Nutzer #1 im Einstiegsmarkt</s></div><div class="nach">H&amp;W bleibt auf Beschluss draußen; eingebaut ist: Baut die Plattform: Agenten, Datengrenze, Modellbetrieb (erledigt 18.08.)</div></div>
+  <div class="vn"><div class="f">F13</div><div class="vor"><s>Julian und Paul wortgleich: 2+ Jahre AI-getriebene Workflows im Beratungsbereich</s></div><div class="nach">Julian: Baut seit zwei Jahren agentische Workflows für Beratungsarbeit. Paul: Übersetzt seit zwei Jahren KI-Workflows in Produkt- und Geschäftsentscheidungen.</div></div>
+  <div class="vn"><div class="f">F13</div><div class="vor">Caspar: Vollzeit-Status fehlt auf der Folie</div><div class="nach">Neue Zeile: Vollzeit ab Pilotstart, terminiert. Bis dahin lebendes Product Discovery im Zielmarkt.</div></div>
+  <div class="vn"><div class="f">F4</div><div class="vor"><s>73,4 % der Projekte kommen branchenweit pünktlich ans Ziel</s></div><div class="nach">Gut jedes vierte Projekt verfehlt den Termin, die Überschreitung kostet im Schnitt 11,3 % (SPI Research 2025)</div></div>
+  <div class="vn"><div class="f">F4</div><div class="vor"><s>Zwei Drittel verschieben sogar Copilot wegen Datenschutzrisiken.</s></div><div class="nach">Gleicher Satz, plus sichtbares Kürzel: (CoreView 2026, Herstellerstudie). Analog „Anbieterstudie" klein in die Atlassian-Quellzeile.</div></div>
+  <div class="vn"><div class="f">F14</div><div class="vor"><s>Break-even = 0,14 % des Einstiegsmarkts (20 bis 27 Kunden)</s></div><div class="nach">Break-even bei 20 bis 27 Kunden: 0,14 bis 0,19 % des Einstiegsmarkts, im Plan in Jahr 2</div></div>
+  <div class="vn"><div class="f">F14</div><div class="vor"><s>WARUM DAS RISIKO KLEIN IST</s></div><div class="nach">WARUM DIE RECHNUNG TRÄGT</div></div>
+  <div class="vn"><div class="f">F12</div><div class="vor"><s>VALIDIERT · Gespräche mit Beratungen</s></div><div class="nach">Mit Zahl: „N Gespräche, davon X aus dem Einstiegsmarkt". Ohne Zahl ehrlicher: GEPRÜFT statt VALIDIERT.</div></div>
+  <div class="vn"><div class="f">F3</div><div class="vor"><s>+40 % Qualität je Aufgabe</s></div><div class="nach">gut +40 % bewertete Qualität je Aufgabe, plus Fußnoten-Marker: Zielannahme, keine gemessene Einsparung</div></div>
+  <div class="vn"><div class="f">F8</div><div class="vor">SAP als Wettbewerbslogo im dritten Block</div><div class="nach">Prüfen: Ihr adressiert SAP-Beratungen. Deltek und Loopio tragen die Klasse allein, notfalls Kantata dazu.</div></div>
+  <div class="vn"><div class="f">F11</div><div class="vor">Q&amp;A-Reserve fehlt in der Notiz (erledigt 18.08.: steht jetzt drin)</div><div class="nach">Notiz-Zusatz für die Preisfrage: „Der Sitz kostet unter sieben Prozent des Kapazitätswerts, den er freisetzt" (Wertanker aus dem Preisüberschlag, mündlich).</div></div>
+
+  <div class="strip"><b>Sprachregeln, Kurzkontrolle:</b> Keine Gedankenstriche im sichtbaren Text: bestanden, mit dem Randfall der Listenzeichen (Treffer 8). Zielannahmen markiert: auf Folie 2 und 14 ja, auf Folie 3 fehlt der Marker. Herstellerstudien gekennzeichnet: in den Notizen ja, sichtbar auf Folie 4 nein. Keine Pauschal-Compliance-Versprechen: bestanden. „Wir hosten nichts": konsistent auf Cover, Folie 9 und in den Notizen.</div>
+</section>
+
+<section id="s5">
+  <div class="sechead"><span class="secno">05</span><h2>Einbauliste: zehn Schritte, priorisiert</h2><span class="secnote">S unter einer Stunde, M ein Arbeitsblock, E extern</span></div>
+  <ol class="plan">
+    <li><span class="auf">M</span><b>Notizen-Sweep</b> über Folie 1, 6, 10, 12, 14 <span class="done">ERLEDIGT 18.08.</span>: Fossile löschen, eine Wahrheit je Zahl, Cap Table 73,5/9/17,5, Multiples neu (25- bis 34-fach) oder raus, Jahr-3-Werte als Basisfall und Zielplan beschriften, Stipendien-Halbsatz ergänzen.</li>
+    <li><span class="auf">M</span><b>Preiswelt festlegen</b> und durchziehen <span class="done">ERLEDIGT 18.08.</span>: Empfehlung All-in 149/189 aus dem Preisüberschlag, alte 50/69- und 69/139/500-Angaben ersetzen, 25k-Anker neu herleiten (rund 14 All-in-Sitze).</li>
+    <li><span class="auf">S</span><b>Folie 14 drehen:</b> Blocktitel „Warum die Rechnung trägt", Break-even-Zeile mit Spanne 0,14 bis 0,19 % und „im Plan in Jahr 2".</li>
+    <li><span class="auf">S</span><b>Folie 13</b> <span class="teil">TEILERLEDIGT 18.08.</span>: H&amp;W ist raus, die Zeile heißt jetzt Baut die Plattform. Offen: Kreislauf 1 statt Modul 1, Doppelzeile differenzieren, Vollzeit-Zeile bei Caspar.</li>
+    <li><span class="auf">E</span><b>Folie 12 Freigaben:</b> Krallmann-Logo-Freigabe schriftlich oder Logos auf Textnamen umstellen; Gesprächszahl einsetzen.</li>
+    <li><span class="auf">S</span><b>Folie 4:</b> 73,4-%-Beleg zur Termin-Verfehlung drehen, Herstellerstudien-Kürzel sichtbar machen.</li>
+    <li><span class="auf">S</span><b>Folie 3:</b> Fußnote rahmen, Zielannahmen-Marker ergänzen, „bewertete Qualität" präzisieren.</li>
+    <li><span class="auf">S</span><b>Folie 10 Fußnote:</b> Halbsatz zur bewusst konservativen Zählung ergänzen (J62-Schnitt; bereinigt läge der Einstiegsmarkt eher bei 18 bis 19 Tsd., Feinschnitt im Datenraum). Macht die 14.500 zur Stärke statt zur Angriffsfläche.</li>
+    <li><span class="auf">S</span><b>Zeichen glätten</b> <span class="teil">TEILERLEDIGT 18.08.</span>: Notizen-Gedankenstriche sind raus; offen sind die drei CSS-Listenzeichen.</li>
+    <li><span class="auf">E</span><b>LOI-Status fixieren</b> vor jedem Versand (bestehender Hold, kein neuer Fund). Danach fällt auch die Sperre für die Meilenstein-Posts im LinkedIn-Plan.</li>
+  </ol>
+  <div class="strip"><b>Bewusst nicht angefasst:</b> Die Reihenfolge Wert vor Problem (Folie 2 und 3 vor 4) ist eine getroffene Entscheidung und funktioniert. Die Bewertung (500k für 17,5 %, post-money 2,86 Mio) liegt im DACH-üblichen Pre-Seed-Korridor und braucht keine Korrektur, nur konsistente Notizen. Der Anhang (Betriebswege-Folie, Datengrenze-Visual, Quellenblatt) bleibt als offener Punkt aus dem ersten Grill bestehen.</div>
+</section>
+
+<footer>
+  <b>Methode:</b> Vollextraktion aller 15 Folien samt Speaker-Notes aus dem Deck (Stand nach den 28 Patches vom 17. August), Playwright-Render aller Folien im Endzustand (1600 mal 900), Nachrechnung aller Geldzahlen. Kontrollrechnungen: 72 : 2,0 = 36 und 96 : 2,0 = 48 (alte Runde) gegen 72 : 2,86 = 25 und 96 : 2,86 = 34 (heutige Runde); 23 mal 69 mal 12 plus 6.000 = 25.044; 14 mal 149 mal 12 = 25.032; 20 : 14.500 = 0,138 %, 27 : 14.500 = 0,186 %. Abgeglichen gegen Bauplan und Preisüberschlag, Marktvalidierung und LinkedIn-Masterplan. Dieser Grill ändert nichts am Deck: Alle Fixes sind Vorschläge zum Freigeben, auf Zuruf setze ich sie als zählgeprüfte Patches um. Update 18.08.: 23 zählgeprüfte Patches gefahren (6 mal H&amp;W raus, 17 Sweep und Alignment); Treffer 1 und 2 erledigt, 4 und 8 teilweise, offen bleiben Treffer 3, 5, 6, 7 sowie CSS-Listenzeichen und die externen Punkte.
+</footer>
+
+</div></div>
+</body>
+</html>

@@ -1,0 +1,491 @@
+Mechanische HTML-Extraktion; kein Skript ausgeführt.
+Text aller Slide-Stages, einschließlich im Browser zunächst verborgener Inhalte.
+Quelle: archive/handover-2026-08-26/01_Deck_fuehrend/Consultry_Pitchdeck_v10.html
+
+FOLIE 1: Cover
+SLIDE-TEXT:
+Consulting im Zeitalter der Agenten
+Die richtigen Projekte gewinnen. Verlässlich liefern. Profitabel steuern.
+KI-Plattform für IT- und SAP-Beratungen · betrieben im Tenant des Kunden
+SPRECHER-NOTIZ:
+Eröffnung, 30 Sekunden: Consultry ist die KI-Plattform für IT- und SAP-Beratungen, betrieben im Tenant des Kunden. Kernformel: Wir bringen die KI zum Wissen, nicht das Wissen zur KI; die Agenten rechnen dort, wo die Verträge des Kunden schon sind, wir hosten nichts. Der Untertitel ist das Produktversprechen in drei Verben: die richtigen Projekte gewinnen, verlässlich liefern, profitabel steuern. Leitplanke früh setzen: Wir ersetzen keine Berater, wir geben ihnen ihre Arbeit zurück. Dann ohne Umweg in die Zehn-Stunden-Rechnung der nächsten Folie.
+
+FOLIE 2: Wandel
+SLIDE-TEXT:
+Zehn Stunden jeder Beraterwoche sind intern.
+Kein Kunde bezahlt sie.
+30 H FAKTURIERBAR
+10 H INTERN
+JE FAKTURIERBARER STUNDE
+Ø 162,50 €
+JEDE WOCHE DIESELBEN SCHLEIFEN
+Angebote
+Recherche
+Meetings
+Dokumentation
+repetitiv heißt:
+automatisierbar
+mit dem Agenten: 3,5 h wieder fakturierbar
+× 162,50 €/h
+× 4 Wochen
+JE BERATER UND MONAT
+≈ 2.275 €
+Ø-Tagessatz 1.300 € · BDU, Honorare im Consulting 2025 · Rechenbasis 4 Arbeitswochen je Monat · zehn interne Stunden: Annahme aus Kundengesprächen, oft eher mehr · 35 % davon sind die Zielannahme für den Consultry-Agenten, keine gemessene Einsparung
+Über ein Drittel der Zuarbeit wird wieder fakturierbar.
+Die zehn internen Stunden sind jetzt dran.
+SPRECHER-NOTIZ:
+Anker: der BDU nennt für 2025 einen durchschnittlich fakturierten Tagessatz von 1.300 Euro, rund 162,50 Euro je fakturierbarer Stunde, die Preistafel unten. Die Woche teilt sich in rund 30 fakturierbare und rund 10 interne Stunden; die zehn Stunden sind eine Annahme aus unseren Gesprächen, nicht gemessen, in vielen Häusern eher mehr. Stufe 2 benennt die interne Seite, beispielhaft: Angebote, Recherche, Meetings, Dokumentation, jede Woche dieselben Schleifen; der Merksatz darunter traegt das Argument, repetitiv heisst automatisierbar, genau deshalb ist die 35-Prozent-Annahme fuer diese Stunden vertretbar. Ab Stufe 2 dimmt die externe Wochenhaelfte, der Blick liegt auf den zehn internen Stunden. Stufe 3 ist die Umwandlung: interne Aufgaben sind repetitiv, deshalb setzen wir mit dem spezialisierten Agenten mindestens 35 Prozent an; mündlich die Fähigkeitsaussage, jede dieser Aufgaben mindestens doppelt so schnell. 3,5 der zehn Kacheln färben sich im Markenverlauf, der Strahl läuft über die Multiplikatoren in die Kachel: 3,5 Stunden mal 162,50 Euro mal vier Arbeitswochen sind rund 2.275 Euro je Berater und Monat, gut 26.000 Euro im Jahr bei 46 Arbeitswochen. Freie interne Stunden werden direkt fakturierbare Kapazität, das ist der sauberste Pfad. Ehrlich sagen: Zielannahme, keine gemessene Einsparung. Der Schlusssatz kündigt die zweite Seite an: die externe Arbeit kommt auf der nächsten Folie.
+
+FOLIE 3: Statement
+SLIDE-TEXT:
+Beratung bleibt ein
+Beziehungsgeschäft
+, auch im Zeitalter der KI.
+CONSULTRY AGENT
+MEETINGS UND WORKSHOPS
+KUNDE
+BERATER
++40 %
+bewertete Qualität je Aufgabe
+bessere Arbeit
+beim Kunden
+≈ 7,5 h
+je Woche zurück
+mehr Zeit
+beim Kunden
+Der Agent macht die Zuarbeit.
+Der Berater sitzt beim Kunden.
+Die Beziehung führt der Berater.
+Der Agent bleibt im Hintergrund.
+Und die freie Woche fließt zurück:
+Zeit beim Kunden, Qualität in der Arbeit.
+Feldversuch: Dell’Acqua et al., Harvard und BCG 2023, 758 Berater, +12,2 % mehr Aufgaben, 25,1 % schneller, gut 40 % höhere Qualität je Aufgabe · Tempowert: 7,5 h × 162,50 € × 4 Wochen ≈ 4.875 € je Berater und Monat, wirkt als Marge und Qualität · zusammen mit der Zuarbeit der Folie davor über 7.100 € je Monat · Zielannahmen, keine gemessene Einsparung
+SPRECHER-NOTIZ:
+Neues Bild, gleiche Dramaturgie wie die Folie davor: Lagebild, Fokus, Ergebnis. Stufe 1, das Lagebild: Berater und Kunde sitzen gemeinsam am Tisch, Meeting- und Workshop-Situation mit Flipchart; vor dem Kunden steht ein kleiner Bildschirm mit der gelieferten Arbeit, die Artefakte sind digital auf Kundenseite. Der Agent steht rechts neben der Szene, ausserhalb des Beziehungsrahmens, und speist einen feinen Strom fertiger Zuarbeit in den Tisch ein. Die weiche Flaeche mit rundem Rahmen liegt um die beiden Menschen, nicht um das Werkzeug: die Beziehung ist die Buehne, der Agent ist Hintergrund. Stufe 2, der Fokus: die Flaeche hinter der Szene vertieft sich und ihr Rahmen zieht im Markenverlauf nach; der Agent bleibt voll sichtbar, aber raeumlich draussen, die Beziehung steht vorn. Zwischen den beiden erscheinen zwei Gespraechsblasen, der Dialog vertieft sich, die Antworten des Beraters tragen den Pruefhaken. Die Zeile darunter: die Beziehung fuehrt der Berater. Stufe 3, das Ergebnis, holt die Zahlen auf die Folie: rechts die Qualitaet, gut 40 Prozent hoehere bewertete Qualitaet je Aufgabe im Feldversuch, und die Zeit, rund 7,5 Stunden je Woche zurueck, die Kapazitaetswerte nennt die Tonspur, bewusst nicht mehr die Folie: rund 4.875 Euro je Berater und Monat plus rund 2.275 Euro aus der Zuarbeit der Folie davor; die Qualitaet steigt sichtbar in der Szene: auf dem Flipchart zeichnet sich eine steigende Kurve, und auf dem Bildschirm vor dem Kunden erscheint das geprüfte Ergebnis mit Siegel. Feldversuch: Dell’Acqua und Kollegen, Harvard und BCG 2023, 758 BCG-Berater, echte Beratungsaufgaben mit generischer KI ohne Firmenkontext, 12,2 Prozent mehr Aufgaben, 25,1 Prozent schneller; uebertragen auf 30 fakturierbare Stunden rund 7,5 Stunden je Woche. Kehrseite fuer Nachfragen: ausserhalb der KI-Faehigkeiten lagen die Nutzer 19 Prozentpunkte haeufiger falsch, genau deshalb geprüfter Kontext, Quellenpflicht und menschliche Freigabe. Alles Zielannahmen, keine gemessene Einsparung. Anhang-Notiz, Quelle zum Stern auf dieser Folie: Dell’Acqua, Fabrizio, et al., Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality, Harvard Business School Working Paper 24-013, September 2023, Feldversuch gemeinsam mit der Boston Consulting Group, 758 Berater. Kennzahlen fuer die Anhangsseite: 12,2 Prozent mehr erledigte Aufgaben, 25,1 Prozent schneller, gut 40 Prozent hoehere bewertete Qualitaet gegenueber der Kontrollgruppe; generische KI, GPT-4 ohne Firmenkontext, deshalb Untergrenze fuer den spezialisierten Agenten.
+
+FOLIE 4: Problem
+SLIDE-TEXT:
+Zwischen Gewinnen, Liefern und Steuern reißt der Faden
+01
+Chancen werden zu spät erkannt
+02
+Zusagen verlieren sich beim Start
+03
+Erkenntnisse bleiben im Projekt
+04
+Steuerung reagiert nur
+05
+KI bleibt vor der Tür
+Was der Kunde nebenbei erwähnt, erreicht den Vertrieb
+erst Wochen später
+.
+Erfahrung, Fähigkeiten und Kapazität kommen
+nicht rechtzeitig zusammen
+.
+80 %
+der Abschlüsse gehen an den Anbieter, der
+schon vor dem ersten Gespräch Favorit war
+6sense, B2B Buyer Experience Report 2025, rund 4.000 Käufer
+Annahmen, Risiken und offene Fragen
+stehen im Angebot, nicht im Projekt.
+Das Team startet mit
+Suchen
+statt mit Arbeiten.
+47 %
+der Wissensarbeiter finden die Informationen nicht, die sie
+für ihre Arbeit brauchen
+Gartner Digital Worker Experience Survey 2023, 4.861 Beschäftigte
+=
+×2
+Die
+dritte S/4HANA-Migration
+, und noch immer
+keine Blaupause
+im Haus.
+Gelerntes landet im
+Archiv
+, statt das nächste Projekt schneller zu machen.
+50 %
+der Wissensarbeiter sagen: Teams im eigenen Haus arbeiten
+unwissentlich an denselben Dingen
+Atlassian, State of Teams 2025, 12.000 Wissensarbeiter, Deutschland eingeschlossen, Anbieterstudie
+20:30
+Chancen, Auslastung, Marge und Projektrisiken bleiben
+getrennte Sichten
+.
+Abweichungen fallen auf, wenn sie
+schon Geld gekostet haben
+.
+26,6 %
+der Projekte
+verfehlen den Termin
+, Überschreitung im Schnitt 11,3 %
+SPI Research, Professional Services Maturity Benchmark 2025
+KI
+Kundendaten dürfen nicht in
+frei zugängliche KI-Werkzeuge
+.
+Zwei Drittel
+verschieben sogar Copilot
+wegen Datenschutzrisiken
+(CoreView 2026, Herstellerstudie)
+.
+Diese Lücke ist
+das Zeitfenster
+: Wer den sicheren Weg zuerst anbietet,
+besetzt die Kategorie
+.
+77 %
+der Unternehmen nennen
+Datenschutz als Hemmnis
+, bei verdoppelter KI-Nutzung
+Bitkom, KI in Deutschland 2026, 604 Unternehmen ab 20 Beschäftigten
+Das Wissen
+arbeitet nicht durchgängig mit
+.
+SPRECHER-NOTIZ:
+Die vier Karten sind keine Sammlung einzelner Schmerzen, sondern eine gemeinsame Ursache: der Zusammenhang zwischen Gewinnen, Liefern und Steuern reisst ab. Karte 1: das Signal ist da, aber Erfahrung, Fähigkeiten und Kapazität kommen nicht rechtzeitig zusammen. Karte 2: was im Angebot zugesagt wurde, wandert nicht als Arbeitskontext ins Projekt. Karte 3: Entscheidungen und Abweichungen bleiben im Einzelprojekt und verbessern das nächste Angebot nicht. Karte 4: Steuerung sieht Abweichungen erst, wenn sie Geld gekostet haben. Belege für die Nachfragen, Karte für Karte: Karte 1 stützt sich auf den 6sense B2B Buyer Experience Report 2025 mit rund 4.000 befragten Käufern weltweit, davon 20 Prozent Kontinentaleuropa: vier von fünf Abschlüssen gehen an den Anbieter, der schon vor dem ersten Verkäufergespräch Favorit war, und in 95 Prozent der Fälle steht der spätere Gewinner bereits zu Beginn auf der Shortlist. Karte 2 nutzt die Gartner Digital Worker Experience Survey, veroeffentlicht Mai 2023, 4.861 Vollzeitbeschaeftigte in USA, Grossbritannien, Indien und China, Feldzeit September bis November 2022: 47 Prozent der digitalen Wissensarbeiter finden die Informationen oder Daten nicht, die sie fuer ihre Arbeit brauchen. Wenn nach der Folgewirkung gefragt wird, die aktuellste Zahl dazu: PMI, Pulse of the Profession 2026, veroeffentlicht Mai 2026, 31 Prozent der komplexen Projekte liefern den zugesagten Nutzen nicht in vollem Umfang, mehr als doppelt so haeufig wie Projekte insgesamt; PMI nennt zu dieser Ausgabe oeffentlich keine Stichprobengroesse, das offen sagen. Karte 3 nutzt Atlassian, State of Teams 2025, veroeffentlicht Maerz 2025, 12.000 Wissensarbeiter und 200 Fuehrungskraefte in USA, Grossbritannien, Australien, Indien, Deutschland und Frankreich: jeder zweite sagt, Teams im eigenen Unternehmen arbeiten unwissentlich an denselben Dingen; dieselbe Studie nennt 25 Prozent der Arbeitszeit fuer die Suche nach Antworten. Wichtig: Atlassian ist Anbieter, also als Anbieterstudie kennzeichnen, dafuer sehr grosse offengelegte Stichprobe mit Deutschland darin. Falls jemand eine institutionelle Quelle will: APQC, Oktober 2025, 1.000 Befragte, 92 Prozent der Unternehmen sichern das Wissen ausscheidender Mitarbeitender nicht systematisch. Karte 4, auf der Folie gedreht als 26,6 Prozent verfehlen den Termin: SPI-Benchmark 2025 nennt 73,4 Prozent pünktlich gelieferte Projekte und 11,3 Prozent durchschnittliche Projektüberschreitung, dazu 66,4 Prozent durchschnittliche fakturierbare Auslastung. Deltek berichtet als Anbieterstudie, dass nur 22 Prozent der kleinen und mittleren projektbasierten Firmen eine vollständig integrierte Sicht auf ihren Betrieb haben. Die Querschnittszeile nutzt die Bitkom-Studie Kuenstliche Intelligenz in Deutschland 2026, 604 Unternehmen ab 20 Beschaeftigten: 77 Prozent nennen Datenschutzanforderungen als Hemmnis, bei verdoppelter Nutzung (41 nach 17 Prozent im Vorjahr), zugleich das Why-now. Zweite Zahl auf der Karte: CoreView, State of Microsoft 365 Security and Governance 2026, 66 Prozent verschieben oder stoppen Copilot wegen Datenschutzrisiken, auf Vorstandsebene 75 Prozent, Herstellerstudie, so kennzeichnen. Fuer die Tonspur: ESCRIBA Juni 2026, 42,7 Prozent nutzen KI-Werkzeuge ohne Freigabe, rund 13 Prozent davon mit Kundendaten, der stille Abfluss laeuft also laengst, nur unkontrolliert. Diese Zeile ist bewusst keine fünfte Problemkarte, sondern zeigt, dass selbst dort, wo allgemeine KI helfen könnte, die reale Nutzung an Freigabe und Datenschutz scheitert. Alle Zahlen belegen das Marktproblem, keine bereits erreichte Consultry-Wirkung. Übergang zu Folie 5, das Fenster laut aussprechen: Die Nutzung hat sich verdoppelt, die Freigaben stehen still. Genau diese Lücke ist das Zeitfenster, und wer den sanktionierten Weg zuerst anbietet, besetzt die Kategorie, bevor sich die Rollout-Blockade löst.
+
+FOLIE 5: Leitsatz
+SLIDE-TEXT:
+MIT CONSULTRY
+Das Wissen der ganzen Firma
+arbeitet mit
+.
+SPRECHER-NOTIZ:
+Direkte Antwort auf die Problem-Folie: dort arbeitet das Wissen nicht mit, hier arbeitet es mit. Der Kicker MIT CONSULTRY macht die Auflösung explizit, erst die Marke, dann der Satz. Kurz stehen lassen, dann zeigt die Architektur, wie es gebaut ist.
+
+FOLIE 6: Modul-Fundament
+SLIDE-TEXT:
+Ein Produkt. Drei Kreisläufe, die voneinander lernen.
+EIN KERNPRODUKT
+Verifiziertes Firmengedächtnis
+Kunden · Fähigkeiten · Angebote · Projekte · Entscheidungen
+Freigegebene Daten- und Modellwege
+Schutzklasse · Rolle · Anbieter · Region · Aufbewahrung · Protokollierung
+KREISLAUF 1
+Geschäftschancen
+Signale erkennen, belegt anbieten.
+KREISLAUF 2
+Projektarbeit
+Zusagen umsetzen, Wissen sichern.
+KREISLAUF 3
+Steuerung
+Abweichungen sehen, entscheiden.
+Einzeln wäre jeder nur ein weiteres Werkzeug.
+Zusammen sind sie das Gedächtnis des Hauses.
+Vor jeder KI-Verarbeitung gilt der Weg,
+den dieser Kunde freigegeben hat.
+Was einmal erarbeitet wurde, bleibt im Haus.
+Das nächste Projekt fängt nicht bei null an.
+Jedes Projekt verbessert
+die nächste Entscheidung.
+SPRECHER-NOTIZ:
+Strategische Antwort auf die Fundament-Frage: Gebaut wird OS-first, verkauft wird über den Angebots-Kreislauf. Niemand kauft ein Fundament, aber jeder kauft messbar mehr Angebote. Ausgeliefert wird der Kern aus drei Kreisläufen, sie sind nicht einzeln buchbar, weil sie auf demselben Datenmodell laufen. Der Wedge liegt deshalb nicht im Produktumfang, sondern erstens im Markt, zuerst Boutique- und mittelgroße Beratungen in DACH, und zweitens im Scope: kein eigenes CRM, kein eigenes ERP, kein Rip-and-Replace. Rip-and-Replace verlängert den Sales-Zyklus und stellt uns gegen HubSpot und DATEV. Stattdessen docken wir per MCP an: Bestandsdaten aus CRM und ERP (Salesforce, HubSpot, DATEV), Dokumente und E-Mail (SharePoint, Drive, Outlook) sowie Git-Repos und Tickets (GitHub, Jira) werden beim Onboarding importiert. Der Korpus startet gefüllt, Tag-1-Wert, kein Kaltstart wie beim klassischen Wissensmanagement. Wichtig in der Story: Import allein wäre nur ein Suchindex über unaufgeräumte Daten, das kann Copilot auch. Erst Quellenpflicht, Freigaben und Versionierung machen daraus den geprüften Korpus, den niemand nachladen kann. Über die Zeit werden wir so zum System of Record des Beratungsbetriebs. Das Fundament heißt im Produkt Consultry Control Plane, der Name fällt mündlich, auf der Folie stehen die Bausteine Verifiziertes Firmengedächtnis und Freigegebene Daten- und Modellwege, die Details kommen im Verbund-Bild. Klick-Führung: Stufe 1, die drei Kreisläufe greifen ineinander, einzeln wären es drei Werkzeuge. Stufe 2, vor jeder KI-Verarbeitung greift der Weg, den dieser Kunde freigegeben hat: Schutzklasse, Rolle, Anbieter, Region, Aufbewahrung. Das ist Querschnittsfähigkeit, kein viertes Modul. Stufe 3, jede Nutzung schreibt zurück, das Firmengedächtnis wächst, daraus entstehen Wechselkosten. Keine pauschale Rechtskonformität behaupten. Belastbar ist: sensible Beratungsarbeit läuft nur über einen dokumentierten, kundenspezifisch freigegebenen Daten- und Modellweg.
+
+FOLIE 7: Produkt-Loop
+SLIDE-TEXT:
+Vom Signal zum belegten Angebot
+SCHRITT 1
+KUNDE
+BERATER
+Wir stellen bald auf
+SAP S/4HANA um.
+Nebensatz im Termin
+Der Kunde sagt es
+nebenbei
+. Der Agent
+erfasst das Signal
+.
+SCHRITT 2
+Entscheidung am selben Tag
+Der
+Vertrieb entscheidet
+, ob die Firma anbietet.
+Tag 0
+SCHRITT 3
+Rahmenvertrag
+SAP-Projektbericht
+Offene Frage
+Entwurf mit Belegen
+Jede Aussage hat eine Quelle
+oder ist als offene Frage markiert.
+Stunden
+Heute bleibt dieser Satz
+wochenlang liegen
+, bis ihn jemand zufällig aufgreift.
+SPRECHER-NOTIZ:
+Der echte Fall aus Caspars Vertriebsalltag: Ein Bestandskunde erwähnt nebenbei die geplante Umstellung auf SAP S/4HANA. Heute bleibt der Satz wochenlang liegen. Mit Consultry: Agent erfasst das Signal, Vertrieb entscheidet am selben Tag, Entwurf kommt belegt aus dem Bestand, Senior prüft. Kernablauf der ersten Version. Live-Demo anbieten. Der Fall zieht sich bewusst durch das ganze Deck: die dritte S/4HANA-Migration ohne Blaupause auf der Problemfolie, das Signal hier, und im Gespräch weitergedacht bis zur Abweichung. Fortsetzung mündlich: in der Voranalyse zeigt sich eine deutlich schlechtere Stammdatenqualität als im Angebot angenommen. Consultry verbindet die Abweichung mit Leistungsumfang, Besetzung, Termin und Marge, bereitet eine gesonderte Datenbereinigungsphase vor, der Mensch entscheidet. Die verifizierte Erkenntnis wird als Regel für die nächste SAP-Chance vorgeschlagen: Datenqualität vor verbindlicher Schätzung prüfen.
+
+FOLIE 8: Wettbewerb
+SLIDE-TEXT:
+Bestehende Werkzeuge lösen je ein Teil
+?
+Copiloten und Assistenz-KI
+Stark
+bei Suche, Texten und freien Abläufen
+Eine Freigabe fürs ganze Haus kennt
+keinen einzelnen Kundenvertrag
+Kontext muss
+jedes Mal neu
+mitgegeben werden
+M365 Copilot
+ChatGPT
+Claude
+✓ Consultry:
+Ergebnisse im Arbeitsschritt, auf geprüftem Kontext.
+KI-Baukästen
+Stark
+bei frei konfigurierbaren Agenten-Abläufen
+Jeder Ablauf ist
+Bau- und Wartungsarbeit
+Braucht
+Experten
+oder
+Beraterzeit
+n8n
+Make
+✓ Consultry:
+Der Kreislauf kommt fertig, gewartet, mit Freigaben.
+ENTSCHEIDUNG
+ANGEBOT
+PROJEKT
+?
+Angebots- und Projektsoftware
+Stark
+bei Antwortbibliotheken, Ressourcen und Prognose
+Endet beim Angebot oder
+beginnt erst im Projekt
+Der
+Weg zur Entscheidung
+bleibt außerhalb
+✓ Consultry:
+Ein Kontext von der Chance bis zur Entscheidung.
+Ein Werkzeug je Prozess entlastet niemanden.
+Es verschiebt nur.
+SPRECHER-NOTIZ:
+Headline-Logik: Einzelschritte zu optimieren ist gut, aber austauschbar. Unser Unterschied ist der verbundene, gesicherte Betrieb. Drei Werkzeugklassen, bewusst fair beschrieben: erst was sie gut koennen, dann was sie nicht abdecken. Klassen. 1) Generische Copiloten und Work-KI (M365 Copilot, ChatGPT, ClickUp Brain): verlangen Prompt- und Kontextwissen, jedes Mal neu verlinken, immer neue In-Depth-Prompts mit denselben Phrasen: Prompt-Fatigue, Prompts und Resultate verlieren Genauigkeit. Non-AI-Natives bleiben außen vor; Consultry liefert Ergebnisse im Arbeitsschritt, auf geprüftem Kontext. 2) AI-Baukästen (n8n, Zapier, Make): Custom-Implementierung ist möglich, aber sehr aufwändig. Jede Firma baut und pflegt eigene Flows, jede Prozessänderung ist Handarbeit, kein Beratungs-Datenmodell, kein geprüftes Wissen. Wir liefern den Kreislauf fertig, gewartet, mit Governance. 3) KI-CRMs (Attio, HubSpot Breeze): Lead-Maschinen, viel Volumen, generische Ansprache. Datenmodell sind Kontakte und Deals, nicht Projekt, Referenz und Auslastung. Sie enden beim Abschluss, Agenten optimieren Nachrichten-Volumen; Consulting-Aufträge entstehen über Vertrauen im Bestand. Kein geprüfter Korpus, keine Delivery. Q-und-A-Saetze: Selber machen heisst, ein zweites Produkt neben dem eigenen Geschaeft zu betreiben, zwei bis drei Engineers dauerhaft gegen rund 25.000 Euro ACV, Faktor zwanzig, und deren Stunden waeren fakturierbar. Microsoft verdient an der Lizenz, wir am gelungenen Projekt. Reserve-Punchline: Der Unterschied ist der geschlossene Arbeits- und Lernzusammenhang mit klaren Regeln fuer sensible Daten. Einwand-Reserve PSA-Tools (Kantata, Rocketlane): verwalten Arbeit, erledigen sie nicht; nichts lernt aus dem Projekt. Der eine Satz dazu: Wohin die KI denkt, überlassen alle drei dem Zufall: einem Prompt, einem Baukasten, der schieren Masse an Daten. Bei Consultry steuern geprüfter Korpus, Quellenpflicht und Freigaben die Denkrichtung der Agenten. Überleitung: die nächste Folie zeigt, was wir bauen und warum wir gewinnen. Kategorie-Validierung und Riplo-Story stecken hier in den Notizen. Einwand Microsoft und Copilot nicht defensiv beantworten, sondern sachlich abgrenzen: Copilot und vergleichbare horizontale Assistenten sind stark bei Suche, Inhaltserstellung und frei konfigurierbaren Abläufen. Was sie nicht abbilden, ist der verifizierte Beratungskontext über Geschäftschance, Projektarbeit und Steuerung und die Frage, welcher Verarbeitungsweg je Kunde, Projekt und Datenklasse freigegeben ist. Eine allgemeine Unternehmensfreigabe ersetzt keinen kundenspezifisch freigegebenen Daten- und Modellweg. Keine Aussage darüber treffen, was Microsoft bauen kann oder nicht bauen wird. Der eine Satz: Microsoft verdient an der Lizenz, wir am gelungenen Projekt. Muster: Salesforce neben Oracle, Figma neben Adobe, DATEV neben IBM.
+
+FOLIE 9: Verbund
+SLIDE-TEXT:
+Der Vorsprung wächst mit geprüftem Kontext und freigegebener KI
+1 BERATUNGSMODELL
+Wir modellieren die Beratung, nicht nur Dokumente.
+Kunden, Fähigkeiten, Chancen, Zusagen und Projekte als
+verbundene Entitäten
+. Erst darauf können Agenten
+planen und Engpässe erkennen
+.
+2 FREIGEGEBENE KI
+Jede Verarbeitung läuft über einen erlaubten Weg.
+Schutzklasse, Modell, Anbieter, Region
+und Kundenvertrag bestimmen, was zulässig ist. Kein Weg, keine Verarbeitung. Und jeder sieht nur, was er sehen darf:
+Berechtigungen gelten für Agenten wie für Menschen
+.
+3 VERIFIZIERTES LERNEN
+Erst geprüft, dann Firmenwissen.
+Grundlage, Unsicherheit und Auswirkung
+bleiben sichtbar. Bindende Entscheidungen brauchen eine
+menschliche Freigabe
+.
+IM TENANT DES KUNDEN · WIR HOSTEN NICHTS
+77 % NENNEN DATENSCHUTZ ALS KI-HEMMNIS · BITKOM 2026
+QUELLEN
+CRM · Dateien · Kommunikation
+FIRMENGEDÄCHTNIS
+Berater · Skills · Projekte
+AGENT-SANDBOX
+Berater und Agenten am Task
+ENTSCHEIDUNGEN
+Ergebnis · Beleg · neues Wissen
+FREIGEGEBENER WEG
+JE KUNDE
+EU-Bereitstellung
+Im Vertrag des Kunden
+Kundeneigener Betrieb
+1
+2
+3
+Berater · Skills · Projekte
+1
+EU-Bereitstellung
+Im Vertrag des Kunden
+Kundeneigener Betrieb
+2
+Ergebnis · Beleg · neues Wissen
+3
+ZUGRIFF JE NUTZER UND ROLLE
+Es rechnet dort, wo eure Verträge schon sind.
+Die Daten überschreiten keine weitere Grenze.
+SPRECHER-NOTIZ:
+Kernformel fuer diese Folie: Wir bringen die KI zum Wissen, nicht das Wissen zur KI. Betriebsmodell in einem Dreisatz: Wir hosten Ihre Daten nicht, niemand Neues hostet Ihre Daten, es rechnet dort, wo Ihre Vertraege schon sind, und wir betreiben es. Souveraenitaet: Faellt ein Anbieter aus, wechseln wir das Modell, nicht den Datenraum, die Modellwahl ist Konfiguration. Reserve-Satz: Andere geben der KI Dokumente, wir geben ihr das Modell eurer Beratung, verknuepft und geschuetzt. Claim 3 wechselt von Compliance auf Souveränität, weil DSGVO und EU AI Act als Behauptung Table Stakes sind, als Konsequenz aber ein Marktzugangsargument: Beratungen halten fremde Mandantendaten treuhänderisch. Claim 1 ist jetzt das Domaenenmodell selbst, nicht nur das Firmengedaechtnis: Berater mit Skill-Profil, Kompetenz, Historie und Auslastung als zentrale Entitaet, dazu Projekte, Angebote und Ablaeufe. Das ist im agentischen Kontext der eigentliche Unterschied: horizontale Assistenten haben Chat und Dokumente, aber keine typisierten Entitaeten, auf denen ein Agent planen, zuordnen und Engpaesse erkennen kann. Der Compounding-Effekt, mit jedem Projekt waechst der Vorsprung, ist die Folge daraus. Claim 2 bekommt die konkreten Kollaborationsformen. Bild: Schwungrad statt Architekturdiagramm, weil Investoren Kreislauf und Burggraben lesen, nicht Systemgrenzen. Links Berater und Agenten an denselben Tasks, Mitte das Schwungrad mit dem Firmengedaechtnis, rechts austauschbare Modelle am Rand, aussen der EU-Perimeter. Einwand Bedrock und Foundry sind US-Hyperscaler: richtig, deshalb die Formulierung Modellwahl ist Konfiguration, nicht Architektur, inklusive managed open-weight und eigenem Modell im EU-Perimeter. Wichtig zur Modellfrage: wir zeigen bewusst keine austauschbare Lieferantenwand. Derselbe Consultry-Arbeitsfluss läuft je Kundenregel über einen anderen freigegebenen Verarbeitungsweg, zum Beispiel eine europäische Bereitstellung, Amazon Bedrock im bestehenden AWS-Vertragsrahmen oder Microsoft Foundry im bestehenden Azure-Vertragsrahmen. Das sind Herstelleroptionen, kein automatischer Rechtsnachweis. Konfiguration, Rechtsgrundlage, Schutzbedarfsprüfung und Vertragskette bleiben Teil der Einführung. Wir behaupten weder pauschal DSGVO-Konformität noch dass keine neuen Auftragsverarbeitungsverträge nötig wären. IP-Reserve, falls die Frage nach dem eigenen Wissen kommt: Das Firmengedächtnis mit Methoden, Templates und Angebotsbausteinen ist die IP des Hauses; es bleibt im Tenant, keine Eingabe wird zu Trainingsdaten eines fremden Modells, und der Nachweis steht im Protokoll und im Abuse-Monitoring-Opt-out. Rollenfrage konkret: Die Agenten arbeiten je Nutzer im Rahmen von Entra-Identität und Sites.Selected-Freigaben; niemand sieht durch einen Agenten etwas, das er nicht auch selbst öffnen dürfte. Das ist die direkte Antwort auf den Oversharing-Blocker, der zwei Drittel der Copilot-Rollouts aufhält.
+
+FOLIE 10: Markt und Modell
+SLIDE-TEXT:
+Von unten gerechnet: 14.500 Beratungen im Einstiegsmarkt
+Jahr 1
+DACH-Fokus
+Jahr 2
+Expansion Europa (EU)
+Jahr 3+
+International, Partner-Ökosystem
+14.500 Beratungen
+Einstiegsmarkt: SAP, IT, Digitalisierung, Prozesse
+Jahr 1 · adressierbar
+€360 Mio.
+≈ 4 × DACH
+rund 65.000 Management- und IT-Beratungen in Europa, ohne Softwarehäuser
+Jahr 2 · erreichbarer Markt (SAM)
+≈ €1,6 Mrd.
+≈ 20 × DACH
+International über Partner: der Weltmarkt für Beratung
+Jahr 3+ · Honorarvolumen der Branche, zur Einordnung · kein SAM
+€300 Mrd.+
+Der Plan ist konservativ. Der Markt ist es
+nicht
+.
+Bottom-up: Zahl der Beratungen × ≈ 25 T€ Jahresvertragswert · Zielkunden: Beratungen ab 5 Beschäftigten oder 750 T€ Umsatz · SAM: Eurostat 2024, 70.22 Unternehmensberatung + 62.02 IT-Beratung ab 5 Beschäftigten, ohne Softwareentwicklung (62.01) und PR (70.21) · BDU 2025 · Einstiegsmarkt konservativ gezählt (J62-Schnitt), bereinigt 18 bis 19 Tsd., Feinschnitt im Datenraum · Darstellung nicht maßstabsgetreu
+SPRECHER-NOTIZ:
+Markt: TAM = gesamter DACH-Beratungsmarkt, rund 19.000 Firmen mit 10 bis 249 MA, rund 470 Mio. bei 25k Schnitt, inkl. NACE M70.2 (Feinschnitt im Datenraum). Einstiegsmarkt: IT-, Digitalisierungs-, Prozess- und Security-Beratungen (NACE J62): Deutschland 12.097 (9.200 Boutique, 2.900 wachsend), Österreich 1.214, Schweiz geschätzt 1.150. Wer KI an seine Kunden verkauft, kauft KI zuerst, genau unser Profil und Netzwerk (Krallmann). Quelle Eurostat SBS 2023, Bänder geschätzt: Boutique bis 30, wachsend 31 bis 200. Zählweise entschieden, steht so in der Fußnote: Einstiegsmarkt bewusst konservativ als J62-Schnitt; der bereinigte Schnitt 62.02 plus 70.22 ab 5 Beschäftigten läge bei 18 bis 19 Tausend Firmen und wird im Datenraum als Feinschnitt geführt. Modell, mündlich: All-in-Sitz 149 Euro je Monat im Standardweg, 189 im EU-Weg, Token-Kontingent enthalten; Volumenstufe und Details im Datenraum. Plan rechnet Kundenzahl mal blended 15k ACV, konservativer als die 25k im SAM. Jahr-3-Zielplan: 0,8 Prozent des EU-SAM. Herleitung EU-SAM, bottom-up aus Eurostat, Datenjahr 2024, veröffentlicht 2026: Unternehmensberatung 70.22 in der EU-27 rund 17.600 Firmen ab 10 Beschäftigten plus geschätzt 19.800 mit 5 bis 9; IT-Beratung 62.02 rund 16.300 ab 10 plus geschätzt 11.500 mit 5 bis 9; zusammen rund 65.000 Beratungen ab 5 Beschäftigten, mal 25k sind rund 1,63 Mrd. Rechnerisch ist das das 4,5-Fache des Einstiegsmarkts, die Folie zeigt konservativ rund viermal. Die 4-Steller-Anteile, 70.22 an 70.2 und 62.02 an 62.0, stammen aus dem Datenjahr 2023, weil Eurostat die 4-Steller für 2024 noch nicht veröffentlicht hat. Softwareentwicklung (62.01, gut 500.000 Firmen in der EU) und PR (70.21) sind ausgeschlossen. Die 5-bis-9-Bänder sind aus der Eurostat-Unternehmensdemografie 2020 fortgeschrieben, im Datenraum als Schätzung kennzeichnen. Konservativ, weil Schweiz und UK nicht in der EU-27-Zählung stecken und das zweite Zielkunden-Kriterium, mehr als 750k Umsatz bei unter 5 Beschäftigten, gar nicht mitgezählt ist. Zielplan: 0,8 Prozent davon sind rund 13 Mio. ARR, rund 800 Kunden, setzt den EU-Rollout ab Jahr 2 voraus; der Basisfall liegt bei 3 Mio. mit 200 Kunden, siehe Ask-Folie. Stolperfalle vermeiden: 0,8 Prozent ist wertbasiert (13 von 1.630 Mio.); auf Firmen gerechnet sind 800 von 65.000 rund 1,2 Prozent, weil der Plan mit einem Vertragswert unter dem SAM-Schnitt rechnet. Wenn gefragt wird, ob der SAM am Umsatz des Zielmarkts haengt: nein, bewusst nicht. Der SAM ist kaufkraftbasiert, Zahl der Zielfirmen mal erreichbarer Jahresvertragswert, denn das Honorarvolumen der Beratungen ist der Umsatz unserer Kunden, nicht das fuer uns adressierbare Geld. Eine Ein-Prozent-vom-Milliardenmarkt-Rechnung waere der klassische Fehler. Der Kundenumsatz dient nur an zwei Stellen: als Plausibilisierung des Vertragswerts: eine Zehn-Personen-Beratung setzt rund zwei Millionen um (zehn mal 1.300 Euro mal rund 160 fakturierte Tage), volle Ausstattung mit zehn All-in-Sitzen kostet rund 18k im Jahr, unter einem Prozent davon, ein normales Budget fuer das zentrale Arbeitswerkzeug; die 25k im SAM entsprechen rund elf Sitzen plus Plattformgebühr. Und auf Stufe 3 als Groessenordnung des Spielfelds, deshalb steht dort ausdruecklich Honorarvolumen zur Einordnung, kein SAM. ROI beim Kunden vorrechnen: ein Angebot kostet 2 bis 4 Senior-Tage (2.800 bis 5.600 Euro), ein einziges zusätzlich gewonnenes Projekt zahlt die Jahreslizenz mehrfach. Nachrechnung Jahr 1: 12 Kunden mal unter 15k blended ergibt rund 150k, weil der Start Boutique-lastig läuft. Von den rund zwölf Kunden des ersten Jahres sind zehn als Referenz nutzbar, daher die zehn Referenzkunden auf der Ask-Folie. GTM: Vertrauensnetzwerk, 3 bis 5 bezahlte Piloten, Referenzen. International: Management Consulting weltweit je nach Definition 300 bis 400 Mrd. US-Dollar Umsatz pro Jahr (Statista, IBISWorld), breite Definitionen inklusive angrenzender Services deutlich darüber. Auf diesen Consulting-Haushalt projiziert bleibt selbst der Basisfall mit 3 Mio. ARR ein Rundungsfehler, selbst der volle DACH-Einstiegsmarkt mit 360 Mio. liegt unter 0,15 Prozent des Weltmarkts. Expansionspfad: nach dem Einstiegsmarkt klassische Beratungen, dann EU, dann global über Partner.
+
+FOLIE 11: Expansion
+SLIDE-TEXT:
+Partner-Ökosystem und Erlösmodell
+PARTNER-ÖKOSYSTEM
+Aus Kunden werden Vertriebspartner.
+Consultry SAP
+Consultry Legal
+Consultry Public
+…
+Fundament
+%
+Partner
+deren Netzwerke
+ERLÖSMODELL
+Wiederkehrende Sitze, eine feste Plattformgebühr. Ein Preis, alles drin.
+JE SITZ UND MONAT
+Token-Kontingent enthalten
+1×
+VOLUMENTARIF JE SITZ
+Dreifaches Token-Kontingent
+3×
+PLATTFORM JE MONAT
+Betrieb und Konnektoren
+fix
+Software-Marge
+über 80 %
+· Preise im Datenraum
+Unsere Kunden sind IT-Beratungen:
+die geborenen Partner
+.
+SPRECHER-NOTIZ:
+Folie 11 hat jetzt genau zwei Aufgaben: Partnerstory und Erlösmodell. Partnerseite: unsere Kunden sind IT- und Digitalisierungsberatungen, also genau die Firmen, die später Branchenlösungen auf dem Fundament bauen und in ihre Netzwerke verkaufen. Aus Kunden werden Vertriebspartner, wir beteiligen uns an deren Umsatz. Das ist bewusst Phase 3 und kein Versprechen für Jahr 1. Erlösmodell: zwei nutzerbezogene Tarifstufen mit jeweils eigenem, nicht übertragbarem KI-Kontingent. Auf der Folie stehen bewusst keine Preise, nur die Struktur. Intern und auf Nachfrage: All-in-Sitz 149 Euro je Monat im Standardweg, 189 im EU-Weg, Token-Kontingent enthalten; Volumentarif mit dreifachem Kontingent, Preis im Datenraum; dazu die feste Plattformgebühr für Betrieb, Konnektoren und Freigaben, Rechenannahme 500 Euro im Monat. Modell- und Tokenkosten laufen über die Consultry-Rechnung, der Kunde sieht einen Preis. Die Beispielrechnung mit elf All-in-Sitzen plus Plattformgebühr ergibt rund 25 Tausend Euro Jahresvertragswert und deckt sich mit der Bottom-up-Annahme auf der Marktfolie. Wichtig: das sind unvalidierte Rechenannahmen, keine Preisliste. Intern gilt zusätzlich, dass alle direkt nutzungsabhängigen Kosten bei voller Kontingentausschöpfung höchstens siebzig Prozent des Netto-Lizenzpreises betragen dürfen. Diese Grenze bleibt unsichtbar. Gehalten wird sie durch Routing auf zwei Achsen: Die Schutzklasse entscheidet, wohin eine Aufgabe darf; die Aufgabenschwere entscheidet, was sie kostet. Der Orchestrator routet jede Aufgabe auf das günstigste Modell, das die Qualitätsschwelle des Eval-Harness erfüllt; die Standardlast trägt das tenant-lokale Modell, Frontier-Modelle rechnen nur, wo die Aufgabe es verlangt. Q-und-A-Reserve zur Preisfrage: Der Sitz kostet unter sieben Prozent des Kapazitätswerts, den er je Monat freisetzt.
+
+FOLIE 12: Validierung
+SLIDE-TEXT:
+Wir entwickeln den ersten Produktpfad mit echten Beratungen
+VALIDIERT
+Gespräche mit Beratungen
+Problem und heutiger
+Arbeitsablauf
+bestätigt
+Erster
+Wertbeitrag
+benannt
+Quelle:
+Experten- und Partnergespräche
+ENTWICKLUNGSPARTNER
+Krallmann: erster Entwicklungspartner
+Krallmann:
+IT-Beratung Berlin seit 2006
+, 380+ Projekte
+Krallmann-Kunden u. a.
+DZ PRIVATBANK
+Absichtserklärung (LOI)
+unterschrieben
+NÄCHSTER NACHWEIS
+€
+Vom Prototyp zur bezahlten Erprobung
+Systemprototyp
+Reale Nutzung
+beim Entwicklungspartner
+Bezahlte Erprobung
+Wir raten nicht, wir prüfen:
+jeden Monat fällt eine Annahme
+, bis der erste Kunde zahlt.
+SPRECHER-NOTIZ:
+Ehrliche Traktionsfolie: Wir zeigen keine fertige Traktion, sondern eine schnelle Maschine zur Risikoreduktion. 1) Validiert: Experten- und Entwicklungspartner-Interviews mit Beratungen aus dem Einstiegsmarkt; bestätigt sind Problem, heutiger Arbeitsablauf und der erste Wertbeitrag, also wo die Zeit verloren geht und welcher Schritt zuerst Wert bringt. 2) Entwicklungspartner: Krallmann als Nutzer #1. Krallmann AG, Berliner IT-Beratung seit 2006, mehr als 380 umgesetzte Projekte, Referenzkunden unter anderem DHL, DZ Privatbank, Progroup und WEPA, gegruendet aus dem Umfeld des TU-Berlin-Lehrstuhls fuer Wirtschaftsinformatik. Entwicklungspartnerschaft mit Absichtserklaerung (LOI) unterschrieben. Der Trust-Punkt fuer Investoren: dieser Partner bringt Konzernzugaenge mit. Ehrlich sagen: unterschrieben ist die Absichtserklärung, der bezahlte Pilot kommt danach. 3) Nutzerumgebung: Der Entwicklungspartner stellt die Nutzerumgebung für den ersten realen Arbeitsablauf. Vorteil: taegliches Feedback ohne Vertriebszyklus. 4) Naechster Nachweis in dieser Reihenfolge: systemischer Prototyp, dann reale Nutzung, dann bezahlter Pilot. Genau das finanziert die Pre-Seed-Runde. Vertriebsmechanik, wenn gefragt: Die ersten Erprobungen kommen aus Caspars Bestandsnetzwerk und dem Umfeld des Entwicklungspartners; der Pfad ist Gespräch, Prototyp-Demo, bezahlte Erprobung. Einen Pipeline-Stand mit Zahl erst nennen, wenn er belastbar ist. Wenn gefragt wird, was fehlt: bezahlte Piloten und wiederholbare Verkaufszyklen, das ist der Zweck der naechsten 12 Monate.
+
+FOLIE 13: Team
+SLIDE-TEXT:
+Das Gründerteam: der Markt von drei Seiten
+CEO, VERTRIEB
+Caspar Hertel
+Verkauft heute IT-Beratung an genau diese Zielkunden
+Verhandelt heute von Hand, was Kreislauf 1 morgen baut
+Sein Netzwerk ist die erste Pipeline
+Vollzeit ab der ersten bezahlten Erprobung, terminiert; bis dahin der tägliche Draht in den Markt
+CTO, TECHNIK
+Julian Weber
+Hat fünf Jahre Banken geschützt, die nicht ausfallen dürfen
+Entwickelt seit zwei Jahren Agenten, die Beratungsarbeit erledigen
+Baut die Plattform: Agenten, Datengrenze, Modellbetrieb
+CPO, PRODUKT
+Paul Hannemann
+Neun Jahre auf der Seite, die Beratung einkauft: Konzern-IT, Millionenprojekte
+Übersetzt seit zwei Jahren KI-Technik in Produktentscheidungen
+MBA in Entrepreneurship; Produkt- und Geschäftsseite in einer Person
+Einer verkauft an diesen Markt, einer baut für ihn, einer hat neun Jahre bei ihm eingekauft.
+Niemand muss uns den Kunden erklären.
+SPRECHER-NOTIZ:
+Kernsatz: Zwei von drei stehen heute selbst im Einstiegsmarkt, der Dritte war neun Jahre die Einkäuferseite. Die drei Fragen proaktiv beantworten: 1) Caspar Vollzeit ab M7, zum Start der ersten bezahlten Erprobung, bis dahin unser lebendes Product Discovery: verkauft heute IT-Beratung im exakten Zielprofil und verhandelt täglich genau die Angebote, die Kreislauf 1 baut, saubere Trennung zum Arbeitgeber vereinbart. 2) Julian Weber Vollzeit ab Tag 1: fünf Jahre Cybersecurity-Consulting zum Schutz systemrelevanter Finanzsysteme, davon vier Jahre Cyberabwehr, Development, Architektur und Engineering, seit über zwei Jahren KI-native Consultingarbeit. Baut die Plattform selbst: Agenten, Datengrenze, Modellbetrieb; keine Delivery-Verpflichtungen binden den CTO. Falls Nachfrage zu Modellbetrieb: Betrieb ja, aber gehostet im Tenant des Kunden, die Verträge bleiben beim Kunden. 3) Paul Hannemann Vollzeit ab Tag 1: neun Jahre ERGO-Konzern-IT, die Seite, die Beratung einkauft. Referenzen in Testing, Design, Business-Analyse und Projektmanagement aus IT-Großprojekten mit Budgets in Millionenhöhe in Versicherung, Automotive und Logistik, ebenfalls seit über zwei Jahren KI-native Consultingarbeit, dazu MBA in Management, Innovation und Entrepreneurship: Produkt- und Geschäftsseite in einer Person. Consultry entsteht beim ersten Nutzer, Caspars Vollzeit-Wechsel ist terminiert.
+
+FOLIE 14: Ask
+SLIDE-TEXT:
+Der Ask ist durchgerechnet, nicht gewünscht
+€500k für 17,5 %
+17,5 %
+für €500k
+Investoren 17,5 %
+Gründer
+73,5 %
+Mitarbeiter-Pool
+9 %
+Nach Pre-Seed, vor Seed-Verwässerung.
+Cap Table im Datenraum.
+MITTELVERWENDUNG
+Systemprototyp
+über alle drei Kreisläufe
+Eine
+Entwicklungspartnerschaft
+mit realem Fall
+Drei bis fünf bezahlte Erprobungen
+Gemessene
+Nutzung und Zahlungsbereitschaft
+Nachvollziehbarer Weg zu
+zehn Referenzkunden
+Aufteilung und Runway im Finanzplan.
+WARUM DIE RECHNUNG TRÄGT
+Infrastruktur trägt sich
+ab dem zweiten Kunden
+Jeder Kunde rechnet sich
+ab dem ersten Monat
+Break-even bei
+20 bis 27 Kunden
+: 0,14 bis 0,19 % des Einstiegsmarkts, im Plan in Jahr 2
+Zielannahmen aus dem Preisüberschlag, keine Messwerte.
+Einsteigen?
+contact@consultry.de
+SPRECHER-NOTIZ:
+Achse ab Funding-Close, alles Planwerte. IBB-Förderung, beide Programme der Investitionsbank Berlin, als geplant kennzeichnen, noch nicht bewilligt, Antragstellung und Zusage in Monat 0 eingeplant, vor Funding-Close. 1) Berliner Startup-Stipendium (ESF+): 2.500 Euro pro Monat und Gründer, hier 2 Gründer mal 12 Monate gleich 60k; Julian und Paul, Vollzeit ab Tag 1, Caspar wechselt zum Pilotstart und zählt deshalb nicht mit. 2) GründungsBONUS Plus: Zuschuss bis 50.000 Euro auf förderfähige Ausgaben. Zusammen rund 110k zusätzliche Liquidität neben den 500k Pre-Seed. Piloten zahlen. Messlatte Sean-Ellis mindestens 40 Prozent sehr enttäuscht ohne. Ziel: Seed 1,5 bis 2,5 Mio. nach bezahlter Validierung. 500k Pre-Seed, Runway und Aufteilung laut Finanzplan. Wovon leben wir bis dahin? Selbstfinanziert aus eigenem Beratungsgeschäft und privat, die erste Version entsteht ohne Fremdkapital, Gründergehälter schlank, Förderungen strecken den Runway. Bewertung: 500k für 17,5 Prozent entspricht rund 2,86 Mio. post-money, verhandelbar. Szenarien und Roadmap sind von dieser Folie genommen: Die Zeitachse liegt jetzt auf der Expansionsfolie (Jahr 1 DACH, Jahr 2 Europa, Jahr 3+ international). Renditeszenarien nur auf Nachfrage mündlich, Methodik sechs- bis achtfacher Umsatz: Basisfall 3 Mio. Jahresumsatz mit 200 Kunden in DACH, Firmenwert 18 bis 24 Mio., rund das 6- bis 8-fache der Post-money-Bewertung; Zielplan rund 13 Mio. Jahresumsatz bei 0,8 Prozent des erreichbaren EU-Markts, Firmenwert 78 bis 104 Mio., rund das 27- bis 36-fache. Beides Planwerte, nie als Zusage, Verwässerung durch die Seed nicht eingerechnet. Startliquidität ebenfalls mündlich: Stammkapital 30k, KfW 50k, Berliner Startup-Stipendium 60k, GründungsBONUS Plus 50k. Cap Table im Datenraum: nach Pre-Seed Gründer 73,5 Prozent, Mitarbeiter-Pool 9, Investoren 17,5; nach einer Seed von 20 bis 25 Prozent lägen die Gründer bei rund 55 bis 59 Prozent. Nächster Schritt: Datenraum plus Demo-Termin. Auf die Frage nach den ersten Erprobungen: Bestandsnetzwerk und Partner-Umfeld, Pfad Gespräch, Demo, bezahlte Erprobung. Von der Folie genommen, mündlich bringen: Mittelverwendung: Aufteilung nach Finanzplan, auf der Folie bewusst ergebnisbezogen dargestellt. Was die Runde messbar liefert: erste Version im Kernablauf (Signal, Entscheidung, belegter Entwurf), unter 5 Tagen bis zum ersten real genutzten Entwurf bei Nutzer #1, 3 bis 5 bezahlte Piloten mit mindestens 2 Vertragswechseln, rund 150k ARR und Sean-Ellis über 40 Prozent, bereit für die Seed-Runde von 1,5 bis 2,5 Mio.
+
+FOLIE 15: Close
+SLIDE-TEXT:
+Jedes Projekt verbessert
+die nächste Entscheidung
+.
+Jede Freigabe macht den nächsten Agenten klüger.
+Caspar Hertel, CEO | contact@consultry.de
+SPRECHER-NOTIZ:
+Schlussbild stehen lassen. Ask wiederholen, nächsten Schritt anbieten: Datenraum und Termin an der ersten Version.
+
