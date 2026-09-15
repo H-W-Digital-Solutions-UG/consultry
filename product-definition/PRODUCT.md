@@ -1,6 +1,6 @@
 # Consultry: Produktbild und Funktionsumfang
 
-Stand: 14.09.2026. Konsolidiertes Zielbild mit Ledger-/Kollaborationserkenntnissen, adaptivem Harness und breiterem Zielkundenrahmen. Grundschutz im Kern, zusätzliche Isolation/Modellbereitstellung als offene Angebotsrichtung. Keine Behauptung bereits implementierter Funktionen oder eines vollständig ratifizierten Feature-Backlogs. Die Beispiele bewahren die Breite der bisherigen Arbeit; sie sind weder starre Module noch Startanforderungen. Status: [DECISIONS.md](DECISIONS.md). Technischer Arbeitsentwurf: [BACKEND-START.md](BACKEND-START.md).
+Stand: 15.09.2026. Konsolidiertes Zielbild mit Ledger-/Kollaborationserkenntnissen, adaptivem Harness, breiterem Zielkundenrahmen und taskbezogener Schwarmarbeit. Grundschutz im Kern, zusätzliche Isolation/Modellbereitstellung als offene Angebotsrichtung. Keine Behauptung bereits implementierter Funktionen oder eines vollständig ratifizierten Feature-Backlogs. Die Beispiele bewahren die Breite der bisherigen Arbeit; sie sind weder starre Module noch Startanforderungen. Status: [DECISIONS.md](DECISIONS.md). Technischer Arbeitsentwurf: [BACKEND-START.md](BACKEND-START.md).
 
 ## Zielkunde, Nutzer und Nutzen
 
@@ -37,6 +37,31 @@ Task-Teilgraphen verbinden Menschen-, Agenten- und Toolbeiträge mit ihren Ergeb
 Beobachtbare Arbeitsverläufe — Trajectories — ermöglichen, Fehlerursachen, erfolgreiche Lösungswege, unnötige Schleifen und Zusammenarbeit zu untersuchen. Wiederverwendbare Lernmuster können Skills und Workflows verbessern. Die konkrete Annahme-, Test- und Änderungsmechanik ist noch zu bestimmen. Das Produktziel setzt weder verborgenes Modelldenken als Datenquelle noch automatisch lernende Modellgewichte voraus.
 
 Der Wissensstand eines Schwarms ist ein vereinbarter Arbeitsstand. Er kann irren. Agentenkonsens, Evidenzqualität, menschliche Verantwortung und geschäftliche Freigabe bleiben unterscheidbar. Rollen helfen, passende Skills und Kontext zu wählen; sie vergeben keine zusätzlichen Zugriffsrechte.
+
+## Task-Schwarm-Modul: Arbeitsentwurf
+
+Bestätigter Zweck aus D-0915-S01: Ein Schwarm erfüllt einen konkreten Task durch gemeinsame Recherche, Analyse, Entwicklung, Erstellung und Verbesserung. **Arbeitsfähige Ergebnisse sind das Zentrum; Kritik, Veto und Konsens unterstützen ihre Entstehung.** Die folgende Modulausgestaltung ist ein Vorschlag gemäß D-0915-S02, keine Freigabe eines vollständigen Backlogs oder neuer Preis-/Lizenzpakete.
+
+Das Modul erweitert die Ausführungsfähigkeit des vorhandenen Harness. Es verwendet den gemeinsamen Consultry-Kern und kann dessen fachliche Anwendungsbereiche unterstützen, beispielsweise Projektanalysen, Konzepte, Angebote, Prozessgestaltung, Produktplanung oder Managementvorlagen. Es ist keine siebte fachliche Coverage-Säule, kein vorgeschaltetes Kontrollgremium und kein eigener Wissenssilo. Ein einfacher Task kann weiterhin von einem einzelnen Agenten bearbeitet werden; nicht jede Aufgabe muss in einen Schwarm aufgeteilt werden.
+
+| Bestehender Consultry-Ansatz | Beitrag zur Task-Schwarm-Arbeit |
+|---|---|
+| Korpus und Live-Wissensgraph | relevante Vorarbeit, Anforderungen, Quellenstände und Abhängigkeiten bereitstellen; geänderte Grundlagen mit betroffenen Beiträgen verbinden |
+| Core Skill Graph und prozedurales Wissen | passende Fähigkeiten, Methoden, Voraussetzungen und hilfreiche Erfahrungsfälle erschließen; keine starre Besetzung nach Jobtiteln vorgeben |
+| Harness by default | Teilaufträge ausführen, Zusammenarbeit organisieren, Beiträge zusammenführen und Arbeit nach Unterbrechung fortsetzen; vorhandene Laufzeiten anbinden |
+| Co-Work, App, API und geeignete externe Clients | Menschen und Agents am selben Arbeitszusammenhang beteiligen; Ergebnisse und offene Entscheidungen zugänglich machen, ohne den Nutzer zum Schwarm-Dispatcher zu machen |
+| Artefakte und Corporate Alignment | zusammengehörige Analysen, Pläne, Tabellen oder Präsentationen inhaltlich abstimmen und an Firmenwissen, Sprache, Vorlagen und Design ausrichten |
+| Outcome Tests und Validation Graph | prüfen, ob Beiträge und Gesamtergebnis die Task-Anforderungen erfüllen; fachliches Urteil und erst später beobachtbare Wirkung unterscheiden |
+| Model Bridge und Grundschutz | pro Teilauftrag zulässige Modelle, Datenwege, Tools und Empfänger berücksichtigen; Delegation und Spezialisierung verleihen keine zusätzlichen Rechte |
+| Ledger und optionaler P2P-/Blockchain-Ansatz | Beiträge, Konflikte und angenommene Arbeitsstände nachvollziehbar verbinden; organisationsübergreifende Verbindlichkeit nach einem noch zu wählenden Vertrauensmodell untersuchen |
+
+Vorgeschlagenes Verhalten: Ein Task erhält ein geeignetes Arbeitsteam aus Fähigkeiten und Agents, dessen Umfang sich am Problem orientiert. Unabhängige Teilaufgaben können parallel laufen; abhängige Beiträge werden aufeinander abgestimmt. Relevante Unsicherheit kann zusätzliche Expertise, einen Methodenwechsel oder eine gezielte menschliche Frage auslösen. Minsky/Singh liefern dafür methodische Anregungen, keinen verpflichtenden Aufbau aus vielen kleinen LLMs. Konkrete Ableitung und Grenzen: [SOURCES](SOURCES.md#methodischer-anschluss-task-schwarm-und-situative-zusammenarbeit).
+
+Die Nutzeroberfläche zeigt zuerst das Ergebnis und seine Entwicklung, nicht Agentenverkehr. Passende Diagramme, Vergleiche, wenige Antwortvorschläge mit Freitext und gemeinsam bearbeitbare Artefakte helfen bei konkreten Entscheidungen. Quellenvergleich, fachlicher Einwand oder Veto bleiben untergeordnet im jeweiligen Task-/Artefaktfluss. Ein eigener Kontrollbereich ist keine Nutzungsvoraussetzung. Eine verantwortliche Person kann mit Agentenunterstützung abschließen, soweit keine konkrete Regel mehr verlangt.
+
+Arbeit, Feedback und geprüfte Erkenntnisse bleiben nach dem Ende eines Schwarms für weitere berechtigte Tasks nutzbar. Das umfasst auch verworfene Ansätze und deren Grenzen. Automatische Wissensfortschreibung ist von der getesteten Veröffentlichung allgemein verwendeter Skills zu trennen. Consultants und andere Nutzer müssen dafür nicht ständig manuell Patterns verfassen.
+
+Grundschutz bleibt unabhängig vom Modul aktiv. Zusätzliche private Modellbereitstellung ist eine getrennte Angebotsrichtung. Das P2P-Protokoll ist ein technischer Erweiterungskandidat, keine notwendige Voraussetzung jeder lokalen Schwarmarbeit. Funktionsentwurf und Nachweistests: [BACKEND-START](BACKEND-START.md#task-schwarm-technischer-funktionsentwurf).
 
 ## Vertrauliche Unterlagen als normale Beratungsarbeit
 

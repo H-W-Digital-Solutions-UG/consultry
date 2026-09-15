@@ -1,6 +1,6 @@
 # Consultry — Einstieg und Lesepfade
 
-Stand: 14.09.2026. Dies ist der führende Produkteinstieg. Der bisherige `latest/`-Baum ist als datierte Quelle archiviert. Neu: breiter Arbeitskern statt Consulting-only, Grundschutz für alle und optionale zusätzliche Isolation/Modellbereitstellung. Die frühere Sessionübernahme ohne Hosting bleibt historisch so erhalten; die heutige Angebotsoption ist keine Hostingauswahl. Siehe D-0914-F01–F06 in DECISIONS.
+Stand: 15.09.2026. Dies ist der führende Produkteinstieg. Der bisherige `latest/`-Baum ist als datierte Quelle archiviert. Aktuell: breiter Arbeitskern statt Consulting-only, Grundschutz für alle, optionale zusätzliche Isolation/Modellbereitstellung und taskbezogene Schwarmarbeit. Die frühere Sessionübernahme ohne Hosting bleibt historisch so erhalten; die Angebotsoption ist keine Hostingauswahl. Siehe D-0914-F01–F06 und D-0915-S01–S04 in DECISIONS.
 
 ## Sechs Dokumente mit klarer Zuständigkeit
 
@@ -22,6 +22,8 @@ Das Produktbild ist konsolidiert. Der nächste Arbeitsstand verbindet einfaches 
 Neue Präzisierung: Agents sollen Wege selbst wählen können; zusätzliche Verfahrenshilfen müssen ihren Nutzen zeigen. Der [Research-Beleg](archive/research-2026-09-13-harness-graph-ledger/REPORT.md) vertieft die Quellen, während nur die jeweilige Ableitung in CONTEXT, PRODUCT, DECISIONS und BACKEND-START weitergeführt wird. Keine zusätzliche lebende Forschungs-Produktdefinition.
 
 Die nächsten Wayfinder-Fragen stehen ausschließlich in [DECISIONS → Aktueller Wayfinder](DECISIONS.md#aktueller-wayfinder-ab-10092026). Der erste konkrete Arbeitsjob, seine Quellen und sein Arbeitsergebnis sind noch auszuwählen; Beratungsfälle bleiben Kandidaten. Die Ausgestaltung von Task-Vertrag, gemeinsamem Wissensstand und Zugriff folgt daran. Die historischen 59 Tickets bleiben nachvollziehbar; ihre früheren offenen Status werden nicht als 32 neue Startblocker übernommen.
+
+Task-Schwarm-Vertiefung vom 15.09.: [Modul und Produktanschlüsse](PRODUCT.md#task-schwarm-modul-arbeitsentwurf) → [technische Funktionen und Nachweistests](BACKEND-START.md#task-schwarm-technischer-funktionsentwurf) → [Minsky/Singh und weitere Quellen](SOURCES.md#methodischer-anschluss-task-schwarm-und-situative-zusammenarbeit). Bestätigt ist die gemeinsame Task-Erfüllung; die konkrete Umsetzung bleibt Entwurf. Kein zusätzlicher Wayfinder-Zyklus und keine Freigabe des illustrativen Angebotsfalls als Erstbuild.
 
 ## Autorität und Pflege
 

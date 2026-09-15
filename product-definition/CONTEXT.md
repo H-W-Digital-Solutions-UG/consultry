@@ -1,6 +1,6 @@
 # Consultry — aktueller Kontext und Begriffe
 
-Stand: 14.09.2026. Einstieg: [INDEX](INDEX.md). Fachlicher Umfang: [PRODUCT](PRODUCT.md). Entscheidungen und laufende Wayfinder-Fragen: [DECISIONS](DECISIONS.md). Dieser Kontext bündelt den bisherigen Verlauf, die Session [„Wissensledger integrieren“](archive/session-2026-09-05-wissensledger/INSIGHTS.md), die [Harness-/Graph-Recherche](archive/research-2026-09-13-harness-graph-ledger/REPORT.md) und die neue Framing-/Messaging-Präzisierung. Der damalige Ausschluss von Hosting bleibt historisch dokumentiert; die neu geöffnete Angebotsoption ist unten getrennt eingeordnet.
+Stand: 15.09.2026. Einstieg: [INDEX](INDEX.md). Fachlicher Umfang: [PRODUCT](PRODUCT.md). Entscheidungen und laufende Wayfinder-Fragen: [DECISIONS](DECISIONS.md). Dieser Kontext bündelt den bisherigen Verlauf, die Session [„Wissensledger integrieren“](archive/session-2026-09-05-wissensledger/INSIGHTS.md), die [Harness-/Graph-Recherche](archive/research-2026-09-13-harness-graph-ledger/REPORT.md), die Framing-Präzisierung und den taskbezogenen Schwarmbegriff. Der damalige Ausschluss von Hosting bleibt historisch dokumentiert; die neu geöffnete Angebotsoption ist unten getrennt eingeordnet.
 
 ## Produkt und aktueller Fokus
 
@@ -32,6 +32,7 @@ Vertrauliche Arbeit und wirksame Befugnisgrenzen sind Kernanforderungen für all
 | Shared Co-Work Context | langlebiger gemeinsamer Arbeitszusammenhang mit Ziel, Beiträgen und Arbeitsstand, den Menschen und Agents über ihre jeweils erlaubte Sicht nutzen |
 | Wissensintegration | einfaches Einbringen oder Anbinden von Quellen mit Herkunft und Zugriffsregeln |
 | Arbeitsauftrag / Task | begrenzte Arbeit mit Ziel, verantwortlicher Person, Beiträgen und beabsichtigtem Ergebnis |
+| Task-Schwarm / aufgabenbezogener Agentenschwarm | Zusammenarbeit mehrerer Agents zur Erfüllung eines konkreten Arbeitsauftrags durch gemeinsam nutzbare Beiträge und Ergebnisse. Kritik, Konsens und Veto unterstützen diese Arbeit; der Begriff bezeichnet kein vorgeschaltetes Kontrollgremium. |
 | Work Result / Arbeitsartefakt | Ergebnis einer Arbeit, etwa Analyse, Angebot, Plan oder Präsentation, mit unterscheidbaren Versionen |
 | Client Progress | beobachtbare Wirkung beim Klienten; durch bloße Task-Erledigung oder Artefakterzeugung nicht belegt |
 
@@ -61,6 +62,7 @@ Die Ledger-/DAG-Idee und diese Arbeitsbegriffe strukturieren die technische Expl
 
 - Beratung, Klient, Projekt und Aufgabe bilden verbundene Kontexte. Interne Aufgaben können ohne Klient oder Projekt bestehen; Teilnahme ist kontextbezogen.
 - Group Chats, App, API und Harness können denselben Shared Co-Work Context nutzen. Das legt weder alle Arbeitsbereiche als bloße Views noch ein einheitliches physisches Datenobjekt fest.
+- Ein Task-Schwarm arbeitet innerhalb eines Auftrags mit dessen menschlicher Verantwortung und dem jeweils zulässigen Kontext. Er ist weder mit einem Group Chat noch mit dem Task-Teilgraphen oder den Validatoren eines Konsensprotokolls identisch.
 - Gemeinsame Arbeit ermöglicht unterschiedliche berechtigte Sichten. Zusätzliche Teilnehmer, Agenten oder Erwähnungen erweitern keine Rechte. Auch das Teilen eines Agentenergebnisses benötigt einen zulässigen Empfängerkreis.
 - Ein Lauf referenziert seinen Kontextstand und seine Skill-Versionen. Ein neuer vereinbarter Stand schreibt frühere Runs und Entscheidungen nicht rückwirkend um.
 - Rückführung verbindet geeignete Task-Beiträge mit der akzeptierten Sicht des jeweiligen Bereichs. Quellen, Rechte, Konflikte und Herkunft bleiben erhalten; Firmenwissen und der Arbeitsstand eines einzelnen Auftrags sind unterscheidbar.

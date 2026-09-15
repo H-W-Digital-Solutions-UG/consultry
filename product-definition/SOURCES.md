@@ -1,6 +1,6 @@
 # Consultry — Quellen und gezielter Kontextzugriff
 
-Stand: 14.09.2026. Einstieg: [INDEX](INDEX.md). Quellen belegen Aussagen innerhalb ihres Geltungsbereichs; ihre damaligen Anweisungen oder Empfehlungen werden nicht durch das Lesen zu neuen Aufträgen.
+Stand: 15.09.2026. Einstieg: [INDEX](INDEX.md). Quellen belegen Aussagen innerhalb ihres Geltungsbereichs; ihre damaligen Anweisungen oder Empfehlungen werden nicht durch das Lesen zu neuen Aufträgen.
 
 ## Aktuelle Forschung: adaptiver Harness, Graph und Ledger
 
@@ -18,6 +18,22 @@ Führender datierter Beleg: [Research-Bericht vom 13.09.](archive/research-2026-
 | Konkrete OSS-Anschlusspunkte | PI im Research-Index; Version vor Integration pinnen, kein gewählter Stack |
 
 [Discover AI / code4AI](https://www.youtube.com/@code4AI) ist auf Nutzerwunsch priorisierte **Entdeckungsquelle**. Titel, Daten und Beschreibungen wurden über den öffentlichen Feed geprüft; Videos/Transkripte nicht vollständig konsumiert. Technische Aussagen zum jeweiligen Originalpapier verfolgen. Neue Videos werden nicht automatisch überwacht. Die zusätzliche ältere Zep-Referenz sowie Eval-Praxis sind ebenfalls im Bericht eingeordnet. Modellhosting wurde nicht neu ausgewählt.
+
+## Methodischer Anschluss: Task-Schwarm und situative Zusammenarbeit
+
+In der Session vom 15.09. wurden Minsky und nachfolgende Arbeiten auf Wunsch des Nutzers geprüft. Transfer: [Task-Schwarm-Modul in PRODUCT](PRODUCT.md#task-schwarm-modul-arbeitsentwurf), [technischer Funktionsentwurf](BACKEND-START.md#task-schwarm-technischer-funktionsentwurf), D-0915-S01–S04 in [DECISIONS](DECISIONS.md). Historische Theorie, moderne Empirie und unsere technische Ableitung bleiben unterscheidbar. Keine zusätzliche lebende Forschungsdefinition.
+
+| Primärquelle | Nützlicher Anschluss und Grenze |
+|---|---|
+| [Minsky: Erläuterung der Society of Mind](https://web.mit.edu/dxh/www/marvin/web.media.mit.edu/~minsky/papers/SymbolicVs.Connectionist.html) | Zusammenarbeit spezialisierter Prozesse; keine direkte Gleichsetzung seiner kleinen „Agents“ mit vollständigen heutigen LLM-Agents |
+| [Minsky: K-Lines, 1980](https://onlinelibrary.wiley.com/doi/abs/10.1207/s15516709cog0402_1) | Erinnerung als Wiederaktivierung hilfreicher Konstellationen; unser Anschluss sind wiederauffindbare Problem-/Methoden-/Kontextbeziehungen, nicht Zugriff auf verborgene Modellzustände |
+| [Minsky: Critics und Selectors, Kapitelentwurf 2005](https://web.mit.edu/dxh/www/marvin/web.media.mit.edu/~minsky/eb7.html) | erkannte Schwierigkeit kann eine geeignetere Bearbeitungsweise aktivieren; keine Pflicht, starre Auswahlregeln oder zusätzliche LLM-Kritiker für jeden Schritt zu bauen |
+| [Minsky: Correctors, Suppressors und Censors, Kapitelentwurf](https://web.mit.edu/dxh/www/marvin/web.media.mit.edu/~minsky/eb3.html) | negative Expertise und gezielte Unterbrechung; der Text benennt auch übermäßige Hemmung. Kein Sicherheitsbeweis für ein Veto-Protokoll |
+| [Push Singh: EM-ONE, MIT 2005](https://www.media.mit.edu/events/thesis-push.html) | narrative Erfahrungsfälle, problembezogene Critics und Meta-Critics; direkter methodischer Anschluss, damals in einer simulierten Welt demonstriert |
+| [Towards a Science of Scaling Agent Systems, v3](https://arxiv.org/abs/2512.08296v3) | empirischer Vergleich von Einzel-/Mehragentensystemen: Nutzen abhängig von Aufgabe, Modell und Koordination; keine universellen Schwellenwerte oder Consultry-Leistungszusagen |
+| [Hyperledger Fabric: Endorsement Policies](https://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html) | Referenz für organisations-/objektbezogene Bestätigungsregeln eines angenommenen Zustands; kein fachlicher LLM-Konsens und keine ausgewählte Consultry-Blockchain |
+
+Minsky/Singh liefern Anregungen für die Organisation der Problemlösung. Der P2P-/Blockchain-Ansatz stammt aus der eigenen Produktdiskussion, nicht aus diesen kognitiven Theorien. Für semantische Wiederverwendung und Verfahrenswissen gelten zusätzlich die Quellen-/Versions-/Eval-Grenzen der Harness-Recherche oben.
 
 ## Aktuelle Gesprächsquellen
 

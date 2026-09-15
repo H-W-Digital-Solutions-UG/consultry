@@ -1,6 +1,6 @@
 # Consultry — technischer Einstieg
 
-Stand: 14.09.2026. Arbeitsentwurf aus [PRODUCT](PRODUCT.md), [DECISIONS](DECISIONS.md), der [Ledger-Session](archive/session-2026-09-05-wissensledger/INSIGHTS.md) und der [Recherche zu adaptiven Harnesses](archive/research-2026-09-13-harness-graph-ledger/REPORT.md). Erstfall und Implementierung sind offen. Seit D-0914-F01 sind Beratungsfälle Anwendungskandidaten, keine Produktgrenze. Grundschutz gilt für alle; D-0914-F04 öffnet Zusatzisolation/private Modellbereitstellung als gesonderte Option, ohne einen Hostingstack auszuwählen.
+Stand: 15.09.2026. Arbeitsentwurf aus [PRODUCT](PRODUCT.md), [DECISIONS](DECISIONS.md), der [Ledger-Session](archive/session-2026-09-05-wissensledger/INSIGHTS.md) und der [Recherche zu adaptiven Harnesses](archive/research-2026-09-13-harness-graph-ledger/REPORT.md), ergänzt um Task-Schwarm-Funktionen. Erstfall und Implementierung sind offen. Seit D-0914-F01 sind Beratungsfälle Anwendungskandidaten, keine Produktgrenze. Grundschutz gilt für alle; D-0914-F04 öffnet Zusatzisolation/private Modellbereitstellung als gesonderte Option, ohne einen Hostingstack auszuwählen.
 
 ## Was der erste Durchlauf zeigen soll
 
@@ -15,7 +15,7 @@ flowchart TD
     Q["Quellen und Versionen"] --> G["Wissensgraph mit Herkunft und Rechten"]
     G --> C["Gemeinsamer Arbeitskontext und referenzierter Wissensstand"]
     C --> H["Berechtigte menschliche Beiträge"]
-    C --> A["Agentenauftrag mit Skills und erlaubtem Kontext"]
+    C --> A["Agent oder Task-Schwarm mit Skills und erlaubtem Kontext"]
     H --> T["Task-Beiträge, Artefakte und beobachtbarer Verlauf"]
     A --> T
     T --> V["Ergebnistests, Konflikte und fachliche Einordnung"]
@@ -55,6 +55,63 @@ Zugriffs-/Empfängerprüfung, erlaubte Außenwirkungen und Recovery-Schutz werde
 
 Pi ist ein konkreter OSS-Integrationskandidat, kein gewählter Stack. ASKS dient wegen nichtkommerzieller Release-Lizenzen zunächst nur als Architekturreferenz. Harness-of-Harness ist Forschungsreferenz, nicht schon verfügbare HoH-lite-Integration. A*-Thought-V2 ist modellinterne Forschung und keine implementierbare Black-Box-API-Erweiterung. Keine dieser Referenzen erzwingt ein allgemeines Framework, eine neue Datenbank oder Modelltraining.
 
+## Task-Schwarm: technischer Funktionsentwurf
+
+Der Nutzer hat Task-Erfüllung als Zweck bestätigt (D-0915-S01). **Die folgenden Mechaniken sind Vorschläge zur Umsetzung, keine bereits ratifizierte Architektur.** Sie ergänzen die bestehenden kleinen Verträge, statt neben Task, Kontext, Skills und Ergebnis eine zweite Objektwelt zu schaffen. Arbeitsname: Task-Schwarm-Modul; kein ausgewähltes Framework und keine Festlegung auf einen eigenen Dienst.
+
+### Funktionen und ihre Anschlusspunkte
+
+| Funktion | Konkretes technisches Verhalten im Entwurf | Anschluss an Bestehendes |
+|---|---|---|
+| Task in gemeinsame Arbeit überführen | Ziel, Ergebnisanforderungen und Grenzen nutzen; bei geeignetem Problem Teilaufträge bilden und Fähigkeiten zuordnen; Einzelagent bleibt Vergleichs- und Rückfalloption | Arbeitsauftrag, Harness, Core Skill Graph |
+| Arbeitsteilung und adaptive Ausführung | unabhängige Beiträge parallel bearbeiten; Abhängigkeiten, Übergaben und neu erkannte Teilaufgaben berücksichtigen; unnötige Doppelarbeit erkennen | Agentenläufe, Execution Graph, beobachtbare Trajectory |
+| Gezielter Kontext je Beitrag | autorisierte Quellenausschnitte, frühere Ergebnisse, passende Skills und explizite offene Annahmen bereitstellen; verwendete Versionen referenzieren | Korpus, Wissensgraph, Context Capsule |
+| Geeignete Modelle und Tools nutzen | Modelleinsatz je Beitrag innerhalb erlaubter Datenwege nach Aufgabenqualität und Aufwand bestimmen; Ein-/Ausgaben und Zusammenführungen jeweils autorisieren | Model Bridge, Processing Envelope, Kernberechtigungen |
+| Zusammenhängende Ergebnisse erzeugen | Beiträge zu konsistenten Artefaktversionen zusammenführen, Konflikte markieren statt still überschreiben, gemeinsamen Zahlen-/Annahmenstand und Corporate Alignment herstellen | Work Result, Corporate Alignment, Ergebnisvertrag |
+| Auf Änderungen reagieren | bei geänderten Grundlagen betroffene Beiträge/Ergebnisse ermitteln und gezielte Revision anstoßen; unbetroffene verwendbare Arbeit erhalten | Änderungsbezüge im Wissensgraph, Fortschreibung, Ledger |
+| Expertise oder andere Methode aktivieren | bei beobachtbarer Lücke, Widerspruch oder fehlendem Fortschritt passende Analyse, Toolprüfung, Critic oder menschlichen Beitrag ergänzen | Core Skill Graph, prozedurale Sicht, Ergebnisfeedback |
+| Arbeitsstand annehmen und Einwände behandeln | Beiträge und Gegenbelege für einen benannten Zweck einordnen; angenommene Version und ungelöste Konflikte erhalten; Veto an zuständige Identität und konkreten Gegenstand binden | Shared Co-Work Context, Ledger, Authority |
+| Ergebnisse testen und Arbeit beenden | Teil- und Gesamtergebnis gegen Anforderungen prüfen; formal Testbares, fachliche Beurteilung und später beobachtbaren Erfolg unterscheiden; Stop-/Fortsetzungszustand erhalten | Validation Graph, Outcome Tests, Task-/Ergebnisvertrag |
+| Aufwand begrenzen und fortsetzen | Gesamtaufwand des Tasks einschließlich Unteraufträgen und Kommunikation erfassen, vorab erlaubte Budgets einhalten; Unterbrechung, Wiederaufnahme und Agentenausfall behandeln | Harness, Agentenläufe, dauerhafter Arbeitsstand |
+
+Die Auswahl- und Kritikfunktionen sind nicht automatisch weitere LLM-Agents: Ein Tool, eine deterministische Prüfung, vorhandene Modellfähigkeit oder ein expliziter Expertenlauf können passend sein. Stärkere Modelle dürfen unnötige Zerlegung ersetzen. Eine feste Zahl von Agents, ein zentrales Master-Modell oder obligatorische Debattenrunden sind nicht beschlossen. Kontextabhängige Methodenwahl und wiederverwendbare Problemfälle sind unsere Übertragung aus Minsky/Singh; sie müssen gegen einfachere Varianten bestehen.
+
+### Co-Work und Ergebnisrückfluss
+
+App und API sollen Task-Fortschritt, Artefaktrevisionen und konkrete Beiträge zugänglich machen. Eine Frage an den Menschen nennt den offenen Punkt und seine Bedeutung fürs Ergebnis, etwa anhand einer Abhängigkeitsskizze, eines Vergleichs oder von Alternativen mit freier Antwort. Antworten werden dem betreffenden Task und Artefakt zugeordnet, statt nur im Chatverlauf zu verschwinden. Gemeinsamer Chat, Erwähnung oder Schwarmmitgliedschaft erteilen keine Zugriffsrechte. Ein technischer Erstclient wie Codex legt die spätere Produktoberfläche nicht auf Chat fest.
+
+Eine Agentenidentität, ihre Skill-Konfiguration und ein konkreter Lauf bleiben unterscheidbar. Delegation erzeugt keine zusätzlichen Datenrechte; auch der Rückkanal zum ausführenden Agenten oder zum Menschen kann einen engeren Empfängerkreis haben. Neue Ergebnisse sind mit Quellen/Annahmen und Versionen verknüpft. Task-Annahme, organisationsweite Wissensübernahme und eine allgemein nutzbare neue Skill-Version sind getrennte Vorgänge.
+
+Nutzbare Erfahrung umfasst Problemtyp, Bedingungen, relevante Vorarbeit, verwendete Fähigkeiten, Revisionen und Ergebnisfeedback. Sie wird aus beobachtbaren Beiträgen erschlossen, nicht aus vermeintlichem Zugriff auf verborgenes Modelldenken. Überholte oder unpassende Erfahrung darf weiterhin gefunden, aber nicht als aktueller Standard ausgegeben werden.
+
+### Konsens, Veto und optionaler P2P-Protokollanschluss
+
+1. **Fachlicher Arbeitskonsens:** Welche Beiträge gelten für diesen Task und diesen Zweck als gemeinsame Grundlage? Einigkeit ist kein unabhängiger Beleg. Deterministische Tests und eigenständige Evidenzarbeit haben eine andere Funktion als gegenseitige Zustimmung.
+2. **Protokollkonsens:** Welche autorisierten Zustandsänderungen und Bestätigungen wurden nach den geltenden Regeln angenommen? Ein permissionierter P2P-/Blockchain-Layer ist dafür ein Vergleichskandidat, insbesondere bei mehreren unabhängig verantwortlichen Parteien. Experten-Agents sind nicht automatisch Validatoren; zusätzliche Agentenläufe erzeugen keine neuen Stimmrechte.
+3. **Ausführungskontrolle:** Darf diese Identität die konkrete Wirkung mit genau dieser Artefakt-/Ressourcenversion jetzt auslösen? Veto, Widerruf und Freigabe müssen vor der Wirkung wirksam zusammengeführt werden. Ein späterer Ledger-Eintrag ersetzt die Sperre nicht.
+
+Vorgeschlagene Veto-Semantik: Identität und zulässiger Zuständigkeitsbereich, betroffener Beitrag beziehungsweise Aktion/Version, Begründung oder Regelbezug und erlaubter Auflösungsweg. Ein fachlicher Einwand kann zu Prüfung oder Revision führen; nur ein entsprechend autorisiertes Veto sperrt die definierte Wirkung. Ein berechtigter Entscheider kann fachliche Abwägungen innerhalb seiner Befugnisse verantworten, aber weder Agentenmehrheit noch Timeout dürfen harte Berechtigungsgrenzen aufheben. Unbetroffene Arbeit bleibt möglich. Die Verfahren für missbräuchliche Vetos, Eskalation und Auflösung sind am Proof-Fall zu bestimmen, kein allgemeines Schiedsgericht vorab bauen.
+
+Für einen möglichen P2P-Anschluss wären signierte Zustandsvorschläge, geprüfte Teilnahme-/Bestätigungsrechte, referenzierte Ergebnisstände und ein nachweisbarer Annahmestatus nötig. Quellen und vertrauliche Arbeitsinhalte bleiben im erlaubten Korpusbereich; nur erforderliche Zustände/Nachweise würden geteilt. Auch Hashes und Metadaten sind nicht automatisch anonym oder unkritisch. Bei fehlendem verlässlichem Annahmestand bleibt die betroffene verbindliche Wirkung ausstehend; daraus folgt kein globaler Stillstand aller Entwurfsarbeit. Konkrete Quoren, Finalität und kryptografische Mechanik bleiben offen. Referenzmuster und Grenzen: [SOURCES](SOURCES.md#methodischer-anschluss-task-schwarm-und-situative-zusammenarbeit).
+
+Alle relevanten Consultry-vermittelten Wirkungen müssen die Ausführungskontrolle tatsächlich passieren. Ein externer Client mit zusätzlichen unbeschränkten Zugangsdaten außerhalb dieses Pfads ist nicht durch einen Ledger-Eintrag abgesichert. Die Reihenfolge von Veto/Widerruf und einer bereits laufenden Aktion sowie Wiederholungen und veraltete Freigaben sind ausdrücklich zu testen. Ressourcen- oder Befugnisentzug kann weitere Ausführung begrenzen; er macht vergangene Wirkungen nicht rückgängig und belegt keine verbesserte Modellgesinnung.
+
+### Kleiner Nachweis und Ausbaureihenfolge — Empfehlung
+
+Zuerst denselben echten Task einmal mit einem starken Einzelagenten und einmal mit einem kleinen arbeitenden Schwarm ausführen: gleiche nutzbaren Quellen/Skills, gleiche Rechte und vergleichbare Gesamtressourcen. Das illustrative Enterprise-Angebot mit zusammenhängendem Plan und Kalkulation ist ein Kandidat, keine W1-Auswahl. Bereits in dieser Stufe gehören dauerhafter Kontext, Ergebnisrückfluss, laufende Berechtigungsprüfung und ein gezielter Konflikt-/Veto-Test dazu. Ein Consensus-Test darf den eigentlichen Arbeitsnachweis nicht ersetzen.
+
+Danach einen P2P-Anschluss mit demselben Task prüfen, sobald unabhängige Parteien einen gemeinsamen Annahmestand benötigen; gegen ein signiertes zentral verwaltetes Ledger vergleichen. Private Modellbereitstellung bleibt eine davon getrennte Erweiterung. Vollständige UI, universelles Agent Framework oder komplett ausgearbeitetes Blockchain-Protokoll sind keine Startpflicht.
+
+| Nachweis | Was gegen den Entwurf sprechen würde |
+|---|---|
+| Ergebnisnutzen und Aufwand | Der Schwarm liefert bei vergleichbaren Bedingungen keinen relevanten Nutzen oder erhöht menschliche Integrationsarbeit; dann für diese Fallklasse nicht einsetzen |
+| Live-Änderung plus parallele Beiträge | Nach Quellenänderung oder Agentenausfall entstehen widersprüchliche Artefakte, stille Überschreibungen oder unnötige komplette Neuanalyse |
+| Gemeinsamer Irrtum | Gleiche falsche Ausgangsannahme wird durch bloße Einigkeit als bewiesen behandelt; Gegenbelege oder ungelöste Kriterien gehen verloren |
+| Veto, Widerruf und Retry | Eine rechtzeitig wirksame Sperre lässt die betroffene Aktion trotzdem zu; veraltete Freigabe oder Wiederholung erzeugt eine unerlaubte/doppelte Wirkung |
+| Begrenzte Unterbrechung | Ein unbegründetes oder unzuständiges Veto stoppt beliebige Tasks dauerhaft; fehlende Rückmeldung wird umgekehrt als automatische Freigabe behandelt |
+| Grundschutz ohne Schwarm/P2P | Abschalten des Zusatzmoduls oder Mitarbeiter-„alles erlauben“ erweitert Rechte oder öffnet unerlaubte Datenwege |
+| Erfahrungstransfer | Ein Folgeauftrag wiederholt denselben Fehler oder übernimmt unpassende alte Ergebnisse; ein geänderter Skill besteht nur seine eigenen Trainings-/Beispielfälle |
+
 ## Gemeinsamer Wissensstand und parallele Arbeit
 
 Empfohlener erster Mechanismus: Ein Auftrag referenziert einen Ausgangsstand. Agenten erhalten ihre jeweils zulässigen Ausschnitte. Neue Beiträge können automatisch erfasst werden; ihre Speicherung ist noch keine fachliche Annahme. Widersprüchliche Beiträge bleiben sichtbar, bis eine passende Annahmeregel oder verantwortliche Einordnung greift.
@@ -79,8 +136,8 @@ Das Produktziel umfasst rechtlich eingeordnete sensible Verarbeitung. DSGVO, Auf
 
 ## Ein überprüfbarer Durchlauf — Empfehlung
 
-1. Einen realen Beratungsjob und sein Ergebnis wählen; das Testmaterial kann synthetisch sein.
-2. Eine begrenzte Quellenfamilie importieren, mit Versionsbezug, Firmenmethode und zwei getrennten Klientenkontexten. Eine zweite Beratung im Test prüft Mandantentrennung.
+1. Einen realen Arbeitsjob und sein Ergebnis wählen; das Testmaterial kann synthetisch sein.
+2. Eine begrenzte Quellenfamilie importieren, mit Versionsbezug, relevanter Firmenmethode und zwei getrennten Arbeits-/Kundenkontexten. Eine zweite Organisation im Test prüft Mandantentrennung.
 3. Einen gemeinsam zugänglichen Auftrag mit menschlichen und maschinellen Beiträgen bearbeiten. Für den Kollaborationstest bieten sich zwei menschliche Identitäten und zwei Agentenrollen an; das ist ein Testaufbau, keine Mindestbesetzung jeder Arbeit.
 4. Einen hilfreichen Entwurf erzeugen und seine prüfbaren Teile sowie verbleibende fachliche Fragen sichtbar machen.
 5. Eine Quelle ändern, parallel widersprechende Beiträge erzeugen und den neuen Arbeitsstand nachvollziehbar annehmen.
@@ -109,7 +166,7 @@ Das Produktziel umfasst rechtlich eingeordnete sensible Verarbeitung. DSGVO, Auf
 | Lernkandidat verbessert Mittelwert, verletzt aber Rechte | nicht übernehmen; Sicherheitsfehler nicht gegen Qualitätsgewinn verrechnen |
 | Beratungsartefakt bewerten | verifizierbare Kriterien testen; fachliche, proxybasierte, verzögerte und untestbare Outcomes getrennt halten |
 
-Fachliche Qualität wird an Brauchbarkeit, fehlenden Perspektiven und Nacharbeit eines Consultants beurteilt. Ein Vergleich mit einfacher Suche bei gleichem Korpus und gleichen Modellbedingungen kann den Nutzen des Graphen untersuchen. Mehr Knoten und mehr Agenten sind dafür kein Erfolgsmaß.
+Fachliche Qualität wird an Brauchbarkeit, fehlenden Perspektiven und Nacharbeit des verantwortlichen Nutzers beurteilt. Ein Vergleich mit einfacher Suche bei gleichem Korpus und gleichen Modellbedingungen kann den Nutzen des Graphen untersuchen. Mehr Knoten und mehr Agenten sind dafür kein Erfolgsmaß.
 
 Für die Harness-Hilfen getrennt vergleichen: **A** schlanker Agent mit gleichem Auftrag/Kontextzugang → **B** zusätzlich direkt abgerufenes lokales Verfahrenswissen → **C** zusätzlich generierte situative Guidance. A→B prüft zusätzliches Wissen, nicht isoliert Graphbeziehungen; dafür wäre eine inhaltsgleiche unverbundene Darstellung zu vergleichen. Zusätzliche Aufrufe vollständig in Kosten und Laufzeit einrechnen. Erst anschließend Lernänderungen auf separaten Fällen testen. Wiederholungen, Fallgruppen und neue Quellversionen verhindern, dass ein günstiger Einzelrun als allgemeiner Nachweis gilt.
 

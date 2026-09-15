@@ -1,6 +1,6 @@
 # Consultry: Entscheidungen, verworfene Ideen und Lehren
 
-Stand: 14.09.2026. Dieses Register führt Entscheidungen und die aktuelle Wayfinder-Arbeit. Die historische Einordnung vom 04.09. bleibt erhalten und wird durch die datierten Ergänzungen unten präzisiert. Quellenkürzel und konkrete Einstiege stehen in [SOURCES.md](SOURCES.md).
+Stand: 15.09.2026. Dieses Register führt Entscheidungen und die aktuelle Wayfinder-Arbeit. Die historische Einordnung vom 04.09. bleibt erhalten und wird durch die datierten Ergänzungen unten präzisiert. Quellenkürzel und konkrete Einstiege stehen in [SOURCES.md](SOURCES.md).
 
 ## Statusregeln
 
@@ -189,6 +189,19 @@ Quelle: [datierte Voice-Notiz mit Formulierungen, Seitenzuordnung und Story-Bele
 | D-0914-F05 | Ledger/Konsens auch als Grundlage regelbasierter Eingriffe bei Agenten-Grenzverletzungen untersuchen | **Explorative Hypothese.** Befugnis-/Budgetentzug und Unterbrechung denkbar; Mechanik offen. Konsens ersetzt weder Wahrheit noch präventive Durchsetzung. „Punishment macht Agents sicher“ nicht als Claim übernehmen |
 | D-0914-F06 | Menschliches, emotional greifbares Marketing mit belegten viralen Geschichten; später LinkedIn-Founder-Content zu passenden Landingpages | **Gewünscht und als Briefing gesichert.** Noch keine finale Copy, Posts oder Veröffentlichung. Quellenkontext erhalten; Consultry-Wirksamkeit nicht aus fremden Vorfällen ableiten |
 
+## Ergänzung 15.09.2026: Task-Schwarm als Arbeitsmodul
+
+Herkunft: Der Nutzer präzisiert „Schwärme werden zur Erfüllung von task genutzt“ und bittet anschließend, dies für das Modul und seine technischen Funktionalitäten im Zusammenhang mit den anderen Consultry-Ansätzen auszuarbeiten. Zuvor wurden Minsky und nachfolgende Arbeiten als methodische Referenz vorgeschlagen. Quellenzugriff: [SOURCES](SOURCES.md#methodischer-anschluss-task-schwarm-und-situative-zusammenarbeit).
+
+| ID | Aussage | Status und Grenze |
+|---|---|---|
+| D-0915-S01 | Ein Task-Schwarm erfüllt einen Arbeitsauftrag. Recherche, Analyse, Entwicklung, Erstellung und Verbesserung der Ergebnisse sind seine Arbeit; Kritik, Konsens und Veto unterstützen diese Arbeit | **Akzeptiert, direkte Nutzerpräzisierung.** Kein primär prüfendes Kontrollgremium, keine Beschränkung auf Angebotsarbeit |
+| D-0915-S02 | Task-Schwarm als Modul im Zusammenhang mit bestehendem Kern, Harness, Graph, Skills, Co-Work, Model Bridge und Ledger ausarbeiten | **Gewünschte Ableitung.** Funktionsentwurf in [PRODUCT](PRODUCT.md#task-schwarm-modul-arbeitsentwurf) und [BACKEND-START](BACKEND-START.md#task-schwarm-technischer-funktionsentwurf). Modulgrenze ist noch kein Preis-/Lizenzpaket; kein neues allgemeines Agent Framework beauftragt |
+| D-0915-S03 | Minsky/Singh als methodische Referenz für situative Fähigkeiten, Kritik/Methodenwechsel und wiederverwendbare Erfahrung verwenden | **Methodische Referenz vorgeschlagen.** Konkrete Umsetzung, Aktivierungslogik und Lernerfolg müssen geprüft werden; kein kognitives Modell als Sicherheitsbeweis oder verpflichtende Modellzerlegung übernehmen |
+| D-0915-S04 | Fachlichen Arbeitskonsens, Protokollkonsens und technische Ausführungssperre getrennt behandeln | **Präzisierender technischer Vorschlag** im Anschluss an D-0914-F03/F05. Blockchain/P2P bleibt gewünschter Untersuchungskandidat; kein Protokoll, Quorum, Vetoalgorithmus oder Stack ratifiziert |
+
+Der zuletzt skizzierte Enterprise-Pilot-/Angebotsfall bleibt ein illustrativer W1-Kandidat. Die Zustimmung zur Bedeutung von Schwärmen wählt diesen Fall nicht automatisch als ersten Build. Die technischen Tabellen unten bilden einen Arbeitsentwurf, keinen vollständig akzeptierten Feature-Backlog.
+
 ## Aktueller Wayfinder ab 10.09.2026
 
 Dies ist der einzige laufend gepflegte Fragenstand. Die Reihenfolge ist eine Route zum ersten echten Durchlauf, kein vollständiger neuer Definitionszyklus. Fragen werden nur so weit geklärt, wie sie den nächsten Arbeitsschritt beeinflussen.
@@ -196,7 +209,7 @@ Dies ist der einzige laufend gepflegte Fragenstand. Die Reihenfolge ist eine Rou
 | ID | Offene Frage und nächstes Ergebnis | Empfehlung / Status | Historischer Anschluss |
 |---|---|---|---|
 | W1 | Welcher konkrete Wissens-/Arbeitsjob mit welchen zugänglichen Quellen und welchem verwendbaren Ergebnis trägt den ersten Backend-Durchlauf? | **Nächster Schritt.** Einen realen Job auswählen; Beratungsfälle bleiben Kandidaten, sind seit D-0914-F01 keine Produktgrenze. Vertrauliche Struktur zunächst mit synthetischen/freigegebenen Inhalten abbilden. Erstfall offen. | Product Horizons; Contextual Task; Adoption; Active Work |
-| W2 | Wie arbeiten Menschen und Agents für W1 zusammen, und wann gilt ein neuer gemeinsamer Arbeitsstand? | Kleinen Aufgabenvertrag mit Ziel, menschlicher Verantwortung, Teilnehmern, Kontext-/Skill-Versionen, Beiträgen, Konflikten und Annahme für benannten Zweck definieren. | Core/Surface; Human-AI Oversight; Execution/Validation; L2–L7 |
+| W2 | Wie arbeiten Menschen und Agents für W1 zusammen, und wann gilt ein neuer gemeinsamer Arbeitsstand? | Kleinen Aufgabenvertrag mit Ziel, menschlicher Verantwortung, Teilnehmern, Kontext-/Skill-Versionen, Beiträgen, Konflikten und Annahme für benannten Zweck definieren. Task-Schwarm als gemeinsame Ergebniserstellung berücksichtigen, nicht auf Review reduzieren. | Core/Surface; Human-AI Oversight; Execution/Validation; L2–L7; D-0915-S01/S02 |
 | W3 | Welche Inhalte darf wer abrufen und an wen zurückgeben, auch bei Gruppenwechsel, Quellenänderung und Rechtewiderruf? | Rechte und zulässige Verarbeitung bis zum Ergebnisempfänger prüfen; fachliche Annahme und Weitergabe getrennt behandeln. Detail am gewählten Fall. | Model Bridge; Authority; Knowledge/Reuse; L8 |
 | W4 | Welche minimale API-/Harness- und Graph-/Ledger-Realisierung macht W1–W3 nutzbar? | Vorhandene Ausführung mit dauerhaftem Kern verbinden; Agent entscheidet den Weg. Prozedurale Hilfe optional, Rechte außerhalb der Hilfe durchsetzen. DID/Konsens/Storage nach Nachweisbedarf. D-0914-F04 öffnet Zusatzhosting als separate Option, nicht als Startpflicht. | Harness Boundary; Kernel/Graph; D-0913-R01–R06 |
 | W5 | Woran erkennen wir nützliche Arbeit, zuverlässige Kontinuität und mögliche Lernmuster? | Verifizierbare Tests, fachliche Bewertung und spätere Wirkung trennen. Wiederaufnahme/Sharing prüfen; zusätzliche Verfahrenshilfe gegen schlanken Agenten testen, Lernänderungen separat. Bei Modellwechsel unnötige Hilfen entfernen. | Outcomes; Validation; L4; D-0913-R07 |
