@@ -18,6 +18,10 @@ import { company } from "../data/company";
 >
   <Hero imageAlt="" />
 
+  <section class="trust" aria-label="Zertifizierungen und Partner">
+    <div class="container"><Proof variant="strip" /></div>
+  </section>
+
   <section class="section promise">
     <div class="container promise__grid">
       <div>
@@ -97,19 +101,6 @@ import { company } from "../data/company";
     </div>
   </section>
 
-  <section class="section proofsec">
-    <div class="container">
-      <div class="proofsec__head">
-        <div>
-          <p class="eyebrow" data-n="07">Nachweise</p>
-          <h2 class="sec__h">Die Zertifikate gehören denen, die bei Ihnen bauen.</h2>
-        </div>
-        <a class="btn btn--ghost" href="/unternehmen#nachweise">Alle Nachweise</a>
-      </div>
-      <div class="sec__body"><Proof compact /></div>
-    </div>
-  </section>
-
   <Cta />
 </Base>
 
@@ -137,7 +128,7 @@ import { company } from "../data/company";
   .sov__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); }
   .sov__title { font-size: 1.2rem; }
   .sov__text { color: var(--fg-muted); font-size: 0.98rem; }
-  .proofsec__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px 40px; }
+  .trust { padding-block: 28px 30px; background: var(--paper-2); border-bottom: 1px solid var(--line); }
   .seven__grid { display: grid; gap: 28px; }
   @media (min-width: 900px) { .seven__grid { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; } }
   .seven__side { display: grid; gap: 24px; justify-items: start; }
