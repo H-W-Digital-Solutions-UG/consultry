@@ -1,10 +1,29 @@
 ---
 import { capabilities } from "../data/content";
+import Icon from "./Icon.astro";
+import type { IconName } from "../icons/icons";
+
+// Icon je Capability-Titel (Daten in content.ts bleiben unverändert)
+const capIcon: Record<string, IconName> = {
+  "Business Process Analysis": "cap-process-analysis",
+  "AI Strategy": "cap-ai-strategy",
+  "Process Redesign": "cap-process-redesign",
+  "AI Engineering": "cap-ai-engineering",
+  "Software Engineering": "cap-software-engineering",
+  "Model Engineering": "cap-model-engineering",
+  "Cloud & Infrastructure": "cap-cloud-infra",
+  "Cybersecurity": "cap-cybersecurity",
+  "AI Governance": "cap-ai-governance",
+  "AI Enablement": "cap-ai-enablement",
+};
 ---
 
 <ul class="caps">
   {capabilities.map((c) => (
     <li class="cap">
+      {capIcon[c.title] && (
+        <span class="cap__icon"><Icon name={capIcon[c.title]} size={24} /></span>
+      )}
       <h3>{c.title}</h3>
       <p>{c.text}</p>
     </li>
@@ -30,7 +49,12 @@ import { capabilities } from "../data/content";
     align-content: start;
     transition: border-color 0.2s, transform 0.25s var(--ease-out);
   }
-  .cap:hover { border-color: rgba(15, 18, 22, 0.28); transform: translateY(-2px); }
+  .cap:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+  .cap__icon {
+    display: inline-flex;
+    color: var(--accent, var(--process));
+    margin-bottom: 6px;
+  }
   .cap h3 { font-size: 1.02rem; }
   .cap p { color: var(--fg-muted); font-size: 0.93rem; }
 </style>

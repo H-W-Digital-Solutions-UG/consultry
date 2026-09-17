@@ -44,9 +44,12 @@ const { image = "/images/hero.webp", imageAlt = "" } = Astro.props;
   .hero__shade {
     position: absolute;
     inset: 0;
+    /* Aubergine-Schleier über dem Bild: unten dicht für Lesbarkeit, links
+       für den Textblock; ein Hauch Markenlila hält das Bild im Schema. */
     background:
-      linear-gradient(to top, rgba(10, 12, 16, 0.95) 0%, rgba(10, 12, 16, 0.55) 45%, rgba(10, 12, 16, 0.15) 100%),
-      linear-gradient(to right, rgba(10, 12, 16, 0.75) 0%, rgba(10, 12, 16, 0) 60%);
+      linear-gradient(to top, rgba(21, 4, 43, 0.96) 0%, rgba(21, 4, 43, 0.6) 45%, rgba(21, 4, 43, 0.18) 100%),
+      linear-gradient(to right, rgba(21, 4, 43, 0.78) 0%, rgba(21, 4, 43, 0) 60%),
+      linear-gradient(111deg, rgba(81, 29, 150, 0.22) 0%, rgba(53, 26, 89, 0) 70%);
   }
   .hero__content {
     position: relative;
@@ -67,7 +70,8 @@ const { image = "/images/hero.webp", imageAlt = "" } = Astro.props;
     font-size: clamp(1.15rem, 2.2vw, 1.7rem);
     font-weight: 500;
     letter-spacing: -0.02em;
-    background: var(--axis);
+    /* Claim trägt die Achse: Lavendel -> Gold, Gold nur am Ende */
+    background: linear-gradient(90deg, var(--accent-on-ink) 0%, var(--process) 55%, var(--production) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

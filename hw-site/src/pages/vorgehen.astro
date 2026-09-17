@@ -42,13 +42,14 @@ const phases = [
 
   <section class="section section--ink chain-sec">
     <div class="container">
-      <p class="eyebrow">Delivery Chain</p>
+      <p class="eyebrow" data-n="01">Delivery Chain</p>
       <Chain />
     </div>
   </section>
 
   <section class="section">
     <div class="container">
+      <p class="eyebrow" data-n="02">Vier Phasen</p>
       <ol class="phases">
         {phases.map((p, i) => (
           <li class="phase">
@@ -66,7 +67,7 @@ const phases = [
 
   <section class="section section--ink">
     <div class="container">
-      <p class="eyebrow">Abgrenzung</p>
+      <p class="eyebrow" data-n="03">Abgrenzung</p>
       <h2 class="h">{contrast.heading}</h2>
       <p class="lede">{contrast.text}</p>
       <div class="body"><Contrast /></div>
@@ -78,7 +79,7 @@ const phases = [
 
 <style>
   .chain-sec { padding-block: 40px 56px; }
-  .phases { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .phases { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 0; }
   .phase {
     display: grid;
     gap: 14px;
@@ -89,7 +90,7 @@ const phases = [
     .phase { grid-template-columns: 200px 1fr 1.4fr; gap: 40px; align-items: start; }
   }
   .phase:last-child { border-bottom: 1px solid var(--line); }
-  .phase__meta { display: flex; align-items: center; gap: 14px; }
+  .phase__meta { display: flex; align-items: baseline; gap: 14px; }
   .phase__n { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; letter-spacing: -0.03em; }
   .phase h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
   .phase p { color: var(--fg-muted); max-width: 60ch; }

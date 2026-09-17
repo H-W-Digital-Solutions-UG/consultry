@@ -34,8 +34,9 @@ import { contrast } from "../data/content";
   .contrast__col--hw {
     border-color: transparent;
     background:
-      linear-gradient(var(--ink-2), var(--ink-2)) padding-box,
+      linear-gradient(var(--ink-3), var(--ink-2)) padding-box,
       var(--axis) border-box;
+    box-shadow: var(--shadow-glow);
   }
   ul {
     list-style: none;
@@ -64,11 +65,12 @@ import { contrast } from "../data/content";
     margin-top: 22px;
     padding-top: 16px;
     border-top: 1px solid var(--line-on-ink);
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
     color: var(--fg-on-ink-muted);
   }
-  .contrast__col--hw .contrast__end { color: var(--fg-on-ink); }
+  /* Produktives System = Ende der Achse: Gold als sparsamer Akzent */
+  .contrast__col--hw .contrast__end { color: var(--production); }
 </style>

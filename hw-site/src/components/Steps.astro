@@ -1,19 +1,37 @@
 ---
 import { deliverySteps } from "../data/content";
+import Icon from "./Icon.astro";
+import type { IconName } from "../icons/icons";
+
 const phaseLabel: Record<string, string> = {
   process: "Prozess",
   design: "Design",
   build: "Engineering",
   production: "Produktion",
 };
+
+// Icon je Schrittnummer (Daten in content.ts bleiben unverändert)
+const stepIcon: Record<number, IconName> = {
+  1: "step-understand",
+  2: "step-detect",
+  3: "step-potential",
+  4: "step-evaluate",
+  5: "step-redesign",
+  6: "step-roadmap",
+  7: "step-build",
+  8: "step-integrate",
+  9: "step-secure",
+  10: "step-deploy",
+};
 ---
 
 <ol class="steps">
   {deliverySteps.map((s) => (
     <li class={`step step--${s.phase}`}>
+      <span class="step__icon"><Icon name={stepIcon[s.n]} size={28} /></span>
       <div class="step__meta">
         <span class="step__n">{String(s.n).padStart(2, "0")}</span>
-        <span class="step__phase">{phaseLabel[s.phase]}</span>
+        <span class={`tag tag--${s.phase}`}>{phaseLabel[s.phase]}</span>
       </div>
       <h3>{s.title}</h3>
       <p>{s.text}</p>
@@ -41,6 +59,16 @@ const phaseLabel: Record<string, string> = {
     gap: 12px;
     align-content: start;
   }
+  /* Phasenfarbe für das Icon; --accent kann global überschrieben werden */
+  .step--process { --accent: var(--process-text); }
+  .step--design { --accent: var(--accent); }
+  .step--build { --accent: var(--mauve); }
+  .step--production { --accent: var(--production-text); }
+  .step__icon {
+    display: inline-flex;
+    color: var(--accent, var(--process));
+    margin-bottom: 4px;
+  }
   .step__meta {
     display: flex;
     align-items: center;
@@ -54,15 +82,5 @@ const phaseLabel: Record<string, string> = {
     font-weight: 600;
     color: var(--fg);
   }
-  .step__phase {
-    padding: 4px 8px;
-    border-radius: 999px;
-    color: var(--fg-muted);
-    background: var(--paper-2);
-  }
-  .step--process .step__phase { color: var(--process); background: var(--process-soft); }
-  .step--design .step__phase { color: #6c62ff; background: rgba(108, 98, 255, 0.12); }
-  .step--build .step__phase { color: #c2571b; background: rgba(255, 138, 61, 0.12); }
-  .step--production .step__phase { color: var(--production); background: var(--production-soft); }
   .step p { color: var(--fg-muted); font-size: 0.98rem; }
 </style>
