@@ -22,7 +22,10 @@ pnpm check      # Astro/TypeScript-Diagnose (benötigt TypeScript 6.x)
 
 ## Deployment (Vercel)
 
-Neues Vercel-Projekt aus diesem Repository anlegen, **Root Directory: `hw-site`**. Framework wird als Astro erkannt (`vercel.json` liegt bei). Build: `pnpm build`, Output: `dist`. Domain `hw-digitalsolutions.de` im Projekt hinterlegen; `site` in `astro.config.mjs` ist bereits darauf gesetzt (Canonicals, Sitemap).
+Vercel-Projekt **`hw-digitalsolutions`** im Team `hw-consultry`, git-verknüpft mit diesem Repository, **Root Directory `hw-site`**. Framework Astro (`vercel.json` liegt bei), Build `pnpm build`, Output `dist`.
+
+- Production-Branch: `main` → Domain `hw-digitalsolutions.de` (im Projekt hinterlegen, sobald die Site auf `main` liegt; `site` in `astro.config.mjs` ist bereits gesetzt).
+- Jeder Push auf einen anderen Branch erzeugt ein Preview-Deployment, z. B. `hw-digitalsolutions-git-dev-6mrrvl-hw-consultry.vercel.app` für `dev-6mrrvl`.
 
 ## Offen
 
