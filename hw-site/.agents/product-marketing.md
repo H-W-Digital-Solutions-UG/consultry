@@ -172,6 +172,20 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Nicht behaupten:** Teamgrößen, Senioritätsjahre, Zertifikate (keine belastbaren Daten; siehe Herkunft).
 
+## Messaging-Baustein: Souveränität (2026-09-17)
+
+**Kern (Gründer-Wortlaut):** „Schluss mit 10.000 Dienstleistern. Hole dir deine Souveränität zurück, indem du AI-Workflows und Prozesse richtig nutzt.“ Das Problem ist der Flickenteppich: für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, niemand kennt den ganzen Ablauf. Die Lösung ist Kontrolle über die eigenen Abläufe durch AI-Workflows, die im eigenen Haus laufen.
+
+**Tonalität:** Sie-Form. Die Zahl „10.000“ ist rhetorisch und wird auf der Website nicht verwendet (keine erfundenen Größen). Keine Abwertung von Tools oder anderen Dienstleistern, das Muster wird benannt, die Wertung liefert der Leser.
+
+**Freigegebene Formulierungen:**
+- Hook: „Schluss mit dem Flickenteppich aus Dienstleistern.“
+- Lede: „Holen Sie sich Ihre Souveränität zurück: mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen.“
+- Drei Punkte: Ihre Prozesse (Ablauf gehört Ihnen, nicht dem Werkzeug), Ihre Daten (verarbeitet, wo Sie es entscheiden), Ihr Wissen (kein Betrieb, der nur mit uns funktioniert).
+- Kontrast-Listen: klassisch „Für jedes Werkzeug ein Anbieter“ / H&W „Prozess, Daten und Wissen bleiben bei Ihnen“.
+
+**Annahme (zu bestätigen):** Lösungen werden in den Systemen des Kunden betrieben und bleiben dessen Eigentum; die Aussage „Ihre Daten: verarbeitet, wo Sie es entscheiden“ setzt voraus, dass H&W keine eigene Datenhaltung erzwingt.
+
 ---
 
 ## Customer Language
@@ -262,4 +276,5 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v2 (2026-09-17) — Messaging-Baustein Souveränität ergänzt (Gründer-Input), Annahme zur Datenhaltung markiert.
 - v1 (2026-09-17) — Initial context. Auto-Entwurf aus Positionierungs-Handover, `content.ts`, Seiten, DESIGN.md und alter HubSpot-Copy; Redaktionsbrief (Hooks, Längenlimits, Sprachmechanik) aufgenommen; Lücken bei Zielgruppe, Wettbewerb, Einwänden, Verbatims und Belegen als Annahmen markiert.

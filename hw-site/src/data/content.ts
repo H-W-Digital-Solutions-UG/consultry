@@ -145,11 +145,28 @@ export const chainTexts = [
 export const contrast = {
   heading: "Wo klassische Beratung aufhört, fangen wir erst an.",
   text: "Beratung endet oft bei Strategie, Roadmap oder PowerPoint. Und die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es beides nicht: Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.",
-  classic: ["AI-Strategie", "Use-Case-Katalog", "Roadmap", "Pitch-Team, dann Lieferteam", "Empfehlung"],
-  hw: ["Prozessanalyse", "Lösungsdesign", "Eigenes Engineering", "Ein Team von Analyse bis Betrieb", "Produktiver Betrieb"],
+  classic: ["AI-Strategie", "Use-Case-Katalog", "Roadmap", "Pitch-Team, dann Lieferteam", "Für jedes Werkzeug ein Anbieter", "Empfehlung"],
+  hw: ["Prozessanalyse", "Lösungsdesign", "Eigenes Engineering", "Ein Team von Analyse bis Betrieb", "Prozess, Daten und Wissen bleiben bei Ihnen", "Produktiver Betrieb"],
   // Schlusszeilen der beiden Spalten (Contrast.astro).
   classicEnd: "Bleibt Empfehlung.",
   hwEnd: "Läuft im Betrieb.",
+} as const;
+
+/**
+ * Souveränität – Positionierungspunkt der Gründer (2026-09-17): Schluss mit
+ * dem Flickenteppich aus Dienstleistern; Kunden holen sich die Kontrolle über
+ * ihre Abläufe zurück, indem sie AI-Workflows und Prozesse richtig nutzen.
+ * Bewusst ohne Zahl („10.000 Dienstleister“) und ohne Wertung über andere.
+ */
+export const sovereignty = {
+  eyebrow: "Souveränität",
+  heading: "Schluss mit dem Flickenteppich aus Dienstleistern.",
+  text: "Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Holen Sie sich Ihre Souveränität zurück: mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen.",
+  points: [
+    { title: "Ihre Prozesse", text: "Der Ablauf gehört Ihnen, nicht dem Werkzeug. Wir bauen AI in Ihre Arbeit ein, statt Ihre Arbeit an ein Tool anzupassen." },
+    { title: "Ihre Daten", text: "Verarbeitet, wo Sie es entscheiden. Sie behalten die Kontrolle darüber, was wohin fließt." },
+    { title: "Ihr Wissen", text: "Ihr Team versteht, was läuft und warum. Kein Betrieb, der nur mit uns funktioniert." },
+  ],
 } as const;
 
 /** Capabilities – Beleg für die Umsetzungskompetenz, nicht das Produktversprechen (Abschnitte 4/5). */
