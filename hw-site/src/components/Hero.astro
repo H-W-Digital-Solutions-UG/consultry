@@ -463,6 +463,15 @@ const image = await getImage({
     .hero[data-scene="on"] .hero__track {
       height: 200vh;
     }
+    /* Kein Bild-Scroll auf dem Phone: Bildlayer steht still, nur Copy und Beats wechseln. */
+    .hero[data-scene="on"] .hero__pan {
+      width: 100%;
+      will-change: auto;
+      transform: none;
+    }
+    .hero[data-scene="on"] .hero__bg {
+      object-position: 70% center;
+    }
     .hero[data-scene="on"] .hero__copy {
       transition:
         opacity 0.3s var(--ease-out),
