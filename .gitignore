@@ -81,3 +81,5 @@ __pycache__/
 *.pyc
 smoketests/**/output/
 ~$*
+.vercel
+.env*.local
