@@ -111,6 +111,7 @@ Keine belastbaren Daten vorhanden, Annahme: Es liegt keine Wettbewerbsanalyse vo
 - Dasselbe Team, das den Prozess verstanden hat, baut die Lösung.
 - Security, Governance und Compliance sind Teil der Lösung, kein nachgelagerter Audit.
 - Enablement der Mitarbeiter und Messung der Ergebnisse gehören zum Leistungsbild.
+- Keine Junior-Berater: Wer im Erstgespräch sitzt, bewertet die Prozesse, baut die Lösung und bleibt bis in den Betrieb. Kein Pitch-Team, das an ein Lieferteam übergibt. (Zusage der Gründer, 2026-09-17; auf der Website als Versprechen formulieren, nie als Angriff auf andere Häuser.)
 
 **How we do it differently:** Wir hören nicht bei Strategie, Roadmap oder PowerPoint auf. Die identifizierte Lösung bauen wir anschließend selbst und bringen sie in Produktion.
 
@@ -132,6 +133,7 @@ Keine belastbaren Daten vorhanden, Annahme: keine Vertriebsgespräche dokumentie
 | „Unsere Daten dürfen das Haus nicht verlassen.“ | Modellauswahl, Infrastruktur und Absicherung sind Teil unseres Designs. Wir wählen, was zu Ihren Anforderungen passt, und sichern Daten, Modelle und Zugänge ab. |
 | „Wir wissen nicht, ob sich das rechnet.“ | Wir bewerten jedes Potenzial nach wirtschaftlichem Hebel und technischer Machbarkeit, bevor gebaut wird. Sie entscheiden auf dieser Grundlage. |
 | „Ist ein kleines Team dafür groß genug?“ | Keine belastbaren Daten vorhanden, Annahme: Teamgröße nicht kommunizieren; auf durchgehende Verantwortung und dasselbe Team von Analyse bis Betrieb verweisen. |
+| „Am Ende sitzen dann doch Berufseinsteiger bei uns.“ | Nein. Wer Ihre Prozesse analysiert, baut auch die Lösung. Es gibt bei uns kein Pitch-Team und kein Lieferteam. |
 | „Wir nutzen bereits einen AI-Assistenten.“ | Ein Assistent verändert keinen Prozess. Wir gestalten den Ablauf so, dass AI sein natürlicher Bestandteil ist, integriert in Ihre Systeme. |
 
 **Anti-persona:** Keine belastbaren Daten vorhanden, Annahme: Unternehmen, die ausschließlich eine Strategie oder ein Gutachten ohne Umsetzung wollen; Anfragen nach reiner Personalgestellung oder Body Leasing; Kunden, die ein bestimmtes Tool vorgeben und keine Prozessanalyse wünschen; Privatpersonen und Projekte ohne Geschäftsprozessbezug (etwa reine Blockchain- oder Web3-Vorhaben aus dem alten Leistungsportfolio).
@@ -149,6 +151,22 @@ Keine belastbaren Daten vorhanden, Annahme: aus Positionierung abgeleitet.
 **Habit:** Bestehende Beziehungen zu Systemhaus oder Beratung. Die Vorstellung, AI sei ein Thema für die IT allein. Der Reflex, erst eine Strategie in Auftrag zu geben.
 
 **Anxiety:** Datenschutz, Sicherheit und Compliance. Abhängigkeit von einem Anbieter. Kosten ohne messbares Ergebnis. Akzeptanz der Mitarbeiter. Ob der Partner den Betrieb wirklich stemmt.
+
+---
+
+## Messaging-Baustein: Senior-Zusage (2026-09-17)
+
+**Kern:** Keine Junior-Berater. Das Muster „Die Erfahrenen pitchen, die Unerfahrenen liefern“ gibt es bei H&W nicht: Wer im Erstgespräch sitzt, bewertet die Prozesse, baut die Lösung und bleibt bis in den Betrieb.
+
+**Tonalität:** Als Zusage formulieren, nicht als Abrechnung. Keine Namen anderer Häuser, keine Wörter wie „Bullshit“, „Abzocke“, „Junior-Bashing“. Das Muster darf benannt werden („Sie kennen das Modell“), die Wertung liefert der Leser selbst.
+
+**Freigegebene Formulierungen:**
+- Hook: „Keine Junior-Berater. Wer Ihren Prozess versteht, baut ihn auch.“
+- Kontrast: „Sie kennen das Modell: Die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es dieses Modell nicht. Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.“
+- Unternehmen: „Zwei Gründer, ein Team, keine Übergaben. Sie arbeiten mit denen, die Sie kennenlernen.“
+- Kontrast-Listen: klassisch „Pitch-Team, dann Lieferteam“ / H&W „Ein Team von Analyse bis Betrieb“.
+
+**Nicht behaupten:** Teamgrößen, Senioritätsjahre, Zertifikate (keine belastbaren Daten; siehe Herkunft).
 
 ---
 
