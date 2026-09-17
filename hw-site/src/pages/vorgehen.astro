@@ -42,8 +42,12 @@ const phases = [
 
   <section class="section section--ink chain-sec">
     <div class="container">
-      <p class="eyebrow" data-n="01">Delivery Chain</p>
-      <Chain />
+      <Chain>
+        <Fragment slot="heading">
+          <p class="eyebrow" data-n="01">Delivery Chain</p>
+          <h2 class="chain-sec__h">Zwölf Glieder, ein Team.</h2>
+        </Fragment>
+      </Chain>
     </div>
   </section>
 
@@ -78,7 +82,8 @@ const phases = [
 </Base>
 
 <style>
-  .chain-sec { padding-block: 40px 56px; }
+  .chain-sec { padding-block: 0 56px; }
+  .chain-sec__h { margin-top: 16px; max-width: 20ch; }
   .phases { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 0; }
   .phase {
     display: grid;

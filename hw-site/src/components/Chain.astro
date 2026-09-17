@@ -1,172 +1,182 @@
 ---
 /**
- * Delivery Chain – zwölf Schritte als Zeitstrahl.
- * Progressive Enhancement: Ohne JS oder bei prefers-reduced-motion ist die
- * Linie vollständig gefüllt und alle Schritte sind aktiv. Mit JS füllt sich
- * die Linie beim Scrollen von Lavendel (Prozess) nach Magenta (Produktion),
- * die Schritte werden nacheinander aktiv – ausschließlich transform/opacity,
- * kein WebGL, keine Bibliothek (DESIGN.md, Motion-Regeln).
+ * Delivery Chain – interaktive Timeline.
+ * Mit JS: Die Sektion wird gepinnt, die Linie fährt beim Scrollen horizontal
+ * durch alle zwölf Schritte, der aktive Schritt wird groß ausgelesen. Nur
+ * transform/opacity, keine Bibliothek, kein Glow (DESIGN.md, Motion-Regeln).
+ * Ohne JS, bei prefers-reduced-motion, Save-Data oder 2G: statische, seitlich
+ * scrollbare Linie, alle Schritte aktiv, kein Pin.
+ * Der Slot "heading" nimmt Eyebrow und Überschrift der Seite auf, damit sie
+ * mit auf der gepinnten Bühne stehen.
  */
 import { chain } from "../data/content";
 const n = chain.length;
 ---
 
-<div class="chain" role="list" aria-label="Delivery Chain: From Process to Production" data-chain style={`--n:${n}`}>
-  {chain.map((step, i) => (
-    <div class="chain__item" role="listitem" style={`--i:${i}`}>
-      <span class="chain__dot" aria-hidden="true"></span>
-      <span class="chain__label">{step}</span>
+<div class="chain" data-chain style={`--n:${n}`}>
+  <div class="chain__track">
+    <div class="chain__stage">
+      <div class="chain__head"><slot name="heading" /></div>
+
+      <div class="chain__viewport">
+        <ol class="chain__rail" role="list" aria-label="Delivery Chain: From Process to Production">
+          {chain.map((step, i) => (
+            <li class="chain__item" style={`--i:${i}`}>
+              <span class="chain__dot" aria-hidden="true"></span>
+              <span class="chain__idx" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <span class="chain__label">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <p class="chain__readout" aria-live="polite" aria-atomic="true">
+        <span class="chain__readout-n" data-readout-n>01</span>
+        <span class="chain__readout-of">/ {String(n).padStart(2, "0")}</span>
+        <span class="chain__readout-label" data-readout-label>{chain[0]}</span>
+      </p>
+      <span class="chain__progress" aria-hidden="true"></span>
     </div>
-  ))}
+  </div>
 </div>
 
 <script>
   const clamp = (v: number) => Math.min(1, Math.max(0, v));
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const net = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+  const blocked = () => reduce.matches || !!net?.saveData || /(^|-)2g$/.test(net?.effectiveType ?? "");
 
   function mount(root: HTMLElement) {
-    if (reduce.matches) return () => {};
+    if (blocked()) return () => {};
+    const track = root.querySelector<HTMLElement>(".chain__track")!;
+    const stage = root.querySelector<HTMLElement>(".chain__stage")!;
     const items = Array.from(root.querySelectorAll<HTMLElement>(".chain__item"));
+    const readN = root.querySelector<HTMLElement>("[data-readout-n]")!;
+    const readLabel = root.querySelector<HTMLElement>("[data-readout-label]")!;
     const n = items.length;
-    let top = 0;
-    let ticking = false;
-    let activeCount = -1;
-    root.dataset.js = "";
+    let top = 0, span = 1, ticking = false, active = -1;
+    root.dataset.scene = "on";
 
     const measure = () => {
-      top = root.getBoundingClientRect().top + window.scrollY;
+      top = track.getBoundingClientRect().top + window.scrollY;
+      span = Math.max(1, track.offsetHeight - stage.offsetHeight);
     };
     const update = () => {
       ticking = false;
-      const vh = window.innerHeight;
-      // Füllung läuft, während die Chain vom unteren Viewport-Rand ins obere Drittel wandert
-      const start = top - vh * 0.9;
-      const end = top - vh * 0.3;
-      const p = clamp((window.scrollY - start) / (end - start));
-      root.style.setProperty("--p", p.toFixed(3));
-      const count = Math.round(p * (n - 1) + 1e-6) + 1;
-      if (count !== activeCount) {
-        activeCount = count;
-        items.forEach((el, i) => el.toggleAttribute("data-active", i < count));
+      const p = clamp((window.scrollY - top) / span);
+      root.style.setProperty("--p", p.toFixed(4));
+      const idx = Math.round(p * (n - 1));
+      if (idx !== active) {
+        active = idx;
+        items.forEach((el, i) => {
+          el.toggleAttribute("data-active", i === idx);
+          el.toggleAttribute("data-passed", i < idx);
+        });
+        readN.textContent = String(idx + 1).padStart(2, "0");
+        readLabel.textContent = items[idx].querySelector(".chain__label")?.textContent ?? "";
       }
     };
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    };
-    const onResize = () => {
-      measure();
-      onScroll();
-    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    const onResize = () => { measure(); onScroll(); };
 
     let listening = false;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !listening) {
-          listening = true;
-          window.addEventListener("scroll", onScroll, { passive: true });
-          onScroll();
-        } else if (!entry.isIntersecting && listening) {
-          listening = false;
-          window.removeEventListener("scroll", onScroll);
-        }
-      },
-      { rootMargin: "240px 0px" },
-    );
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !listening) { listening = true; window.addEventListener("scroll", onScroll, { passive: true }); onScroll(); }
+      else if (!e.isIntersecting && listening) { listening = false; window.removeEventListener("scroll", onScroll); }
+    }, { rootMargin: "200px 0px" });
 
-    measure();
-    update();
-    io.observe(root);
+    measure(); update(); io.observe(track);
     window.addEventListener("resize", onResize);
-
-    return () => {
-      io.disconnect();
-      window.removeEventListener("resize", onResize);
-      window.removeEventListener("scroll", onScroll);
-    };
+    document.fonts?.ready.then(onResize);
+    return () => { io.disconnect(); window.removeEventListener("resize", onResize); window.removeEventListener("scroll", onScroll); };
   }
 
   const cleanups = Array.from(document.querySelectorAll<HTMLElement>("[data-chain]")).map(mount);
+  // Vorwärtskompatibel mit ClientRouter; heute volle Seitenladungen.
   document.addEventListener("astro:before-swap", () => cleanups.forEach((fn) => fn()), { once: true });
 </script>
 
 <style>
-  .chain {
-    --p: 1;
-    position: relative;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(150px, 1fr);
-    gap: 0;
-    overflow-x: auto;
-    padding-block: 26px 8px;
-    scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch;
+  .chain { --p: 1; --item-w: 260px; --nav-h: 74px; }
+  @media (max-width: 859px) { .chain { --item-w: 200px; --nav-h: 65px; } }
+
+  /* Statischer Zustand (ohne JS / reduced motion): normale Höhe, seitlich scrollbar */
+  .chain__stage { display: grid; gap: 28px; }
+  .chain__viewport { overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+  .chain__readout, .chain__progress { display: none; }
+
+  .chain__rail {
+    list-style: none; margin: 0; padding: 26px 0 8px;
+    display: grid; grid-auto-flow: column; grid-auto-columns: var(--item-w);
+    width: max-content;
   }
   .chain__item {
     --c0: color-mix(in oklab, var(--process) calc(100% - var(--i) / (var(--n) - 1) * 100%), var(--production));
     --c1: color-mix(in oklab, var(--process) calc(100% - (var(--i) + 1) / (var(--n) - 1) * 100%), var(--production));
-    /* Segmentfüllung: Anteil dieses Segments am Gesamtfortschritt */
     --seg: clamp(0, var(--p) * (var(--n) - 1) - var(--i), 1);
-    position: relative;
-    padding: 0 18px 0 0;
+    position: relative; padding: 0 18px 0 0;
   }
-  /* Segmentlinie vom eigenen Punkt bis zum nächsten – Basis und Füllung */
   .chain__item:not(:last-child)::before,
   .chain__item:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    left: 6px;
-    width: 100%;
-    top: 5px;
-    height: 2px;
-    border-radius: 2px;
+    content: ""; position: absolute; left: 6px; width: 100%; top: 5px; height: 2px; border-radius: 2px;
   }
-  .chain__item::before {
-    background: var(--line-on-ink-strong, rgba(245, 241, 251, 0.18));
-  }
+  .chain__item::before { background: var(--line-on-ink-strong, rgba(245, 241, 251, 0.18)); }
   .chain__item::after {
     background: linear-gradient(90deg, var(--c0), var(--c1));
-    transform-origin: left center;
-    transform: scaleX(var(--seg));
-    transition: transform 0.16s linear;
+    transform-origin: left center; transform: scaleX(var(--seg)); transition: transform 0.16s linear;
   }
   .chain__dot {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--c0);
-    box-shadow: 0 0 0 5px var(--ink);
+    position: relative; z-index: 1; display: block; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--c0); box-shadow: 0 0 0 5px var(--ink);
     transition: opacity 0.24s var(--ease-out), transform 0.24s var(--ease-out);
   }
+  .chain__idx {
+    display: block; margin-top: 14px; font-family: var(--font-display); font-weight: 300;
+    font-size: 0.8rem; letter-spacing: 0.04em; color: var(--fg-on-ink-muted);
+  }
   .chain__label {
-    display: block;
-    margin-top: 16px;
-    font-size: 0.86rem;
-    line-height: 1.35;
-    color: var(--fg-on-ink);
-    text-wrap: balance;
-    transition: color 0.24s var(--ease-out), opacity 0.24s var(--ease-out);
+    display: block; margin-top: 4px; font-size: 0.92rem; line-height: 1.35; color: var(--fg-on-ink);
+    text-wrap: balance; transition: color 0.24s var(--ease-out), opacity 0.24s var(--ease-out);
   }
-  /* Mit JS: inaktive Schritte gedämpft, aktive voll */
-  .chain[data-js] .chain__item:not([data-active]) .chain__dot {
-    opacity: 0.35;
-    transform: scale(0.8);
+
+  /* Szene an: Pin, horizontale Fahrt, Readout, Fortschritt */
+  .chain[data-scene="on"] .chain__track { height: 240vh; }
+  .chain[data-scene="on"] .chain__stage {
+    position: sticky; top: 0; height: 100svh; height: 100dvh;
+    padding-top: calc(var(--nav-h) + 24px); padding-bottom: 40px; box-sizing: border-box;
+    grid-template-rows: auto 1fr auto; align-content: start; gap: 0;
   }
-  .chain[data-js] .chain__item:not([data-active]) .chain__label {
-    color: var(--fg-on-ink-muted);
-    opacity: 0.7;
+  .chain[data-scene="on"] .chain__viewport { overflow: hidden; align-self: center; }
+  .chain[data-scene="on"] .chain__rail {
+    /* Fahrt von links nach rechts durch alle Schritte, nur transform */
+    /* Aktiver Punkt bleibt in der Mitte der Bühne: 50cqw minus seine Position auf der Linie */
+    transform: translate3d(calc(50cqw - var(--p) * (var(--n) - 1) * var(--item-w) - 6px), 0, 0);
+    will-change: transform;
   }
+  .chain[data-scene="on"] .chain__viewport { container-type: inline-size; }
+  .chain[data-scene="on"] .chain__item:not([data-active]):not([data-passed]) .chain__dot { opacity: 0.35; transform: scale(0.8); }
+  .chain[data-scene="on"] .chain__item:not([data-active]):not([data-passed]) .chain__label { color: var(--fg-on-ink-muted); opacity: 0.6; }
+  .chain[data-scene="on"] .chain__item[data-passed] .chain__label { opacity: 0.8; }
+  .chain[data-scene="on"] .chain__item[data-active] .chain__dot { transform: scale(1.25); }
+  .chain[data-scene="on"] .chain__item[data-active] .chain__label { color: #ffffff; }
+
+  .chain[data-scene="on"] .chain__readout {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    margin: 0; font-family: var(--font-display); letter-spacing: -0.02em;
+  }
+  .chain__readout-n { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1; color: var(--accent-on-ink); font-variant-numeric: tabular-nums; }
+  .chain__readout-of { font-size: clamp(1rem, 1.4vw, 1.2rem); font-weight: 300; color: var(--fg-on-ink-muted); }
+  .chain__readout-label { flex-basis: 100%; font-size: clamp(1.25rem, 2.4vw, 1.9rem); font-weight: 600; color: #ffffff; }
+  @media (min-width: 720px) { .chain__readout-label { flex-basis: auto; margin-left: 8px; } }
+
+  .chain[data-scene="on"] .chain__progress {
+    display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+    background: var(--axis); transform-origin: left center; transform: scaleX(var(--p));
+  }
+  .chain[data-scene="on"] .chain__stage { position: sticky; }
+  .chain[data-scene="on"] .chain__stage::after { content: ""; }
+
   @media (prefers-reduced-motion: reduce) {
-    .chain__item::after,
-    .chain__dot,
-    .chain__label {
-      transition: none;
-    }
+    .chain__item::after, .chain__dot, .chain__label { transition: none; }
   }
 </style>
