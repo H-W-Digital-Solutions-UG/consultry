@@ -21,25 +21,6 @@ export const hero = {
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
 
-/** Die drei Beats zum Hero (Prozess zuerst, AI-native, Betrieb). Hero.astro rendert sie noch nicht. */
-export const heroBeats = [
-  {
-    n: 1,
-    title: "Der Prozess zuerst",
-    text: "Wir beginnen bei der Arbeit, die in Ihrem Unternehmen täglich passiert.",
-  },
-  {
-    n: 2,
-    title: "AI-native neu gedacht",
-    text: "AI wird Teil des Ablaufs, nicht ein Werkzeug daneben.",
-  },
-  {
-    n: 3,
-    title: "Produktiv im Betrieb",
-    text: "Dasselbe Team baut die Lösung, sichert sie ab und misst die Wirkung.",
-  },
-] as const;
-
 export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
   // Einwand „wir nutzen doch schon AI“: Einzelne ja, ein Prozess nein

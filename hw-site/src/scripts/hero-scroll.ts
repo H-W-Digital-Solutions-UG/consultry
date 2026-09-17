@@ -3,11 +3,12 @@
  *
  * Ohne dieses Skript (und bei Reduced Motion, Data-Saver oder 2g) bleibt der
  * Hero ein statischer 100svh-Hero. Erst das Skript setzt `data-scene="on"` auf
- * die Section; die Section wird dadurch zu einem hohen Track mit angepinnter
- * Bühne. Beim Scrollen werden ausschließlich CSS-Variablen auf der Section
- * fortgeschrieben (`--p`, `--scene-reveal`, `--scene-carry`) sowie zwei
- * diskrete Zustände (`data-scene-aspect` = Beat-Index, `data-faded` auf der
- * Copy). Alles Sichtbare entsteht in CSS aus transform/opacity.
+ * die Section; die Section wird dadurch zu einem hohen Track, in dem der
+ * sticky Bildlayer stehen bleibt, während die Copy darüber wegscrollt. Beim
+ * Scrollen werden ausschließlich CSS-Variablen auf der Section fortgeschrieben
+ * (`--p`, `--scene-reveal`, `--scene-carry`) sowie `data-scene-aspect`
+ * (derzeit ohne CSS-Verbraucher). Alles Sichtbare entsteht in CSS aus
+ * transform/opacity.
  *
  * Mechanik (nach der Consultry-Referenz):
  *   start = trackTop, end = trackTop + trackHeight − stageHeight

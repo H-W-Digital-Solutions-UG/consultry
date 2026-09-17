@@ -2,18 +2,19 @@
 /**
  * Hero der Startseite – „From Process to Production“.
  *
- * Grundzustand (ohne JS, Reduced Motion, Data-Saver, 2g): statischer
- * 100svh-Hero mit Bild, Schleier, Copy und den drei Beats als einfache Liste.
- * Mit JS (src/scripts/hero-scroll.ts) wird die Section zu einem hohen Track,
- * die Bühne bleibt angepinnt, das breite Bild fährt von der Prozess-Seite
- * (links) zur Produktions-Seite (rechts); die Beat-Liste trägt die Ziffern
- * 01–03 und wird nacheinander „erreicht“. Die Copy tritt zurück, die CTAs
- * bleiben immer voll sichtbar und bedienbar. Alle Scroll-Visuals: nur
- * transform/opacity aus `--p`, `--scene-carry` und `data-scene-aspect`
- * (siehe DESIGN.md, Abschnitte 7 und 9).
+ * Aufbau: Der Bildlayer (.hero__visual) ist sticky und 100svh hoch, die Copy
+ * liegt per negativem Margin über dem ersten Viewport und scrollt ganz normal
+ * mit der Seite nach oben. Mit JS (src/scripts/hero-scroll.ts) wird die
+ * Section zu einem 170vh hohen Track: Das Bild bleibt stehen, während die
+ * Copy darüber wegscrollt, und fährt dabei von der Prozess-Seite (links) zur
+ * Produktions-Seite (rechts), bis die nächste Sektion es überdeckt.
+ *
+ * Ohne JS, bei Reduced Motion, Data-Saver oder 2g bleibt der Track 100svh
+ * hoch: ein statischer Hero. Auf Phones steht das Bild immer still.
+ * Alle Scroll-Visuals: nur transform/opacity aus `--p` (DESIGN.md, 7 und 9).
  */
 import { getImage } from "astro:assets";
-import { hero, heroBeats } from "../data/content";
+import { hero } from "../data/content";
 import heroSource from "../assets/hero.webp";
 
 interface Props {
@@ -33,64 +34,41 @@ const image = await getImage({
 });
 ---
 
-<section class="hero section--ink" data-hero={immersive ? "" : undefined} data-scene-share="0.5">
+<section class="hero section--ink" data-hero={immersive ? "" : undefined}>
   <div class="hero__track" data-hero-track>
-    <div class="hero__stage" data-hero-stage>
-      <div class="hero__visual">
-        <div class="hero__pan">
-          <img
-            class="hero__bg"
-            src={image.src}
-            srcset={image.srcSet.attribute}
-            sizes="100vw"
-            alt={imageAlt}
-            width={image.attributes.width}
-            height={image.attributes.height}
-            fetchpriority="high"
-            decoding="async"
-          />
-        </div>
-        <div class="hero__wash" aria-hidden="true"></div>
-        <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__visual" data-hero-stage>
+      <div class="hero__pan">
+        <img
+          class="hero__bg"
+          src={image.src}
+          srcset={image.srcSet.attribute}
+          sizes="100vw"
+          alt={imageAlt}
+          width={image.attributes.width}
+          height={image.attributes.height}
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
+      <div class="hero__wash" aria-hidden="true"></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__progress" aria-hidden="true"></div>
+    </div>
 
-      <div class="container hero__content">
-        <div class="hero__copy" data-hero-copy>
-          <div class="reveal" style="--delay: .1s"><p class="eyebrow">{hero.eyebrow}</p></div>
-          <div class="reveal" style="--delay: .25s"><h1>{hero.headline}</h1></div>
-          <div class="reveal" style="--delay: .4s"><p class="hero__claim">{hero.claim}</p></div>
-          <div class="reveal" style="--delay: .55s"><p class="hero__desc">{hero.description}</p></div>
-          <div class="hero__actions reveal" style="--delay: .7s">
-            <a class="btn btn--primary" href={hero.primaryCta.href}>
-              {hero.primaryCta.label}
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </a>
-            <a class="btn btn--ghost" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
-          </div>
-        </div>
-
-        <div class="hero__side">
-          <ol class="hero__beats" aria-label="Vom Prozess zur Produktion in drei Schritten">
-            {heroBeats.map((beat, i) => (
-              <li class="hero__beat" data-beat={i + 1}>
-                <span class="hero__beat-n" aria-hidden="true">{String(beat.n).padStart(2, "0")}</span>
-                <div class="hero__beat-body">
-                  <p class="hero__beat-title">{beat.title}</p>
-                  <p class="hero__beat-text">{beat.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <!-- Nur mobil in der Scroll-Szene sichtbar: die Copy hat die Bühne verlassen,
-               die Conversion-Aktion bleibt trotzdem im Bild. -->
-          <a class="btn btn--primary hero__side-cta" href={hero.primaryCta.href}>
+    <div class="hero__content">
+      <div class="container hero__copy">
+        <div class="reveal" style="--delay: .1s"><p class="eyebrow">{hero.eyebrow}</p></div>
+        <div class="reveal" style="--delay: .25s"><h1>{hero.headline}</h1></div>
+        <div class="reveal" style="--delay: .4s"><p class="hero__claim">{hero.claim}</p></div>
+        <div class="reveal" style="--delay: .55s"><p class="hero__desc">{hero.description}</p></div>
+        <div class="hero__actions reveal" style="--delay: .7s">
+          <a class="btn btn--primary" href={hero.primaryCta.href}>
             {hero.primaryCta.label}
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
+          <a class="btn btn--ghost" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
         </div>
       </div>
-
-      <div class="hero__progress" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -104,7 +82,7 @@ const image = await getImage({
       if (!disposers.has(el)) disposers.set(el, createHeroScene(el));
     });
   };
-  // astro:before-swap / astro:page-load: vorwärtskompatibel mit dem ClientRouter (View Transitions) – heute ohne View Transitions wirkungslos.
+  // astro:before-swap / astro:page-load: vorwärtskompatibel mit dem ClientRouter (View Transitions).
   document.addEventListener("astro:before-swap", () => {
     disposers.forEach((dispose) => dispose());
     disposers.clear();
@@ -114,9 +92,6 @@ const image = await getImage({
 </script>
 
 <style>
-  /* ---------------------------------------------------------------
-     Grundzustand: statischer Hero (kein JS / Reduced Motion / Data-Saver)
-     --------------------------------------------------------------- */
   .hero {
     --hero-pad-b: clamp(48px, 8vw, 96px);
     --nav-h: 74px;
@@ -128,17 +103,20 @@ const image = await getImage({
   }
   .hero__track {
     position: relative;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 560px;
   }
-  .hero__stage {
-    position: relative;
-    min-height: 100svh;
-    display: flex;
-    align-items: flex-end;
-  }
-  /* Der Bildlayer wird nur hier beschnitten (breiter Pan in der Szene). */
+
+  /* Bildlayer: sticky, ein Viewport hoch. Ohne Szene hat er keinen Weg und
+     steht damit still; in der Szene bleibt er stehen, während die Copy
+     darüber wegscrollt. */
   .hero__visual {
-    position: absolute;
-    inset: 0;
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 560px;
     overflow: hidden;
   }
   .hero__pan {
@@ -157,9 +135,8 @@ const image = await getImage({
     object-position: 70% center;
     opacity: 0.9;
   }
-  /* Farbwash: Lavendel (Prozess) nur im linken 40 %-Band, max. 6 %; Magenta
-     (Produktion) nur im rechten 35 %-Band, max. 5 %; per --p gegeneinander
-     geblendet. Weiche lineare Verläufe, keine radialen Leuchtflecken. */
+  /* Farbwash: Lavendel (Prozess) links, Magenta (Produktion) rechts, per --p
+     gegeneinander geblendet. Weiche lineare Verläufe, keine Leuchtflecken. */
   .hero__wash {
     position: absolute;
     inset: 0;
@@ -183,25 +160,47 @@ const image = await getImage({
     position: absolute;
     inset: 0;
     pointer-events: none;
-    /* Aubergine-Schleier: unten dicht für Lesbarkeit, links für den Textblock,
-       ein statischer 111°-Aubergine-Schleier (~12 %) über dem mittleren Band
-       zähmt das Einlauf-Leuchten des Motivs, dazu ein leiser Markenlila-Hauch
-       (DESIGN.md, Abschnitt 3). */
+    /* Statischer Teil: ein Schleier über dem mittleren Band gegen das
+       Einlauf-Leuchten, dazu ein leiser Markenlila-Hauch (DESIGN.md, 3). */
     background:
-      linear-gradient(to top, rgba(21, 4, 43, 0.96) 0%, rgba(21, 4, 43, 0.45) 45%, rgba(21, 4, 43, 0.18) 100%),
-      linear-gradient(to right, rgba(21, 4, 43, 0.9) 0%, rgba(21, 4, 43, 0.55) 35%, rgba(21, 4, 43, 0) 68%),
       linear-gradient(111deg, transparent 28%, color-mix(in oklab, var(--ink) 12%, transparent) 50%, transparent 72%),
       linear-gradient(111deg, rgba(81, 29, 150, 0.12) 0%, rgba(53, 26, 89, 0) 70%);
   }
+  /* Lesbarkeits-Schleier: unten dicht, links für den Textblock. Sobald die
+     Copy weggescrollt ist, zieht er sich mit --p zur Hälfte zurück, damit
+     der Nachlauf das Motiv zeigt statt einer schwarzen Fläche. */
+  .hero__shade::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgba(21, 4, 43, 0.96) 0%, rgba(21, 4, 43, 0.45) 45%, rgba(21, 4, 43, 0.18) 100%),
+      linear-gradient(to right, rgba(21, 4, 43, 0.9) 0%, rgba(21, 4, 43, 0.55) 35%, rgba(21, 4, 43, 0) 68%);
+    opacity: calc(1 - 0.5 * var(--p));
+  }
+  .hero__progress {
+    display: none;
+  }
 
-  /* Inhalt */
+  /* Copy: liegt über dem ersten Viewport (negativer Margin gegen den
+     sticky Bildlayer) und scrollt normal mit. */
   .hero__content {
     position: relative;
     z-index: 1;
-    padding-block: 140px var(--hero-pad-b);
-    margin-inline: var(--gutter);
-    /* Flex-Kind der Bühne: volle Breite statt Shrink-to-fit an der Copy. */
-    width: 100%;
+    margin-top: -100svh;
+    margin-top: -100dvh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: flex-end;
+    padding-block: calc(var(--nav-h) + 56px) var(--hero-pad-b);
+  }
+  @media (min-height: 561px) {
+    .hero__track, .hero__visual { min-height: 0; }
+  }
+  @supports not (height: 100svh) {
+    .hero__track, .hero__visual, .hero__content { height: 100vh; min-height: 100vh; }
+    .hero__content { margin-top: -100vh; }
   }
   .hero__copy {
     max-width: 760px;
@@ -209,7 +208,6 @@ const image = await getImage({
   .hero h1 {
     margin-top: 18px;
     color: var(--fg-on-ink);
-    transform-origin: left center;
   }
   .hero__claim {
     margin-top: 16px;
@@ -217,7 +215,6 @@ const image = await getImage({
     font-size: clamp(1.35rem, 2.6vw, 2rem);
     font-weight: 600;
     letter-spacing: -0.025em;
-    /* Claim in Weiß, hervorgehoben; die Achse bleibt der Fortschrittslinie vorbehalten */
     color: #ffffff;
     width: fit-content;
   }
@@ -235,78 +232,7 @@ const image = await getImage({
     margin-top: 32px;
   }
 
-  /* Beats – Ziffer leicht (Sora 300) neben kurzem Titel, Text darunter. */
-  .hero__side {
-    margin-top: 40px;
-  }
-  .hero__beats {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 8px;
-  }
-  .hero__beat {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 14px;
-    align-items: baseline;
-    padding: 12px 14px;
-    border: 1px solid transparent;
-    border-radius: var(--radius);
-  }
-  .hero__beat-n {
-    font-family: var(--font-display);
-    font-weight: 300;
-    font-size: 1.5rem;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums;
-    color: var(--accent-on-ink);
-  }
-  .hero__beat-title {
-    font-size: 1.05rem;
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-    color: var(--fg-on-ink);
-  }
-  .hero__beat-text {
-    margin-top: 6px;
-    font-size: 0.92rem;
-    line-height: 1.5;
-    color: var(--fg-on-ink-muted);
-    text-wrap: pretty;
-  }
-  .hero__side-cta {
-    display: none;
-  }
-
-  .hero__progress {
-    display: none;
-  }
-
-  @media (min-width: 900px) {
-    .hero__content {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-      align-items: end;
-      column-gap: 56px;
-    }
-    /* Um 48 px angehoben, damit die Liste das Förderband im Motiv frei lässt. */
-    .hero__side {
-      margin-top: 0;
-      padding-bottom: 48px;
-    }
-  }
-  @media (min-width: 1296px) {
-    .hero__content {
-      margin-inline: auto;
-      width: min(100% - 2 * var(--gutter), var(--container));
-    }
-  }
-
-  /* Flache Viewports (max. 700 px hoch, z. B. 375×667 oder 844×390 quer):
-     Copy kompakter, damit nichts beschnitten wird. */
+  /* Flache Viewports (max. 700 px hoch): Copy kompakter, nichts wird beschnitten. */
   @media (max-height: 700px) {
     .hero {
       --hero-pad-b: 24px;
@@ -341,18 +267,10 @@ const image = await getImage({
      Scroll-Szene (nur mit JS, gesetzt über data-scene="on")
      --------------------------------------------------------------- */
   .hero[data-scene="on"] .hero__track {
-    height: 220vh;
+    height: 170vh;
   }
-  .hero[data-scene="on"] .hero__stage {
-    position: sticky;
-    top: 0;
-    height: auto;
-    min-height: 100svh;
-    min-height: 100dvh;
-  }
-  /* Bildlayer breiter als der Viewport: eine Kamerafahrt von Bildlinks
-     (Prozess-Knoten) nach Bildrechts (Produktion), dazu Skalierung 1.06 -> 1
-     und eine leise vertikale Drift. Linear an den Scroll gekoppelt. */
+  /* Bildlayer breiter als der Viewport: Kamerafahrt von Bildlinks (Prozess)
+     nach Bildrechts (Produktion), Skalierung 1.075 -> 1.015, leise Drift. */
   .hero[data-scene="on"] .hero__pan {
     width: max(178svh, 150vw);
     will-change: transform;
@@ -362,80 +280,8 @@ const image = await getImage({
   .hero[data-scene="on"] .hero__bg {
     object-position: 50% 40%;
   }
-
-  /* Copy tritt zurück, sobald die Beats den Fokus übernehmen – die CTAs
-     bleiben davon ausgenommen und immer voll sichtbar. */
-  .hero[data-scene="on"] .hero__copy :is(.eyebrow, h1, .hero__claim, .hero__desc) {
-    transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-  }
-  /* Fokus bleibt auf dem Text: nur leichte Absenkung, H1 bleibt voll */
-  .hero[data-scene="on"] .hero__copy[data-faded="true"] :is(.eyebrow, .hero__desc) {
-    opacity: 0.85;
-  }
-  .hero[data-scene="on"] .hero__copy[data-faded="true"] h1 {
-    opacity: 1;
-    transform: translateY(-8px) scale(0.99);
-  }
-  .hero[data-scene="on"] .hero__copy[data-faded="true"] .hero__claim {
-    opacity: 1;
-  }
-
-  /* Beats: die ganze Liste ist von Anfang an sichtbar (Opacity .45 als
-     Scroll-Hinweis); der aktive Beat wird auf 1 gehoben und erhält eine
-     ruhige Fläche statt Glow, bereits erreichte Beats bleiben bei .8. */
-  .hero[data-scene="on"] .hero__beat {
-    opacity: 0.55;
-    transition:
-      opacity 0.24s var(--ease-out),
-      background-color 0.24s,
-      border-color 0.24s;
-  }
-  .hero[data-scene="on"] .hero__beat-n,
-  .hero[data-scene="on"] .hero__beat-title,
-  .hero[data-scene="on"] .hero__beat-text {
-    transition: color 0.24s, opacity 0.24s;
-  }
-  .hero[data-scene="on"] .hero__beat-n,
-  .hero[data-scene="on"] .hero__beat-title {
-    color: var(--fg-on-ink-muted);
-  }
-  .hero[data-scene="on"] .hero__beat-text {
-    opacity: 0.75;
-  }
-  /* erreicht (aktiv oder bereits passiert) */
-  .hero[data-scene-aspect="2"] .hero__beat[data-beat="1"],
-  .hero[data-scene-aspect="3"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) {
-    opacity: 0.8;
-  }
-  .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"] .hero__beat-n,
-  .hero[data-scene-aspect="2"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) .hero__beat-n,
-  .hero[data-scene-aspect="3"] .hero__beat .hero__beat-n {
-    color: var(--accent-on-ink);
-  }
-  .hero[data-scene-aspect="3"] .hero__beat[data-beat="3"] .hero__beat-n {
-    color: var(--production);
-  }
-  .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"] .hero__beat-title,
-  .hero[data-scene-aspect="2"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) .hero__beat-title,
-  .hero[data-scene-aspect="3"] .hero__beat .hero__beat-title {
-    color: var(--fg-on-ink);
-  }
-  .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"] .hero__beat-text,
-  .hero[data-scene-aspect="2"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) .hero__beat-text,
-  .hero[data-scene-aspect="3"] .hero__beat .hero__beat-text {
-    opacity: 1;
-  }
-  /* aktiv */
-  .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"],
-  .hero[data-scene-aspect="2"] .hero__beat[data-beat="2"],
-  .hero[data-scene-aspect="3"] .hero__beat[data-beat="3"] {
-    opacity: 1;
-    background: rgba(245, 241, 251, 0.06);
-    border-color: var(--line-on-ink);
-  }
-
-  /* Fortschrittslinie: Achse in voller Breite, eine Aubergine-Abdeckung
-     schiebt sich mit --p nach rechts weg – Magenta bleibt am Ende. */
+  /* Fortschrittslinie am unteren Bildrand: Achse in voller Breite, eine
+     Aubergine-Abdeckung schiebt sich mit --p nach rechts weg. */
   .hero[data-scene="on"] .hero__progress {
     display: block;
     position: absolute;
@@ -456,14 +302,12 @@ const image = await getImage({
     transform: translate3d(calc(var(--p) * 100%), 0, 0);
   }
 
-  /* Mobil: kürzerer Track. Mit dem ersten Beat verlässt die Copy die Bühne
-     nach oben (300 ms), die drei Beats stehen gestapelt unten, darunter ein
-     kompakter Primär-CTA, damit die Conversion-Aktion im Bild bleibt. */
+  /* Phone: Bild steht still, kein Nachlauf; der Hero ist einen Viewport hoch. */
   @media (max-width: 899px) {
     .hero[data-scene="on"] .hero__track {
-      height: 200vh;
+      height: 100svh;
+      height: 100dvh;
     }
-    /* Kein Bild-Scroll auf dem Phone: Bildlayer steht still, nur Copy und Beats wechseln. */
     .hero[data-scene="on"] .hero__pan {
       width: 100%;
       will-change: auto;
@@ -472,71 +316,8 @@ const image = await getImage({
     .hero[data-scene="on"] .hero__bg {
       object-position: 70% center;
     }
-    .hero[data-scene="on"] .hero__copy {
-      transition:
-        opacity 0.3s var(--ease-out),
-        transform 0.3s var(--ease-out),
-        visibility 0s;
-    }
-    .hero[data-scene="on"]:is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) .hero__copy {
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-100svh);
-      transform: translateY(-100dvh);
-      transition-delay: 0s, 0s, 0.3s;
-    }
-    .hero[data-scene="on"] .hero__side {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: var(--hero-pad-b);
-      margin: 0;
-      opacity: 0;
-      visibility: hidden;
-      transition:
-        opacity 0.3s var(--ease-out),
-        visibility 0s 0.3s;
-    }
-    .hero[data-scene="on"]:is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) .hero__side {
-      opacity: 1;
-      visibility: visible;
-      transition-delay: 0s;
-    }
-    .hero[data-scene="on"] .hero__beat {
-      padding: 10px 12px;
-    }
-    .hero[data-scene="on"] .hero__beat-n {
-      font-size: 1.3rem;
-    }
-    .hero[data-scene="on"] .hero__beat-title {
-      font-size: 1rem;
-    }
-    .hero[data-scene="on"] .hero__beat-text {
-      margin-top: 4px;
-      font-size: 0.88rem;
-      line-height: 1.45;
-    }
-    .hero[data-scene="on"] .hero__side-cta {
-      display: inline-flex;
-      margin-top: 14px;
-      padding: 11px 16px;
-      font-size: 0.9rem;
-    }
-  }
-  /* Mobil quer (z. B. 844×390): Beats nebeneinander, damit Motiv und CTA Platz behalten. */
-  @media (max-width: 899px) and (max-height: 500px) {
-    .hero[data-scene="on"] .hero__beats {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .hero[data-scene="on"] .hero__beat {
-      column-gap: 10px;
-    }
-    .hero[data-scene="on"] .hero__beat-text {
-      font-size: 0.82rem;
-      line-height: 1.4;
-    }
-    .hero[data-scene="on"] .hero__side-cta {
-      margin-top: 10px;
+    .hero[data-scene="on"] .hero__progress {
+      display: none;
     }
   }
 
@@ -544,52 +325,16 @@ const image = await getImage({
      wenn das Skript sie bereits aktiviert hatte. */
   @media (prefers-reduced-motion: reduce) {
     .hero[data-scene="on"] .hero__track {
-      height: auto;
-    }
-    .hero[data-scene="on"] .hero__stage {
-      position: relative;
-      height: auto;
-      min-height: 100svh;
+      height: 100svh;
+      height: 100dvh;
     }
     .hero[data-scene="on"] .hero__pan {
       width: 100%;
       transform: none;
       will-change: auto;
     }
-    .hero[data-scene="on"] .hero__progress,
-    .hero[data-scene="on"] .hero__side-cta {
+    .hero[data-scene="on"] .hero__progress {
       display: none;
-    }
-    .hero[data-scene="on"] .hero__copy,
-    .hero[data-scene="on"] .hero__copy :is(.eyebrow, h1, .hero__claim, .hero__desc),
-    .hero[data-scene="on"] .hero__side,
-    .hero[data-scene="on"] .hero__beat {
-      opacity: 1;
-      visibility: visible;
-      transform: none;
-      transition: none;
-    }
-    .hero[data-scene="on"] .hero__side {
-      position: static;
-      margin-top: 40px;
-    }
-    .hero[data-scene="on"] .hero__beat {
-      background: none;
-      border-color: transparent;
-    }
-    .hero[data-scene="on"] .hero__beat-n {
-      color: var(--accent-on-ink);
-    }
-    .hero[data-scene="on"] .hero__beat-title {
-      color: var(--fg-on-ink);
-    }
-    .hero[data-scene="on"] .hero__beat-text {
-      opacity: 1;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) and (min-width: 900px) {
-    .hero[data-scene="on"] .hero__side {
-      margin-top: 0;
     }
   }
   @media (max-width: 859px) {
