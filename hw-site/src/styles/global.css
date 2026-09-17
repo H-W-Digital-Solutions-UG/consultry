@@ -97,8 +97,7 @@ h4 {
 
 h1 {
   font-size: clamp(2.1rem, 6.2vw, 5rem);
-  hyphens: auto;
-  overflow-wrap: anywhere;
+  hyphens: manual;
   letter-spacing: -0.045em;
 }
 

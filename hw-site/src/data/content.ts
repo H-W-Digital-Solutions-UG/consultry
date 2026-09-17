@@ -8,7 +8,7 @@
 
 export const hero = {
   eyebrow: "AI-Native Consulting & Engineering", // PROVISORISCH – aus Abschnitt 7 rekonstruiert
-  headline: "Von Geschäftsprozessen zu produktiver KI.",
+  headline: "Von Geschäfts\u00ADprozessen zu produktiver KI.", // \u00AD = weiches Trennzeichen für schmale Viewports
   claim: "From Process to Production.",
   description:
     "Wir analysieren, wie Ihr Unternehmen arbeitet, identifizieren konkrete AI-Potenziale und entwickeln daraus produktive Lösungen – von der Prozessoptimierung bis zum sicheren Deployment.",
