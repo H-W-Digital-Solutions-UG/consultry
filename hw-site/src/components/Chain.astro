@@ -367,9 +367,12 @@ const phaseCta: Record<string, { label: string; href: string }> = {
     width: clamp(96px, 12vw, 150px);
     height: auto;
     margin: -8px -8px 0 0;
-    opacity: 0.9;
+    opacity: 0;
+    transition: opacity 0.35s var(--ease-out);
     pointer-events: none;
   }
+  /* Nur die vordere Karte zeigt ihr Visual; die Nachbarn bleiben ruhig. */
+  .chain__card.is-front .chain__card-art { opacity: 0.9; }
   @media (max-width: 599px) { .chain__card-art { display: none; } }
   .chain__card-cta {
     grid-column: 2;
