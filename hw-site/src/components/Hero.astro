@@ -194,14 +194,11 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
   .hero__claim {
     margin-top: 16px;
     font-family: var(--font-display);
-    font-size: clamp(1.15rem, 2.2vw, 1.7rem);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    /* Claim trägt die Achse: Lavendel -> Magenta, Magenta nur am Ende */
-    background: linear-gradient(90deg, var(--accent-on-ink) 0%, var(--process) 55%, var(--production) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    /* Claim in Weiß, hervorgehoben; die Achse bleibt der Fortschrittslinie vorbehalten */
+    color: #ffffff;
     width: fit-content;
   }
   .hero__desc {
@@ -359,7 +356,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     transform: translateY(-10px) scale(0.98);
   }
   .hero[data-scene="on"] .hero__copy[data-faded="true"] .hero__claim {
-    opacity: 0.6;
+    opacity: 1;
   }
 
   /* Beats: die ganze Liste ist von Anfang an sichtbar (Opacity .45 als
