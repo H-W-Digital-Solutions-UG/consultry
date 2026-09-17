@@ -1,0 +1,55 @@
+---
+/**
+ * Kompakter CTA am Ende einer Sektion: eine Zeile Anlass, ein Primär-Button,
+ * optional ein Ghost-Link. Farben folgen der Sektion (.section--ink).
+ */
+interface Props {
+  line: string;
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}
+const {
+  line,
+  primary = { label: "Erstgespräch vereinbaren", href: "/kontakt" },
+  secondary,
+} = Astro.props;
+---
+
+<div class="scta">
+  <p class="scta__line">{line}</p>
+  <div class="scta__actions">
+    <a class="btn btn--primary" href={primary.href}>
+      {primary.label}
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+    {secondary && <a class="btn btn--ghost" href={secondary.href}>{secondary.label}</a>}
+  </div>
+</div>
+
+<style>
+  .scta {
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+  }
+  :global(.section--ink) .scta { border-top-color: var(--line-on-ink); }
+  .scta__line {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    max-width: 34ch;
+    text-wrap: balance;
+  }
+  .scta__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  @media (max-width: 599px) {
+    .scta__actions { width: 100%; }
+    .scta__actions .btn { flex: 1 1 auto; justify-content: center; }
+  }
+</style>

@@ -5,6 +5,7 @@ import Chain from "../components/Chain.astro";
 import Contrast from "../components/Contrast.astro";
 import Capabilities from "../components/Capabilities.astro";
 import Cta from "../components/Cta.astro";
+import SectionCta from "../components/SectionCta.astro";
 import { promise, sovereignty } from "../data/content";
 import { company } from "../data/company";
 ---
@@ -37,6 +38,7 @@ import { company } from "../data/company";
           <h2 class="chainsec__h">Ein Partner. Keine Übergabe.</h2>
         </Fragment>
       </Chain>
+      <SectionCta line="Wo fängt Schritt eins bei Ihnen an?" secondary={{ label: "Vorgehen im Detail", href: "/vorgehen" }} />
     </div>
   </section>
 
@@ -58,6 +60,7 @@ import { company } from "../data/company";
       <p class="eyebrow" data-n="04">Der Unterschied</p>
       <h2 class="sec__h">Eine Roadmap ist kein Ergebnis.</h2>
       <div class="sec__body"><Contrast /></div>
+      <SectionCta line="Lieber ein Ergebnis als eine Roadmap?" />
     </div>
   </section>
 
@@ -79,6 +82,7 @@ import { company } from "../data/company";
           </li>
         ))}
       </ol>
+      <SectionCta line="Ein Prozess genügt für den Anfang." />
     </div>
   </section>
 
@@ -87,6 +91,7 @@ import { company } from "../data/company";
       <p class="eyebrow" data-n="06">Womit wir bauen</p>
       <h2 class="sec__h">Ein Modell ist noch keine Lösung.</h2>
       <div class="sec__body"><Capabilities /></div>
+      <SectionCta line="Was davon Ihr Ablauf braucht, klären wir im Gespräch." secondary={{ label: "Leistungen im Detail", href: "/leistungen" }} />
     </div>
   </section>
 
@@ -100,7 +105,7 @@ import { company } from "../data/company";
   .promise__principle { margin-top: 20px; color: var(--fg-muted); }
   .promise__senior { margin-top: 20px; font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; color: var(--fg); max-width: 32ch; }
   .chainsec__h, .sec__h { margin-top: 16px; max-width: 20ch; }
-  .chainsec { padding-block: 0; }
+  .chainsec { padding-block: 0 72px; }
   .sec__h + .lede { margin-top: 16px; }
   .sec__body { margin-top: 44px; }
   .sov__grid { display: grid; gap: 24px; }

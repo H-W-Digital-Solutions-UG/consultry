@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Cta from "../components/Cta.astro";
+import SectionCta from "../components/SectionCta.astro";
 import { company } from "../data/company";
 ---
 
@@ -31,6 +32,9 @@ import { company } from "../data/company";
           Governance und Compliance in jede Lösung ein, statt sie am Ende zu prüfen.
         </p>
       </div>
+    </div>
+    <div class="container">
+      <SectionCta line="Lernen Sie die kennen, die später bauen." secondary={{ label: "So arbeiten wir", href: "/vorgehen" }} />
     </div>
   </section>
 
