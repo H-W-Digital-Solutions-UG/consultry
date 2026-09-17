@@ -34,6 +34,13 @@ const groups = meta.reduce<{ phase: string; from: number; to: number }[]>((acc, 
   return acc;
 }, []);
 const pad = (i: number) => String(i + 1).padStart(2, "0");
+// Passender CTA je Phase (Karte rechts)
+const phaseCta: Record<string, { label: string; href: string }> = {
+  Prozess: { label: "Ihren Ablauf im Erstgespräch durchgehen", href: "/kontakt" },
+  Design: { label: "So denken wir Prozesse neu", href: "/vorgehen" },
+  Engineering: { label: "Was wir selbst bauen", href: "/leistungen" },
+  Produktion: { label: "Kostenloses Erstgespräch vereinbaren", href: "/kontakt" },
+};
 ---
 
 <div class="chain" data-chain style={`--n:${n}`}>
@@ -73,6 +80,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
       <div class="chain__readout" data-stack>
         {meta.map((m, i) => (
           <article class="chain__card" data-card={i} aria-hidden={i !== 0 ? "true" : undefined}>
+            <img class="chain__card-art" src={`/images/steps/step-${pad(i)}.webp`} alt="" width="320" height="320" loading="lazy" decoding="async" />
             <span class="chain__readout-top">
               <span class="chain__readout-n">{pad(i)}</span>
               <span class="chain__readout-of">/ {String(n).padStart(2, "0")}</span>
@@ -80,6 +88,10 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
             <span class="chain__readout-phase">{m.phase}</span>
             <span class="chain__readout-label">{chain[i]}</span>
             <span class="chain__readout-text">{chainTexts[i]}</span>
+            <a class="chain__card-cta" href={phaseCta[m.phase].href} tabindex={i !== 0 ? -1 : undefined}>
+              {phaseCta[m.phase].label}
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
           </article>
         ))}
       </div>
@@ -127,7 +139,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     const animate = () => {
       const diff = target - cur;
       if (Math.abs(diff) < 0.002) { cur = target; paint(); animating = false; return; }
-      cur += diff * 0.16;
+      cur += diff * 0.12;
       paint();
       requestAnimationFrame(animate);
     };
@@ -157,7 +169,12 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
           el.toggleAttribute("data-active", i === idx);
           el.toggleAttribute("data-passed", i < idx);
         });
-        cards.forEach((c, i) => { if (i === idx) c.removeAttribute("aria-hidden"); else c.setAttribute("aria-hidden", "true"); });
+        cards.forEach((c, i) => {
+          const on = i === idx;
+          if (on) c.removeAttribute("aria-hidden"); else c.setAttribute("aria-hidden", "true");
+          const a = c.querySelector<HTMLAnchorElement>(".chain__card-cta");
+          if (a) { if (on) a.removeAttribute("tabindex"); else a.tabIndex = -1; }
+        });
         groupEls.forEach((g) => {
           const from = Number(g.style.getPropertyValue("--from")), to = Number(g.style.getPropertyValue("--to"));
           const open = idx >= from && idx <= to;
@@ -207,8 +224,17 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   .chain__rail, .chain__steps { list-style: none; margin: 0; padding: 0; display: grid; }
   .chain__group { position: relative; padding-bottom: 6px; }
   .chain__group-head {
-    display: flex; align-items: center; gap: 14px; width: 100%; padding: 6px 0;
-    background: transparent; border: 0; color: inherit; text-align: left; cursor: pointer; font: inherit;
+    display: flex; align-items: center; gap: 14px; width: 100%; padding: 6px 12px 6px 0;
+    background: transparent; border: 1px solid transparent; border-radius: 999px; color: inherit; text-align: left; cursor: pointer; font: inherit;
+    transition: background-color 0.24s, border-color 0.24s;
+  }
+  .chain__group-head:hover { background: rgba(245, 241, 251, 0.04); }
+  /* Offene Phase: Glas-Pille um Knoten und Namen */
+  .chain[data-scene="on"] .chain__group[data-open] .chain__group-head {
+    background: linear-gradient(90deg, rgba(195, 165, 255, 0.14), rgba(245, 241, 251, 0.03));
+    border-color: rgba(195, 165, 255, 0.28);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
   }
   .chain__group-n {
     flex: none; display: grid; place-items: center; width: var(--node); height: var(--node); border-radius: 50%;
@@ -217,7 +243,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     position: relative; z-index: 1; transition: background-color 0.24s, border-color 0.24s, color 0.24s;
   }
   .chain__group-text { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-  .chain__group-name { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--fg-on-ink); }
+  .chain__group-name { font-family: var(--font-display); font-weight: 600; font-size: 1.12rem; letter-spacing: -0.015em; color: var(--fg-on-ink); }
   .chain__group-range { font-family: var(--font-display); font-weight: 300; font-size: 0.8rem; letter-spacing: 0.04em; color: var(--fg-on-ink-muted); }
   /* Verbindungslinie zwischen den Phasen-Knoten (Basis + Füllung bis zum letzten Schritt der Gruppe) */
   .chain__group:not(:last-child)::before, .chain__group:not(:last-child)::after {
@@ -243,9 +269,13 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     position: relative;
   }
   .chain__step {
-    display: flex; align-items: center; gap: 16px; width: 100%; padding: 4px 0;
-    background: transparent; border: 0; color: inherit; text-align: left; cursor: pointer; font: inherit;
+    display: flex; align-items: center; gap: 16px; width: 100%; padding: 4px 12px 4px 0;
+    background: transparent; border: 0; border-radius: 10px; color: inherit; text-align: left; cursor: pointer; font: inherit;
+    transition: background-color 0.2s;
   }
+  .chain__step:hover { background: rgba(245, 241, 251, 0.04); }
+  /* Aktiver Schritt: leichte Glas-Zeile, Label weiß */
+  .chain[data-scene="on"] .chain__item[data-active] .chain__step { background: rgba(245, 241, 251, 0.05); }
   /* Vertikale Linie vom eigenen Node bis zum nächsten – Basis und Füllung */
   .chain__item:not(:last-child)::before,
   .chain__item:not(:last-child)::after {
@@ -271,7 +301,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   }
 
   /* Szene an: Pin, Füllung von oben nach unten, Readout rechts */
-  .chain[data-scene="on"] .chain__track { height: 240vh; }
+  .chain[data-scene="on"] .chain__track { height: 380vh; }
   .chain[data-scene="on"] .chain__stage {
     position: sticky; top: 0; height: 100svh; height: 100dvh; box-sizing: border-box;
     padding-top: calc(var(--nav-h) + 12px); padding-bottom: 24px;
@@ -294,8 +324,8 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     display: block;
     position: relative;
     align-self: center;
-    min-height: 300px;
-    max-width: 640px;
+    min-height: 360px;
+    max-width: 760px;
     width: 100%;
     font-family: var(--font-display);
     letter-spacing: -0.02em;
@@ -306,13 +336,13 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     position: absolute;
     inset: 0 0 auto 0;
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr) auto;
     column-gap: clamp(24px, 3vw, 44px);
     row-gap: 6px;
     align-content: start;
     align-items: start;
-    padding: 28px 30px 32px;
-    border-radius: var(--radius-lg);
+    padding: 36px 36px 36px;
+    border-radius: 22px;
     border: 1px solid rgba(245, 241, 251, 0.14);
     background: linear-gradient(160deg, rgba(245, 241, 251, 0.07), rgba(245, 241, 251, 0.03));
     -webkit-backdrop-filter: blur(16px) saturate(1.2);
@@ -327,6 +357,39 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     opacity: 0;
     transition: border-color 0.25s, box-shadow 0.25s;
   }
+  /* Monotones Visual oben rechts (Higgsfield, Lavendel-Linien auf Schwarz,
+     per Screen-Blend wird Schwarz unsichtbar). */
+  .chain__card-art {
+    grid-column: 3;
+    grid-row: 1 / 6;
+    align-self: start;
+    justify-self: end;
+    width: clamp(96px, 12vw, 150px);
+    height: auto;
+    margin: -8px -8px 0 0;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  @media (max-width: 599px) { .chain__card-art { display: none; } }
+  .chain__card-cta {
+    grid-column: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    width: fit-content;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--accent-on-ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .chain__card-cta svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
+  .chain__card-cta:hover { color: var(--fg-on-ink); border-color: var(--line-on-ink-strong); }
+  .chain__card-cta:hover svg { transform: translateX(3px); }
   /* Lichtkante oben auf der vorderen Karte: läuft mit dem Fortschritt der Achse. */
   .chain__card::before {
     content: "";
@@ -349,14 +412,14 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   }
   .chain__card[data-card="0"] { visibility: visible; opacity: 1; }
   .chain__readout-top {
-    grid-row: 1 / 4;
+    grid-row: 1 / 6;
     display: grid;
     justify-items: start;
     align-content: start;
     gap: 2px;
   }
   .chain__readout-n {
-    font-size: clamp(5rem, 10vw, 8.5rem);
+    font-size: clamp(5.5rem, 11vw, 10rem);
     font-weight: 300;
     line-height: 0.9;
     letter-spacing: -0.06em;
@@ -374,9 +437,9 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   }
   .chain__readout-label {
     grid-column: 2;
-    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
     font-weight: 600;
-    line-height: 1.12;
+    line-height: 1.1;
     color: #ffffff;
     max-width: 18ch;
     text-wrap: balance;
@@ -394,7 +457,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   }
 
   @media (min-width: 900px) {
-    .chain[data-scene="on"] .chain__stage { grid-template-columns: minmax(300px, 380px) minmax(0, 640px); column-gap: 56px; justify-content: start; }
+    .chain[data-scene="on"] .chain__stage { grid-template-columns: minmax(280px, 360px) minmax(0, 760px); column-gap: 48px; justify-content: start; }
     .chain[data-scene="on"] .chain__head { grid-column: 1 / -1; }
     .chain[data-scene="on"] .chain__rail { grid-column: 1; }
     .chain[data-scene="on"] .chain__readout { grid-column: 2; }
