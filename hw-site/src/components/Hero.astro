@@ -197,9 +197,10 @@ const image = await getImage({
     min-height: 100svh;
     min-height: 100dvh;
     display: flex;
-    align-items: flex-end;
-    padding-block: calc(var(--nav-h) + 56px) var(--hero-pad-b);
+    align-items: flex-start;
+    padding-block: calc(var(--nav-h) + clamp(40px, 10vh, 120px)) var(--hero-pad-b);
   }
+
   @media (min-height: 561px) {
     .hero__visual { min-height: 0; }
   }
@@ -215,7 +216,8 @@ const image = await getImage({
     padding-block: 0 24px;
   }
   .hero__after:empty { display: none; }
-  .hero__copy {
+  /* Copy bündig mit der Container-Kante (Logo), Zeilenlänge über die Kinder begrenzt */
+  .hero__copy > * {
     max-width: 760px;
   }
   .hero h1 {
