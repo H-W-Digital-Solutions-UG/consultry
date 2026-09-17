@@ -70,6 +70,12 @@ const image = await getImage({
         </div>
       </div>
     </div>
+
+    <!-- Nachlauf: liegt nach der Copy über dem stehenden Bild (Slot "after",
+         z. B. die Trust-Leiste). -->
+    <div class="hero__after">
+      <div class="container"><slot name="after" /></div>
+    </div>
   </div>
 </section>
 
@@ -103,9 +109,8 @@ const image = await getImage({
   }
   .hero__track {
     position: relative;
-    height: 100svh;
-    height: 100dvh;
-    min-height: 560px;
+    min-height: 100svh;
+    min-height: 100dvh;
   }
 
   /* Bildlayer: sticky, ein Viewport hoch. Ohne Szene hat er keinen Weg und
@@ -196,12 +201,20 @@ const image = await getImage({
     padding-block: calc(var(--nav-h) + 56px) var(--hero-pad-b);
   }
   @media (min-height: 561px) {
-    .hero__track, .hero__visual { min-height: 0; }
+    .hero__visual { min-height: 0; }
   }
   @supports not (height: 100svh) {
-    .hero__track, .hero__visual, .hero__content { height: 100vh; min-height: 100vh; }
+    .hero__visual, .hero__content { height: 100vh; min-height: 100vh; }
     .hero__content { margin-top: -100vh; }
   }
+  /* Nachlauf unter der Copy: ohne Szene ein schlanker Streifen auf Aubergine,
+     in der Szene die Fläche, in der das Bild sichtbar bleibt. */
+  .hero__after {
+    position: relative;
+    z-index: 1;
+    padding-block: 28px 32px;
+  }
+  .hero__after:empty { display: none; }
   .hero__copy {
     max-width: 760px;
   }
@@ -266,8 +279,11 @@ const image = await getImage({
   /* ---------------------------------------------------------------
      Scroll-Szene (nur mit JS, gesetzt über data-scene="on")
      --------------------------------------------------------------- */
-  .hero[data-scene="on"] .hero__track {
-    height: 170vh;
+  .hero[data-scene="on"] .hero__after {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding-block: 8vh;
   }
   /* Bildlayer breiter als der Viewport: Kamerafahrt von Bildlinks (Prozess)
      nach Bildrechts (Produktion), Skalierung 1.075 -> 1.015, leise Drift. */
@@ -304,9 +320,10 @@ const image = await getImage({
 
   /* Phone: Bild steht still, kein Nachlauf; der Hero ist einen Viewport hoch. */
   @media (max-width: 899px) {
-    .hero[data-scene="on"] .hero__track {
-      height: 100svh;
-      height: 100dvh;
+    .hero[data-scene="on"] .hero__after {
+      min-height: 0;
+      display: block;
+      padding-block: 28px 32px;
     }
     .hero[data-scene="on"] .hero__pan {
       width: 100%;
@@ -324,9 +341,10 @@ const image = await getImage({
   /* Sicherheitsnetz: Reduced Motion neutralisiert die Szene auch dann,
      wenn das Skript sie bereits aktiviert hatte. */
   @media (prefers-reduced-motion: reduce) {
-    .hero[data-scene="on"] .hero__track {
-      height: 100svh;
-      height: 100dvh;
+    .hero[data-scene="on"] .hero__after {
+      min-height: 0;
+      display: block;
+      padding-block: 28px 32px;
     }
     .hero[data-scene="on"] .hero__pan {
       width: 100%;

@@ -16,11 +16,9 @@ import { company } from "../data/company";
   title={`${company.name} – ${company.tagline}`}
   description="H&W Digital Solutions, Berlin: Wir finden die größten AI-Hebel in Ihren Geschäftsprozessen und bauen die Lösung selbst, bis sie produktiv läuft."
 >
-  <Hero imageAlt="" />
-
-  <section class="trust" aria-label="Zertifizierungen und Partner">
-    <div class="container"><Proof variant="strip" /></div>
-  </section>
+  <Hero imageAlt="">
+    <Proof slot="after" variant="strip" />
+  </Hero>
 
   <section class="section promise">
     <div class="container promise__grid">
@@ -128,7 +126,6 @@ import { company } from "../data/company";
   .sov__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); }
   .sov__title { font-size: 1.2rem; }
   .sov__text { color: var(--fg-muted); font-size: 0.98rem; }
-  .trust { padding-block: 28px 30px; background: var(--paper-2); border-bottom: 1px solid var(--line); }
   .seven__grid { display: grid; gap: 28px; }
   @media (min-width: 900px) { .seven__grid { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; } }
   .seven__side { display: grid; gap: 24px; justify-items: start; }

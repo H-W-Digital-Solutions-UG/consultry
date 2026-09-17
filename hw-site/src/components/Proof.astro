@@ -5,8 +5,10 @@
  * 2026-09-17). Partnerlogos werden als CSS-Maske einfarbig gerendert, damit
  * fünf fremde Marken nicht fünf Farbwelten in die Seite tragen.
  *
- * variant="strip": Trust-Leiste direkt unter dem Hero (Startseite):
- *   Zertifikate links, Partner rechts, eine Zeile auf Desktop.
+ * variant="strip": Trust-Leiste im Hero-Nachlauf (Slot "after" von Hero.astro):
+ *   Zertifikate links, Partner rechts. In der Scroll-Szene blenden die
+ *   Elemente über `--p` (vom Hero geerbt) gestaffelt ein; `--start` je
+ *   Element legt fest, ab welchem Fortschritt es erscheint.
  * variant="full":  Unternehmensseite mit Namen, Ausstellern, Standards.
  */
 import { Image } from "astro:assets";
@@ -27,15 +29,15 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
 {strip ? (
   <div class="strip">
     <div class="strip__group strip__group--certs">
-      <a class="strip__label" href="/unternehmen#nachweise">
+      <a class="strip__label" href="/unternehmen#nachweise" style="--start: 0.06">
         <span>Zertifiziert im Gründerteam</span>
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
       <ul class="strip__badges">
-        {certifications.map((c) => {
+        {certifications.map((c, i) => {
           const img = badge(c.file);
           return (
-            <li>
+            <li style={`--start: ${(0.12 + i * 0.045).toFixed(3)}`}>
               {img && <Image src={img} alt={`${c.name} (${c.issuer})`} title={`${c.name}, ${c.issuer}`} width={48} densities={[1, 2]} loading="lazy" />}
             </li>
           );
@@ -43,12 +45,12 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
       </ul>
     </div>
     <div class="strip__group strip__group--partners">
-      <p class="strip__label"><span>Partner</span></p>
+      <p class="strip__label" style="--start: 0.24"><span>Partner</span></p>
       <ul class="strip__partners">
-        {partners.map((p) => {
+        {partners.map((p, i) => {
           const img = logo(p.file);
           return (
-            <li>
+            <li style={`--start: ${(0.3 + i * 0.06).toFixed(3)}`}>
               <a class="logo-link" href={p.href} rel="noopener" target="_blank" aria-label={`${p.name} (öffnet in neuem Tab)`}>
                 {img && <span class="logo" style={`--logo: url(${img.src}); --ratio: ${(img.width / img.height).toFixed(3)}`} aria-hidden="true"></span>}
               </a>
@@ -117,6 +119,13 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
   }
 
   /* ---- Trust-Leiste ---- */
+  /* Auf Aubergine (im Hero-Nachlauf): helle Labels, Badges leicht gedämpft. */
+  :global(.section--ink) .strip__label { color: var(--fg-on-ink-muted); }
+  :global(.section--ink) a.strip__label:hover { color: var(--fg-on-ink); }
+  :global(.section--ink) .strip__badges img { filter: saturate(0.35); opacity: 0.9; }
+  :global(.section--ink) .strip__badges li:hover img { filter: none; opacity: 1; }
+  :global(.section--ink) .logo-link { opacity: 0.8; color: var(--fg-on-ink); }
+  :global(.section--ink) .logo-link:hover { opacity: 1; }
   .strip {
     display: grid;
     gap: 28px 56px;
@@ -151,6 +160,21 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
   }
   .strip__badges li:hover img, .strip__badges li:focus-within img { filter: none; opacity: 1; transform: translateY(-2px); }
   .strip__partners { gap: 8px 30px; --logo-h: 20px; }
+
+  /* Scroll-Stagger in der Hero-Szene: jedes Element hat --start; über 28 %
+     des Fortschritts blendet es ein und rückt 16px nach oben. Nur
+     transform/opacity, keine Transition (an den Scroll gekoppelt). */
+  :global(.hero[data-scene="on"]) :is(.strip__label, .strip__badges li, .strip__partners li) {
+    --t: clamp(0, calc((var(--p, 1) - var(--start, 0)) / 0.28), 1);
+    opacity: var(--t);
+    transform: translateY(calc((1 - var(--t)) * 16px));
+  }
+  @media (max-width: 899px), (prefers-reduced-motion: reduce) {
+    :global(.hero[data-scene="on"]) :is(.strip__label, .strip__badges li, .strip__partners li) {
+      opacity: 1;
+      transform: none;
+    }
+  }
   @media (max-width: 599px) {
     .strip__badges img { width: 40px; }
     .strip__partners { gap: 4px 22px; --logo-h: 18px; }
