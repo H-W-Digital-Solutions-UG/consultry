@@ -147,8 +147,8 @@ export const contrast = {
  */
 export const sovereignty = {
   eyebrow: "Souveränität",
-  heading: "Schluss mit dem Flickenteppich aus Dienstleistern.",
-  text: "Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Holen Sie sich Ihre Souveränität zurück: mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen.",
+  heading: "Holen Sie sich Ihre Souveränität zurück.",
+  text: "Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen, liegt die Kontrolle wieder bei Ihnen.",
   points: [
     { title: "Ihre Prozesse", text: "Der Ablauf gehört Ihnen, nicht dem Werkzeug. Wir bauen AI in Ihre Arbeit ein, statt Ihre Arbeit an ein Tool anzupassen." },
     { title: "Ihre Daten", text: "Verarbeitet, wo Sie es entscheiden. Sie behalten die Kontrolle darüber, was wohin fließt." },

@@ -202,8 +202,9 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Tonalität:** Sie-Form. Die Zahl „10.000“ ist rhetorisch und wird auf der Website nicht verwendet (keine erfundenen Größen). Keine Abwertung von Tools oder anderen Dienstleistern, das Muster wird benannt, die Wertung liefert der Leser.
 
 **Freigegebene Formulierungen:**
-- Hook: „Schluss mit dem Flickenteppich aus Dienstleistern.“
-- Lede: „Holen Sie sich Ihre Souveränität zurück: mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen.“
+- Hook (Timeline, Startseite): „Schluss mit einem Dienstleister pro Schritt.“ (ersetzt „Ein Partner. Keine Übergabe.“, Gründer 2026-09-17)
+- Hook (Souveränitäts-Sektion): „Holen Sie sich Ihre Souveränität zurück.“
+- Lede: „… Mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen, liegt die Kontrolle wieder bei Ihnen.“
 - Drei Punkte: Ihre Prozesse (Ablauf gehört Ihnen, nicht dem Werkzeug), Ihre Daten (verarbeitet, wo Sie es entscheiden), Ihr Wissen (kein Betrieb, der nur mit uns funktioniert).
 - Kontrast-Listen: klassisch „Für jedes Werkzeug ein Anbieter“ / H&W „Prozess, Daten und Wissen bleiben bei Ihnen“.
 
