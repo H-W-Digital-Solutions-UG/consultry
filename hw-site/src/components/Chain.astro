@@ -1,18 +1,100 @@
 ---
+/**
+ * Delivery Chain – zwölf Schritte als Zeitstrahl.
+ * Progressive Enhancement: Ohne JS oder bei prefers-reduced-motion ist die
+ * Linie vollständig gefüllt und alle Schritte sind aktiv. Mit JS füllt sich
+ * die Linie beim Scrollen von Lavendel (Prozess) nach Magenta (Produktion),
+ * die Schritte werden nacheinander aktiv – ausschließlich transform/opacity,
+ * kein WebGL, keine Bibliothek (DESIGN.md, Motion-Regeln).
+ */
 import { chain } from "../data/content";
+const n = chain.length;
 ---
 
-<div class="chain" role="list" aria-label="Delivery Chain: From Process to Production">
+<div class="chain" role="list" aria-label="Delivery Chain: From Process to Production" data-chain style={`--n:${n}`}>
   {chain.map((step, i) => (
-    <div class="chain__item" role="listitem" style={`--i:${i}; --n:${chain.length}`}>
+    <div class="chain__item" role="listitem" style={`--i:${i}`}>
       <span class="chain__dot" aria-hidden="true"></span>
       <span class="chain__label">{step}</span>
     </div>
   ))}
 </div>
 
+<script>
+  const clamp = (v: number) => Math.min(1, Math.max(0, v));
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function mount(root: HTMLElement) {
+    if (reduce.matches) return () => {};
+    const items = Array.from(root.querySelectorAll<HTMLElement>(".chain__item"));
+    const n = items.length;
+    let top = 0;
+    let ticking = false;
+    let activeCount = -1;
+    root.dataset.js = "";
+
+    const measure = () => {
+      top = root.getBoundingClientRect().top + window.scrollY;
+    };
+    const update = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+      // Füllung läuft, während die Chain vom unteren Viewport-Rand ins obere Drittel wandert
+      const start = top - vh * 0.9;
+      const end = top - vh * 0.3;
+      const p = clamp((window.scrollY - start) / (end - start));
+      root.style.setProperty("--p", p.toFixed(3));
+      const count = Math.round(p * (n - 1) + 1e-6) + 1;
+      if (count !== activeCount) {
+        activeCount = count;
+        items.forEach((el, i) => el.toggleAttribute("data-active", i < count));
+      }
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+
+    let listening = false;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !listening) {
+          listening = true;
+          window.addEventListener("scroll", onScroll, { passive: true });
+          onScroll();
+        } else if (!entry.isIntersecting && listening) {
+          listening = false;
+          window.removeEventListener("scroll", onScroll);
+        }
+      },
+      { rootMargin: "240px 0px" },
+    );
+
+    measure();
+    update();
+    io.observe(root);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      io.disconnect();
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }
+
+  const cleanups = Array.from(document.querySelectorAll<HTMLElement>("[data-chain]")).map(mount);
+  document.addEventListener("astro:before-swap", () => cleanups.forEach((fn) => fn()), { once: true });
+</script>
+
 <style>
   .chain {
+    --p: 1;
     position: relative;
     display: grid;
     grid-auto-flow: column;
@@ -23,35 +105,68 @@ import { chain } from "../data/content";
     scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
   }
-  .chain::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 31px;
-    height: 2px;
-    background: var(--axis);
-    opacity: 0.85;
-  }
   .chain__item {
+    --c0: color-mix(in oklab, var(--process) calc(100% - var(--i) / (var(--n) - 1) * 100%), var(--production));
+    --c1: color-mix(in oklab, var(--process) calc(100% - (var(--i) + 1) / (var(--n) - 1) * 100%), var(--production));
+    /* Segmentfüllung: Anteil dieses Segments am Gesamtfortschritt */
+    --seg: clamp(0, var(--p) * (var(--n) - 1) - var(--i), 1);
     position: relative;
     padding: 0 18px 0 0;
-    scroll-snap-align: start;
+  }
+  /* Segmentlinie vom eigenen Punkt bis zum nächsten – Basis und Füllung */
+  .chain__item:not(:last-child)::before,
+  .chain__item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    width: 100%;
+    top: 5px;
+    height: 2px;
+    border-radius: 2px;
+  }
+  .chain__item::before {
+    background: var(--line-on-ink-strong, rgba(245, 241, 251, 0.18));
+  }
+  .chain__item::after {
+    background: linear-gradient(90deg, var(--c0), var(--c1));
+    transform-origin: left center;
+    transform: scaleX(var(--seg));
+    transition: transform 0.16s linear;
   }
   .chain__dot {
+    position: relative;
+    z-index: 1;
     display: block;
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: color-mix(in oklab, var(--process) calc(100% - var(--i) / (var(--n) - 1) * 100%), var(--production));
+    background: var(--c0);
     box-shadow: 0 0 0 5px var(--ink);
+    transition: opacity 0.24s var(--ease-out), transform 0.24s var(--ease-out);
   }
   .chain__label {
     display: block;
     margin-top: 16px;
     font-size: 0.86rem;
     line-height: 1.35;
-    color: var(--fg-on-ink-muted);
+    color: var(--fg-on-ink);
     text-wrap: balance;
+    transition: color 0.24s var(--ease-out), opacity 0.24s var(--ease-out);
+  }
+  /* Mit JS: inaktive Schritte gedämpft, aktive voll */
+  .chain[data-js] .chain__item:not([data-active]) .chain__dot {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  .chain[data-js] .chain__item:not([data-active]) .chain__label {
+    color: var(--fg-on-ink-muted);
+    opacity: 0.7;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .chain__item::after,
+    .chain__dot,
+    .chain__label {
+      transition: none;
+    }
   }
 </style>
