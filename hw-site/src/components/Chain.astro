@@ -68,17 +68,20 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
         ))}
       </ol>
 
-      <div class="chain__readout" aria-live="polite" aria-atomic="true">
-        <span class="chain__readout-icon" aria-hidden="true">
-          {meta.map((m, i) => <span class="chain__readout-glyph" data-glyph={i} hidden={i !== 0}><Icon name={m.icon} size={30} /></span>)}
-        </span>
-        <span class="chain__readout-top">
-          <span class="chain__readout-n" data-readout-n>01</span>
-          <span class="chain__readout-of">/ {String(n).padStart(2, "0")}</span>
-          <span class="chain__readout-phase" data-readout-phase>{meta[0].phase}</span>
-        </span>
-        <span class="chain__readout-label" data-readout-label>{chain[0]}</span>
-        <span class="chain__readout-text" data-readout-text>{chainTexts[0]}</span>
+      <!-- Readout als Kartenstapel: alle Glieder liegen übereinander, das Skript
+           schiebt sie mit dem Scroll durch (aktive vorn, Nachbarn ragen heraus). -->
+      <div class="chain__readout" data-stack>
+        {meta.map((m, i) => (
+          <article class="chain__card" data-card={i} aria-hidden={i !== 0 ? "true" : undefined}>
+            <span class="chain__readout-top">
+              <span class="chain__readout-n">{pad(i)}</span>
+              <span class="chain__readout-of">/ {String(n).padStart(2, "0")}</span>
+            </span>
+            <span class="chain__readout-phase">{m.phase}</span>
+            <span class="chain__readout-label">{chain[i]}</span>
+            <span class="chain__readout-text">{chainTexts[i]}</span>
+          </article>
+        ))}
       </div>
     </div>
   </div>
@@ -97,11 +100,8 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     const items = Array.from(root.querySelectorAll<HTMLElement>(".chain__item"));
     const groupEls = Array.from(root.querySelectorAll<HTMLElement>(".chain__group"));
     const steps = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-goto]"));
-    const readN = root.querySelector<HTMLElement>("[data-readout-n]")!;
-    const readLabel = root.querySelector<HTMLElement>("[data-readout-label]")!;
-    const readPhase = root.querySelector<HTMLElement>("[data-readout-phase]")!;
-    const readText = root.querySelector<HTMLElement>("[data-readout-text]")!;
-    const glyphs = Array.from(root.querySelectorAll<HTMLElement>("[data-glyph]"));
+    const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-card]"));
+    const mobile = window.matchMedia("(max-width: 899px)");
     const n = items.length;
     let top = 0, span = 1, ticking = false, active = -1;
     root.dataset.scene = "on";
@@ -114,18 +114,33 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
       ticking = false;
       const p = clamp((window.scrollY - top) / span);
       root.style.setProperty("--p", p.toFixed(4));
-      const idx = Math.round(p * (n - 1));
+      // Kartenstapel: kontinuierlicher Index t, jede Karte steht bei d = i − t.
+      // Nachbarn (|d| ≈ 1) ragen versetzt, verkleinert und gedämpft heraus.
+      const t = p * (n - 1);
+      // Wechsel in einem kurzen Fenster (30–70 % zwischen zwei Gliedern) mit
+      // Smoothstep, damit der Stapel meist ruhig steht und kurz umschlägt.
+      const base = Math.floor(t);
+      const e = clamp((t - base - 0.3) / 0.4);
+      const te = base + e * e * (3 - 2 * e);
+      const shift = mobile.matches ? 64 : 112;
+      cards.forEach((c, i) => {
+        const d = i - te;
+        const ad = Math.abs(d);
+        if (ad > 1.6) { c.style.visibility = "hidden"; return; }
+        c.style.visibility = "visible";
+        c.style.transform = `translate3d(0, ${(d * shift).toFixed(1)}px, 0) scale(${(1 - Math.min(ad, 1) * 0.08).toFixed(3)})`;
+        // aktive Karte deckend, Nachbarn gedämpft (bei |d|=1 etwa 0.3)
+        c.style.opacity = String((ad < 0.5 ? 1 : Math.max(0, 1 - (ad - 0.5) * 1.4)).toFixed(3));
+        c.style.zIndex = String(100 - Math.round(ad * 10));
+      });
+      const idx = Math.round(t);
       if (idx !== active) {
         active = idx;
         items.forEach((el, i) => {
           el.toggleAttribute("data-active", i === idx);
           el.toggleAttribute("data-passed", i < idx);
         });
-        readN.textContent = String(idx + 1).padStart(2, "0");
-        readLabel.textContent = items[idx].querySelector(".chain__label")?.textContent ?? "";
-        readPhase.textContent = items[idx].dataset.phase ?? "";
-        readText.textContent = items[idx].dataset.text ?? "";
-        glyphs.forEach((g, i) => (g.hidden = i !== idx));
+        cards.forEach((c, i) => { if (i === idx) c.removeAttribute("aria-hidden"); else c.setAttribute("aria-hidden", "true"); });
         groupEls.forEach((g) => {
           const from = Number(g.style.getPropertyValue("--from")), to = Number(g.style.getPropertyValue("--to"));
           const open = idx >= from && idx <= to;
@@ -259,22 +274,33 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   /* Readout: editorial statt Karte. Riesige Ziffer links, daneben Phase,
      Titel und Text; die Trennlinie oben nimmt die Achse auf. */
   .chain[data-scene="on"] .chain__readout {
+    display: block;
+    position: relative;
+    align-self: center;
+    min-height: 300px;
+    max-width: 640px;
+    width: 100%;
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  /* Karte: opak (Sektionsfarbe), damit der Stapel sauber überlappt */
+  .chain__card {
+    position: absolute;
+    inset: 0 0 auto 0;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     column-gap: clamp(24px, 3vw, 44px);
     row-gap: 6px;
     align-content: start;
     align-items: start;
-    align-self: center;
-    padding-top: 28px;
+    padding: 28px 0 32px;
     border-top: 1px solid var(--line-on-ink);
-    font-family: var(--font-display);
-    letter-spacing: -0.02em;
-    max-width: 640px;
+    background: var(--ink);
+    will-change: transform, opacity;
+    visibility: hidden;
+    opacity: 0;
   }
-  .chain__readout-icon { display: none; }
-  .chain__readout-glyph { display: grid; place-items: center; }
-  .chain__readout-glyph[hidden] { display: none; }
+  .chain__card[data-card="0"] { visibility: visible; opacity: 1; }
   .chain__readout-top {
     grid-row: 1 / 4;
     display: grid;
@@ -329,7 +355,8 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   @media (max-width: 899px) {
     /* Mobil: Readout kompakt über der Liste */
     .chain[data-scene="on"] .chain__stage { grid-template-rows: auto auto 1fr; }
-    .chain[data-scene="on"] .chain__readout { column-gap: 16px; row-gap: 2px; padding-top: 16px; max-width: none; }
+    .chain[data-scene="on"] .chain__readout { max-width: none; min-height: 200px; }
+    .chain__card { column-gap: 16px; row-gap: 2px; padding: 16px 0 18px; }
     .chain__readout-n { font-size: 3.4rem; }
     .chain__readout-of { font-size: 0.8rem; }
     .chain__readout-phase { padding-top: 4px; font-size: 0.8rem; }
