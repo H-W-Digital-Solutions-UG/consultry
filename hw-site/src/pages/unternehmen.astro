@@ -3,37 +3,32 @@ import Base from "../layouts/Base.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Cta from "../components/Cta.astro";
 import { company } from "../data/company";
-import { positioning } from "../data/content";
 ---
 
 <Base
-  title="Unternehmen"
-  description="H&W Digital Solutions ist ein AI-nativer Consulting-, Transformation- und Engineering-Partner aus Berlin. Wir analysieren Geschäftsprozesse und bauen die AI-Lösungen dazu selbst."
+  title="Berater, die selbst bauen"
+  description="H&W Digital Solutions aus Berlin: AI Transformation & Engineering. Wir analysieren Geschäftsprozesse, finden die größten AI-Hebel und bauen die Lösung selbst."
 >
   <PageHeader
-    eyebrow="Unternehmen"
-    title="AI-nativ. Beratend und bauend."
-    lede={positioning.principle}
+    eyebrow="Über H&W"
+    title="Berater, die selbst bauen."
+    lede={`AI Transformation & Engineering aus Berlin. Gegründet und geführt von ${company.managingDirectors.join(" und ")}.`}
   />
 
   <section class="section">
     <div class="container grid">
       <div>
         <p class="eyebrow" data-n="01">Wer wir sind</p>
-        <h2 class="h">Ein Partner für Transformation und Engineering.</h2>
+        <h2 class="h">Keine reine Beratung. Keine reine Agentur.</h2>
       </div>
       <div class="prose">
         <p>
-          {company.name} ist ein Consulting-, Transformation- und Engineering-Partner mit Sitz in Berlin.
-          Wir positionieren uns bewusst nicht als reine AI-Beratung: Unser Leistungsbild beginnt im
-          Unternehmen und in seinen tatsächlichen Geschäftsprozessen – und es endet erst, wenn die
-          daraus entwickelte Lösung produktiv läuft.
+          {company.name} verbindet Prozessanalyse mit eigenem Engineering. Wir beginnen bei den
+          Abläufen in Ihrem Unternehmen und sind erst fertig, wenn die Lösung produktiv läuft.
         </p>
         <p>
-          Dafür verbinden wir Business Process Analysis, AI-Strategie und Prozess-Redesign mit AI-,
-          Software- und Model-Engineering, Cloud-Infrastruktur, Cybersecurity, AI-Governance und
-          Enablement. Sicherheit und Governance sind dabei kein nachgelagerter Schritt, sondern Teil
-          jeder Lösung, die wir bauen.
+          Wir kommen aus Cybersecurity und Software Engineering. Deshalb bauen wir Absicherung,
+          Governance und Compliance in jede Lösung ein, statt sie am Ende zu prüfen.
         </p>
       </div>
     </div>
@@ -43,7 +38,8 @@ import { positioning } from "../data/content";
     <div class="container grid">
       <div>
         <p class="eyebrow" data-n="02">Geschäftsführung</p>
-        <h2 class="h">Zwei Gründer, ein Anspruch.</h2>
+        <h2 class="h">Zwei Gründer. Eine Verantwortung.</h2>
+        <p class="team__senior">Keine Junior-Berater. Sie arbeiten mit denen, die Sie kennenlernen.</p>
       </div>
       <ul class="people">
         {company.managingDirectors.map((name) => (
@@ -57,13 +53,14 @@ import { positioning } from "../data/content";
     </div>
   </section>
 
-  <Cta heading="Lernen wir uns kennen." text="Ein erstes Gespräch ist unverbindlich – und meistens schon konkret." />
+  <Cta heading="Reden wir über Ihren Prozess." text="30 Minuten, ein konkreter Ablauf. Mehr braucht es für den Anfang nicht." />
 </Base>
 
 <style>
   .grid { display: grid; gap: 32px; }
   @media (min-width: 900px) { .grid { grid-template-columns: 1fr 1.3fr; gap: 64px; } }
   .h { margin-top: 16px; max-width: 16ch; }
+  .team__senior { margin-top: 16px; color: var(--fg-muted); max-width: 34ch; }
   .prose { color: var(--fg-muted); font-size: 1.05rem; }
   .people { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; align-content: start; }
   .person {

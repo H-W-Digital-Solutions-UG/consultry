@@ -8,14 +8,14 @@ import { contrast } from "../data/content";
     <ul>
       {contrast.classic.map((c) => <li>{c}</li>)}
     </ul>
-    <p class="contrast__end">Ende: Empfehlung</p>
+    <p class="contrast__end">{contrast.classicEnd}</p>
   </div>
   <div class="contrast__col contrast__col--hw">
     <p class="eyebrow">H&amp;W</p>
     <ul>
       {contrast.hw.map((c) => <li>{c}</li>)}
     </ul>
-    <p class="contrast__end">Ende: produktives System</p>
+    <p class="contrast__end">{contrast.hwEnd}</p>
   </div>
 </div>
 

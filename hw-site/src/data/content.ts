@@ -1,24 +1,48 @@
 /**
  * Inhaltsbausteine der H&W-Website.
- * Quelle: Handover "AI-Native Repositioning & Website", Abschnitte 1–6.
- * Abschnitt 7 ff. (Hero-Entwurf im Wortlaut, Seitenstruktur) lag beim
- * Erstellen nicht vollständig vor – Hero-Zeilen sind daraus abgeleitet und
- * als PROVISORISCH markiert, bis der Originalwortlaut vorliegt.
+ * Die Copy folgt hw-site/.agents/product-marketing.md (Positionierung,
+ * Leistungsbild, Delivery Chain, Sprachregeln: Sie-Form, „AI“ statt „KI“,
+ * keine erfundenen Kennzahlen, Kunden, Zertifizierungen oder Zitate).
+ * Faktenquelle: Handover "AI-Native Repositioning & Website".
  */
 
 export const hero = {
-  eyebrow: "AI-Native Consulting & Engineering", // PROVISORISCH – aus Abschnitt 7 rekonstruiert
-  headline: "Von Geschäfts\u00ADprozessen zu produktiver KI.", // \u00AD = weiches Trennzeichen für schmale Viewports
+  eyebrow: "AI Transformation & Engineering",
+  // Weiches Trennzeichen (­) nur in Wörtern über ca. 14 Zeichen an einer
+  // Silbengrenze einfügen; die aktuelle Headline braucht keines.
+  headline: "Ihre AI-Lösung läuft im Betrieb. Nicht auf Folien.",
   claim: "From Process to Production.",
   description:
-    "Wir analysieren, wie Ihr Unternehmen arbeitet, identifizieren konkrete AI-Potenziale und entwickeln daraus produktive Lösungen – von der Prozessoptimierung bis zum sicheren Deployment.",
+    "Wir analysieren, wie Ihr Unternehmen arbeitet, finden die größten AI-Hebel in Ihren Abläufen und bauen die Lösung selbst.",
   primaryCta: { label: "Erstgespräch vereinbaren", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
 
+/** Die drei Beats zum Hero (Prozess zuerst, AI-native, Betrieb). Hero.astro rendert sie noch nicht. */
+export const heroBeats = [
+  {
+    n: 1,
+    title: "Der Prozess zuerst",
+    text: "Wir beginnen bei der Arbeit, die in Ihrem Unternehmen täglich passiert.",
+  },
+  {
+    n: 2,
+    title: "AI-native neu gedacht",
+    text: "AI wird Teil des Ablaufs, nicht ein Werkzeug daneben.",
+  },
+  {
+    n: 3,
+    title: "Produktiv im Betrieb",
+    text: "Dasselbe Team baut die Lösung, sichert sie ab und misst die Wirkung.",
+  },
+] as const;
+
 export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
-  long: "Wir helfen Unternehmen, die größten Potenziale künstlicher Intelligenz in ihren Geschäftsprozessen zu identifizieren – und setzen die daraus entstehenden Lösungen direkt um.",
+  // Beispielszenario, als Beispiel gekennzeichnet; kein Kundenergebnis.
+  long: "Ein Beispiel: Ihr Angebotsprozess läuft über mehrere Systeme und viele Rückfragen. Wir gestalten ihn mit AI neu, bauen die Lösung und integrieren sie dort, wo Ihr Team arbeitet.",
+  // Senior-Zusage (Gründer, 2026-09-17): als Versprechen formuliert, nicht als Angriff.
+  senior: "Keine Junior-Berater. Wer Ihren Prozess versteht, baut ihn auch.",
 } as const;
 
 /** Die zehn Schritte des Leistungsbilds (Abschnitt 2). */
@@ -26,61 +50,61 @@ export const deliverySteps = [
   {
     n: 1,
     title: "Unternehmen und Abläufe verstehen",
-    text: "Wir analysieren Ihr Unternehmen und seine tatsächlichen Geschäftsprozesse – nicht die Technologie zuerst, sondern die Arbeit, die täglich passiert.",
+    text: "Wir analysieren, wie Ihr Unternehmen tatsächlich arbeitet: Abläufe, Beteiligte, Systeme.",
     phase: "process",
   },
   {
     n: 2,
     title: "AI-geeignete Prozesse erkennen",
-    text: "Wir identifizieren ineffiziente Abläufe und die Stellen, an denen AI einen echten Unterschied macht.",
+    text: "Wo Ihr Team wartet, sucht oder doppelt erfasst, setzen wir an.",
     phase: "process",
   },
   {
     n: 3,
     title: "Konkrete Potenziale benennen",
-    text: "Aus Beobachtungen werden konkrete Verbesserungspotenziale mit klarem Bezug zu Ihrem Geschäft.",
+    text: "Wir benennen jedes Potenzial so konkret, dass Sie es prüfen können.",
     phase: "process",
   },
   {
     n: 4,
     title: "Wirtschaftlich und technisch bewerten",
-    text: "Jedes Potenzial wird nach wirtschaftlichem Hebel und technischer Machbarkeit priorisiert.",
+    text: "Sie sehen vor dem Bauen, was sich rechnet, und entscheiden selbst.",
     phase: "process",
   },
   {
     n: 5,
     title: "Prozesse AI-native neu denken",
-    text: "Wo es sich lohnt, gestalten wir Prozesse grundsätzlich neu – statt AI an bestehende Abläufe anzuschrauben.",
+    text: "Wo es sich lohnt, gestalten wir den Ablauf neu, statt AI anzuschrauben.",
     phase: "design",
   },
   {
     n: 6,
     title: "Umsetzungspfad entwickeln",
-    text: "Ein konkreter Plan mit Reihenfolge, Abhängigkeiten und Meilensteinen – kein Slide-Deck, das in der Schublade landet.",
+    text: "Reihenfolge, Abhängigkeiten, Meilensteine. Ein Plan, den wir selbst abarbeiten.",
     phase: "design",
   },
   {
     n: 7,
     title: "Lösung selbst entwickeln",
-    text: "Wir bauen die identifizierte AI-Lösung mit eigenem Engineering-Team – dieselben Menschen, die den Prozess verstanden haben.",
+    text: "Wer den Prozess analysiert hat, baut auch die Lösung.",
     phase: "build",
   },
   {
     n: 8,
     title: "Modelle, Infrastruktur, Integrationen",
-    text: "Modellauswahl, Infrastruktur und die Anbindung an Ihre bestehenden Systeme kommen aus einer Hand.",
+    text: "Die Lösung läuft in Ihren Systemen, nicht daneben. Modelle und Infrastruktur inklusive.",
     phase: "build",
   },
   {
     n: 9,
     title: "Security, Governance, Compliance",
-    text: "Sicherheit, Governance und regulatorische Anforderungen sind Teil der Lösung, nicht ein nachgelagerter Audit.",
+    text: "Von Anfang an eingebaut, nicht am Ende geprüft.",
     phase: "production",
   },
   {
     n: 10,
     title: "Produktiv deployen und optimieren",
-    text: "Wir bringen die Lösung in Produktion, befähigen Ihre Mitarbeitenden und messen und verbessern die Ergebnisse weiter.",
+    text: "Die Lösung geht live. Wir befähigen Ihr Team, messen und optimieren weiter.",
     phase: "production",
   },
 ] as const;
@@ -97,30 +121,33 @@ export const chain = [
   "Systeme integrieren",
   "Deployen",
   "Absichern",
-  "Mitarbeitende befähigen",
-  "Ergebnisse messen und optimieren",
+  "Mitarbeiter befähigen",
+  "Messen und optimieren",
 ] as const;
 
 /** Abgrenzung zu klassischer Beratung (Abschnitt 2, letzter Absatz). */
 export const contrast = {
   heading: "Wo klassische Beratung aufhört, fangen wir erst an.",
-  text: "Management- und AI-Beratung endet oft bei einer Strategie, einer Roadmap oder einer PowerPoint. Wir hören dort nicht auf: Die identifizierte Lösung bauen wir anschließend selbst und bringen sie in Produktion.",
-  classic: ["AI-Strategie", "Use-Case-Katalog", "Roadmap", "Empfehlung"],
-  hw: ["Prozessanalyse", "Lösungsdesign", "Eigenes Engineering", "Produktiver Betrieb"],
+  text: "Beratung endet oft bei Strategie, Roadmap oder PowerPoint. Und die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es beides nicht: Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.",
+  classic: ["AI-Strategie", "Use-Case-Katalog", "Roadmap", "Pitch-Team, dann Lieferteam", "Empfehlung"],
+  hw: ["Prozessanalyse", "Lösungsdesign", "Eigenes Engineering", "Ein Team von Analyse bis Betrieb", "Produktiver Betrieb"],
+  // Schlusszeilen der beiden Spalten (Contrast.astro).
+  classicEnd: "Bleibt Empfehlung.",
+  hwEnd: "Läuft im Betrieb.",
 } as const;
 
 /** Capabilities – Beleg für die Umsetzungskompetenz, nicht das Produktversprechen (Abschnitte 4/5). */
 export const capabilities = [
-  { title: "Business Process Analysis", text: "Abläufe, Schnittstellen und Engpässe verstehen, bevor über Technologie gesprochen wird." },
-  { title: "AI Strategy", text: "Priorisierte AI-Potenziale mit wirtschaftlicher Bewertung statt Technologie-Wunschlisten." },
-  { title: "Process Redesign", text: "Prozesse so gestalten, dass AI ihr natürlicher Bestandteil ist." },
-  { title: "AI Engineering", text: "LLM-Anwendungen, Retrieval, Agenten und Evaluierung – produktionsreif gebaut." },
-  { title: "Software Engineering", text: "Saubere Anwendungen, APIs und Integrationen in Ihre bestehende Landschaft." },
-  { title: "Model Engineering", text: "Modellauswahl, Anpassung und Betrieb passend zu Datenlage und Anforderungen." },
-  { title: "Cloud & Infrastructure", text: "Infrastruktur, die zur Lösung passt – skalierbar, wartbar, beherrschbar." },
-  { title: "Cybersecurity", text: "Absicherung von Daten, Modellen und Zugängen als Teil des Designs." },
+  { title: "Business Process Analysis", text: "Abläufe, Schnittstellen und Engpässe verstehen. Vor jeder Technologie." },
+  { title: "AI Strategy", text: "Priorisierte AI-Potenziale, wirtschaftlich bewertet. Keine Wunschliste." },
+  { title: "Process Redesign", text: "Prozesse, in denen AI natürlicher Bestandteil ist." },
+  { title: "AI Engineering", text: "LLM-Anwendungen, Retrieval, Agenten und Evaluierung, produktionsreif gebaut." },
+  { title: "Software Engineering", text: "Anwendungen, APIs und Integrationen in Ihre bestehende Landschaft." },
+  { title: "Model Engineering", text: "Modellauswahl, Anpassung und Betrieb passend zu Ihren Daten." },
+  { title: "Cloud & Infrastructure", text: "Infrastruktur, die zur Lösung passt. Wartbar und beherrschbar." },
+  { title: "Cybersecurity", text: "Daten, Modelle und Zugänge abgesichert. Teil des Designs." },
   { title: "AI Governance", text: "Nachvollziehbarkeit, Verantwortlichkeiten und Compliance von Anfang an." },
-  { title: "AI Enablement", text: "Teams befähigen, mit der Lösung zu arbeiten und sie weiterzuentwickeln." },
+  { title: "AI Enablement", text: "Ihr Team nutzt die Lösung und entwickelt sie weiter." },
 ] as const;
 
 export const positioning = {

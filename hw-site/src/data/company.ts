@@ -8,9 +8,9 @@ export const company = {
   legalName: "H&W Digital Solutions UG (haftungsbeschränkt)",
   domain: "hw-digitalsolutions.de",
   siteUrl: "https://hw-digitalsolutions.de",
-  tagline: "AI-Native Consulting & Engineering",
+  tagline: "AI Transformation & Engineering",
   claim: "From Process to Production.",
-  claimDe: "Von Geschäftsprozessen zu produktiver KI.",
+  claimDe: "Von Geschäftsprozessen zu produktiver AI.",
   address: {
     street: "Greifswalder Straße 13d",
     postalCode: "10405",
