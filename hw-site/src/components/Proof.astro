@@ -1,0 +1,139 @@
+---
+/**
+ * Nachweise: Zertifizierungen im Gründerteam, Standards, Partner.
+ * Badges und Logos stammen von der bisherigen Website (Freigabe der Gründer,
+ * 2026-09-17). Partnerlogos werden als CSS-Maske einfarbig gerendert, damit
+ * fünf fremde Marken nicht fünf Farbwelten in die Seite tragen.
+ *
+ * compact: nur Badge-Reihe und Partnerzeile (Startseite).
+ */
+import { Image } from "astro:assets";
+import { certifications, standards, partners } from "../data/content";
+
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+const badgeFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/certs/*.png", { eager: true });
+const logoFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/partners/*.png", { eager: true });
+const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
+const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
+---
+
+<div class:list={["proof", { "proof--compact": compact }]}>
+  <div class="proof__block">
+    {!compact && <p class="proof__label">Zertifizierungen im Gründerteam</p>}
+    <ul class="proof__badges">
+      {certifications.map((c) => {
+        const img = badge(c.file);
+        return (
+          <li class="proof__badge">
+            {img && <Image src={img} alt={compact ? `${c.name} (${c.issuer})` : ""} width={compact ? 72 : 88} densities={[1, 2]} loading="lazy" />}
+            {!compact && (
+              <span class="proof__badge-text">
+                <span class="proof__badge-name">{c.name}</span>
+                <span class="proof__badge-issuer">{c.issuer}</span>
+              </span>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+  {!compact && (
+    <div class="proof__block">
+      <p class="proof__label">Standards, an denen wir uns orientieren</p>
+      <ul class="proof__standards">
+        {standards.map((s) => <li>{s}</li>)}
+      </ul>
+    </div>
+  )}
+
+  <div class="proof__block">
+    <p class="proof__label">Partner</p>
+    <ul class="proof__partners">
+      {partners.map((p) => {
+        const img = logo(p.file);
+        return (
+          <li>
+            <a class="proof__partner" href={p.href} rel="noopener" target="_blank" aria-label={`${p.name} (öffnet in neuem Tab)`}>
+              {img && <span class="proof__logo" style={`--logo: url(${img.src}); --ratio: ${(img.width / img.height).toFixed(3)}`} role="img" aria-hidden="true"></span>}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .proof { display: grid; gap: 40px; }
+  .proof--compact { gap: 28px; }
+  .proof__label {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--fg-muted);
+    margin-bottom: 16px;
+  }
+  .proof--compact .proof__label { margin-bottom: 12px; }
+
+  .proof__badges {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+  .proof__badge {
+    display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px;
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .proof__badge img { display: block; width: 88px; height: auto; }
+  .proof__badge-text { display: grid; gap: 2px; }
+  .proof__badge-name { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; line-height: 1.25; }
+  .proof__badge-issuer { font-size: 0.82rem; color: var(--fg-muted); }
+
+  .proof--compact .proof__badges { display: flex; flex-wrap: wrap; gap: 18px 22px; align-items: center; }
+  .proof--compact .proof__badge { display: block; padding: 0; background: none; border: 0; }
+  .proof--compact .proof__badge img { width: 72px; }
+
+  .proof__standards {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .proof__standards li {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    padding: 7px 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    color: var(--fg);
+  }
+
+  .proof__partners {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 14px 40px; align-items: center;
+  }
+  .proof__partner { display: inline-flex; align-items: center; height: 44px; opacity: 0.72; transition: opacity 0.2s; }
+  .proof__partner:hover, .proof__partner:focus-visible { opacity: 1; }
+  .proof__logo {
+    display: block;
+    height: 24px;
+    width: calc(24px * var(--ratio, 4));
+    max-width: 150px;
+    background: var(--fg);
+    -webkit-mask: var(--logo) center / contain no-repeat;
+    mask: var(--logo) center / contain no-repeat;
+  }
+  @media (max-width: 599px) {
+    .proof__badges { grid-template-columns: 1fr; }
+    .proof__partners { gap: 10px 28px; }
+    .proof__logo { height: 22px; width: calc(22px * var(--ratio, 4)); }
+  }
+</style>

@@ -37,7 +37,7 @@ Auf der Website in vier Phasen gruppiert: Prozess (1–4), Design (5–6), Engin
 
 **Capabilities (Beleg, nicht Versprechen):** Business Process Analysis, AI Strategy, Process Redesign, AI Engineering, Software Engineering, Model Engineering, Cloud & Infrastructure, Cybersecurity, AI Governance, AI Enablement.
 
-**Herkunft (Repositionierung):** Die bisherige Site positioniert H&W als „Your IT & Cybersecurity Experts“ mit den Leistungsfeldern Cybersecurity Consulting, Software Engineering & Cloud Architecture, AI & Blockchain und IT Projects („Imagine, Plan, Execute“). Diese Breite wird aufgegeben. Cybersecurity, Cloud und Software Engineering bleiben als Capabilities in der Delivery Chain erhalten; Blockchain/Web3 entfällt. Die alte Site nennt außerdem „10+ years of software engineering experience“, „Certified Advice“ und einen Abschnitt „Certifications“. Diese Angaben sind für die neue Site nicht freigegeben und werden nicht übernommen, bis die Gründer sie bestätigen.
+**Herkunft (Repositionierung):** Die bisherige Site positioniert H&W als „Your IT & Cybersecurity Experts“ mit den Leistungsfeldern Cybersecurity Consulting, Software Engineering & Cloud Architecture, AI & Blockchain und IT Projects („Imagine, Plan, Execute“). Diese Breite wird aufgegeben. Cybersecurity, Cloud und Software Engineering bleiben als Capabilities in der Delivery Chain erhalten; Blockchain/Web3 entfällt. Die alte Site nennt außerdem „10+ years of software engineering experience“, „Certified Advice“ und einen Abschnitt „Certifications“. Die Zertifizierungen (CISSP, GIAC GCIA, OSCP, OSDA, Microsoft Cybersecurity Architect Expert, Microsoft Azure Security Engineer Associate, CSPO, IREB CPRE) und die Partner (Wavect, Rubicon Tech, Polity, turntabl, Systango) wurden am 2026-09-17 von den Gründern zur Übernahme freigegeben und sind in `content.ts` (`certifications`, `partners`, `standards`) hinterlegt; es sind Personen-Zertifikate des Gründerteams, keine Unternehmens-Zertifizierung. „10+ years“ und „Certified Advice“ bleiben nicht freigegeben.
 
 ---
 
@@ -181,7 +181,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 - Unternehmen: „Zwei Gründer, ein Team, keine Übergaben. Sie arbeiten mit denen, die Sie kennenlernen.“
 - Kontrast-Listen: klassisch „Pitch-Team, dann Lieferteam“ / H&W „Ein Team von Analyse bis Betrieb“.
 
-**Nicht behaupten:** Teamgrößen, Senioritätsjahre, Zertifikate (keine belastbaren Daten; siehe Herkunft).
+**Nicht behaupten:** Teamgrößen, Senioritätsjahre. Zertifikate nur die freigegebenen aus `content.ts`, immer als Zertifikate der Personen im Gründerteam.
 
 ## Messaging-Baustein: Souveränität (2026-09-17)
 
@@ -211,7 +211,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 Geschäftsprozess, Ablauf, Prozess, Arbeit, die täglich passiert; AI-Potenzial, AI-Hebel, Hebel; bewerten, priorisieren; AI-native neu denken; Umsetzungspfad; selbst bauen, umsetzen, entwickeln, integrieren; produktiv, in Produktion, im Betrieb, laufen; absichern, Security, Governance, Compliance (als Bestandteil, nicht als Versprechen); befähigen, Mitarbeiter; messen, optimieren, Wirkung; ein Partner, aus einer Hand, Verantwortung bis in den Betrieb, ohne Übergabe; konkret; Erstgespräch; Delivery Chain; From Process to Production; AI Transformation & Engineering.
 
 **Words to avoid:**
-revolutionieren, end-to-end, ganzheitlich, innovativ, nahtlos, KI (immer „AI“), disruptiv, Digitalisierung (als Selbstzweck), Cutting Edge, State of the Art, next level / Level-Up, smart, Synergien, Mehrwert schaffen, 360°, Full-Service, Experten (als Behauptung ohne Beleg), Blockchain, Web3, kostenlos (nicht bestätigt), zertifiziert (keine freigegebene Zertifizierung), Roadmap und Use-Case-Katalog als eigenes Angebot (nur als Kontrast zur klassischen Beratung), technische Buzzwords als Versprechen in Headlines (LLM, RAG, Agenten, Kubernetes, Deployment; erlaubt nur als Beleg in Capability-Texten), Ausrufezeichen, Gendersternchen und Doppelnennungen.
+revolutionieren, end-to-end, ganzheitlich, innovativ, nahtlos, KI (immer „AI“), disruptiv, Digitalisierung (als Selbstzweck), Cutting Edge, State of the Art, next level / Level-Up, smart, Synergien, Mehrwert schaffen, 360°, Full-Service, Experten (als Behauptung ohne Beleg), Blockchain, Web3, kostenlos (nicht bestätigt), „zertifizierte Beratung“ / „Certified Advice“ (Unternehmen ist nicht zertifiziert; Personen-Zertifikate siehe Proof Points), Roadmap und Use-Case-Katalog als eigenes Angebot (nur als Kontrast zur klassischen Beratung), technische Buzzwords als Versprechen in Headlines (LLM, RAG, Agenten, Kubernetes, Deployment; erlaubt nur als Beleg in Capability-Texten), Ausrufezeichen, Gendersternchen und Doppelnennungen.
 
 **Glossary:**
 | Term | Meaning |
@@ -258,6 +258,10 @@ revolutionieren, end-to-end, ganzheitlich, innovativ, nahtlos, KI (immer „AI�
 
 **Metrics:** Keine belastbaren Daten vorhanden. Keine Kennzahlen veröffentlichen. Die Angabe „10+ years of software engineering experience“ der alten Site ist nicht bestätigt und wird nicht übernommen.
 
+**Certifications (freigegeben 2026-09-17):** CISSP, GIAC GCIA, OSCP, OSDA, Microsoft Certified Cybersecurity Architect Expert, Microsoft Certified Azure Security Engineer Associate, CSPO, IREB CPRE. Zertifikate der Personen im Gründerteam; Badges aus der alten Site in `src/assets/certs/`.
+
+**Partners (freigegeben 2026-09-17):** Wavect, Rubicon Tech, Polity, turntabl, Systango. Logos in `src/assets/partners/`, einfarbig gerendert; Ninox aus der alten Site ist nicht mehr in der Liste.
+
 **Customers:** Keine belastbaren Daten vorhanden. Keine Kundenlogos, keine Referenzen, keine Fallstudien freigegeben. Die alte Site zeigt NIST- und OWASP-Logos ausschließlich als Verweis auf Standards („Industry Standards“), nicht als Kunden oder Zertifizierungen. Zulässig ist ein Hinweis auf Orientierung an anerkannten Standards, nicht mehr.
 
 **Testimonials:** Keine belastbaren Daten vorhanden. Keine Zitate verwenden.
@@ -287,6 +291,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v4 (2026-09-17) — Zertifizierungen und Partner der alten Site von den Gründern freigegeben und als Proof Points aufgenommen.
 - v3 (2026-09-17) — Hero-Hook auf Einstiegsschmerz umgestellt („Alle reden über AI. Bei Ihnen läuft sie.“); Adoptions-Einschätzung als Gründer-Input ohne Zahl.
 - v2 (2026-09-17) — Messaging-Baustein Souveränität ergänzt (Gründer-Input), Annahme zur Datenhaltung markiert.
 - v1 (2026-09-17) — Initial context. Auto-Entwurf aus Positionierungs-Handover, `content.ts`, Seiten, DESIGN.md und alter HubSpot-Copy; Redaktionsbrief (Hooks, Längenlimits, Sprachmechanik) aufgenommen; Lücken bei Zielgruppe, Wettbewerb, Einwänden, Verbatims und Belegen als Annahmen markiert.

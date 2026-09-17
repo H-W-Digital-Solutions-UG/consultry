@@ -172,6 +172,34 @@ export const sovereignty = {
   ],
 } as const;
 
+/**
+ * Nachweise. Zertifizierungen, Standards und Partner der bisherigen Website,
+ * von den Gründern am 2026-09-17 zur Übernahme freigegeben. Die
+ * Zertifizierungen sind Personen-Zertifikate des Gründerteams, keine
+ * Unternehmens-Zertifizierung; die Site formuliert das entsprechend.
+ * Nicht freigegeben bleiben „Certified Advice“ und „10+ years“.
+ */
+export const certifications = [
+  { name: "CISSP", issuer: "ISC2", file: "cissp.png" },
+  { name: "GIAC GCIA", issuer: "Certified Intrusion Analyst", file: "giac-gcia.png" },
+  { name: "OSCP", issuer: "OffSec Certified Professional", file: "oscp.png" },
+  { name: "OSDA", issuer: "OffSec Defense Analyst", file: "osda.png" },
+  { name: "Cybersecurity Architect Expert", issuer: "Microsoft Certified", file: "cybersecurity-architect.png" },
+  { name: "Azure Security Engineer Associate", issuer: "Microsoft Certified", file: "azure-security-engineer.png" },
+  { name: "CSPO", issuer: "Scrum Alliance, Certified Scrum Product Owner", file: "cspo.png" },
+  { name: "IREB CPRE", issuer: "Requirements Engineering, Foundation Level", file: "ireb-cpre.png" },
+] as const;
+
+export const standards = ["MITRE ATT&CK", "MITRE D3FEND", "ISO/IEC", "NIST", "OWASP", "DSGVO"] as const;
+
+export const partners = [
+  { name: "Wavect", href: "https://wavect.io/", file: "wavect.png" },
+  { name: "Rubicon Tech", href: "https://rubicontech.io/", file: "rubicon.png" },
+  { name: "Polity", href: "https://polity.li/", file: "polity.png" },
+  { name: "turntabl", href: "https://turntabl.io/", file: "turntabl.png" },
+  { name: "Systango", href: "https://www.systango.com/", file: "systango.png" },
+] as const;
+
 /** Capabilities – Beleg für die Umsetzungskompetenz, nicht das Produktversprechen (Abschnitte 4/5). */
 export const capabilities = [
   { title: "Business Process Analysis", text: "Abläufe, Schnittstellen und Engpässe verstehen. Vor jeder Technologie." },
