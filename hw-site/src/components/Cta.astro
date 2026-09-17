@@ -2,20 +2,20 @@
 import { company } from "../data/company";
 interface Props { heading?: string; text?: string; }
 const {
-  heading = "Ein Prozess. 30 Minuten. Eine klare Antwort.",
-  text = "Sie beschreiben einen Ablauf. Wir sagen, wo AI einen Hebel hat und wo nicht.",
+  heading = "Keine leeren Versprechen. Ein Gespräch, das sich lohnt.",
+  text = "Kostenlos und in 30 Minuten: Wir entdecken mit Ihnen, wo AI in Ihren Abläufen einen Hebel hat, und sagen ehrlich, wo nicht. Ihre Zeit wird nicht verschwendet.",
 } = Astro.props;
 ---
 
 <section class="section section--ink cta">
   <div class="container cta__inner">
     <div>
-      <p class="eyebrow">Nächster Schritt</p>
+      <p class="eyebrow">Kostenloses Erstgespräch</p>
       <h2>{heading}</h2>
       <p class="lede">{text}</p>
     </div>
     <div class="cta__actions">
-      <a class="btn btn--primary" href="/kontakt">Erstgespräch vereinbaren</a>
+      <a class="btn btn--primary" href="/kontakt">Kostenloses Erstgespräch vereinbaren</a>
       <a class="btn btn--ghost" href={`mailto:${company.email}`}>{company.email}</a>
     </div>
   </div>

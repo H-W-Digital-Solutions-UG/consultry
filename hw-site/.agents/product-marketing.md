@@ -158,6 +158,15 @@ Keine belastbaren Daten vorhanden, Annahme: aus Positionierung abgeleitet.
 
 Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede Copy geht vom bestehenden, meist manuellen Ablauf aus (Systeme, Rückfragen, Medienbrüche) und führt von dort zur produktiven AI. Nicht schreiben: „Ihre AI-Lösung“, „Ihr AI-Prozess“, „Ihre AI-Strategie“ als etwas Vorhandenes. Schreiben: „AI, die in Ihrem Betrieb läuft“, „Ihr Angebotsprozess läuft heute ohne AI“.
 
+## Messaging-Baustein: Kostenloses Erstgespräch (2026-09-17)
+
+**Kern (Gründer-Freigabe):** Das Erstgespräch ist kostenlos. Botschaft: keine leeren Versprechen, Potenziale entdecken, die Zeit des Kunden wird nicht verschwendet. „Kostenlos“ ist damit freigegeben und darf in Buttons, Eyebrows und Ledes stehen.
+
+**Freigegebene Formulierungen:**
+- Button: „Kostenloses Erstgespräch“ / „Kostenloses Erstgespräch vereinbaren“
+- Schluss-CTA: „Keine leeren Versprechen. Ein Gespräch, das sich lohnt.“ mit „Kostenlos und in 30 Minuten: Wir entdecken mit Ihnen, wo AI in Ihren Abläufen einen Hebel hat, und sagen ehrlich, wo nicht. Ihre Zeit wird nicht verschwendet.“
+- Kontakt-Lede: „30 Minuten, kostenlos, ein konkreter Ablauf: Wir entdecken Ihre Potenziale und sagen ehrlich, wo sich AI lohnt und wo nicht.“
+
 ## Messaging-Baustein: Hero-Hook (2026-09-17)
 
 **Kern:** AI-Adoption ist niedriger, als die eigene Blase vermuten lässt (Gründer-Einschätzung, keine Zahl). Der breiteste Schmerz der Zielgruppe ist Lärm ohne Ergebnis: Alle reden über AI, im eigenen Betrieb läuft nichts, und niemand weiß, wo anfangen. Der Hero holt genau dort ab, ohne Vorwurf und ohne Voraussetzung.
@@ -224,7 +233,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 Geschäftsprozess, Ablauf, Prozess, Arbeit, die täglich passiert; AI-Potenzial, AI-Hebel, Hebel; bewerten, priorisieren; AI-native neu denken; Umsetzungspfad; selbst bauen, umsetzen, entwickeln, integrieren; produktiv, in Produktion, im Betrieb, laufen; absichern, Security, Governance, Compliance (als Bestandteil, nicht als Versprechen); befähigen, Mitarbeiter; messen, optimieren, Wirkung; ein Partner, aus einer Hand, Verantwortung bis in den Betrieb, ohne Übergabe; konkret; Erstgespräch; Delivery Chain; From Process to Production; AI Transformation & Engineering.
 
 **Words to avoid:**
-revolutionieren, end-to-end, ganzheitlich, innovativ, nahtlos, KI (immer „AI“), disruptiv, Digitalisierung (als Selbstzweck), Cutting Edge, State of the Art, next level / Level-Up, smart, Synergien, Mehrwert schaffen, 360°, Full-Service, Experten (als Behauptung ohne Beleg), Blockchain, Web3, kostenlos (nicht bestätigt), „zertifizierte Beratung“ / „Certified Advice“ (Unternehmen ist nicht zertifiziert; Personen-Zertifikate siehe Proof Points), Roadmap und Use-Case-Katalog als eigenes Angebot (nur als Kontrast zur klassischen Beratung), technische Buzzwords als Versprechen in Headlines (LLM, RAG, Agenten, Kubernetes, Deployment; erlaubt nur als Beleg in Capability-Texten), Ausrufezeichen, Gendersternchen und Doppelnennungen.
+revolutionieren, end-to-end, ganzheitlich, innovativ, nahtlos, KI (immer „AI“), disruptiv, Digitalisierung (als Selbstzweck), Cutting Edge, State of the Art, next level / Level-Up, smart, Synergien, Mehrwert schaffen, 360°, Full-Service, Experten (als Behauptung ohne Beleg), Blockchain, Web3, „zertifizierte Beratung“ / „Certified Advice“ (Unternehmen ist nicht zertifiziert; Personen-Zertifikate siehe Proof Points), Roadmap und Use-Case-Katalog als eigenes Angebot (nur als Kontrast zur klassischen Beratung), technische Buzzwords als Versprechen in Headlines (LLM, RAG, Agenten, Kubernetes, Deployment; erlaubt nur als Beleg in Capability-Texten), Ausrufezeichen, Gendersternchen und Doppelnennungen.
 
 **Glossary:**
 | Term | Meaning |
@@ -304,6 +313,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v6 (2026-09-17) — Kostenloses Erstgespräch von den Gründern freigegeben; CTA-Baustein ergänzt, „kostenlos“ aus der Sperrliste gestrichen.
 - v5 (2026-09-17) — Baustein „Aktivität ist kein Ergebnis“ nach Systango-Inspiration (Denkfiguren ohne Zahlen); Kontrast-Liste um Tool-/Mess-Paar ergänzt.
 - v4 (2026-09-17) — Zertifizierungen und Partner der alten Site von den Gründern freigegeben und als Proof Points aufgenommen.
 - v3 (2026-09-17) — Hero-Hook auf Einstiegsschmerz umgestellt („Alle reden über AI. Bei Ihnen läuft sie.“); Adoptions-Einschätzung als Gründer-Input ohne Zahl.

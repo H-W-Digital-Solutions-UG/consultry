@@ -18,7 +18,7 @@ export const hero = {
   claim: "From Process to Production.",
   description:
     "Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst, bis sie produktiv läuft.",
-  primaryCta: { label: "Erstgespräch vereinbaren", href: "/kontakt" },
+  primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
 
