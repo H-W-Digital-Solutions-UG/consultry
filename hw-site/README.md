@@ -19,7 +19,7 @@ pnpm check      # Astro/TypeScript-Diagnose (benötigt TypeScript 6.x)
 - `src/components/` – Nav, Hero, Chain (Delivery Chain), Steps, Contrast, Capabilities, Cta, Footer
 - `src/scripts/hero-scroll.ts` – Scroll-Szene des Start-Heros (Progressive Enhancement, ohne Bibliothek; Regeln in `DESIGN.md`, Abschnitte 7 und 9)
 - `src/pages/` – `/`, `/leistungen`, `/vorgehen`, `/unternehmen`, `/kontakt`, `/impressum`, `/datenschutz`, `404`
-- `public/images/hero.webp` – Hero-Visual (generiert, Higgsfield); `og.jpg` daraus abgeleitet
+- `src/assets/hero.webp` – Hero-Visual (generiert, Higgsfield), wird beim Build in drei Breiten ausgeliefert; `public/images/og.jpg` daraus abgeleitet
 
 ## Deployment (Vercel)
 

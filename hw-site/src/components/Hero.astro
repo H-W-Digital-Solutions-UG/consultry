@@ -12,15 +12,25 @@
  * transform/opacity aus `--p`, `--scene-carry` und `data-scene-aspect`
  * (siehe DESIGN.md, Abschnitte 7 und 9).
  */
+import { getImage } from "astro:assets";
 import { hero, heroBeats } from "../data/content";
+import heroSource from "../assets/hero.webp";
 
 interface Props {
-  image?: string;
   imageAlt?: string;
   /** Scroll-Szene als Progressive Enhancement aktivieren (Standard: ja). */
   immersive?: boolean;
 }
-const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.props;
+const { imageAlt = "", immersive = true } = Astro.props;
+
+// LCP-Bild: drei Breiten, damit Phones nicht die 2560px-Variante laden.
+const image = await getImage({
+  src: heroSource,
+  widths: [960, 1440, 2560],
+  sizes: "100vw",
+  format: "webp",
+  quality: 78,
+});
 ---
 
 <section class="hero section--ink" data-hero={immersive ? "" : undefined} data-scene-share="0.5">
@@ -28,7 +38,17 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     <div class="hero__stage" data-hero-stage>
       <div class="hero__visual">
         <div class="hero__pan">
-          <img class="hero__bg" src={image} alt={imageAlt} width="2560" height="1434" fetchpriority="high" decoding="async" />
+          <img
+            class="hero__bg"
+            src={image.src}
+            srcset={image.srcSet.attribute}
+            sizes="100vw"
+            alt={imageAlt}
+            width={image.attributes.width}
+            height={image.attributes.height}
+            fetchpriority="high"
+            decoding="async"
+          />
         </div>
         <div class="hero__wash" aria-hidden="true"></div>
         <div class="hero__shade" aria-hidden="true"></div>
@@ -55,7 +75,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
               <li class="hero__beat" data-beat={i + 1}>
                 <span class="hero__beat-n" aria-hidden="true">{String(beat.n).padStart(2, "0")}</span>
                 <div class="hero__beat-body">
-                  <h3 class="hero__beat-title">{beat.title}</h3>
+                  <p class="hero__beat-title">{beat.title}</p>
                   <p class="hero__beat-text">{beat.text}</p>
                 </div>
               </li>

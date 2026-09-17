@@ -247,8 +247,8 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   }
   .chain[data-scene="on"] .chain__rail { align-self: center; }
   .chain[data-scene="on"] .chain__item:not([data-active]):not([data-passed]) .chain__dot { opacity: 0.45; transform: scale(0.9); }
-  .chain[data-scene="on"] .chain__item:not([data-active]):not([data-passed]) .chain__label { color: var(--fg-on-ink-muted); opacity: 0.6; }
-  .chain[data-scene="on"] .chain__item[data-passed] .chain__label { opacity: 0.8; }
+  .chain[data-scene="on"] .chain__item:not([data-active]):not([data-passed]) .chain__label { color: var(--fg-on-ink-muted); opacity: 0.8; }
+  .chain[data-scene="on"] .chain__item[data-passed] .chain__label { opacity: 0.9; }
   .chain[data-scene="on"] .chain__item[data-active] .chain__dot {
     transform: scale(1.08); color: #ffffff;
     background: color-mix(in oklab, var(--c0) 22%, var(--ink-2)); border-color: var(--c0);
