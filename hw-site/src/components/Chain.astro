@@ -256,31 +256,72 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   .chain[data-scene="on"] .chain__item[data-active] .chain__label { color: #ffffff; }
   .chain__step:hover .chain__label { color: var(--fg-on-ink); opacity: 1; }
 
+  /* Readout: editorial statt Karte. Riesige Ziffer links, daneben Phase,
+     Titel und Text; die Trennlinie oben nimmt die Achse auf. */
   .chain[data-scene="on"] .chain__readout {
-    display: grid; align-content: start; justify-items: start; gap: 12px;
-    padding: 28px; border-radius: var(--radius-lg); background: var(--ink-2); border: 1px solid var(--line-on-ink);
-    font-family: var(--font-display); letter-spacing: -0.02em; max-width: 520px; align-self: center;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: clamp(24px, 3vw, 44px);
+    row-gap: 6px;
+    align-content: start;
+    align-items: start;
+    align-self: center;
+    padding-top: 28px;
+    border-top: 1px solid var(--line-on-ink);
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    max-width: 640px;
   }
-  .chain__readout-text {
-    font-family: var(--font-body); font-size: 1.02rem; line-height: 1.55; letter-spacing: 0; color: var(--fg-on-ink-muted); max-width: 40ch;
-  }
-  .chain__readout-icon {
-    display: grid; place-items: center; width: 64px; height: 64px; border-radius: 16px;
-    color: var(--accent-on-ink); background: var(--ink-2); border: 1px solid var(--line-on-ink-strong, rgba(245,241,251,.2));
-  }
+  .chain__readout-icon { display: none; }
   .chain__readout-glyph { display: grid; place-items: center; }
   .chain__readout-glyph[hidden] { display: none; }
-  .chain__readout-top { display: flex; align-items: baseline; gap: 10px; }
-  .chain__readout-n { font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 300; line-height: 1; color: var(--accent-on-ink); font-variant-numeric: tabular-nums; }
-  .chain__readout-of { font-size: 0.95rem; font-weight: 300; color: var(--fg-on-ink-muted); }
-  .chain__readout-phase {
-    margin-left: 6px; padding: 3px 9px; border-radius: 999px; font-family: var(--font-body); font-size: 0.72rem; font-weight: 500;
-    color: var(--fg-on-ink); background: rgba(245, 241, 251, 0.08); border: 1px solid var(--line-on-ink);
+  .chain__readout-top {
+    grid-row: 1 / 4;
+    display: grid;
+    justify-items: start;
+    align-content: start;
+    gap: 2px;
   }
-  .chain__readout-label { font-size: clamp(1.3rem, 2.2vw, 1.9rem); font-weight: 600; color: #ffffff; max-width: 16ch; text-wrap: balance; }
+  .chain__readout-n {
+    font-size: clamp(5rem, 10vw, 8.5rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    color: var(--fg-on-ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .chain__readout-of { font-size: 0.9rem; font-weight: 400; letter-spacing: 0; color: var(--fg-on-ink-muted); padding-left: 4px; }
+  .chain__readout-phase {
+    grid-column: 2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--accent-on-ink);
+    padding-top: 10px;
+  }
+  .chain__readout-label {
+    grid-column: 2;
+    font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.12;
+    color: #ffffff;
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+  .chain__readout-text {
+    grid-column: 2;
+    margin-top: 8px;
+    font-family: var(--font-body);
+    font-size: clamp(1.02rem, 1.3vw, 1.15rem);
+    line-height: 1.55;
+    letter-spacing: 0;
+    color: var(--fg-on-ink-muted);
+    max-width: 42ch;
+    text-wrap: pretty;
+  }
 
   @media (min-width: 900px) {
-    .chain[data-scene="on"] .chain__stage { grid-template-columns: minmax(300px, 380px) minmax(0, 520px); column-gap: 40px; justify-content: start; }
+    .chain[data-scene="on"] .chain__stage { grid-template-columns: minmax(300px, 380px) minmax(0, 640px); column-gap: 56px; justify-content: start; }
     .chain[data-scene="on"] .chain__head { grid-column: 1 / -1; }
     .chain[data-scene="on"] .chain__rail { grid-column: 1; }
     .chain[data-scene="on"] .chain__readout { grid-column: 2; }
@@ -288,12 +329,12 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
   @media (max-width: 899px) {
     /* Mobil: Readout kompakt über der Liste */
     .chain[data-scene="on"] .chain__stage { grid-template-rows: auto auto 1fr; }
-    .chain[data-scene="on"] .chain__readout { grid-template-columns: auto 1fr; column-gap: 14px; row-gap: 2px; align-items: center; }
-    .chain__readout-icon { grid-row: 1 / 4; width: 56px; height: 56px; border-radius: 14px; }
-    .chain[data-scene="on"] .chain__readout { padding: 16px; max-width: none; }
-    .chain__readout-text { font-size: 0.9rem; grid-column: 2; }
-    .chain__readout-icon :global(svg) { width: 26px; height: 26px; }
-    .chain__readout-label { font-size: 1.2rem; }
+    .chain[data-scene="on"] .chain__readout { column-gap: 16px; row-gap: 2px; padding-top: 16px; max-width: none; }
+    .chain__readout-n { font-size: 3.4rem; }
+    .chain__readout-of { font-size: 0.8rem; }
+    .chain__readout-phase { padding-top: 4px; font-size: 0.8rem; }
+    .chain__readout-label { font-size: 1.25rem; }
+    .chain__readout-text { font-size: 0.92rem; margin-top: 4px; }
     .chain[data-scene="on"] .chain__rail { align-self: start; }
     .chain__steps > li .chain__step { min-height: 36px; }
     .chain__step { padding: 2px 0; gap: 12px; }
