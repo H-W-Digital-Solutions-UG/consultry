@@ -131,7 +131,7 @@ export const chainTexts = [
 
 /** Abgrenzung zu klassischer Beratung (Abschnitt 2, letzter Absatz). */
 export const contrast = {
-  heading: "Wo klassische Beratung aufhört, fangen wir erst an.",
+  heading: "Eine Roadmap ist kein Ergebnis.",
   text: "Beratung endet oft bei Strategie, Roadmap oder PowerPoint. Und die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es beides nicht: Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.",
   classic: ["AI-Strategie", "Tool zuerst, Ablauf später", "Roadmap", "Pitch-Team, dann Lieferteam", "Für jedes Werkzeug ein Anbieter", "Wirkung ungemessen", "Empfehlung"],
   hw: ["Prozessanalyse", "Ablauf zuerst, Tool zuletzt", "Eigenes Engineering", "Ein Team von Analyse bis Betrieb", "Prozess, Daten und Wissen bleiben bei Ihnen", "Wirkung gemessen", "Produktiver Betrieb"],
