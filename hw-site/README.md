@@ -31,4 +31,4 @@ Vercel-Projekt **`hw-digitalsolutions`** im Team `hw-consultry`, git-verknüpft 
 ## Offen
 
 - Hero-Eyebrow ist aus dem abgeschnittenen Handover-Abschnitt 7 rekonstruiert (`content.ts`, als PROVISORISCH markiert).
-- Datenschutzerklärung vor Livegang juristisch prüfen; sie beschreibt den aktuellen Umfang (statisch, keine Cookies, kein Tracking, Google Fonts).
+- Datenschutzerklärung vor Livegang juristisch prüfen; sie beschreibt den aktuellen Umfang (statisch, keine Cookies, kein Tracking, selbst gehostete Schriften).

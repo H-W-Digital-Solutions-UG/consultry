@@ -12,8 +12,8 @@
  * Mechanik (nach der Consultry-Referenz):
  *   start = trackTop, end = trackTop + trackHeight − stageHeight
  *   p = clamp((scrollY − start) / (end − start))
- *   reveal = clamp((p − .06) / .30)       – Annotationen blenden ein
- *   aspect = 0 | 1 (p ≥ .10) | 2 (p ≥ .35) | 3 (p ≥ .65)
+ *   reveal = clamp((p − .06) / .30)       – frühe Einblendungen (derzeit ohne CSS-Verbraucher)
+ *   aspect = 0 | 1 (p ≥ .10) | 2 (p ≥ .40) | 3 (p ≥ .70)
  *   carry = clamp((scrollY − (start + span·share)) / rest)  – Copy tritt ab .46 zurück
  *
  * Im Scroll-Handler wird außer `scrollY` nichts aus dem Layout gelesen; die
@@ -78,7 +78,7 @@ export function createHeroScene(section: HTMLElement): () => void {
     const p = clamp01((y - start) / span);
     const carry = share < 1 ? clamp01((y - carryStart) / carrySpan) : p;
     const reveal = clamp01((p - 0.06) / 0.3);
-    const aspect = p < 0.1 ? "0" : p < 0.35 ? "1" : p < 0.65 ? "2" : "3";
+    const aspect = p < 0.1 ? "0" : p < 0.4 ? "1" : p < 0.7 ? "2" : "3";
     prop("--p", p.toFixed(4));
     prop("--scene-reveal", reveal.toFixed(3));
     prop("--scene-carry", carry.toFixed(3));

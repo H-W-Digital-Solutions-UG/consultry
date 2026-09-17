@@ -6,9 +6,11 @@
  * 100svh-Hero mit Bild, Schleier, Copy und den drei Beats als einfache Liste.
  * Mit JS (src/scripts/hero-scroll.ts) wird die Section zu einem hohen Track,
  * die Bühne bleibt angepinnt, das breite Bild fährt von der Prozess-Seite
- * (links) zur Produktions-Seite (rechts); Beats und Annotationen 01–03
- * erscheinen nacheinander. Alle Scroll-Visuals: nur transform/opacity aus
- * `--p`, `--scene-reveal`, `--scene-carry` (siehe DESIGN.md, Abschnitt 9).
+ * (links) zur Produktions-Seite (rechts); die Beat-Liste trägt die Ziffern
+ * 01–03 und wird nacheinander „erreicht“. Die Copy tritt zurück, die CTAs
+ * bleiben immer voll sichtbar und bedienbar. Alle Scroll-Visuals: nur
+ * transform/opacity aus `--p`, `--scene-carry` und `data-scene-aspect`
+ * (siehe DESIGN.md, Abschnitte 7 und 9).
  */
 import { hero, heroBeats } from "../data/content";
 
@@ -27,11 +29,6 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
       <div class="hero__visual">
         <div class="hero__pan">
           <img class="hero__bg" src={image} alt={imageAlt} width="2560" height="1434" fetchpriority="high" decoding="async" />
-          <div class="hero__notes" aria-hidden="true">
-            {heroBeats.map((beat, i) => (
-              <span class={`hero__note hero__note--${i + 1}`} data-note={i + 1}>{beat.n}</span>
-            ))}
-          </div>
         </div>
         <div class="hero__wash" aria-hidden="true"></div>
         <div class="hero__shade" aria-hidden="true"></div>
@@ -39,10 +36,10 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
 
       <div class="container hero__content">
         <div class="hero__copy" data-hero-copy>
-          <p class="eyebrow reveal" style="--delay: .1s">{hero.eyebrow}</p>
-          <h1 class="reveal" style="--delay: .25s">{hero.headline}</h1>
-          <p class="hero__claim reveal" style="--delay: .4s">{hero.claim}</p>
-          <p class="hero__desc reveal" style="--delay: .55s">{hero.description}</p>
+          <div class="reveal" style="--delay: .1s"><p class="eyebrow">{hero.eyebrow}</p></div>
+          <div class="reveal" style="--delay: .25s"><h1>{hero.headline}</h1></div>
+          <div class="reveal" style="--delay: .4s"><p class="hero__claim">{hero.claim}</p></div>
+          <div class="reveal" style="--delay: .55s"><p class="hero__desc">{hero.description}</p></div>
           <div class="hero__actions reveal" style="--delay: .7s">
             <a class="btn btn--primary" href={hero.primaryCta.href}>
               {hero.primaryCta.label}
@@ -52,17 +49,25 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
           </div>
         </div>
 
-        <ol class="hero__beats" aria-label="Vom Prozess zur Produktion in drei Schritten">
-          {heroBeats.map((beat, i) => (
-            <li class="hero__beat" data-beat={i + 1}>
-              <span class="hero__beat-n" aria-hidden="true">{beat.n}</span>
-              <div class="hero__beat-body">
-                <h2 class="hero__beat-title">{beat.title}</h2>
-                <p class="hero__beat-text">{beat.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <div class="hero__side">
+          <ol class="hero__beats" aria-label="Vom Prozess zur Produktion in drei Schritten">
+            {heroBeats.map((beat, i) => (
+              <li class="hero__beat" data-beat={i + 1}>
+                <span class="hero__beat-n" aria-hidden="true">{beat.n}</span>
+                <div class="hero__beat-body">
+                  <h3 class="hero__beat-title">{beat.title}</h3>
+                  <p class="hero__beat-text">{beat.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <!-- Nur mobil in der Scroll-Szene sichtbar: die Copy hat die Bühne verlassen,
+               die Conversion-Aktion bleibt trotzdem im Bild. -->
+          <a class="btn btn--primary hero__side-cta" href={hero.primaryCta.href}>
+            {hero.primaryCta.label}
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
       </div>
 
       <div class="hero__progress" aria-hidden="true"></div>
@@ -79,6 +84,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
       if (!disposers.has(el)) disposers.set(el, createHeroScene(el));
     });
   };
+  // astro:before-swap / astro:page-load: vorwärtskompatibel mit dem ClientRouter (View Transitions) – heute ohne View Transitions wirkungslos.
   document.addEventListener("astro:before-swap", () => {
     disposers.forEach((dispose) => dispose());
     disposers.clear();
@@ -93,6 +99,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
      --------------------------------------------------------------- */
   .hero {
     --hero-pad-b: clamp(48px, 8vw, 96px);
+    --nav-h: 74px;
     --p: 0;
     --scene-reveal: 0;
     --scene-carry: 0;
@@ -107,8 +114,8 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     min-height: 100svh;
     display: flex;
     align-items: flex-end;
-    overflow: hidden;
   }
+  /* Der Bildlayer wird nur hier beschnitten (breiter Pan in der Szene). */
   .hero__visual {
     position: absolute;
     inset: 0;
@@ -130,8 +137,9 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     object-position: 70% center;
     opacity: 0.9;
   }
-  /* Farbwash: Lavendel (Prozess) links, Magenta (Produktion) rechts – weiche
-     lineare Verläufe, je max. 10 % Deckkraft, per --p gegeneinander geblendet. */
+  /* Farbwash: Lavendel (Prozess) nur im linken 40 %-Band, max. 6 %; Magenta
+     (Produktion) nur im rechten 35 %-Band, max. 5 %; per --p gegeneinander
+     geblendet. Weiche lineare Verläufe, keine radialen Leuchtflecken. */
   .hero__wash {
     position: absolute;
     inset: 0;
@@ -144,28 +152,26 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     inset: 0;
   }
   .hero__wash::before {
-    background: linear-gradient(105deg, var(--process) 0%, rgba(169, 139, 255, 0) 65%);
-    opacity: calc(0.1 * (1 - var(--p)));
+    background: linear-gradient(105deg, color-mix(in oklab, var(--process) 6%, transparent) 0%, transparent 40%);
+    opacity: calc(1 - var(--p));
   }
   .hero__wash::after {
-    background: linear-gradient(255deg, var(--production) 0%, rgba(211, 108, 240, 0) 65%);
-    opacity: calc(0.1 * var(--p));
+    background: linear-gradient(255deg, color-mix(in oklab, var(--production) 5%, transparent) 0%, transparent 40%);
+    opacity: var(--p);
   }
   .hero__shade {
     position: absolute;
     inset: 0;
     pointer-events: none;
     /* Aubergine-Schleier: unten dicht für Lesbarkeit, links für den Textblock,
-       dazu ein leiser Markenlila-Hauch (DESIGN.md, Abschnitt 3). */
+       ein statischer 111°-Aubergine-Schleier (~12 %) über dem mittleren Band
+       zähmt das Einlauf-Leuchten des Motivs, dazu ein leiser Markenlila-Hauch
+       (DESIGN.md, Abschnitt 3). */
     background:
-      linear-gradient(to top, rgba(21, 4, 43, 0.96) 0%, rgba(21, 4, 43, 0.6) 45%, rgba(21, 4, 43, 0.18) 100%),
+      linear-gradient(to top, rgba(21, 4, 43, 0.96) 0%, rgba(21, 4, 43, 0.45) 45%, rgba(21, 4, 43, 0.18) 100%),
       linear-gradient(to right, rgba(21, 4, 43, 0.78) 0%, rgba(21, 4, 43, 0) 60%),
+      linear-gradient(111deg, transparent 28%, color-mix(in oklab, var(--ink) 12%, transparent) 50%, transparent 72%),
       linear-gradient(111deg, rgba(81, 29, 150, 0.12) 0%, rgba(53, 26, 89, 0) 70%);
-  }
-
-  /* Annotationen 01–03 auf dem Bild: nur in der Scroll-Szene sichtbar. */
-  .hero__notes {
-    display: none;
   }
 
   /* Inhalt */
@@ -174,7 +180,8 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     z-index: 1;
     padding-block: 140px var(--hero-pad-b);
     margin-inline: var(--gutter);
-    width: auto;
+    /* Flex-Kind der Bühne: volle Breite statt Shrink-to-fit an der Copy. */
+    width: 100%;
   }
   .hero__copy {
     max-width: 760px;
@@ -182,6 +189,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
   .hero h1 {
     margin-top: 18px;
     color: var(--fg-on-ink);
+    transform-origin: left center;
   }
   .hero__claim {
     margin-top: 16px;
@@ -211,9 +219,12 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
   }
 
   /* Beats – Ziffer leicht (Sora 300) neben kurzem Titel, Text darunter. */
+  .hero__side {
+    margin-top: 40px;
+  }
   .hero__beats {
     list-style: none;
-    margin: 40px 0 0;
+    margin: 0;
     padding: 0;
     display: grid;
     gap: 8px;
@@ -249,6 +260,9 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     color: var(--fg-on-ink-muted);
     text-wrap: pretty;
   }
+  .hero__side-cta {
+    display: none;
+  }
 
   .hero__progress {
     display: none;
@@ -261,8 +275,10 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
       align-items: end;
       column-gap: 56px;
     }
-    .hero__beats {
+    /* Um 48 px angehoben, damit die Liste das Förderband im Motiv frei lässt. */
+    .hero__side {
       margin-top: 0;
+      padding-bottom: 48px;
     }
   }
   @media (min-width: 1296px) {
@@ -272,17 +288,50 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     }
   }
 
+  /* Flache Viewports (max. 700 px hoch, z. B. 375×667 oder 844×390 quer):
+     Copy kompakter, damit nichts beschnitten wird. */
+  @media (max-height: 700px) {
+    .hero {
+      --hero-pad-b: 24px;
+    }
+    .hero__content {
+      padding-top: calc(var(--nav-h) + 24px);
+    }
+    .hero h1 {
+      margin-top: 10px;
+      font-size: clamp(1.75rem, 3.8vw, 2.5rem);
+    }
+    .hero__claim {
+      margin-top: 8px;
+      font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    }
+    .hero__desc {
+      margin-top: 10px;
+      max-width: 70ch;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+    .hero__actions {
+      margin-top: 14px;
+    }
+    .hero__actions .btn {
+      padding: 11px 16px;
+      font-size: 0.9rem;
+    }
+  }
+
   /* ---------------------------------------------------------------
      Scroll-Szene (nur mit JS, gesetzt über data-scene="on")
      --------------------------------------------------------------- */
   .hero[data-scene="on"] .hero__track {
-    height: 260vh;
+    height: 220vh;
   }
   .hero[data-scene="on"] .hero__stage {
     position: sticky;
     top: 0;
-    height: 100svh;
-    min-height: 0;
+    height: auto;
+    min-height: 100svh;
+    min-height: 100dvh;
   }
   /* Bildlayer breiter als der Viewport: eine Kamerafahrt von Bildlinks
      (Prozess-Knoten) nach Bildrechts (Produktion), dazu Skalierung 1.06 -> 1
@@ -297,63 +346,29 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     object-position: 50% 40%;
   }
 
-  .hero[data-scene="on"] .hero__notes {
-    display: block;
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .hero__note {
-    position: absolute;
-    display: grid;
-    place-items: center;
-    width: 30px;
-    height: 30px;
-    margin: -15px 0 0 -15px;
-    border-radius: 50%;
-    font-family: var(--font-display);
-    font-size: 0.74rem;
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
-    color: var(--fg-on-ink);
-    background: rgba(21, 4, 43, 0.86);
-    border: 1px solid var(--line-on-ink-strong);
-    opacity: calc(var(--scene-reveal) * 0.55);
-    transition: color 0.24s, border-color 0.24s, background-color 0.24s;
-  }
-  .hero__note--1 { left: 24%; top: 26%; }
-  .hero__note--2 { left: 54%; top: 32%; }
-  .hero__note--3 { left: 78%; top: 45%; }
-  .hero[data-scene-aspect="1"] .hero__note--1,
-  .hero[data-scene-aspect="2"] :is(.hero__note--1, .hero__note--2),
-  .hero[data-scene-aspect="3"] .hero__note {
-    opacity: var(--scene-reveal);
-    color: var(--accent-on-ink);
-    border-color: var(--accent-on-ink);
-    background: rgba(21, 4, 43, 0.92);
-  }
-  .hero[data-scene-aspect="3"] .hero__note--3 {
-    color: var(--production);
-    border-color: var(--production);
-  }
-
-  /* Copy tritt zurück, sobald die Beats den Fokus übernehmen. */
-  .hero[data-scene="on"] .hero__copy {
+  /* Copy tritt zurück, sobald die Beats den Fokus übernehmen – die CTAs
+     bleiben davon ausgenommen und immer voll sichtbar. */
+  .hero[data-scene="on"] .hero__copy :is(.eyebrow, h1, .hero__claim, .hero__desc) {
     transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
   }
-  .hero[data-scene="on"] .hero__copy[data-faded="true"] {
-    opacity: 0.35;
-    transform: translateY(-14px);
+  .hero[data-scene="on"] .hero__copy[data-faded="true"] :is(.eyebrow, .hero__desc) {
+    opacity: 0.5;
+  }
+  .hero[data-scene="on"] .hero__copy[data-faded="true"] h1 {
+    opacity: 0.7;
+    transform: translateY(-10px) scale(0.98);
+  }
+  .hero[data-scene="on"] .hero__copy[data-faded="true"] .hero__claim {
+    opacity: 0.6;
   }
 
-  /* Beats erscheinen nacheinander (240 ms fade/translate) und bleiben stehen;
-     der aktive Beat erhält einen ruhigen Flächenwechsel statt Glow. */
+  /* Beats: die ganze Liste ist von Anfang an sichtbar (Opacity .45 als
+     Scroll-Hinweis); der aktive Beat wird auf 1 gehoben und erhält eine
+     ruhige Fläche statt Glow, bereits erreichte Beats bleiben bei .8. */
   .hero[data-scene="on"] .hero__beat {
-    opacity: 0;
-    transform: translateY(10px);
+    opacity: 0.45;
     transition:
       opacity 0.24s var(--ease-out),
-      transform 0.24s var(--ease-out),
       background-color 0.24s,
       border-color 0.24s;
   }
@@ -362,43 +377,43 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
   .hero[data-scene="on"] .hero__beat-text {
     transition: color 0.24s, opacity 0.24s;
   }
-  .hero[data-scene="on"] .hero__beat-n {
-    color: var(--fg-on-ink-muted);
-  }
+  .hero[data-scene="on"] .hero__beat-n,
   .hero[data-scene="on"] .hero__beat-title {
     color: var(--fg-on-ink-muted);
   }
   .hero[data-scene="on"] .hero__beat-text {
     opacity: 0.75;
   }
-  .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"],
-  .hero[data-scene-aspect="2"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]),
-  .hero[data-scene-aspect="3"] .hero__beat {
-    opacity: 1;
-    transform: none;
-  }
-  .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"],
-  .hero[data-scene-aspect="2"] .hero__beat[data-beat="2"],
-  .hero[data-scene-aspect="3"] .hero__beat[data-beat="3"] {
-    background: rgba(245, 241, 251, 0.06);
-    border-color: var(--line-on-ink);
+  /* erreicht (aktiv oder bereits passiert) */
+  .hero[data-scene-aspect="2"] .hero__beat[data-beat="1"],
+  .hero[data-scene-aspect="3"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) {
+    opacity: 0.8;
   }
   .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"] .hero__beat-n,
-  .hero[data-scene-aspect="2"] .hero__beat[data-beat="2"] .hero__beat-n {
+  .hero[data-scene-aspect="2"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) .hero__beat-n,
+  .hero[data-scene-aspect="3"] .hero__beat .hero__beat-n {
     color: var(--accent-on-ink);
   }
   .hero[data-scene-aspect="3"] .hero__beat[data-beat="3"] .hero__beat-n {
     color: var(--production);
   }
   .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"] .hero__beat-title,
-  .hero[data-scene-aspect="2"] .hero__beat[data-beat="2"] .hero__beat-title,
-  .hero[data-scene-aspect="3"] .hero__beat[data-beat="3"] .hero__beat-title {
+  .hero[data-scene-aspect="2"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) .hero__beat-title,
+  .hero[data-scene-aspect="3"] .hero__beat .hero__beat-title {
     color: var(--fg-on-ink);
   }
   .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"] .hero__beat-text,
-  .hero[data-scene-aspect="2"] .hero__beat[data-beat="2"] .hero__beat-text,
-  .hero[data-scene-aspect="3"] .hero__beat[data-beat="3"] .hero__beat-text {
+  .hero[data-scene-aspect="2"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) .hero__beat-text,
+  .hero[data-scene-aspect="3"] .hero__beat .hero__beat-text {
     opacity: 1;
+  }
+  /* aktiv */
+  .hero[data-scene-aspect="1"] .hero__beat[data-beat="1"],
+  .hero[data-scene-aspect="2"] .hero__beat[data-beat="2"],
+  .hero[data-scene-aspect="3"] .hero__beat[data-beat="3"] {
+    opacity: 1;
+    background: rgba(245, 241, 251, 0.06);
+    border-color: var(--line-on-ink);
   }
 
   /* Fortschrittslinie: Achse in voller Breite, eine Aubergine-Abdeckung
@@ -423,38 +438,78 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     transform: translate3d(calc(var(--p) * 100%), 0, 0);
   }
 
-  /* Mobil: kürzerer Track; nur der aktive Beat unten, Copy weicht nach oben.
-     Annotationen sitzen am oberen Rand der Motive, damit sie nicht in die
-     zurückgetretene Copy fallen. */
+  /* Mobil: kürzerer Track. Mit dem ersten Beat verlässt die Copy die Bühne
+     nach oben (300 ms), die drei Beats stehen gestapelt unten, darunter ein
+     kompakter Primär-CTA, damit die Conversion-Aktion im Bild bleibt. */
   @media (max-width: 899px) {
     .hero[data-scene="on"] .hero__track {
       height: 200vh;
     }
-    .hero__note--1 { top: 13%; }
-    .hero__note--2 { top: 15%; }
-    .hero__note--3 { top: 14%; }
-    .hero[data-scene="on"] .hero__beats {
+    .hero[data-scene="on"] .hero__copy {
+      transition:
+        opacity 0.3s var(--ease-out),
+        transform 0.3s var(--ease-out),
+        visibility 0s;
+    }
+    .hero[data-scene="on"]:is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) .hero__copy {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-100svh);
+      transform: translateY(-100dvh);
+      transition-delay: 0s, 0s, 0.3s;
+    }
+    .hero[data-scene="on"] .hero__side {
       position: absolute;
       left: 0;
       right: 0;
       bottom: var(--hero-pad-b);
       margin: 0;
-      min-height: 120px;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s var(--ease-out),
+        visibility 0s 0.3s;
+    }
+    .hero[data-scene="on"]:is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) .hero__side {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
     }
     .hero[data-scene="on"] .hero__beat {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      padding: 10px 12px;
     }
-    .hero[data-scene-aspect="2"] .hero__beat[data-beat="1"],
-    .hero[data-scene-aspect="3"] :is(.hero__beat[data-beat="1"], .hero__beat[data-beat="2"]) {
-      opacity: 0;
-      transform: translateY(-10px);
+    .hero[data-scene="on"] .hero__beat-n {
+      font-size: 1.3rem;
     }
-    .hero[data-scene="on"]:not([data-scene-aspect="0"]) .hero__copy {
-      opacity: 0.35;
-      transform: translateY(-150px);
+    .hero[data-scene="on"] .hero__beat-title {
+      font-size: 1rem;
+    }
+    .hero[data-scene="on"] .hero__beat-text {
+      margin-top: 4px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .hero[data-scene="on"] .hero__side-cta {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 11px 16px;
+      font-size: 0.9rem;
+    }
+  }
+  /* Mobil quer (z. B. 844×390): Beats nebeneinander, damit Motiv und CTA Platz behalten. */
+  @media (max-width: 899px) and (max-height: 500px) {
+    .hero[data-scene="on"] .hero__beats {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .hero[data-scene="on"] .hero__beat {
+      column-gap: 10px;
+    }
+    .hero[data-scene="on"] .hero__beat-text {
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+    .hero[data-scene="on"] .hero__side-cta {
+      margin-top: 10px;
     }
   }
 
@@ -474,21 +529,40 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
       transform: none;
       will-change: auto;
     }
-    .hero[data-scene="on"] .hero__notes,
-    .hero[data-scene="on"] .hero__progress {
+    .hero[data-scene="on"] .hero__progress,
+    .hero[data-scene="on"] .hero__side-cta {
       display: none;
     }
     .hero[data-scene="on"] .hero__copy,
+    .hero[data-scene="on"] .hero__copy :is(.eyebrow, h1, .hero__claim, .hero__desc),
+    .hero[data-scene="on"] .hero__side,
     .hero[data-scene="on"] .hero__beat {
       opacity: 1;
+      visibility: visible;
       transform: none;
       transition: none;
     }
-    .hero[data-scene="on"] .hero__beats {
+    .hero[data-scene="on"] .hero__side {
       position: static;
+      margin-top: 40px;
     }
     .hero[data-scene="on"] .hero__beat {
-      position: static;
+      background: none;
+      border-color: transparent;
+    }
+    .hero[data-scene="on"] .hero__beat-n {
+      color: var(--accent-on-ink);
+    }
+    .hero[data-scene="on"] .hero__beat-title {
+      color: var(--fg-on-ink);
+    }
+    .hero[data-scene="on"] .hero__beat-text {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) and (min-width: 900px) {
+    .hero[data-scene="on"] .hero__side {
+      margin-top: 0;
     }
   }
 </style>
