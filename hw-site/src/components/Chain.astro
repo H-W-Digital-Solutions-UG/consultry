@@ -10,7 +10,24 @@
  * mit auf der gepinnten Bühne stehen.
  */
 import { chain } from "../data/content";
+import Icon from "./Icon.astro";
+import type { IconName } from "../icons/icons";
 const n = chain.length;
+// Icon und Phase je Glied der Chain (Reihenfolge wie in content.ts)
+const meta: { icon: IconName; phase: string }[] = [
+  { icon: "step-understand", phase: "Prozess" },
+  { icon: "cap-process-analysis", phase: "Prozess" },
+  { icon: "step-detect", phase: "Prozess" },
+  { icon: "step-redesign", phase: "Design" },
+  { icon: "step-roadmap", phase: "Design" },
+  { icon: "cap-model-engineering", phase: "Engineering" },
+  { icon: "cap-software-engineering", phase: "Engineering" },
+  { icon: "step-integrate", phase: "Engineering" },
+  { icon: "step-deploy", phase: "Produktion" },
+  { icon: "step-secure", phase: "Produktion" },
+  { icon: "cap-ai-enablement", phase: "Produktion" },
+  { icon: "chain-measure", phase: "Produktion" },
+];
 ---
 
 <div class="chain" data-chain style={`--n:${n}`}>
@@ -21,8 +38,8 @@ const n = chain.length;
       <div class="chain__viewport">
         <ol class="chain__rail" role="list" aria-label="Delivery Chain: From Process to Production">
           {chain.map((step, i) => (
-            <li class="chain__item" style={`--i:${i}`}>
-              <span class="chain__dot" aria-hidden="true"></span>
+            <li class="chain__item" style={`--i:${i}`} data-phase={meta[i].phase}>
+              <span class="chain__dot" aria-hidden="true"><Icon name={meta[i].icon} size={18} /></span>
               <span class="chain__idx" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
               <span class="chain__label">{step}</span>
             </li>
@@ -30,11 +47,19 @@ const n = chain.length;
         </ol>
       </div>
 
-      <p class="chain__readout" aria-live="polite" aria-atomic="true">
-        <span class="chain__readout-n" data-readout-n>01</span>
-        <span class="chain__readout-of">/ {String(n).padStart(2, "0")}</span>
-        <span class="chain__readout-label" data-readout-label>{chain[0]}</span>
-      </p>
+      <div class="chain__readout" aria-live="polite" aria-atomic="true">
+        <span class="chain__readout-icon" aria-hidden="true">
+          {meta.map((m, i) => <span class="chain__readout-glyph" data-glyph={i} hidden={i !== 0}><Icon name={m.icon} size={26} /></span>)}
+        </span>
+        <span class="chain__readout-text">
+          <span class="chain__readout-top">
+            <span class="chain__readout-n" data-readout-n>01</span>
+            <span class="chain__readout-of">/ {String(n).padStart(2, "0")}</span>
+            <span class="chain__readout-phase" data-readout-phase>{meta[0].phase}</span>
+          </span>
+          <span class="chain__readout-label" data-readout-label>{chain[0]}</span>
+        </span>
+      </div>
       <span class="chain__progress" aria-hidden="true"></span>
     </div>
   </div>
@@ -53,6 +78,8 @@ const n = chain.length;
     const items = Array.from(root.querySelectorAll<HTMLElement>(".chain__item"));
     const readN = root.querySelector<HTMLElement>("[data-readout-n]")!;
     const readLabel = root.querySelector<HTMLElement>("[data-readout-label]")!;
+    const readPhase = root.querySelector<HTMLElement>("[data-readout-phase]")!;
+    const glyphs = Array.from(root.querySelectorAll<HTMLElement>("[data-glyph]"));
     const n = items.length;
     let top = 0, span = 1, ticking = false, active = -1;
     root.dataset.scene = "on";
@@ -74,6 +101,8 @@ const n = chain.length;
         });
         readN.textContent = String(idx + 1).padStart(2, "0");
         readLabel.textContent = items[idx].querySelector(".chain__label")?.textContent ?? "";
+        readPhase.textContent = items[idx].dataset.phase ?? "";
+        glyphs.forEach((g, i) => (g.hidden = i !== idx));
       }
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
@@ -106,7 +135,7 @@ const n = chain.length;
   .chain__readout, .chain__progress { display: none; }
 
   .chain__rail {
-    list-style: none; margin: 0; padding: 26px 0 8px;
+    list-style: none; margin: 0; padding: 8px 0 8px;
     display: grid; grid-auto-flow: column; grid-auto-columns: var(--item-w);
     width: max-content;
   }
@@ -118,24 +147,29 @@ const n = chain.length;
   }
   .chain__item:not(:last-child)::before,
   .chain__item:not(:last-child)::after {
-    content: ""; position: absolute; left: 6px; width: 100%; top: 5px; height: 2px; border-radius: 2px;
+    content: ""; position: absolute; left: 22px; width: 100%; top: 21px; height: 2px; border-radius: 2px;
   }
   .chain__item::before { background: var(--line-on-ink-strong, rgba(245, 241, 251, 0.18)); }
   .chain__item::after {
     background: linear-gradient(90deg, var(--c0), var(--c1));
     transform-origin: left center; transform: scaleX(var(--seg)); transition: transform 0.16s linear;
   }
+  /* Node: Icon in einer ruhigen Kachel auf der Linie */
   .chain__dot {
-    position: relative; z-index: 1; display: block; width: 12px; height: 12px; border-radius: 50%;
-    background: var(--c0); box-shadow: 0 0 0 5px var(--ink);
-    transition: opacity 0.24s var(--ease-out), transform 0.24s var(--ease-out);
+    position: relative; z-index: 1; display: grid; place-items: center;
+    width: 44px; height: 44px; border-radius: 12px;
+    color: var(--c0); background: var(--ink-2);
+    border: 1px solid color-mix(in oklab, var(--c0) 45%, transparent);
+    box-shadow: 0 0 0 6px var(--ink);
+    transition: opacity 0.24s var(--ease-out), transform 0.24s var(--ease-out), border-color 0.24s, background-color 0.24s;
   }
   .chain__idx {
     display: block; margin-top: 14px; font-family: var(--font-display); font-weight: 300;
-    font-size: 0.8rem; letter-spacing: 0.04em; color: var(--fg-on-ink-muted);
+    font-size: 0.82rem; letter-spacing: 0.06em; color: var(--fg-on-ink-muted); font-variant-numeric: tabular-nums;
   }
   .chain__label {
-    display: block; margin-top: 4px; font-size: 0.92rem; line-height: 1.35; color: var(--fg-on-ink);
+    display: block; margin-top: 4px; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em;
+    font-size: 0.98rem; line-height: 1.3; color: var(--fg-on-ink); max-width: 11ch;
     text-wrap: balance; transition: color 0.24s var(--ease-out), opacity 0.24s var(--ease-out);
   }
 
@@ -154,20 +188,34 @@ const n = chain.length;
     will-change: transform;
   }
   .chain[data-scene="on"] .chain__viewport { container-type: inline-size; }
-  .chain[data-scene="on"] .chain__item:not([data-active]):not([data-passed]) .chain__dot { opacity: 0.35; transform: scale(0.8); }
+  .chain[data-scene="on"] .chain__item:not([data-active]):not([data-passed]) .chain__dot { opacity: 0.45; transform: scale(0.9); }
   .chain[data-scene="on"] .chain__item:not([data-active]):not([data-passed]) .chain__label { color: var(--fg-on-ink-muted); opacity: 0.6; }
   .chain[data-scene="on"] .chain__item[data-passed] .chain__label { opacity: 0.8; }
-  .chain[data-scene="on"] .chain__item[data-active] .chain__dot { transform: scale(1.25); }
+  .chain[data-scene="on"] .chain__item[data-active] .chain__dot {
+    transform: scale(1.12); color: #ffffff;
+    background: color-mix(in oklab, var(--c0) 22%, var(--ink-2)); border-color: var(--c0);
+  }
   .chain[data-scene="on"] .chain__item[data-active] .chain__label { color: #ffffff; }
 
   .chain[data-scene="on"] .chain__readout {
-    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    display: flex; align-items: center; gap: 20px;
     margin: 0; font-family: var(--font-display); letter-spacing: -0.02em;
   }
-  .chain__readout-n { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1; color: var(--accent-on-ink); font-variant-numeric: tabular-nums; }
-  .chain__readout-of { font-size: clamp(1rem, 1.4vw, 1.2rem); font-weight: 300; color: var(--fg-on-ink-muted); }
-  .chain__readout-label { flex-basis: 100%; font-size: clamp(1.25rem, 2.4vw, 1.9rem); font-weight: 600; color: #ffffff; }
-  @media (min-width: 720px) { .chain__readout-label { flex-basis: auto; margin-left: 8px; } }
+  .chain__readout-icon {
+    flex: none; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 16px;
+    color: var(--accent-on-ink); background: var(--ink-2); border: 1px solid var(--line-on-ink-strong, rgba(245,241,251,.2));
+  }
+  .chain__readout-glyph { display: grid; place-items: center; }
+  .chain__readout-glyph[hidden] { display: none; }
+  .chain__readout-text { display: grid; gap: 4px; }
+  .chain__readout-top { display: flex; align-items: baseline; gap: 10px; }
+  .chain__readout-n { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 300; line-height: 1; color: var(--accent-on-ink); font-variant-numeric: tabular-nums; }
+  .chain__readout-of { font-size: 0.95rem; font-weight: 300; color: var(--fg-on-ink-muted); }
+  .chain__readout-phase {
+    margin-left: 6px; padding: 3px 9px; border-radius: 999px; font-family: var(--font-body); font-size: 0.72rem; font-weight: 500;
+    color: var(--fg-on-ink); background: rgba(245, 241, 251, 0.08); border: 1px solid var(--line-on-ink);
+  }
+  .chain__readout-label { font-size: clamp(1.2rem, 2.2vw, 1.75rem); font-weight: 600; color: #ffffff; }
 
   .chain[data-scene="on"] .chain__progress {
     display: block; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;

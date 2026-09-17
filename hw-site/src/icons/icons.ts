@@ -32,7 +32,8 @@ export type IconName =
   | "cap-cloud-infra"
   | "cap-cybersecurity"
   | "cap-ai-governance"
-  | "cap-ai-enablement";
+  | "cap-ai-enablement"
+  | "chain-measure";
 
 /** Gefüllter Knotenpunkt (einzige erlaubte Fläche). */
 const dot = (cx: number, cy: number, r = 1.3) =>
@@ -224,4 +225,11 @@ export const icons: Record<IconName, string> = {
     <rect x="16" y="4.75" width="5.5" height="5.5" rx="0.8"/>
     <path d="M16 7.5H12"/>
     <path d="M14 5.5L12 7.5L14 9.5"/>`,
+  // Messen und optimieren: Messkurve mit Rückkopplungsschleife
+  "chain-measure": `
+    <path d="M3 17L8 11.5L11.5 14.5L17 8"/>
+    <circle cx="17" cy="8" r="1.3" fill="currentColor" stroke="none"/>
+    <path d="M20.5 12.5A4 4 0 1 1 16.5 16.5"/>
+    <path d="M16.5 14.2V16.7H19"/>
+  `,
 };
