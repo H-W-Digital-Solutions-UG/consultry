@@ -81,12 +81,13 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 - **Achse** (`--axis`): horizontal, Lavendel → Magenta-Violett. Sie ist die visuelle Übersetzung des Leitmotivs und kommt an Stellen vor, die den Weg „Prozess → Produktion“ erzählen: Chain-Linie, Punkte der Chain (per `color-mix` von `--process` nach `--production` interpoliert), Rahmen der H&W-Spalte im Kontrast, Nav-Marke, Favicon.
 - **Claim-Verlauf** (Hero): `--accent-on-ink` → `--process` (55 %) → `--production` (100 %). Magenta sitzt nur am Ende.
 - **Markenverlauf** (`--brand-gradient`, 111,02°, `#511d96` → `#351a59`): Legacy aus der alten Site. Einsatz für dunkle Flächenakzente auf hellen Sektionen (z. B. Banner, Bildmasken). Nicht als Textfüllung, nicht auf `--ink` (zu wenig Abstand).
-- **Hero-Schleier:** drei Verläufe über dem Bild – vertikal `rgba(21,4,43,.96→.18)`, horizontal von links `rgba(21,4,43,.78→0)`, dazu ein 111°-Hauch `rgba(81,29,150,.22→0)`, der Bildmaterial ins Lila-Schema zieht. Hero-Bilder werden in Lila-Tönen erzeugt (`public/images/`), der Schleier ist die Rückfallebene für Lesbarkeit.
+- **Hero-Schleier:** drei Verläufe über dem Bild – vertikal `rgba(21,4,43,.96→.18)`, horizontal von links `rgba(21,4,43,.78→0)`, dazu ein 111°-Hauch `rgba(81,29,150,.12→0)`, der Bildmaterial ins Lila-Schema zieht; die Farbführung Prozess → Produktion übernimmt der Wash des Scroll-Heros (siehe 7, Hero). Hero-Bilder werden in Lila-Tönen erzeugt (`public/images/`), der Schleier ist die Rückfallebene für Lesbarkeit.
 
 ## 4. Typografie
 
 | Rolle | Schrift | Gewicht | Größe |
 |---|---|---|---|
+| Hero-Beat-Ziffern (01–03) | Sora | 300 | 1,5 rem, tabellarische Ziffern |
 | Display / Überschriften | Sora | 600 (Brand 700) | `h1` `clamp(2.1rem, 6.2vw, 5rem)`, `h2` `clamp(1.9rem, 3.8vw, 3rem)`, `h3` `clamp(1.15rem, 1.8vw, 1.4rem)` |
 | Eyebrow, Navigation, Labels | Sora | 500 | 0,9 rem |
 | Fließtext | Inter | 400 | 17 px, Zeilenhöhe 1,6 |
@@ -96,7 +97,7 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 
 - Laufweite: Display negativ (`-0.03em`, `h1` `-0.045em`), Labels nahezu neutral (`-0.005em`). **Keine positive Sperrung, keine Versalien** für Labels.
 - `--font-mono` bleibt als Token für Code-Beispiele erhalten, wird aber in Marketing-Komponenten **nicht** eingesetzt.
-- Einbindung über Google Fonts (Inter 400/500/600, Sora 500/600/700), `display=swap`. Die Datenschutzerklärung nennt Google Fonts.
+- Einbindung über Google Fonts (Inter 400/500/600, Sora 300/500/600/700), `display=swap`. Sora 300 dient ausschließlich den leichten Ziffern der Hero-Beats (Referenz FLORA „01 Ideate“). Die Datenschutzerklärung nennt Google Fonts.
 - **Legacy-Hinweis:** Die alte HubSpot-Site nutzte **Jost**. Die neue Site bleibt bei Sora + Inter; Jost wird nicht nachgeladen und nicht als Fallback geführt.
 
 ## 5. Raster und Abstände
@@ -151,7 +152,10 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 - Horizontale Achse (`--axis`, 2 px) mit interpolierten Punkten; auf `--ink`. Labels `--fg-on-ink-muted`. Optional Three.js-Szene als Progressive Enhancement (siehe 9), die Chain bleibt ohne JS vollständig lesbar.
 
 ### Hero
-- Vollhöhe, Bild `object-fit: cover`, Schleier (siehe 3), Inhalt unten links. Eyebrow → `h1` (`--fg-on-ink`) → Claim (Achsen-Verlauf als Textfüllung) → Beschreibung (`--fg-on-ink-muted`) → Buttons.
+- Grundzustand (ohne JS, Reduced Motion, Data-Saver, 2g): Vollhöhe (`100svh`), Bild `object-fit: cover`, Schleier (siehe 3), Inhalt unten links. Eyebrow → `h1` (`--fg-on-ink`) → Claim (Achsen-Verlauf als Textfüllung) → Beschreibung (`--fg-on-ink-muted`) → Buttons. Rechts daneben (ab 900 px) bzw. darunter die drei Beats als einfache Liste (`ol` mit `h2`/`p`, Daten `heroBeats` in `content.ts`).
+- Scroll-Szene (Progressive Enhancement, `src/scripts/hero-scroll.ts`): Track 260 vh (mobil 200 vh), Bühne `position: sticky` 100 svh. Der Bildlayer ist `max(178svh, 150vw)` breit und fährt linear mit dem Scroll von Bildlinks (Prozess-Knoten) nach Bildrechts (Produktion), dazu Skalierung 1,06 → 1,0 und 1,5 % vertikale Drift – eine einzige Kamerafahrt, kein Nachschwingen. Beats erscheinen bei 10 / 35 / 65 % nacheinander (240 ms fade/translate) und bleiben stehen; der aktive Beat erhält eine ruhige Fläche `rgba(245,241,251,.06)` mit Rahmen `--line-on-ink` statt Glow. Die Copy tritt ab 73 % zurück (Opacity .35, −14 px), mobil bereits mit dem ersten Beat (−150 px), damit der aktive Beat den unteren Rand bekommt.
+- Annotationen 01–03 (30-px-Kreise, Sora 500, `aria-hidden`) liegen auf dem Bildlayer; sichtbar ab `--scene-reveal`, aktiv in `--accent-on-ink`, 03 als Achsen-Ende in `--production`. Fortschrittslinie 2 px in `--axis` am unteren Rand der Bühne; eine Aubergine-Abdeckung schiebt sich mit `--p` weg, sodass Magenta nur am Ende erscheint.
+- Farbwash: zwei weiche lineare Verläufe (`--process` links, `--production` rechts), je maximal 10 % Deckkraft, per `--p` gegeneinander geblendet. Kein Bloom, kein Grain, keine Partikel, keine radialen Leuchtflecken – das Leuchten stammt allein aus dem Bildmotiv.
 - `theme-color` im `<head>` ist `#15042b`.
 
 ### Nav / Footer
@@ -174,6 +178,7 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 - **Einblendung:** `.reveal` = fade-up 18 px mit 4-px-Blur, 0,8 s, `--ease-out`, gestaffelt über `--delay`. Nur für Above-the-fold-Inhalte des Seitenkopfs.
 - **Hover:** Farbe/Rahmen 0,2 s, Transform 0,15–0,25 s `--ease-out`. Keine Bounce-Kurven.
 - **Reduced Motion:** `prefers-reduced-motion: reduce` deaktiviert `.reveal`, `scroll-behavior` und jede Scroll-getriebene Szene; Inhalte sind dann sofort sichtbar.
+- **Scroll-Hero (Startseite):** Progressive Enhancement ohne Bibliothek. Das Skript setzt `data-scene="on"` und schreibt beim Scrollen nur drei Variablen auf die Section – `--p` (Rohfortschritt 0–1), `--scene-reveal` (0–1 aus `--p` .06–.36), `--scene-carry` (0–1 ab 50 % der Pin-Strecke) – sowie zwei diskrete Zustände (`data-scene-aspect` = Beat-Index 0–3, `data-faded` auf der Copy ab carry .46). Alles Sichtbare entsteht in CSS aus `transform`/`opacity`; `will-change: transform` nur auf dem Bildlayer. Scroll-Handler passiv und rAF-gedrosselt, im Handler wird außer `scrollY` nichts aus dem Layout gelesen; Pin-Grenzen werden nur bei Load/Resize gemessen; ein IntersectionObserver schaltet den Handler außerhalb der Section ab; Aufräumen bei `astro:before-swap`. Deaktiviert bei `prefers-reduced-motion`, `navigator.connection.saveData` und `effectiveType` 2g – dann bleibt der statische Hero (kein Pinning, kein hoher Track, Beats als Liste). Zustandswechsel (Beats, Annotationen, Copy) blenden mit 240–400 ms `--ease-out`; an `--p` gekoppelte Werte haben bewusst keine Transition.
 - **Three.js-Szene (Chain / Prozesslinie):** ausschließlich Progressive Enhancement. Regeln: lazy laden (dynamischer `import()` nach `IntersectionObserver`-Treffer), kein Render ohne Sichtbarkeit, `requestAnimationFrame` pausiert außerhalb des Viewports, Canvas `aria-hidden`, DOM-Chain bleibt die semantische Quelle. Farben aus den Tokens (`--process`, `--production`, `--ink`), kein eigener Farbraum. Deaktiviert bei Reduced Motion, fehlendem WebGL und `navigator.connection.saveData`. Budget: Bibliothek nur die benötigten Module, Ziel < 150 kB gzipped inklusive Szene; Zahl ist ein Ziel, kein Messwert.
 
 ## 10. Barrierefreiheit
@@ -206,4 +211,5 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 
 | Datum | Änderung |
 |---|---|
+| 2026-09-17 | Scroll-Hero „From Process to Production“ auf der Startseite (Spezifikation Immersive Scroll-Hero): angepinnte Bühne, Kamerafahrt über das breite Hero-Visual, drei Beats (`heroBeats`) mit Annotationen 01–03, Fortschrittslinie in `--axis`. Progressive Enhancement, Leitplanke Tonalität eingehalten (Wash ≤ 10 %, kein Glow/Grain/Partikel). Sora 300 für die Beat-Ziffern ergänzt; Markenlila-Hauch im Hero-Schleier von .22 auf .12 reduziert, da der Wash die Farbführung übernimmt. |
 | 2026-09-17 | Erstfassung. Palette von Ink/Blau/Amber auf das H&W-Lila-Schema umgestellt (Token-Namen unverändert, Werte neu; neue Tokens `--accent`, `--accent-hover`, `--accent-soft`, `--accent-on-ink`, `--brand-gradient`, `--mauve`, `--process-text`, `--production-text`, `--line-strong`, `--line-on-ink-strong`, `--shadow-*`, `--radius-pill`). Achse Lavendel → Gold festgelegt, Gold als sparsamer Akzent; noch am selben Tag auf Lavendel → Magenta-Violett (`#d36cf0`, Text-Variante `#7e2599`) umgestellt, damit die gesamte Palette in der Lila-Familie bleibt. Eyebrow neu als Sora-Label in Satzschreibung mit optionalem Index (`data-n`); Monospace-Uppercase in Nav, Footer, Kontrast und Unternehmen entfernt. `.tag`-Komponente mit vier Phasen-Modifikatoren als Vertrag für `Steps.astro`. Hero-Schleier, Nav-Verlauf, Fokusring, Selection, `theme-color` und Favicon auf die Palette gebracht. 38 Text/Fläche-Paare per Skript geprüft, alle bestehen. |

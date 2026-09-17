@@ -16,6 +16,17 @@ export const hero = {
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
 
+/**
+ * Drei Story-Beats des Scroll-Heros auf der Startseite (Spezifikation
+ * „Immersive Scroll-Hero“, 2026-09-17). Reihenfolge = Achse Prozess → Produktion.
+ * Ohne JavaScript bzw. bei Reduced Motion erscheinen sie als einfache Liste.
+ */
+export const heroBeats = [
+  { n: "01", title: "Prozesse verstehen", text: "Wir sehen zuerst, wie Ihr Unternehmen tatsächlich arbeitet." },
+  { n: "02", title: "AI-native neu denken", text: "Wo es sich lohnt, wird der Ablauf neu gedacht – nicht nur beschleunigt." },
+  { n: "03", title: "Produktiv betreiben", text: "Wir bauen die Lösung, sichern sie ab und messen die Wirkung." },
+] as const;
+
 export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
   long: "Wir helfen Unternehmen, die größten Potenziale künstlicher Intelligenz in ihren Geschäftsprozessen zu identifizieren – und setzen die daraus entstehenden Lösungen direkt um.",
