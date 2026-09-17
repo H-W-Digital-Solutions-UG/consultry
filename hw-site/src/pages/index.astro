@@ -25,6 +25,7 @@ import { company } from "../data/company";
         <h2>{promise.short}</h2>
       </div>
       <div class="prose">
+        <p class="promise__adoption">{promise.adoption}</p>
         <p class="promise__principle">{promise.long}</p>
         <p class="promise__senior">{promise.senior}</p>
       </div>
@@ -50,7 +51,7 @@ import { company } from "../data/company";
         <h2 class="sec__h">Technologie kommt bei uns erst an Schritt sieben.</h2>
       </div>
       <div class="seven__side">
-        <p class="lede">Vorher bewerten wir jedes Potenzial nach wirtschaftlichem Hebel und technischer Machbarkeit. Gebaut wird nur, was sich rechnet.</p>
+        <p class="lede">Vorher bewerten wir jedes Potenzial nach wirtschaftlichem Hebel und technischer Machbarkeit. Gebaut wird, was sich rechnet. Gemessen wird, was läuft.</p>
         <a class="btn btn--ghost" href="/leistungen">Zehn Schritte im Detail</a>
       </div>
     </div>
@@ -116,6 +117,7 @@ import { company } from "../data/company";
   .promise__grid { display: grid; gap: 32px; }
   @media (min-width: 900px) { .promise__grid { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
   .promise h2 { margin-top: 16px; max-width: 16ch; }
+  .promise__adoption { margin-top: 20px; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.01em; color: var(--fg); }
   .promise__principle { margin-top: 20px; color: var(--fg-muted); }
   .promise__senior { margin-top: 20px; font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; color: var(--fg); max-width: 32ch; }
   .chainsec__h, .sec__h { margin-top: 16px; max-width: 20ch; }

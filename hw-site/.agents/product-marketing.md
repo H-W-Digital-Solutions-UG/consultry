@@ -169,6 +169,18 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Abgelöst:** „AI, die in Ihrem Betrieb läuft. Nicht auf Folien.“ (zu lang, Kontrast nur gegen Beratung, nicht gegen den Einstiegsschmerz). Der Folien-Kontrast lebt weiter in „Der Unterschied“.
 
+## Messaging-Baustein: Aktivität ist kein Ergebnis (2026-09-17)
+
+**Quelle:** Partner Systango, Seite „AI-Native Delivery Framework“ (systango.com/ai-native-sdlc), auf Wunsch der Gründer als Inspiration. Übernommen werden Denkfiguren, keine Zahlen (Systangos Prozentangaben haben keine nachvollziehbare Quelle und betreffen Software-Delivery, nicht unsere Zielkunden).
+
+**Übernommene Figuren:**
+- Einwand „Wir nutzen doch schon AI“: Einzelne nutzen AI, ein Prozess ist das nicht (Ergebnisse schwanken, niemand misst, nichts baut aufeinander auf). Verträglich mit der Regel „Ausgangslage ohne AI“: Es geht um Einzelnutzung, nicht um einen vorhandenen AI-Prozess.
+- „Workflow-first statt Tool-first“: Ablauf zuerst, Tool zuletzt (Kontrast-Liste; deckt sich mit „Technologie kommt erst an Schritt sieben“).
+- „Measurable outcomes“: Wirkung gemessen (Kontrast-Liste, Schritt 12, Zeile „Gemessen wird, was läuft“).
+- Governance als Teil der Lösung, nicht als Prüfung am Ende: bereits in Schritt 9 und auf der Unternehmensseite.
+
+**Nicht übernommen:** Zielgruppe „Enterprise, PE-backed“, Framework-Namen („AI Workbench“), Prozentzahlen, „Delivery Velocity“ als Nutzenversprechen.
+
 ## Messaging-Baustein: Senior-Zusage (2026-09-17)
 
 **Kern:** Keine Junior-Berater. Das Muster „Die Erfahrenen pitchen, die Unerfahrenen liefern“ gibt es bei H&W nicht: Wer im Erstgespräch sitzt, bewertet die Prozesse, baut die Lösung und bleibt bis in den Betrieb.
@@ -291,6 +303,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v5 (2026-09-17) — Baustein „Aktivität ist kein Ergebnis“ nach Systango-Inspiration (Denkfiguren ohne Zahlen); Kontrast-Liste um Tool-/Mess-Paar ergänzt.
 - v4 (2026-09-17) — Zertifizierungen und Partner der alten Site von den Gründern freigegeben und als Proof Points aufgenommen.
 - v3 (2026-09-17) — Hero-Hook auf Einstiegsschmerz umgestellt („Alle reden über AI. Bei Ihnen läuft sie.“); Adoptions-Einschätzung als Gründer-Input ohne Zahl.
 - v2 (2026-09-17) — Messaging-Baustein Souveränität ergänzt (Gründer-Input), Annahme zur Datenhaltung markiert.

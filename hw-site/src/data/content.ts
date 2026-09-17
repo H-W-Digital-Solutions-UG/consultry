@@ -42,6 +42,9 @@ export const heroBeats = [
 
 export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
+  // Einwand „wir nutzen doch schon AI“: Einzelne ja, ein Prozess nein
+  // (Baustein nach Systango „AI-Native Delivery“, ohne deren Zahlen).
+  adoption: "Vielleicht nutzen bei Ihnen schon Einzelne AI. Ein Prozess ist das noch nicht: Die Ergebnisse schwanken, niemand misst, nichts baut aufeinander auf.",
   // Beispielszenario, als Beispiel gekennzeichnet; kein Kundenergebnis.
   long: "Ein Beispiel: Ihr Angebotsprozess läuft heute über mehrere Systeme und viele Rückfragen, ganz ohne AI. Wir finden den Hebel, gestalten den Ablauf neu, bauen die Lösung und integrieren sie dort, wo Ihr Team arbeitet.",
   // Senior-Zusage (Gründer, 2026-09-17): als Versprechen formuliert, nicht als Angriff.
@@ -148,8 +151,8 @@ export const chainTexts = [
 export const contrast = {
   heading: "Wo klassische Beratung aufhört, fangen wir erst an.",
   text: "Beratung endet oft bei Strategie, Roadmap oder PowerPoint. Und die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es beides nicht: Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.",
-  classic: ["AI-Strategie", "Use-Case-Katalog", "Roadmap", "Pitch-Team, dann Lieferteam", "Für jedes Werkzeug ein Anbieter", "Empfehlung"],
-  hw: ["Prozessanalyse", "Lösungsdesign", "Eigenes Engineering", "Ein Team von Analyse bis Betrieb", "Prozess, Daten und Wissen bleiben bei Ihnen", "Produktiver Betrieb"],
+  classic: ["AI-Strategie", "Tool zuerst, Ablauf später", "Roadmap", "Pitch-Team, dann Lieferteam", "Für jedes Werkzeug ein Anbieter", "Wirkung ungemessen", "Empfehlung"],
+  hw: ["Prozessanalyse", "Ablauf zuerst, Tool zuletzt", "Eigenes Engineering", "Ein Team von Analyse bis Betrieb", "Prozess, Daten und Wissen bleiben bei Ihnen", "Wirkung gemessen", "Produktiver Betrieb"],
   // Schlusszeilen der beiden Spalten (Contrast.astro).
   classicEnd: "Bleibt Empfehlung.",
   hwEnd: "Läuft im Betrieb.",
