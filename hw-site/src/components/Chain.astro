@@ -97,8 +97,8 @@ const n = chain.length;
 </script>
 
 <style>
-  .chain { --p: 1; --item-w: 260px; --nav-h: 74px; }
-  @media (max-width: 859px) { .chain { --item-w: 200px; --nav-h: 65px; } }
+  .chain { --p: 1; --item-w: 260px; --nav-h: 74px; --anchor: 50cqw; }
+  @media (max-width: 859px) { .chain { --item-w: 190px; --nav-h: 65px; --anchor: 30cqw; } }
 
   /* Statischer Zustand (ohne JS / reduced motion): normale Höhe, seitlich scrollbar */
   .chain__stage { display: grid; gap: 28px; }
@@ -150,7 +150,7 @@ const n = chain.length;
   .chain[data-scene="on"] .chain__rail {
     /* Fahrt von links nach rechts durch alle Schritte, nur transform */
     /* Aktiver Punkt bleibt in der Mitte der Bühne: 50cqw minus seine Position auf der Linie */
-    transform: translate3d(calc(50cqw - var(--p) * (var(--n) - 1) * var(--item-w) - 6px), 0, 0);
+    transform: translate3d(calc(var(--anchor) - var(--p) * (var(--n) - 1) * var(--item-w) - 6px), 0, 0);
     will-change: transform;
   }
   .chain[data-scene="on"] .chain__viewport { container-type: inline-size; }
