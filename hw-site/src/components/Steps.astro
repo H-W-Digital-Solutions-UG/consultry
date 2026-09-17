@@ -124,10 +124,19 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
       measure();
       onScroll();
     };
+    // Lock: Ziel aus der Seitenposition, die Spur folgt weich (Lerp pro Frame).
+    let targetX = 0, animating = false;
+    const animate = () => {
+      const diff = targetX - track.scrollLeft;
+      if (Math.abs(diff) < 0.5) { track.scrollLeft = targetX; animating = false; return; }
+      track.scrollLeft += diff * 0.18;
+      requestAnimationFrame(animate);
+    };
     const onPageScroll = () => {
       if (!locked) return;
       const p = Math.min(1, Math.max(0, (window.scrollY - top) / span));
-      track.scrollLeft = p * maxX();
+      targetX = p * maxX();
+      if (!animating) { animating = true; requestAnimationFrame(animate); }
     };
     // Ziel-Karte anfahren: im Lock über die Seitenposition, sonst über die Spur.
     const scrollToX = (x: number, behavior: ScrollBehavior = "smooth") => {
