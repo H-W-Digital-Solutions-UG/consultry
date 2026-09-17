@@ -38,7 +38,7 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
           const img = badge(c.file);
           return (
             <li style={`--start: ${(0.12 + i * 0.045).toFixed(3)}`}>
-              {img && <Image src={img} alt={`${c.name} (${c.issuer})`} title={`${c.name}, ${c.issuer}`} width={48} densities={[1, 2]} loading="lazy" />}
+              {img && <Image src={img} alt={`${c.name} (${c.issuer})`} title={`${c.name}, ${c.issuer}`} width={64} densities={[1, 2]} loading="lazy" />}
             </li>
           );
         })}
@@ -126,23 +126,26 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
   :global(.section--ink) .strip__badges li:hover img { filter: none; opacity: 1; }
   :global(.section--ink) .logo-link { opacity: 0.8; color: var(--fg-on-ink); }
   :global(.section--ink) .logo-link:hover { opacity: 1; }
-  .strip {
+  /* Zwei Reihen: Label links, Elemente rechts, Haarlinie dazwischen. */
+  .strip { display: grid; }
+  .strip__group {
     display: grid;
-    gap: 28px 56px;
-    align-items: start;
+    gap: 12px;
+    padding-block: 18px;
+    align-items: center;
   }
-  @media (min-width: 1100px) {
-    .strip { grid-template-columns: auto 1fr; }
-    .strip__group--partners { justify-self: end; }
+  .strip__group + .strip__group { border-top: 1px solid var(--line); }
+  :global(.section--ink) .strip__group + .strip__group { border-top-color: var(--line-on-ink); }
+  @media (min-width: 900px) {
+    .strip__group { grid-template-columns: 240px 1fr; gap: 32px; }
   }
-  .strip__group { display: grid; gap: 14px; }
   .strip__label {
     display: inline-flex; align-items: center; gap: 8px;
     margin: 0;
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.005em;
     color: var(--fg-muted);
     text-decoration: none;
   }
@@ -150,16 +153,17 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
   a.strip__label:hover { color: var(--fg); }
   a.strip__label:hover svg { transform: translateX(3px); }
   .strip__badges, .strip__partners { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; }
-  .strip__badges { gap: 10px; }
+  .strip__badges { gap: 14px; }
   .strip__badges li { display: flex; }
   .strip__badges img {
-    display: block; width: 48px; height: auto;
+    display: block; width: 64px; height: auto;
     filter: saturate(0.15);
     opacity: 0.85;
     transition: filter 0.25s, opacity 0.25s, transform 0.25s var(--ease-out);
   }
   .strip__badges li:hover img, .strip__badges li:focus-within img { filter: none; opacity: 1; transform: translateY(-2px); }
-  .strip__partners { gap: 8px 30px; --logo-h: 20px; }
+  .strip__partners { gap: 8px 36px; --logo-h: 28px; }
+  .strip__partners .logo { max-width: 190px; }
 
   /* Scroll-Stagger in der Hero-Szene: jedes Element hat --start; über 28 %
      des Fortschritts blendet es ein und rückt 16px nach oben. Nur
@@ -176,8 +180,9 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
     }
   }
   @media (max-width: 599px) {
-    .strip__badges img { width: 40px; }
-    .strip__partners { gap: 4px 22px; --logo-h: 18px; }
+    .strip__badges { gap: 10px; }
+    .strip__badges img { width: 48px; }
+    .strip__partners { gap: 6px 24px; --logo-h: 22px; }
   }
 
   /* ---- Volle Sektion ---- */
