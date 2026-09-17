@@ -1,0 +1,64 @@
+---
+/**
+ * Datenschutzerklärung – abgestimmt auf den tatsächlichen Umfang dieser Site:
+ * statisch, ohne Cookies, ohne Analytics, ohne Formulare. Kontakt nur per
+ * E-Mail/Telefon. Vor Livegang juristisch prüfen lassen; bei Einsatz von
+ * Hosting-Anbieter, Fonts-CDN oder Tracking entsprechend ergänzen.
+ */
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { company } from "../data/company";
+---
+
+<Base title="Datenschutz" description={`Datenschutzerklärung der ${company.legalName}.`}>
+  <PageHeader eyebrow="Rechtliches" title="Datenschutzerklärung" />
+
+  <section class="section">
+    <div class="container legal">
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        {company.legalName}, {company.address.street}, {company.address.postalCode} {company.address.city},
+        E-Mail: <a href={`mailto:${company.email}`}>{company.email}</a>, Telefon: <a href={company.phoneHref}>{company.phoneDisplay}</a>.
+      </p>
+
+      <h2>2. Zugriffsdaten und Hosting</h2>
+      <p>
+        Beim Aufruf dieser Website verarbeitet der Hosting-Anbieter technisch notwendige Zugriffsdaten
+        (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser- und Betriebssystemangaben, Referrer-URL)
+        in Server-Logfiles. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO zum Zweck
+        des sicheren und stabilen Betriebs der Website. Die Logdaten werden nach kurzer Frist gelöscht.
+      </p>
+
+      <h2>3. Schriftarten</h2>
+      <p>
+        Diese Website bindet Schriftarten über Google Fonts ein. Beim Seitenaufruf lädt Ihr Browser die
+        Schriftdateien von Servern von Google; dabei wird Ihre IP-Adresse an Google übermittelt.
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (einheitliche Darstellung). Weitere Informationen:
+        <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">policies.google.com/privacy</a>.
+      </p>
+
+      <h2>4. Cookies und Analyse</h2>
+      <p>
+        Diese Website setzt keine Cookies und verwendet keine Analyse- oder Tracking-Dienste.
+      </p>
+
+      <h2>5. Kontaktaufnahme</h2>
+      <p>
+        Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung
+        Ihrer Anfrage (Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO). Die Daten werden gelöscht, sobald sie
+        für den Zweck nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+      </p>
+
+      <h2>6. Ihre Rechte</h2>
+      <p>
+        Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17),
+        Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch
+        (Art. 21 DSGVO). Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren.
+        Wenden Sie sich dazu an die oben genannte Kontaktadresse.
+      </p>
+
+      <h2>7. Stand</h2>
+      <p>September 2026.</p>
+    </div>
+  </section>
+</Base>

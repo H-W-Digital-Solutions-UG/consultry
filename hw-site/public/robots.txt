@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hw-digitalsolutions.de/sitemap-index.xml

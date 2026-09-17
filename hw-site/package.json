@@ -1,0 +1,24 @@
+{
+  "name": "hw-site",
+  "version": "0.1.0",
+  "description": "Website der H&W Digital Solutions UG – AI-native Consulting & Engineering",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.3"
+  },
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "playwright": "^1.63.0",
+    "sharp": "^0.35.4",
+    "typescript": "^6.0.3"
+  }
+}

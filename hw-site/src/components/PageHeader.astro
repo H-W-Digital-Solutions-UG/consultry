@@ -1,0 +1,18 @@
+---
+interface Props { eyebrow: string; title: string; lede?: string; }
+const { eyebrow, title, lede } = Astro.props;
+---
+
+<section class="ph section--ink">
+  <div class="container">
+    <p class="eyebrow reveal" style="--delay:.05s">{eyebrow}</p>
+    <h1 class="reveal" style="--delay:.15s">{title}</h1>
+    {lede && <p class="lede reveal" style="--delay:.3s">{lede}</p>}
+  </div>
+</section>
+
+<style>
+  .ph { padding: 160px 0 72px; }
+  .ph h1 { margin-top: 18px; font-size: clamp(2.2rem, 5vw, 4rem); max-width: 18ch; }
+  .ph .lede { margin-top: 20px; }
+</style>

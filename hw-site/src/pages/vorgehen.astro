@@ -1,0 +1,99 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Chain from "../components/Chain.astro";
+import Contrast from "../components/Contrast.astro";
+import Cta from "../components/Cta.astro";
+import { contrast } from "../data/content";
+
+const phases = [
+  {
+    key: "Prozess",
+    title: "Verstehen und bewerten",
+    text: "Wir starten in Ihrem Unternehmen: Wie wird gearbeitet, wo entstehen Reibung, Wartezeit und manuelle Doppelarbeit? Daraus entstehen bewertete AI-Potenziale – nach wirtschaftlichem Hebel und technischer Machbarkeit priorisiert.",
+  },
+  {
+    key: "Design",
+    title: "Neu denken und planen",
+    text: "Wo es sich lohnt, gestalten wir den Prozess AI-native neu, statt ein Modell an den bestehenden Ablauf zu hängen. Ergebnis ist ein konkreter Umsetzungspfad mit Reihenfolge und Meilensteinen.",
+  },
+  {
+    key: "Engineering",
+    title: "Selbst bauen",
+    text: "Dasselbe Team, das den Prozess verstanden hat, entwickelt die Lösung: Modellauswahl, Software, Integrationen in Ihre Systemlandschaft, Infrastruktur.",
+  },
+  {
+    key: "Produktion",
+    title: "Betreiben und verbessern",
+    text: "Absicherung, Governance und Compliance sind Teil der Lösung. Wir deployen produktiv, befähigen Ihre Mitarbeitenden und messen die Wirkung – und optimieren weiter.",
+  },
+];
+---
+
+<Base
+  title="Vorgehen"
+  description="From Process to Production: So arbeitet H&W Digital Solutions – von der Prozessanalyse über AI-natives Design und eigenes Engineering bis zum abgesicherten, produktiven Betrieb."
+>
+  <PageHeader
+    eyebrow="From Process to Production"
+    title="Von der Prozessanalyse bis zur gemessenen Wirkung."
+    lede="Unser Vorgehen ist eine durchgehende Kette. Sie beginnt beim Geschäft, nicht bei der Technologie – und sie endet nicht bei einer Empfehlung."
+  />
+
+  <section class="section section--ink chain-sec">
+    <div class="container">
+      <p class="eyebrow">Delivery Chain</p>
+      <Chain />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <ol class="phases">
+        {phases.map((p, i) => (
+          <li class="phase">
+            <div class="phase__meta">
+              <span class="phase__n">{String(i + 1).padStart(2, "0")}</span>
+              <span class="eyebrow">{p.key}</span>
+            </div>
+            <h2>{p.title}</h2>
+            <p>{p.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="container">
+      <p class="eyebrow">Abgrenzung</p>
+      <h2 class="h">{contrast.heading}</h2>
+      <p class="lede">{contrast.text}</p>
+      <div class="body"><Contrast /></div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .chain-sec { padding-block: 40px 56px; }
+  .phases { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .phase {
+    display: grid;
+    gap: 14px;
+    padding: 40px 0;
+    border-top: 1px solid var(--line);
+  }
+  @media (min-width: 900px) {
+    .phase { grid-template-columns: 200px 1fr 1.4fr; gap: 40px; align-items: start; }
+  }
+  .phase:last-child { border-bottom: 1px solid var(--line); }
+  .phase__meta { display: flex; align-items: center; gap: 14px; }
+  .phase__n { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; letter-spacing: -0.03em; }
+  .phase h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+  .phase p { color: var(--fg-muted); max-width: 60ch; }
+  .h { margin-top: 16px; max-width: 20ch; }
+  .h + .lede { margin-top: 16px; }
+  .body { margin-top: 44px; }
+</style>

@@ -1,0 +1,13 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<Base title="Seite nicht gefunden" description="Diese Seite existiert nicht.">
+  <PageHeader eyebrow="404" title="Diese Seite gibt es nicht." lede="Vielleicht ist der Link veraltet. Zur Startseite geht es hier entlang." />
+  <section class="section">
+    <div class="container">
+      <a class="btn btn--primary" href="/">Zur Startseite</a>
+    </div>
+  </section>
+</Base>

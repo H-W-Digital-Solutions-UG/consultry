@@ -1,0 +1,44 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Steps from "../components/Steps.astro";
+import Capabilities from "../components/Capabilities.astro";
+import Cta from "../components/Cta.astro";
+import { positioning } from "../data/content";
+---
+
+<Base
+  title="Leistungen"
+  description="AI Transformation & Engineering: Prozessanalyse, Bewertung von AI-Potenzialen, AI-natives Prozessdesign, eigene Entwicklung, Deployment, Security und Enablement aus einer Hand."
+>
+  <PageHeader
+    eyebrow={positioning.category}
+    title="Vom Geschäftsprozess bis zum produktiven AI-System."
+    lede="AI Transformation heißt bei uns nicht Strategieberatung. Wir verbinden Prozessanalyse, Lösungsdesign und Engineering – und tragen Verantwortung bis in den Betrieb."
+  />
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Das Leistungsbild</p>
+      <h2 class="h">Zehn Schritte, ein durchgehender Verantwortungsbereich.</h2>
+      <div class="body"><Steps /></div>
+    </div>
+  </section>
+
+  <section class="section section--paper-2">
+    <div class="container">
+      <p class="eyebrow">Capabilities</p>
+      <h2 class="h">Was wir dafür beherrschen.</h2>
+      <p class="lede">Diese Fähigkeiten sind kein Produktversprechen, sondern die Voraussetzung, damit wir die identifizierte Lösung tatsächlich bauen und betreiben können.</p>
+      <div class="body"><Capabilities /></div>
+    </div>
+  </section>
+
+  <Cta heading="Welcher Prozess soll zuerst dran?" text="Bringen Sie einen konkreten Ablauf mit. Wir sagen Ihnen im Erstgespräch, ob und wie sich dort AI lohnt." />
+</Base>
+
+<style>
+  .h { margin-top: 16px; max-width: 20ch; }
+  .h + .lede { margin-top: 16px; }
+  .body { margin-top: 44px; }
+</style>

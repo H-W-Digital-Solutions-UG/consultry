@@ -1,0 +1,83 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Chain from "../components/Chain.astro";
+import Steps from "../components/Steps.astro";
+import Contrast from "../components/Contrast.astro";
+import Capabilities from "../components/Capabilities.astro";
+import Cta from "../components/Cta.astro";
+import { promise, contrast, positioning } from "../data/content";
+import { company } from "../data/company";
+---
+
+<Base
+  bareTitle
+  title={`${company.name} – ${company.tagline}`}
+  description="H&W Digital Solutions analysiert Ihre Geschäftsprozesse, identifiziert konkrete AI-Potenziale und setzt die Lösungen selbst um – von der Prozessanalyse bis zum produktiven, abgesicherten Deployment."
+>
+  <Hero imageAlt="" />
+
+  <section class="section promise">
+    <div class="container promise__grid">
+      <div>
+        <p class="eyebrow">Unser Versprechen</p>
+        <h2>{promise.short}</h2>
+      </div>
+      <div class="prose">
+        <p class="lede">{promise.long}</p>
+        <p class="promise__principle">{positioning.principle}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink chainsec">
+    <div class="container">
+      <p class="eyebrow">From Process to Production</p>
+      <h2 class="chainsec__h">Eine Delivery Chain. Ein Partner.</h2>
+      <p class="lede">Vom Verständnis Ihres Geschäfts bis zur gemessenen Wirkung im Betrieb – ohne Übergabe an ein anderes Haus dazwischen.</p>
+      <Chain />
+    </div>
+  </section>
+
+  <section class="section section--paper-2">
+    <div class="container">
+      <p class="eyebrow">Leistungsbild</p>
+      <h2 class="sec__h">Zehn Schritte vom Prozess zur Produktion.</h2>
+      <p class="lede">Es beginnt in Ihrem Unternehmen und in den Abläufen, die dort tatsächlich stattfinden – nicht bei einer Technologie-Liste.</p>
+      <div class="sec__body"><Steps /></div>
+      <a class="btn btn--ghost sec__more" href="/leistungen">Leistungen im Detail</a>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="container">
+      <p class="eyebrow">Der Unterschied</p>
+      <h2 class="sec__h">{contrast.heading}</h2>
+      <p class="lede">{contrast.text}</p>
+      <div class="sec__body"><Contrast /></div>
+    </div>
+  </section>
+
+  <section class="section section--paper-2">
+    <div class="container">
+      <p class="eyebrow">Womit wir das umsetzen</p>
+      <h2 class="sec__h">Technologie ist der Beleg, nicht das Versprechen.</h2>
+      <p class="lede">Modelle, Retrieval, Agenten, Infrastruktur und Security sind unsere Werkzeuge. Sie kommen zum Einsatz, nachdem klar ist, welcher Prozess sich wie verbessern lässt.</p>
+      <div class="sec__body"><Capabilities /></div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .promise__grid { display: grid; gap: 32px; }
+  @media (min-width: 900px) { .promise__grid { grid-template-columns: 1.1fr 1fr; gap: 64px; } }
+  .promise h2 { margin-top: 16px; max-width: 16ch; }
+  .promise__principle { margin-top: 20px; color: var(--fg-muted); }
+  .chainsec__h, .sec__h { margin-top: 16px; max-width: 20ch; }
+  .chainsec .lede { margin-top: 16px; margin-bottom: 32px; }
+  .sec__h + .lede { margin-top: 16px; }
+  .sec__body { margin-top: 44px; }
+  .sec__more { margin-top: 28px; }
+</style>

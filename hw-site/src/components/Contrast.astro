@@ -1,0 +1,74 @@
+---
+import { contrast } from "../data/content";
+---
+
+<div class="contrast">
+  <div class="contrast__col contrast__col--classic">
+    <p class="eyebrow">Klassische Beratung</p>
+    <ul>
+      {contrast.classic.map((c) => <li>{c}</li>)}
+    </ul>
+    <p class="contrast__end">Ende: Empfehlung</p>
+  </div>
+  <div class="contrast__col contrast__col--hw">
+    <p class="eyebrow">H&amp;W</p>
+    <ul>
+      {contrast.hw.map((c) => <li>{c}</li>)}
+    </ul>
+    <p class="contrast__end">Ende: produktives System</p>
+  </div>
+</div>
+
+<style>
+  .contrast {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 720px) { .contrast { grid-template-columns: 1fr 1fr; } }
+  .contrast__col {
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line-on-ink);
+    background: var(--ink-2);
+  }
+  .contrast__col--hw {
+    border-color: transparent;
+    background:
+      linear-gradient(var(--ink-2), var(--ink-2)) padding-box,
+      var(--axis) border-box;
+  }
+  ul {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  li { display: flex; gap: 12px; align-items: baseline; }
+  li::before {
+    content: "";
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--fg-on-ink-muted);
+    transform: translateY(-2px);
+  }
+  .contrast__col--hw li::before { background: var(--axis); }
+  .contrast__col--classic li:last-child { color: var(--fg-on-ink-muted); }
+  .contrast__end {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-on-ink);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-on-ink-muted);
+  }
+  .contrast__col--hw .contrast__end { color: var(--fg-on-ink); }
+</style>
