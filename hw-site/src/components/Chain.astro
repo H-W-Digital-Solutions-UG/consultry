@@ -165,7 +165,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
 
 <style>
   .chain { --p: 1; --nav-h: 74px; --node: 40px; --step-node: 30px; --row: 40px; }
-  @media (max-width: 859px) { .chain { --nav-h: 65px; --node: 36px; --row: 46px; } }
+  @media (max-width: 859px) { .chain { --nav-h: 65px; --node: 34px; --step-node: 28px; --row: 36px; } }
 
   /* Statischer Zustand (ohne JS / reduced motion): normale Liste, alles aktiv */
   .chain__stage { display: grid; gap: 28px; }
@@ -295,7 +295,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     .chain__readout-icon :global(svg) { width: 26px; height: 26px; }
     .chain__readout-label { font-size: 1.2rem; }
     .chain[data-scene="on"] .chain__rail { align-self: start; }
-    .chain__item { min-height: 40px; }
+    .chain__steps > li .chain__step { min-height: 36px; }
     .chain__step { padding: 2px 0; gap: 12px; }
   }
 
