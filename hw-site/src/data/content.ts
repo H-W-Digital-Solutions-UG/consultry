@@ -125,6 +125,22 @@ export const chain = [
   "Messen und optimieren",
 ] as const;
 
+/** Kurztext je Glied der Delivery Chain (Reihenfolge wie `chain`). Ausgangslage: heutiger Ablauf ohne AI. */
+export const chainTexts = [
+  "Wir sehen uns an, womit Ihr Unternehmen Geld verdient und wo die Arbeit hängt.",
+  "Abläufe, Beteiligte, Systeme: Wir zeichnen nach, wie ein Vorgang heute wirklich läuft.",
+  "Wo Ihr Team wartet, sucht oder doppelt erfasst, benennen wir den Hebel und bewerten ihn.",
+  "Wo es sich lohnt, denken wir den Ablauf neu, statt Technik an den alten anzuschrauben.",
+  "Aus dem neuen Ablauf wird ein Lösungsdesign mit Reihenfolge und Meilensteinen.",
+  "Wir wählen die Modelle, die zu Ihren Daten, Anforderungen und Ihrem Datenschutz passen.",
+  "Dasselbe Team, das den Prozess verstanden hat, baut die Anwendung.",
+  "Die Lösung läuft in Ihren Systemen, nicht daneben.",
+  "Wir bringen die Lösung in Betrieb, in Ihrer Infrastruktur oder unserer.",
+  "Daten, Modelle und Zugänge sind abgesichert; Governance und Compliance sind eingebaut.",
+  "Ihr Team lernt, mit der Lösung zu arbeiten und sie weiterzuentwickeln.",
+  "Wir messen die Wirkung im Betrieb und verbessern die Lösung laufend.",
+] as const;
+
 /** Abgrenzung zu klassischer Beratung (Abschnitt 2, letzter Absatz). */
 export const contrast = {
   heading: "Wo klassische Beratung aufhört, fangen wir erst an.",
