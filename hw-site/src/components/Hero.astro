@@ -53,7 +53,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
           <ol class="hero__beats" aria-label="Vom Prozess zur Produktion in drei Schritten">
             {heroBeats.map((beat, i) => (
               <li class="hero__beat" data-beat={i + 1}>
-                <span class="hero__beat-n" aria-hidden="true">{beat.n}</span>
+                <span class="hero__beat-n" aria-hidden="true">{String(beat.n).padStart(2, "0")}</span>
                 <div class="hero__beat-body">
                   <h3 class="hero__beat-title">{beat.title}</h3>
                   <p class="hero__beat-text">{beat.text}</p>
@@ -340,7 +340,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     width: max(178svh, 150vw);
     will-change: transform;
     transform: translate3d(calc(var(--p) * (100vw - 100%)), calc(var(--p) * -1.5%), 0)
-      scale(calc(1.06 - 0.06 * var(--p)));
+      scale(calc(1.075 - 0.06 * var(--p)));
   }
   .hero[data-scene="on"] .hero__bg {
     object-position: 50% 40%;
@@ -352,7 +352,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
   }
   .hero[data-scene="on"] .hero__copy[data-faded="true"] :is(.eyebrow, .hero__desc) {
-    opacity: 0.5;
+    opacity: 0.6;
   }
   .hero[data-scene="on"] .hero__copy[data-faded="true"] h1 {
     opacity: 0.7;
@@ -366,7 +366,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
      Scroll-Hinweis); der aktive Beat wird auf 1 gehoben und erhält eine
      ruhige Fläche statt Glow, bereits erreichte Beats bleiben bei .8. */
   .hero[data-scene="on"] .hero__beat {
-    opacity: 0.45;
+    opacity: 0.55;
     transition:
       opacity 0.24s var(--ease-out),
       background-color 0.24s,
@@ -564,5 +564,8 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
     .hero[data-scene="on"] .hero__side {
       margin-top: 0;
     }
+  }
+  @media (max-width: 859px) {
+    .hero { --nav-h: 65px; }
   }
 </style>
