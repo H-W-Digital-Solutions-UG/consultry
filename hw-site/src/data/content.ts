@@ -158,7 +158,7 @@ export const sovereignty = {
 } as const;
 
 /**
- * Nachweise. Zertifizierungen, Standards und Partner der bisherigen Website,
+ * Nachweise. Zertifizierungen und Partner der bisherigen Website,
  * von den Gründern am 2026-09-17 zur Übernahme freigegeben. Die
  * Zertifizierungen sind Personen-Zertifikate des Gründerteams, keine
  * Unternehmens-Zertifizierung; die Site formuliert das entsprechend.
@@ -174,8 +174,6 @@ export const certifications = [
   { name: "CSPO", issuer: "Scrum Alliance, Certified Scrum Product Owner", file: "cspo.png" },
   { name: "IREB CPRE", issuer: "Requirements Engineering, Foundation Level", file: "ireb-cpre.png" },
 ] as const;
-
-export const standards = ["MITRE ATT&CK", "MITRE D3FEND", "ISO/IEC", "NIST", "OWASP", "DSGVO"] as const;
 
 export const partners = [
   { name: "Wavect", href: "https://wavect.io/", file: "wavect.png" },

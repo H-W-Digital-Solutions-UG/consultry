@@ -1,6 +1,6 @@
 ---
 /**
- * Nachweise: Zertifizierungen im Gründerteam, Standards, Partner.
+ * Nachweise: Zertifizierungen im Gründerteam und Partner.
  * Badges und Logos stammen von der bisherigen Website (Freigabe der Gründer,
  * 2026-09-17). Partnerlogos werden als CSS-Maske einfarbig gerendert, damit
  * fünf fremde Marken nicht fünf Farbwelten in die Seite tragen.
@@ -9,10 +9,10 @@
  *   Zertifikate links, Partner rechts. In der Scroll-Szene blenden die
  *   Elemente über `--p` (vom Hero geerbt) gestaffelt ein; `--start` je
  *   Element legt fest, ab welchem Fortschritt es erscheint.
- * variant="full":  Unternehmensseite mit Namen, Ausstellern, Standards.
+ * variant="full":  Unternehmensseite mit Namen und Ausstellern, dazu Partner.
  */
 import { Image } from "astro:assets";
-import { certifications, standards, partners } from "../data/content";
+import { certifications, partners } from "../data/content";
 
 interface Props {
   variant?: "strip" | "full";
@@ -79,12 +79,6 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
     </div>
 
     <div class="full__row">
-      <div class="full__block">
-        <p class="full__label">Standards, an denen wir uns orientieren</p>
-        <ul class="standards">
-          {standards.map((s) => <li>{s}</li>)}
-        </ul>
-      </div>
       <div class="full__block">
         <p class="full__label">Partner</p>
         <ul class="full__partners">
@@ -219,16 +213,5 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
   .cert__issuer { font-size: 0.82rem; color: var(--fg-muted); text-wrap: balance; }
 
   .full__row { display: grid; gap: 40px; }
-  @media (min-width: 900px) { .full__row { grid-template-columns: 1fr 1fr; gap: 64px; } }
-  .standards { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .standards li {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    padding: 7px 12px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-pill);
-    background: var(--paper);
-  }
   .full__partners { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 34px; align-items: center; --logo-h: 24px; }
 </style>

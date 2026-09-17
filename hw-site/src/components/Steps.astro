@@ -5,7 +5,9 @@
  * Nativ per Scroll-Snap: Ohne JS ist es eine horizontal scrollbare Liste.
  * Das kleine Skript ergänzt Pfeile, Phasen-Tabs (springen zur ersten Karte
  * der Phase), die aktive Phase beim Scrollen und eine Fortschrittslinie.
- * Kein Autoplay, keine Library.
+ * Ab 900px und ohne Reduced Motion wird der Slider angepinnt („Scroll-Lock“):
+ * Die Sektion bekommt einen hohen Wrapper, der Slider bleibt sticky, und das
+ * vertikale Scrollen fährt die Karten horizontal. Kein Autoplay, keine Library.
  */
 import { deliverySteps } from "../data/content";
 import Icon from "./Icon.astro";
@@ -41,6 +43,7 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
 }, []);
 ---
 
+<div class="lock" data-lock>
 <div class="slider" data-slider>
   <div class="slider__head">
     <div class="slider__tabs" role="tablist" aria-label="Phasen">
@@ -78,9 +81,11 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
 
   <div class="slider__bar" aria-hidden="true"><span class="slider__fill" data-fill></span></div>
 </div>
+</div>
 
 <script>
   const init = (root: HTMLElement) => {
+    const lock = root.closest<HTMLElement>("[data-lock]");
     const track = root.querySelector<HTMLElement>("[data-track]");
     const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-card]"));
     const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-tab]"));
@@ -90,7 +95,50 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
     if (!track || cards.length === 0) return;
 
     const step = () => cards[0].offsetWidth + parseFloat(getComputedStyle(track).columnGap || "0");
-    const goTo = (i: number) => track.scrollTo({ left: cards[i].offsetLeft - track.offsetLeft, behavior: "smooth" });
+    const maxX = () => track.scrollWidth - track.clientWidth;
+
+    // Scroll-Lock: Desktop, keine Reduced Motion. Vertikaler Weg = 0.8 × horizontaler Weg.
+    const mq = window.matchMedia("(min-width: 900px) and (prefers-reduced-motion: no-preference)");
+    const RATIO = 0.8;
+    let locked = false;
+    let top = 0;
+    let span = 1;
+    const measure = () => {
+      if (!lock || !locked) return;
+      lock.style.minHeight = "";
+      const h = root.offsetHeight;
+      span = Math.max(1, Math.round(maxX() * RATIO));
+      lock.style.minHeight = `${h + span}px`;
+      // Angepinnt vertikal mittig im Viewport, aber nie unter die Nav (102px)
+      root.style.top = `${Math.max(102, Math.round((window.innerHeight - h) / 2))}px`;
+      let t = 0;
+      for (let el: HTMLElement | null = lock; el; el = el.offsetParent as HTMLElement | null) t += el.offsetTop;
+      top = t;
+    };
+    const applyLock = () => {
+      const want = mq.matches && !!lock;
+      if (want === locked) return;
+      locked = want;
+      root.toggleAttribute("data-locked", locked);
+      if (!locked && lock) { lock.style.minHeight = ""; root.style.top = ""; }
+      measure();
+      onScroll();
+    };
+    const onPageScroll = () => {
+      if (!locked) return;
+      const p = Math.min(1, Math.max(0, (window.scrollY - top) / span));
+      track.scrollLeft = p * maxX();
+    };
+    // Ziel-Karte anfahren: im Lock über die Seitenposition, sonst über die Spur.
+    const scrollToX = (x: number, behavior: ScrollBehavior = "smooth") => {
+      if (locked) {
+        const p = maxX() > 0 ? Math.min(1, Math.max(0, x / maxX())) : 0;
+        window.scrollTo({ top: top + p * span, behavior });
+      } else {
+        track.scrollTo({ left: x, behavior });
+      }
+    };
+    const goTo = (i: number) => scrollToX(cards[i].offsetLeft - track.offsetLeft);
 
     let raf = 0;
     const update = () => {
@@ -116,20 +164,34 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
 
     track.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
-    prev?.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
-    next?.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+    prev?.addEventListener("click", () => scrollToX(track.scrollLeft - step()));
+    next?.addEventListener("click", () => scrollToX(track.scrollLeft + step()));
     tabs.forEach((t) => t.addEventListener("click", () => goTo(Number(t.dataset.tab))));
     track.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") { e.preventDefault(); track.scrollBy({ left: step(), behavior: "smooth" }); }
-      if (e.key === "ArrowLeft") { e.preventDefault(); track.scrollBy({ left: -step(), behavior: "smooth" }); }
+      if (e.key === "ArrowRight") { e.preventDefault(); scrollToX(track.scrollLeft + step()); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); scrollToX(track.scrollLeft - step()); }
     });
+    let rafPage = 0;
+    window.addEventListener("scroll", () => { if (!rafPage) rafPage = requestAnimationFrame(() => { rafPage = 0; onPageScroll(); }); }, { passive: true });
+    window.addEventListener("resize", () => { measure(); onPageScroll(); }, { passive: true });
+    mq.addEventListener("change", applyLock);
+    window.addEventListener("load", () => { measure(); onPageScroll(); }, { once: true });
+    applyLock();
     update();
   };
   document.querySelectorAll<HTMLElement>("[data-slider]").forEach(init);
 </script>
 
 <style>
-  .slider { display: grid; gap: 22px; }
+  .slider { display: grid; gap: 24px; }
+  /* Scroll-Lock: der Wrapper bekommt vom Skript seine Höhe, der Slider bleibt stehen. */
+  .slider[data-locked] {
+    position: sticky;
+    top: calc(74px + 28px);
+  }
+  .slider[data-locked] .slider__track {
+    scroll-snap-type: none;
+  }
 
   /* Kopf: Phasen-Tabs links, Pfeile rechts */
   .slider__head {
@@ -194,8 +256,8 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
     padding: 4px 0 8px;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: min(84vw, 340px);
-    column-gap: 14px;
+    grid-auto-columns: min(84vw, 400px);
+    column-gap: 16px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
@@ -215,9 +277,9 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
     scroll-snap-align: start;
     display: grid;
     align-content: start;
-    gap: 12px;
-    padding: 26px 24px 28px;
-    min-height: 260px;
+    gap: 14px;
+    padding: 30px 28px 32px;
+    min-height: 300px;
     background: var(--paper);
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
@@ -228,7 +290,8 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
   .card--design { --accent: var(--accent); }
   .card--build { --accent: var(--mauve); }
   .card--production { --accent: var(--production-text); }
-  .card__icon { display: inline-flex; color: var(--accent); margin-bottom: 6px; }
+  .card__icon { display: inline-flex; color: var(--accent); margin-bottom: 8px; }
+  .card__icon :global(svg) { width: 34px; height: 34px; }
   .card__meta {
     display: flex;
     align-items: center;
@@ -239,8 +302,8 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
     text-transform: uppercase;
   }
   .card__n { font-weight: 600; color: var(--fg); }
-  .card h3 { font-size: 1.15rem; line-height: 1.25; text-wrap: balance; }
-  .card p { color: var(--fg-muted); font-size: 0.95rem; }
+  .card h3 { font-size: 1.3rem; line-height: 1.25; text-wrap: balance; }
+  .card p { color: var(--fg-muted); font-size: 1rem; line-height: 1.55; }
 
   /* Fortschrittslinie */
   .slider__bar { height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
