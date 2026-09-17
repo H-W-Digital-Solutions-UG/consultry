@@ -163,9 +163,9 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Kern:** AI-Adoption ist niedriger, als die eigene Blase vermuten lässt (Gründer-Einschätzung, keine Zahl). Der breiteste Schmerz der Zielgruppe ist Lärm ohne Ergebnis: Alle reden über AI, im eigenen Betrieb läuft nichts, und niemand weiß, wo anfangen. Der Hero holt genau dort ab, ohne Vorwurf und ohne Voraussetzung.
 
 **Freigegebene Formulierungen:**
-- Headline: „Alle reden über AI. Bei Ihnen läuft sie.“
+- Headline: „Alle reden über AI. Wir bauen sie ein.“ (v2; „Bei Ihnen läuft sie“ war als Hosting missverständlich und trug den Kernpunkt Engineering nicht)
 - Claim: „From Process to Production.“
-- Beschreibung: „Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst.“
+- Beschreibung: „Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst, bis sie produktiv läuft.“
 
 **Abgelöst:** „AI, die in Ihrem Betrieb läuft. Nicht auf Folien.“ (zu lang, Kontrast nur gegen Beratung, nicht gegen den Einstiegsschmerz). Der Folien-Kontrast lebt weiter in „Der Unterschied“.
 

@@ -10,13 +10,14 @@ export const hero = {
   eyebrow: "AI Transformation & Engineering",
   // Weiches Trennzeichen (­) nur in Wörtern über ca. 14 Zeichen an einer
   // Silbengrenze einfügen; die aktuelle Headline braucht keines.
-  // Hook (2026-09-17): Der breiteste Schmerz ist nicht „Folien“, sondern
-  // Lärm ohne Ergebnis. AI-Adoption ist niedriger, als die eigene Blase
-  // vermuten lässt; die Headline holt Betriebe ab, bei denen noch nichts läuft.
-  headline: "Alle reden über AI. Bei Ihnen läuft sie.",
+  // Hook (2026-09-17): Der breiteste Schmerz ist Lärm ohne Ergebnis; Zeile 1
+  // holt Betriebe ab, bei denen noch nichts läuft. Zeile 2 trägt den Kern
+  // (Engineering in die Abläufe). „Bei Ihnen läuft sie“ war als Hosting
+  // missverständlich und wurde ersetzt.
+  headline: "Alle reden über AI. Wir bauen sie ein.",
   claim: "From Process to Production.",
   description:
-    "Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst.",
+    "Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst, bis sie produktiv läuft.",
   primaryCta: { label: "Erstgespräch vereinbaren", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
