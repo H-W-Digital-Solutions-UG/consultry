@@ -212,7 +212,7 @@ const image = await getImage({
   .hero__after {
     position: relative;
     z-index: 1;
-    padding-block: 28px 32px;
+    padding-block: 0 24px;
   }
   .hero__after:empty { display: none; }
   .hero__copy {
@@ -279,11 +279,12 @@ const image = await getImage({
   /* ---------------------------------------------------------------
      Scroll-Szene (nur mit JS, gesetzt über data-scene="on")
      --------------------------------------------------------------- */
+  /* Leiste schließt direkt an die Copy an; der Rest des Nachlaufs (bis 34vh)
+     bleibt als Bildfläche, über die die nächste Sektion hereinschiebt. */
   .hero[data-scene="on"] .hero__after {
-    min-height: 56vh;
-    display: flex;
-    align-items: center;
-    padding-block: 4vh;
+    min-height: 34vh;
+    display: block;
+    padding-block: 0 24px;
   }
   /* Bildlayer breiter als der Viewport: Kamerafahrt von Bildlinks (Prozess)
      nach Bildrechts (Produktion), Skalierung 1.075 -> 1.015, leise Drift. */
