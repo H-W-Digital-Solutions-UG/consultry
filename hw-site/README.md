@@ -17,6 +17,7 @@ pnpm check      # Astro/TypeScript-Diagnose (benötigt TypeScript 6.x)
 - `src/data/company.ts` – Firmendaten (Rechtsdaten identisch zu `marketing-site/src/lib/company.ts`, beide pflegen)
 - `src/data/content.ts` – Copy-Bausteine aus dem Positionierungs-Handover
 - `src/components/` – Nav, Hero, Chain (Delivery Chain), Steps, Contrast, Capabilities, Cta, Footer
+- `src/scripts/hero-scroll.ts` – Scroll-Szene des Start-Heros (Progressive Enhancement, ohne Bibliothek; Regeln in `DESIGN.md`, Abschnitte 7 und 9)
 - `src/pages/` – `/`, `/leistungen`, `/vorgehen`, `/unternehmen`, `/kontakt`, `/impressum`, `/datenschutz`, `404`
 - `public/images/hero.webp` – Hero-Visual (generiert, Higgsfield); `og.jpg` daraus abgeleitet
 
@@ -30,4 +31,4 @@ Vercel-Projekt **`hw-digitalsolutions`** im Team `hw-consultry`, git-verknüpft 
 ## Offen
 
 - Hero-Eyebrow ist aus dem abgeschnittenen Handover-Abschnitt 7 rekonstruiert (`content.ts`, als PROVISORISCH markiert).
-- Datenschutzerklärung vor Livegang juristisch prüfen; sie beschreibt den aktuellen Umfang (statisch, keine Cookies, kein Tracking, Google Fonts).
+- Datenschutzerklärung vor Livegang juristisch prüfen; sie beschreibt den aktuellen Umfang (statisch, keine Cookies, kein Tracking, selbst gehostete Schriften).
