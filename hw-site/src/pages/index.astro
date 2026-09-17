@@ -2,7 +2,6 @@
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
 import Chain from "../components/Chain.astro";
-import Steps from "../components/Steps.astro";
 import Contrast from "../components/Contrast.astro";
 import Capabilities from "../components/Capabilities.astro";
 import Cta from "../components/Cta.astro";
@@ -41,13 +40,16 @@ import { company } from "../data/company";
     </div>
   </section>
 
-  <section class="section section--paper-2">
-    <div class="container">
-      <p class="eyebrow" data-n="03">Das Leistungsbild</p>
-      <h2 class="sec__h">Technologie kommt bei uns erst an Schritt sieben.</h2>
-      <p class="lede">Vorher bewerten wir jedes Potenzial nach wirtschaftlichem Hebel und technischer Machbarkeit.</p>
-      <div class="sec__body"><Steps /></div>
-      <a class="btn btn--ghost sec__more" href="/leistungen">Zehn Schritte im Detail</a>
+  <section class="section section--paper-2 seven">
+    <div class="container seven__grid">
+      <div>
+        <p class="eyebrow" data-n="03">Das Leistungsbild</p>
+        <h2 class="sec__h">Technologie kommt bei uns erst an Schritt sieben.</h2>
+      </div>
+      <div class="seven__side">
+        <p class="lede">Vorher bewerten wir jedes Potenzial nach wirtschaftlichem Hebel und technischer Machbarkeit. Gebaut wird nur, was sich rechnet.</p>
+        <a class="btn btn--ghost" href="/leistungen">Zehn Schritte im Detail</a>
+      </div>
     </div>
   </section>
 
@@ -80,5 +82,8 @@ import { company } from "../data/company";
   .chainsec { padding-block: 0; }
   .sec__h + .lede { margin-top: 16px; }
   .sec__body { margin-top: 44px; }
-  .sec__more { margin-top: 28px; }
+  .seven__grid { display: grid; gap: 28px; }
+  @media (min-width: 900px) { .seven__grid { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; } }
+  .seven__side { display: grid; gap: 24px; justify-items: start; }
+  .seven__side .lede { margin: 0; }
 </style>
