@@ -35,6 +35,17 @@ const meta: { icon: IconName; phase: string }[] = [
     <div class="chain__stage">
       <div class="chain__head"><slot name="heading" /></div>
 
+      <ol class="chain__index" aria-label="Alle Schritte">
+        {chain.map((step, i) => (
+          <li>
+            <button type="button" class="chain__jump" data-goto={i} data-active={i === 0 ? "" : undefined}>
+              <span class="chain__jump-n">{String(i + 1).padStart(2, "0")}</span>
+              <span class="chain__jump-label">{step}</span>
+            </button>
+          </li>
+        ))}
+      </ol>
+
       <div class="chain__viewport">
         <ol class="chain__rail" role="list" aria-label="Delivery Chain: From Process to Production">
           {chain.map((step, i) => (
@@ -80,6 +91,7 @@ const meta: { icon: IconName; phase: string }[] = [
     const readLabel = root.querySelector<HTMLElement>("[data-readout-label]")!;
     const readPhase = root.querySelector<HTMLElement>("[data-readout-phase]")!;
     const glyphs = Array.from(root.querySelectorAll<HTMLElement>("[data-glyph]"));
+    const jumps = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-goto]"));
     const n = items.length;
     let top = 0, span = 1, ticking = false, active = -1;
     root.dataset.scene = "on";
@@ -103,6 +115,7 @@ const meta: { icon: IconName; phase: string }[] = [
         readLabel.textContent = items[idx].querySelector(".chain__label")?.textContent ?? "";
         readPhase.textContent = items[idx].dataset.phase ?? "";
         glyphs.forEach((g, i) => (g.hidden = i !== idx));
+        jumps.forEach((b, i) => b.toggleAttribute("data-active", i === idx));
       }
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
@@ -114,10 +127,18 @@ const meta: { icon: IconName; phase: string }[] = [
       else if (!e.isIntersecting && listening) { listening = false; window.removeEventListener("scroll", onScroll); }
     }, { rootMargin: "200px 0px" });
 
+    const onJump = (e: Event) => {
+      const i = Number((e.currentTarget as HTMLElement).dataset.goto);
+      window.scrollTo({ top: top + (span * i) / (n - 1), behavior: "smooth" });
+    };
+    jumps.forEach((b) => b.addEventListener("click", onJump));
     measure(); update(); io.observe(track);
     window.addEventListener("resize", onResize);
     document.fonts?.ready.then(onResize);
-    return () => { io.disconnect(); window.removeEventListener("resize", onResize); window.removeEventListener("scroll", onScroll); };
+    // Layout-Änderungen oberhalb (z. B. der Hero-Track) verschieben den Pin-Bereich: neu messen
+    const ro = new ResizeObserver(onResize);
+    ro.observe(document.documentElement);
+    return () => { io.disconnect(); ro.disconnect(); window.removeEventListener("resize", onResize); window.removeEventListener("scroll", onScroll); jumps.forEach((b) => b.removeEventListener("click", onJump)); };
   }
 
   const cleanups = Array.from(document.querySelectorAll<HTMLElement>("[data-chain]")).map(mount);
@@ -132,7 +153,31 @@ const meta: { icon: IconName; phase: string }[] = [
   /* Statischer Zustand (ohne JS / reduced motion): normale Höhe, seitlich scrollbar */
   .chain__stage { display: grid; gap: 28px; }
   .chain__viewport { overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-  .chain__readout, .chain__progress { display: none; }
+  .chain__readout, .chain__progress, .chain__index { display: none; }
+
+  /* Schrittliste (nur mit Szene): alle Schritte auf einen Blick, aktiver markiert, klickbar */
+  .chain[data-scene="on"] .chain__index {
+    display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0 0 20px; padding: 0;
+  }
+  .chain__jump {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px;
+    border: 1px solid var(--line-on-ink); background: transparent; color: var(--fg-on-ink-muted);
+    font-family: var(--font-display); font-size: 0.82rem; font-weight: 500; letter-spacing: -0.005em;
+    cursor: pointer; transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+  }
+  .chain__jump:hover { color: var(--fg-on-ink); border-color: var(--line-on-ink-strong, rgba(245,241,251,.3)); }
+  .chain__jump[data-active] { color: #ffffff; background: rgba(245, 241, 251, 0.08); border-color: var(--accent-on-ink); }
+  .chain__jump-n { font-weight: 300; font-variant-numeric: tabular-nums; color: var(--accent-on-ink); }
+  .chain__jump-label { display: none; }
+  @media (min-width: 900px) {
+    .chain[data-scene="on"] .chain__stage { grid-template-columns: 300px 1fr; column-gap: 48px; grid-template-rows: auto 1fr auto; }
+    .chain[data-scene="on"] .chain__head { grid-column: 1 / -1; }
+    .chain[data-scene="on"] .chain__index { grid-column: 1; grid-row: 2 / 4; align-self: center; flex-direction: column; flex-wrap: nowrap; gap: 2px; margin: 0; }
+    .chain[data-scene="on"] .chain__viewport, .chain[data-scene="on"] .chain__readout { grid-column: 2; }
+    .chain__jump { width: 100%; border-radius: 10px; border-color: transparent; padding: 7px 10px; }
+    .chain__jump[data-active] { border-color: var(--line-on-ink); }
+    .chain__jump-label { display: inline; }
+  }
 
   .chain__rail {
     list-style: none; margin: 0; padding: 8px 0 8px;
