@@ -10,7 +10,7 @@ export const hero = {
   eyebrow: "AI Transformation & Engineering",
   // Weiches Trennzeichen (­) nur in Wörtern über ca. 14 Zeichen an einer
   // Silbengrenze einfügen; die aktuelle Headline braucht keines.
-  headline: "Ihre AI-Lösung läuft im Betrieb. Nicht auf Folien.",
+  headline: "AI, die in Ihrem Betrieb läuft. Nicht auf Folien.",
   claim: "From Process to Production.",
   description:
     "Wir analysieren, wie Ihr Unternehmen arbeitet, finden die größten AI-Hebel in Ihren Abläufen und bauen die Lösung selbst.",
@@ -40,7 +40,7 @@ export const heroBeats = [
 export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
   // Beispielszenario, als Beispiel gekennzeichnet; kein Kundenergebnis.
-  long: "Ein Beispiel: Ihr Angebotsprozess läuft über mehrere Systeme und viele Rückfragen. Wir gestalten ihn mit AI neu, bauen die Lösung und integrieren sie dort, wo Ihr Team arbeitet.",
+  long: "Ein Beispiel: Ihr Angebotsprozess läuft heute über mehrere Systeme und viele Rückfragen, ganz ohne AI. Wir finden den Hebel, gestalten den Ablauf neu, bauen die Lösung und integrieren sie dort, wo Ihr Team arbeitet.",
   // Senior-Zusage (Gründer, 2026-09-17): als Versprechen formuliert, nicht als Angriff.
   senior: "Keine Junior-Berater. Wer Ihren Prozess versteht, baut ihn auch.",
 } as const;

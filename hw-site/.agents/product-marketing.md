@@ -154,6 +154,10 @@ Keine belastbaren Daten vorhanden, Annahme: aus Positionierung abgeleitet.
 
 ---
 
+## Regel: Ausgangslage ohne AI (2026-09-17)
+
+Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede Copy geht vom bestehenden, meist manuellen Ablauf aus (Systeme, Rückfragen, Medienbrüche) und führt von dort zur produktiven AI. Nicht schreiben: „Ihre AI-Lösung“, „Ihr AI-Prozess“, „Ihre AI-Strategie“ als etwas Vorhandenes. Schreiben: „AI, die in Ihrem Betrieb läuft“, „Ihr Angebotsprozess läuft heute ohne AI“.
+
 ## Messaging-Baustein: Senior-Zusage (2026-09-17)
 
 **Kern:** Keine Junior-Berater. Das Muster „Die Erfahrenen pitchen, die Unerfahrenen liefern“ gibt es bei H&W nicht: Wer im Erstgespräch sitzt, bewertet die Prozesse, baut die Lösung und bleibt bis in den Betrieb.

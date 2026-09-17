@@ -169,7 +169,7 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
        (DESIGN.md, Abschnitt 3). */
     background:
       linear-gradient(to top, rgba(21, 4, 43, 0.96) 0%, rgba(21, 4, 43, 0.45) 45%, rgba(21, 4, 43, 0.18) 100%),
-      linear-gradient(to right, rgba(21, 4, 43, 0.78) 0%, rgba(21, 4, 43, 0) 60%),
+      linear-gradient(to right, rgba(21, 4, 43, 0.9) 0%, rgba(21, 4, 43, 0.55) 35%, rgba(21, 4, 43, 0) 68%),
       linear-gradient(111deg, transparent 28%, color-mix(in oklab, var(--ink) 12%, transparent) 50%, transparent 72%),
       linear-gradient(111deg, rgba(81, 29, 150, 0.12) 0%, rgba(53, 26, 89, 0) 70%);
   }
@@ -348,12 +348,13 @@ const { image = "/images/hero.webp", imageAlt = "", immersive = true } = Astro.p
   .hero[data-scene="on"] .hero__copy :is(.eyebrow, h1, .hero__claim, .hero__desc) {
     transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
   }
+  /* Fokus bleibt auf dem Text: nur leichte Absenkung, H1 bleibt voll */
   .hero[data-scene="on"] .hero__copy[data-faded="true"] :is(.eyebrow, .hero__desc) {
-    opacity: 0.6;
+    opacity: 0.85;
   }
   .hero[data-scene="on"] .hero__copy[data-faded="true"] h1 {
-    opacity: 0.7;
-    transform: translateY(-10px) scale(0.98);
+    opacity: 1;
+    transform: translateY(-8px) scale(0.99);
   }
   .hero[data-scene="on"] .hero__copy[data-faded="true"] .hero__claim {
     opacity: 1;

@@ -1,21 +1,22 @@
 ---
 import { contrast } from "../data/content";
+import Icon from "./Icon.astro";
 ---
 
 <div class="contrast">
   <div class="contrast__col contrast__col--classic">
     <p class="eyebrow">Klassische Beratung</p>
     <ul>
-      {contrast.classic.map((c) => <li>{c}</li>)}
+      {contrast.classic.map((c) => <li><span class="mark mark--classic" aria-hidden="true"></span>{c}</li>)}
     </ul>
-    <p class="contrast__end">{contrast.classicEnd}</p>
+    <p class="contrast__end"><Icon name="step-potential" size={16} />{contrast.classicEnd}</p>
   </div>
   <div class="contrast__col contrast__col--hw">
     <p class="eyebrow">H&amp;W</p>
     <ul>
-      {contrast.hw.map((c) => <li>{c}</li>)}
+      {contrast.hw.map((c) => <li><span class="mark mark--hw" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5L5 9L9.5 3.5"/></svg></span>{c}</li>)}
     </ul>
-    <p class="contrast__end">{contrast.hwEnd}</p>
+    <p class="contrast__end"><Icon name="step-deploy" size={16} />{contrast.hwEnd}</p>
   </div>
 </div>
 
@@ -49,18 +50,17 @@ import { contrast } from "../data/content";
     font-weight: 500;
     letter-spacing: -0.02em;
   }
-  li { display: flex; gap: 12px; align-items: baseline; }
-  li::before {
-    content: "";
-    flex: none;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--fg-on-ink-muted);
-    transform: translateY(-2px);
+  li { display: flex; gap: 12px; align-items: center; }
+  .mark {
+    flex: none; display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%;
   }
-  .contrast__col--hw li::before { background: var(--axis); }
+  .mark--classic { border: 1px solid var(--line-on-ink-strong, rgba(245,241,251,.25)); }
+  .mark--classic::after { content: ""; width: 6px; height: 1.5px; background: var(--fg-on-ink-muted); border-radius: 1px; }
+  .mark--hw { color: var(--ink); background: var(--accent-on-ink); }
+  .mark--hw svg { width: 12px; height: 12px; }
   .contrast__col--classic li:last-child { color: var(--fg-on-ink-muted); }
+  .contrast__end { display: flex; align-items: center; gap: 8px; }
+  .contrast__end :global(svg) { width: 16px; height: 16px; opacity: 0.8; }
   .contrast__end {
     margin-top: 22px;
     padding-top: 16px;
