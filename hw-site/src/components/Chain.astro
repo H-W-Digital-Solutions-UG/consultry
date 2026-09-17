@@ -103,7 +103,9 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     const cards = Array.from(root.querySelectorAll<HTMLElement>("[data-card]"));
     const mobile = window.matchMedia("(max-width: 899px)");
     // Kartenstapel: Zielposition aus dem Scroll, Ist-Position folgt weich (Lerp pro Frame).
-    let target = 0, cur = 0, animating = false;
+    // cur startet unterhalb des Ziels: Beim ersten Sichtbarwerden läuft der
+    // Stapel von unten ein (Einlauf-Animation ohne eigene Keyframes).
+    let target = 0, cur = -1.4, animating = false;
     const paint = () => {
       const shift = mobile.matches ? 64 : 112;
       cards.forEach((c, i) => {
@@ -111,8 +113,13 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
         const ad = Math.abs(d);
         if (ad > 1.6) { c.style.visibility = "hidden"; return; }
         c.style.visibility = "visible";
-        c.style.transform = `translate3d(0, ${(d * shift).toFixed(2)}px, 0) scale(${(1 - Math.min(ad, 1) * 0.08).toFixed(3)})`;
+        // Listen-Gefühl: einlaufende Karte kippt leicht nach hinten (unten),
+        // auslaufende nach vorn (oben); Nachbarn werden etwas unscharf.
+        const tilt = (-d * 7).toFixed(2);
+        const blur = Math.max(0, ad - 0.5) * 2.5;
+        c.style.transform = `perspective(1400px) translate3d(0, ${(d * shift).toFixed(2)}px, ${(-ad * 40).toFixed(1)}px) rotateX(${tilt}deg) scale(${(1 - Math.min(ad, 1) * 0.06).toFixed(3)})`;
         c.style.opacity = String((ad < 0.5 ? 1 : Math.max(0, 1 - (ad - 0.5) * 1.4)).toFixed(3));
+        c.style.filter = blur > 0.05 ? `blur(${blur.toFixed(2)}px)` : "";
         c.style.zIndex = String(100 - Math.round(ad * 10));
         c.classList.toggle("is-front", ad < 0.5);
       });
@@ -313,11 +320,26 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
     box-shadow:
       0 24px 60px rgba(8, 0, 22, 0.45),
       inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    will-change: transform, opacity;
+    will-change: transform, opacity, filter;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
     visibility: hidden;
     opacity: 0;
     transition: border-color 0.25s, box-shadow 0.25s;
   }
+  /* Lichtkante oben auf der vorderen Karte: läuft mit dem Fortschritt der Achse. */
+  .chain__card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    height: 1px;
+    width: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, rgba(195, 165, 255, 0.55) 30%, rgba(211, 108, 240, 0.55) 70%, transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .chain__card.is-front::before { opacity: 1; }
   .chain__card.is-front {
     border-color: rgba(195, 165, 255, 0.45);
     box-shadow:
