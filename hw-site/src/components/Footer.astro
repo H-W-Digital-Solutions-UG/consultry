@@ -1,12 +1,13 @@
 ---
 import { company, nav } from "../data/company";
+import Brand from "./Brand.astro";
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="container footer__grid">
     <div class="footer__brand">
-      <p class="footer__name">{company.name}</p>
+      <Brand size={34} stacked />
       <p class="footer__claim">{company.claim}</p>
     </div>
     <div>
@@ -53,13 +54,7 @@ const year = new Date().getFullYear();
   @media (min-width: 720px) {
     .footer__grid { grid-template-columns: 1.6fr 1fr 1.2fr 1fr; }
   }
-  .footer__name {
-    font-family: var(--font-display);
-    font-weight: 600;
-    color: var(--fg-on-ink);
-    letter-spacing: -0.02em;
-  }
-  .footer__claim { margin-top: 6px; }
+  .footer__claim { margin-top: 18px; }
   .footer__head {
     font-family: var(--font-display);
     font-size: 0.9rem;

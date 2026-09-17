@@ -1,0 +1,72 @@
+---
+/**
+ * Marken-Lockup: Consultry-Logo (Bild- und Wortmarke aus design/logos/logopack,
+ * v2 dark, ohne Hintergrund und Tagline) plus „powered by H&W“.
+ * Nur für dunklen Grund (weiße Wortmarke).
+ */
+import logo from "../assets/consultry-logo.svg";
+
+interface Props {
+  /** Höhe des Lockups in px (Standard 30). */
+  size?: number;
+  /** „powered by“ als eigene Zeile unter dem Logo (Footer) statt daneben. */
+  stacked?: boolean;
+}
+const { size = 30, stacked = false } = Astro.props;
+const width = Math.round((logo.width / logo.height) * size);
+---
+
+<span class:list={["brand", { "brand--stacked": stacked }]}>
+  <img class="brand__logo" src={logo.src} width={width} height={size} alt="Consultry" decoding="async" />
+  <span class="brand__by">
+    <span class="brand__by-label">powered by</span>
+    <span class="brand__by-name">H&amp;W</span>
+  </span>
+</span>
+
+<style>
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand__logo {
+    display: block;
+    height: auto;
+  }
+  .brand__by {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+    padding-left: 14px;
+    border-left: 1px solid var(--line-on-ink-strong);
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    letter-spacing: -0.005em;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--fg-on-ink-muted);
+  }
+  .brand__by-label { font-weight: 400; }
+  .brand__by-name { font-weight: 600; color: var(--fg-on-ink); }
+
+  .brand--stacked {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .brand--stacked .brand__by {
+    padding-left: 0;
+    border-left: 0;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 599px) {
+    .brand:not(.brand--stacked) { gap: 10px; }
+    .brand:not(.brand--stacked) .brand__by {
+      padding-left: 10px;
+      gap: 4px;
+      font-size: 0.7rem;
+    }
+  }
+</style>

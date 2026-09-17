@@ -1,13 +1,13 @@
 ---
 import { company, nav } from "../data/company";
+import Brand from "./Brand.astro";
 const current = Astro.url.pathname.replace(/\/$/, "") || "/";
 ---
 
 <header class="nav" data-nav>
   <div class="container nav__inner">
-    <a href="/" class="nav__brand" aria-label={`${company.name} – Startseite`}>
-      <span class="nav__mark" aria-hidden="true"></span>
-      <span>H&amp;W</span>
+    <a href="/" class="nav__brand" aria-label={`Consultry, powered by ${company.name} – Startseite`}>
+      <Brand size={30} />
     </a>
 
     <nav class="nav__links" id="site-nav" aria-label="Hauptnavigation">
@@ -76,17 +76,10 @@ const current = Astro.url.pathname.replace(/\/$/, "") || "/";
   .nav__brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.15rem;
-    letter-spacing: -0.03em;
+    color: var(--fg-on-ink);
   }
-  .nav__mark {
-    width: 12px;
-    height: 12px;
-    border-radius: 3px;
-    background: var(--axis);
+  @media (max-width: 599px) {
+    .nav__brand :global(.brand__logo) { height: 24px; width: auto; }
   }
   .nav__links {
     display: none;
