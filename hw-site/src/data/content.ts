@@ -10,10 +10,13 @@ export const hero = {
   eyebrow: "AI Transformation & Engineering",
   // Weiches Trennzeichen (­) nur in Wörtern über ca. 14 Zeichen an einer
   // Silbengrenze einfügen; die aktuelle Headline braucht keines.
-  headline: "AI, die in Ihrem Betrieb läuft. Nicht auf Folien.",
+  // Hook (2026-09-17): Der breiteste Schmerz ist nicht „Folien“, sondern
+  // Lärm ohne Ergebnis. AI-Adoption ist niedriger, als die eigene Blase
+  // vermuten lässt; die Headline holt Betriebe ab, bei denen noch nichts läuft.
+  headline: "Alle reden über AI. Bei Ihnen läuft sie.",
   claim: "From Process to Production.",
   description:
-    "Wir analysieren, wie Ihr Unternehmen arbeitet, finden die größten AI-Hebel in Ihren Abläufen und bauen die Lösung selbst.",
+    "Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst.",
   primaryCta: { label: "Erstgespräch vereinbaren", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;

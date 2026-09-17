@@ -158,6 +158,17 @@ Keine belastbaren Daten vorhanden, Annahme: aus Positionierung abgeleitet.
 
 Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede Copy geht vom bestehenden, meist manuellen Ablauf aus (Systeme, Rückfragen, Medienbrüche) und führt von dort zur produktiven AI. Nicht schreiben: „Ihre AI-Lösung“, „Ihr AI-Prozess“, „Ihre AI-Strategie“ als etwas Vorhandenes. Schreiben: „AI, die in Ihrem Betrieb läuft“, „Ihr Angebotsprozess läuft heute ohne AI“.
 
+## Messaging-Baustein: Hero-Hook (2026-09-17)
+
+**Kern:** AI-Adoption ist niedriger, als die eigene Blase vermuten lässt (Gründer-Einschätzung, keine Zahl). Der breiteste Schmerz der Zielgruppe ist Lärm ohne Ergebnis: Alle reden über AI, im eigenen Betrieb läuft nichts, und niemand weiß, wo anfangen. Der Hero holt genau dort ab, ohne Vorwurf und ohne Voraussetzung.
+
+**Freigegebene Formulierungen:**
+- Headline: „Alle reden über AI. Bei Ihnen läuft sie.“
+- Claim: „From Process to Production.“
+- Beschreibung: „Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst.“
+
+**Abgelöst:** „AI, die in Ihrem Betrieb läuft. Nicht auf Folien.“ (zu lang, Kontrast nur gegen Beratung, nicht gegen den Einstiegsschmerz). Der Folien-Kontrast lebt weiter in „Der Unterschied“.
+
 ## Messaging-Baustein: Senior-Zusage (2026-09-17)
 
 **Kern:** Keine Junior-Berater. Das Muster „Die Erfahrenen pitchen, die Unerfahrenen liefern“ gibt es bei H&W nicht: Wer im Erstgespräch sitzt, bewertet die Prozesse, baut die Lösung und bleibt bis in den Betrieb.
@@ -276,5 +287,6 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v3 (2026-09-17) — Hero-Hook auf Einstiegsschmerz umgestellt („Alle reden über AI. Bei Ihnen läuft sie.“); Adoptions-Einschätzung als Gründer-Input ohne Zahl.
 - v2 (2026-09-17) — Messaging-Baustein Souveränität ergänzt (Gründer-Input), Annahme zur Datenhaltung markiert.
 - v1 (2026-09-17) — Initial context. Auto-Entwurf aus Positionierungs-Handover, `content.ts`, Seiten, DESIGN.md und alter HubSpot-Copy; Redaktionsbrief (Hooks, Längenlimits, Sprachmechanik) aufgenommen; Lücken bei Zielgruppe, Wettbewerb, Einwänden, Verbatims und Belegen als Annahmen markiert.
