@@ -10,15 +10,13 @@
  * den professionellen IT-Consulting-Auftritt passen“): ein Systemmodell auf einer
  * Grundplatte, fünf Module mit Verbindungskanälen, eines wird gerade gesetzt, daneben
  * die Blaupause desselben Systems und ein Tuschestift. Matt in der Lila-Familie, ohne
- * Personen, weicher Schlagschatten auf dem Papier. Darunter die Zertifikate des
- * Gründerteams, klein und gedämpft.
+ * Personen, weicher Schlagschatten auf dem Papier. Die Zertifikate laufen als eigene
+ * Leiste darunter (CertStrip.astro).
  */
 import { Image } from "astro:assets";
-import { expertise, certifications } from "../data/content";
+import { expertise } from "../data/content";
 import scene from "../assets/expertise.webp";
 
-const badgeFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/certs/*.png", { eager: true });
-const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
 ---
 
 <section class="section section--paper-2 xp" aria-labelledby="xp-heading">
@@ -38,27 +36,13 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
     <div class="xp__proof">
       <figure class="xp__scene">
         <Image class="xp__img" src={scene} alt="" widths={[640, 960, 1440]} sizes="(min-width: 900px) 46vw, 100vw" loading="lazy" format="webp" />
-        <figcaption class="xp__caption">{expertise.caption}</figcaption>
       </figure>
-      <div class="xp__certs">
-        <ul class="xp__badges" aria-label="Zertifizierungen im Gründerteam">
-          {certifications.map((c) => {
-            const img = badge(c.file);
-            return (
-              <li>
-                {img && <Image src={img} alt={`${c.name} (${c.issuer})`} title={`${c.name}, ${c.issuer}`} width={56} densities={[1, 2]} loading="lazy" />}
-              </li>
-            );
-          })}
-        </ul>
-        <a class="xp__link" href={expertise.secondary.href}>{expertise.secondary.label}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .xp { padding-block: clamp(56px, 8vh, 96px); }
+  .xp { padding-block: clamp(56px, 8vh, 96px) clamp(32px, 5vh, 56px); }
   .xp__grid { display: grid; gap: 32px; }
   @media (min-width: 900px) { .xp__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 72px; align-items: center; } }
   .xp__quote {
@@ -81,31 +65,7 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
     display: block; width: 100%; max-width: 560px; height: auto;
     filter: drop-shadow(0 28px 36px rgba(21, 4, 43, 0.22)) drop-shadow(0 4px 8px rgba(21, 4, 43, 0.08));
   }
-  .xp__caption {
-    font-family: var(--font-display); font-size: 0.95rem; font-weight: 500; letter-spacing: -0.01em;
-    color: var(--fg-muted);
-  }
-  /* Zertifikate (Gründer, 2026-09-18): ohne Zähler und Label, größer, als Reihe, die rechts
-     ausblendet, damit sichtbar ist, dass es weitergeht; daneben „Alle Nachweise“. */
-  .xp__certs {
-    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px;
-    padding-top: 18px; border-top: 1px solid var(--line);
-  }
-  .xp__badges {
-    list-style: none; margin: 0; padding: 0;
-    display: flex; flex-wrap: nowrap; gap: 12px; overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, #000 72%, transparent 100%);
-    mask-image: linear-gradient(to right, #000 72%, transparent 100%);
-  }
-  .xp__badges li { flex: 0 0 auto; }
-  .xp__badges img { display: block; width: 52px; height: auto; filter: saturate(0.25); opacity: 0.85; transition: filter 0.25s, opacity 0.25s; }
-  .xp__badges li:hover img { filter: none; opacity: 1; }
-  .xp__link { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-family: var(--font-display); font-size: 0.92rem; font-weight: 600; color: var(--accent); text-decoration: none; }
-  .xp__link svg { width: 13px; height: 13px; transition: transform 0.2s var(--ease-out); }
-  .xp__link:hover svg { transform: translateX(3px); }
   @media (max-width: 899px) {
     .xp__img { max-width: 420px; }
-    .xp__badges img { width: 44px; }
-    .xp__certs { grid-template-columns: 1fr; gap: 12px; }
   }
 </style>

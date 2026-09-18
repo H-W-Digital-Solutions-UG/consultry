@@ -59,14 +59,14 @@ export const expertise = {
   // v3 (2026-09-18, Gründer: „Wer Sie überzeugt, baut auch.“ ging am Kern vorbei; Kern:
   // erfahrene Experten, die sich auf den Betrieb einlassen; Expertise plus
   // Kommunikation und Gastlichkeit).
-  heading: "Zwei Experten, die sich auf Ihren Betrieb einlassen.",
+  // v4 (2026-09-18, Gründer): die bisherige Bildunterschrift wird Headline.
+  heading: "Für Ihren Betrieb geplant und gebaut.",
   text: "Erfahrung, Zeit und echtes Interesse an Ihrem Betrieb. So verstehen wir Beratung.",
   // Bildunterschrift der Tischszene (v2, 2026-09-18, Gründer: „Am Tisch, nicht im Ticket“ war
   // das richtige Argument im falschen Muster). Schlichter Satz, kein Kontrast-Slogan.
   // v4 (2026-09-18, Gründer: Maßschneiderei „cooles Wortspiel, passt aber nicht in den
   // professionellen IT-Consulting-Auftritt“). Motiv jetzt ein Systemmodell auf Grundplatte
   // mit Blaupause und Tuschestift: eine Lösung, für einen Betrieb konstruiert.
-  caption: "Für Ihren Betrieb geplant und gebaut.",
   cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
   secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },
 } as const;

@@ -1,0 +1,65 @@
+---
+/**
+ * Zertifikatsleiste (Gründer, 2026-09-18: „eigene Sektion / Strip darunter und größer“):
+ * die Personen-Zertifikate des Gründerteams als nahtlos laufende Leiste direkt unter
+ * der Proof-Szene, gleiche Mechanik wie die Partner-Leiste im Hero (zwei Listen,
+ * translateX(-50%), Pause bei Hover, statisch bei Reduced Motion). Badges gedämpft,
+ * in Farbe bei Hover. Kein Zähler, kein Label; rechts der Link zu allen Nachweisen.
+ */
+import { Image } from "astro:assets";
+import { certifications, expertise } from "../data/content";
+
+const badgeFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/certs/*.png", { eager: true });
+const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
+const list = certifications.map((c) => ({ ...c, img: badge(c.file) })).filter((c) => c.img);
+---
+
+<section class="certs" aria-label="Zertifizierungen im Gründerteam">
+  <div class="container certs__row">
+    <div class="certs__strip">
+      <div class="certs__track">
+        {[0, 1].map((k) => (
+          <ul class="certs__list" aria-hidden={k === 1 ? "true" : undefined}>
+            {list.map((c) => (
+              <li>
+                <Image src={c.img!} alt={k === 0 ? `${c.name} (${c.issuer})` : ""} title={`${c.name}, ${c.issuer}`} width={72} densities={[1, 2]} loading="lazy" />
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
+    <a class="certs__link" href={expertise.secondary.href}>{expertise.secondary.label}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+</section>
+
+<style>
+  .certs { padding-block: 8px 56px; background: var(--paper-2); }
+  .certs__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .certs__strip {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 90%, transparent 100%);
+  }
+  .certs__track { display: flex; width: max-content; animation: certs-marquee 40s linear infinite; }
+  .certs__strip:hover .certs__track { animation-play-state: paused; }
+  .certs__list { list-style: none; margin: 0; padding: 0 0 0 40px; display: flex; align-items: center; gap: 40px; flex: none; }
+  .certs__list img { display: block; width: 72px; height: auto; filter: saturate(0.25); opacity: 0.85; transition: filter 0.25s, opacity 0.25s; }
+  .certs__list li:hover img { filter: none; opacity: 1; }
+  .certs__link { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .certs__link svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
+  .certs__link:hover svg { transform: translateX(3px); }
+  @keyframes certs-marquee { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .certs__strip { -webkit-mask-image: none; mask-image: none; }
+    .certs__track { animation: none; width: auto; flex-wrap: wrap; }
+    .certs__list[aria-hidden="true"] { display: none; }
+    .certs__list { flex-wrap: wrap; padding-left: 0; gap: 20px; }
+  }
+  @media (max-width: 720px) {
+    .certs__row { grid-template-columns: 1fr; gap: 16px; }
+    .certs__list img { width: 56px; }
+    .certs__list { gap: 28px; padding-left: 28px; }
+    .certs__track { animation-duration: 28s; }
+  }
+</style>

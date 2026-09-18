@@ -214,6 +214,7 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 
 | Datum | Änderung |
 |---|---|
+| 2026-09-18 | Zertifikate als eigene Leiste (`CertStrip.astro`) direkt unter der Proof-Szene: Badges 72 px, nahtlos laufend wie die Partner-Leiste (zwei Listen, 40 s, Pause bei Hover, statisch bei Reduced Motion), Kanten per `mask-image` ausgeblendet, rechts „Alle Nachweise“. Kein Zähler, kein Label. Proof-Szene ohne Zertifikatszeile und ohne Bildunterschrift; die Headline lautet jetzt „Für Ihren Betrieb geplant und gebaut.“ |
 | 2026-09-18 | Hero-Fokus-Experiment: neues Hintergrundbild mit einem Lichtpool links hinter der Headline (statt Verlauf von links oben), rechte Hälfte ruhig und dunkel; vier Kandidaten (zwei Pool, zwei Lichtband) im Layout verglichen. Filter auf `saturate(.92) brightness(1)`, Schleier von links auf 14 % und von oben auf 30 % reduziert, `object-position` 30 % 42 %. |
 | 2026-09-18 | Stepper größer und cleaner: Knoten 40 px, Labels unter den Knoten, Linie 1,5 px nur zwischen den Knoten (läuft nicht mehr durch Text), Pfeile an der Knotenzeile ausgerichtet. Proof-Szene: Zähler „8 Zertifikate im Gründerteam“ entfernt; Badges 52 px in einer Reihe, die rechts ausblendet (`mask-image`), daneben „Alle Nachweise“. Es soll sichtbar sein, dass die Reihe weitergeht. |
 | 2026-09-18 | Zehn-Schritte-Slider: Phasen-Pillen durch einen Stepper mit Linie und Knoten ersetzt (siehe Step). |
