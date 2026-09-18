@@ -188,7 +188,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Kern:** AI-Adoption ist niedriger, als die eigene Blase vermuten lässt (Gründer-Einschätzung, keine Zahl). Der breiteste Schmerz der Zielgruppe ist Lärm ohne Ergebnis: Alle reden über AI, im eigenen Betrieb läuft nichts, und niemand weiß, wo anfangen. Der Hero holt genau dort ab, ohne Vorwurf und ohne Voraussetzung.
 
 **Freigegebene Formulierungen:**
-- Headline: „Alle reden über AI. Wir bauen sie ein.“ (v2; „Bei Ihnen läuft sie“ war als Hosting missverständlich und trug den Kernpunkt Engineering nicht)
+- Headline (v3, 2026-09-18): „AI-Chancen nicht nur träumen. Sondern leben.“ Gründer-Wortlaut war „Träume nicht nur von KI-Chancen - Lebe Sie“; übertragen in die Site-Regeln: „AI“ statt „KI“, Infinitiv statt Du-Imperativ (Sie-Form bleibt für Anreden reserviert), Punkt statt Gedankenstrich. Abgelöst: v2 „Alle reden über AI. Wir bauen sie ein.“ (lebt sinngemäß in der Beschreibung weiter: „Wir bauen AI genau dort ein.“); v1 „Bei Ihnen läuft sie“ (Hosting-Missverständnis).
 - Claim: „From Process to Production.“
 - Beschreibung (v4, 2026-09-18): „Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“ (Gründer: „knackiger Hook, max. 2 Sätze“; v3 „Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden …“ und v2 „Sie brauchen keine AI-Strategie …“ abgelöst)
 
@@ -399,6 +399,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v18 (2026-09-18) — Hero-Headline v3 „AI-Chancen nicht nur träumen. Sondern leben.“ (Gründer-Hook, in Site-Regeln übertragen).
 - v17 (2026-09-18) — Hero-Logoleiste nahtlos (ohne Label, volle Breite, langsamer Endlos-Lauf, weiche Ränder); Souveränitäts-Lede nach Gründer-Wortlaut „Schluss mit Vendor Lock-in und teurer Abhängigkeit von Dienstleistern.“
 - v16 (2026-09-18) — Sprachregel Käufersprache (Gründer: „zu abstrakt, die Käufer verstehen das nicht; simpler, aber effektiver“): Zehn Schritte, Chain-Glieder, Capabilities (jetzt deutsch: „Abläufe analysieren“ … „Team befähigen“), Software-Sektion, Showcase-Seite („Ihre Website. Ihr Team pflegt sie selbst.“, Stationen Design → Redaktion → AI-Hilfe → Live) und Einwand-Antworten in einfache Sätze umgeschrieben; Fachbegriffe wie „Pipeline“, „Design-getriebenes CMS“, „Human x AI Workflow“, „AI-native“, „Deployen“ aus der Käufer-Copy entfernt (Technik steht im Kontextdokument).
 - v15 (2026-09-18) — Textreduktion Startseite (Gründer: „zu viel, zu verstreut, überall Text“): Souveränität mit Ein-Satz-Lede („Für jede Aufgabe ein Anbieter. Niemand kennt den ganzen Ablauf.“) und drei Einzeilern; Showcases als Link-Zeilen ohne Beschreibung; Versprechen-Lede „Es scheitert selten am Modell. Vier Einwände, vier Antworten.“; Proof-Szene-Text „Wer im Erstgespräch sitzt, bewertet, baut und bleibt, bis es läuft.“; Software-Teaser mit Kurz-Lede.

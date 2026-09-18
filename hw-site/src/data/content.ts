@@ -10,11 +10,11 @@ export const hero = {
   eyebrow: "AI Transformation & Engineering",
   // Weiches Trennzeichen (­) nur in Wörtern über ca. 14 Zeichen an einer
   // Silbengrenze einfügen; die aktuelle Headline braucht keines.
-  // Hook (2026-09-17): Der breiteste Schmerz ist Lärm ohne Ergebnis; Zeile 1
-  // holt Betriebe ab, bei denen noch nichts läuft. Zeile 2 trägt den Kern
-  // (Engineering in die Abläufe). „Bei Ihnen läuft sie“ war als Hosting
-  // missverständlich und wurde ersetzt.
-  headline: "Alle reden über AI. Wir bauen sie ein.",
+  // Hook v3 (2026-09-18, Gründer-Wortlaut „Träume nicht nur von KI-Chancen,
+  // lebe sie“), in die Site-Regeln übertragen: „AI“ statt „KI“, keine
+  // Du-Anrede (Infinitiv statt Imperativ), kein Gedankenstrich. Zeile 2
+  // (Beschreibung) trägt weiter den Kern: Wir bauen sie ein.
+  headline: "AI-Chancen nicht nur träumen. Sondern leben.",
   claim: "From Process to Production.",
   // v4 (2026-09-18): zwei kurze Sätze, Pain und Win („knackiger Hook, max. 2 Sätze“).
   description: "Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.",
