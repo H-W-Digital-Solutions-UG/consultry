@@ -35,11 +35,13 @@ export const hero = {
   // englische Motto „From Process to Production.“ war den Gründern zu corporate.
   // Claim v3: löst die Headline auf, ohne Abstraktum.
   // Claim v4: die Rolle danach, ohne Parole.
-  claim: "Wir machen daraus einen Ablauf, auf den Verlass ist.",
+  // Claim v6 (2026-09-18, Gründer-Wortlaut, ohne Gedankenstrich gesetzt).
+  claim: "Mit uns erreichen Sie endlich einen Ablauf, der wirklich Wert schafft.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
   // v6: konkret, wo und wie; kein „dort, wo“.
   // v7 (2026-09-18, Gründer-Wortlaut, in die Sie-Form der Site gesetzt).
-  description: "Mit den richtigen Quellen, Regeln und Anbindungen. Wir begleiten Sie, bis es läuft. Holen Sie sich Ihre Souveränität zurück und setzen Sie Ihre Vision in die Tat um, ohne jedes Mal auf Dienstleister oder Agenturen angewiesen zu sein.",
+  // v8: gekürzt (Gründer: „etwas kürzen“).
+  description: "Mit den richtigen Quellen, Regeln und Anbindungen. Wir begleiten Sie, bis es läuft, und Sie holen sich Ihre Souveränität zurück, ohne bei jedem Schritt auf Dienstleister angewiesen zu sein.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
