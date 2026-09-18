@@ -190,7 +190,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Freigegebene Formulierungen:**
 - Headline: „Alle reden über AI. Wir bauen sie ein.“ (v2; „Bei Ihnen läuft sie“ war als Hosting missverständlich und trug den Kernpunkt Engineering nicht)
 - Claim: „From Process to Production.“
-- Beschreibung (v3, 2026-09-18): „Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden. Wir nehmen den Ablauf, der die meiste Zeit frisst, bauen AI hinein und bleiben, bis er im Alltag läuft. Ohne AI-Strategie, ohne Folien.“ (Pain und Win statt der abstrakten Strategie-Zeile; v2 „Sie brauchen keine AI-Strategie, um anzufangen …“ abgelöst)
+- Beschreibung (v4, 2026-09-18): „Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“ (Gründer: „knackiger Hook, max. 2 Sätze“; v3 „Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden …“ und v2 „Sie brauchen keine AI-Strategie …“ abgelöst)
 
 **Abgelöst:** „AI, die in Ihrem Betrieb läuft. Nicht auf Folien.“ (zu lang, Kontrast nur gegen Beratung, nicht gegen den Einstiegsschmerz). Der Folien-Kontrast lebt weiter in „Der Unterschied“.
 
@@ -226,8 +226,8 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Kern:** Die Versprechen-Sektion der Startseite arbeitet mit Einwänden in Kundensprache statt mit Fließtext. Jeder Einwand bekommt einen Hook (eine Zeile Antwort), zwei bis drei Sätze Begründung und einen CTA, der zum passenden Nachweis führt. Reihenfolge nach Häufigkeit der Hürden in der Recherche (Know-how und Zeit, Kosten und Nutzen, Einzelnutzung, Pilot-Falle). Einleitung: „AI-Vorhaben scheitern selten am Modell.“ (qualitativ, gestützt durch MIT NANDA, ohne Zahl).
 
 **Freigegebene Formulierungen (Startseite, v9, gekürzt; Design: Einwand groß in Kundensprache, wird beim Scrollen durchgestrichen, Antwort erscheint daneben):**
-- Lede: „AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Fünf Einwände, die wir kennen, und was wir tun.“
-- „Im Pitch: Senior. In der Lieferung: Junior.“ (v3; v2 „Im Pitch saß die Erfahrung. Geliefert hat jemand anderes.“) → „Wer Sie überzeugt, baut auch.“ CTA „Das Gründerteam“ (`/unternehmen#team`). (Senior-Zusage als erster Einwand, Gründer 2026-09-18)
+- Lede: „AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Vier Einwände, die wir kennen, und was wir tun.“
+- Senior-Zusage nicht mehr in der Liste: eigene Proof-Szene „Wer bei uns baut“ direkt über dem Versprechen (Gründer, 2026-09-18): Zitat „Im Pitch: Senior. In der Lieferung: Junior.“ durchgestrichen, Hook „Wer Sie überzeugt, baut auch.“, Text „Die Erfahrung aus dem Erstgespräch bewertet Ihre Prozesse, baut die Lösung und bleibt, bis sie produktiv läuft. Kein Pitch-Team, das an ein Lieferteam übergibt.“, Kontinuitäts-Grafik (dieselbe Figur von Erstgespräch bis Live), darunter die acht Zertifikate klein und gedämpft mit „8 Zertifikate im Gründerteam. Bei denen, die auch bauen.“ und Link „Alle Nachweise“. Zertifikate stehen nie allein und nicht mehr im Hero.
 - „Wir nutzen doch schon AI.“ → „Einzelne ja. Als Ablauf nein.“ CTA „Ihren Stand klären“ (`/kontakt`).
 - „Dafür haben wir weder Leute noch Zeit.“ (v3; v2 „Uns fehlen Know-how und Zeit.“) → „Wir bringen beides mit. Und geben es weiter.“ CTA „So befähigen wir Ihr Team“ (`/vorgehen#phasen`).
 - „Rechnet sich das überhaupt?“ (v3; v2 „Was kostet das, und was bringt es?“) → „Das sehen Sie, bevor wir bauen.“ CTA „Wie wir bewerten“ (`/leistungen`).
@@ -391,6 +391,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v14 (2026-09-18) — Hero statisch (kein Hintergrund-Scroll, Vignette auf die Copy, entsättigtes Bild), Hero-Beschreibung auf zwei kurze Sätze („Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“); Trust-Leiste nur Partner; neue Proof-Szene „Wer bei uns baut“ (Senior-Zusage plus Zertifikate, klein) über dem Versprechen; Versprechen als gestapelte Bänder (sticky, nach Systango-Aufnahme) mit vier Einwänden und je einer monolinen Visualisierung (Einzelne → Ablauf, Übergabe-Kurven, Potenziale nach Hebel, Pilot → Ihre Systeme).
 - v13 (2026-09-18) — „Unser Versprechen“ als gepinnter Scroll-Stapel (hell, ohne Glas, Nachbarn gedämpft, weiche Maske); Einwände geschärft: „Im Pitch: Senior. In der Lieferung: Junior.“, „Dafür haben wir weder Leute noch Zeit.“, „Rechnet sich das überhaupt?“, „Der Pilot lief. Mehr nicht.“; Zahlen-Labels gekürzt.
 - v12 (2026-09-18) — Showcase „Webauftritt, selbstgesteuert“ (AI-gestütztes CMS, Pipeline Figma → CMS → Human x AI Workflow, Umzug aus WordPress/Typo3) als Seite; Showcase-Karten unter Souveränität.
 - v11 (2026-09-18) — Zahlen-Sektion verworfen; Zahlenpunkte mit Mini-Charts in die Einwand-Zeilen von „Unser Versprechen“ integriert.

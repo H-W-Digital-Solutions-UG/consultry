@@ -2,16 +2,11 @@
 /**
  * Hero der Startseite – „From Process to Production“.
  *
- * Aufbau: Der Bildlayer (.hero__visual) ist sticky und 100svh hoch, die Copy
- * liegt per negativem Margin über dem ersten Viewport und scrollt ganz normal
- * mit der Seite nach oben. Mit JS (src/scripts/hero-scroll.ts) wird die
- * Section zu einem 170vh hohen Track: Das Bild bleibt stehen, während die
- * Copy darüber wegscrollt, und fährt dabei von der Prozess-Seite (links) zur
- * Produktions-Seite (rechts), bis die nächste Sektion es überdeckt.
- *
- * Ohne JS, bei Reduced Motion, Data-Saver oder 2g bleibt der Track 100svh
- * hoch: ein statischer Hero. Auf Phones steht das Bild immer still.
- * Alle Scroll-Visuals: nur transform/opacity aus `--p` (DESIGN.md, 7 und 9).
+ * Statischer Hero (Gründer, 2026-09-18: kein Hintergrund-Scroll mehr): Das
+ * Bild liegt als Fläche hinter Copy und Nachlauf (Slot "after", Trust-Leiste).
+ * Der Fokus wird über das Bild gelenkt, nicht über Bewegung: entsättigt und
+ * abgedunkelt, eine Vignette lässt nur um die Copy Licht, ein Verlauf führt
+ * unten in die Aubergine der nächsten Sektion. Keine Leuchtflecken, kein Glow.
  */
 import { getImage } from "astro:assets";
 import { hero } from "../data/content";
@@ -19,10 +14,8 @@ import heroSource from "../assets/hero.webp";
 
 interface Props {
   imageAlt?: string;
-  /** Scroll-Szene als Progressive Enhancement aktivieren (Standard: ja). */
-  immersive?: boolean;
 }
-const { imageAlt = "", immersive = true } = Astro.props;
+const { imageAlt = "" } = Astro.props;
 
 // LCP-Bild: drei Breiten, damit Phones nicht die 2560px-Variante laden.
 const image = await getImage({
@@ -34,102 +27,63 @@ const image = await getImage({
 });
 ---
 
-<section class="hero section--ink" data-hero={immersive ? "" : undefined}>
-  <div class="hero__track" data-hero-track>
-    <div class="hero__visual" data-hero-stage>
-      <div class="hero__pan">
-        <img
-          class="hero__bg"
-          src={image.src}
-          srcset={image.srcSet.attribute}
-          sizes="100vw"
-          alt={imageAlt}
-          width={image.attributes.width}
-          height={image.attributes.height}
-          fetchpriority="high"
-          decoding="async"
-        />
-      </div>
-      <div class="hero__wash" aria-hidden="true"></div>
-      <div class="hero__shade" aria-hidden="true"></div>
-      <div class="hero__progress" aria-hidden="true"></div>
-    </div>
+<section class="hero section--ink">
+  <div class="hero__visual" aria-hidden="true">
+    <img
+      class="hero__bg"
+      src={image.src}
+      srcset={image.srcSet.attribute}
+      sizes="100vw"
+      alt={imageAlt}
+      width={image.attributes.width}
+      height={image.attributes.height}
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="hero__shade"></div>
+  </div>
 
-    <div class="hero__content">
-      <div class="container hero__copy">
-        <div class="reveal" style="--delay: .1s"><p class="eyebrow">{hero.eyebrow}</p></div>
-        <div class="reveal" style="--delay: .25s"><h1>{hero.headline}</h1></div>
-        <div class="reveal" style="--delay: .4s"><p class="hero__claim">{hero.claim}</p></div>
-        <div class="reveal" style="--delay: .55s"><p class="hero__desc">{hero.description}</p></div>
-        <div class="hero__actions reveal" style="--delay: .7s">
-          <a class="btn btn--primary" href={hero.primaryCta.href}>
-            {hero.primaryCta.label}
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-          <a class="btn btn--ghost" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
-        </div>
+  <div class="hero__content">
+    <div class="container hero__copy">
+      <div class="reveal" style="--delay: .1s"><p class="eyebrow">{hero.eyebrow}</p></div>
+      <div class="reveal" style="--delay: .25s"><h1>{hero.headline}</h1></div>
+      <div class="reveal" style="--delay: .4s"><p class="hero__claim">{hero.claim}</p></div>
+      <div class="reveal" style="--delay: .55s"><p class="hero__desc">{hero.description}</p></div>
+      <div class="hero__actions reveal" style="--delay: .7s">
+        <a class="btn btn--primary" href={hero.primaryCta.href}>
+          {hero.primaryCta.label}
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a class="btn btn--ghost" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
       </div>
     </div>
+  </div>
 
-    <!-- Nachlauf: liegt nach der Copy über dem stehenden Bild (Slot "after",
-         z. B. die Trust-Leiste). -->
-    <div class="hero__after">
-      <div class="container"><slot name="after" /></div>
-    </div>
+  <!-- Nachlauf: Trust-Leiste auf dem unteren, in Aubergine auslaufenden Bildrand. -->
+  <div class="hero__after">
+    <div class="container"><slot name="after" /></div>
   </div>
 </section>
 
-<script>
-  import { createHeroScene } from "../scripts/hero-scroll";
-
-  const disposers = new Map<Element, () => void>();
-  const init = () => {
-    document.querySelectorAll<HTMLElement>("[data-hero]").forEach((el) => {
-      if (!disposers.has(el)) disposers.set(el, createHeroScene(el));
-    });
-  };
-  // astro:before-swap / astro:page-load: vorwärtskompatibel mit dem ClientRouter (View Transitions).
-  document.addEventListener("astro:before-swap", () => {
-    disposers.forEach((dispose) => dispose());
-    disposers.clear();
-  });
-  document.addEventListener("astro:page-load", init);
-  init();
-</script>
-
 <style>
   .hero {
-    --hero-pad-b: clamp(20px, 3vw, 36px);
     --nav-h: 74px;
-    --p: 0;
-    --scene-reveal: 0;
-    --scene-carry: 0;
     position: relative;
-    background: var(--ink);
-  }
-  .hero__track {
-    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-rows: 1fr auto;
     min-height: 100svh;
     min-height: 100dvh;
-  }
-
-  /* Bildlayer: sticky, ein Viewport hoch. Ohne Szene hat er keinen Weg und
-     steht damit still; in der Szene bleibt er stehen, während die Copy
-     darüber wegscrollt. */
-  .hero__visual {
-    position: sticky;
-    top: 0;
-    height: 100svh;
-    height: 100dvh;
-    min-height: 560px;
+    background: var(--ink);
     overflow: hidden;
   }
-  .hero__pan {
+
+  /* Bildfläche hinter allem. Entsättigt und abgedunkelt: das Motiv trägt
+     Stimmung, nicht Leuchtkraft. */
+  .hero__visual {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
+    z-index: -1;
   }
   .hero__bg {
     position: absolute;
@@ -137,84 +91,28 @@ const image = await getImage({
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 70% center;
-    opacity: 0.9;
+    object-position: 68% 45%;
+    filter: saturate(0.72) brightness(0.78) contrast(1.02);
   }
-  /* Farbwash: Lavendel (Prozess) links, Magenta (Produktion) rechts, per --p
-     gegeneinander geblendet. Weiche lineare Verläufe, keine Leuchtflecken. */
-  .hero__wash {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-  .hero__wash::before,
-  .hero__wash::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-  }
-  .hero__wash::before {
-    background: linear-gradient(105deg, color-mix(in oklab, var(--process) 6%, transparent) 0%, transparent 40%);
-    opacity: calc(1 - var(--p));
-  }
-  .hero__wash::after {
-    background: linear-gradient(255deg, color-mix(in oklab, var(--production) 5%, transparent) 0%, transparent 40%);
-    opacity: var(--p);
-  }
+  /* Vignette auf die Copy: Licht bleibt links oben um den Textblock, Ränder
+     und Unterkante laufen in Aubergine aus. Zusätzlich ein weicher Schleier
+     links für die Lesbarkeit. */
   .hero__shade {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    /* Statischer Teil: ein Schleier über dem mittleren Band gegen das
-       Einlauf-Leuchten, dazu ein leiser Markenlila-Hauch (DESIGN.md, 3). */
     background:
-      linear-gradient(111deg, transparent 28%, color-mix(in oklab, var(--ink) 12%, transparent) 50%, transparent 72%),
-      linear-gradient(111deg, rgba(81, 29, 150, 0.12) 0%, rgba(53, 26, 89, 0) 70%);
-  }
-  /* Lesbarkeits-Schleier: unten dicht, links für den Textblock. Sobald die
-     Copy weggescrollt ist, zieht er sich mit --p zur Hälfte zurück, damit
-     der Nachlauf das Motiv zeigt statt einer schwarzen Fläche. */
-  .hero__shade::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(to top, rgba(21, 4, 43, 0.96) 0%, rgba(21, 4, 43, 0.45) 45%, rgba(21, 4, 43, 0.18) 100%),
-      linear-gradient(to right, rgba(21, 4, 43, 0.9) 0%, rgba(21, 4, 43, 0.55) 35%, rgba(21, 4, 43, 0) 68%);
-    opacity: calc(1 - 0.5 * var(--p));
-  }
-  .hero__progress {
-    display: none;
+      radial-gradient(120% 90% at 30% 42%, rgba(21, 4, 43, 0) 0%, rgba(21, 4, 43, 0.35) 45%, rgba(21, 4, 43, 0.86) 100%),
+      linear-gradient(to top, rgba(21, 4, 43, 1) 0%, rgba(21, 4, 43, 0.72) 22%, rgba(21, 4, 43, 0) 55%),
+      linear-gradient(to right, rgba(21, 4, 43, 0.72) 0%, rgba(21, 4, 43, 0.38) 38%, rgba(21, 4, 43, 0) 66%),
+      linear-gradient(to bottom, rgba(21, 4, 43, 0.55) 0%, rgba(21, 4, 43, 0) 30%);
   }
 
-  /* Copy: liegt über dem ersten Viewport (negativer Margin gegen den
-     sticky Bildlayer) und scrollt normal mit. */
+  /* Copy: vertikal in der Bildfläche zentriert, bündig mit der Container-Kante. */
   .hero__content {
-    position: relative;
-    z-index: 1;
-    margin-top: -100svh;
-    margin-top: -100dvh;
     display: flex;
-    align-items: flex-start;
-    padding-block: calc(var(--nav-h) + clamp(40px, 10vh, 120px)) var(--hero-pad-b);
+    align-items: center;
+    padding-block: calc(var(--nav-h) + clamp(32px, 8vh, 96px)) clamp(28px, 5vh, 56px);
   }
-
-  @media (min-height: 561px) {
-    .hero__visual { min-height: 0; }
-  }
-  @supports not (height: 100svh) {
-    .hero__visual { height: 100vh; min-height: 100vh; }
-    .hero__content { margin-top: -100vh; }
-  }
-  /* Nachlauf unter der Copy: ohne Szene ein schlanker Streifen auf Aubergine,
-     in der Szene die Fläche, in der das Bild sichtbar bleibt. */
-  .hero__after {
-    position: relative;
-    z-index: 1;
-    padding-block: 0 24px;
-  }
-  .hero__after:empty { display: none; }
-  /* Copy bündig mit der Container-Kante (Logo), Zeilenlänge über die Kinder begrenzt */
   .hero__copy > * {
     max-width: 760px;
   }
@@ -245,13 +143,17 @@ const image = await getImage({
     margin-top: 32px;
   }
 
+  /* Nachlauf: Trust-Leiste auf dem in Aubergine ausgelaufenen Bildrand. */
+  .hero__after {
+    padding-block: 0 24px;
+  }
+  .hero__after:empty { display: none; }
+
   /* Flache Viewports (max. 700 px hoch): Copy kompakter, nichts wird beschnitten. */
   @media (max-height: 700px) {
-    .hero {
-      --hero-pad-b: 24px;
-    }
     .hero__content {
       padding-top: calc(var(--nav-h) + 24px);
+      padding-bottom: 20px;
     }
     .hero h1 {
       margin-top: 10px;
@@ -276,85 +178,14 @@ const image = await getImage({
     }
   }
 
-  /* ---------------------------------------------------------------
-     Scroll-Szene (nur mit JS, gesetzt über data-scene="on")
-     --------------------------------------------------------------- */
-  /* Leiste schließt direkt an die Copy an; der Rest des Nachlaufs (bis 34vh)
-     bleibt als Bildfläche, über die die nächste Sektion hereinschiebt. */
-  .hero[data-scene="on"] .hero__after {
-    min-height: 34vh;
-    display: block;
-    padding-block: 0 24px;
-  }
-  /* Bildlayer breiter als der Viewport: Kamerafahrt von Bildlinks (Prozess)
-     nach Bildrechts (Produktion), Skalierung 1.075 -> 1.015, leise Drift. */
-  .hero[data-scene="on"] .hero__pan {
-    width: max(178svh, 150vw);
-    will-change: transform;
-    transform: translate3d(calc(var(--p) * (100vw - 100%)), calc(var(--p) * -1.5%), 0)
-      scale(calc(1.075 - 0.06 * var(--p)));
-  }
-  .hero[data-scene="on"] .hero__bg {
-    object-position: 50% 40%;
-  }
-  /* Fortschrittslinie am unteren Bildrand: Achse in voller Breite, eine
-     Aubergine-Abdeckung schiebt sich mit --p nach rechts weg. */
-  .hero[data-scene="on"] .hero__progress {
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    overflow: hidden;
-    background: var(--axis);
-    z-index: 2;
-  }
-  .hero[data-scene="on"] .hero__progress::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--ink);
-    opacity: 0.88;
-    transform: translate3d(calc(var(--p) * 100%), 0, 0);
-  }
-
-  /* Phone: Bild steht still, kein Nachlauf; der Hero ist einen Viewport hoch. */
   @media (max-width: 899px) {
-    .hero[data-scene="on"] .hero__after {
-      min-height: 0;
-      display: block;
-      padding-block: 28px 32px;
+    .hero__bg { object-position: 72% center; }
+    .hero__shade {
+      background:
+        linear-gradient(to top, rgba(21, 4, 43, 1) 0%, rgba(21, 4, 43, 0.8) 30%, rgba(21, 4, 43, 0.35) 70%, rgba(21, 4, 43, 0.55) 100%),
+        radial-gradient(110% 70% at 40% 40%, rgba(21, 4, 43, 0) 0%, rgba(21, 4, 43, 0.6) 100%);
     }
-    .hero[data-scene="on"] .hero__pan {
-      width: 100%;
-      will-change: auto;
-      transform: none;
-    }
-    .hero[data-scene="on"] .hero__bg {
-      object-position: 70% center;
-    }
-    .hero[data-scene="on"] .hero__progress {
-      display: none;
-    }
-  }
-
-  /* Sicherheitsnetz: Reduced Motion neutralisiert die Szene auch dann,
-     wenn das Skript sie bereits aktiviert hatte. */
-  @media (prefers-reduced-motion: reduce) {
-    .hero[data-scene="on"] .hero__after {
-      min-height: 0;
-      display: block;
-      padding-block: 28px 32px;
-    }
-    .hero[data-scene="on"] .hero__pan {
-      width: 100%;
-      transform: none;
-      will-change: auto;
-    }
-    .hero[data-scene="on"] .hero__progress {
-      display: none;
-    }
+    .hero__after { padding-block: 8px 28px; }
   }
   @media (max-width: 859px) {
     .hero { --nav-h: 65px; }

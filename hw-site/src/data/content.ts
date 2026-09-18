@@ -16,20 +16,34 @@ export const hero = {
   // missverständlich und wurde ersetzt.
   headline: "Alle reden über AI. Wir bauen sie ein.",
   claim: "From Process to Production.",
-  // v3 (2026-09-18): Pain (Team sucht, wartet, erfasst doppelt) und Win
-  // (der Ablauf läuft) statt der abstrakten Strategie-Zeile.
-  description:
-    "Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden. Wir nehmen den Ablauf, der die meiste Zeit frisst, bauen AI hinein und bleiben, bis er im Alltag läuft. Ohne AI-Strategie, ohne Folien.",
+  // v4 (2026-09-18): zwei kurze Sätze, Pain und Win („knackiger Hook, max. 2 Sätze“).
+  description: "Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
+} as const;
+
+/**
+ * Proof-Szene „Wer bei uns baut“ (Gründer, 2026-09-18): Senior-Zusage als
+ * eigener Block über dem Versprechen, kombiniert mit den Zertifikaten
+ * (klein, unprominent, nie allein stehend). Muster benennen, nicht angreifen.
+ */
+export const expertise = {
+  eyebrow: "Wer bei uns baut",
+  quote: "Im Pitch: Senior. In der Lieferung: Junior.",
+  heading: "Wer Sie überzeugt, baut auch.",
+  text: "Die Erfahrung aus dem Erstgespräch bewertet Ihre Prozesse, baut die Lösung und bleibt, bis sie produktiv läuft. Kein Pitch-Team, das an ein Lieferteam übergibt.",
+  certsLabel: "Zertifikate im Gründerteam. Bei denen, die auch bauen.",
+  cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
+  secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },
 } as const;
 
 export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
   // Einordnung ohne Zahlen. Recherche und Quellen: .agents/product-marketing.md,
   // Abschnitt „Problems & Pain Points“ (v8, 2026-09-18). Kurzfassung v9.
-  lede: "AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Fünf Einwände, die wir kennen, und was wir tun.",
-  // Fünf Einwände in Kundensprache: Zitat, Hook, ein Satz, passender CTA.
+  lede: "AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Vier Einwände, die wir kennen, und was wir tun.",
+  // Vier Einwände in Kundensprache: Zitat, Hook, ein Satz, passender CTA.
+  // Die Senior-Zusage steht als eigene Szene darüber (`expertise`).
   // `data`: ein belegter Zahlenpunkt je Einwand (v11, Gründer: „Zahlen geben
   // Trust und Proof“). Nur Primärquellen, exakt wie veröffentlicht, Quelle am
   // Element. Bitkom: Presseinformation „Digitalisierung der Wirtschaft“,
@@ -37,19 +51,11 @@ export const promise = {
   // LinkedIn, Work Trend Index 2024, 31.000 Befragte in 31 Ländern.
   objections: [
     {
-      // Senior-Zusage (Gründer, 2026-09-18) als erster Einwand, Muster benannt, nicht angegriffen.
-      quote: "Im Pitch: Senior. In der Lieferung: Junior.",
-      hook: "Wer Sie überzeugt, baut auch.",
-      text: "Die Erfahrung aus dem Erstgespräch bewertet Ihre Prozesse, baut die Lösung und bleibt, bis sie produktiv läuft.",
-      cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
-      // Eigener, prüfbarer Fakt (certifications).
-      data: { value: 8, unit: "", label: "Zertifikate im Gründerteam. Bei denen, die auch bauen", chart: "dots" as const, series: [{ v: 8, name: "" }], source: "Nachweise auf der Unternehmensseite" },
-    },
-    {
       quote: "Wir nutzen doch schon AI.",
       hook: "Einzelne ja. Als Ablauf nein.",
       text: "Alle arbeiten, wie sie es für richtig halten, und niemand misst. Wir machen daraus einen Ablauf für das ganze Team.",
       cta: { label: "Ihren Stand klären", href: "/kontakt" },
+      viz: "align" as const,
       data: { value: 78, unit: "%", label: "der AI-Nutzer bringen eigene Tools mit zur Arbeit. Ohne Vorgabe von oben", chart: "ring" as const, series: [{ v: 78, name: "" }], source: "Work Trend Index 2024, Microsoft und LinkedIn" },
     },
     {
@@ -57,6 +63,7 @@ export const promise = {
       hook: "Wir bringen beides mit. Und geben es weiter.",
       text: "Wir bauen die Lösung und zeigen Ihrem Team, wie es sie weiterführt. Ohne für jeden Schritt einen Dienstleister.",
       cta: { label: "So befähigen wir Ihr Team", href: "/vorgehen#phasen" },
+      viz: "handover" as const,
       data: { value: 66, unit: "%", label: "der Unternehmen fehlt die Zeit für Digitalisierung, 70 % fehlen die Fachkräfte", chart: "bars" as const, series: [{ v: 66, name: "Zeit" }, { v: 70, name: "Fachkräfte" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
     },
     {
@@ -64,6 +71,7 @@ export const promise = {
       hook: "Das sehen Sie, bevor wir bauen.",
       text: "Jedes Potenzial wird vorher wirtschaftlich und technisch bewertet. Gebaut wird, was sich rechnet.",
       cta: { label: "Wie wir bewerten", href: "/leistungen" },
+      viz: "rank" as const,
       data: { value: 59, unit: "%", label: "der Führungskräfte können den Nutzen von AI nicht beziffern. 60 % fehlt ein Plan", chart: "bars" as const, series: [{ v: 59, name: "Nutzen unklar" }, { v: 60, name: "Kein Plan" }], source: "Work Trend Index 2024" },
     },
     {
@@ -71,6 +79,7 @@ export const promise = {
       hook: "Wir bauen dort ein, wo Ihr Team arbeitet.",
       text: "In Ihren Systemen, mit Datenschutz und Sicherheit von Anfang an. Wo die Lösung läuft, entscheiden Sie.",
       cta: { label: "Was wir selbst bauen", href: "/leistungen" },
+      viz: "pilot" as const,
       data: { value: 41, unit: "%", label: "der Unternehmen setzen AI ein. 48 % planen und diskutieren noch", chart: "stack" as const, series: [{ v: 41, name: "im Einsatz" }, { v: 48, name: "geplant" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
     },
   ],

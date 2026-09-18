@@ -6,8 +6,9 @@
  * fünf fremde Marken nicht fünf Farbwelten in die Seite tragen.
  *
  * variant="strip": Trust-Leiste im Hero-Nachlauf (Slot "after" von Hero.astro):
- *   zwei Reihen, Elemente blenden beim Laden gestaffelt ein (`--start` je
- *   Element als Verzögerungsfaktor).
+ *   nur die Partner (Gründer, 2026-09-18: Zertifikate wandern in die Proof-Szene
+ *   „Wer bei uns baut“ über dem Versprechen);
+ *   Elemente blenden beim Laden gestaffelt ein (`--start` je Element).
  * variant="full":  Unternehmensseite mit Namen und Ausstellern, dazu Partner.
  */
 import { Image } from "astro:assets";
@@ -27,29 +28,13 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
 
 {strip ? (
   <div class="strip">
-    <div class="strip__group strip__group--certs">
-      <a class="strip__label" href="/unternehmen#nachweise" style="--start: 0.06">
-        <span>Zertifiziert im Gründerteam</span>
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
-      <ul class="strip__badges">
-        {certifications.map((c, i) => {
-          const img = badge(c.file);
-          return (
-            <li style={`--start: ${(0.12 + i * 0.045).toFixed(3)}`}>
-              {img && <Image src={img} alt={`${c.name} (${c.issuer})`} title={`${c.name}, ${c.issuer}`} width={64} densities={[1, 2]} loading="lazy" />}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
     <div class="strip__group strip__group--partners">
-      <p class="strip__label" style="--start: 0.24"><span>Partner</span></p>
+      <p class="strip__label" style="--start: 0.06"><span>Partner</span></p>
       <ul class="strip__partners">
         {partners.map((p, i) => {
           const img = logo(p.file);
           return (
-            <li style={`--start: ${(0.3 + i * 0.06).toFixed(3)}`}>
+            <li style={`--start: ${(0.12 + i * 0.06).toFixed(3)}`}>
               <a class="logo-link" href={p.href} rel="noopener" target="_blank" aria-label={`${p.name} (öffnet in neuem Tab)`}>
                 {img && <span class="logo" style={`--logo: url(${img.src}); --ratio: ${(img.width / img.height).toFixed(3)}`} aria-hidden="true"></span>}
               </a>
@@ -127,8 +112,6 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
     padding-block: 14px;
     align-items: center;
   }
-  .strip__group + .strip__group { border-top: 1px solid var(--line); }
-  :global(.section--ink) .strip__group + .strip__group { border-top-color: var(--line-on-ink); }
   @media (min-width: 900px) {
     .strip__group { grid-template-columns: 240px 1fr; gap: 32px; }
   }
@@ -149,32 +132,32 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
   .strip__badges { gap: 14px; }
   .strip__badges li { display: flex; }
   .strip__badges img {
-    display: block; width: 64px; height: auto;
+    display: block; width: 52px; height: auto;
     filter: saturate(0.15);
     opacity: 0.85;
     transition: filter 0.25s, opacity 0.25s, transform 0.25s var(--ease-out);
   }
   .strip__badges li:hover img, .strip__badges li:focus-within img { filter: none; opacity: 1; transform: translateY(-2px); }
-  .strip__partners { gap: 8px 36px; --logo-h: 28px; }
-  .strip__partners .logo { max-width: 190px; }
+  .strip__partners { gap: 10px 40px; --logo-h: 32px; }
+  .strip__partners .logo { max-width: 240px; }
+  .strip__group--partners .logo-link { height: 48px; }
 
-  /* Einblenden beim Laden, gestaffelt über --start (nach der Hero-Copy),
-     nur in der Hero-Szene auf Desktop; sonst sofort sichtbar. */
-  :global(.hero[data-scene="on"]) :is(.strip__label, .strip__badges li, .strip__partners li) {
+  /* Einblenden beim Laden, gestaffelt über --start (nach der Hero-Copy). */
+  :global(.hero) :is(.strip__label, .strip__badges li, .strip__partners li) {
     opacity: 0;
     animation: fade-up 0.7s var(--ease-out) forwards;
     animation-delay: calc(0.85s + var(--start, 0) * 1.4s);
   }
   @media (prefers-reduced-motion: reduce) {
-    :global(.hero[data-scene="on"]) :is(.strip__label, .strip__badges li, .strip__partners li) {
+    :global(.hero) :is(.strip__label, .strip__badges li, .strip__partners li) {
       opacity: 1;
       animation: none;
     }
   }
   @media (max-width: 599px) {
     .strip__badges { gap: 10px; }
-    .strip__badges img { width: 48px; }
-    .strip__partners { gap: 6px 24px; --logo-h: 22px; }
+    .strip__badges img { width: 44px; }
+    .strip__partners { gap: 8px 26px; --logo-h: 26px; }
   }
 
   /* ---- Volle Sektion ---- */
