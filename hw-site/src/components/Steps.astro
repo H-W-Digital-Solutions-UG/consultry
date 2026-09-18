@@ -46,12 +46,16 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
 <div class="lock" data-lock>
 <div class="slider" data-slider>
   <div class="slider__head">
-    <div class="slider__tabs" role="tablist" aria-label="Phasen">
+    <!-- Stepper (Gründer, 2026-09-18: „smootheres Design, professionell, stepper line like“):
+         vier Stationen auf einer Linie, Ziffer im Knoten, Phase und Schrittzahl daneben. -->
+    <div class="slider__steps" role="tablist" aria-label="Phasen">
       {phases.map((p, i) => (
-        <button class={`slider__tab slider__tab--${p.key}`} type="button" role="tab" aria-selected={i === 0 ? "true" : "false"} data-tab={p.first}>
-          <span class="slider__tab-n">{String(i + 1).padStart(2, "0")}</span>
-          {p.label}
-          <span class="slider__tab-count">{p.count}</span>
+        <button class={`step step--${p.key}`} type="button" role="tab" aria-selected={i === 0 ? "true" : "false"} data-tab={p.first}>
+          <span class="step__node" aria-hidden="true">{i + 1}</span>
+          <span class="step__text">
+            <span class="step__label">{p.label}</span>
+            <span class="step__count">{p.count} {p.count === 1 ? "Schritt" : "Schritte"}</span>
+          </span>
         </button>
       ))}
     </div>
@@ -167,7 +171,7 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
       if (x >= max - 2) idx = cards.length - 1;
       let active = 0;
       tabs.forEach((t, i) => { if (idx >= Number(t.dataset.tab)) active = i; });
-      tabs.forEach((t, i) => t.setAttribute("aria-selected", i === active ? "true" : "false"));
+      tabs.forEach((t, i) => { t.setAttribute("aria-selected", i === active ? "true" : "false"); t.toggleAttribute("data-done", i < active); });
     };
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
 
@@ -210,35 +214,47 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
     justify-content: space-between;
     gap: 14px 24px;
   }
-  .slider__tabs { display: flex; flex-wrap: wrap; gap: 6px; }
-  .slider__tab {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 14px 9px 12px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-pill);
-    background: transparent;
-    font-family: var(--font-display);
-    font-size: 0.88rem;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    color: var(--fg-muted);
-    cursor: pointer;
-    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+  /* Stepper: Knoten auf einer durchgehenden Linie. Aktiv gefüllt, passiert umrandet,
+     kommend gedämpft. Die Linie läuft hinter den Knoten von Station zu Station. */
+  .slider__steps { display: flex; align-items: flex-start; flex: 1 1 520px; max-width: 760px; }
+  .step {
+    position: relative; flex: 1 1 0; min-width: 0;
+    display: flex; align-items: center; gap: 12px;
+    padding: 6px 28px 6px 0; margin: 0; border: 0; background: transparent; text-align: left;
+    cursor: pointer; color: var(--fg-muted);
   }
-  .slider__tab:hover { color: var(--fg); border-color: var(--line-strong); }
-  .slider__tab[aria-selected="true"] { color: var(--fg); background: var(--paper); border-color: var(--line-strong); }
-  .slider__tab-n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--accent); }
-  .slider__tab-count {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    padding: 2px 7px;
-    border-radius: var(--radius-pill);
-    background: var(--paper-2);
-    color: var(--fg-muted);
+  .step:last-child { flex: 0 0 auto; padding-right: 0; }
+  .step::after {
+    content: ""; position: absolute; top: 50%; left: 40px; right: 12px; height: 1px;
+    background: var(--line); transform: translateY(-0.5px);
   }
-  .slider__tab[aria-selected="true"] .slider__tab-count { background: var(--accent); color: #fff; }
+  .step:last-child::after { display: none; }
+  .step__node {
+    flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1.5px solid var(--line-strong); background: var(--paper);
+    font-family: var(--font-display); font-size: 0.8rem; font-weight: 600; color: var(--fg-muted);
+    transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+  }
+  .step__text { display: grid; gap: 1px; min-width: 0; }
+  .step__label { font-family: var(--font-display); font-size: 0.92rem; font-weight: 600; letter-spacing: -0.005em; color: var(--fg-muted); white-space: nowrap; transition: color 0.2s; }
+  .step__count { font-size: 0.76rem; color: var(--fg-muted); opacity: 0.8; white-space: nowrap; }
+  .step:hover .step__label, .step:hover .step__node { color: var(--fg); }
+  .step:hover .step__node { border-color: var(--fg); }
+  .step[data-done] .step__node { border-color: var(--accent); color: var(--accent); }
+  .step[data-done]::after { background: var(--accent); opacity: 0.45; }
+  .step[aria-selected="true"] .step__node { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .step[aria-selected="true"] .step__label { color: var(--fg); }
+  .step:focus-visible { outline: none; }
+  .step:focus-visible .step__node { outline: 2px solid var(--accent); outline-offset: 3px; }
+  @media (max-width: 599px) {
+    .slider__steps { flex-basis: 100%; }
+    .step { gap: 8px; padding-right: 16px; }
+    .step::after { left: 32px; right: 6px; }
+    .step__node { width: 26px; height: 26px; font-size: 0.72rem; }
+    .step__label { font-size: 0.8rem; }
+    .step__count { display: none; }
+  }
   .slider__arrows { display: flex; gap: 8px; }
   .slider__arrow {
     width: 42px;

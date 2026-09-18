@@ -145,8 +145,9 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 - Hell: `--paper` (oder `--paper-2` gedämpft), Rahmen `--line`, `--radius-lg`, Innenabstand 22–32 px, optional `--shadow-sm`; Hover: Rahmen `--line-strong`, `translateY(-2px)`.
 - Dunkel: `--ink-2`, Rahmen `--line-on-ink`. Hervorgehobene Karte: Achsen-Rahmen über `padding-box`/`border-box`-Verlauf plus `--shadow-glow`.
 
-### Step (`Steps.astro`, nicht Teil dieses Änderungsstands)
-- Zehn Schritte im geteilten Raster (`gap: 1px` auf `--line`), Nummer in Sora 600, Phase als `.tag`, Titel `h3`, Text `--fg-muted`. Vorgesehen: monolines Icon (siehe 8) links oben oder neben der Nummer.
+### Step (`Steps.astro`)
+- Zehn Schritte als horizontaler Slider (Karten mit monolinem Icon, Nummer in Mono, Phase als `.tag`, Titel `h3`, Text `--fg-muted`), Pfeile rechts.
+- Phasen-Navigation als Stepper (seit 2026-09-18, Gründer: „smootheres Design, professionell, stepper line like“ statt Pillen-Tabs): vier Stationen auf einer durchgehenden 1-px-Linie in `--line`; Knoten 30 px rund mit Ziffer (Sora 600, 0,8 rem), daneben Phase (Sora 600, 0,92 rem) und Schrittzahl (0,76 rem, gedämpft). Aktiv: Knoten in `--accent` gefüllt, Label `--fg`. Passiert (`data-done`): Knoten in `--accent` umrandet, Linie zum nächsten Knoten in `--accent` bei 45 %. Kommend: gedämpft. Fokusring auf dem Knoten. Unter 600 px: Knoten 26 px, Schrittzahl ausgeblendet.
 
 ### Chain (`Chain.astro`)
 - Horizontale Achse (`--axis`, 2 px) mit interpolierten Punkten; auf `--ink`. Labels `--fg-on-ink-muted`. Optional Three.js-Szene als Progressive Enhancement (siehe 9), die Chain bleibt ohne JS vollständig lesbar.
@@ -213,6 +214,7 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 
 | Datum | Änderung |
 |---|---|
+| 2026-09-18 | Zehn-Schritte-Slider: Phasen-Pillen durch einen Stepper mit Linie und Knoten ersetzt (siehe Step). |
 | 2026-09-18 | Proof-Szene: Motiv Systemmodell (Grundplatte, fünf Module, eines wird gesetzt, Blaupause, Tuschestift) statt Maßschneiderei, Gründer: „cooles Wortspiel, passt aber nicht in den professionellen IT-Consulting-Auftritt“. Freisteller wie zuvor, Bildunterschrift „Für Ihren Betrieb geplant und gebaut.“ Verworfen: Architekturmodell mit Blaupause (liest sich als Immobilie). |
 | 2026-09-18 | Proof-Szene: Motiv Maßschneiderei (Stoffballen, Maßband, Kreide, Schere, Schnittmuster) statt Tischszene, Gründer: Professionalität, Seniorität, „zugeschnittenes Senior Consulting statt Massengeschäft wie KPMG oder EY“. Freisteller wie zuvor, Bildunterschrift „Zugeschnitten auf Ihren Betrieb.“ Verworfen: gefeilter Schlüssel mit Schloss (liest sich als Spielzeug). |
 | 2026-09-18 | Proof-Szene als Freisteller (Gründer: „schwebend auf hellem Background, kein eigener deckender Background; hohe Qualität, professionell, minimalistisch“): die Tischszene als isoliertes Render auf Weiß erzeugt (GPT Image 2.5), 4K-Upscale, Hintergrund per Higgsfield entfernt, als WebP mit Alpha; kein Kasten mehr, `filter: drop-shadow` trägt das Objekt, Bildunterschrift „Am Tisch, nicht im Ticket.“ als gedämpfter Text darunter. Regel: Bildkarten mit eigener dunkler Fläche bleiben den Showcases vorbehalten; Proof- und Erklärvisuals schweben auf Papier. |
