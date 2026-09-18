@@ -7,7 +7,8 @@ import Capabilities from "../components/Capabilities.astro";
 import Cta from "../components/Cta.astro";
 import SectionCta from "../components/SectionCta.astro";
 import Proof from "../components/Proof.astro";
-import { promise, sovereignty, software } from "../data/content";
+import Stats from "../components/Stats.astro";
+import { promise, sovereignty, software, stats } from "../data/content";
 import { company } from "../data/company";
 ---
 
@@ -20,7 +21,7 @@ import { company } from "../data/company";
     <Proof slot="after" variant="strip" />
   </Hero>
 
-  <section class="section promise">
+  <section class="section promise" id="versprechen">
     <div class="container">
       <div class="promise__head">
         <div>
@@ -49,11 +50,25 @@ import { company } from "../data/company";
     </div>
   </section>
 
+  <section class="section section--ink statsec">
+    <div class="container">
+      <div class="statsec__head">
+        <div>
+          <p class="eyebrow" data-n="02">{stats.eyebrow}</p>
+          <h2 class="sec__h">{stats.heading}</h2>
+        </div>
+        <p class="lede statsec__lede">{stats.lede}</p>
+      </div>
+      <div class="sec__body"><Stats /></div>
+      <SectionCta line="Welche Zahl kennen Sie aus Ihrem Haus?" secondary={{ label: "So arbeiten wir", href: "/vorgehen" }} />
+    </div>
+  </section>
+
   <section class="section section--paper-2 sov">
     <div class="container">
       <div class="sov__grid">
         <div>
-          <p class="eyebrow" data-n="02">{sovereignty.eyebrow}</p>
+          <p class="eyebrow" data-n="03">{sovereignty.eyebrow}</p>
           <h2 class="sec__h">{sovereignty.heading}</h2>
         </div>
         <p class="lede sov__lede">{sovereignty.text}</p>
@@ -75,7 +90,7 @@ import { company } from "../data/company";
     <div class="container">
       <Chain>
         <Fragment slot="heading">
-          <p class="eyebrow" data-n="03">From Process to Production</p>
+          <p class="eyebrow" data-n="04">From Process to Production</p>
           <h2 class="chainsec__h">Zwölf Schritte, ein Team, keine Übergabe.</h2>
         </Fragment>
       </Chain>
@@ -86,7 +101,7 @@ import { company } from "../data/company";
   <section class="section section--paper-2 seven">
     <div class="container seven__grid">
       <div>
-        <p class="eyebrow" data-n="04">Das Leistungsbild</p>
+        <p class="eyebrow" data-n="05">Das Leistungsbild</p>
         <h2 class="sec__h">Technologie kommt bei uns erst an Schritt sieben.</h2>
       </div>
       <div class="seven__side">
@@ -98,7 +113,7 @@ import { company } from "../data/company";
 
   <section class="section section--ink">
     <div class="container">
-      <p class="eyebrow" data-n="05">Der Unterschied</p>
+      <p class="eyebrow" data-n="06">Der Unterschied</p>
       <h2 class="sec__h">Wo Beratung aufhört, fangen wir an.</h2>
       <div class="sec__body"><Contrast /></div>
       <SectionCta line="Lieber ein Ergebnis als eine Roadmap?" />
@@ -108,7 +123,7 @@ import { company } from "../data/company";
   <section class="section soft">
     <div class="container soft__grid">
       <div>
-        <p class="eyebrow" data-n="06">{software.eyebrow}</p>
+        <p class="eyebrow" data-n="07">{software.eyebrow}</p>
         <h2 class="sec__h">{software.heading}</h2>
       </div>
       <div class="soft__side">
@@ -126,7 +141,7 @@ import { company } from "../data/company";
 
   <section class="section section--paper-2">
     <div class="container">
-      <p class="eyebrow" data-n="07">Womit wir bauen</p>
+      <p class="eyebrow" data-n="08">Womit wir bauen</p>
       <h2 class="sec__h">Ein Modell ist noch keine Lösung.</h2>
       <div class="sec__body"><Capabilities /></div>
       <SectionCta line="Was davon Ihr Ablauf braucht, klären wir im Gespräch." secondary={{ label: "Leistungen im Detail", href: "/leistungen" }} />
@@ -213,6 +228,9 @@ import { company } from "../data/company";
   .promise__rows[data-anim] .promise__row.is-in .promise__answer { opacity: 1; transform: none; }
   .promise__row:hover .promise__quote { color: var(--fg); }
   .promise__quote { transition: color 0.2s; }
+  .statsec__head { display: grid; gap: 24px; }
+  @media (min-width: 900px) { .statsec__head { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; } }
+  .statsec__lede { margin: 0; }
   .chainsec__h, .sec__h { margin-top: 16px; max-width: 20ch; }
   .chainsec__h { max-width: 22ch; }
   .chainsec { padding-block: 0 72px; }

@@ -237,6 +237,19 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Regeln:** Einwände in Anführungszeichen, ohne Zuschreibung („sagen unsere Kunden“ ist nicht belegt). Datenschutz und Sicherheit gehören in die Antwort zur Pilot-Falle, nicht als eigener Angstpunkt. Keine Zahlen aus der Recherche in die Sektion, solange keine Freigabe vorliegt.
 
+## Messaging-Baustein: Die Lage in Zahlen (2026-09-18)
+
+**Kern (Gründer, Inspiration bklit.com: „Zahlen geben Trust und Proof“):** Sektion 02 der Startseite zeigt vier Studienwerte als ruhige Kacheln (große Ziffer, ein Satz, kleines Chart, Quelle in Monospace) und darunter vier eigene Fakten. Charts sind reines SVG/CSS im bklit-Stil: gedämpfte Spur, Lavendel-Füllung, Legende in Kleinschrift, Aufbau beim Einblenden (nur Desktop).
+
+**Regel für Zahlen auf der Website:** Nur Werte aus Primärquellen, exakt wie veröffentlicht, mit Quelle am Element (Herausgeber, Jahr, bei Bitkom die Stichprobe). Sekundär zitierte Werte ohne Primärbeleg bleiben draußen (deshalb nicht: „85 % fehlendes Know-how“). Keine eigenen Kennzahlen, keine Kundenzahlen, keine „95 %“ aus MIT NANDA.
+
+**Freigegebene Werte:**
+- 41 % der Unternehmen setzen AI ein, 48 % planen oder diskutieren (Bitkom, Presseinformation 11. März 2026, 604 Unternehmen ab 20 Beschäftigte). Kopplung: „Adoption ist niedriger, als die eigene Blase vermuten lässt.“
+- 66 % fehlende Zeit, 70 % Fachkräftemangel als Hürde der Digitalisierung (Bitkom 2026; Werte gelten für Digitalisierung insgesamt, so beschriftet). Kopplung: Einwand „Uns fehlen Know-how und Zeit.“
+- 78 % der AI-Nutzer bringen eigene Tools mit (Microsoft und LinkedIn, Work Trend Index 2024). Kopplung: „Wir nutzen doch schon AI.“
+- 60 % der Führungskräfte: kein Plan für AI; 59 % können den Nutzen nicht beziffern (Work Trend Index 2024). Kopplung: „Was kostet das, und was bringt es?“
+- Eigene Fakten: 30 Minuten kostenloses Erstgespräch, Antwort in der Regel innerhalb eines Werktags, 8 Zertifikate im Gründerteam, 5 Partner.
+
 ## Regel: Kein Hosting-Versprechen (2026-09-18)
 
 **Kern (Gründer):** Die Website darf nirgends so klingen, als würde H&W Lösungen selbst hosten oder grundsätzlich beim Kunden betreiben. Wo eine Lösung läuft, entscheidet der Kunde (eigene Cloud, eigenes Rechenzentrum, Anbieter seiner Wahl). H&W baut, integriert, sichert ab, bringt live und befähigt.
@@ -368,6 +381,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v10 (2026-09-18) — Sektion „Die Lage in Zahlen“ mit vier belegten Studienwerten und eigenen Fakten; Regel für Zahlen auf der Website.
 - v9 (2026-09-18) — Einwände gekürzt und mit Senior-Pitch als erstem Einwand, eigenes Zeilen-Design; Souveränität als konkreter Pain auf Position 02; Hero-Beschreibung mit Pain und Win; Baustein Software und Web; Regel „Kein Hosting-Versprechen“ und Abräumen aller Betriebs-/Hosting-Anklänge.
 - v8 (2026-09-18) — Pain-Point-Recherche mit Quellen (Bitkom 2026, KfW, Work Trend Index 2024, MIT NANDA 2025) als Tabelle; Versprechen-Sektion als vier Einwände mit Hook und CTA; Baustein „Vier Einwände“.
 - v7 (2026-09-18) — Versprechen-Sektion: Schmerz „alle arbeiten anders, niemand misst“, Angebot „Team befähigen, unabhängiger von Dienstleistern“, Senior-Zusage als Pitch-Kontrast.

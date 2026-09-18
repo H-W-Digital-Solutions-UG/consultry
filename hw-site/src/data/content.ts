@@ -227,6 +227,62 @@ export const software = {
 } as const;
 
 /**
+ * Die Lage in Zahlen (Gründer, 2026-09-18: „Zahlen geben Trust und Proof“).
+ * Nur Werte aus Primärquellen, exakt wie veröffentlicht, mit sichtbarer
+ * Quelle am Element. Keine eigenen Kennzahlen, keine Kundenzahlen.
+ * Quellen: Bitkom, Presseinformation „Digitalisierung der Wirtschaft“
+ * (11. März 2026, 604 Unternehmen ab 20 Beschäftigte, KW 2 bis 6/2026);
+ * Microsoft und LinkedIn, Work Trend Index 2024 (31.000 Befragte, 31 Länder).
+ * Nicht übernommen: Sekundär zitierte Hürden-Werte ohne Primärbeleg (z. B. 85 % Know-how).
+ */
+export const stats = {
+  eyebrow: "Die Lage in Zahlen",
+  heading: "Was AI in Unternehmen wirklich bremst.",
+  lede: "Selten das Modell. Vier Werte aus aktuellen Studien, die sich mit den Einwänden oben decken.",
+  items: [
+    {
+      value: 41,
+      label: "der Unternehmen setzen AI ein. Weitere 48 % planen oder diskutieren noch.",
+      tie: "Adoption ist niedriger, als die eigene Blase vermuten lässt.",
+      chart: "stack" as const,
+      series: [{ v: 41, name: "setzen ein" }, { v: 48, name: "planen" }],
+      source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte",
+    },
+    {
+      value: 66,
+      label: "nennen fehlende Zeit als Hürde der Digitalisierung, 70 % den Fachkräftemangel.",
+      tie: "„Uns fehlen Know-how und Zeit.“",
+      chart: "bars" as const,
+      series: [{ v: 66, name: "Fehlende Zeit" }, { v: 70, name: "Fachkräftemangel" }],
+      source: "Bitkom 2026",
+    },
+    {
+      value: 78,
+      label: "der AI-Nutzer bringen eigene Tools mit zur Arbeit, ohne Vorgabe des Unternehmens.",
+      tie: "„Wir nutzen doch schon AI.“",
+      chart: "ring" as const,
+      series: [{ v: 78, name: "eigene Tools" }],
+      source: "Microsoft und LinkedIn, Work Trend Index 2024",
+    },
+    {
+      value: 60,
+      label: "der Führungskräfte sagen, ihrem Unternehmen fehle ein Plan für AI. 59 % können den Nutzen nicht beziffern.",
+      tie: "„Was kostet das, und was bringt es?“",
+      chart: "bars" as const,
+      series: [{ v: 60, name: "Kein Plan" }, { v: 59, name: "Nutzen unklar" }],
+      source: "Work Trend Index 2024",
+    },
+  ],
+  /** Eigene, prüfbare Fakten (kontakt.astro, certifications, partners, company.ts). */
+  facts: [
+    { value: "30", unit: "Min.", label: "kostenloses Erstgespräch" },
+    { value: "1", unit: "Werktag", label: "bis zur Antwort, in der Regel" },
+    { value: "8", unit: "", label: "Zertifikate im Gründerteam" },
+    { value: "5", unit: "", label: "Partner für Software und Delivery" },
+  ],
+} as const;
+
+/**
  * Nachweise. Zertifizierungen und Partner der bisherigen Website,
  * von den Gründern am 2026-09-17 zur Übernahme freigegeben. Die
  * Zertifizierungen sind Personen-Zertifikate des Gründerteams, keine
