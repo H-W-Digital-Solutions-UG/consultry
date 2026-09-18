@@ -48,7 +48,7 @@ const phaseCta: Record<string, { label: string; href: string }> = {
     <div class="chain__stage">
       <div class="chain__head"><slot name="heading" /></div>
 
-      <ol class="chain__rail" aria-label="Delivery Chain: From Process to Production">
+      <ol class="chain__rail" aria-label="Zwölf Schritte von der Analyse bis zur laufenden Lösung">
         {groups.map((g, gi) => (
           <li class="chain__group" style={`--g:${gi}; --from:${g.from}; --to:${g.to}`} data-open={gi === 0 ? "" : undefined}>
             <button type="button" class="chain__group-head" data-goto={g.from} aria-expanded={gi === 0 ? "true" : "false"}>

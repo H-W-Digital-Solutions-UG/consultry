@@ -16,9 +16,11 @@ export const hero = {
   // (Alltag). Alternativen im Marketing-Kontext, Baustein Hero-Hook.
   // Zeilenumbruch zwischen den Sätzen ist gesetzt (pre-line), damit „In“ nicht allein steht.
   headline: "AI in jedem Meeting.\nIn keinem Prozess.",
-  claim: "From Process to Production.",
+  // Claim v2 (2026-09-18): Sieger des Claim-Panels für diese Headline; das
+  // englische Motto „From Process to Production.“ war den Gründern zu corporate.
+  claim: "Kein Pilotprojekt. Ihr Tagesgeschäft.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
-  description: "Wir bauen AI in den einen Ablauf, der Ihr Team täglich bremst.",
+  description: "Wir bauen AI in den einen Ablauf, der Ihr Team am meisten bremst.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;

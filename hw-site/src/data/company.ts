@@ -9,7 +9,7 @@ export const company = {
   domain: "hw-digitalsolutions.de",
   siteUrl: "https://hw-digitalsolutions.de",
   tagline: "AI Transformation & Engineering",
-  claim: "From Process to Production.",
+  claim: "Kein Pilotprojekt. Ihr Tagesgeschäft.",
   claimDe: "Von Geschäftsprozessen zu produktiver AI.",
   address: {
     street: "Greifswalder Straße 13d",

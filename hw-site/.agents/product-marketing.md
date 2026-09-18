@@ -189,9 +189,9 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Freigegebene Formulierungen:**
 - Headline (v4, 2026-09-18): „AI in jedem Meeting. In keinem Prozess.“ Sieger eines Panels (30 Kandidaten aus sechs Ansätzen, drei Jurys: Aufmerksamkeit, Käuferklarheit, Regeln). Punktgleiche Alternativen, freigabefähig: „AI nicht zerreden. Einbauen.“, „AI im ERP. Nicht im Meeting.“, „AI: Wo anfangen? Im Posteingang.“; am nächsten am Gründer-Wortlaut: „Von AI träumen. Mit AI leben.“ Bekanntes Risiko der Siegerzeile: „In keinem Prozess“ ist absolut und kann als Urteil über den Leser gelesen werden; die Beschreibung fängt das mit „der eine Ablauf“ auf.
-- Beschreibung (v5, 2026-09-18): „Wir bauen AI in den einen Ablauf, der Ihr Team täglich bremst.“ (löst v4 „Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“ ab)
+- Beschreibung (v5, 2026-09-18): „Wir bauen AI in den einen Ablauf, der Ihr Team am meisten bremst.“ (löst v4 „Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“ ab)
 - Headline (v3, 2026-09-18, abgelöst): „AI-Chancen nicht nur träumen. Sondern leben.“ Gründer-Wortlaut war „Träume nicht nur von KI-Chancen - Lebe Sie“; übertragen in die Site-Regeln: „AI“ statt „KI“, Infinitiv statt Du-Imperativ (Sie-Form bleibt für Anreden reserviert), Punkt statt Gedankenstrich. Abgelöst: v2 „Alle reden über AI. Wir bauen sie ein.“ (lebt sinngemäß in der Beschreibung weiter: „Wir bauen AI genau dort ein.“); v1 „Bei Ihnen läuft sie“ (Hosting-Missverständnis).
-- Claim: „From Process to Production.“
+- Claim (v2, 2026-09-18): „Kein Pilotprojekt. Ihr Tagesgeschäft.“ Sieger des Claim-Panels (32 Zeilen aus vier Ansätzen, zwei Jurys) in Kombination mit der Headline v4; das englische Motto „From Process to Production.“ war den Gründern zu corporate und ist auch aus Footer und Vorgehen-Kopf entfernt. Alternativen aus dem Panel: „Montagfrüh ist die Fleißarbeit schon erledigt.“ (Jury-Spitze, aber klingt nach Automatik ohne Freigabe), „Wir machen das. Bis es läuft.“, „AI sitzt im Ablauf, nicht daneben.“, „Kein Konzeptpapier. Ein Ablauf, der bleibt.“
 - Beschreibung (v4, 2026-09-18): „Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“ (Gründer: „knackiger Hook, max. 2 Sätze“; v3 „Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden …“ und v2 „Sie brauchen keine AI-Strategie …“ abgelöst)
 
 **Abgelöst:** „AI, die in Ihrem Betrieb läuft. Nicht auf Folien.“ (zu lang, Kontrast nur gegen Beratung, nicht gegen den Einstiegsschmerz). Der Folien-Kontrast lebt weiter in „Der Unterschied“.
@@ -401,6 +401,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v24 (2026-09-18) — Claim v2 „Kein Pilotprojekt. Ihr Tagesgeschäft.“ aus dem Claim-Panel; „From Process to Production.“ site-weit abgelöst (Hero, Footer, Vorgehen-Kopf).
 - v23 (2026-09-18) — Hero-Headline v4 „AI in jedem Meeting. In keinem Prozess.“ aus dem Headline-Panel; Beschreibung v5.
 - v22 (2026-09-18) — Eyebrows als klassische Versalien-Labels (klein, gesperrt, gedämpft, ohne Pille), nachdem Pillen als generisch empfunden wurden.
 - v21 (2026-09-18) — Showcases als Glas-Karten im Blog-Card-Stil mit eigens erzeugten Bildern (Higgsfield gpt_image_2_5, Hero-Stil: Aubergine, Lavendel, isometrisch, ohne Text): Website-Baukasten auf Glasbühne, vier Module auf einem Blueprint-Raster. Assets in `src/assets/showcases/`, Komponente `ShowcaseCards.astro`.
