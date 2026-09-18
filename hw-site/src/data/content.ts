@@ -38,12 +38,20 @@ export const hero = {
   // Claim v6 (2026-09-18, Gründer-Wortlaut, ohne Gedankenstrich gesetzt).
   // Claim v7: Gründer-Richtung („Mit uns erreichen Sie endlich einen Ablauf, der wirklich
   // Wert schafft“) verdichtet, „daraus“ bindet an die Headline.
-  claim: "Mit uns wird daraus ein Ablauf, der wirklich Wert schafft.",
+  // Claim v4 (2026-09-18, Gründer: „AI richtig nutzen und Souveränität
+  // zurückgewinnen“): der Nutzen steht jetzt im Claim, nicht mehr der Ablauf.
+  // Aus dem Infinitiv der Gründer wird die Sie-Form der Seite. Ohne „Ihre“,
+  // weil der Claim damit auf Phones in zwei Zeilen passt statt in drei mit
+  // „zurück.“ als Einzelwort (gemessen bei 390 px).
+  claim: "Mit uns nutzen Sie AI richtig und gewinnen Souveränität zurück.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
   // v6: konkret, wo und wie; kein „dort, wo“.
   // v7 (2026-09-18, Gründer-Wortlaut, in die Sie-Form der Site gesetzt).
   // v8: gekürzt (Gründer: „etwas kürzen“).
-  description: "Mit den richtigen Quellen, Regeln und Anbindungen. Wir begleiten Sie, bis es läuft, und Sie holen sich Ihre Souveränität zurück, ohne bei jedem Schritt auf Dienstleister angewiesen zu sein.",
+  // Souveränität steht jetzt im Claim, hier stünde sie doppelt. Der Gedanke
+  // der Gründer („ohne jedes Mal auf Dienstleister angewiesen zu sein“) bleibt,
+  // nur als Folge formuliert: wir machen uns entbehrlich.
+  description: "Mit den richtigen Quellen, Regeln und Anbindungen. Wir begleiten Sie, bis es läuft, und danach kommt Ihr Team ohne uns weiter.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
