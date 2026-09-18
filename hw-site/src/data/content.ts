@@ -59,9 +59,10 @@ export const expertise = {
   text: "Erfahrung, Zeit und echtes Interesse an Ihrem Betrieb. So verstehen wir Beratung.",
   // Bildunterschrift der Tischszene (v2, 2026-09-18, Gründer: „Am Tisch, nicht im Ticket“ war
   // das richtige Argument im falschen Muster). Schlichter Satz, kein Kontrast-Slogan.
-  // v3 (2026-09-18, Gründer: neuer Ansatz statt Tischszene; Motiv Maßschneiderei für
-  // „zugeschnittenes Senior Consulting statt Massengeschäft“).
-  caption: "Zugeschnitten auf Ihren Betrieb.",
+  // v4 (2026-09-18, Gründer: Maßschneiderei „cooles Wortspiel, passt aber nicht in den
+  // professionellen IT-Consulting-Auftritt“). Motiv jetzt ein Systemmodell auf Grundplatte
+  // mit Blaupause und Tuschestift: eine Lösung, für einen Betrieb konstruiert.
+  caption: "Für Ihren Betrieb geplant und gebaut.",
   certsLabel: "Zertifikate im Gründerteam.",
   cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
   secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },
