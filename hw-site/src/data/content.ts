@@ -16,8 +16,10 @@ export const hero = {
   // missverständlich und wurde ersetzt.
   headline: "Alle reden über AI. Wir bauen sie ein.",
   claim: "From Process to Production.",
+  // v3 (2026-09-18): Pain (Team sucht, wartet, erfasst doppelt) und Win
+  // (der Ablauf läuft) statt der abstrakten Strategie-Zeile.
   description:
-    "Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst, bis sie produktiv läuft.",
+    "Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden. Wir nehmen den Ablauf, der die meiste Zeit frisst, bauen AI hinein und bleiben, bis er im Alltag läuft. Ohne AI-Strategie, ohne Folien.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
@@ -25,43 +27,43 @@ export const hero = {
 export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
   // Einordnung ohne Zahlen. Recherche und Quellen: .agents/product-marketing.md,
-  // Abschnitt „Problems & Pain Points“ (v8, 2026-09-18).
-  lede: "AI-Vorhaben scheitern selten am Modell. Sie scheitern davor: kein klarer Hebel, kein gemeinsames Vorgehen, keine Zeit, und niemand, der es baut und betreibt. Vier Einwände, die wir ernst nehmen. Und was wir dagegen tun.",
-  // Vier Einwände in Kundensprache, je mit Hook, Antwort und passendem CTA.
-  // Reihenfolge folgt den am häufigsten genannten Hürden (Bitkom, KfW, Microsoft, MIT).
+  // Abschnitt „Problems & Pain Points“ (v8, 2026-09-18). Kurzfassung v9.
+  lede: "AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Fünf Einwände, die wir kennen, und was wir tun.",
+  // Vier Einwände in Kundensprache: Zitat, Hook, ein Satz, passender CTA.
   objections: [
     {
-      // Einzelnutzung ohne gemeinsames Vorgehen (Baustein Systango, Microsoft BYOAI).
-      quote: "Wir nutzen doch schon AI.",
-      hook: "Einzelne ja. Als Ablauf nein.",
-      text: "Alle arbeiten, wie sie es für richtig halten: kein gemeinsames Vorgehen, schwankende Ergebnisse, und niemand misst, was es bringt. Wir machen daraus einen Ablauf, den Ihr ganzes Team gleich gut nutzt, und messen, was er bringt.",
-      cta: { label: "Ihren Stand im Erstgespräch klären", href: "/kontakt" },
+      // Senior-Zusage (Gründer, 2026-09-18) als erster Einwand, Muster benannt, nicht angegriffen.
+      quote: "Im Pitch saß die Erfahrung. Geliefert hat jemand anderes.",
+      hook: "Wer Sie überzeugt, baut auch.",
+      text: "Die Erfahrung aus dem Erstgespräch bewertet Ihre Prozesse, baut die Lösung und bleibt, bis sie produktiv läuft.",
+      cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
     },
     {
-      // Meistgenannte Hürden: fehlendes Know-how, fehlende Zeit, fehlende Fachkräfte.
+      quote: "Wir nutzen doch schon AI.",
+      hook: "Einzelne ja. Als Ablauf nein.",
+      text: "Alle arbeiten, wie sie es für richtig halten, und niemand misst. Wir machen daraus einen Ablauf für das ganze Team.",
+      cta: { label: "Ihren Stand klären", href: "/kontakt" },
+    },
+    {
       quote: "Uns fehlen Know-how und Zeit.",
       hook: "Wir bringen beides mit. Und geben es weiter.",
-      text: "Sie brauchen keine AI-Strategie und kein eigenes AI-Team, um anzufangen. Wir bauen die Lösung und zeigen Ihrem Team, wie es sie selbst weiterführt. Damit Sie nicht für jeden Schritt einen teuren Dienstleister brauchen.",
+      text: "Wir bauen die Lösung und zeigen Ihrem Team, wie es sie weiterführt. Ohne für jeden Schritt einen Dienstleister.",
       cta: { label: "So befähigen wir Ihr Team", href: "/vorgehen#phasen" },
     },
     {
-      // Schwer kalkulierbare Kosten, Nutzen nicht messbar (Schritte 3, 4 und 12).
       quote: "Was kostet das, und was bringt es?",
       hook: "Das sehen Sie, bevor wir bauen.",
-      text: "Jedes Potenzial bekommt vor dem Bauen einen wirtschaftlichen Hebel und eine technische Bewertung. Sie entscheiden mit Zahlen aus Ihrem Betrieb, nicht aus einer Folie. Gebaut wird, was sich rechnet. Gemessen wird, was läuft.",
+      text: "Jedes Potenzial wird vorher wirtschaftlich und technisch bewertet. Gebaut wird, was sich rechnet.",
       cta: { label: "Wie wir bewerten", href: "/leistungen" },
     },
     {
-      // Pilot-Falle: Integration, Datenschutz, Betrieb. Beispielszenario, kein Kundenergebnis.
       quote: "Der Pilot lief. Produktiv wurde er nie.",
       hook: "Wir bauen dort ein, wo Ihr Team arbeitet.",
-      text: "Ein Beispiel: Ihr Angebotsprozess läuft über mehrere Systeme und viele Rückfragen. Wir finden den Hebel, gestalten den Ablauf neu und bauen die Lösung in Ihre Systeme ein. Datenschutz, Sicherheit und Betrieb von Anfang an, nicht als Prüfung am Ende.",
+      text: "In Ihren Systemen, mit Datenschutz und Sicherheit von Anfang an. Wo die Lösung läuft, entscheiden Sie.",
       cta: { label: "Was wir selbst bauen", href: "/leistungen" },
     },
   ],
-  // Senior-Zusage (Gründer, 2026-09-18): Muster benennen, nicht angreifen.
-  senior: "Kein Senior-Pitch mit Junior-Lieferteam. Die Erfahrung, die Sie im Erstgespräch überzeugt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.",
-  cta: { line: "Sprechen Sie mit denen, die auch bauen.", secondary: { label: "Das Gründerteam", href: "/unternehmen#team" } },
+  cta: { line: "Sprechen Sie mit denen, die auch bauen.", secondary: { label: "So arbeiten wir", href: "/vorgehen" } },
 } as const;
 
 /** Die zehn Schritte des Leistungsbilds (Abschnitt 2). */
@@ -111,7 +113,7 @@ export const deliverySteps = [
   {
     n: 8,
     title: "Modelle, Infrastruktur, Integrationen",
-    text: "Die Lösung läuft in Ihren Systemen, nicht daneben. Modelle und Infrastruktur inklusive.",
+    text: "Die Lösung läuft in Ihren Systemen, nicht daneben. Modelle und Integrationen inklusive.",
     phase: "build",
   },
   {
@@ -154,21 +156,21 @@ export const chainTexts = [
   "Wir wählen die Modelle, die zu Ihren Daten, Anforderungen und Ihrem Datenschutz passen.",
   "Dasselbe Team, das den Prozess verstanden hat, baut die Anwendung.",
   "Die Lösung läuft in Ihren Systemen, nicht daneben.",
-  "Wir bringen die Lösung in Betrieb, in Ihrer Infrastruktur oder unserer.",
+  "Wir bringen die Lösung live, in der Umgebung, die Sie wählen.",
   "Daten, Modelle und Zugänge sind abgesichert; Governance und Compliance sind eingebaut.",
   "Ihr Team lernt, mit der Lösung zu arbeiten und sie weiterzuentwickeln.",
-  "Wir messen die Wirkung im Betrieb und verbessern die Lösung laufend.",
+  "Wir messen die Wirkung im Alltag und verbessern die Lösung laufend.",
 ] as const;
 
 /** Abgrenzung zu klassischer Beratung (Abschnitt 2, letzter Absatz). */
 export const contrast = {
   heading: "Eine Roadmap ist kein Ergebnis.",
-  text: "Beratung endet oft bei Strategie, Roadmap oder PowerPoint. Und die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es beides nicht: Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.",
+  text: "Beratung endet oft bei Strategie, Roadmap oder PowerPoint. Und die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es beides nicht: Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt, bis sie produktiv läuft.",
   classic: ["AI-Strategie", "Tool zuerst, Ablauf später", "Roadmap", "Pitch-Team, dann Lieferteam", "Für jedes Werkzeug ein Anbieter", "Wirkung ungemessen", "Empfehlung"],
-  hw: ["Prozessanalyse", "Ablauf zuerst, Tool zuletzt", "Eigenes Engineering", "Ein Team von Analyse bis Betrieb", "Prozess, Daten und Wissen bleiben bei Ihnen", "Wirkung gemessen", "Produktiver Betrieb"],
+  hw: ["Prozessanalyse", "Ablauf zuerst, Tool zuletzt", "Eigenes Engineering", "Ein Team von Analyse bis Go-live", "Prozess, Daten und Wissen bleiben bei Ihnen", "Wirkung gemessen", "Produktive Lösung"],
   // Schlusszeilen der beiden Spalten (Contrast.astro).
   classicEnd: "Bleibt Empfehlung.",
-  hwEnd: "Läuft im Betrieb.",
+  hwEnd: "Läuft produktiv.",
 } as const;
 
 /**
@@ -179,13 +181,49 @@ export const contrast = {
  */
 export const sovereignty = {
   eyebrow: "Souveränität",
-  heading: "Holen Sie sich Ihre Souveränität zurück.",
-  text: "Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen, liegt die Kontrolle wieder bei Ihnen.",
+  // v2 (2026-09-18): konkreter Pain statt abstraktem Hook; Position 02 auf der Startseite.
+  heading: "Zu viele Dienstleister. Zu wenig Kontrolle.",
+  text: "Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Ihr Team wartet auf Tickets, statt zu arbeiten.",
   points: [
-    { title: "Ihre Prozesse", text: "Der Ablauf gehört Ihnen, nicht dem Werkzeug. Wir bauen AI in Ihre Arbeit ein, statt Ihre Arbeit an ein Tool anzupassen." },
-    { title: "Ihre Daten", text: "Verarbeitet, wo Sie es entscheiden. Sie behalten die Kontrolle darüber, was wohin fließt." },
-    { title: "Ihr Wissen", text: "Ihr Team versteht, was läuft und warum. Kein Betrieb, der nur mit uns funktioniert." },
+    { title: "Abhängig bei jedem Schritt", text: "Jede Änderung ein Ticket, jeder Anbieter ein Vertrag. Der Ablauf gehört dem Werkzeug, nicht Ihnen." },
+    { title: "Wissen wandert ab", text: "Wer die Lösung gebaut hat, kennt sie. Geht der Anbieter, geht das Wissen mit." },
+    { title: "Kontrolle zurück", text: "Wir bauen AI in Ihre Abläufe ein, befähigen Ihr Team und bleiben, bis es ohne uns weiterläuft. Wo die Lösung läuft, entscheiden Sie." },
   ],
+} as const;
+
+/**
+ * Software und Web (Gründer, 2026-09-18): zweiter Einstieg neben dem
+ * Prozess-Einstieg. Gebaut mit Senior Engineers und den Software-Partnern,
+ * AI-gestützt, nach einem Entwicklungsprozess mit Review- und
+ * Vertraulichkeitsregeln (Quelle: H&W-Angebotsvorlage, Abschnitt
+ * „Confidentiality And AI-Assisted Work“). Proof-Karte: Fakten zum laufenden
+ * Plattformprojekt (Name, Rolle, Zeitraum, Umfang) folgen nach Freigabe der
+ * Gründer; bis dahin ohne Namen und ohne Zahlen.
+ */
+export const software = {
+  eyebrow: "Software und Web",
+  heading: "Nicht jedes Projekt beginnt bei AI.",
+  lede: "Manche beginnen bei einer Software, die endlich gebaut werden muss. Individualsoftware, Plattformen und Webauftritte bauen wir mit Senior Engineers und unseren Software-Partnern: AI-gestützt, nach einem Entwicklungsprozess, den wir in einem laufenden Plattformprojekt mit mehreren Partnern erprobt haben.",
+  offers: [
+    { title: "Individualsoftware und Plattformen", text: "Anwendungen, APIs und Integrationen in Ihre bestehende Landschaft." },
+    { title: "Webauftritt, Shop und App", text: "Websites, Webshops und mobile Apps, die Ihr Team selbst pflegen kann." },
+    { title: "Architektur, Cloud und Absicherung", text: "Systemdesign, Migration und Security in der Umgebung, die Sie wählen." },
+  ],
+  sdlc: {
+    title: "So bauen wir: AI-gestützt, mit klaren Regeln.",
+    items: [
+      "AI-Werkzeuge im gesamten Entwicklungsprozess, mit festen Prompt- und Vertraulichkeitsregeln.",
+      "Jede Änderung wird von Menschen geprüft, bevor sie zu Ihnen geht.",
+      "Keine Secrets, keine Produktionsdaten, kein vertraulicher Code in öffentlichen AI-Tools.",
+      "Abnahme mit Nachweisen: Tests, Review-Notizen, Artefakte.",
+    ],
+  },
+  proof: {
+    label: "Erprobt im laufenden Projekt",
+    title: "Ein Plattformprojekt, mehrere Software-Partner, ein Entwicklungsstandard.",
+    text: "Mehrere Partner liefern nach demselben AI-gestützten Entwicklungsprozess mit Review- und Vertraulichkeitsregeln. Die Leute im Erstgespräch sind die Leute, die den Code schreiben.",
+  },
+  cta: { line: "Eine Software, ein Webauftritt oder beides?", primary: { label: "Projekt im Erstgespräch besprechen", href: "/kontakt" } },
 } as const;
 
 /**
@@ -221,8 +259,8 @@ export const capabilities = [
   { title: "Process Redesign", text: "Prozesse, in denen AI natürlicher Bestandteil ist." },
   { title: "AI Engineering", text: "LLM-Anwendungen, Retrieval, Agenten und Evaluierung, produktionsreif gebaut." },
   { title: "Software Engineering", text: "Anwendungen, APIs und Integrationen in Ihre bestehende Landschaft." },
-  { title: "Model Engineering", text: "Modellauswahl, Anpassung und Betrieb passend zu Ihren Daten." },
-  { title: "Cloud & Infrastructure", text: "Infrastruktur, die zur Lösung passt. Wartbar und beherrschbar." },
+  { title: "Model Engineering", text: "Modellauswahl, Anpassung und Evaluierung passend zu Ihren Daten." },
+  { title: "Cloud & Infrastructure", text: "Ihre Cloud, Ihr Rechenzentrum oder ein Anbieter Ihrer Wahl. Wir richten ein, was zur Lösung passt." },
   { title: "Cybersecurity", text: "Daten, Modelle und Zugänge abgesichert. Teil des Designs." },
   { title: "AI Governance", text: "Nachvollziehbarkeit, Verantwortlichkeiten und Compliance von Anfang an." },
   { title: "AI Enablement", text: "Ihr Team nutzt die Lösung und entwickelt sie weiter." },

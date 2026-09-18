@@ -190,7 +190,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Freigegebene Formulierungen:**
 - Headline: „Alle reden über AI. Wir bauen sie ein.“ (v2; „Bei Ihnen läuft sie“ war als Hosting missverständlich und trug den Kernpunkt Engineering nicht)
 - Claim: „From Process to Production.“
-- Beschreibung: „Sie brauchen keine AI-Strategie, um anzufangen. Wir schauen auf Ihre Abläufe, finden den größten Hebel und bauen die Lösung selbst, bis sie produktiv läuft.“
+- Beschreibung (v3, 2026-09-18): „Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden. Wir nehmen den Ablauf, der die meiste Zeit frisst, bauen AI hinein und bleiben, bis er im Alltag läuft. Ohne AI-Strategie, ohne Folien.“ (Pain und Win statt der abstrakten Strategie-Zeile; v2 „Sie brauchen keine AI-Strategie, um anzufangen …“ abgelöst)
 
 **Abgelöst:** „AI, die in Ihrem Betrieb läuft. Nicht auf Folien.“ (zu lang, Kontrast nur gegen Beratung, nicht gegen den Einstiegsschmerz). Der Folien-Kontrast lebt weiter in „Der Unterschied“.
 
@@ -225,14 +225,38 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Kern:** Die Versprechen-Sektion der Startseite arbeitet mit Einwänden in Kundensprache statt mit Fließtext. Jeder Einwand bekommt einen Hook (eine Zeile Antwort), zwei bis drei Sätze Begründung und einen CTA, der zum passenden Nachweis führt. Reihenfolge nach Häufigkeit der Hürden in der Recherche (Know-how und Zeit, Kosten und Nutzen, Einzelnutzung, Pilot-Falle). Einleitung: „AI-Vorhaben scheitern selten am Modell.“ (qualitativ, gestützt durch MIT NANDA, ohne Zahl).
 
-**Freigegebene Formulierungen (Startseite, v8):**
-- „Wir nutzen doch schon AI.“ → „Einzelne ja. Als Ablauf nein.“ CTA „Ihren Stand im Erstgespräch klären“ (`/kontakt`).
+**Freigegebene Formulierungen (Startseite, v9, gekürzt; Design: Einwand groß in Kundensprache, wird beim Scrollen durchgestrichen, Antwort erscheint daneben):**
+- Lede: „AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Fünf Einwände, die wir kennen, und was wir tun.“
+- „Im Pitch saß die Erfahrung. Geliefert hat jemand anderes.“ → „Wer Sie überzeugt, baut auch.“ CTA „Das Gründerteam“ (`/unternehmen#team`). (Senior-Zusage als erster Einwand, Gründer 2026-09-18)
+- „Wir nutzen doch schon AI.“ → „Einzelne ja. Als Ablauf nein.“ CTA „Ihren Stand klären“ (`/kontakt`).
 - „Uns fehlen Know-how und Zeit.“ → „Wir bringen beides mit. Und geben es weiter.“ CTA „So befähigen wir Ihr Team“ (`/vorgehen#phasen`).
 - „Was kostet das, und was bringt es?“ → „Das sehen Sie, bevor wir bauen.“ CTA „Wie wir bewerten“ (`/leistungen`).
-- „Der Pilot lief. Produktiv wurde er nie.“ → „Wir bauen dort ein, wo Ihr Team arbeitet.“ CTA „Was wir selbst bauen“ (`/leistungen`).
-- Abschluss: „Kein Senior-Pitch mit Junior-Lieferteam. Die Erfahrung, die Sie im Erstgespräch überzeugt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.“ CTA-Zeile „Sprechen Sie mit denen, die auch bauen.“ mit „Kostenloses Erstgespräch“ und „Das Gründerteam“ (`/unternehmen#team`).
+- „Der Pilot lief. Produktiv wurde er nie.“ → „Wir bauen dort ein, wo Ihr Team arbeitet.“ Antwort endet mit „Wo die Lösung läuft, entscheiden Sie.“ CTA „Was wir selbst bauen“ (`/leistungen`).
+- CTA-Zeile: „Sprechen Sie mit denen, die auch bauen.“ mit „Kostenloses Erstgespräch“ und „So arbeiten wir“.
+- Je Einwand höchstens ein Satz Begründung (Gründer-Feedback 2026-09-18: „viel zu viel Text“).
 
 **Regeln:** Einwände in Anführungszeichen, ohne Zuschreibung („sagen unsere Kunden“ ist nicht belegt). Datenschutz und Sicherheit gehören in die Antwort zur Pilot-Falle, nicht als eigener Angstpunkt. Keine Zahlen aus der Recherche in die Sektion, solange keine Freigabe vorliegt.
+
+## Regel: Kein Hosting-Versprechen (2026-09-18)
+
+**Kern (Gründer):** Die Website darf nirgends so klingen, als würde H&W Lösungen selbst hosten oder grundsätzlich beim Kunden betreiben. Wo eine Lösung läuft, entscheidet der Kunde (eigene Cloud, eigenes Rechenzentrum, Anbieter seiner Wahl). H&W baut, integriert, sichert ab, bringt live und befähigt.
+
+**Formulierungen:** „bis sie produktiv läuft“, „live bringen, in der Umgebung, die Sie wählen“, „Wo die Lösung läuft, entscheiden Sie.“ Vermeiden: „in Betrieb nehmen“, „betreiben“, „bis in den Betrieb“, „in Ihrem Haus laufen“, „in Ihrer Infrastruktur oder unserer“, „Infrastruktur inklusive“. Abgeräumt am 2026-09-18 in Hero, Versprechen, Delivery Chain (Glied 9 und 12), Kontrast-Liste („Ein Team von Analyse bis Go-live“, „Produktive Lösung“, „Läuft produktiv.“), Souveränität, Capabilities (Model Engineering ohne „Betrieb“, Cloud & Infrastructure als Wahl des Kunden), Vorgehen-Phase 4 („Produktiv ist Teil des Auftrags.“) und Leistungs-Lede.
+
+## Messaging-Baustein: Software und Web (2026-09-18)
+
+**Kern (Gründer):** Zweiter Einstieg neben dem Prozess-Einstieg. Individualsoftware, Plattformen, Webauftritte, Shops und Apps baut H&W mit Senior Engineers und den Software-Partnern, AI-gestützt, nach einem AI-optimierten Entwicklungsprozess, der auf Erfahrung aus einem laufenden Plattformprojekt mit mehreren Partnern beruht (Polity). Die alte Leistungsliste der HubSpot-Site ist nicht die Quelle; Trainings und Consultant-Stellung werden nicht angeboten.
+
+**Belegt (H&W-Angebotsvorlage, Abschnitt „Confidentiality And AI-Assisted Work“):** AI-Werkzeuge im Entwicklungsprozess unter Vertraulichkeitsregeln; menschliche Prüfung vor Lieferung; keine Secrets, Produktionsdaten oder vertraulicher Code in öffentlichen AI-Tools; Abnahme mit Nachweisen (Tests, Review-Notizen, Artefakte). Aus den Polity-Vendor-Unterlagen im Repo (`KFW_utils/pdfs/vendor_text/`): Die Partner Systango, turntabl und Rubicon liefern dort nach einer „AI-assisted coding productivity baseline“.
+
+**Freigegebene Formulierungen (Leistungsseite `#software`, Teaser auf der Startseite):**
+- Headline „Nicht jedes Projekt beginnt bei AI.“ Lede „Manche beginnen bei einer Software, die endlich gebaut werden muss. …“
+- Angebote: „Individualsoftware und Plattformen“, „Webauftritt, Shop und App“, „Architektur, Cloud und Absicherung“ (jeweils „in der Umgebung, die Sie wählen“).
+- Block „So bauen wir: AI-gestützt, mit klaren Regeln.“ (vier Punkte, siehe Beleg).
+- Proof-Karte (Wavect-Muster: Projekt, Rolle, Umfang, Ergebnis; vorerst ohne Namen und Zahlen): „Ein Plattformprojekt, mehrere Software-Partner, ein Entwicklungsstandard.“ und „Die Leute im Erstgespräch sind die Leute, die den Code schreiben.“ (adaptiert von wavect.io, Gründer-Wunsch als Vorbild für Social Proof)
+- CTA „Projekt im Erstgespräch besprechen“.
+
+**Offen (Gründer-Freigabe nötig):** Nennung von Polity als Projekt, Rolle von H&W, Zeitraum, Anzahl Services und Partner, Stack. Erst dann wird die Proof-Karte konkret. Ratings-Plattformen, Presse und Projektzähler wie bei Wavect gibt es nicht und werden nicht behauptet.
 
 ## Messaging-Baustein: Souveränität (2026-09-17)
 
@@ -241,7 +265,8 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Tonalität:** Sie-Form. Die Zahl „10.000“ ist rhetorisch und wird auf der Website nicht verwendet (keine erfundenen Größen). Keine Abwertung von Tools oder anderen Dienstleistern, das Muster wird benannt, die Wertung liefert der Leser.
 
 **Freigegebene Formulierungen:**
-- Hook (Timeline, Startseite): „Schluss mit einem Dienstleister pro Schritt.“ (ersetzt „Ein Partner. Keine Übergabe.“, Gründer 2026-09-17)
+- Sektion 02 der Startseite (v2, 2026-09-18, direkt nach dem Versprechen; Gründer: „Holen Sie sich Ihre Souveränität zurück“ war zu abstrakt, der Pain ist wichtiger und gehört höher): Headline „Zu viele Dienstleister. Zu wenig Kontrolle.“, Lede „Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Ihr Team wartet auf Tickets, statt zu arbeiten.“ Punkte: „Abhängig bei jedem Schritt“, „Wissen wandert ab“, „Kontrolle zurück“ (Antwort, dunkle Zelle; endet mit „Wo die Lösung läuft, entscheiden Sie.“). CTA-Zeile „Welcher Ablauf hängt bei Ihnen an zu vielen Anbietern?“
+- Timeline-Headline danach als Antwort: „Zwölf Schritte, ein Team, keine Übergabe.“ (löst „Schluss mit einem Dienstleister pro Schritt.“ ab, das jetzt als Pain in Sektion 02 lebt)
 - Hook (Souveränitäts-Sektion): „Holen Sie sich Ihre Souveränität zurück.“
 - Lede: „… Mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen, liegt die Kontrolle wieder bei Ihnen.“
 - Drei Punkte: Ihre Prozesse (Ablauf gehört Ihnen, nicht dem Werkzeug), Ihre Daten (verarbeitet, wo Sie es entscheiden), Ihr Wissen (kein Betrieb, der nur mit uns funktioniert).
@@ -343,6 +368,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v9 (2026-09-18) — Einwände gekürzt und mit Senior-Pitch als erstem Einwand, eigenes Zeilen-Design; Souveränität als konkreter Pain auf Position 02; Hero-Beschreibung mit Pain und Win; Baustein Software und Web; Regel „Kein Hosting-Versprechen“ und Abräumen aller Betriebs-/Hosting-Anklänge.
 - v8 (2026-09-18) — Pain-Point-Recherche mit Quellen (Bitkom 2026, KfW, Work Trend Index 2024, MIT NANDA 2025) als Tabelle; Versprechen-Sektion als vier Einwände mit Hook und CTA; Baustein „Vier Einwände“.
 - v7 (2026-09-18) — Versprechen-Sektion: Schmerz „alle arbeiten anders, niemand misst“, Angebot „Team befähigen, unabhängiger von Dienstleistern“, Senior-Zusage als Pitch-Kontrast.
 - v6 (2026-09-17) — Kostenloses Erstgespräch von den Gründern freigegeben; CTA-Baustein ergänzt, „kostenlos“ aus der Sperrliste gestrichen.

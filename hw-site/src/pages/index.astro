@@ -7,7 +7,7 @@ import Capabilities from "../components/Capabilities.astro";
 import Cta from "../components/Cta.astro";
 import SectionCta from "../components/SectionCta.astro";
 import Proof from "../components/Proof.astro";
-import { promise, sovereignty } from "../data/content";
+import { promise, sovereignty, software } from "../data/content";
 import { company } from "../data/company";
 ---
 
@@ -29,21 +29,45 @@ import { company } from "../data/company";
         </div>
         <p class="lede promise__lede">{promise.lede}</p>
       </div>
-      <ul class="promise__list">
-        {promise.objections.map((o) => (
-          <li class="promise__item">
-            <p class="promise__quote">„{o.quote}“</p>
-            <h3 class="promise__hook">{o.hook}</h3>
-            <p class="promise__text">{o.text}</p>
-            <a class="promise__cta" href={o.cta.href}>
-              {o.cta.label}
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </a>
+      <ol class="promise__rows">
+        {promise.objections.map((o, i) => (
+          <li class="promise__row">
+            <span class="promise__n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+            <p class="promise__quote"><span>„{o.quote}“</span></p>
+            <div class="promise__answer">
+              <h3 class="promise__hook">{o.hook}</h3>
+              <p class="promise__text">{o.text}</p>
+              <a class="promise__cta" href={o.cta.href}>
+                {o.cta.label}
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </a>
+            </div>
           </li>
         ))}
-      </ul>
-      <p class="promise__senior">{promise.senior}</p>
+      </ol>
       <SectionCta line={promise.cta.line} secondary={promise.cta.secondary} />
+    </div>
+  </section>
+
+  <section class="section section--paper-2 sov">
+    <div class="container">
+      <div class="sov__grid">
+        <div>
+          <p class="eyebrow" data-n="02">{sovereignty.eyebrow}</p>
+          <h2 class="sec__h">{sovereignty.heading}</h2>
+        </div>
+        <p class="lede sov__lede">{sovereignty.text}</p>
+      </div>
+      <ol class="sov__points">
+        {sovereignty.points.map((pt, i) => (
+          <li class:list={["sov__point", { "sov__point--win": i === sovereignty.points.length - 1 }]}>
+            <span class="sov__n">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="sov__title">{pt.title}</h3>
+            <p class="sov__text">{pt.text}</p>
+          </li>
+        ))}
+      </ol>
+      <SectionCta line="Welcher Ablauf hängt bei Ihnen an zu vielen Anbietern?" />
     </div>
   </section>
 
@@ -51,8 +75,8 @@ import { company } from "../data/company";
     <div class="container">
       <Chain>
         <Fragment slot="heading">
-          <p class="eyebrow" data-n="02">From Process to Production</p>
-          <h2 class="chainsec__h">Schluss mit einem Dienstleister pro Schritt.</h2>
+          <p class="eyebrow" data-n="03">From Process to Production</p>
+          <h2 class="chainsec__h">Zwölf Schritte, ein Team, keine Übergabe.</h2>
         </Fragment>
       </Chain>
       <SectionCta line="Wo fängt Schritt eins bei Ihnen an?" secondary={{ label: "Vorgehen im Detail", href: "/vorgehen" }} />
@@ -62,7 +86,7 @@ import { company } from "../data/company";
   <section class="section section--paper-2 seven">
     <div class="container seven__grid">
       <div>
-        <p class="eyebrow" data-n="03">Das Leistungsbild</p>
+        <p class="eyebrow" data-n="04">Das Leistungsbild</p>
         <h2 class="sec__h">Technologie kommt bei uns erst an Schritt sieben.</h2>
       </div>
       <div class="seven__side">
@@ -74,38 +98,35 @@ import { company } from "../data/company";
 
   <section class="section section--ink">
     <div class="container">
-      <p class="eyebrow" data-n="04">Der Unterschied</p>
+      <p class="eyebrow" data-n="05">Der Unterschied</p>
       <h2 class="sec__h">Wo Beratung aufhört, fangen wir an.</h2>
       <div class="sec__body"><Contrast /></div>
       <SectionCta line="Lieber ein Ergebnis als eine Roadmap?" />
     </div>
   </section>
 
-  <section class="section sov">
-    <div class="container">
-      <div class="sov__grid">
-        <div>
-          <p class="eyebrow" data-n="05">{sovereignty.eyebrow}</p>
-          <h2 class="sec__h">{sovereignty.heading}</h2>
-        </div>
-        <p class="lede sov__lede">{sovereignty.text}</p>
+  <section class="section soft">
+    <div class="container soft__grid">
+      <div>
+        <p class="eyebrow" data-n="06">{software.eyebrow}</p>
+        <h2 class="sec__h">{software.heading}</h2>
       </div>
-      <ol class="sov__points">
-        {sovereignty.points.map((pt, i) => (
-          <li class="sov__point">
-            <span class="sov__n">{String(i + 1).padStart(2, "0")}</span>
-            <h3 class="sov__title">{pt.title}</h3>
-            <p class="sov__text">{pt.text}</p>
-          </li>
-        ))}
-      </ol>
-      <SectionCta line="Ein Prozess genügt für den Anfang." />
+      <div class="soft__side">
+        <p class="lede">{software.lede}</p>
+        <ul class="soft__offers">
+          {software.offers.map((o) => <li>{o.title}</li>)}
+        </ul>
+        <div class="soft__actions">
+          <a class="btn btn--primary" href={software.cta.primary.href}>{software.cta.primary.label}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="btn btn--ghost" href="/leistungen#software">Software und Web im Detail</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="section section--paper-2">
     <div class="container">
-      <p class="eyebrow" data-n="06">Womit wir bauen</p>
+      <p class="eyebrow" data-n="07">Womit wir bauen</p>
       <h2 class="sec__h">Ein Modell ist noch keine Lösung.</h2>
       <div class="sec__body"><Capabilities /></div>
       <SectionCta line="Was davon Ihr Ablauf braucht, klären wir im Gespräch." secondary={{ label: "Leistungen im Detail", href: "/leistungen" }} />
@@ -115,30 +136,68 @@ import { company } from "../data/company";
   <Cta />
 </Base>
 
+<script>
+  const list = document.querySelector<HTMLElement>(".promise__rows");
+  const rows = Array.from(document.querySelectorAll<HTMLElement>(".promise__row"));
+  const ok =
+    list &&
+    "IntersectionObserver" in window &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    window.matchMedia("(min-width: 900px)").matches;
+  if (ok) {
+    list.dataset.anim = "";
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px" },
+    );
+    rows.forEach((r) => io.observe(r));
+  }
+</script>
+
 <style>
   .promise__head { display: grid; gap: 24px; }
   @media (min-width: 900px) { .promise__head { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; } }
   .promise h2 { margin-top: 16px; max-width: 16ch; }
   .promise__lede { margin: 0; }
-  /* Vier Einwände als Zellenraster (gleiches Muster wie die Souveränitäts-Punkte). */
-  .promise__list {
-    list-style: none; margin: 44px 0 0; padding: 0;
-    display: grid; gap: 1px;
-    background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
+  /* Einwand-Zeilen: Ziffer, Einwand groß in Kundensprache, Antwort daneben.
+     Beim Scrollen wird der Einwand durchgestrichen und die Antwort erscheint. */
+  .promise__rows { list-style: none; margin: 40px 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .promise__row {
+    display: grid; gap: 10px 24px;
+    padding-block: 26px;
+    border-bottom: 1px solid var(--line);
   }
-  @media (min-width: 720px) { .promise__list { grid-template-columns: repeat(2, 1fr); } }
-  .promise__item {
-    background: var(--paper); padding: 28px 26px 30px;
-    display: grid; gap: 12px; align-content: start;
-    transition: background-color 0.2s;
+  @media (min-width: 900px) {
+    .promise__row { grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1fr); gap: 48px; padding-block: 34px; align-items: start; }
   }
-  .promise__item:hover { background: var(--paper-2); }
-  .promise__quote { margin: 0; font-family: var(--font-display); font-size: 0.9rem; font-weight: 500; color: var(--accent); }
-  .promise__hook { font-size: 1.35rem; letter-spacing: -0.015em; max-width: 24ch; text-wrap: balance; }
-  .promise__text { margin: 0; color: var(--fg-muted); font-size: 0.98rem; }
+  .promise__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); padding-top: 0.6em; }
+  .promise__quote {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--fg-muted);
+    text-wrap: balance;
+    max-width: 18ch;
+  }
+  .promise__quote span {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--accent);
+    text-decoration-skip-ink: none;
+  }
+  .promise__answer { display: grid; gap: 8px; justify-items: start; }
+  .promise__hook { font-size: clamp(1.15rem, 1.6vw, 1.4rem); letter-spacing: -0.015em; max-width: 24ch; text-wrap: balance; }
+  .promise__text { margin: 0; color: var(--fg-muted); max-width: 44ch; }
   .promise__cta {
     display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 6px; width: fit-content;
+    margin-top: 6px;
     font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; letter-spacing: -0.005em;
     color: var(--accent); text-decoration: none;
     border-bottom: 1px solid transparent;
@@ -147,12 +206,13 @@ import { company } from "../data/company";
   .promise__cta svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
   .promise__cta:hover, .promise__cta:focus-visible { color: var(--fg); border-color: var(--line-strong); }
   .promise__cta:hover svg { transform: translateX(3px); }
-  .promise__senior {
-    margin: 40px 0 0;
-    font-family: var(--font-display); font-weight: 600;
-    font-size: clamp(1.15rem, 1.8vw, 1.45rem); letter-spacing: -0.015em; line-height: 1.35;
-    max-width: 40ch; text-wrap: balance;
-  }
+  /* Animation nur, wenn das Skript sie freigibt (Desktop, keine Reduced Motion). */
+  .promise__rows[data-anim] .promise__quote span { text-decoration-color: transparent; transition: text-decoration-color 0.55s var(--ease-out) 0.1s; }
+  .promise__rows[data-anim] .promise__row.is-in .promise__quote span { text-decoration-color: var(--accent); }
+  .promise__rows[data-anim] .promise__answer { opacity: 0; transform: translateY(10px); transition: opacity 0.6s var(--ease-out) 0.4s, transform 0.6s var(--ease-out) 0.4s; }
+  .promise__rows[data-anim] .promise__row.is-in .promise__answer { opacity: 1; transform: none; }
+  .promise__row:hover .promise__quote { color: var(--fg); }
+  .promise__quote { transition: color 0.2s; }
   .chainsec__h, .sec__h { margin-top: 16px; max-width: 20ch; }
   .chainsec__h { max-width: 22ch; }
   .chainsec { padding-block: 0 72px; }
@@ -171,6 +231,17 @@ import { company } from "../data/company";
   .sov__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); }
   .sov__title { font-size: 1.2rem; }
   .sov__text { color: var(--fg-muted); font-size: 0.98rem; }
+  .sov__point--win { background: var(--ink); }
+  .sov__point--win .sov__n { color: var(--accent-on-ink); }
+  .sov__point--win .sov__title { color: var(--fg-on-ink); }
+  .sov__point--win .sov__text { color: var(--fg-on-ink-muted); }
+  .soft__grid { display: grid; gap: 28px; }
+  @media (min-width: 900px) { .soft__grid { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; } }
+  .soft__side { display: grid; gap: 24px; justify-items: start; }
+  .soft__side .lede { margin: 0; }
+  .soft__offers { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .soft__offers li { padding: 6px 12px; border: 1px solid var(--line); border-radius: var(--radius-pill); font-family: var(--font-display); font-size: 0.88rem; font-weight: 500; }
+  .soft__actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .seven__grid { display: grid; gap: 28px; }
   @media (min-width: 900px) { .seven__grid { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; } }
   .seven__side { display: grid; gap: 24px; justify-items: start; }

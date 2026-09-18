@@ -5,17 +5,17 @@ import Steps from "../components/Steps.astro";
 import Capabilities from "../components/Capabilities.astro";
 import Cta from "../components/Cta.astro";
 import SectionCta from "../components/SectionCta.astro";
-import { positioning } from "../data/content";
+import { positioning, software } from "../data/content";
 ---
 
 <Base
   title="Wir bauen, was wir empfehlen"
-  description="Leistungen von H&W Digital Solutions: Prozessanalyse, Bewertung von AI-Potenzialen, AI-natives Prozessdesign, eigenes Engineering und produktiver Betrieb."
+  description="Leistungen von H&W Digital Solutions: Prozessanalyse, Bewertung von AI-Potenzialen, AI-natives Prozessdesign, eigenes Engineering und Software- und Webentwicklung mit Senior Engineers und Partnern."
 >
   <PageHeader
     eyebrow={positioning.category}
     title="Wir bauen, was wir empfehlen."
-    lede="Prozessanalyse, Lösungsdesign und Engineering aus einem Team. Verantwortung bis in den Betrieb."
+    lede="Prozessanalyse, Lösungsdesign und Engineering aus einem Team. Verantwortung, bis die Lösung produktiv läuft."
   />
 
   <section class="section">
@@ -35,6 +35,40 @@ import { positioning } from "../data/content";
     </div>
   </section>
 
+  <section class="section soft" id="software">
+    <div class="container">
+      <div class="soft__head">
+        <div>
+          <p class="eyebrow" data-n="03">{software.eyebrow}</p>
+          <h2 class="h">{software.heading}</h2>
+        </div>
+        <p class="lede soft__lede">{software.lede}</p>
+      </div>
+      <ul class="soft__offers">
+        {software.offers.map((o) => (
+          <li class="soft__offer">
+            <h3>{o.title}</h3>
+            <p>{o.text}</p>
+          </li>
+        ))}
+      </ul>
+      <div class="soft__how">
+        <div class="soft__sdlc">
+          <h3>{software.sdlc.title}</h3>
+          <ol>
+            {software.sdlc.items.map((t) => <li>{t}</li>)}
+          </ol>
+        </div>
+        <aside class="soft__proof">
+          <p class="soft__proof-label">{software.proof.label}</p>
+          <h3>{software.proof.title}</h3>
+          <p>{software.proof.text}</p>
+        </aside>
+      </div>
+      <SectionCta line={software.cta.line} primary={software.cta.primary} />
+    </div>
+  </section>
+
   <Cta heading="Welcher Prozess soll zuerst dran?" text="Ein Ablauf, der Zeit oder Nerven kostet, reicht als Einstieg." />
 </Base>
 
@@ -42,4 +76,27 @@ import { positioning } from "../data/content";
   .h { margin-top: 16px; max-width: 20ch; }
   .h + .lede { margin-top: 16px; }
   .body { margin-top: 44px; }
+  .soft__head { display: grid; gap: 24px; }
+  @media (min-width: 900px) { .soft__head { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; } }
+  .soft__lede { margin: 0; }
+  .soft__offers {
+    list-style: none; margin: 44px 0 0; padding: 0;
+    display: grid; gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
+  }
+  @media (min-width: 720px) { .soft__offers { grid-template-columns: repeat(3, 1fr); } }
+  .soft__offer { background: var(--paper); padding: 26px 24px 28px; display: grid; gap: 10px; align-content: start; }
+  .soft__offer h3 { font-size: 1.15rem; }
+  .soft__offer p { margin: 0; color: var(--fg-muted); font-size: 0.98rem; }
+  .soft__how { display: grid; gap: 24px; margin-top: 24px; }
+  @media (min-width: 900px) { .soft__how { grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: stretch; } }
+  .soft__sdlc { padding: 28px 26px 30px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--paper); }
+  .soft__sdlc h3 { font-size: 1.2rem; max-width: 24ch; }
+  .soft__sdlc ol { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; counter-reset: sdlc; }
+  .soft__sdlc li { position: relative; padding-left: 40px; color: var(--fg-muted); counter-increment: sdlc; }
+  .soft__sdlc li::before { content: counter(sdlc, decimal-leading-zero); position: absolute; left: 0; top: 0.2em; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); }
+  .soft__proof { padding: 28px 26px 30px; border-radius: var(--radius-lg); background: var(--ink); color: var(--fg-on-ink); display: grid; gap: 12px; align-content: start; }
+  .soft__proof-label { margin: 0; font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; color: var(--accent-on-ink); }
+  .soft__proof h3 { font-size: 1.25rem; color: var(--fg-on-ink); max-width: 22ch; text-wrap: balance; }
+  .soft__proof p:last-child { margin: 0; color: var(--fg-on-ink-muted); }
 </style>
