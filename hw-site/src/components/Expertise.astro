@@ -46,15 +46,12 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
             const img = badge(c.file);
             return (
               <li>
-                {img && <Image src={img} alt={`${c.name} (${c.issuer})`} title={`${c.name}, ${c.issuer}`} width={40} densities={[1, 2]} loading="lazy" />}
+                {img && <Image src={img} alt={`${c.name} (${c.issuer})`} title={`${c.name}, ${c.issuer}`} width={56} densities={[1, 2]} loading="lazy" />}
               </li>
             );
           })}
         </ul>
-        <p class="xp__certs-label">
-          <strong>{certifications.length}</strong> {expertise.certsLabel}
-          <a class="xp__link" href={expertise.secondary.href}>{expertise.secondary.label}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        </p>
+        <a class="xp__link" href={expertise.secondary.href}>{expertise.secondary.label}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
     </div>
   </div>
@@ -88,17 +85,27 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
     font-family: var(--font-display); font-size: 0.95rem; font-weight: 500; letter-spacing: -0.01em;
     color: var(--fg-muted);
   }
-  .xp__certs { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
-  .xp__badges { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .xp__badges img { display: block; width: 36px; height: auto; filter: saturate(0.2); opacity: 0.8; transition: filter 0.25s, opacity 0.25s; }
+  /* Zertifikate (Gründer, 2026-09-18): ohne Zähler und Label, größer, als Reihe, die rechts
+     ausblendet, damit sichtbar ist, dass es weitergeht; daneben „Alle Nachweise“. */
+  .xp__certs {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px;
+    padding-top: 18px; border-top: 1px solid var(--line);
+  }
+  .xp__badges {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: nowrap; gap: 12px; overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, #000 72%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 72%, transparent 100%);
+  }
+  .xp__badges li { flex: 0 0 auto; }
+  .xp__badges img { display: block; width: 52px; height: auto; filter: saturate(0.25); opacity: 0.85; transition: filter 0.25s, opacity 0.25s; }
   .xp__badges li:hover img { filter: none; opacity: 1; }
-  .xp__certs-label { margin: 0; font-size: 0.9rem; color: var(--fg-muted); display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; }
-  .xp__certs-label strong { font-family: var(--font-display); font-weight: 700; color: var(--fg); font-size: 1.05rem; }
-  .xp__link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-display); font-size: 0.86rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .xp__link { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-family: var(--font-display); font-size: 0.92rem; font-weight: 600; color: var(--accent); text-decoration: none; }
   .xp__link svg { width: 13px; height: 13px; transition: transform 0.2s var(--ease-out); }
   .xp__link:hover svg { transform: translateX(3px); }
   @media (max-width: 899px) {
     .xp__img { max-width: 420px; }
-    .xp__badges img { width: 32px; }
+    .xp__badges img { width: 44px; }
+    .xp__certs { grid-template-columns: 1fr; gap: 12px; }
   }
 </style>

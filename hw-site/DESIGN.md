@@ -214,6 +214,7 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 
 | Datum | Änderung |
 |---|---|
+| 2026-09-18 | Stepper größer und cleaner: Knoten 40 px, Labels unter den Knoten, Linie 1,5 px nur zwischen den Knoten (läuft nicht mehr durch Text), Pfeile an der Knotenzeile ausgerichtet. Proof-Szene: Zähler „8 Zertifikate im Gründerteam“ entfernt; Badges 52 px in einer Reihe, die rechts ausblendet (`mask-image`), daneben „Alle Nachweise“. Es soll sichtbar sein, dass die Reihe weitergeht. |
 | 2026-09-18 | Zehn-Schritte-Slider: Phasen-Pillen durch einen Stepper mit Linie und Knoten ersetzt (siehe Step). |
 | 2026-09-18 | Proof-Szene: Motiv Systemmodell (Grundplatte, fünf Module, eines wird gesetzt, Blaupause, Tuschestift) statt Maßschneiderei, Gründer: „cooles Wortspiel, passt aber nicht in den professionellen IT-Consulting-Auftritt“. Freisteller wie zuvor, Bildunterschrift „Für Ihren Betrieb geplant und gebaut.“ Verworfen: Architekturmodell mit Blaupause (liest sich als Immobilie). |
 | 2026-09-18 | Proof-Szene: Motiv Maßschneiderei (Stoffballen, Maßband, Kreide, Schere, Schnittmuster) statt Tischszene, Gründer: Professionalität, Seniorität, „zugeschnittenes Senior Consulting statt Massengeschäft wie KPMG oder EY“. Freisteller wie zuvor, Bildunterschrift „Zugeschnitten auf Ihren Betrieb.“ Verworfen: gefeilter Schlüssel mit Schloss (liest sich als Spielzeug). |

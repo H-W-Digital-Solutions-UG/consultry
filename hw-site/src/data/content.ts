@@ -67,7 +67,6 @@ export const expertise = {
   // professionellen IT-Consulting-Auftritt“). Motiv jetzt ein Systemmodell auf Grundplatte
   // mit Blaupause und Tuschestift: eine Lösung, für einen Betrieb konstruiert.
   caption: "Für Ihren Betrieb geplant und gebaut.",
-  certsLabel: "Zertifikate im Gründerteam.",
   cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
   secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },
 } as const;
