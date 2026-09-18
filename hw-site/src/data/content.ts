@@ -46,6 +46,8 @@ export const expertise = {
   quote: "Im Pitch: Senior. In der Lieferung: Junior.",
   heading: "Wer Sie überzeugt, baut auch.",
   text: "Wer im Erstgespräch sitzt, bewertet, baut und bleibt, bis es läuft.",
+  // Bildunterschrift der Clay-Szene (Tisch, Stühle, Kaffee): Gastlichkeit und Augenhöhe.
+  caption: "Am Tisch, nicht im Ticket.",
   certsLabel: "Zertifikate im Gründerteam.",
   cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
   secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },

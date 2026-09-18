@@ -254,7 +254,9 @@ import { company } from "../data/company";
   .promise__answer { display: grid; gap: 10px; justify-items: start; }
   /* Visualisierung links unter dem Zitat (Gründer, 2026-09-18: Zahlenpunkte links gestrichen,
      der Platz gehört der Abbildung). */
-  .promise__viz { width: 100%; max-width: 520px; margin-top: 8px; }
+  /* Die SVGs haben links ca. 22/360 Innenrand; negative Außenkante, damit die Zeichnung
+     an der Zitatkante beginnt (Gründer: „zu sehr zur Mitte gerückt“). */
+  .promise__viz { width: 100%; max-width: 520px; margin-top: 8px; margin-left: -6%; }
   .promise__viz :global(.viz) { max-width: none; }
   @media (max-width: 899px) { .promise__viz { margin-top: 16px; max-width: none; } }
   .promise__hook { font-size: clamp(1.4rem, 2.1vw, 1.95rem); letter-spacing: -0.02em; line-height: 1.2; max-width: 22ch; text-wrap: balance; }
