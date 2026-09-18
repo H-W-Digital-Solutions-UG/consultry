@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://docs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
-  site: 'https://hw-digitalsolutions.de',
+  site: 'https://consultry.de',
   integrations: [sitemap()],
   // Alle CSS-Dateien sind zusammen < 40 KB: inline im HTML spart drei
   // render-blockierende Requests beim ersten Aufruf.

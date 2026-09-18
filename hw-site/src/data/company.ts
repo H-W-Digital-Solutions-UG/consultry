@@ -6,8 +6,11 @@
 export const company = {
   name: "H&W Digital Solutions",
   legalName: "H&W Digital Solutions UG (haftungsbeschränkt)",
-  domain: "hw-digitalsolutions.de",
-  siteUrl: "https://hw-digitalsolutions.de",
+  // Die Seite läuft unter consultry.de; www, .at, .ch und .eu leiten dorthin.
+  // hw-digitalsolutions.de leitet ebenfalls hierher, trägt aber weiterhin die
+  // Postfächer (Microsoft 365), deshalb bleibt die Kontaktadresse dort.
+  domain: "consultry.de",
+  siteUrl: "https://consultry.de",
   tagline: "AI Transformation & Engineering",
   // v4 (2026-09-18): schlichter Satz statt Kontrast-Slogan („Kein Pilotprojekt. Ihr Tagesgeschäft.“).
   claim: "AI, die Ihr Team jeden Tag nutzt.",

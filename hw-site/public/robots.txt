@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hw-digitalsolutions.de/sitemap-index.xml
+Sitemap: https://consultry.de/sitemap-index.xml
