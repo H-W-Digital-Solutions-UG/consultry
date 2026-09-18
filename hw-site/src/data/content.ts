@@ -26,15 +26,19 @@ export const hero = {
   // Hook v9 (2026-09-18, Gründer: v8 „klingt nicht hooking“): Wendung, die niemand
   // kommen sieht (impulse.de): die größte AI-Chance ist etwas Alltägliches.
   // Word Joiner (U+2060) nach den Bindestrichen: kein Umbruch in „AI-Chance“ und „Excel-Tabelle“ auf Phones.
-  headline: "Ihre größte AI-\u2060Chance steckt in einer Excel-\u2060Tabelle.",
+  // Hook v10 (2026-09-18, Gründer: Excel und PDF „zu speziell“; kürzer, weniger abstrakt,
+  // direkt auf den Pain: AI unstrukturiert und über Mitarbeiter verstreut, jeder macht sein
+  // eigenes Ding, nichts ist operationalisiert; ohne Quellen, Kontext und Anbindung entsteht
+  // kein belastbares Ergebnis).
+  headline: "Ihr Team nutzt AI.\nJeder für sich.",
   // Claim v2 (2026-09-18): Sieger des Claim-Panels für diese Headline; das
   // englische Motto „From Process to Production.“ war den Gründern zu corporate.
   // Claim v3: löst die Headline auf, ohne Abstraktum.
   // Claim v4: die Rolle danach, ohne Parole.
-  claim: "Wir finden sie. Und bauen sie so ein, dass Ihr Team sie jeden Tag nutzt.",
+  claim: "Wir machen daraus einen Ablauf, auf den sich Ihr ganzer Betrieb verlassen kann.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
   // v6: konkret, wo und wie; kein „dort, wo“.
-  description: "Zwei Gründer, die selbst bauen und bleiben, bis es läuft.",
+  description: "Mit den richtigen Quellen, Regeln und Anbindungen. Und wir bleiben, bis es läuft.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
@@ -82,7 +86,7 @@ export const promise = {
   objections: [
     {
       quote: "Wir nutzen doch schon AI.",
-      hook: "Ein paar Kollegen nutzen AI. Der Betrieb läuft wie vorher.",
+      hook: "Jeder fragt die AI anders. Und keiner weiß, ob das Ergebnis stimmt.",
       win: { sign: "+", value: 14, unit: "%", label: "mehr gelöste Anfragen pro Stunde, sobald das ganze Team den AI-Assistenten hatte", source: "Brynjolfsson, Li, Raymond 2023, NBER, 5.179 Support-Mitarbeiter" },
       cta: { label: "Ihren Stand klären", href: "/kontakt" },
       viz: "align" as const,
