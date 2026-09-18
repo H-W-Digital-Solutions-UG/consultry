@@ -1,9 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
-import Chain from "../components/Chain.astro";
 import Contrast from "../components/Contrast.astro";
-import Capabilities from "../components/Capabilities.astro";
 import Cta from "../components/Cta.astro";
 import SectionCta from "../components/SectionCta.astro";
 import PromiseViz from "../components/PromiseViz.astro";
@@ -105,19 +103,7 @@ import { company } from "../data/company";
     </div>
   </section>
 
-  <section class="section section--ink chainsec">
-    <div class="container">
-      <Chain>
-        <Fragment slot="heading">
-          <p class="eyebrow">So arbeiten wir</p>
-          <h2 class="chainsec__h">Zwölf Schritte, ein Team, keine Übergabe.</h2>
-        </Fragment>
-      </Chain>
-      <SectionCta line="Wo fängt Schritt eins bei Ihnen an?" secondary={{ label: "Vorgehen im Detail", href: "/vorgehen" }} />
-    </div>
-  </section>
-
-  <section class="section section--paper-2 seven">
+  <section class="section seven">
     <div class="container seven__grid">
       <div>
         <p class="eyebrow">Zehn Schritte</p>
@@ -155,15 +141,6 @@ import { company } from "../data/company";
           <a class="btn btn--ghost" href="/leistungen#software">Software und Web im Detail</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--paper-2">
-    <div class="container">
-      <p class="eyebrow">Womit wir bauen</p>
-      <h2 class="sec__h">Ein Modell ist noch keine Lösung.</h2>
-      <div class="sec__body"><Capabilities /></div>
-      <SectionCta line="Was davon Ihr Ablauf braucht, klären wir im Gespräch." secondary={{ label: "Leistungen im Detail", href: "/leistungen" }} />
     </div>
   </section>
 
@@ -364,9 +341,7 @@ import { company } from "../data/company";
   /* Letztes Band braucht keine Stapelhöhe; der CTA folgt dicht darauf. */
   .promise__row:last-child .promise__band { min-height: 0; padding-bottom: 40px; }
   .promise__rows + .container :global(.scta) { margin-top: 0; }
-  .chainsec__h, .sec__h { margin-top: 16px; max-width: 20ch; }
-  .chainsec__h { max-width: 22ch; }
-  .chainsec { padding-block: 0 72px; }
+  .sec__h { margin-top: 16px; max-width: 20ch; }
   .sec__h + .lede { margin-top: 16px; }
   .sec__body { margin-top: 44px; }
   .sov__grid { display: grid; gap: 24px; }
