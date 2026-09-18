@@ -121,8 +121,9 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 - Aktiv: `scale(.97)`. Icons 16 px, `currentColor`.
 
 ### Eyebrow (`.eyebrow`)
-- Kicker über Sektionen und Seitenköpfen: kleine Pille, Sora 500, 0,8 rem, Satzschreibung, Markenlila auf 7 % Lila-Tönung mit 22 % Lila-Hairline (`color-mix`), `--radius-pill`. Auf `--ink`: `--accent-on-ink` auf 7 % Weißschleier mit 18 % Weiß-Hairline.
-- Keine Ziffern, kein Zierstrich, keine Versalien (Änderung 2026-09-18: der frühere Abschnittsindex `data-n` ist entfallen, weil nummerierte Eyebrows unruhig wirkten). Labels in Käufersprache und kurz: „Unser Versprechen“, „Unabhängigkeit“, „So arbeiten wir“, „Zehn Schritte“, „Der Unterschied“, „Software und Web“, „Womit wir bauen“.
+- Sektionslabel, klassisch redaktionell: Inter 600, 0,72 rem, Versalien, Laufweite 0,14 em, `--fg-muted` (auf `--ink`: `--fg-on-ink-muted`). Keine Fläche, kein Rahmen, keine Ziffer, kein Zierstrich, kein Markenlila (die Farbe bleibt Buttons, Links und Akzenten vorbehalten).
+- Entscheidung 2026-09-18 (Gründer): Nummerierte Labels und Pillen wirkten generisch; das Label soll Orientierung geben, nicht Aufmerksamkeit ziehen. Damit ist die frühere Regel „keine Versalien“ für dieses Element aufgehoben; sie gilt weiter für Headlines, Buttons und Fließtext.
+- Labels kurz und in Käufersprache: „Unser Versprechen“, „Unabhängigkeit“, „So arbeiten wir“, „Zehn Schritte“, „Der Unterschied“, „Software und Web“, „Womit wir bauen“.
 
 ### Tag (`.tag`) – Vertrag für `Steps.astro` und andere
 ```html
