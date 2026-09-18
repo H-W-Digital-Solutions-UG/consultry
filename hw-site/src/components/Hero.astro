@@ -117,8 +117,14 @@ const image = await getImage({
   .hero__copy > * {
     max-width: 760px;
   }
+  /* Die Headline darf breiter laufen, damit jeder Satz auf einer Zeile bleibt. */
+  .hero__copy > *:has(> h1) {
+    max-width: 960px;
+  }
   .hero h1 {
     margin-top: 18px;
+    max-width: none;
+    white-space: pre-line;
     color: var(--fg-on-ink);
   }
   .hero__claim {

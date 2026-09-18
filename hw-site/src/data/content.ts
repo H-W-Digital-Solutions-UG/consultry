@@ -10,14 +10,15 @@ export const hero = {
   eyebrow: "AI Transformation & Engineering",
   // Weiches Trennzeichen (­) nur in Wörtern über ca. 14 Zeichen an einer
   // Silbengrenze einfügen; die aktuelle Headline braucht keines.
-  // Hook v3 (2026-09-18, Gründer-Wortlaut „Träume nicht nur von KI-Chancen,
-  // lebe sie“), in die Site-Regeln übertragen: „AI“ statt „KI“, keine
-  // Du-Anrede (Infinitiv statt Imperativ), kein Gedankenstrich. Zeile 2
-  // (Beschreibung) trägt weiter den Kern: Wir bauen sie ein.
-  headline: "AI-Chancen nicht nur träumen. Sondern leben.",
+  // Hook v4 (2026-09-18): Sieger des Headline-Panels (30 Kandidaten, drei
+  // Jurys: Aufmerksamkeit, Käuferklarheit, Regeln). Richtung der Gründer
+  // „träumen vs. leben“ als Ort-Kontrast: Meeting (Gerede) gegen Prozess
+  // (Alltag). Alternativen im Marketing-Kontext, Baustein Hero-Hook.
+  // Zeilenumbruch zwischen den Sätzen ist gesetzt (pre-line), damit „In“ nicht allein steht.
+  headline: "AI in jedem Meeting.\nIn keinem Prozess.",
   claim: "From Process to Production.",
-  // v4 (2026-09-18): zwei kurze Sätze, Pain und Win („knackiger Hook, max. 2 Sätze“).
-  description: "Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.",
+  // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
+  description: "Wir bauen AI in den einen Ablauf, der Ihr Team täglich bremst.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;

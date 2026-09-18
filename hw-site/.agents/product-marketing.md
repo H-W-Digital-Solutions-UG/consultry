@@ -188,7 +188,9 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Kern:** AI-Adoption ist niedriger, als die eigene Blase vermuten lässt (Gründer-Einschätzung, keine Zahl). Der breiteste Schmerz der Zielgruppe ist Lärm ohne Ergebnis: Alle reden über AI, im eigenen Betrieb läuft nichts, und niemand weiß, wo anfangen. Der Hero holt genau dort ab, ohne Vorwurf und ohne Voraussetzung.
 
 **Freigegebene Formulierungen:**
-- Headline (v3, 2026-09-18): „AI-Chancen nicht nur träumen. Sondern leben.“ Gründer-Wortlaut war „Träume nicht nur von KI-Chancen - Lebe Sie“; übertragen in die Site-Regeln: „AI“ statt „KI“, Infinitiv statt Du-Imperativ (Sie-Form bleibt für Anreden reserviert), Punkt statt Gedankenstrich. Abgelöst: v2 „Alle reden über AI. Wir bauen sie ein.“ (lebt sinngemäß in der Beschreibung weiter: „Wir bauen AI genau dort ein.“); v1 „Bei Ihnen läuft sie“ (Hosting-Missverständnis).
+- Headline (v4, 2026-09-18): „AI in jedem Meeting. In keinem Prozess.“ Sieger eines Panels (30 Kandidaten aus sechs Ansätzen, drei Jurys: Aufmerksamkeit, Käuferklarheit, Regeln). Punktgleiche Alternativen, freigabefähig: „AI nicht zerreden. Einbauen.“, „AI im ERP. Nicht im Meeting.“, „AI: Wo anfangen? Im Posteingang.“; am nächsten am Gründer-Wortlaut: „Von AI träumen. Mit AI leben.“ Bekanntes Risiko der Siegerzeile: „In keinem Prozess“ ist absolut und kann als Urteil über den Leser gelesen werden; die Beschreibung fängt das mit „der eine Ablauf“ auf.
+- Beschreibung (v5, 2026-09-18): „Wir bauen AI in den einen Ablauf, der Ihr Team täglich bremst.“ (löst v4 „Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“ ab)
+- Headline (v3, 2026-09-18, abgelöst): „AI-Chancen nicht nur träumen. Sondern leben.“ Gründer-Wortlaut war „Träume nicht nur von KI-Chancen - Lebe Sie“; übertragen in die Site-Regeln: „AI“ statt „KI“, Infinitiv statt Du-Imperativ (Sie-Form bleibt für Anreden reserviert), Punkt statt Gedankenstrich. Abgelöst: v2 „Alle reden über AI. Wir bauen sie ein.“ (lebt sinngemäß in der Beschreibung weiter: „Wir bauen AI genau dort ein.“); v1 „Bei Ihnen läuft sie“ (Hosting-Missverständnis).
 - Claim: „From Process to Production.“
 - Beschreibung (v4, 2026-09-18): „Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“ (Gründer: „knackiger Hook, max. 2 Sätze“; v3 „Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden …“ und v2 „Sie brauchen keine AI-Strategie …“ abgelöst)
 
@@ -399,6 +401,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v23 (2026-09-18) — Hero-Headline v4 „AI in jedem Meeting. In keinem Prozess.“ aus dem Headline-Panel; Beschreibung v5.
 - v22 (2026-09-18) — Eyebrows als klassische Versalien-Labels (klein, gesperrt, gedämpft, ohne Pille), nachdem Pillen als generisch empfunden wurden.
 - v21 (2026-09-18) — Showcases als Glas-Karten im Blog-Card-Stil mit eigens erzeugten Bildern (Higgsfield gpt_image_2_5, Hero-Stil: Aubergine, Lavendel, isometrisch, ohne Text): Website-Baukasten auf Glasbühne, vier Module auf einem Blueprint-Raster. Assets in `src/assets/showcases/`, Komponente `ShowcaseCards.astro`.
 - v20 (2026-09-18) — Eyebrows als Kicker-Pillen ohne Ziffer (Gründer: nummerierte Eyebrows machten schlechten Eindruck); Labels geschärft: „Unabhängigkeit“ statt „Souveränität“, „So arbeiten wir“ statt „From Process to Production“, „Zehn Schritte“ statt „Das Leistungsbild“, „Zwölf Schritte“ statt „Delivery Chain“.
