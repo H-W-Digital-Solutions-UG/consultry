@@ -12,7 +12,7 @@
  *   baut“ (Gründer, 2026-09-18).
  * variant="full":  Unternehmensseite mit Namen und Ausstellern, dazu Partner.
  */
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import { certifications, partners } from "../data/content";
 
 interface Props {
@@ -24,7 +24,24 @@ const strip = variant === "strip";
 const badgeFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/certs/*.png", { eager: true });
 const logoFiles = import.meta.glob<{ default: ImageMetadata }>("../assets/partners/*.png", { eager: true });
 const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
-const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
+
+/**
+ * Partnerlogos laufen als CSS-Maske und werden nur 22 bis 32 px hoch gezeigt.
+ * Die Quell-PNGs sind bis zu 75 KB groß; für die Maske zählt allein der
+ * Alphakanal. Wir rendern sie deshalb einmal als WebP mit 96 px Höhe (3x der
+ * größten Anzeigehöhe) vor. Die niedrige Qualität betrifft nur die Farbkanäle,
+ * die die Maske verwirft; der Alphakanal bleibt scharf. Aus 203 KB werden so
+ * rund 20 KB, ohne sichtbaren Unterschied.
+ */
+const logoMasks = new Map<string, { src: string; ratio: number }>();
+for (const p of partners) {
+  const img = logoFiles[`../assets/partners/${p.file}`]?.default;
+  if (!img) continue;
+  const ratio = img.width / img.height;
+  const rendered = await getImage({ src: img, width: Math.round(96 * ratio), height: 96, format: "webp", quality: 20 });
+  logoMasks.set(p.file, { src: rendered.src, ratio });
+}
+const logo = (file: string) => logoMasks.get(file);
 ---
 
 {strip ? (
@@ -37,7 +54,7 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
             return (
               <li>
                 <a class="logo-link" href={p.href} rel="noopener" target="_blank" aria-label={`${p.name} (öffnet in neuem Tab)`} tabindex={copy === 1 ? -1 : undefined}>
-                  {img && <span class="logo" style={`--logo: url(${img.src}); --ratio: ${(img.width / img.height).toFixed(3)}`} aria-hidden="true"></span>}
+                  {img && <span class="logo" style={`--logo: url(${img.src}); --ratio: ${img.ratio.toFixed(3)}`} aria-hidden="true"></span>}
                 </a>
               </li>
             );
@@ -73,7 +90,7 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
             return (
               <li>
                 <a class="logo-link" href={p.href} rel="noopener" target="_blank" aria-label={`${p.name} (öffnet in neuem Tab)`}>
-                  {img && <span class="logo" style={`--logo: url(${img.src}); --ratio: ${(img.width / img.height).toFixed(3)}`} aria-hidden="true"></span>}
+                  {img && <span class="logo" style={`--logo: url(${img.src}); --ratio: ${img.ratio.toFixed(3)}`} aria-hidden="true"></span>}
                 </a>
               </li>
             );

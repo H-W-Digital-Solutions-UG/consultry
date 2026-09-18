@@ -360,9 +360,14 @@ p {
   }
 }
 
+/*
+ * Einblenden der Hero- und Seitenkopf-Zeilen. Die Verzögerung ist bewusst
+ * kurz: der Text ist auf Mobilgeräten das LCP-Element, jede Zehntelsekunde
+ * Verzögerung zählt dort vierfach (gemessen mit Lighthouse, 2026-09-18).
+ */
 .reveal {
   opacity: 0;
-  animation: fade-up 0.8s var(--ease-out) forwards;
+  animation: fade-up 0.55s var(--ease-out) forwards;
   animation-delay: var(--delay, 0s);
 }
 
