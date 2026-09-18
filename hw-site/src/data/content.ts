@@ -18,13 +18,18 @@ export const hero = {
   // Hook v6 (2026-09-18, Gründer: „viel kürzer, nicht alle Pain Points auf
   // einmal“): ein Schmerz, drei Wörter. Abtippen von Hand kennt jeder Betrieb;
   // „Schluss mit“ ist die Figur der Gründer (Souveränität).
-  headline: "Schluss mit Abtippen.",
+  // Hook v7 (2026-09-18, Gründer: „menschlicher, keine klassischen AI-Formulierungen,
+  // die wie ein Callout klingen; ‚dort, wo Ihr Team von Hand überträgt‘ ist künstlich
+  // unspezifisch“): eine konkrete Szene aus dem Betrieb, so gesagt, wie man es sagt.
+  headline: "Bestellungen kommen per Mail.\nUnd jemand tippt sie ab.",
   // Claim v2 (2026-09-18): Sieger des Claim-Panels für diese Headline; das
   // englische Motto „From Process to Production.“ war den Gründern zu corporate.
   // Claim v3: löst die Headline auf, ohne Abstraktum.
-  claim: "Das übernimmt ab jetzt AI.",
+  // Claim v4: die Rolle danach, ohne Parole.
+  claim: "Das kann eine AI übernehmen. Ihr Team prüft nur noch.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
-  description: "Wir bauen AI dort ein, wo Ihr Team heute von Hand überträgt: Bestellungen, Angebote, Rechnungen. Und bleiben, bis es läuft.",
+  // v6: konkret, wo und wie; kein „dort, wo“.
+  description: "Wir bauen sie in Ihr System ein, mit Ihren Daten und Ihren Regeln. Und wir bleiben, bis es im Alltag läuft.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
@@ -45,10 +50,12 @@ export const expertise = {
 } as const;
 
 export const promise = {
-  short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
+  // v10 (2026-09-18, Copy-Muster nach Systango: Diagnose als Frage, ohne Jargon wie „Use Cases“).
+  short: "Sie haben AI im Haus. Warum merkt der Alltag nichts davon?",
   // Einordnung ohne Zahlen. Recherche und Quellen: .agents/product-marketing.md,
   // Abschnitt „Problems & Pain Points“ (v8, 2026-09-18). Kurzfassung v9.
-  lede: "Es scheitert selten am Modell. Vier Einwände, vier Antworten.",
+  // v11 (Gründer: menschlicher, keine Callout-Sätze).
+  lede: "Die meisten Betriebe haben inzwischen Tools. Was fehlt, ist ein Ablauf, der damit läuft.",
   // Vier Einwände in Kundensprache: Zitat, Hook, ein Satz, passender CTA.
   // Die Senior-Zusage steht als eigene Szene darüber (`expertise`).
   // `data`: ein belegter Zahlenpunkt je Einwand (v11, Gründer: „Zahlen geben
@@ -59,32 +66,32 @@ export const promise = {
   objections: [
     {
       quote: "Wir nutzen doch schon AI.",
-      hook: "Einzelne nutzen AI. Ihr Betrieb nicht.",
-      text: "Alle machen es anders, niemand misst den Nutzen. Wir machen daraus einen festen Ablauf für alle.",
+      hook: "Ein paar Kollegen nutzen AI. Der Betrieb läuft wie vorher.",
+      text: "Jeder hat sein eigenes Tool, und niemand weiß, was es bringt. Wir machen daraus einen Ablauf, der für alle gilt.",
       cta: { label: "Ihren Stand klären", href: "/kontakt" },
       viz: "align" as const,
       data: { value: 78, unit: "%", label: "der AI-Nutzer bringen eigene Tools mit zur Arbeit. Ohne Vorgabe von oben", chart: "ring" as const, series: [{ v: 78, name: "" }], source: "Work Trend Index 2024, Microsoft und LinkedIn" },
     },
     {
       quote: "Dafür haben wir weder Leute noch Zeit.",
-      hook: "Wir bringen beides mit. Und geben es weiter.",
-      text: "Wir bauen die Lösung und zeigen Ihrem Team, wie es sie selbst weiterführt.",
+      hook: "Wir bringen beides mit, und Ihr Team lernt es von uns.",
+      text: "Wir bauen die Lösung mit Ihnen zusammen und bleiben, bis Ihr Team sie ohne uns weiterführt.",
       cta: { label: "So befähigen wir Ihr Team", href: "/vorgehen#phasen" },
       viz: "handover" as const,
       data: { value: 66, unit: "%", label: "der Unternehmen fehlt die Zeit für Digitalisierung, 70 % fehlen die Fachkräfte", chart: "bars" as const, series: [{ v: 66, name: "Zeit" }, { v: 70, name: "Fachkräfte" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
     },
     {
       quote: "Rechnet sich das überhaupt?",
-      hook: "Das sehen Sie, bevor wir bauen.",
-      text: "Wir rechnen jedes Vorhaben vorher durch. Gebaut wird nur, was sich lohnt.",
+      hook: "Wir rechnen es vorher durch, und dann entscheiden Sie.",
+      text: "Was es bringt, was es kostet, was es braucht: Das liegt auf dem Tisch, bevor wir eine Zeile bauen.",
       cta: { label: "Wie wir bewerten", href: "/leistungen" },
       viz: "rank" as const,
       data: { value: 59, unit: "%", label: "der Führungskräfte können den Nutzen von AI nicht beziffern. 60 % fehlt ein Plan", chart: "bars" as const, series: [{ v: 59, name: "Nutzen unklar" }, { v: 60, name: "Kein Plan" }], source: "Work Trend Index 2024" },
     },
     {
       quote: "Der Pilot lief. Mehr nicht.",
-      hook: "Wir bauen dort ein, wo Ihr Team arbeitet.",
-      text: "Direkt in Ihre Systeme, mit Datenschutz von Anfang an. Wo es läuft, entscheiden Sie.",
+      hook: "Wir bauen es in die Systeme ein, mit denen Ihr Team jeden Tag arbeitet.",
+      text: "Mit Datenschutz von Anfang an. Und wo die Lösung läuft, entscheiden Sie.",
       cta: { label: "Was wir selbst bauen", href: "/leistungen" },
       viz: "pilot" as const,
       data: { value: 41, unit: "%", label: "der Unternehmen setzen AI ein. 48 % planen und diskutieren noch", chart: "stack" as const, series: [{ v: 41, name: "im Einsatz" }, { v: 48, name: "geplant" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
@@ -216,7 +223,7 @@ export const sovereignty = {
   points: [
     { title: "Abhängig bei jedem Schritt", text: "Jede Änderung ein Ticket." },
     { title: "Wissen wandert ab", text: "Geht der Anbieter, geht das Wissen." },
-    { title: "Kontrolle zurück", text: "Ihr Team führt die Lösung selbst weiter." },
+    { title: "Ihr Team übernimmt", text: "Lösung, Wissen und Zugänge bleiben bei Ihnen." },
   ],
 } as const;
 
@@ -232,7 +239,7 @@ export const sovereignty = {
 export const software = {
   eyebrow: "Software und Web",
   heading: "Nicht jedes Projekt beginnt bei AI.",
-  ledeShort: "Software, Plattformen, Websites. Gebaut von erfahrenen Entwicklern und unseren Partnern, mit AI-Unterstützung.",
+  ledeShort: "Manchmal braucht es zuerst eine Software oder eine Website. Die bauen wir, mit erfahrenen Entwicklern, unseren Partnern und AI-Unterstützung.",
   lede: "Manchmal muss zuerst eine Software oder eine Website gebaut werden. Das machen wir: mit erfahrenen Entwicklern und unseren Partnern, mit AI-Unterstützung und klaren Regeln.",
   offers: [
     { title: "Software und Plattformen", text: "Anwendungen, Schnittstellen, Anbindung an Ihre Systeme." },

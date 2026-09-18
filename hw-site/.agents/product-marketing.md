@@ -180,7 +180,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Freigegebene Formulierungen:**
 - Button: „Kostenloses Erstgespräch“ / „Kostenloses Erstgespräch vereinbaren“
-- Schluss-CTA: „Keine leeren Versprechen. Ein Gespräch, das sich lohnt.“ mit „Kostenlos und in 30 Minuten: Wir entdecken mit Ihnen, wo AI in Ihren Abläufen einen Hebel hat, und sagen ehrlich, wo nicht. Ihre Zeit wird nicht verschwendet.“
+- Schluss-CTA (v2, 2026-09-18): „Ein Gespräch. Ein Ablauf. Eine ehrliche Antwort.“ mit „30 Minuten, kostenlos. Sie bringen einen Ablauf mit, der Ihr Team bremst. Wir sagen Ihnen, ob AI dort etwas bringt. Und wenn nicht, sagen wir das auch.“ (gleicher Text als Lede der Kontaktseite). Abgelöst: „Keine leeren Versprechen. Ein Gespräch, das sich lohnt.“
 - Kontakt-Lede: „30 Minuten, kostenlos, ein konkreter Ablauf: Wir entdecken Ihre Potenziale und sagen ehrlich, wo sich AI lohnt und wo nicht.“
 
 ## Messaging-Baustein: Hero-Hook (2026-09-17)
@@ -195,6 +195,8 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 - Beschreibung (v4, 2026-09-18): „Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“ (Gründer: „knackiger Hook, max. 2 Sätze“; v3 „Ihr Team sucht, wartet und erfasst doppelt, während alle über AI reden …“ und v2 „Sie brauchen keine AI-Strategie …“ abgelöst)
 
 **Abgelöst:** „AI, die in Ihrem Betrieb läuft. Nicht auf Folien.“ (zu lang, Kontrast nur gegen Beratung, nicht gegen den Einstiegsschmerz). Der Folien-Kontrast lebt weiter in „Der Unterschied“.
+
+- Hook v7 (2026-09-18, Gründer: menschlicher, keine Callout-Formulierungen): Headline „Bestellungen kommen per Mail. Und jemand tippt sie ab.“ (zwei Zeilen), Claim „Das kann eine AI übernehmen. Ihr Team prüft nur noch.“, Beschreibung „Wir bauen sie in Ihr System ein, mit Ihren Daten und Ihren Regeln. Und wir bleiben, bis es im Alltag läuft.“ Abgelöst: v6 „Schluss mit Abtippen.“ / „Das übernimmt ab jetzt AI.“ (Gründer: künstlich wie ein Callout). Alternativen in derselben Tonlage: „Angebote schreibt bei Ihnen noch jemand von Hand? Das geht inzwischen anders.“, „Jede Rechnung wird bei Ihnen zweimal angefasst. Einmal reicht.“
 
 ## Messaging-Baustein: Aktivität ist kein Ergebnis (2026-09-17)
 
@@ -262,6 +264,18 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Verlinkt aus:** Souveränität (Startseite, zwei Karten „Showcase ansehen“) und Software-Sektion (Sekundär-CTA).
 
+## Regel: Copy-Rhythmus (2026-09-18)
+
+**Kern (Gründer):** „Inspire your copywriting a bit from Systango, Attio and Sana.“ Übernommen werden Muster, keine Sätze und keine Zahlen.
+
+- **Diagnose als Frage (Systango):** Die Sektion beginnt mit dem Widerspruch, den der Käufer selbst spürt, nicht mit unserem Angebot. Muster: „Sie haben X. Warum passiert Y nicht?“ Beispiel Versprechen: „Sie haben AI im Haus. Warum merkt der Alltag nichts davon?“ Lede als Gegensatz „viele haben Tools, wenige einen Ablauf“.
+- **Zwei Takte, zwei Rollen (Attio):** Hooks als zwei kurze Sätze, oft mit Rollenwechsel wir/Sie. Beispiele: „Wir rechnen vor. Sie entscheiden.“, „Wir bringen beides mit. Ihr Team behält es.“, „Wer Sie überzeugt, baut auch.“
+- **Kleine Ergebnis-Titel (Attio, Sana):** Karten- und Punkt-Titel sind ein Ergebnis in zwei bis vier Wörtern, darunter ein Satz. Beispiel: „Ihr Team übernimmt“ + „Lösung, Wissen und Zugänge bleiben bei Ihnen.“
+- **Aus dem Pilot wird Alltag:** Ergebnis-Zeilen benennen den Zustand danach, nicht die Tätigkeit.
+- **CTA als Zusage, nicht als Bitte:** Schluss-CTA in drei Takten „Ein Gespräch. Ein Ablauf. Eine ehrliche Antwort.“; Buttons bleiben „Kostenloses Erstgespräch“.
+- **Nicht übernommen:** englische Superlative („superintelligence“, „infinitely“), Prozentangaben als Schlagzeile (Systango), Produktnamen als Kategorie.
+- **Korrektur der Gründer (noch am selben Tag):** Zwei-Takt-Zeilen und Triaden klingen im Deutschen schnell wie ein AI-Callout („Schluss mit Abtippen. Das übernimmt ab jetzt AI.“, „Einzelne nutzen AI. Ihr Betrieb nicht.“, „Ein Gespräch. Ein Ablauf. Eine ehrliche Antwort.“). Deshalb gilt vor dem Rhythmus: **so schreiben, wie man es im Gespräch sagt.** Ganze Sätze mit Nebensatz sind erlaubt und erwünscht („Wir rechnen es vorher durch, und dann entscheiden Sie.“). Konkrete Szene statt Abstraktum („Bestellungen kommen per Mail. Und jemand tippt sie ab.“ statt „dort, wo Ihr Team von Hand überträgt“). Keine Parolen mit „Schluss mit“, „ab jetzt“, „nicht X, sondern Y“ als Schlagzeile.
+
 ## Regel: Käufersprache (2026-09-18)
 
 **Kern (Gründer):** Käufer sind Geschäftsführung und Fachbereich, keine Entwickler. Jede Zeile muss ohne Vorwissen verständlich sein: kurze Sätze, konkrete Handlungen („Ihr Team ändert Texte selbst“), Nutzen vor Methode. Technik wird nur genannt, wenn der Käufer sie kennt (WordPress, Typo3, Google) oder danach fragt.
@@ -298,7 +312,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Tonalität:** Sie-Form. Die Zahl „10.000“ ist rhetorisch und wird auf der Website nicht verwendet (keine erfundenen Größen). Keine Abwertung von Tools oder anderen Dienstleistern, das Muster wird benannt, die Wertung liefert der Leser.
 
 **Freigegebene Formulierungen:**
-- Sektion 02 der Startseite (v2, 2026-09-18, direkt nach dem Versprechen; Gründer: „Holen Sie sich Ihre Souveränität zurück“ war zu abstrakt, der Pain ist wichtiger und gehört höher): Headline „Zu viele Dienstleister. Zu wenig Kontrolle.“, Lede „Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Ihr Team wartet auf Tickets, statt zu arbeiten.“ Punkte: „Abhängig bei jedem Schritt“, „Wissen wandert ab“, „Kontrolle zurück“ (Antwort, dunkle Zelle; endet mit „Wo die Lösung läuft, entscheiden Sie.“). CTA-Zeile „Welcher Ablauf hängt bei Ihnen an zu vielen Anbietern?“
+- Sektion 02 der Startseite (v2, 2026-09-18, direkt nach dem Versprechen; Gründer: „Holen Sie sich Ihre Souveränität zurück“ war zu abstrakt, der Pain ist wichtiger und gehört höher): Headline „Zu viele Dienstleister. Zu wenig Kontrolle.“, Lede „Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Ihr Team wartet auf Tickets, statt zu arbeiten.“ Punkte: „Abhängig bei jedem Schritt“, „Wissen wandert ab“, „Ihr Team übernimmt“ (Antwort, dunkle Zelle: „Lösung, Wissen und Zugänge bleiben bei Ihnen.“; v3, 2026-09-18, vorher „Kontrolle zurück“). CTA-Zeile „Welcher Ablauf hängt bei Ihnen an zu vielen Anbietern?“
 - Timeline-Headline danach als Antwort: „Zwölf Schritte, ein Team, keine Übergabe.“ (löst „Schluss mit einem Dienstleister pro Schritt.“ ab, das jetzt als Pain in Sektion 02 lebt)
 - Hook (Souveränitäts-Sektion): „Holen Sie sich Ihre Souveränität zurück.“
 - Lede: „… Mit AI-Workflows, die Ihre Prozesse richtig nutzen und in Ihrem Haus laufen, liegt die Kontrolle wieder bei Ihnen.“
@@ -401,6 +415,8 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v32 (2026-09-18) — Startseite menschlicher (Gründer: „muss menschlicher klingen, keine klassischen AI-Formulierungen, die künstlich wie ein Callout klingen“, Beispiele „Schluss mit Abtippen. / Das übernimmt ab jetzt AI.“, „dort ein, wo Ihr Team von Hand überträgt“, „Einzelne nutzen AI. Ihr Betrieb nicht.“): Hero v7 als Szene „Bestellungen kommen per Mail. Und jemand tippt sie ab.“, Claim „Das kann eine AI übernehmen. Ihr Team prüft nur noch.“, Beschreibung „Wir bauen sie in Ihr System ein, mit Ihren Daten und Ihren Regeln. Und wir bleiben, bis es im Alltag läuft.“ Hooks als ganze Sätze: „Ein paar Kollegen nutzen AI. Der Betrieb läuft wie vorher.“, „Wir bringen beides mit, und Ihr Team lernt es von uns.“, „Wir rechnen es vorher durch, und dann entscheiden Sie.“, „Wir bauen es in die Systeme ein, mit denen Ihr Team jeden Tag arbeitet.“ Lede „Die meisten Betriebe haben inzwischen Tools. Was fehlt, ist ein Ablauf, der damit läuft.“ Schluss-CTA „Bringen Sie einen Ablauf mit. Wir sagen Ihnen, ob AI dort etwas bringt.“ (der dreitaktige „Ein Gespräch. Ein Ablauf. Eine ehrliche Antwort.“ war selbst ein Callout). Software-Teaser als Satz. OG-Bild neu gerendert.
+- v31 (2026-09-18) — Copy-Rhythmus nach Systango, Attio und Sana (Gründer: „inspire your copywriting a bit“): Versprechen-Headline als Diagnosefrage „Sie haben AI im Haus. Warum merkt der Alltag nichts davon?“ (löst „Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.“ ab, auch wegen Jargon), Lede „Tools haben viele. Einen Ablauf, der damit läuft, haben wenige.“; Hooks in zwei Takten „Wir bringen beides mit. Ihr Team behält es.“, „Wir rechnen vor. Sie entscheiden.“, „Aus dem Pilot wird Alltag.“; Unabhängigkeits-Punkt „Ihr Team übernimmt“; Schluss-CTA „Ein Gespräch. Ein Ablauf. Eine ehrliche Antwort.“ mit neuem Text (auch Kontaktseite). Regel „Copy-Rhythmus“ ergänzt.
 - v30 (2026-09-18) — Startseite gestrafft (Gründer: „weg von Hauptseite, nur auf Subseiten“): „So arbeiten wir“ (zwölf Schritte, Chain) und „Womit wir bauen“ (Capabilities) von der Startseite entfernt; sie stehen weiter auf Vorgehen und Leistungen. Die Startseite führt jetzt in fünf Schritten zum CTA: Versprechen, Unabhängigkeit, Zehn Schritte, Der Unterschied, Software und Web.
 - v29 (2026-09-18) — Showcase-Bilder nach dem Hero-Grundsatz neu erzeugt (Gründer: „apply the same Grundsatz“): statt glänzender isometrischer 3D-Szenen jetzt matte Clay-Szenen in Flieder, Mauve und Aubergine mit Filmkorn und weichem Licht von links oben, ohne Glow und Neon, aber mit konkretem Motiv: Website-Anordnung aus Browserfenster, Inhaltskarten und Panels („Ihr Team pflegt sie selbst“) und fünf Bausteine auf einem Raster mit Verbindungen („Mehrere Partner, ein Standard“). Ein erster, rein abstrakter Versuch (leeres Blatt, Punktraster) war den Gründern „zu simplistisch für eine Showcase-Karte“. GPT Image 2.5 hoch plus 4K-Upscale; Nano Banana 2 als Vergleich verworfen.
 - v28 (2026-09-18) — Hero-Hintergrund als Standbild aus dem Gründer-Referenzvideo abgeleitet: abstrakter, analoger Lichtverlauf in der Lila-Familie (mattes Flieder links oben → Aubergine rechts/unten, Filmkorn), keine Objekte, kein Glow. Das Licht liegt hinter der Copy und lenkt den Blick auf Headline und CTA; Overlay im Hero entsprechend verschlankt. Erzeugt mit Higgsfield (GPT Image 2.5 hoch, 4K-Upscale; Nano Banana 2/Flash als Vergleich verworfen wegen Lichtkanten, Regenbogen und Bokeh).
