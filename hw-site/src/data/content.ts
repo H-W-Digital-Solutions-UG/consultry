@@ -26,11 +26,13 @@ export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
   // Einwand „wir nutzen doch schon AI“: Einzelne ja, ein Prozess nein
   // (Baustein nach Systango „AI-Native Delivery“, ohne deren Zahlen).
-  adoption: "Vielleicht nutzen bei Ihnen schon Einzelne AI. Ein Prozess ist das noch nicht: Die Ergebnisse schwanken, niemand misst, nichts baut aufeinander auf.",
+  adoption: "Vielleicht nutzen bei Ihnen schon Einzelne AI. Aber alle arbeiten, wie sie es für richtig halten: kein gemeinsames Vorgehen, schwankende Ergebnisse, und niemand misst, was es bringt.",
+  // Angebot: Team befähigen, Abhängigkeit von Dienstleistern senken (Gründer, 2026-09-18).
+  empower: "Ihr Team soll AI richtig nutzen können, ohne für jeden Schritt einen teuren Dienstleister. Wir zeigen Ihnen, wie: mit AI, die in Ihren Abläufen steckt, und einem Team, das sie mitträgt.",
   // Beispielszenario, als Beispiel gekennzeichnet; kein Kundenergebnis.
-  long: "Ein Beispiel: Ihr Angebotsprozess läuft heute über mehrere Systeme und viele Rückfragen, ganz ohne AI. Wir finden den Hebel, gestalten den Ablauf neu, bauen die Lösung und integrieren sie dort, wo Ihr Team arbeitet.",
-  // Senior-Zusage (Gründer, 2026-09-17): als Versprechen formuliert, nicht als Angriff.
-  senior: "Keine Junior-Berater. Wer Ihren Prozess versteht, baut ihn auch.",
+  long: "Ein Beispiel: Ihr Angebotsprozess läuft über mehrere Systeme und viele Rückfragen. Wir finden den Hebel, gestalten den Ablauf neu und bauen die Lösung dort ein, wo Ihr Team arbeitet.",
+  // Senior-Zusage (Gründer, 2026-09-18): Kontrast zum Muster „Senior pitcht, Junior liefert“, ohne Angriff.
+  senior: "Die Erfahrung, die Sie im Erstgespräch überzeugt, baut auch. Kein Senior-Pitch mit Junior-Lieferteam.",
 } as const;
 
 /** Die zehn Schritte des Leistungsbilds (Abschnitt 2). */

@@ -183,7 +183,8 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Quelle:** Partner Systango, Seite „AI-Native Delivery Framework“ (systango.com/ai-native-sdlc), auf Wunsch der Gründer als Inspiration. Übernommen werden Denkfiguren, keine Zahlen (Systangos Prozentangaben haben keine nachvollziehbare Quelle und betreffen Software-Delivery, nicht unsere Zielkunden).
 
 **Übernommene Figuren:**
-- Einwand „Wir nutzen doch schon AI“: Einzelne nutzen AI, ein Prozess ist das nicht (Ergebnisse schwanken, niemand misst, nichts baut aufeinander auf). Verträglich mit der Regel „Ausgangslage ohne AI“: Es geht um Einzelnutzung, nicht um einen vorhandenen AI-Prozess.
+- Einwand „Wir nutzen doch schon AI“: Einzelne nutzen AI, aber alle arbeiten, wie sie es für richtig halten: kein gemeinsames Vorgehen, schwankende Ergebnisse, niemand misst (v2, 2026-09-18).
+- Angebot dazu: Team befähigen, AI richtig zu nutzen, und unabhängiger von teuren Dienstleistern werden. „Wir zeigen Ihnen, wie.“ Verträglich mit der Regel „Ausgangslage ohne AI“: Es geht um Einzelnutzung, nicht um einen vorhandenen AI-Prozess.
 - „Workflow-first statt Tool-first“: Ablauf zuerst, Tool zuletzt (Kontrast-Liste; deckt sich mit „Technologie kommt erst an Schritt sieben“).
 - „Measurable outcomes“: Wirkung gemessen (Kontrast-Liste, Schritt 12, Zeile „Gemessen wird, was läuft“).
 - Governance als Teil der Lösung, nicht als Prüfung am Ende: bereits in Schritt 9 und auf der Unternehmensseite.
@@ -197,7 +198,7 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Tonalität:** Als Zusage formulieren, nicht als Abrechnung. Keine Namen anderer Häuser, keine Wörter wie „Bullshit“, „Abzocke“, „Junior-Bashing“. Das Muster darf benannt werden („Sie kennen das Modell“), die Wertung liefert der Leser selbst.
 
 **Freigegebene Formulierungen:**
-- Hook: „Keine Junior-Berater. Wer Ihren Prozess versteht, baut ihn auch.“
+- Hook (v2, 2026-09-18): „Die Erfahrung, die Sie im Erstgespräch überzeugt, baut auch. Kein Senior-Pitch mit Junior-Lieferteam.“ (löst „Keine Junior-Berater. Wer Ihren Prozess versteht, baut ihn auch.“ auf der Startseite ab; Unternehmensseite behält die kurze Form)
 - Kontrast: „Sie kennen das Modell: Die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es dieses Modell nicht. Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.“
 - Unternehmen: „Zwei Gründer, ein Team, keine Übergaben. Sie arbeiten mit denen, die Sie kennenlernen.“
 - Kontrast-Listen: klassisch „Pitch-Team, dann Lieferteam“ / H&W „Ein Team von Analyse bis Betrieb“.
@@ -313,6 +314,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v7 (2026-09-18) — Versprechen-Sektion: Schmerz „alle arbeiten anders, niemand misst“, Angebot „Team befähigen, unabhängiger von Dienstleistern“, Senior-Zusage als Pitch-Kontrast.
 - v6 (2026-09-17) — Kostenloses Erstgespräch von den Gründern freigegeben; CTA-Baustein ergänzt, „kostenlos“ aus der Sperrliste gestrichen.
 - v5 (2026-09-17) — Baustein „Aktivität ist kein Ergebnis“ nach Systango-Inspiration (Denkfiguren ohne Zahlen); Kontrast-Liste um Tool-/Mess-Paar ergänzt.
 - v4 (2026-09-17) — Zertifizierungen und Partner der alten Site von den Gründern freigegeben und als Proof Points aufgenommen.
