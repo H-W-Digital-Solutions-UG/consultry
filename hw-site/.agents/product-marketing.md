@@ -401,6 +401,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v26 (2026-09-18) — Hero v5 konkret (Gründer: „immer noch zu abstrakt“): Headline „Mails sortiert. Angebote vorbereitet. Rechnungen geprüft.“, Claim „Das übernimmt ab jetzt AI.“, Beschreibung „Wir bauen sie genau dort ein, wo Ihr Team heute tippt, sucht und wartet. Und bleiben, bis es läuft.“ Footer behält „Kein Pilotprojekt. Ihr Tagesgeschäft.“ Abgelöst: v4 „AI in jedem Meeting. In keinem Prozess.“ (Panel-Sieger, den Gründern zu abstrakt).
 - v25 (2026-09-18) — Proof-Visual „Wer bei uns baut“ aus dem Visual-Panel (fünf Konzepte, drei Jurys): Kunde als Ring „Sie“ in der Mitte, zwei Gründerfiguren docken direkt an, ein Label „Zwei Gründer, direkt bei Ihnen“; löst die abgelehnte Personen-Timeline ab. Verworfen: Bögen um ein Quadrat (Fokus-Icon), Übergabe-Staffel, Vermittler-Kasten, Klammer-Band (liest sich als Trichter).
 - v24 (2026-09-18) — Claim v2 „Kein Pilotprojekt. Ihr Tagesgeschäft.“ aus dem Claim-Panel; „From Process to Production.“ site-weit abgelöst (Hero, Footer, Vorgehen-Kopf).
 - v23 (2026-09-18) — Hero-Headline v4 „AI in jedem Meeting. In keinem Prozess.“ aus dem Headline-Panel; Beschreibung v5.
