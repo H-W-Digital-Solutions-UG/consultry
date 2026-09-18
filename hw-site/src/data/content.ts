@@ -52,8 +52,9 @@ export const expertise = {
   // Kommunikation und Gastlichkeit).
   heading: "Zwei Experten, die sich auf Ihren Betrieb einlassen.",
   text: "Erfahrung, Zeit und echtes Interesse an Ihrem Betrieb. So verstehen wir Beratung.",
-  // Bildunterschrift der Clay-Szene (Tisch, Stühle, Kaffee): Gastlichkeit und Augenhöhe.
-  caption: "Am Tisch, nicht im Ticket.",
+  // Bildunterschrift der Tischszene (v2, 2026-09-18, Gründer: „Am Tisch, nicht im Ticket“ war
+  // das richtige Argument im falschen Muster). Schlichter Satz, kein Kontrast-Slogan.
+  caption: "Sie sitzen mit den Gründern am Tisch.",
   certsLabel: "Zertifikate im Gründerteam.",
   cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
   secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },

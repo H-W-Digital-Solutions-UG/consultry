@@ -9,7 +9,8 @@ export const company = {
   domain: "hw-digitalsolutions.de",
   siteUrl: "https://hw-digitalsolutions.de",
   tagline: "AI Transformation & Engineering",
-  claim: "Kein Pilotprojekt. Ihr Tagesgeschäft.",
+  // v4 (2026-09-18): schlichter Satz statt Kontrast-Slogan („Kein Pilotprojekt. Ihr Tagesgeschäft.“).
+  claim: "AI, die Ihr Team jeden Tag nutzt.",
   claimDe: "Von Geschäftsprozessen zu produktiver AI.",
   address: {
     street: "Greifswalder Straße 13d",
