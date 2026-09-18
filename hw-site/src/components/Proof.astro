@@ -6,9 +6,8 @@
  * fünf fremde Marken nicht fünf Farbwelten in die Seite tragen.
  *
  * variant="strip": Trust-Leiste im Hero-Nachlauf (Slot "after" von Hero.astro):
- *   Zertifikate links, Partner rechts. In der Scroll-Szene blenden die
- *   Elemente über `--p` (vom Hero geerbt) gestaffelt ein; `--start` je
- *   Element legt fest, ab welchem Fortschritt es erscheint.
+ *   zwei Reihen, Elemente blenden beim Laden gestaffelt ein (`--start` je
+ *   Element als Verzögerungsfaktor).
  * variant="full":  Unternehmensseite mit Namen und Ausstellern, dazu Partner.
  */
 import { Image } from "astro:assets";
@@ -159,18 +158,17 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
   .strip__partners { gap: 8px 36px; --logo-h: 28px; }
   .strip__partners .logo { max-width: 190px; }
 
-  /* Scroll-Stagger in der Hero-Szene: jedes Element hat --start; über 28 %
-     des Fortschritts blendet es ein und rückt 16px nach oben. Nur
-     transform/opacity, keine Transition (an den Scroll gekoppelt). */
+  /* Einblenden beim Laden, gestaffelt über --start (nach der Hero-Copy),
+     nur in der Hero-Szene auf Desktop; sonst sofort sichtbar. */
   :global(.hero[data-scene="on"]) :is(.strip__label, .strip__badges li, .strip__partners li) {
-    --t: clamp(0, calc((var(--p, 1) - var(--start, 0)) / 0.28), 1);
-    opacity: var(--t);
-    transform: translateY(calc((1 - var(--t)) * 16px));
+    opacity: 0;
+    animation: fade-up 0.7s var(--ease-out) forwards;
+    animation-delay: calc(0.85s + var(--start, 0) * 1.4s);
   }
-  @media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
     :global(.hero[data-scene="on"]) :is(.strip__label, .strip__badges li, .strip__partners li) {
       opacity: 1;
-      transform: none;
+      animation: none;
     }
   }
   @media (max-width: 599px) {
