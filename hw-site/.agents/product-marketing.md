@@ -227,11 +227,11 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Freigegebene Formulierungen (Startseite, v9, gekürzt; Design: Einwand groß in Kundensprache, wird beim Scrollen durchgestrichen, Antwort erscheint daneben):**
 - Lede: „AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Fünf Einwände, die wir kennen, und was wir tun.“
-- „Im Pitch saß die Erfahrung. Geliefert hat jemand anderes.“ → „Wer Sie überzeugt, baut auch.“ CTA „Das Gründerteam“ (`/unternehmen#team`). (Senior-Zusage als erster Einwand, Gründer 2026-09-18)
+- „Im Pitch: Senior. In der Lieferung: Junior.“ (v3; v2 „Im Pitch saß die Erfahrung. Geliefert hat jemand anderes.“) → „Wer Sie überzeugt, baut auch.“ CTA „Das Gründerteam“ (`/unternehmen#team`). (Senior-Zusage als erster Einwand, Gründer 2026-09-18)
 - „Wir nutzen doch schon AI.“ → „Einzelne ja. Als Ablauf nein.“ CTA „Ihren Stand klären“ (`/kontakt`).
-- „Uns fehlen Know-how und Zeit.“ → „Wir bringen beides mit. Und geben es weiter.“ CTA „So befähigen wir Ihr Team“ (`/vorgehen#phasen`).
-- „Was kostet das, und was bringt es?“ → „Das sehen Sie, bevor wir bauen.“ CTA „Wie wir bewerten“ (`/leistungen`).
-- „Der Pilot lief. Produktiv wurde er nie.“ → „Wir bauen dort ein, wo Ihr Team arbeitet.“ Antwort endet mit „Wo die Lösung läuft, entscheiden Sie.“ CTA „Was wir selbst bauen“ (`/leistungen`).
+- „Dafür haben wir weder Leute noch Zeit.“ (v3; v2 „Uns fehlen Know-how und Zeit.“) → „Wir bringen beides mit. Und geben es weiter.“ CTA „So befähigen wir Ihr Team“ (`/vorgehen#phasen`).
+- „Rechnet sich das überhaupt?“ (v3; v2 „Was kostet das, und was bringt es?“) → „Das sehen Sie, bevor wir bauen.“ CTA „Wie wir bewerten“ (`/leistungen`).
+- „Der Pilot lief. Mehr nicht.“ (v3; v2 „Der Pilot lief. Produktiv wurde er nie.“) → „Wir bauen dort ein, wo Ihr Team arbeitet.“ Antwort endet mit „Wo die Lösung läuft, entscheiden Sie.“ CTA „Was wir selbst bauen“ (`/leistungen`).
 - CTA-Zeile: „Sprechen Sie mit denen, die auch bauen.“ mit „Kostenloses Erstgespräch“ und „So arbeiten wir“.
 - Je Einwand höchstens ein Satz Begründung (Gründer-Feedback 2026-09-18: „viel zu viel Text“).
 
@@ -391,6 +391,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v13 (2026-09-18) — „Unser Versprechen“ als gepinnter Scroll-Stapel (hell, ohne Glas, Nachbarn gedämpft, weiche Maske); Einwände geschärft: „Im Pitch: Senior. In der Lieferung: Junior.“, „Dafür haben wir weder Leute noch Zeit.“, „Rechnet sich das überhaupt?“, „Der Pilot lief. Mehr nicht.“; Zahlen-Labels gekürzt.
 - v12 (2026-09-18) — Showcase „Webauftritt, selbstgesteuert“ (AI-gestütztes CMS, Pipeline Figma → CMS → Human x AI Workflow, Umzug aus WordPress/Typo3) als Seite; Showcase-Karten unter Souveränität.
 - v11 (2026-09-18) — Zahlen-Sektion verworfen; Zahlenpunkte mit Mini-Charts in die Einwand-Zeilen von „Unser Versprechen“ integriert.
 - v10 (2026-09-18) — Sektion „Die Lage in Zahlen“ mit vier belegten Studienwerten und eigenen Fakten; Regel für Zahlen auf der Website.
