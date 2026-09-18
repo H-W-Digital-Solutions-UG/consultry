@@ -200,7 +200,7 @@ export const contrast = {
  * Bewusst ohne Zahl („10.000 Dienstleister“) und ohne Wertung über andere.
  */
 export const sovereignty = {
-  eyebrow: "Souveränität",
+  eyebrow: "Unabhängigkeit",
   // v2 (2026-09-18): konkreter Pain statt abstraktem Hook; Position 02 auf der Startseite.
   heading: "Zu viele Dienstleister. Zu wenig Kontrolle.",
   // v3 (2026-09-18): ein Satz Lede, drei Einzeiler (Gründer: „zu viel, zu verstreut“).

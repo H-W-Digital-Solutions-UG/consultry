@@ -399,6 +399,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v20 (2026-09-18) — Eyebrows als Kicker-Pillen ohne Ziffer (Gründer: nummerierte Eyebrows machten schlechten Eindruck); Labels geschärft: „Unabhängigkeit“ statt „Souveränität“, „So arbeiten wir“ statt „From Process to Production“, „Zehn Schritte“ statt „Das Leistungsbild“, „Zwölf Schritte“ statt „Delivery Chain“.
 - v19 (2026-09-18) — Partner-Leiste um Ninox und Bastion Cooperative ergänzt (Gründer).
 - v18 (2026-09-18) — Hero-Headline v3 „AI-Chancen nicht nur träumen. Sondern leben.“ (Gründer-Hook, in Site-Regeln übertragen).
 - v17 (2026-09-18) — Hero-Logoleiste nahtlos (ohne Label, volle Breite, langsamer Endlos-Lauf, weiche Ränder); Souveränitäts-Lede nach Gründer-Wortlaut „Schluss mit Vendor Lock-in und teurer Abhängigkeit von Dienstleistern.“

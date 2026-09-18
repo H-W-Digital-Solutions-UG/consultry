@@ -121,9 +121,8 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 - Aktiv: `scale(.97)`. Icons 16 px, `currentColor`.
 
 ### Eyebrow (`.eyebrow`)
-- Redaktionelle Sektionsmarke: Sora 500, 0,9 rem, Satzschreibung, Farbe `--accent` (hell) bzw. `--accent-on-ink` (dunkel). Kein Zierstrich, keine Monospace, keine Versalien.
-- Optionaler Abschnittsindex: `<p class="eyebrow" data-n="03">Leistungsbild</p>` rendert „03“ in tabellarischen Ziffern in `--fg-muted` / `--fg-on-ink-muted` vor dem Label. Index nur dort, wo die Sektionen eine erzählte Reihenfolge haben (Startseite, Leistungen, Vorgehen, Unternehmen); Seitenköpfe, Karten und CTA tragen keinen Index.
-- Semantik: `<p>`; die Überschrift folgt als `h1`/`h2`.
+- Kicker über Sektionen und Seitenköpfen: kleine Pille, Sora 500, 0,8 rem, Satzschreibung, Markenlila auf 7 % Lila-Tönung mit 22 % Lila-Hairline (`color-mix`), `--radius-pill`. Auf `--ink`: `--accent-on-ink` auf 7 % Weißschleier mit 18 % Weiß-Hairline.
+- Keine Ziffern, kein Zierstrich, keine Versalien (Änderung 2026-09-18: der frühere Abschnittsindex `data-n` ist entfallen, weil nummerierte Eyebrows unruhig wirkten). Labels in Käufersprache und kurz: „Unser Versprechen“, „Unabhängigkeit“, „So arbeiten wir“, „Zehn Schritte“, „Der Unterschied“, „Software und Web“, „Womit wir bauen“.
 
 ### Tag (`.tag`) – Vertrag für `Steps.astro` und andere
 ```html

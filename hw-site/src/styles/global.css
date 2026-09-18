@@ -195,38 +195,33 @@ p {
 }
 
 /* ------------------------------------------------------------------
-   Eyebrow – redaktionelle Sektionsmarke.
-   Sora, Satzschreibung, Markenlila. Keine Monospace, keine Versalien,
-   kein Zierstrich. Optionaler Abschnittsindex über data-n="01":
-   tabellarische Ziffern in gedämpfter Farbe, gefolgt vom Label.
+   Eyebrow – Kicker über Sektionen und Seitenköpfen.
+   Kleine Pille in Markenlila auf leicht getöntem Grund, Satzschreibung,
+   ohne Ziffer und ohne Zierstrich (Gründer, 2026-09-18: nummerierte
+   Eyebrows wirkten schlecht). Auf Aubergine: Lavendel auf Weißschleier.
    ------------------------------------------------------------------ */
 .eyebrow {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.6em;
+  align-items: center;
+  gap: 0.5em;
   margin: 0;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in oklab, var(--accent) 22%, transparent);
+  background: color-mix(in oklab, var(--accent) 7%, transparent);
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   line-height: 1.3;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
   color: var(--accent);
-  text-wrap: balance;
-}
-
-.eyebrow[data-n]::before {
-  content: attr(data-n);
-  font-variant-numeric: tabular-nums;
-  font-weight: 500;
-  color: var(--fg-muted);
+  white-space: nowrap;
 }
 
 .section--ink .eyebrow {
   color: var(--accent-on-ink);
-}
-
-.section--ink .eyebrow[data-n]::before {
-  color: var(--fg-on-ink-muted);
+  border-color: rgba(245, 241, 251, 0.18);
+  background: rgba(245, 241, 251, 0.07);
 }
 
 /* ------------------------------------------------------------------
