@@ -21,15 +21,17 @@ export const hero = {
   // Hook v7 (2026-09-18, Gründer: „menschlicher, keine klassischen AI-Formulierungen,
   // die wie ein Callout klingen; ‚dort, wo Ihr Team von Hand überträgt‘ ist künstlich
   // unspezifisch“): eine konkrete Szene aus dem Betrieb, so gesagt, wie man es sagt.
-  headline: "Bestellungen kommen per Mail.\nUnd jemand tippt sie ab.",
+  // Hook v8 (2026-09-18, Gründer: kein „abgekrampfter Dialog“, kein langes Szenario;
+  // Referenz impulse.de „Hooks im Marketing“: Frage-Hook, erstaunlich einfach).
+  headline: "Ihr Team tippt noch ab?",
   // Claim v2 (2026-09-18): Sieger des Claim-Panels für diese Headline; das
   // englische Motto „From Process to Production.“ war den Gründern zu corporate.
   // Claim v3: löst die Headline auf, ohne Abstraktum.
   // Claim v4: die Rolle danach, ohne Parole.
-  claim: "Das kann eine AI übernehmen. Ihr Team prüft nur noch.",
+  claim: "Muss es nicht. Das kann eine AI.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
   // v6: konkret, wo und wie; kein „dort, wo“.
-  description: "Wir bauen sie in Ihr System ein, mit Ihren Daten und Ihren Regeln. Und wir bleiben, bis es im Alltag läuft.",
+  description: "Wir bauen sie in Ihr System ein und bleiben, bis es läuft.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
@@ -44,19 +46,27 @@ export const expertise = {
   quote: "Im Pitch: Senior. In der Lieferung: Junior.",
   heading: "Wer Sie überzeugt, baut auch.",
   text: "Wer im Erstgespräch sitzt, bewertet, baut und bleibt, bis es läuft.",
-  certsLabel: "Zertifikate im Gründerteam. Bei denen, die auch bauen.",
+  certsLabel: "Zertifikate im Gründerteam.",
   cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
   secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },
 } as const;
 
 export const promise = {
   // v10 (2026-09-18, Copy-Muster nach Systango: Diagnose als Frage, ohne Jargon wie „Use Cases“).
-  short: "Sie haben AI im Haus. Warum merkt der Alltag nichts davon?",
+  // v11 (Gründer: „viel zu unprägnant“): ein Satz, der das Versprechen selbst ist.
+  short: "AI, die Ihr Team wirklich nutzt.",
   // Einordnung ohne Zahlen. Recherche und Quellen: .agents/product-marketing.md,
   // Abschnitt „Problems & Pain Points“ (v8, 2026-09-18). Kurzfassung v9.
   // v11 (Gründer: menschlicher, keine Callout-Sätze).
-  lede: "Die meisten Betriebe haben inzwischen Tools. Was fehlt, ist ein Ablauf, der damit läuft.",
-  // Vier Einwände in Kundensprache: Zitat, Hook, ein Satz, passender CTA.
+  lede: "Vier Einwände, vier Antworten.",
+  // Vier Einwände in Kundensprache: Zitat, Hook, Gewinn-Zahl, passender CTA.
+  // `win` (v12, Gründer: „konkrete Metrics, die den Win greifbar beziffern“):
+  // belegte Studienwerte, exakt wie veröffentlicht, Quelle am Element. Keine
+  // eigenen Kundenzahlen. Brynjolfsson, Li, Raymond: „Generative AI at Work“,
+  // NBER w31161 (2023): +14 % gelöste Anfragen pro Stunde, +34 % bei Neulingen.
+  // Noy, Zhang: Science 381 (2023): Zeit −40 %, Qualität +18 %, 453 Fachkräfte.
+  // Peng, Kalliamvakou, Cihon, Demirer: arXiv 2302.06590 (2023): 55,8 % schneller.
+  // Dell'Acqua et al. (HBS 24-013) nicht verwendet: Primärquelle nicht abrufbar.
   // Die Senior-Zusage steht als eigene Szene darüber (`expertise`).
   // `data`: ein belegter Zahlenpunkt je Einwand (v11, Gründer: „Zahlen geben
   // Trust und Proof“). Nur Primärquellen, exakt wie veröffentlicht, Quelle am
@@ -67,7 +77,7 @@ export const promise = {
     {
       quote: "Wir nutzen doch schon AI.",
       hook: "Ein paar Kollegen nutzen AI. Der Betrieb läuft wie vorher.",
-      text: "Jeder hat sein eigenes Tool, und niemand weiß, was es bringt. Wir machen daraus einen Ablauf, der für alle gilt.",
+      win: { sign: "+", value: 14, unit: "%", label: "mehr gelöste Anfragen pro Stunde, sobald das ganze Team den AI-Assistenten hatte", source: "Brynjolfsson, Li, Raymond 2023, NBER, 5.179 Support-Mitarbeiter" },
       cta: { label: "Ihren Stand klären", href: "/kontakt" },
       viz: "align" as const,
       data: { value: 78, unit: "%", label: "der AI-Nutzer bringen eigene Tools mit zur Arbeit. Ohne Vorgabe von oben", chart: "ring" as const, series: [{ v: 78, name: "" }], source: "Work Trend Index 2024, Microsoft und LinkedIn" },
@@ -75,7 +85,7 @@ export const promise = {
     {
       quote: "Dafür haben wir weder Leute noch Zeit.",
       hook: "Wir bringen beides mit, und Ihr Team lernt es von uns.",
-      text: "Wir bauen die Lösung mit Ihnen zusammen und bleiben, bis Ihr Team sie ohne uns weiterführt.",
+      win: { sign: "+", value: 34, unit: "%", label: "Leistung bei weniger erfahrenen Mitarbeitern, wenn eine AI sie im Alltag unterstützt", source: "Brynjolfsson, Li, Raymond 2023, NBER" },
       cta: { label: "So befähigen wir Ihr Team", href: "/vorgehen#phasen" },
       viz: "handover" as const,
       data: { value: 66, unit: "%", label: "der Unternehmen fehlt die Zeit für Digitalisierung, 70 % fehlen die Fachkräfte", chart: "bars" as const, series: [{ v: 66, name: "Zeit" }, { v: 70, name: "Fachkräfte" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
@@ -83,15 +93,15 @@ export const promise = {
     {
       quote: "Rechnet sich das überhaupt?",
       hook: "Wir rechnen es vorher durch, und dann entscheiden Sie.",
-      text: "Was es bringt, was es kostet, was es braucht: Das liegt auf dem Tisch, bevor wir eine Zeile bauen.",
+      win: { sign: "−", value: 40, unit: "%", label: "Zeit für Schreibaufgaben mit AI, bei 18 % höherer Qualität", source: "Noy und Zhang 2023, Science, 453 Fachkräfte" },
       cta: { label: "Wie wir bewerten", href: "/leistungen" },
       viz: "rank" as const,
       data: { value: 59, unit: "%", label: "der Führungskräfte können den Nutzen von AI nicht beziffern. 60 % fehlt ein Plan", chart: "bars" as const, series: [{ v: 59, name: "Nutzen unklar" }, { v: 60, name: "Kein Plan" }], source: "Work Trend Index 2024" },
     },
     {
       quote: "Der Pilot lief. Mehr nicht.",
-      hook: "Wir bauen es in die Systeme ein, mit denen Ihr Team jeden Tag arbeitet.",
-      text: "Mit Datenschutz von Anfang an. Und wo die Lösung läuft, entscheiden Sie.",
+      hook: "Wir bauen es in die Systeme, mit denen Ihr Team täglich arbeitet.",
+      win: { sign: "", value: 55.8, decimals: 1, unit: "%", label: "schneller fertig, wenn die AI direkt im Arbeitswerkzeug steckt", source: "Peng et al. 2023, GitHub Copilot, kontrolliertes Experiment" },
       cta: { label: "Was wir selbst bauen", href: "/leistungen" },
       viz: "pilot" as const,
       data: { value: 41, unit: "%", label: "der Unternehmen setzen AI ein. 48 % planen und diskutieren noch", chart: "stack" as const, series: [{ v: 41, name: "im Einsatz" }, { v: 48, name: "geplant" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
@@ -239,7 +249,7 @@ export const sovereignty = {
 export const software = {
   eyebrow: "Software und Web",
   heading: "Nicht jedes Projekt beginnt bei AI.",
-  ledeShort: "Manchmal braucht es zuerst eine Software oder eine Website. Die bauen wir, mit erfahrenen Entwicklern, unseren Partnern und AI-Unterstützung.",
+  ledeShort: "Software und Websites bauen wir auch, mit erfahrenen Entwicklern und unseren Partnern.",
   lede: "Manchmal muss zuerst eine Software oder eine Website gebaut werden. Das machen wir: mit erfahrenen Entwicklern und unseren Partnern, mit AI-Unterstützung und klaren Regeln.",
   offers: [
     { title: "Software und Plattformen", text: "Anwendungen, Schnittstellen, Anbindung an Ihre Systeme." },
@@ -278,14 +288,14 @@ export const showcases = [
     image: "website",
     kicker: "Showcase: Website",
     title: "Ihre Website. Ihr Team pflegt sie selbst.",
-    text: "Weg von WordPress und Agentur-Tickets. Ihr Team ändert Texte, Seiten und Angebote selbst, AI hilft beim Schreiben.",
+    text: "Weg von WordPress und Agentur-Tickets.",
     href: "/showcases/webauftritt",
   },
   {
     image: "software",
     kicker: "Showcase: Software",
     title: "Mehrere Partner, ein Standard.",
-    text: "Ein Projekt, in dem alle Partner nach denselben Regeln bauen.",
+    text: "Alle Partner bauen nach denselben Regeln.",
     href: "/leistungen#software",
   },
 ] as const;

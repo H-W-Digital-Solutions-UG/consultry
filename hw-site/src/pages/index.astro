@@ -64,7 +64,11 @@ import { company } from "../data/company";
             </div>
             <div class="promise__answer">
               <h3 class="promise__hook">{o.hook}</h3>
-              <p class="promise__text">{o.text}</p>
+              <p class="promise__win">
+                <span class="promise__win-value"><span class="promise__win-sign" aria-hidden="true">{o.win.sign}</span><span class="num" data-to={o.win.value} data-decimals={o.win.decimals ?? 0}>{String(o.win.value).replace(".", ",")}</span><span class="promise__win-unit">{o.win.unit}</span></span>
+                {" "}{o.win.label}.
+              </p>
+              <p class="promise__win-source">{o.win.source}</p>
               <a class="promise__cta" href={o.cta.href}>
                 {o.cta.label}
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
@@ -110,7 +114,7 @@ import { company } from "../data/company";
         <h2 class="sec__h">Technologie kommt bei uns erst an Schritt sieben.</h2>
       </div>
       <div class="seven__side">
-        <p class="lede">Vorher prüfen wir, was es bringt und ob es geht. Gebaut wird, was sich rechnet.</p>
+        <p class="lede">Vorher prüfen wir, ob es sich rechnet.</p>
         <a class="btn btn--ghost" href="/leistungen">Zehn Schritte im Detail</a>
       </div>
     </div>
@@ -164,10 +168,12 @@ import { company } from "../data/company";
   const ease = (t: number) => 1 - Math.pow(1 - t, 3);
   const count = (el: HTMLElement) => {
     const to = Number(el.dataset.to || 0);
+    const decimals = Number(el.dataset.decimals || 0);
     const t0 = performance.now();
     const step = (now: number) => {
       const t = Math.min(1, (now - t0) / 900);
-      el.textContent = String(Math.round(to * ease(t)));
+      // Deutsche Schreibweise: Komma als Dezimaltrennzeichen (55,8).
+      el.textContent = (to * ease(t)).toFixed(decimals).replace(".", ",");
       if (t < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
@@ -272,7 +278,13 @@ import { company } from "../data/company";
   .promise__viz :global(.viz) { max-width: none; }
   @media (max-width: 899px) { .promise__viz { margin-top: 16px; max-width: none; } }
   .promise__hook { font-size: clamp(1.4rem, 2.1vw, 1.95rem); letter-spacing: -0.02em; line-height: 1.2; max-width: 22ch; text-wrap: balance; }
-  .promise__text { margin: 0; color: var(--fg-muted); max-width: 46ch; font-size: clamp(1.02rem, 1.25vw, 1.18rem); line-height: 1.55; }
+  /* Gewinn-Zahl rechts (Gründer: „konkrete Metrics, die den Win greifbar beziffern“):
+     belegte Studienwerte, Quelle am Element; Akzentfarbe statt Ink, sonst wie links. */
+  .promise__win { margin: 0; max-width: 40ch; font-size: 1.02rem; line-height: 1.5; color: var(--fg-muted); }
+  .promise__win-value { font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; letter-spacing: -0.03em; color: var(--accent); font-variant-numeric: tabular-nums; margin-right: 4px; }
+  .promise__win-sign { font-weight: 600; margin-right: 1px; }
+  .promise__win-unit { font-size: 0.6em; font-weight: 600; margin-left: 2px; }
+  .promise__win-source { margin: -4px 0 0; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.02em; color: var(--fg-muted); opacity: 0.8; }
   .promise__cta {
     display: inline-flex; align-items: center; gap: 8px;
     margin-top: 6px;
