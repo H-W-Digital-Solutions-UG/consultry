@@ -339,6 +339,9 @@ export const partners = [
   { name: "Polity", href: "https://polity.li/", file: "polity.png" },
   { name: "turntabl", href: "https://turntabl.io/", file: "turntabl.png" },
   { name: "Systango", href: "https://www.systango.com/", file: "systango.png" },
+  // Ergänzt am 2026-09-18 (Gründer): Ninox (Low-Code-Plattform), Bastion Cooperative.
+  { name: "Ninox", href: "https://ninox.com/", file: "ninox.png" },
+  { name: "Bastion Cooperative", href: "https://bastion.li/", file: "bastion.png" },
 ] as const;
 
 /** Capabilities – Beleg für die Umsetzungskompetenz, nicht das Produktversprechen (Abschnitte 4/5). */

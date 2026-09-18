@@ -368,7 +368,7 @@ revolutionieren, end-to-end, ganzheitlich, innovativ, nahtlos, KI (immer „AI�
 
 **Certifications (freigegeben 2026-09-17):** CISSP, GIAC GCIA, OSCP, OSDA, Microsoft Certified Cybersecurity Architect Expert, Microsoft Certified Azure Security Engineer Associate, CSPO, IREB CPRE. Zertifikate der Personen im Gründerteam; Badges aus der alten Site in `src/assets/certs/`.
 
-**Partners (freigegeben 2026-09-17):** Wavect, Rubicon Tech, Polity, turntabl, Systango. Logos in `src/assets/partners/`, einfarbig gerendert; Ninox aus der alten Site ist nicht mehr in der Liste.
+**Partners (freigegeben 2026-09-17, ergänzt 2026-09-18):** Wavect, Rubicon Tech, Polity, turntabl, Systango, Ninox, Bastion Cooperative. Logos in `src/assets/partners/`, einfarbig als Alpha-Maske gerendert (Originale von den Partner-Websites, per sharp rasterisiert und beschnitten). Ninox und Bastion wurden am 2026-09-18 von den Gründern nachgereicht.
 
 **Customers:** Keine belastbaren Daten vorhanden. Keine Kundenlogos, keine Referenzen, keine Fallstudien freigegeben. Die alte Site zeigt NIST- und OWASP-Logos ausschließlich als Verweis auf Standards („Industry Standards“), nicht als Kunden oder Zertifizierungen. Zulässig ist ein Hinweis auf Orientierung an anerkannten Standards, nicht mehr.
 
@@ -399,6 +399,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v19 (2026-09-18) — Partner-Leiste um Ninox und Bastion Cooperative ergänzt (Gründer).
 - v18 (2026-09-18) — Hero-Headline v3 „AI-Chancen nicht nur träumen. Sondern leben.“ (Gründer-Hook, in Site-Regeln übertragen).
 - v17 (2026-09-18) — Hero-Logoleiste nahtlos (ohne Label, volle Breite, langsamer Endlos-Lauf, weiche Ränder); Souveränitäts-Lede nach Gründer-Wortlaut „Schluss mit Vendor Lock-in und teurer Abhängigkeit von Dienstleistern.“
 - v16 (2026-09-18) — Sprachregel Käufersprache (Gründer: „zu abstrakt, die Käufer verstehen das nicht; simpler, aber effektiver“): Zehn Schritte, Chain-Glieder, Capabilities (jetzt deutsch: „Abläufe analysieren“ … „Team befähigen“), Software-Sektion, Showcase-Seite („Ihre Website. Ihr Team pflegt sie selbst.“, Stationen Design → Redaktion → AI-Hilfe → Live) und Einwand-Antworten in einfache Sätze umgeschrieben; Fachbegriffe wie „Pipeline“, „Design-getriebenes CMS“, „Human x AI Workflow“, „AI-native“, „Deployen“ aus der Käufer-Copy entfernt (Technik steht im Kontextdokument).
