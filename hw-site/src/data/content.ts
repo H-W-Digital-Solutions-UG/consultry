@@ -120,7 +120,7 @@ export const promise = {
       viz: "pilot" as const,
     },
   ],
-  cta: { line: "Sprechen Sie mit denen, die auch bauen.", secondary: { label: "So arbeiten wir", href: "/vorgehen" } },
+  cta: { line: "Welcher Einwand wiegt bei Ihnen am schwersten?", secondary: { label: "So arbeiten wir", href: "/vorgehen" } },
 } as const;
 
 /** Die zehn Schritte des Leistungsbilds (Abschnitt 2). */

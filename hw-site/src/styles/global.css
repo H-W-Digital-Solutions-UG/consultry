@@ -1,8 +1,13 @@
 /* ------------------------------------------------------------------
    Schriften – selbst gehostet (public/fonts/, SIL OFL 1.1, siehe dort README).
-   Variable Latin-Subsets von Google Fonts heruntergeladen; ein Bereich je
-   Familie deckt Sora 300/500/600/700 und Inter 400/500/600 ab. Kein Request
-   an fonts.googleapis.com / fonts.gstatic.com (Datenschutzerklärung, Abschnitt 3).
+   Variable Latin-Subsets von Google Fonts, mit scripts/fonts.py auf die
+   genutzten Gewichte (Sora 300–700, Inter 300–600) und den gebrauchten
+   Zeichenvorrat zugeschnitten: 80 KB werden so zu 54 KB, und die Schriften
+   liegen vor dem ersten Textbild an. Die unicode-range beschreibt genau diesen
+   Vorrat, damit ein Zeichen außerhalb sauber auf die Systemschrift fällt statt
+   leer zu bleiben; wer den Vorrat erweitert, ändert beide Stellen zusammen.
+   Kein Request an fonts.googleapis.com / fonts.gstatic.com
+   (Datenschutzerklärung, Abschnitt 3).
    ------------------------------------------------------------------ */
 @font-face {
   font-family: "Sora";
@@ -10,8 +15,8 @@
   font-weight: 300 700;
   font-display: swap;
   src: url("/fonts/sora-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-201E, U+2020-2022, U+2026, U+2039-203A,
+    U+20AC, U+2122, U+2190-2193, U+2212, U+00D7;
 }
 
 @font-face {
@@ -20,8 +25,8 @@
   font-weight: 400 600;
   font-display: swap;
   src: url("/fonts/inter-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-201E, U+2020-2022, U+2026, U+2039-203A,
+    U+20AC, U+2122, U+2190-2193, U+2212, U+00D7;
 }
 
 /* ------------------------------------------------------------------
@@ -361,13 +366,28 @@ p {
 }
 
 /*
+ * Wie fade-up, aber ohne Deckkraft: der Text steht von der ersten Bildzeile an
+ * und setzt sich nur noch an seinen Platz. Chrome zählt ein Element mit
+ * `opacity: 0` nicht als gezeichnet, deshalb verschob die alte Einblendung den
+ * LCP-Zeitpunkt um die volle Verzögerung plus Blende. Gemessen mobil: 2,3 s
+ * mit Blende, 0,9 s ohne (Lighthouse 13, gzip, 2026-09-18).
+ */
+@keyframes settle-up {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/*
  * Einblenden der Hero- und Seitenkopf-Zeilen. Die Verzögerung ist bewusst
  * kurz: der Text ist auf Mobilgeräten das LCP-Element, jede Zehntelsekunde
  * Verzögerung zählt dort vierfach (gemessen mit Lighthouse, 2026-09-18).
  */
 .reveal {
-  opacity: 0;
-  animation: fade-up 0.55s var(--ease-out) forwards;
+  animation: settle-up 0.5s var(--ease-out) backwards;
   animation-delay: var(--delay, 0s);
 }
 
@@ -376,7 +396,6 @@ p {
     scroll-behavior: auto;
   }
   .reveal {
-    opacity: 1;
     animation: none;
   }
 }
