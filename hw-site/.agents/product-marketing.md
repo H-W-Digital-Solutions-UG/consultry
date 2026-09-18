@@ -399,6 +399,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v21 (2026-09-18) — Showcases als Glas-Karten im Blog-Card-Stil mit eigens erzeugten Bildern (Higgsfield gpt_image_2_5, Hero-Stil: Aubergine, Lavendel, isometrisch, ohne Text): Website-Baukasten auf Glasbühne, vier Module auf einem Blueprint-Raster. Assets in `src/assets/showcases/`, Komponente `ShowcaseCards.astro`.
 - v20 (2026-09-18) — Eyebrows als Kicker-Pillen ohne Ziffer (Gründer: nummerierte Eyebrows machten schlechten Eindruck); Labels geschärft: „Unabhängigkeit“ statt „Souveränität“, „So arbeiten wir“ statt „From Process to Production“, „Zehn Schritte“ statt „Das Leistungsbild“, „Zwölf Schritte“ statt „Delivery Chain“.
 - v19 (2026-09-18) — Partner-Leiste um Ninox und Bastion Cooperative ergänzt (Gründer).
 - v18 (2026-09-18) — Hero-Headline v3 „AI-Chancen nicht nur träumen. Sondern leben.“ (Gründer-Hook, in Site-Regeln übertragen).

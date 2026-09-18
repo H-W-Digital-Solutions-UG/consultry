@@ -1,0 +1,90 @@
+---
+/**
+ * Showcase-Karten (Gründer, 2026-09-18: „moderne Glassmorphism-Blog-Cards mit
+ * angepasstem Design und spezifisch erzeugtem Bild“). Jede Karte ist ein
+ * bildgefülltes Panel im Hero-Stil (Higgsfield, Aubergine und Lavendel), unten
+ * ein Glas-Streifen mit Kicker, Titel und Pfeil. Blur nur ab 900 px.
+ */
+import { Image } from "astro:assets";
+import { showcases } from "../data/content";
+
+const files = import.meta.glob<{ default: ImageMetadata }>("../assets/showcases/*.webp", { eager: true });
+const pic = (key: string) => files[`../assets/showcases/${key}.webp`]?.default;
+---
+
+<ul class="cards" aria-label="Showcases">
+  {showcases.map((c) => {
+    const img = pic(c.image);
+    return (
+      <li>
+        <a class="card" href={c.href}>
+          {img && <Image class="card__img" src={img} alt="" widths={[480, 720, 1080]} sizes="(min-width: 900px) 46vw, 100vw" loading="lazy" />}
+          <span class="card__shade" aria-hidden="true"></span>
+          <span class="card__glass">
+            <span class="card__kicker">{c.kicker}</span>
+            <span class="card__title">{c.title}</span>
+            <span class="card__text">{c.text}</span>
+            <span class="card__more">
+              Showcase ansehen
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </span>
+        </a>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+  @media (min-width: 720px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  .card {
+    position: relative; display: block; overflow: hidden; isolation: isolate;
+    aspect-ratio: 3 / 2;
+    border-radius: 22px;
+    background: var(--ink);
+    text-decoration: none; color: var(--fg-on-ink);
+    box-shadow: 0 1px 0 rgba(21, 4, 43, 0.06), 0 18px 40px -24px rgba(21, 4, 43, 0.45);
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  }
+  .card:hover, .card:focus-visible { transform: translateY(-3px); box-shadow: 0 1px 0 rgba(21, 4, 43, 0.06), 0 26px 48px -24px rgba(21, 4, 43, 0.55); }
+  .card__img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.9s var(--ease-out);
+  }
+  .card:hover .card__img { transform: scale(1.035); }
+  .card__shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(21, 4, 43, 0.55) 0%, rgba(21, 4, 43, 0.05) 45%, rgba(21, 4, 43, 0) 70%);
+  }
+  /* Glas-Streifen unten: heller Schleier, Blur, Hairline oben */
+  .card__glass {
+    position: absolute; left: 14px; right: 14px; bottom: 14px;
+    display: grid; gap: 4px;
+    padding: 16px 18px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(245, 241, 251, 0.18);
+    background: linear-gradient(160deg, rgba(245, 241, 251, 0.14), rgba(245, 241, 251, 0.06));
+  }
+  @media (min-width: 900px) {
+    .card__glass { -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); }
+  }
+  .card__glass::before {
+    content: ""; position: absolute; left: 14px; right: 14px; top: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(245, 241, 251, 0.5), transparent);
+  }
+  .card__kicker { font-family: var(--font-display); font-size: 0.78rem; font-weight: 500; color: var(--accent-on-ink); }
+  .card__title { font-family: var(--font-display); font-size: clamp(1.05rem, 1.5vw, 1.3rem); font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; color: #fff; text-wrap: balance; }
+  .card__text { font-size: 0.9rem; line-height: 1.45; color: var(--fg-on-ink-muted); max-width: 44ch; }
+  .card__more {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 6px;
+    font-family: var(--font-display); font-size: 0.86rem; font-weight: 600; color: var(--accent-on-ink);
+  }
+  .card__more svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
+  .card:hover .card__more svg { transform: translateX(4px); }
+  @media (max-width: 599px) {
+    .card { aspect-ratio: 4 / 3; }
+    .card__glass { left: 10px; right: 10px; bottom: 10px; padding: 14px 14px; }
+    .card__text { display: none; }
+  }
+</style>

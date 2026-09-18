@@ -261,12 +261,14 @@ export const software = {
  */
 export const showcases = [
   {
+    image: "website",
     kicker: "Showcase: Website",
     title: "Ihre Website. Ihr Team pflegt sie selbst.",
     text: "Weg von WordPress und Agentur-Tickets. Ihr Team ändert Texte, Seiten und Angebote selbst, AI hilft beim Schreiben.",
     href: "/showcases/webauftritt",
   },
   {
+    image: "software",
     kicker: "Showcase: Software",
     title: "Mehrere Partner, ein Standard.",
     text: "Ein Projekt, in dem alle Partner nach denselben Regeln bauen.",
