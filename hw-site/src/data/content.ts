@@ -52,8 +52,8 @@ export const promise = {
   objections: [
     {
       quote: "Wir nutzen doch schon AI.",
-      hook: "Einzelne ja. Als Ablauf nein.",
-      text: "Alle arbeiten, wie sie es für richtig halten, und niemand misst. Wir machen daraus einen Ablauf für das ganze Team.",
+      hook: "Einzelne nutzen AI. Ihr Betrieb nicht.",
+      text: "Alle machen es anders, niemand misst den Nutzen. Wir machen daraus einen festen Ablauf für alle.",
       cta: { label: "Ihren Stand klären", href: "/kontakt" },
       viz: "align" as const,
       data: { value: 78, unit: "%", label: "der AI-Nutzer bringen eigene Tools mit zur Arbeit. Ohne Vorgabe von oben", chart: "ring" as const, series: [{ v: 78, name: "" }], source: "Work Trend Index 2024, Microsoft und LinkedIn" },
@@ -61,7 +61,7 @@ export const promise = {
     {
       quote: "Dafür haben wir weder Leute noch Zeit.",
       hook: "Wir bringen beides mit. Und geben es weiter.",
-      text: "Wir bauen die Lösung und zeigen Ihrem Team, wie es sie weiterführt. Ohne für jeden Schritt einen Dienstleister.",
+      text: "Wir bauen die Lösung und zeigen Ihrem Team, wie es sie selbst weiterführt.",
       cta: { label: "So befähigen wir Ihr Team", href: "/vorgehen#phasen" },
       viz: "handover" as const,
       data: { value: 66, unit: "%", label: "der Unternehmen fehlt die Zeit für Digitalisierung, 70 % fehlen die Fachkräfte", chart: "bars" as const, series: [{ v: 66, name: "Zeit" }, { v: 70, name: "Fachkräfte" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
@@ -69,7 +69,7 @@ export const promise = {
     {
       quote: "Rechnet sich das überhaupt?",
       hook: "Das sehen Sie, bevor wir bauen.",
-      text: "Jedes Potenzial wird vorher wirtschaftlich und technisch bewertet. Gebaut wird, was sich rechnet.",
+      text: "Wir rechnen jedes Vorhaben vorher durch. Gebaut wird nur, was sich lohnt.",
       cta: { label: "Wie wir bewerten", href: "/leistungen" },
       viz: "rank" as const,
       data: { value: 59, unit: "%", label: "der Führungskräfte können den Nutzen von AI nicht beziffern. 60 % fehlt ein Plan", chart: "bars" as const, series: [{ v: 59, name: "Nutzen unklar" }, { v: 60, name: "Kein Plan" }], source: "Work Trend Index 2024" },
@@ -77,7 +77,7 @@ export const promise = {
     {
       quote: "Der Pilot lief. Mehr nicht.",
       hook: "Wir bauen dort ein, wo Ihr Team arbeitet.",
-      text: "In Ihren Systemen, mit Datenschutz und Sicherheit von Anfang an. Wo die Lösung läuft, entscheiden Sie.",
+      text: "Direkt in Ihre Systeme, mit Datenschutz von Anfang an. Wo es läuft, entscheiden Sie.",
       cta: { label: "Was wir selbst bauen", href: "/leistungen" },
       viz: "pilot" as const,
       data: { value: 41, unit: "%", label: "der Unternehmen setzen AI ein. 48 % planen und diskutieren noch", chart: "stack" as const, series: [{ v: 41, name: "im Einsatz" }, { v: 48, name: "geplant" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
@@ -90,62 +90,62 @@ export const promise = {
 export const deliverySteps = [
   {
     n: 1,
-    title: "Unternehmen und Abläufe verstehen",
-    text: "Wir analysieren, wie Ihr Unternehmen tatsächlich arbeitet: Abläufe, Beteiligte, Systeme.",
+    title: "Ihr Unternehmen verstehen",
+    text: "Wir schauen, wie Ihr Betrieb wirklich arbeitet: Abläufe, Menschen, Systeme.",
     phase: "process",
   },
   {
     n: 2,
-    title: "AI-geeignete Prozesse erkennen",
-    text: "Wo Ihr Team wartet, sucht oder doppelt erfasst, setzen wir an.",
+    title: "Die richtigen Abläufe finden",
+    text: "Wo Ihr Team wartet, sucht oder doppelt tippt, setzen wir an.",
     phase: "process",
   },
   {
     n: 3,
-    title: "Konkrete Potenziale benennen",
-    text: "Wir benennen jedes Potenzial so konkret, dass Sie es prüfen können.",
+    title: "Chancen konkret benennen",
+    text: "So konkret, dass Sie jede Chance selbst prüfen können.",
     phase: "process",
   },
   {
     n: 4,
-    title: "Wirtschaftlich und technisch bewerten",
-    text: "Sie sehen vor dem Bauen, was sich rechnet, und entscheiden selbst.",
+    title: "Durchrechnen, bevor gebaut wird",
+    text: "Sie sehen vorher, was es bringt und was es kostet. Dann entscheiden Sie.",
     phase: "process",
   },
   {
     n: 5,
-    title: "Prozesse AI-native neu denken",
-    text: "Wo es sich lohnt, gestalten wir den Ablauf neu, statt AI anzuschrauben.",
+    title: "Den Ablauf neu denken",
+    text: "Wo es sich lohnt, gestalten wir den Ablauf neu, statt AI nur anzuschrauben.",
     phase: "design",
   },
   {
     n: 6,
-    title: "Umsetzungspfad entwickeln",
-    text: "Reihenfolge, Abhängigkeiten, Meilensteine. Ein Plan, den wir selbst abarbeiten.",
+    title: "Den Plan festlegen",
+    text: "Reihenfolge, Abhängigkeiten, Meilensteine. Ein Plan, den wir selbst umsetzen.",
     phase: "design",
   },
   {
     n: 7,
-    title: "Lösung selbst entwickeln",
-    text: "Wer den Prozess analysiert hat, baut auch die Lösung.",
+    title: "Selbst bauen",
+    text: "Wer den Ablauf verstanden hat, baut auch die Lösung.",
     phase: "build",
   },
   {
     n: 8,
-    title: "Modelle, Infrastruktur, Integrationen",
-    text: "Die Lösung läuft in Ihren Systemen, nicht daneben. Modelle und Integrationen inklusive.",
+    title: "In Ihre Systeme einbauen",
+    text: "Die Lösung läuft in Ihren Systemen, nicht daneben.",
     phase: "build",
   },
   {
     n: 9,
-    title: "Security, Governance, Compliance",
+    title: "Sicherheit und Datenschutz",
     text: "Von Anfang an eingebaut, nicht am Ende geprüft.",
     phase: "production",
   },
   {
     n: 10,
-    title: "Produktiv deployen und optimieren",
-    text: "Die Lösung geht live. Wir befähigen Ihr Team, messen und optimieren weiter.",
+    title: "Live bringen und verbessern",
+    text: "Die Lösung geht live. Ihr Team lernt sie, wir messen und verbessern weiter.",
     phase: "production",
   },
 ] as const;
@@ -154,13 +154,13 @@ export const deliverySteps = [
 export const chain = [
   "Business verstehen",
   "Prozesse analysieren",
-  "AI-Potenziale identifizieren",
+  "Chancen finden",
   "Prozesse neu gestalten",
-  "Lösung konzipieren",
+  "Lösung planen",
   "Modelle auswählen",
   "Software entwickeln",
   "Systeme integrieren",
-  "Deployen",
+  "Live bringen",
   "Absichern",
   "Mitarbeiter befähigen",
   "Messen und optimieren",
@@ -177,7 +177,7 @@ export const chainTexts = [
   "Dasselbe Team, das den Prozess verstanden hat, baut die Anwendung.",
   "Die Lösung läuft in Ihren Systemen, nicht daneben.",
   "Wir bringen die Lösung live, in der Umgebung, die Sie wählen.",
-  "Daten, Modelle und Zugänge sind abgesichert; Governance und Compliance sind eingebaut.",
+  "Daten, Modelle und Zugänge sind geschützt; Regeln und Nachvollziehbarkeit sind eingebaut.",
   "Ihr Team lernt, mit der Lösung zu arbeiten und sie weiterzuentwickeln.",
   "Wir messen die Wirkung im Alltag und verbessern die Lösung laufend.",
 ] as const;
@@ -185,7 +185,7 @@ export const chainTexts = [
 /** Abgrenzung zu klassischer Beratung (Abschnitt 2, letzter Absatz). */
 export const contrast = {
   heading: "Eine Roadmap ist kein Ergebnis.",
-  text: "Beratung endet oft bei Strategie, Roadmap oder PowerPoint. Und die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es beides nicht: Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt, bis sie produktiv läuft.",
+  text: "Beratung endet oft bei Strategie und Folien. Bei uns baut, wer Sie berät, und bleibt, bis es läuft.",
   classic: ["AI-Strategie", "Tool zuerst, Ablauf später", "Roadmap", "Pitch-Team, dann Lieferteam", "Für jedes Werkzeug ein Anbieter", "Wirkung ungemessen", "Empfehlung"],
   hw: ["Prozessanalyse", "Ablauf zuerst, Tool zuletzt", "Eigenes Engineering", "Ein Team von Analyse bis Go-live", "Prozess, Daten und Wissen bleiben bei Ihnen", "Wirkung gemessen", "Produktive Lösung"],
   // Schlusszeilen der beiden Spalten (Contrast.astro).
@@ -204,7 +204,8 @@ export const sovereignty = {
   // v2 (2026-09-18): konkreter Pain statt abstraktem Hook; Position 02 auf der Startseite.
   heading: "Zu viele Dienstleister. Zu wenig Kontrolle.",
   // v3 (2026-09-18): ein Satz Lede, drei Einzeiler (Gründer: „zu viel, zu verstreut“).
-  text: "Für jede Aufgabe ein Anbieter. Niemand kennt den ganzen Ablauf.",
+  // v4 (2026-09-18, Gründer-Wortlaut): Schluss mit Vendor Lock-in und teurer Abhängigkeit.
+  text: "Schluss mit Vendor Lock-in und teurer Abhängigkeit von Dienstleistern.",
   points: [
     { title: "Abhängig bei jedem Schritt", text: "Jede Änderung ein Ticket." },
     { title: "Wissen wandert ab", text: "Geht der Anbieter, geht das Wissen." },
@@ -224,28 +225,28 @@ export const sovereignty = {
 export const software = {
   eyebrow: "Software und Web",
   heading: "Nicht jedes Projekt beginnt bei AI.",
-  ledeShort: "Individualsoftware, Plattformen, Webauftritte. Mit Senior Engineers und Partnern, AI-gestützt gebaut.",
-  lede: "Manche beginnen bei einer Software, die endlich gebaut werden muss. Individualsoftware, Plattformen und Webauftritte bauen wir mit Senior Engineers und unseren Software-Partnern: AI-gestützt, nach einem Entwicklungsprozess, den wir in einem laufenden Plattformprojekt mit mehreren Partnern erprobt haben.",
+  ledeShort: "Software, Plattformen, Websites. Gebaut von erfahrenen Entwicklern und unseren Partnern, mit AI-Unterstützung.",
+  lede: "Manchmal muss zuerst eine Software oder eine Website gebaut werden. Das machen wir: mit erfahrenen Entwicklern und unseren Partnern, mit AI-Unterstützung und klaren Regeln.",
   offers: [
-    { title: "Individualsoftware und Plattformen", text: "Anwendungen, APIs und Integrationen in Ihre bestehende Landschaft." },
-    { title: "Webauftritt, Shop und App", text: "Websites, Webshops und mobile Apps, die Ihr Team selbst pflegen kann." },
-    { title: "Architektur, Cloud und Absicherung", text: "Systemdesign, Migration und Security in der Umgebung, die Sie wählen." },
+    { title: "Software und Plattformen", text: "Anwendungen, Schnittstellen, Anbindung an Ihre Systeme." },
+    { title: "Website, Shop und App", text: "Websites, Shops und Apps, die Ihr Team selbst pflegen kann." },
+    { title: "Aufbau, Cloud und Sicherheit", text: "Systemaufbau, Umzug in die Cloud und Schutz, wo Sie es wollen." },
   ],
   sdlc: {
-    title: "So bauen wir: AI-gestützt, mit klaren Regeln.",
+    title: "So bauen wir: mit AI, nach klaren Regeln.",
     items: [
-      "AI-Werkzeuge im gesamten Entwicklungsprozess, mit festen Prompt- und Vertraulichkeitsregeln.",
-      "Jede Änderung wird von Menschen geprüft, bevor sie zu Ihnen geht.",
-      "Keine Secrets, keine Produktionsdaten, kein vertraulicher Code in öffentlichen AI-Tools.",
-      "Abnahme mit Nachweisen: Tests, Review-Notizen, Artefakte.",
+      "AI hilft beim Entwickeln, mit festen Regeln für Vertraulichkeit.",
+      "Menschen prüfen jede Änderung, bevor sie zu Ihnen geht.",
+      "Keine Passwörter, keine echten Daten, kein vertraulicher Code in öffentlichen AI-Tools.",
+      "Abnahme mit Belegen: Tests, Prüfnotizen, Ergebnisse.",
     ],
   },
   proof: {
     label: "Erprobt im laufenden Projekt",
-    title: "Ein Plattformprojekt, mehrere Software-Partner, ein Entwicklungsstandard.",
-    text: "Mehrere Partner liefern nach demselben AI-gestützten Entwicklungsprozess mit Review- und Vertraulichkeitsregeln. Die Leute im Erstgespräch sind die Leute, die den Code schreiben.",
+    title: "Ein Projekt, mehrere Partner, ein Standard.",
+    text: "Alle Partner arbeiten nach denselben Regeln. Wer mit Ihnen spricht, schreibt auch den Code.",
   },
-  cta: { line: "Eine Software, ein Webauftritt oder beides?", primary: { label: "Projekt im Erstgespräch besprechen", href: "/kontakt" } },
+  cta: { line: "Eine Software, eine Website oder beides?", primary: { label: "Projekt im Erstgespräch besprechen", href: "/kontakt" } },
 } as const;
 
 /**
@@ -260,58 +261,58 @@ export const software = {
  */
 export const showcases = [
   {
-    kicker: "Showcase: AI-gestütztes CMS",
-    title: "Ihr Webauftritt, selbstgesteuert.",
-    text: "Aus WordPress, Typo3 oder statischen Templates wird eine Pipeline: Design in Figma, Design-getriebenes CMS, Consultry Human x AI Workflow.",
+    kicker: "Showcase: Website",
+    title: "Ihre Website. Ihr Team pflegt sie selbst.",
+    text: "Weg von WordPress und Agentur-Tickets. Ihr Team ändert Texte, Seiten und Angebote selbst, AI hilft beim Schreiben.",
     href: "/showcases/webauftritt",
   },
   {
-    kicker: "Showcase: Software mit Partnern",
-    title: "Mehrere Software-Partner, ein Standard.",
-    text: "Ein Plattformprojekt, in dem mehrere Partner nach demselben AI-gestützten Entwicklungsprozess liefern.",
+    kicker: "Showcase: Software",
+    title: "Mehrere Partner, ein Standard.",
+    text: "Ein Projekt, in dem alle Partner nach denselben Regeln bauen.",
     href: "/leistungen#software",
   },
 ] as const;
 
 export const showcaseWeb = {
-  eyebrow: "Showcase: AI-gestütztes CMS",
-  title: "Ihr Webauftritt, selbstgesteuert.",
-  lede: "Die Kreativität Ihres Teams und Ihr Angebot perfekt in Szene gesetzt, ohne Ticket an eine Agentur. Aus WordPress, Typo3 oder statischen Templates wird eine Pipeline: Design in Figma, Inhalte in einem Design-getriebenen CMS, dazwischen der Consultry Human x AI Workflow.",
+  eyebrow: "Showcase: Website",
+  title: "Ihre Website. Ihr Team pflegt sie selbst.",
+  lede: "Neue Seite, neues Angebot, neuer Text: Ihr Team macht das selbst, ohne Ticket an eine Agentur. Wir bauen Ihre Website so, dass das geht, und holen sie aus WordPress oder Typo3 heraus.",
   before: {
-    heading: "Woran Webauftritte heute hängen.",
+    heading: "Woran Websites heute hängen.",
     items: [
-      { title: "Pflege per Ticket", text: "Jede Textänderung, jede neue Seite geht an eine Agentur oder an die eine Person im Haus, die das Template kennt." },
-      { title: "Template statt Design", text: "Statische Vorlagen bestimmen, wie Ihr Angebot aussieht. Was nicht ins Raster passt, bleibt weg." },
-      { title: "Wissen im Werkzeug", text: "WordPress oder Typo3 kennt nur, wer es eingerichtet hat. Geht die Person, geht der Zugang zum eigenen Auftritt." },
+      { title: "Jede Änderung ein Ticket", text: "Texte, Seiten, Angebote: alles geht an die Agentur oder an die eine Person, die sich auskennt." },
+      { title: "Die Vorlage bestimmt das Aussehen", text: "Was nicht in die Vorlage passt, bleibt weg." },
+      { title: "Wissen steckt in einer Person", text: "Geht sie, kommt niemand mehr an die Website." },
     ],
   },
   pipeline: {
-    heading: "Die Pipeline: vom Design zur Seite, ohne Umweg.",
+    heading: "So bauen wir Ihre Website.",
     steps: [
-      { name: "Figma", title: "Design als Quelle", text: "Ihr Team oder Ihre Agentur gestaltet Komponenten, nicht einzelne Seiten. Das Design bleibt die eine Wahrheit." },
-      { name: "Design-getriebenes CMS", title: "Bausteine statt Templates", text: "Jede Komponente aus Figma ist im CMS ein Baustein, etwa in Storyblok. Die Redaktion setzt Seiten zusammen, ohne Entwickler." },
-      { name: "Consultry Human x AI Workflow", title: "AI entwirft, Ihr Team entscheidet", text: "Texte, Varianten und Übersetzungen entstehen aus Ihrem Angebot. Jede Freigabe bleibt bei Menschen." },
-      { name: "Live", title: "Veröffentlicht, wo Sie es entscheiden", text: "Die Seite wird gebaut, abgesichert und veröffentlicht. Schnell, messbar, in der Umgebung Ihrer Wahl." },
+      { name: "Design", title: "Ein Design, viele Bausteine", text: "Kopfzeile, Angebot, Kontakt: Wir gestalten Bausteine. Aus ihnen entstehen alle Seiten." },
+      { name: "Redaktion", title: "Ihr Team baut Seiten selbst", text: "Bausteine zusammenstecken, Texte ändern, Bilder tauschen. Ohne Entwickler, ohne Ticket." },
+      { name: "AI-Hilfe", title: "AI schreibt vor, Ihr Team gibt frei", text: "Textvorschläge, Varianten und Übersetzungen aus Ihrem Angebot. Freigegeben wird von Menschen." },
+      { name: "Live", title: "Online, wo Sie es wollen", text: "Schnell, sicher, messbar." },
     ],
   },
   migration: {
     heading: "Der Umzug aus WordPress, Typo3 und Co.",
     items: [
-      { title: "Inhalte übernehmen", text: "Seiten, Medien und Struktur werden in Bausteine übertragen. Nichts wird von Hand nachgebaut, was sich übertragen lässt." },
-      { title: "Auffindbarkeit erhalten", text: "URLs, Weiterleitungen und Metadaten bleiben erhalten. Ihr Auftritt verliert beim Umzug nicht, was er sich aufgebaut hat." },
-      { title: "Redaktion befähigen", text: "Ihr Team pflegt ab dem ersten Tag selbst. Wir bleiben, bis das ohne uns läuft." },
+      { title: "Inhalte kommen mit", text: "Seiten, Bilder und Struktur werden übernommen, nicht nachgebaut." },
+      { title: "Google findet Sie weiter", text: "Adressen und Weiterleitungen bleiben erhalten." },
+      { title: "Ihr Team übernimmt", text: "Ab dem ersten Tag pflegt Ihr Team selbst. Wir bleiben, bis das läuft." },
     ],
   },
   after: {
     heading: "Was Ihr Team danach kann.",
     items: [
-      "Neue Angebote und Kampagnen selbst in Szene setzen, ohne Ticket.",
-      "Design bleibt konsistent, weil jede Seite aus denselben Bausteinen entsteht.",
-      "AI-Entwürfe für Texte und Varianten nutzen und selbst freigeben.",
-      "Kein Anbieter, der den Zugang zum eigenen Auftritt hält.",
+      "Neue Angebote selbst online stellen, ohne Ticket.",
+      "Alle Seiten sehen aus einem Guss aus.",
+      "AI-Textvorschläge nutzen und selbst freigeben.",
+      "Niemand außer Ihnen hält den Zugang zur eigenen Website.",
     ],
   },
-  cta: { line: "Welches System hält Ihren Auftritt heute fest?", primary: { label: "Webauftritt im Erstgespräch besprechen", href: "/kontakt" } },
+  cta: { line: "Welches System bremst Ihre Website heute?", primary: { label: "Website im Erstgespräch besprechen", href: "/kontakt" } },
 } as const;
 
 /**
@@ -342,16 +343,16 @@ export const partners = [
 
 /** Capabilities – Beleg für die Umsetzungskompetenz, nicht das Produktversprechen (Abschnitte 4/5). */
 export const capabilities = [
-  { title: "Business Process Analysis", text: "Abläufe, Schnittstellen und Engpässe verstehen. Vor jeder Technologie." },
-  { title: "AI Strategy", text: "Priorisierte AI-Potenziale, wirtschaftlich bewertet. Keine Wunschliste." },
-  { title: "Process Redesign", text: "Prozesse, in denen AI natürlicher Bestandteil ist." },
-  { title: "AI Engineering", text: "LLM-Anwendungen, Retrieval, Agenten und Evaluierung, produktionsreif gebaut." },
-  { title: "Software Engineering", text: "Anwendungen, APIs und Integrationen in Ihre bestehende Landschaft." },
-  { title: "Model Engineering", text: "Modellauswahl, Anpassung und Evaluierung passend zu Ihren Daten." },
-  { title: "Cloud & Infrastructure", text: "Ihre Cloud, Ihr Rechenzentrum oder ein Anbieter Ihrer Wahl. Wir richten ein, was zur Lösung passt." },
-  { title: "Cybersecurity", text: "Daten, Modelle und Zugänge abgesichert. Teil des Designs." },
-  { title: "AI Governance", text: "Nachvollziehbarkeit, Verantwortlichkeiten und Compliance von Anfang an." },
-  { title: "AI Enablement", text: "Ihr Team nutzt die Lösung und entwickelt sie weiter." },
+  { title: "Abläufe analysieren", text: "Verstehen, wo es hakt. Vor jeder Technik." },
+  { title: "AI-Chancen bewerten", text: "Was bringt es, was kostet es. Keine Wunschliste." },
+  { title: "Abläufe neu gestalten", text: "So, dass AI ein natürlicher Teil der Arbeit ist." },
+  { title: "AI-Anwendungen bauen", text: "Assistenten, Suche über Ihr Wissen, Automatisierung. Fertig für den Alltag." },
+  { title: "Software bauen", text: "Anwendungen, Schnittstellen, Anbindung an Ihre Systeme." },
+  { title: "Modelle auswählen", text: "Passend zu Ihren Daten und Ihrem Datenschutz." },
+  { title: "Cloud und Infrastruktur", text: "Ihre Cloud, Ihr Rechenzentrum oder ein Anbieter Ihrer Wahl." },
+  { title: "Sicherheit", text: "Daten, Modelle und Zugänge geschützt. Von Anfang an." },
+  { title: "Regeln und Nachvollziehbarkeit", text: "Wer darf was, und warum hat die AI so entschieden." },
+  { title: "Team befähigen", text: "Ihr Team nutzt die Lösung und entwickelt sie weiter." },
 ] as const;
 
 export const positioning = {

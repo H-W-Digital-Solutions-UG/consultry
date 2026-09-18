@@ -5,10 +5,11 @@
  * 2026-09-17). Partnerlogos werden als CSS-Maske einfarbig gerendert, damit
  * fünf fremde Marken nicht fünf Farbwelten in die Seite tragen.
  *
- * variant="strip": Trust-Leiste im Hero-Nachlauf (Slot "after" von Hero.astro):
- *   nur die Partner (Gründer, 2026-09-18: Zertifikate wandern in die Proof-Szene
- *   „Wer bei uns baut“ über dem Versprechen);
- *   Elemente blenden beim Laden gestaffelt ein (`--start` je Element).
+ * variant="strip": nahtlose Partner-Logoleiste im Hero-Nachlauf (Slot "after"
+ *   von Hero.astro): ohne Label, volle Breite, weiche Ränder, läuft langsam
+ *   und endlos (zwei identische Listen, Track fährt um 50 %). Ohne Bewegung
+ *   bei Reduced Motion. Zertifikate stehen in der Proof-Szene „Wer bei uns
+ *   baut“ (Gründer, 2026-09-18).
  * variant="full":  Unternehmensseite mit Namen und Ausstellern, dazu Partner.
  */
 import { Image } from "astro:assets";
@@ -27,21 +28,22 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
 ---
 
 {strip ? (
-  <div class="strip">
-    <div class="strip__group strip__group--partners">
-      <p class="strip__label" style="--start: 0.06"><span>Partner</span></p>
-      <ul class="strip__partners">
-        {partners.map((p, i) => {
-          const img = logo(p.file);
-          return (
-            <li style={`--start: ${(0.12 + i * 0.06).toFixed(3)}`}>
-              <a class="logo-link" href={p.href} rel="noopener" target="_blank" aria-label={`${p.name} (öffnet in neuem Tab)`}>
-                {img && <span class="logo" style={`--logo: url(${img.src}); --ratio: ${(img.width / img.height).toFixed(3)}`} aria-hidden="true"></span>}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+  <div class="strip" aria-label="Partner">
+    <div class="strip__track">
+      {[0, 1].map((copy) => (
+        <ul class="strip__partners" aria-hidden={copy === 1 ? "true" : undefined}>
+          {partners.map((p) => {
+            const img = logo(p.file);
+            return (
+              <li>
+                <a class="logo-link" href={p.href} rel="noopener" target="_blank" aria-label={`${p.name} (öffnet in neuem Tab)`} tabindex={copy === 1 ? -1 : undefined}>
+                  {img && <span class="logo" style={`--logo: url(${img.src}); --ratio: ${(img.width / img.height).toFixed(3)}`} aria-hidden="true"></span>}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      ))}
     </div>
   </div>
 ) : (
@@ -96,68 +98,42 @@ const logo = (file: string) => logoFiles[`../assets/partners/${file}`]?.default;
     mask: var(--logo) center / contain no-repeat;
   }
 
-  /* ---- Trust-Leiste ---- */
-  /* Auf Aubergine (im Hero-Nachlauf): helle Labels, Badges leicht gedämpft. */
-  :global(.section--ink) .strip__label { color: var(--fg-on-ink-muted); }
-  :global(.section--ink) a.strip__label:hover { color: var(--fg-on-ink); }
-  :global(.section--ink) .strip__badges img { filter: saturate(0.35); opacity: 0.9; }
-  :global(.section--ink) .strip__badges li:hover img { filter: none; opacity: 1; }
-  :global(.section--ink) .logo-link { opacity: 0.8; color: var(--fg-on-ink); }
+  /* ---- Nahtlose Logoleiste ---- */
+  :global(.section--ink) .logo-link { opacity: 0.78; color: var(--fg-on-ink); }
   :global(.section--ink) .logo-link:hover { opacity: 1; }
-  /* Zwei Reihen: Label links, Elemente rechts, Haarlinie dazwischen. */
-  .strip { display: grid; }
-  .strip__group {
-    display: grid;
-    gap: 12px;
-    padding-block: 14px;
-    align-items: center;
+  .strip {
+    --logo-h: 32px;
+    overflow: hidden;
+    padding-block: 18px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%);
+    animation: fade-in 0.8s var(--ease-out) 0.9s both;
   }
-  @media (min-width: 900px) {
-    .strip__group { grid-template-columns: 240px 1fr; gap: 32px; }
+  .strip__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 46s linear infinite;
   }
-  .strip__label {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: -0.005em;
-    color: var(--fg-muted);
-    text-decoration: none;
+  .strip:hover .strip__track { animation-play-state: paused; }
+  .strip__partners {
+    list-style: none; margin: 0; padding: 0 0 0 72px;
+    display: flex; align-items: center; gap: 72px;
+    flex: none;
   }
-  .strip__label svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
-  a.strip__label:hover { color: var(--fg); }
-  a.strip__label:hover svg { transform: translateX(3px); }
-  .strip__badges, .strip__partners { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; }
-  .strip__badges { gap: 14px; }
-  .strip__badges li { display: flex; }
-  .strip__badges img {
-    display: block; width: 52px; height: auto;
-    filter: saturate(0.15);
-    opacity: 0.85;
-    transition: filter 0.25s, opacity 0.25s, transform 0.25s var(--ease-out);
-  }
-  .strip__badges li:hover img, .strip__badges li:focus-within img { filter: none; opacity: 1; transform: translateY(-2px); }
-  .strip__partners { gap: 10px 40px; --logo-h: 32px; }
-  .strip__partners .logo { max-width: 240px; }
-  .strip__group--partners .logo-link { height: 48px; }
-
-  /* Einblenden beim Laden, gestaffelt über --start (nach der Hero-Copy). */
-  :global(.hero) :is(.strip__label, .strip__badges li, .strip__partners li) {
-    opacity: 0;
-    animation: fade-up 0.7s var(--ease-out) forwards;
-    animation-delay: calc(0.85s + var(--start, 0) * 1.4s);
-  }
+  .strip__partners .logo { max-width: 220px; }
+  .logo-link { height: 44px; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
   @media (prefers-reduced-motion: reduce) {
-    :global(.hero) :is(.strip__label, .strip__badges li, .strip__partners li) {
-      opacity: 1;
-      animation: none;
-    }
+    .strip { animation: none; -webkit-mask-image: none; mask-image: none; }
+    .strip__track { animation: none; width: auto; flex-wrap: wrap; }
+    .strip__partners { padding-left: 0; flex-wrap: wrap; gap: 12px 40px; }
+    .strip__partners[aria-hidden] { display: none; }
   }
   @media (max-width: 599px) {
-    .strip__badges { gap: 10px; }
-    .strip__badges img { width: 44px; }
-    .strip__partners { gap: 8px 26px; --logo-h: 26px; }
+    .strip { --logo-h: 24px; padding-block: 12px; }
+    .strip__partners { gap: 44px; padding-left: 44px; }
+    .strip__track { animation-duration: 30s; }
   }
 
   /* ---- Volle Sektion ---- */

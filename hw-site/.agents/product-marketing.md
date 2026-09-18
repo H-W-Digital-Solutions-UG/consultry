@@ -260,6 +260,14 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 
 **Verlinkt aus:** Souveränität (Startseite, zwei Karten „Showcase ansehen“) und Software-Sektion (Sekundär-CTA).
 
+## Regel: Käufersprache (2026-09-18)
+
+**Kern (Gründer):** Käufer sind Geschäftsführung und Fachbereich, keine Entwickler. Jede Zeile muss ohne Vorwissen verständlich sein: kurze Sätze, konkrete Handlungen („Ihr Team ändert Texte selbst“), Nutzen vor Methode. Technik wird nur genannt, wenn der Käufer sie kennt (WordPress, Typo3, Google) oder danach fragt.
+
+**Vermeiden in Käufer-Copy:** Pipeline, CMS-Jargon („Design-getriebenes CMS“, Storyblok, Figma als Nutzenversprechen), „Human x AI Workflow“, AI-native, Deployen, Governance, Compliance, Retrieval, Agenten, LLM, Use Case (außer im freigegebenen Versprechen-Satz), Capabilities als Wort, „Delivery Chain“ (nur als Eyebrow „From Process to Production“). Englische Capability-Titel sind abgelöst; die zehn Schritte heißen jetzt „Ihr Unternehmen verstehen … Live bringen und verbessern“.
+
+**Technik-Referenz (nicht auf der Site):** Website-Showcase basiert auf Figma-Komponenten, einem Design-getriebenen Headless-CMS (Storyblok) und dem Consultry Human x AI Workflow; Software-Sektion auf dem AI-gestützten Entwicklungsprozess der H&W-Angebotsvorlage.
+
 ## Regel: Kein Hosting-Versprechen (2026-09-18)
 
 **Kern (Gründer):** Die Website darf nirgends so klingen, als würde H&W Lösungen selbst hosten oder grundsätzlich beim Kunden betreiben. Wo eine Lösung läuft, entscheidet der Kunde (eigene Cloud, eigenes Rechenzentrum, Anbieter seiner Wahl). H&W baut, integriert, sichert ab, bringt live und befähigt.
@@ -391,6 +399,8 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v17 (2026-09-18) — Hero-Logoleiste nahtlos (ohne Label, volle Breite, langsamer Endlos-Lauf, weiche Ränder); Souveränitäts-Lede nach Gründer-Wortlaut „Schluss mit Vendor Lock-in und teurer Abhängigkeit von Dienstleistern.“
+- v16 (2026-09-18) — Sprachregel Käufersprache (Gründer: „zu abstrakt, die Käufer verstehen das nicht; simpler, aber effektiver“): Zehn Schritte, Chain-Glieder, Capabilities (jetzt deutsch: „Abläufe analysieren“ … „Team befähigen“), Software-Sektion, Showcase-Seite („Ihre Website. Ihr Team pflegt sie selbst.“, Stationen Design → Redaktion → AI-Hilfe → Live) und Einwand-Antworten in einfache Sätze umgeschrieben; Fachbegriffe wie „Pipeline“, „Design-getriebenes CMS“, „Human x AI Workflow“, „AI-native“, „Deployen“ aus der Käufer-Copy entfernt (Technik steht im Kontextdokument).
 - v15 (2026-09-18) — Textreduktion Startseite (Gründer: „zu viel, zu verstreut, überall Text“): Souveränität mit Ein-Satz-Lede („Für jede Aufgabe ein Anbieter. Niemand kennt den ganzen Ablauf.“) und drei Einzeilern; Showcases als Link-Zeilen ohne Beschreibung; Versprechen-Lede „Es scheitert selten am Modell. Vier Einwände, vier Antworten.“; Proof-Szene-Text „Wer im Erstgespräch sitzt, bewertet, baut und bleibt, bis es läuft.“; Software-Teaser mit Kurz-Lede.
 - v14 (2026-09-18) — Hero statisch (kein Hintergrund-Scroll, Vignette auf die Copy, entsättigtes Bild), Hero-Beschreibung auf zwei kurze Sätze („Ihr Team sucht, wartet, tippt doppelt. Wir bauen AI genau dort ein.“); Trust-Leiste nur Partner; neue Proof-Szene „Wer bei uns baut“ (Senior-Zusage plus Zertifikate, klein) über dem Versprechen; Versprechen als gestapelte Bänder (sticky, nach Systango-Aufnahme) mit vier Einwänden und je einer monolinen Visualisierung (Einzelne → Ablauf, Übergabe-Kurven, Potenziale nach Hebel, Pilot → Ihre Systeme).
 - v13 (2026-09-18) — „Unser Versprechen“ als gepinnter Scroll-Stapel (hell, ohne Glas, Nachbarn gedämpft, weiche Maske); Einwände geschärft: „Im Pitch: Senior. In der Lieferung: Junior.“, „Dafür haben wir weder Leute noch Zeit.“, „Rechnet sich das überhaupt?“, „Der Pilot lief. Mehr nicht.“; Zahlen-Labels gekürzt.
