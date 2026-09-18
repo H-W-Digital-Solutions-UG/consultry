@@ -213,6 +213,8 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 
 | Datum | Änderung |
 |---|---|
+| 2026-09-18 | Quellenangaben als Fußnote: hochgestelltes Sternchen in `--accent` mit Tooltip (`.fn`, `.fn__tip` auf `--ink`, Inter 0,8 rem, Hover und Tastaturfokus, Quelle zusätzlich im `aria-label`) statt der Mono-Zeile. Beschriftungen in den Visualisierungen ebenfalls auf Inter 500 umgestellt; Mono bleibt der Ziffer der Bänder mobil vorbehalten. |
+| 2026-09-18 | Einwand-Bänder: Schmerz-Zahlen links (Ring, Balken, Stapel, Quelle) gestrichen; die Visualisierung steht jetzt links unter dem Zitat (`.promise__viz`, max. 520 px), rechts bleiben Hook, Gewinn-Zahl und CTA. Mobil: Einwand, Antwort, Abbildung. Diagramm-CSS entfernt. |
 | 2026-09-18 | Einwand-Bänder: Begründungsabsatz rechts entfernt, stattdessen Gewinn-Zahl (`.promise__win`, 2,4 rem in `--accent`, Vorzeichen, Quelle in Mono) über dem CTA; Count-up unterstützt Dezimalstellen mit Komma. Hero-Headline wieder einzeilig (v8). |
 | 2026-09-18 | Hero-Copy v7 als Szene in zwei Zeilen (`white-space: pre-line`), Claim und Beschreibung als ganze Sätze; Schluss-CTA-Headline länger (ein Satz mit Nebensatz), `max-width` der CTA-Headline unverändert. OG-Bild neu gerendert. |
 | 2026-09-18 | Startseite gestrafft (Gründer: „weg von Hauptseite, nur auf Subseiten“): Sektionen „So arbeiten wir“ (Chain, zwölf Schritte) und „Womit wir bauen“ (Capabilities) entfernt; beide bleiben auf `/vorgehen` und `/leistungen`. Folge jetzt Hero → Wer bei uns baut → Versprechen → Unabhängigkeit → Zehn Schritte → Der Unterschied → Software und Web → CTA; „Zehn Schritte“ auf helles Papier, damit sich die Flächen weiter abwechseln. |

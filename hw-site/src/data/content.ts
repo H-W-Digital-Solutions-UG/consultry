@@ -68,11 +68,8 @@ export const promise = {
   // Peng, Kalliamvakou, Cihon, Demirer: arXiv 2302.06590 (2023): 55,8 % schneller.
   // Dell'Acqua et al. (HBS 24-013) nicht verwendet: Primärquelle nicht abrufbar.
   // Die Senior-Zusage steht als eigene Szene darüber (`expertise`).
-  // `data`: ein belegter Zahlenpunkt je Einwand (v11, Gründer: „Zahlen geben
-  // Trust und Proof“). Nur Primärquellen, exakt wie veröffentlicht, Quelle am
-  // Element. Bitkom: Presseinformation „Digitalisierung der Wirtschaft“,
-  // 11. März 2026, 604 Unternehmen ab 20 Beschäftigte. WTI: Microsoft und
-  // LinkedIn, Work Trend Index 2024, 31.000 Befragte in 31 Ländern.
+  // Die Schmerz-Zahlen links (Bitkom 2026, Work Trend Index 2024) sind seit
+  // v13 (2026-09-18, Gründer) gestrichen; die Recherche bleibt im Marketing-Kontext.
   objections: [
     {
       quote: "Wir nutzen doch schon AI.",
@@ -80,7 +77,6 @@ export const promise = {
       win: { sign: "+", value: 14, unit: "%", label: "mehr gelöste Anfragen pro Stunde, sobald das ganze Team den AI-Assistenten hatte", source: "Brynjolfsson, Li, Raymond 2023, NBER, 5.179 Support-Mitarbeiter" },
       cta: { label: "Ihren Stand klären", href: "/kontakt" },
       viz: "align" as const,
-      data: { value: 78, unit: "%", label: "der AI-Nutzer bringen eigene Tools mit zur Arbeit. Ohne Vorgabe von oben", chart: "ring" as const, series: [{ v: 78, name: "" }], source: "Work Trend Index 2024, Microsoft und LinkedIn" },
     },
     {
       quote: "Dafür haben wir weder Leute noch Zeit.",
@@ -88,7 +84,6 @@ export const promise = {
       win: { sign: "+", value: 34, unit: "%", label: "Leistung bei weniger erfahrenen Mitarbeitern, wenn eine AI sie im Alltag unterstützt", source: "Brynjolfsson, Li, Raymond 2023, NBER" },
       cta: { label: "So befähigen wir Ihr Team", href: "/vorgehen#phasen" },
       viz: "handover" as const,
-      data: { value: 66, unit: "%", label: "der Unternehmen fehlt die Zeit für Digitalisierung, 70 % fehlen die Fachkräfte", chart: "bars" as const, series: [{ v: 66, name: "Zeit" }, { v: 70, name: "Fachkräfte" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
     },
     {
       quote: "Rechnet sich das überhaupt?",
@@ -96,7 +91,6 @@ export const promise = {
       win: { sign: "−", value: 40, unit: "%", label: "Zeit für Schreibaufgaben mit AI, bei 18 % höherer Qualität", source: "Noy und Zhang 2023, Science, 453 Fachkräfte" },
       cta: { label: "Wie wir bewerten", href: "/leistungen" },
       viz: "rank" as const,
-      data: { value: 59, unit: "%", label: "der Führungskräfte können den Nutzen von AI nicht beziffern. 60 % fehlt ein Plan", chart: "bars" as const, series: [{ v: 59, name: "Nutzen unklar" }, { v: 60, name: "Kein Plan" }], source: "Work Trend Index 2024" },
     },
     {
       quote: "Der Pilot lief. Mehr nicht.",
@@ -104,7 +98,6 @@ export const promise = {
       win: { sign: "", value: 55.8, decimals: 1, unit: "%", label: "schneller fertig, wenn die AI direkt im Arbeitswerkzeug steckt", source: "Peng et al. 2023, GitHub Copilot, kontrolliertes Experiment" },
       cta: { label: "Was wir selbst bauen", href: "/leistungen" },
       viz: "pilot" as const,
-      data: { value: 41, unit: "%", label: "der Unternehmen setzen AI ein. 48 % planen und diskutieren noch", chart: "stack" as const, series: [{ v: 41, name: "im Einsatz" }, { v: 48, name: "geplant" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
     },
   ],
   cta: { line: "Sprechen Sie mit denen, die auch bauen.", secondary: { label: "So arbeiten wir", href: "/vorgehen" } },
