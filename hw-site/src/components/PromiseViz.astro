@@ -4,61 +4,56 @@
  * Monoline-SVG in Markenlila auf hellem Grund, ohne Füllflächen und Glow.
  * Pfade tragen pathLength="1" und zeichnen sich mit `.is-in` ein (Desktop).
  *
- *  customer:   der Kunde als Ring „Sie“ in der Mitte, zwei Gründer docken direkt an
- *              (Sieger des Visual-Panels 2026-09-18, mit Jury-Grafts: Figuren über
- *              der Achse, ein Label statt zweimal „Gründer“)
- *  align:      Einzelne mit eigenen Tools (verstreut) → ein Ablauf (aufgereiht)
- *  handover:   unser Anteil sinkt, die Fähigkeit des Teams steigt
- *  rank:       Potenziale nach Hebel sortiert, gebaut wird oberhalb der Schwelle
- *  pilot:      der Pilot endet, die produktive Lösung läuft in die Systeme
+ * Jede Abbildung folgt wörtlich dem Hook rechts daneben:
+ *  align:      „Jeder fragt die AI anders, keiner weiß, ob es stimmt“ → Einzelne fragen
+ *              in alle Richtungen, Ergebnis offen (?) | ein Ablauf, Ergebnis geprüft (✓)
+ *  handover:   „Wir bringen beides mit, Ihr Team lernt es von uns“ → unser Anteil sinkt,
+ *              der des Teams steigt, die Übergabe ist markiert
+ *  rank:       „Wir rechnen es vorher durch, dann entscheiden Sie“ → Nutzen je Ablauf
+ *              gegen die Kostenlinie, oberhalb rechnet es sich
+ *  pilot:      „Wir bauen es in die Systeme, mit denen Ihr Team täglich arbeitet“ →
+ *              der Pilot endet, die Lösung läuft in ein Fenster Ihres Systems
  */
-interface Props { kind: "customer" | "align" | "handover" | "rank" | "pilot" }
+interface Props { kind: "align" | "handover" | "rank" | "pilot" }
 const { kind } = Astro.props;
-const scatter = [
-  [22, 30], [58, 66], [40, 96], [92, 40], [78, 84], [118, 62], [104, 100],
+/** Einzelne, jede Anfrage in eine andere Richtung: [x, y, dx, dy] */
+const asks = [
+  [28, 34, 13, -6], [62, 70, -4, 13], [42, 100, 14, 3], [96, 40, 6, -13],
+  [84, 90, -12, 8], [108, 68, 11, -8],
 ];
-const bars = [96, 82, 70, 52, 40, 30, 22];
+const bars = [96, 82, 70, 52, 40, 30];
 ---
 
 <svg class={`viz viz--${kind}`} viewBox="0 0 360 120" width="360" height="120" role="img" aria-hidden="true" focusable="false">
-  {kind === "customer" && (
-    <g>
-      <path class="box draw" d="M166 72 A44 44 0 1 1 254 72 A44 44 0 1 1 166 72" pathLength="1" />
-      <text class="lbl lbl--strong lbl--big" x="210" y="76" text-anchor="middle">Sie</text>
-      <path class="fig draw" d="M100 40 a9 9 0 1 0 0.01 0 M84 82 a16 16 0 0 1 32 0" pathLength="1" />
-      <path class="ln draw" d="M122 66 L169 57" pathLength="1" />
-      <circle class="dot" cx="169" cy="57" r="4" />
-      <path class="fig draw" d="M320 40 a9 9 0 1 0 0.01 0 M304 82 a16 16 0 0 1 32 0" pathLength="1" />
-      <path class="ln draw" d="M298 66 L251 57" pathLength="1" />
-      <circle class="dot" cx="251" cy="57" r="4" />
-      <text class="lbl" x="210" y="140" text-anchor="middle">Zwei Gründer, direkt bei Ihnen</text>
-    </g>
-  )}
   {kind === "align" && (
     <g>
-      {scatter.map(([x, y], i) => (
+      {asks.map(([x, y, dx, dy]) => (
         <g>
           <circle class="dot dot--soft" cx={x} cy={y} r="4" />
-          {i % 3 === 0 && <rect class="mk" x={x + 7} y={y - 9} width="5" height="5" />}
-          {i % 3 === 1 && <path class="mk" d={`M${x + 7} ${y - 4} l3 -5 l3 5 z`} />}
-          {i % 3 === 2 && <circle class="mk" cx={x + 10} cy={y - 7} r="2.6" />}
+          <path class="mk" d={`M${x} ${y} l${dx} ${dy}`} />
         </g>
       ))}
-      <text class="lbl" x="70" y="116" text-anchor="middle">Einzelne, eigene Tools</text>
-      <path class="ln draw" d="M150 62 H196 M188 56 l8 6 -8 6" pathLength="1" />
-      <path class="ln draw" d="M218 62 H340" pathLength="1" />
-      {[224, 246, 268, 290, 312, 334].map((x) => <circle class="dot" cx={x} cy="62" r="4" />)}
-      <text class="lbl" x="279" y="116" text-anchor="middle">Ein Ablauf, gemessen</text>
+      <circle class="ring" cx="140" cy="62" r="9" />
+      <text class="glyph" x="140" y="66" text-anchor="middle">?</text>
+      <text class="lbl" x="84" y="118" text-anchor="middle">Jeder fragt anders, Ergebnis offen</text>
+      <path class="ln draw" d="M158 62 H192 M184 56 l8 6 -8 6" pathLength="1" />
+      <path class="ln draw" d="M208 62 H322" pathLength="1" />
+      {[214, 234, 254, 274, 294, 314].map((x) => <circle class="dot" cx={x} cy="62" r="4" />)}
+      <circle class="ring ring--on" cx="338" cy="62" r="9" />
+      <path class="ln draw" d="M333.5 62 l3.5 3.5 l7 -7" pathLength="1" />
+      <text class="lbl lbl--strong" x="272" y="118" text-anchor="middle">Ein Ablauf, Ergebnis geprüft</text>
     </g>
   )}
   {kind === "handover" && (
     <g>
       <path class="ax" d="M30 100 H340 M30 100 V16" />
-      <path class="ln ln--soft draw" d="M30 22 C120 26 180 60 340 94" pathLength="1" />
-      <path class="ln draw" d="M30 94 C120 90 180 56 340 22" pathLength="1" />
+      <path class="ln ln--soft draw" d="M30 22 C130 22 200 94 340 94" pathLength="1" />
+      <path class="ln draw" d="M30 94 C130 94 200 22 340 22" pathLength="1" />
+      <circle class="ring" cx="170" cy="58" r="5" />
       <circle class="dot" cx="340" cy="22" r="4" />
-      <text class="lbl" x="40" y="14">Wir</text>
-      <text class="lbl lbl--strong" x="290" y="14">Ihr Team</text>
+      <text class="lbl" x="38" y="14">Wir übernehmen</text>
+      <text class="lbl lbl--strong" x="340" y="14" text-anchor="end">Ihr Team übernimmt</text>
+      <text class="lbl" x="170" y="88" text-anchor="middle">Übergabe</text>
       <text class="lbl" x="340" y="114" text-anchor="end">Zeit</text>
     </g>
   )}
@@ -66,12 +61,13 @@ const bars = [96, 82, 70, 52, 40, 30, 22];
     <g>
       <path class="ax" d="M30 104 H340" />
       {bars.map((h, i) => (
-        <rect class={i < 3 ? "bar bar--on" : "bar"} x={44 + i * 42} y={104 - h} width="22" height={h} rx="2" />
+        <rect class={i < 3 ? "bar bar--on" : "bar"} x={72 + i * 42} y={104 - h} width="22" height={h} rx="2" />
       ))}
       <path class="th draw" d="M30 46 H340" pathLength="1" />
-      <text class="lbl lbl--strong" x="340" y="40" text-anchor="end">gebaut</text>
-      <text class="lbl" x="340" y="60" text-anchor="end">nicht gebaut</text>
-      <text class="lbl" x="30" y="118">Potenziale nach Hebel</text>
+      <text class="lbl" x="30" y="41">Kosten</text>
+      <text class="lbl lbl--strong" x="340" y="41" text-anchor="end">rechnet sich</text>
+      <text class="lbl" x="340" y="60" text-anchor="end">rechnet sich nicht</text>
+      <text class="lbl" x="30" y="118">Nutzen je Ablauf, vorher gerechnet</text>
     </g>
   )}
   {kind === "pilot" && (
@@ -79,12 +75,13 @@ const bars = [96, 82, 70, 52, 40, 30, 22];
       <path class="ln ln--soft draw" d="M30 90 C80 88 110 70 150 62" pathLength="1" />
       <path class="ln ln--dash" d="M150 62 C165 58 176 56 190 54" />
       <circle class="ring" cx="150" cy="62" r="4.5" />
-      <text class="lbl" x="150" y="46" text-anchor="middle">Pilot</text>
-      <path class="ln draw" d="M30 90 C110 92 160 96 232 78 S290 66 298 66" pathLength="1" />
+      <text class="lbl" x="150" y="46" text-anchor="middle">Pilot, endet hier</text>
+      <path class="ln draw" d="M30 90 C110 92 160 96 232 82 S290 73 298 73" pathLength="1" />
       <rect class="box draw" x="248" y="34" width="92" height="64" rx="8" pathLength="1" />
-      <path class="grid" d="M262 52 H326 M262 66 H326 M262 80 H310" />
-      <circle class="dot" cx="298" cy="66" r="4" />
-      <text class="lbl lbl--strong" x="294" y="114" text-anchor="middle">Ihre Systeme</text>
+      <path class="grid" d="M248 47 H340 M262 60 H326 M262 73 H326 M262 86 H310" />
+      {[256, 262, 268].map((x) => <circle class="mk-dot" cx={x} cy="40.5" r="1.5" />)}
+      <circle class="dot" cx="298" cy="73" r="4" />
+      <text class="lbl lbl--strong" x="340" y="114" text-anchor="end">In Ihren Systemen, täglich</text>
     </g>
   )}
 </svg>
@@ -97,23 +94,24 @@ const bars = [96, 82, 70, 52, 40, 30, 22];
   .ax { fill: none; stroke: var(--line-strong); stroke-width: 1; }
   .grid { fill: none; stroke: var(--line-strong); stroke-width: 1; }
   .th { fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 4 4; }
-  .fig { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; }
   .dot { fill: var(--accent); }
   .dot--soft { fill: var(--fg-muted); opacity: 0.5; }
-  .mk { fill: none; stroke: var(--fg-muted); stroke-width: 1.2; opacity: 0.6; }
+  .mk { fill: none; stroke: var(--fg-muted); stroke-width: 1.2; stroke-linecap: round; opacity: 0.6; }
+  .mk-dot { fill: var(--line-strong); }
   .ring { fill: var(--paper); stroke: var(--fg-muted); stroke-width: 1.5; }
+  .ring--on { stroke: var(--accent); }
   .box { fill: none; stroke: var(--accent); stroke-width: 1.5; }
   .bar { fill: none; stroke: var(--line-strong); stroke-width: 1; }
   .bar--on { fill: var(--accent); stroke: none; }
   .lbl { font-family: var(--font-body); font-weight: 500; font-size: 9px; letter-spacing: 0.04em; fill: var(--fg-muted); }
   .lbl--strong { fill: var(--accent); }
-  .lbl--big { font-size: 12px; letter-spacing: 0.06em; }
+  .glyph { font-family: var(--font-body); font-weight: 600; font-size: 11px; fill: var(--fg-muted); }
 
   /* Einzeichnen in der Desktop-Szene: Pfade wachsen, Punkte und Flächen blenden nach. */
   :global(.promise[data-scene="on"]) .draw { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s var(--ease-out) 0.35s; }
   :global(.promise[data-scene="on"] .promise__row.is-in) .draw { stroke-dashoffset: 0; }
-  :global(.promise[data-scene="on"]) :is(.dot, .dot--soft, .mk, .ring, .bar, .lbl, .ax, .grid, .ln--dash) { opacity: 0; transition: opacity 0.6s var(--ease-out) 0.9s; }
-  :global(.promise[data-scene="on"] .promise__row.is-in) :is(.dot, .ring, .bar, .lbl, .ax, .grid) { opacity: 1; }
+  :global(.promise[data-scene="on"]) :is(.dot, .dot--soft, .mk, .mk-dot, .ring, .bar, .lbl, .glyph, .ax, .grid, .ln--dash) { opacity: 0; transition: opacity 0.6s var(--ease-out) 0.9s; }
+  :global(.promise[data-scene="on"] .promise__row.is-in) :is(.dot, .mk-dot, .ring, .bar, .lbl, .glyph, .ax, .grid) { opacity: 1; }
   :global(.promise[data-scene="on"] .promise__row.is-in) .dot--soft { opacity: 0.5; }
   :global(.promise[data-scene="on"] .promise__row.is-in) .mk { opacity: 0.6; }
   :global(.promise[data-scene="on"] .promise__row.is-in) .ln--dash { opacity: 0.45; }
