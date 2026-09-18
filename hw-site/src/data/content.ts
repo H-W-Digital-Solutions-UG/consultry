@@ -60,8 +60,8 @@ export const expertise = {
   // erfahrene Experten, die sich auf den Betrieb einlassen; Expertise plus
   // Kommunikation und Gastlichkeit).
   // v4 (2026-09-18, Gründer): die bisherige Bildunterschrift wird Headline.
-  heading: "Sie erklären Ihren Betrieb genau einmal.",
-  text: "Erfahrung, Zeit und echtes Interesse an Ihrem Betrieb. So verstehen wir Beratung.",
+  heading: "Der Senior im Angebot ist der Senior im Projekt.",
+  text: "Sie bezahlen Erfahrung und bekommen genau die: zwei Gründer, die selbst planen und bauen. Die Nachweise darunter gehören ihnen.",
   // Bildunterschrift der Tischszene (v2, 2026-09-18, Gründer: „Am Tisch, nicht im Ticket“ war
   // das richtige Argument im falschen Muster). Schlichter Satz, kein Kontrast-Slogan.
   // v4 (2026-09-18, Gründer: Maßschneiderei „cooles Wortspiel, passt aber nicht in den
