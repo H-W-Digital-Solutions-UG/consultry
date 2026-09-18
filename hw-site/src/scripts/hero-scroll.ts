@@ -41,7 +41,8 @@ export function createHeroScene(section: HTMLElement): () => void {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   const net = (navigator as Navigator & { connection?: NetInfo }).connection;
   const share = Math.min(1, Math.max(0.3, Number(section.dataset.sceneShare) || 1));
-  const blocked = () => reduce.matches || !!net?.saveData || /(^|-)2g$/.test(net?.effectiveType ?? "");
+  const small = window.matchMedia("(max-width: 899px)");
+  const blocked = () => small.matches || reduce.matches || !!net?.saveData || /(^|-)2g$/.test(net?.effectiveType ?? "");
 
   let on = false;
   let listening = false;
@@ -161,6 +162,7 @@ export function createHeroScene(section: HTMLElement): () => void {
   evaluate();
   io.observe(section);
   reduce.addEventListener("change", evaluate);
+  small.addEventListener("change", evaluate);
   net?.addEventListener?.("change", evaluate);
   document.addEventListener("visibilitychange", onVisibility);
   window.addEventListener("resize", remeasure, { passive: true });
@@ -171,6 +173,7 @@ export function createHeroScene(section: HTMLElement): () => void {
     disable();
     io.disconnect();
     reduce.removeEventListener("change", evaluate);
+    small.removeEventListener("change", evaluate);
     net?.removeEventListener?.("change", evaluate);
     document.removeEventListener("visibilitychange", onVisibility);
     window.removeEventListener("resize", remeasure);

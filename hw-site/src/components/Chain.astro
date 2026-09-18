@@ -66,6 +66,7 @@ const phaseCta: Record<string, { label: string; href: string }> = {
                     <span class="chain__text">
                       <span class="chain__idx" aria-hidden="true">{pad(i)}</span>
                       <span class="chain__label">{step}</span>
+                      <span class="chain__desc">{chainTexts[i]}</span>
                     </span>
                   </button>
                 </li>
@@ -103,7 +104,9 @@ const phaseCta: Record<string, { label: string; href: string }> = {
   const clamp = (v: number) => Math.min(1, Math.max(0, v));
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   const net = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-  const blocked = () => reduce.matches || !!net?.saveData || /(^|-)2g$/.test(net?.effectiveType ?? "");
+  // Auf Phones (unter 900px) keine Szene: statische Liste mit Kurztexten, kein Pin, kein Stapel.
+  const small = window.matchMedia("(max-width: 899px)");
+  const blocked = () => small.matches || reduce.matches || !!net?.saveData || /(^|-)2g$/.test(net?.effectiveType ?? "");
 
   function mount(root: HTMLElement) {
     if (blocked()) return () => {};
@@ -220,6 +223,18 @@ const phaseCta: Record<string, { label: string; href: string }> = {
   .chain__stage { display: grid; gap: 28px; }
   .chain__readout { display: none; }
   .chain:not([data-scene="on"]) .chain__steps > li { max-height: none; opacity: 1; }
+  /* Kurztext je Schritt: nur im statischen Zustand (Phone, Reduced Motion, ohne JS) */
+  .chain__desc { display: none; }
+  .chain:not([data-scene="on"]) .chain__desc { display: block; margin-top: 4px; font-size: 0.92rem; line-height: 1.5; color: var(--fg-on-ink-muted); text-wrap: pretty; }
+  .chain:not([data-scene="on"]) .chain__text { display: grid; gap: 0; grid-template-columns: auto 1fr; column-gap: 10px; align-items: baseline; }
+  .chain:not([data-scene="on"]) .chain__desc { grid-column: 2; }
+  .chain:not([data-scene="on"]) .chain__step { align-items: start; padding: 8px 0; }
+  .chain:not([data-scene="on"]) .chain__dot { margin-top: 5px; }
+  .chain:not([data-scene="on"]) .chain__steps > li .chain__step { min-height: 0; }
+  .chain:not([data-scene="on"]) .chain__item::before, .chain:not([data-scene="on"]) .chain__item::after { display: none; }
+  .chain:not([data-scene="on"]) .chain__group { padding-bottom: 14px; }
+  .chain:not([data-scene="on"]) .chain__group-n { background: var(--ink-2); }
+  .chain:not([data-scene="on"]) .chain__group::after { display: none; }
 
   .chain__rail, .chain__steps { list-style: none; margin: 0; padding: 0; display: grid; }
   .chain__group { position: relative; padding-bottom: 6px; }
@@ -324,6 +339,9 @@ const phaseCta: Record<string, { label: string; href: string }> = {
   }
   /* Karte: Glas mit klarer Kontur. Transluzent mit Blur, 1px Rand, Radius,
      weicher Schatten; die vordere Karte (is-front) hat einen helleren Rand. */
+  @media (max-width: 899px) {
+    .chain__card { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--ink-2); }
+  }
   .chain__card {
     position: absolute;
     inset: 0 0 auto 0;
