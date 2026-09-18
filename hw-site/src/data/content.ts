@@ -29,7 +29,12 @@ export const promise = {
   // Einordnung ohne Zahlen. Recherche und Quellen: .agents/product-marketing.md,
   // Abschnitt „Problems & Pain Points“ (v8, 2026-09-18). Kurzfassung v9.
   lede: "AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Fünf Einwände, die wir kennen, und was wir tun.",
-  // Vier Einwände in Kundensprache: Zitat, Hook, ein Satz, passender CTA.
+  // Fünf Einwände in Kundensprache: Zitat, Hook, ein Satz, passender CTA.
+  // `data`: ein belegter Zahlenpunkt je Einwand (v11, Gründer: „Zahlen geben
+  // Trust und Proof“). Nur Primärquellen, exakt wie veröffentlicht, Quelle am
+  // Element. Bitkom: Presseinformation „Digitalisierung der Wirtschaft“,
+  // 11. März 2026, 604 Unternehmen ab 20 Beschäftigte. WTI: Microsoft und
+  // LinkedIn, Work Trend Index 2024, 31.000 Befragte in 31 Ländern.
   objections: [
     {
       // Senior-Zusage (Gründer, 2026-09-18) als erster Einwand, Muster benannt, nicht angegriffen.
@@ -37,30 +42,36 @@ export const promise = {
       hook: "Wer Sie überzeugt, baut auch.",
       text: "Die Erfahrung aus dem Erstgespräch bewertet Ihre Prozesse, baut die Lösung und bleibt, bis sie produktiv läuft.",
       cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
+      // Eigener, prüfbarer Fakt (certifications).
+      data: { value: 8, unit: "", label: "Zertifikate im Gründerteam, bei denen, die bauen", chart: "dots" as const, series: [{ v: 8, name: "" }], source: "Nachweise auf der Unternehmensseite" },
     },
     {
       quote: "Wir nutzen doch schon AI.",
       hook: "Einzelne ja. Als Ablauf nein.",
       text: "Alle arbeiten, wie sie es für richtig halten, und niemand misst. Wir machen daraus einen Ablauf für das ganze Team.",
       cta: { label: "Ihren Stand klären", href: "/kontakt" },
+      data: { value: 78, unit: "%", label: "der AI-Nutzer bringen eigene Tools mit, ohne Vorgabe des Unternehmens", chart: "ring" as const, series: [{ v: 78, name: "" }], source: "Work Trend Index 2024, Microsoft und LinkedIn" },
     },
     {
       quote: "Uns fehlen Know-how und Zeit.",
       hook: "Wir bringen beides mit. Und geben es weiter.",
       text: "Wir bauen die Lösung und zeigen Ihrem Team, wie es sie weiterführt. Ohne für jeden Schritt einen Dienstleister.",
       cta: { label: "So befähigen wir Ihr Team", href: "/vorgehen#phasen" },
+      data: { value: 66, unit: "%", label: "nennen fehlende Zeit als Hürde der Digitalisierung, 70 % den Fachkräftemangel", chart: "bars" as const, series: [{ v: 66, name: "Zeit" }, { v: 70, name: "Fachkräfte" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
     },
     {
       quote: "Was kostet das, und was bringt es?",
       hook: "Das sehen Sie, bevor wir bauen.",
       text: "Jedes Potenzial wird vorher wirtschaftlich und technisch bewertet. Gebaut wird, was sich rechnet.",
       cta: { label: "Wie wir bewerten", href: "/leistungen" },
+      data: { value: 59, unit: "%", label: "der Führungskräfte können den Nutzen von AI nicht beziffern, 60 % fehlt ein Plan", chart: "bars" as const, series: [{ v: 59, name: "Nutzen unklar" }, { v: 60, name: "Kein Plan" }], source: "Work Trend Index 2024" },
     },
     {
       quote: "Der Pilot lief. Produktiv wurde er nie.",
       hook: "Wir bauen dort ein, wo Ihr Team arbeitet.",
       text: "In Ihren Systemen, mit Datenschutz und Sicherheit von Anfang an. Wo die Lösung läuft, entscheiden Sie.",
       cta: { label: "Was wir selbst bauen", href: "/leistungen" },
+      data: { value: 41, unit: "%", label: "der Unternehmen setzen AI ein. 48 % planen oder diskutieren noch", chart: "stack" as const, series: [{ v: 41, name: "im Einsatz" }, { v: 48, name: "geplant" }], source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte" },
     },
   ],
   cta: { line: "Sprechen Sie mit denen, die auch bauen.", secondary: { label: "So arbeiten wir", href: "/vorgehen" } },
@@ -224,62 +235,6 @@ export const software = {
     text: "Mehrere Partner liefern nach demselben AI-gestützten Entwicklungsprozess mit Review- und Vertraulichkeitsregeln. Die Leute im Erstgespräch sind die Leute, die den Code schreiben.",
   },
   cta: { line: "Eine Software, ein Webauftritt oder beides?", primary: { label: "Projekt im Erstgespräch besprechen", href: "/kontakt" } },
-} as const;
-
-/**
- * Die Lage in Zahlen (Gründer, 2026-09-18: „Zahlen geben Trust und Proof“).
- * Nur Werte aus Primärquellen, exakt wie veröffentlicht, mit sichtbarer
- * Quelle am Element. Keine eigenen Kennzahlen, keine Kundenzahlen.
- * Quellen: Bitkom, Presseinformation „Digitalisierung der Wirtschaft“
- * (11. März 2026, 604 Unternehmen ab 20 Beschäftigte, KW 2 bis 6/2026);
- * Microsoft und LinkedIn, Work Trend Index 2024 (31.000 Befragte, 31 Länder).
- * Nicht übernommen: Sekundär zitierte Hürden-Werte ohne Primärbeleg (z. B. 85 % Know-how).
- */
-export const stats = {
-  eyebrow: "Die Lage in Zahlen",
-  heading: "Was AI in Unternehmen wirklich bremst.",
-  lede: "Selten das Modell. Vier Werte aus aktuellen Studien, die sich mit den Einwänden oben decken.",
-  items: [
-    {
-      value: 41,
-      label: "der Unternehmen setzen AI ein. Weitere 48 % planen oder diskutieren noch.",
-      tie: "Adoption ist niedriger, als die eigene Blase vermuten lässt.",
-      chart: "stack" as const,
-      series: [{ v: 41, name: "setzen ein" }, { v: 48, name: "planen" }],
-      source: "Bitkom 2026, 604 Unternehmen ab 20 Beschäftigte",
-    },
-    {
-      value: 66,
-      label: "nennen fehlende Zeit als Hürde der Digitalisierung, 70 % den Fachkräftemangel.",
-      tie: "„Uns fehlen Know-how und Zeit.“",
-      chart: "bars" as const,
-      series: [{ v: 66, name: "Fehlende Zeit" }, { v: 70, name: "Fachkräftemangel" }],
-      source: "Bitkom 2026",
-    },
-    {
-      value: 78,
-      label: "der AI-Nutzer bringen eigene Tools mit zur Arbeit, ohne Vorgabe des Unternehmens.",
-      tie: "„Wir nutzen doch schon AI.“",
-      chart: "ring" as const,
-      series: [{ v: 78, name: "eigene Tools" }],
-      source: "Microsoft und LinkedIn, Work Trend Index 2024",
-    },
-    {
-      value: 60,
-      label: "der Führungskräfte sagen, ihrem Unternehmen fehle ein Plan für AI. 59 % können den Nutzen nicht beziffern.",
-      tie: "„Was kostet das, und was bringt es?“",
-      chart: "bars" as const,
-      series: [{ v: 60, name: "Kein Plan" }, { v: 59, name: "Nutzen unklar" }],
-      source: "Work Trend Index 2024",
-    },
-  ],
-  /** Eigene, prüfbare Fakten (kontakt.astro, certifications, partners, company.ts). */
-  facts: [
-    { value: "30", unit: "Min.", label: "kostenloses Erstgespräch" },
-    { value: "1", unit: "Werktag", label: "bis zur Antwort, in der Regel" },
-    { value: "8", unit: "", label: "Zertifikate im Gründerteam" },
-    { value: "5", unit: "", label: "Partner für Software und Delivery" },
-  ],
 } as const;
 
 /**

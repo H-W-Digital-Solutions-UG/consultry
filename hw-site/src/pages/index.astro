@@ -7,8 +7,7 @@ import Capabilities from "../components/Capabilities.astro";
 import Cta from "../components/Cta.astro";
 import SectionCta from "../components/SectionCta.astro";
 import Proof from "../components/Proof.astro";
-import Stats from "../components/Stats.astro";
-import { promise, sovereignty, software, stats } from "../data/content";
+import { promise, sovereignty, software } from "../data/content";
 import { company } from "../data/company";
 ---
 
@@ -34,7 +33,33 @@ import { company } from "../data/company";
         {promise.objections.map((o, i) => (
           <li class="promise__row">
             <span class="promise__n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
-            <p class="promise__quote"><span>„{o.quote}“</span></p>
+            <div class="promise__left">
+              <p class="promise__quote"><span>„{o.quote}“</span></p>
+              <div class="promise__data">
+                <div class="promise__data-chart" aria-hidden="true">
+                  {o.data.chart === "ring" && (
+                    <svg class="ring" viewBox="0 0 40 40" width="40" height="40">
+                      <circle class="ring__track" cx="20" cy="20" r="16" />
+                      <circle class="ring__fill" cx="20" cy="20" r="16" style={`--c: 100.53; --v: ${o.data.series[0].v}`} />
+                    </svg>
+                  )}
+                  {o.data.chart === "dots" && (
+                    <span class="dots">{Array.from({ length: o.data.series[0].v }).map((_, k) => <i style={`--k: ${k}`}></i>)}</span>
+                  )}
+                  {o.data.chart === "bars" && (
+                    <span class="bars">{o.data.series.map((sg) => <span class="bars__track"><span class="bars__fill" style={`--w: ${sg.v}%`}></span></span>)}</span>
+                  )}
+                  {o.data.chart === "stack" && (
+                    <span class="stack">{o.data.series.map((sg) => <span class="stack__seg" style={`--w: ${sg.v}%`}></span>)}</span>
+                  )}
+                </div>
+                <p class="promise__data-text">
+                  <span class="promise__data-value"><span class="num" data-to={o.data.value}>{o.data.value}</span>{o.data.unit && <span class="promise__data-unit">{o.data.unit}</span>}</span>
+                  {" "}{o.data.label}.
+                </p>
+                <p class="promise__data-source">{o.data.source}</p>
+              </div>
+            </div>
             <div class="promise__answer">
               <h3 class="promise__hook">{o.hook}</h3>
               <p class="promise__text">{o.text}</p>
@@ -50,25 +75,11 @@ import { company } from "../data/company";
     </div>
   </section>
 
-  <section class="section section--ink statsec">
-    <div class="container">
-      <div class="statsec__head">
-        <div>
-          <p class="eyebrow" data-n="02">{stats.eyebrow}</p>
-          <h2 class="sec__h">{stats.heading}</h2>
-        </div>
-        <p class="lede statsec__lede">{stats.lede}</p>
-      </div>
-      <div class="sec__body"><Stats /></div>
-      <SectionCta line="Welche Zahl kennen Sie aus Ihrem Haus?" secondary={{ label: "So arbeiten wir", href: "/vorgehen" }} />
-    </div>
-  </section>
-
   <section class="section section--paper-2 sov">
     <div class="container">
       <div class="sov__grid">
         <div>
-          <p class="eyebrow" data-n="03">{sovereignty.eyebrow}</p>
+          <p class="eyebrow" data-n="02">{sovereignty.eyebrow}</p>
           <h2 class="sec__h">{sovereignty.heading}</h2>
         </div>
         <p class="lede sov__lede">{sovereignty.text}</p>
@@ -90,7 +101,7 @@ import { company } from "../data/company";
     <div class="container">
       <Chain>
         <Fragment slot="heading">
-          <p class="eyebrow" data-n="04">From Process to Production</p>
+          <p class="eyebrow" data-n="03">From Process to Production</p>
           <h2 class="chainsec__h">Zwölf Schritte, ein Team, keine Übergabe.</h2>
         </Fragment>
       </Chain>
@@ -101,7 +112,7 @@ import { company } from "../data/company";
   <section class="section section--paper-2 seven">
     <div class="container seven__grid">
       <div>
-        <p class="eyebrow" data-n="05">Das Leistungsbild</p>
+        <p class="eyebrow" data-n="04">Das Leistungsbild</p>
         <h2 class="sec__h">Technologie kommt bei uns erst an Schritt sieben.</h2>
       </div>
       <div class="seven__side">
@@ -113,7 +124,7 @@ import { company } from "../data/company";
 
   <section class="section section--ink">
     <div class="container">
-      <p class="eyebrow" data-n="06">Der Unterschied</p>
+      <p class="eyebrow" data-n="05">Der Unterschied</p>
       <h2 class="sec__h">Wo Beratung aufhört, fangen wir an.</h2>
       <div class="sec__body"><Contrast /></div>
       <SectionCta line="Lieber ein Ergebnis als eine Roadmap?" />
@@ -123,7 +134,7 @@ import { company } from "../data/company";
   <section class="section soft">
     <div class="container soft__grid">
       <div>
-        <p class="eyebrow" data-n="07">{software.eyebrow}</p>
+        <p class="eyebrow" data-n="06">{software.eyebrow}</p>
         <h2 class="sec__h">{software.heading}</h2>
       </div>
       <div class="soft__side">
@@ -141,7 +152,7 @@ import { company } from "../data/company";
 
   <section class="section section--paper-2">
     <div class="container">
-      <p class="eyebrow" data-n="08">Womit wir bauen</p>
+      <p class="eyebrow" data-n="07">Womit wir bauen</p>
       <h2 class="sec__h">Ein Modell ist noch keine Lösung.</h2>
       <div class="sec__body"><Capabilities /></div>
       <SectionCta line="Was davon Ihr Ablauf braucht, klären wir im Gespräch." secondary={{ label: "Leistungen im Detail", href: "/leistungen" }} />
@@ -159,12 +170,26 @@ import { company } from "../data/company";
     "IntersectionObserver" in window &&
     !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
     window.matchMedia("(min-width: 900px)").matches;
+  const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+  const count = (el: HTMLElement) => {
+    const to = Number(el.dataset.to || 0);
+    const t0 = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / 1000);
+      el.textContent = String(Math.round(to * ease(t)));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
   if (ok) {
     list.dataset.anim = "";
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-in");
+          e.target.querySelectorAll<HTMLElement>(".num").forEach(count);
+          io.unobserve(e.target);
         });
       },
       { rootMargin: "0px 0px -12% 0px" },
@@ -221,16 +246,53 @@ import { company } from "../data/company";
   .promise__cta svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
   .promise__cta:hover, .promise__cta:focus-visible { color: var(--fg); border-color: var(--line-strong); }
   .promise__cta:hover svg { transform: translateX(3px); }
+  /* Datenpunkt unter dem Einwand: Mini-Chart, Wert im Satz, Quelle. */
+  .promise__left { display: grid; gap: 18px; align-content: start; }
+  .promise__data { display: grid; gap: 8px; max-width: 34ch; }
+  .promise__data-chart { display: flex; align-items: center; height: 40px; }
+  .promise__data-text { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--fg-muted); }
+  .promise__data-value { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.03em; color: var(--fg); font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .promise__data-unit { font-size: 0.62em; font-weight: 600; margin-left: 2px; color: var(--fg-muted); }
+  .promise__data-source { margin: 0; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.02em; color: var(--fg-muted); opacity: 0.8; }
+  .ring { transform: rotate(-90deg); }
+  .ring__track { fill: none; stroke: var(--line); stroke-width: 4; }
+  .ring__fill { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: var(--c); stroke-dashoffset: calc(var(--c) * (1 - var(--v) / 100)); }
+  .dots { display: inline-flex; gap: 6px; }
+  .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .bars { display: grid; gap: 6px; width: 180px; }
+  .bars__track { display: block; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; }
+  .bars__fill { display: block; height: 100%; width: var(--w); border-radius: 2px; background: var(--accent); }
+  .bars__track + .bars__track .bars__fill { opacity: 0.45; }
+  .stack { display: flex; gap: 2px; width: 180px; height: 6px; border-radius: 3px; overflow: hidden; background: var(--line); }
+  .stack__seg { display: block; height: 100%; width: var(--w); background: var(--accent); }
+  .stack__seg + .stack__seg { opacity: 0.35; }
+  @media (max-width: 899px) {
+    /* Mobil: Einwand, Antwort, dann der Zahlenpunkt als Beleg. */
+    .promise__left { display: contents; }
+    .promise__quote { order: 1; }
+    .promise__answer { order: 2; }
+    .promise__data { order: 3; margin-top: 6px; padding-top: 12px; border-top: 1px dashed var(--line); }
+    .promise__data-chart { height: 32px; }
+    .ring { width: 32px; height: 32px; }
+  }
+
   /* Animation nur, wenn das Skript sie freigibt (Desktop, keine Reduced Motion). */
   .promise__rows[data-anim] .promise__quote span { text-decoration-color: transparent; transition: text-decoration-color 0.55s var(--ease-out) 0.1s; }
   .promise__rows[data-anim] .promise__row.is-in .promise__quote span { text-decoration-color: var(--accent); }
   .promise__rows[data-anim] .promise__answer { opacity: 0; transform: translateY(10px); transition: opacity 0.6s var(--ease-out) 0.4s, transform 0.6s var(--ease-out) 0.4s; }
   .promise__rows[data-anim] .promise__row.is-in .promise__answer { opacity: 1; transform: none; }
+  .promise__rows[data-anim] .promise__data { opacity: 0; transition: opacity 0.6s var(--ease-out) 0.25s; }
+  .promise__rows[data-anim] .promise__row.is-in .promise__data { opacity: 1; }
+  .promise__rows[data-anim] :is(.bars__fill, .stack__seg) { width: 0; transition: width 1s var(--ease-out) 0.3s; }
+  .promise__rows[data-anim] .promise__row.is-in .bars__fill { width: var(--w); }
+  .promise__rows[data-anim] .promise__row.is-in .stack__seg { width: var(--w); }
+  .promise__rows[data-anim] .ring__fill { stroke-dashoffset: var(--c); transition: stroke-dashoffset 1s var(--ease-out) 0.3s; }
+  .promise__rows[data-anim] .promise__row.is-in .ring__fill { stroke-dashoffset: calc(var(--c) * (1 - var(--v) / 100)); }
+  .promise__rows[data-anim] .dots i { transform: scale(0); transition: transform 0.3s var(--ease-out); }
+  .promise__rows[data-anim] .promise__row.is-in .dots i { transform: none; }
+  .promise__rows[data-anim] .promise__row.is-in .dots i { transition-delay: calc(0.3s + var(--k, 0) * 0.05s); }
   .promise__row:hover .promise__quote { color: var(--fg); }
   .promise__quote { transition: color 0.2s; }
-  .statsec__head { display: grid; gap: 24px; }
-  @media (min-width: 900px) { .statsec__head { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: end; } }
-  .statsec__lede { margin: 0; }
   .chainsec__h, .sec__h { margin-top: 16px; max-width: 20ch; }
   .chainsec__h { max-width: 22ch; }
   .chainsec { padding-block: 0 72px; }
