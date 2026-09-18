@@ -19,6 +19,7 @@ pnpm check      # Astro/TypeScript-Diagnose (benötigt TypeScript 6.x)
 - `src/components/` – Nav, Hero, Chain (Delivery Chain), Steps, Contrast, Capabilities, Cta, Footer
 - `src/scripts/hero-scroll.ts` – Scroll-Szene des Start-Heros (Progressive Enhancement, ohne Bibliothek; Regeln in `DESIGN.md`, Abschnitte 7 und 9)
 - `src/pages/` – `/`, `/leistungen`, `/vorgehen`, `/unternehmen`, `/kontakt`, `/impressum`, `/datenschutz`, `404`
+- `src/assets/hw-digital-solutions.png` – H&W-Logo (aus der Angebotsvorlage); daraus `public/favicon.ico` (16/32/48, PNG-Einträge), `favicon-512.png` und `apple-touch-icon.png` per `_debug/favicon.cjs`: Marke weiß auf `--ink`, abgerundetes Quadrat
 - `src/assets/hero.webp` – Hero-Hintergrund (generiert mit Higgsfield, GPT Image 2.5 plus 4K-Upscale, 2560 × 1440), wird beim Build in drei Breiten ausgeliefert; `public/images/og.jpg` daraus abgeleitet (1200 × 630 mit Headline und Claim, per Playwright gerendert)
 
 ## Deployment (Vercel)
