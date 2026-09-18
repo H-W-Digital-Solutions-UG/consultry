@@ -15,15 +15,16 @@ export const hero = {
   // „träumen vs. leben“ als Ort-Kontrast: Meeting (Gerede) gegen Prozess
   // (Alltag). Alternativen im Marketing-Kontext, Baustein Hero-Hook.
   // Zeilenumbruch zwischen den Sätzen ist gesetzt (pre-line), damit „In“ nicht allein steht.
-  // Hook v5 (2026-09-18, Gründer: „immer noch zu abstrakt“): drei konkrete
-  // Ergebnisse aus dem Büroalltag statt Prozess-Vokabular.
-  headline: "Mails sortiert. Angebote vorbereitet.\nRechnungen geprüft.",
+  // Hook v6 (2026-09-18, Gründer: „viel kürzer, nicht alle Pain Points auf
+  // einmal“): ein Schmerz, drei Wörter. Abtippen von Hand kennt jeder Betrieb;
+  // „Schluss mit“ ist die Figur der Gründer (Souveränität).
+  headline: "Schluss mit Abtippen.",
   // Claim v2 (2026-09-18): Sieger des Claim-Panels für diese Headline; das
   // englische Motto „From Process to Production.“ war den Gründern zu corporate.
   // Claim v3: löst die Headline auf, ohne Abstraktum.
   claim: "Das übernimmt ab jetzt AI.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
-  description: "Wir bauen sie genau dort ein, wo Ihr Team heute tippt, sucht und wartet. Und bleiben, bis es läuft.",
+  description: "Wir bauen AI dort ein, wo Ihr Team heute von Hand überträgt: Bestellungen, Angebote, Rechnungen. Und bleiben, bis es läuft.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
