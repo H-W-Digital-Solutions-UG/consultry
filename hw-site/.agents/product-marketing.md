@@ -401,6 +401,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v25 (2026-09-18) — Proof-Visual „Wer bei uns baut“ aus dem Visual-Panel (fünf Konzepte, drei Jurys): Kunde als Ring „Sie“ in der Mitte, zwei Gründerfiguren docken direkt an, ein Label „Zwei Gründer, direkt bei Ihnen“; löst die abgelehnte Personen-Timeline ab. Verworfen: Bögen um ein Quadrat (Fokus-Icon), Übergabe-Staffel, Vermittler-Kasten, Klammer-Band (liest sich als Trichter).
 - v24 (2026-09-18) — Claim v2 „Kein Pilotprojekt. Ihr Tagesgeschäft.“ aus dem Claim-Panel; „From Process to Production.“ site-weit abgelöst (Hero, Footer, Vorgehen-Kopf).
 - v23 (2026-09-18) — Hero-Headline v4 „AI in jedem Meeting. In keinem Prozess.“ aus dem Headline-Panel; Beschreibung v5.
 - v22 (2026-09-18) — Eyebrows als klassische Versalien-Labels (klein, gesperrt, gedämpft, ohne Pille), nachdem Pillen als generisch empfunden wurden.

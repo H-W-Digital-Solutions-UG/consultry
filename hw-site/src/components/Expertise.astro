@@ -1,8 +1,8 @@
 ---
 /**
  * Proof-Szene „Wer bei uns baut“: Senior-Zusage (Einwand durchgestrichen,
- * Hook, ein Satz, CTA) neben der Kontinuitäts-Visualisierung (dieselbe Figur
- * von Erstgespräch bis Live) und den Zertifikaten des Gründerteams, klein und
+ * Hook, ein Satz, CTA) neben der Visualisierung „Sie in der Mitte“ (Kunde als
+ * Ring, zwei Gründer docken direkt an) und den Zertifikaten des Gründerteams, klein und
  * einfarbig gedämpft. Kompakt, zwischen Hero und „Unser Versprechen“.
  */
 import { Image } from "astro:assets";
@@ -28,7 +28,7 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
       </div>
     </div>
     <div class="xp__proof">
-      <div class="xp__viz"><PromiseViz kind="continuity" /></div>
+      <div class="xp__viz"><PromiseViz kind="customer" /></div>
       <div class="xp__certs">
         <ul class="xp__badges" aria-label="Zertifizierungen im Gründerteam">
           {certifications.map((c) => {
@@ -66,7 +66,7 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
   .xp__actions { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
 
   .xp__proof { display: grid; gap: 22px; }
-  .xp__viz { max-width: 420px; }
+  .xp__viz { max-width: 420px; padding-bottom: 10px; }
   .xp__viz :global(.viz) { max-width: 420px; }
   .xp__certs { display: grid; gap: 10px; padding-top: 18px; border-top: 1px solid var(--line); }
   .xp__badges { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
