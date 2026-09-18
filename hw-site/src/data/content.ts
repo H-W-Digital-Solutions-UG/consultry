@@ -23,15 +23,18 @@ export const hero = {
   // unspezifisch“): eine konkrete Szene aus dem Betrieb, so gesagt, wie man es sagt.
   // Hook v8 (2026-09-18, Gründer: kein „abgekrampfter Dialog“, kein langes Szenario;
   // Referenz impulse.de „Hooks im Marketing“: Frage-Hook, erstaunlich einfach).
-  headline: "Ihr Team tippt noch ab?",
+  // Hook v9 (2026-09-18, Gründer: v8 „klingt nicht hooking“): Wendung, die niemand
+  // kommen sieht (impulse.de): die größte AI-Chance ist etwas Alltägliches.
+  // Word Joiner (U+2060) nach den Bindestrichen: kein Umbruch in „AI-Chance“ und „Excel-Tabelle“ auf Phones.
+  headline: "Ihre größte AI-\u2060Chance steckt in einer Excel-\u2060Tabelle.",
   // Claim v2 (2026-09-18): Sieger des Claim-Panels für diese Headline; das
   // englische Motto „From Process to Production.“ war den Gründern zu corporate.
   // Claim v3: löst die Headline auf, ohne Abstraktum.
   // Claim v4: die Rolle danach, ohne Parole.
-  claim: "Muss es nicht. Das kann eine AI.",
+  claim: "Wir finden sie. Und bauen sie so ein, dass Ihr Team sie jeden Tag nutzt.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
   // v6: konkret, wo und wie; kein „dort, wo“.
-  description: "Wir bauen sie in Ihr System ein und bleiben, bis es läuft.",
+  description: "Zwei Gründer, die selbst bauen und bleiben, bis es läuft.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
@@ -44,8 +47,11 @@ export const hero = {
 export const expertise = {
   eyebrow: "Wer bei uns baut",
   quote: "Im Pitch: Senior. In der Lieferung: Junior.",
-  heading: "Wer Sie überzeugt, baut auch.",
-  text: "Wer im Erstgespräch sitzt, bewertet, baut und bleibt, bis es läuft.",
+  // v3 (2026-09-18, Gründer: „Wer Sie überzeugt, baut auch.“ ging am Kern vorbei; Kern:
+  // erfahrene Experten, die sich auf den Betrieb einlassen; Expertise plus
+  // Kommunikation und Gastlichkeit).
+  heading: "Zwei Experten, die sich auf Ihren Betrieb einlassen.",
+  text: "Erfahrung, Zeit und echtes Interesse an Ihrem Betrieb. So verstehen wir Beratung.",
   // Bildunterschrift der Clay-Szene (Tisch, Stühle, Kaffee): Gastlichkeit und Augenhöhe.
   caption: "Am Tisch, nicht im Ticket.",
   certsLabel: "Zertifikate im Gründerteam.",
