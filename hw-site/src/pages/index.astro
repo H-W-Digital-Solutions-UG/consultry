@@ -102,14 +102,13 @@ import { company } from "../data/company";
           </li>
         ))}
       </ol>
-      <ul class="sov__cases">
+      <ul class="sov__cases" aria-label="Showcases">
         {showcases.map((c) => (
           <li>
             <a class="case" href={c.href}>
               <span class="case__kicker">{c.kicker}</span>
               <span class="case__title">{c.title}</span>
-              <span class="case__text">{c.text}</span>
-              <span class="case__link">Showcase ansehen<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+              <svg class="case__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </a>
           </li>
         ))}
@@ -159,7 +158,7 @@ import { company } from "../data/company";
         <h2 class="sec__h">{software.heading}</h2>
       </div>
       <div class="soft__side">
-        <p class="lede">{software.lede}</p>
+        <p class="lede">{software.ledeShort}</p>
         <ul class="soft__offers">
           {software.offers.map((o) => <li>{o.title}</li>)}
         </ul>
@@ -393,27 +392,24 @@ import { company } from "../data/company";
     background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
   }
   @media (min-width: 720px) { .sov__points { grid-template-columns: repeat(3, 1fr); } }
-  .sov__point { background: var(--paper); padding: 26px 24px 28px; display: grid; gap: 10px; align-content: start; }
+  .sov__point { background: var(--paper); padding: 22px 24px 24px; display: grid; gap: 6px; align-content: start; }
   .sov__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); }
-  .sov__title { font-size: 1.2rem; }
-  .sov__text { color: var(--fg-muted); font-size: 0.98rem; }
-  /* Showcases: zwei verlinkte Karten unter den Punkten */
-  .sov__cases { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; }
-  @media (min-width: 720px) { .sov__cases { grid-template-columns: repeat(2, 1fr); } }
+  .sov__title { font-size: 1.15rem; }
+  .sov__text { color: var(--fg-muted); font-size: 0.95rem; }
+  /* Showcases: zwei Link-Zeilen unter den Punkten, nur Titel und Pfeil */
+  .sov__cases { list-style: none; margin: 28px 0 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
   .case {
-    display: grid; gap: 8px; align-content: start; height: 100%;
-    padding: 24px 24px 22px;
-    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 6px 18px;
+    padding: 16px 0; border-bottom: 1px solid var(--line);
     text-decoration: none; color: inherit;
-    transition: border-color 0.2s, transform 0.25s var(--ease-out);
   }
-  .case:hover { border-color: var(--line-strong); transform: translateY(-2px); }
-  .case__kicker { font-family: var(--font-display); font-size: 0.85rem; font-weight: 500; color: var(--accent); }
-  .case__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
-  .case__text { color: var(--fg-muted); font-size: 0.95rem; }
-  .case__link { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--accent); }
-  .case__link svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
-  .case:hover .case__link svg { transform: translateX(3px); }
+  @media (max-width: 599px) { .case { grid-template-columns: 1fr auto; } .case__kicker { grid-column: 1 / -1; } }
+  .case__kicker { font-family: var(--font-display); font-size: 0.82rem; font-weight: 500; color: var(--accent); white-space: nowrap; }
+  .case__title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; transition: color 0.2s; }
+  .case__arrow { width: 16px; height: 16px; color: var(--accent); transition: transform 0.2s var(--ease-out); align-self: center; }
+  .sov__cases li:last-child .case { border-bottom: 0; }
+  .case:hover .case__arrow { transform: translateX(4px); }
+  .case:hover .case__title { color: var(--accent); }
   .sov__point--win { background: var(--ink); }
   .sov__point--win .sov__n { color: var(--accent-on-ink); }
   .sov__point--win .sov__title { color: var(--fg-on-ink); }

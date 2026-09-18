@@ -31,7 +31,7 @@ export const expertise = {
   eyebrow: "Wer bei uns baut",
   quote: "Im Pitch: Senior. In der Lieferung: Junior.",
   heading: "Wer Sie überzeugt, baut auch.",
-  text: "Die Erfahrung aus dem Erstgespräch bewertet Ihre Prozesse, baut die Lösung und bleibt, bis sie produktiv läuft. Kein Pitch-Team, das an ein Lieferteam übergibt.",
+  text: "Wer im Erstgespräch sitzt, bewertet, baut und bleibt, bis es läuft.",
   certsLabel: "Zertifikate im Gründerteam. Bei denen, die auch bauen.",
   cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
   secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },
@@ -41,7 +41,7 @@ export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
   // Einordnung ohne Zahlen. Recherche und Quellen: .agents/product-marketing.md,
   // Abschnitt „Problems & Pain Points“ (v8, 2026-09-18). Kurzfassung v9.
-  lede: "AI-Vorhaben scheitern selten am Modell. Sie scheitern davor. Vier Einwände, die wir kennen, und was wir tun.",
+  lede: "Es scheitert selten am Modell. Vier Einwände, vier Antworten.",
   // Vier Einwände in Kundensprache: Zitat, Hook, ein Satz, passender CTA.
   // Die Senior-Zusage steht als eigene Szene darüber (`expertise`).
   // `data`: ein belegter Zahlenpunkt je Einwand (v11, Gründer: „Zahlen geben
@@ -203,11 +203,12 @@ export const sovereignty = {
   eyebrow: "Souveränität",
   // v2 (2026-09-18): konkreter Pain statt abstraktem Hook; Position 02 auf der Startseite.
   heading: "Zu viele Dienstleister. Zu wenig Kontrolle.",
-  text: "Für jede Aufgabe ein Anbieter, für jedes Werkzeug ein Vertrag, und niemand kennt den ganzen Ablauf. Ihr Team wartet auf Tickets, statt zu arbeiten.",
+  // v3 (2026-09-18): ein Satz Lede, drei Einzeiler (Gründer: „zu viel, zu verstreut“).
+  text: "Für jede Aufgabe ein Anbieter. Niemand kennt den ganzen Ablauf.",
   points: [
-    { title: "Abhängig bei jedem Schritt", text: "Jede Änderung ein Ticket, jeder Anbieter ein Vertrag. Der Ablauf gehört dem Werkzeug, nicht Ihnen." },
-    { title: "Wissen wandert ab", text: "Wer die Lösung gebaut hat, kennt sie. Geht der Anbieter, geht das Wissen mit." },
-    { title: "Kontrolle zurück", text: "Wir bauen AI in Ihre Abläufe ein, befähigen Ihr Team und bleiben, bis es ohne uns weiterläuft. Wo die Lösung läuft, entscheiden Sie." },
+    { title: "Abhängig bei jedem Schritt", text: "Jede Änderung ein Ticket." },
+    { title: "Wissen wandert ab", text: "Geht der Anbieter, geht das Wissen." },
+    { title: "Kontrolle zurück", text: "Ihr Team führt die Lösung selbst weiter." },
   ],
 } as const;
 
@@ -223,6 +224,7 @@ export const sovereignty = {
 export const software = {
   eyebrow: "Software und Web",
   heading: "Nicht jedes Projekt beginnt bei AI.",
+  ledeShort: "Individualsoftware, Plattformen, Webauftritte. Mit Senior Engineers und Partnern, AI-gestützt gebaut.",
   lede: "Manche beginnen bei einer Software, die endlich gebaut werden muss. Individualsoftware, Plattformen und Webauftritte bauen wir mit Senior Engineers und unseren Software-Partnern: AI-gestützt, nach einem Entwicklungsprozess, den wir in einem laufenden Plattformprojekt mit mehreren Partnern erprobt haben.",
   offers: [
     { title: "Individualsoftware und Plattformen", text: "Anwendungen, APIs und Integrationen in Ihre bestehende Landschaft." },
