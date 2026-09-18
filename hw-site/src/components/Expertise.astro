@@ -4,9 +4,11 @@
  * professionell aussehen; kein Body Leasing, sondern seasoned experts, die auf Sie
  * eingehen; Consulting = Expertise und Wissen gepaart mit Kommunikation und
  * Hospitality“). Links die Senior-Zusage (Muster durchgestrichen, Hook, ein Satz,
- * CTA). Rechts ein Bild in der Clay-Bildsprache der Showcases: ein Besprechungstisch,
- * Stühle nah beieinander, Kaffee, Notizbuch. Es zeigt Gastlichkeit und Augenhöhe,
- * ohne Personen. Darunter die Zertifikate des Gründerteams, klein und gedämpft.
+ * CTA). Rechts ein Freisteller (Gründer: „schwebend auf hellem Background, kein
+ * eigener deckender Background; hohe Qualität, professionell, minimalistisch“):
+ * ein Besprechungstisch, Stühle nah beieinander, Kaffee, Notizbuch, matt in der
+ * Lila-Familie, ohne Personen, mit weichem Schlagschatten auf dem Papier. Darunter
+ * die Zertifikate des Gründerteams, klein und gedämpft.
  */
 import { Image } from "astro:assets";
 import { expertise, certifications } from "../data/content";
@@ -32,7 +34,7 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
     </div>
     <div class="xp__proof">
       <figure class="xp__scene">
-        <Image class="xp__img" src={scene} alt="" widths={[640, 960, 1440]} sizes="(min-width: 900px) 46vw, 100vw" loading="lazy" />
+        <Image class="xp__img" src={scene} alt="" widths={[640, 960, 1440]} sizes="(min-width: 900px) 46vw, 100vw" loading="lazy" format="webp" />
         <figcaption class="xp__caption">{expertise.caption}</figcaption>
       </figure>
       <div class="xp__certs">
@@ -72,18 +74,16 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
   .xp__actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
 
   .xp__proof { display: grid; gap: 20px; }
-  /* Bildkarte wie die Showcases: 3:2, runde Ecken, weicher Schatten, Bildunterschrift unten. */
-  .xp__scene {
-    position: relative; margin: 0; overflow: hidden; isolation: isolate;
-    aspect-ratio: 3 / 2; border-radius: 22px; background: var(--ink);
-    box-shadow: 0 1px 0 rgba(21, 4, 43, 0.06), 0 22px 48px -26px rgba(21, 4, 43, 0.5);
+  /* Freisteller: kein Kasten, kein eigener Hintergrund. Das Objekt schwebt auf dem
+     Papier, ein weicher Schlagschatten trägt es; die Bildunterschrift steht darunter. */
+  .xp__scene { margin: 0; display: grid; gap: 14px; justify-items: center; }
+  .xp__img {
+    display: block; width: 100%; max-width: 560px; height: auto;
+    filter: drop-shadow(0 28px 36px rgba(21, 4, 43, 0.22)) drop-shadow(0 4px 8px rgba(21, 4, 43, 0.08));
   }
-  .xp__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
   .xp__caption {
-    position: absolute; left: 18px; right: 18px; bottom: 16px;
     font-family: var(--font-display); font-size: 0.95rem; font-weight: 500; letter-spacing: -0.01em;
-    color: var(--fg-on-ink);
-    text-shadow: 0 1px 12px rgba(21, 4, 43, 0.6);
+    color: var(--fg-muted);
   }
   .xp__certs { display: grid; gap: 10px; padding-top: 16px; border-top: 1px solid var(--line); }
   .xp__badges { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -95,7 +95,7 @@ const badge = (file: string) => badgeFiles[`../assets/certs/${file}`]?.default;
   .xp__link svg { width: 13px; height: 13px; transition: transform 0.2s var(--ease-out); }
   .xp__link:hover svg { transform: translateX(3px); }
   @media (max-width: 899px) {
-    .xp__scene { aspect-ratio: 4 / 3; border-radius: 18px; }
+    .xp__img { max-width: 420px; }
     .xp__badges img { width: 32px; }
   }
 </style>
