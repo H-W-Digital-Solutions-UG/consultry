@@ -24,15 +24,44 @@ export const hero = {
 
 export const promise = {
   short: "Wir finden nicht nur Ihre AI Use Cases. Wir setzen sie um.",
-  // Einwand „wir nutzen doch schon AI“: Einzelne ja, ein Prozess nein
-  // (Baustein nach Systango „AI-Native Delivery“, ohne deren Zahlen).
-  adoption: "Vielleicht nutzen bei Ihnen schon Einzelne AI. Aber alle arbeiten, wie sie es für richtig halten: kein gemeinsames Vorgehen, schwankende Ergebnisse, und niemand misst, was es bringt.",
-  // Angebot: Team befähigen, Abhängigkeit von Dienstleistern senken (Gründer, 2026-09-18).
-  empower: "Ihr Team soll AI richtig nutzen können, ohne für jeden Schritt einen teuren Dienstleister. Wir zeigen Ihnen, wie: mit AI, die in Ihren Abläufen steckt, und einem Team, das sie mitträgt.",
-  // Beispielszenario, als Beispiel gekennzeichnet; kein Kundenergebnis.
-  long: "Ein Beispiel: Ihr Angebotsprozess läuft über mehrere Systeme und viele Rückfragen. Wir finden den Hebel, gestalten den Ablauf neu und bauen die Lösung dort ein, wo Ihr Team arbeitet.",
-  // Senior-Zusage (Gründer, 2026-09-18): Kontrast zum Muster „Senior pitcht, Junior liefert“, ohne Angriff.
-  senior: "Die Erfahrung, die Sie im Erstgespräch überzeugt, baut auch. Kein Senior-Pitch mit Junior-Lieferteam.",
+  // Einordnung ohne Zahlen. Recherche und Quellen: .agents/product-marketing.md,
+  // Abschnitt „Problems & Pain Points“ (v8, 2026-09-18).
+  lede: "AI-Vorhaben scheitern selten am Modell. Sie scheitern davor: kein klarer Hebel, kein gemeinsames Vorgehen, keine Zeit, und niemand, der es baut und betreibt. Vier Einwände, die wir ernst nehmen. Und was wir dagegen tun.",
+  // Vier Einwände in Kundensprache, je mit Hook, Antwort und passendem CTA.
+  // Reihenfolge folgt den am häufigsten genannten Hürden (Bitkom, KfW, Microsoft, MIT).
+  objections: [
+    {
+      // Einzelnutzung ohne gemeinsames Vorgehen (Baustein Systango, Microsoft BYOAI).
+      quote: "Wir nutzen doch schon AI.",
+      hook: "Einzelne ja. Als Ablauf nein.",
+      text: "Alle arbeiten, wie sie es für richtig halten: kein gemeinsames Vorgehen, schwankende Ergebnisse, und niemand misst, was es bringt. Wir machen daraus einen Ablauf, den Ihr ganzes Team gleich gut nutzt, und messen, was er bringt.",
+      cta: { label: "Ihren Stand im Erstgespräch klären", href: "/kontakt" },
+    },
+    {
+      // Meistgenannte Hürden: fehlendes Know-how, fehlende Zeit, fehlende Fachkräfte.
+      quote: "Uns fehlen Know-how und Zeit.",
+      hook: "Wir bringen beides mit. Und geben es weiter.",
+      text: "Sie brauchen keine AI-Strategie und kein eigenes AI-Team, um anzufangen. Wir bauen die Lösung und zeigen Ihrem Team, wie es sie selbst weiterführt. Damit Sie nicht für jeden Schritt einen teuren Dienstleister brauchen.",
+      cta: { label: "So befähigen wir Ihr Team", href: "/vorgehen#phasen" },
+    },
+    {
+      // Schwer kalkulierbare Kosten, Nutzen nicht messbar (Schritte 3, 4 und 12).
+      quote: "Was kostet das, und was bringt es?",
+      hook: "Das sehen Sie, bevor wir bauen.",
+      text: "Jedes Potenzial bekommt vor dem Bauen einen wirtschaftlichen Hebel und eine technische Bewertung. Sie entscheiden mit Zahlen aus Ihrem Betrieb, nicht aus einer Folie. Gebaut wird, was sich rechnet. Gemessen wird, was läuft.",
+      cta: { label: "Wie wir bewerten", href: "/leistungen" },
+    },
+    {
+      // Pilot-Falle: Integration, Datenschutz, Betrieb. Beispielszenario, kein Kundenergebnis.
+      quote: "Der Pilot lief. Produktiv wurde er nie.",
+      hook: "Wir bauen dort ein, wo Ihr Team arbeitet.",
+      text: "Ein Beispiel: Ihr Angebotsprozess läuft über mehrere Systeme und viele Rückfragen. Wir finden den Hebel, gestalten den Ablauf neu und bauen die Lösung in Ihre Systeme ein. Datenschutz, Sicherheit und Betrieb von Anfang an, nicht als Prüfung am Ende.",
+      cta: { label: "Was wir selbst bauen", href: "/leistungen" },
+    },
+  ],
+  // Senior-Zusage (Gründer, 2026-09-18): Muster benennen, nicht angreifen.
+  senior: "Kein Senior-Pitch mit Junior-Lieferteam. Die Erfahrung, die Sie im Erstgespräch überzeugt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.",
+  cta: { line: "Sprechen Sie mit denen, die auch bauen.", secondary: { label: "Das Gründerteam", href: "/unternehmen#team" } },
 } as const;
 
 /** Die zehn Schritte des Leistungsbilds (Abschnitt 2). */

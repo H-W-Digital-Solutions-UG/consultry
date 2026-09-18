@@ -79,15 +79,31 @@ Keine belastbaren Daten vorhanden, Annahme: B2B-Kauf mit mehreren Beteiligten. R
 
 **Core problem:** Unternehmen wissen, dass AI ihre Abläufe verändern wird, aber nicht, wo der größte Hebel liegt und wer die Lösung tatsächlich baut und betreibt. Zwischen Idee und produktivem System klafft eine Lücke.
 
+**Recherche (2026-09-18, Sekundärquellen, Zahlen nur hier, nicht auf der Website):** Alle Zahlen sind Fremdstudien mit eigener Methodik und Zielgruppe; sie belegen die Richtung der Einwände, nicht die Lage unserer Kunden. Auf der Site bleiben die Formulierungen qualitativ. Eine zitierte Zahl auf der Site braucht eine Freigabe der Gründer und die Quellenangabe im Sichtbereich.
+
+| Schmerz (Kundensprache) | Beleg | Einschränkung |
+|---|---|---|
+| „Uns fehlt das Know-how.“ | Bitkom, „Künstliche Intelligenz in Deutschland“ 2026 (604 Unternehmen ab 20 Beschäftigte, Telefonbefragung KW 2 bis 6/2026): Unter Nichtnutzern nennen 85 % fehlendes technisches Know-how, 51 % fehlende personelle Ressourcen. KfW Research (Dossier Digitalisierung im Mittelstand): fehlende Fachkräfte und Kompetenzen sowie knappe Zeit als wichtigste Hemmnisse. | Bitkom-Zahlen aus Presseinformation und Sekundärberichten; Nichtnutzer-Basis ist eine Teilstichprobe. |
+| „Wir haben keine Zeit dafür.“ | Bitkom 2026, interne Hürden der Digitalisierung: fehlende Zeit 66 %, Fachkräftemangel 70 %, langwierige Entscheidungsprozesse 40 %. | Bezieht sich auf Digitalisierung insgesamt, nicht nur AI. |
+| „Was kostet das, und was bringt es?“ | Bitkom 2026: schwer kalkulierbare Kosten 63 % (Nichtnutzer). Microsoft/LinkedIn Work Trend Index 2024 (31.000 Befragte, 31 Länder): 59 % der Führungskräfte sorgen sich, den Produktivitätsgewinn nicht beziffern zu können. | Work Trend Index ist global, Wissensarbeit, 2024. |
+| „Wir nutzen doch schon AI.“ (Einzelne, kein Vorgehen) | Work Trend Index 2024: 78 % der AI-Nutzer bringen eigene Tools mit (BYOAI), 60 % der Führungskräfte sagen, ihrem Unternehmen fehle Vision und Plan für AI. Bitkom 2026: 41 % der Unternehmen nutzen AI, 48 % planen oder diskutieren. | BYOAI-Zahl von 2024; die Bitkom-Nutzungsquote sagt nichts über Tiefe der Nutzung. |
+| „Der Pilot lief. Produktiv wurde er nie.“ | MIT NANDA, „The GenAI Divide: State of AI in Business 2025“ (300 öffentliche Initiativen, 52 Interviews, 153 Befragte, Jan. bis Juni 2025): Die große Mehrheit der Piloten zeigt keinen messbaren Ergebnisbeitrag; Ursache ist selten das Modell, sondern Workflow-Integration, fehlende Lernfähigkeit und kein vor dem Bau definiertes Ergebnis. Piloten mit externer Umsetzungspartnerschaft kommen deutlich häufiger in Produktion als reine Eigenbauten. | US-Enterprise-Fokus, kleine Stichprobe; die vielzitierte „95 %“ nicht übernehmen. |
+| „Datenschutz und Sicherheit sind ungeklärt.“ | Bitkom 2026: Datenschutz-Anforderungen 77 %, technische Sicherheit 61 % als Hürde. | Gilt für Digitalisierung insgesamt. |
+| „Alle reden über AI, bei uns läuft nichts.“ | Gründer-Einschätzung (Adoption niedriger als die eigene Blase vermuten lässt); Bitkom 2026: 46 % der Industrie sehen sich als Nachzügler. | Nachzügler-Zahl aus Sekundärbericht, Basis Industrie. |
+| „Beim Pitch sitzt die Erfahrung, geliefert wird ohne sie.“ | Gründer-Input (Muster bei Beratungshäusern), keine Studie. | Nicht belegbar, nur als Zusage formulieren. |
+| „Für jeden Schritt ein anderer Dienstleister.“ | Gründer-Input (Souveränität), keine Studie. | Nicht belegbar. |
+
+Quellen: bitkom.org/Presse/Presseinformation/Digitalisierung-der-Wirtschaft-Unternehmen-beschaeftigen-sich-mit-KI; bitkom.org/Bitkom/Publikationen/Kuenstliche-Intelligenz-in-Deutschland; kfw.de (KfW Research, Dossier Digitalisierung im Mittelstand); news.microsoft.com/source/2024/05/08 (Work Trend Index 2024); MIT NANDA, State of AI in Business 2025 (PDF, mlq.ai).
+
 **Why alternatives fall short:**
 - Management- und AI-Beratung endet oft bei Strategie, Use-Case-Katalog, Roadmap oder PowerPoint. Umsetzung bleibt beim Kunden (Quelle: Handover, Abgrenzung).
 - Softwareagenturen und Systemhäuser bauen, was bestellt wird, ohne den Geschäftsprozess vorher zu hinterfragen (Annahme).
-- Technologiegetriebene Anbieter verkaufen Modelle, RAG, Agenten oder Plattformen als Lösung, bevor klar ist, welcher Prozess sich wie verbessern lässt (Annahme, abgeleitet aus dem Positionierungsprinzip).
-- Eigene Piloten mit Bordmitteln bleiben Prototypen: keine Integration, keine Absicherung, kein Betrieb (Annahme).
+- Technologiegetriebene Anbieter verkaufen Modelle, RAG, Agenten oder Plattformen als Lösung, bevor klar ist, welcher Prozess sich wie verbessern lässt (Annahme; deckt sich mit dem MIT-Befund „selten das Modell“).
+- Eigene Piloten mit Bordmitteln bleiben Prototypen: keine Integration, keine Absicherung, kein Betrieb (Annahme; gestützt durch MIT NANDA 2025).
 
-**What it costs them:** Keine belastbaren Daten vorhanden, Annahme: Beratungsbudget ohne produktives Ergebnis, weiterlaufende manuelle Arbeit, verlorene Zeit gegenüber Wettbewerbern, Frust in den Fachbereichen. Keine Zahlen nennen.
+**What it costs them:** Keine belastbaren Daten für unsere Zielgruppe. Annahme: Beratungsbudget ohne produktives Ergebnis, weiterlaufende manuelle Arbeit, verlorene Zeit gegenüber Wettbewerbern, Frust in den Fachbereichen. Keine Zahlen nennen.
 
-**Emotional tension:** Keine belastbaren Daten vorhanden, Annahme: Druck, „etwas mit AI“ zu tun, gepaart mit der Sorge, Geld in Konzepte zu stecken, die nie laufen. Unsicherheit bei Datenschutz und Sicherheit. Zweifel, ob die eigene Organisation das Ergebnis tragen kann.
+**Emotional tension:** Annahme: Druck, „etwas mit AI“ zu tun, gepaart mit der Sorge, Geld in Konzepte zu stecken, die nie laufen. Unsicherheit bei Datenschutz und Sicherheit. Zweifel, ob die eigene Organisation das Ergebnis tragen kann. Dazu die Scheu, im Erstgespräch zuzugeben, dass im Haus jeder anders arbeitet.
 
 ---
 
@@ -198,12 +214,25 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 **Tonalität:** Als Zusage formulieren, nicht als Abrechnung. Keine Namen anderer Häuser, keine Wörter wie „Bullshit“, „Abzocke“, „Junior-Bashing“. Das Muster darf benannt werden („Sie kennen das Modell“), die Wertung liefert der Leser selbst.
 
 **Freigegebene Formulierungen:**
-- Hook (v2, 2026-09-18): „Die Erfahrung, die Sie im Erstgespräch überzeugt, baut auch. Kein Senior-Pitch mit Junior-Lieferteam.“ (löst „Keine Junior-Berater. Wer Ihren Prozess versteht, baut ihn auch.“ auf der Startseite ab; Unternehmensseite behält die kurze Form)
+- Hook (v3, 2026-09-18): „Kein Senior-Pitch mit Junior-Lieferteam. Die Erfahrung, die Sie im Erstgespräch überzeugt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.“ (Abschluss der Versprechen-Sektion; v2 „…baut auch.“ bleibt als Kurzform zulässig) (löst „Keine Junior-Berater. Wer Ihren Prozess versteht, baut ihn auch.“ auf der Startseite ab; Unternehmensseite behält die kurze Form)
 - Kontrast: „Sie kennen das Modell: Die Erfahrenen pitchen, die Unerfahrenen liefern. Bei uns gibt es dieses Modell nicht. Wer im Erstgespräch sitzt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.“
 - Unternehmen: „Zwei Gründer, ein Team, keine Übergaben. Sie arbeiten mit denen, die Sie kennenlernen.“
 - Kontrast-Listen: klassisch „Pitch-Team, dann Lieferteam“ / H&W „Ein Team von Analyse bis Betrieb“.
 
 **Nicht behaupten:** Teamgrößen, Senioritätsjahre. Zertifikate nur die freigegebenen aus `content.ts`, immer als Zertifikate der Personen im Gründerteam.
+
+## Messaging-Baustein: Vier Einwände (2026-09-18)
+
+**Kern:** Die Versprechen-Sektion der Startseite arbeitet mit Einwänden in Kundensprache statt mit Fließtext. Jeder Einwand bekommt einen Hook (eine Zeile Antwort), zwei bis drei Sätze Begründung und einen CTA, der zum passenden Nachweis führt. Reihenfolge nach Häufigkeit der Hürden in der Recherche (Know-how und Zeit, Kosten und Nutzen, Einzelnutzung, Pilot-Falle). Einleitung: „AI-Vorhaben scheitern selten am Modell.“ (qualitativ, gestützt durch MIT NANDA, ohne Zahl).
+
+**Freigegebene Formulierungen (Startseite, v8):**
+- „Wir nutzen doch schon AI.“ → „Einzelne ja. Als Ablauf nein.“ CTA „Ihren Stand im Erstgespräch klären“ (`/kontakt`).
+- „Uns fehlen Know-how und Zeit.“ → „Wir bringen beides mit. Und geben es weiter.“ CTA „So befähigen wir Ihr Team“ (`/vorgehen#phasen`).
+- „Was kostet das, und was bringt es?“ → „Das sehen Sie, bevor wir bauen.“ CTA „Wie wir bewerten“ (`/leistungen`).
+- „Der Pilot lief. Produktiv wurde er nie.“ → „Wir bauen dort ein, wo Ihr Team arbeitet.“ CTA „Was wir selbst bauen“ (`/leistungen`).
+- Abschluss: „Kein Senior-Pitch mit Junior-Lieferteam. Die Erfahrung, die Sie im Erstgespräch überzeugt, bewertet Ihre Prozesse, baut die Lösung und bleibt bis in den Betrieb.“ CTA-Zeile „Sprechen Sie mit denen, die auch bauen.“ mit „Kostenloses Erstgespräch“ und „Das Gründerteam“ (`/unternehmen#team`).
+
+**Regeln:** Einwände in Anführungszeichen, ohne Zuschreibung („sagen unsere Kunden“ ist nicht belegt). Datenschutz und Sicherheit gehören in die Antwort zur Pilot-Falle, nicht als eigener Angstpunkt. Keine Zahlen aus der Recherche in die Sektion, solange keine Freigabe vorliegt.
 
 ## Messaging-Baustein: Souveränität (2026-09-17)
 
@@ -314,6 +343,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v8 (2026-09-18) — Pain-Point-Recherche mit Quellen (Bitkom 2026, KfW, Work Trend Index 2024, MIT NANDA 2025) als Tabelle; Versprechen-Sektion als vier Einwände mit Hook und CTA; Baustein „Vier Einwände“.
 - v7 (2026-09-18) — Versprechen-Sektion: Schmerz „alle arbeiten anders, niemand misst“, Angebot „Team befähigen, unabhängiger von Dienstleistern“, Senior-Zusage als Pitch-Kontrast.
 - v6 (2026-09-17) — Kostenloses Erstgespräch von den Gründern freigegeben; CTA-Baustein ergänzt, „kostenlos“ aus der Sperrliste gestrichen.
 - v5 (2026-09-17) — Baustein „Aktivität ist kein Ergebnis“ nach Systango-Inspiration (Denkfiguren ohne Zahlen); Kontrast-Liste um Tool-/Mess-Paar ergänzt.
