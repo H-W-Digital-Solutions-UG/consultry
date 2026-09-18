@@ -45,7 +45,7 @@ import { company } from "../data/company";
               <div class="promise__data">
                 <div class="promise__data-chart" aria-hidden="true">
                   {o.data.chart === "ring" && (
-                    <svg class="ring" viewBox="0 0 40 40" width="40" height="40">
+                    <svg class="ring" viewBox="0 0 40 40" width="56" height="56">
                       <circle class="ring__track" cx="20" cy="20" r="16" />
                       <circle class="ring__fill" cx="20" cy="20" r="16" style={`--c: 100.53; --v: ${o.data.series[0].v}`} />
                     </svg>
@@ -264,8 +264,8 @@ import { company } from "../data/company";
   @media (min-width: 900px) {
     .promise__band {
       grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1fr);
-      gap: 56px; padding-block: 56px 60px; align-items: start;
-      min-height: clamp(360px, 52vh, 520px);
+      gap: 56px; padding-block: 60px 64px; align-items: start;
+      min-height: clamp(420px, 58vh, 600px);
     }
   }
   .promise__n {
@@ -278,13 +278,13 @@ import { company } from "../data/company";
   .promise__quote {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(1.35rem, 2.3vw, 2rem);
+    font-size: clamp(1.6rem, 2.9vw, 2.6rem);
     font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
     color: var(--fg-muted);
     text-wrap: balance;
-    max-width: 18ch;
+    max-width: 16ch;
     transition: color 0.3s;
   }
   .promise__quote span {
@@ -293,40 +293,41 @@ import { company } from "../data/company";
     text-decoration-color: var(--accent);
     text-decoration-skip-ink: none;
   }
-  .promise__answer { display: grid; gap: 8px; justify-items: start; }
-  .promise__viz { width: 100%; max-width: 380px; margin-top: 22px; }
-  @media (max-width: 899px) { .promise__viz { margin-top: 14px; max-width: 320px; } }
-  .promise__hook { font-size: clamp(1.15rem, 1.6vw, 1.4rem); letter-spacing: -0.015em; max-width: 24ch; text-wrap: balance; }
-  .promise__text { margin: 0; color: var(--fg-muted); max-width: 44ch; }
+  .promise__answer { display: grid; gap: 10px; justify-items: start; }
+  .promise__viz { width: 100%; max-width: 520px; margin-top: 28px; }
+  .promise__viz :global(.viz) { max-width: none; }
+  @media (max-width: 899px) { .promise__viz { margin-top: 16px; max-width: none; } }
+  .promise__hook { font-size: clamp(1.4rem, 2.1vw, 1.95rem); letter-spacing: -0.02em; line-height: 1.2; max-width: 22ch; text-wrap: balance; }
+  .promise__text { margin: 0; color: var(--fg-muted); max-width: 46ch; font-size: clamp(1.02rem, 1.25vw, 1.18rem); line-height: 1.55; }
   .promise__cta {
     display: inline-flex; align-items: center; gap: 8px;
     margin-top: 6px;
-    font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; letter-spacing: -0.005em;
+    font-family: var(--font-display); font-size: 1rem; font-weight: 600; letter-spacing: -0.005em;
     color: var(--accent); text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: color 0.2s, border-color 0.2s;
   }
-  .promise__cta svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
+  .promise__cta svg { width: 16px; height: 16px; transition: transform 0.2s var(--ease-out); }
   .promise__cta:hover, .promise__cta:focus-visible { color: var(--fg); border-color: var(--line-strong); }
   .promise__cta:hover svg { transform: translateX(3px); }
 
   /* Datenpunkt unter dem Einwand: Mini-Chart, Wert im Satz, Quelle. */
-  .promise__data { display: grid; gap: 8px; max-width: 34ch; }
-  .promise__data-chart { display: flex; align-items: center; height: 40px; }
-  .promise__data-text { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--fg-muted); }
-  .promise__data-value { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.03em; color: var(--fg); font-variant-numeric: tabular-nums; margin-right: 2px; }
-  .promise__data-unit { font-size: 0.62em; font-weight: 600; margin-left: 2px; color: var(--fg-muted); }
-  .promise__data-source { margin: 0; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.02em; color: var(--fg-muted); opacity: 0.8; }
+  .promise__data { display: grid; gap: 10px; max-width: 40ch; }
+  .promise__data-chart { display: flex; align-items: center; height: 56px; }
+  .promise__data-text { margin: 0; font-size: 1.02rem; line-height: 1.5; color: var(--fg-muted); }
+  .promise__data-value { font-family: var(--font-display); font-weight: 700; font-size: 2rem; letter-spacing: -0.03em; color: var(--fg); font-variant-numeric: tabular-nums; margin-right: 3px; }
+  .promise__data-unit { font-size: 0.6em; font-weight: 600; margin-left: 2px; color: var(--fg-muted); }
+  .promise__data-source { margin: 0; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.02em; color: var(--fg-muted); opacity: 0.8; }
   .ring { transform: rotate(-90deg); }
   .ring__track { fill: none; stroke: var(--line); stroke-width: 4; }
   .ring__fill { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: var(--c); stroke-dashoffset: calc(var(--c) * (1 - var(--v) / 100)); }
-  .dots { display: inline-flex; gap: 6px; }
-  .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
-  .bars { display: grid; gap: 6px; width: 180px; }
-  .bars__track { display: block; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; }
-  .bars__fill { display: block; height: 100%; width: var(--w); border-radius: 2px; background: var(--accent); }
+  .dots { display: inline-flex; gap: 8px; }
+  .dots i { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
+  .bars { display: grid; gap: 8px; width: 260px; }
+  .bars__track { display: block; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+  .bars__fill { display: block; height: 100%; width: var(--w); border-radius: 3px; background: var(--accent); }
   .bars__track + .bars__track .bars__fill { opacity: 0.45; }
-  .stack { display: flex; gap: 2px; width: 180px; height: 6px; border-radius: 3px; overflow: hidden; background: var(--line); }
+  .stack { display: flex; gap: 2px; width: 260px; height: 8px; border-radius: 4px; overflow: hidden; background: var(--line); }
   .stack__seg { display: block; height: 100%; width: var(--w); background: var(--accent); }
   .stack__seg + .stack__seg { opacity: 0.35; }
   @media (max-width: 899px) {
@@ -336,8 +337,8 @@ import { company } from "../data/company";
     .promise__quote { order: 1; }
     .promise__answer { order: 2; }
     .promise__data { order: 3; margin-top: 6px; padding-top: 12px; border-top: 1px dashed var(--line); }
-    .promise__data-chart { height: 32px; }
-    .ring { width: 32px; height: 32px; }
+    .promise__data-chart { height: 44px; }
+    .ring { width: 44px; height: 44px; }
   }
 
   /* ---- Szene (Desktop): Bänder kleben unter der Navigation und stapeln sich.
