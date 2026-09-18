@@ -147,7 +147,7 @@ Alle Kontrastwerte wurden am 2026-09-17 mit einem kleinen Node-Skript nach WCAG 
 
 ### Step (`Steps.astro`)
 - Zehn Schritte als horizontaler Slider (Karten mit monolinem Icon, Nummer in Mono, Phase als `.tag`, Titel `h3`, Text `--fg-muted`), Pfeile rechts.
-- Phasen-Navigation als Stepper (seit 2026-09-18, Gründer: „smootheres Design, professionell, stepper line like“ statt Pillen-Tabs): vier Stationen auf einer durchgehenden 1-px-Linie in `--line`; Knoten 30 px rund mit Ziffer (Sora 600, 0,8 rem), daneben Phase (Sora 600, 0,92 rem) und Schrittzahl (0,76 rem, gedämpft). Aktiv: Knoten in `--accent` gefüllt, Label `--fg`. Passiert (`data-done`): Knoten in `--accent` umrandet, Linie zum nächsten Knoten in `--accent` bei 45 %. Kommend: gedämpft. Fokusring auf dem Knoten. Unter 600 px: Knoten 26 px, Schrittzahl ausgeblendet.
+- Phasen-Navigation als Stepper (seit 2026-09-18, Gründer: „smootheres Design, professionell, stepper line like“ statt Pillen-Tabs): vier Stationen auf einer durchgehenden 1-px-Linie in `--line`; Knoten 30 px rund mit Ziffer (Sora 600, 0,8 rem), daneben Phase (Sora 600, 0,92 rem) und Schrittzahl (0,76 rem, gedämpft). Aktiv: Knoten in `--accent` gefüllt, Label `--fg`. Passiert (`data-done`): Knoten in `--accent` umrandet, Linie zum nächsten Knoten in `--accent` bei 45 %. Kommend: gedämpft. Fokusring auf dem Knoten. Unter 600 px: Knoten 26 px, Schrittzahl ausgeblendet, nur die aktive Station trägt ihr Label, die übrigen bleiben Knoten auf der Linie.
 
 ### Chain (`Chain.astro`)
 - Horizontale Achse (`--axis`, 2 px) mit interpolierten Punkten; auf `--ink`. Labels `--fg-on-ink-muted`. Optional Three.js-Szene als Progressive Enhancement (siehe 9), die Chain bleibt ohne JS vollständig lesbar.

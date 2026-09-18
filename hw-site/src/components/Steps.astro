@@ -252,8 +252,13 @@ const phases = deliverySteps.reduce<{ key: string; label: string; first: number;
     .step { gap: 8px; padding-right: 16px; }
     .step::after { left: 32px; right: 6px; }
     .step__node { width: 26px; height: 26px; font-size: 0.72rem; }
-    .step__label { font-size: 0.8rem; }
+    .step__label { font-size: 0.82rem; }
     .step__count { display: none; }
+    /* Nur die aktive Station trägt ihr Label, die anderen bleiben Knoten auf der Linie. */
+    .step:not([aria-selected="true"]) .step__text { display: none; }
+    .step:not([aria-selected="true"]) { flex: 0 0 auto; padding-right: 22px; }
+    .step:not([aria-selected="true"])::after { left: 30px; right: 4px; }
+    .step[aria-selected="true"] { flex: 1 1 auto; }
   }
   .slider__arrows { display: flex; gap: 8px; }
   .slider__arrow {
