@@ -238,6 +238,72 @@ export const software = {
 } as const;
 
 /**
+ * Showcases (Gründer, 2026-09-18): konkrete Aufbauten, die die Souveränitäts-
+ * Punkte belegen. Beschreiben, wie wir bauen; keine Kundennamen, keine
+ * Kennzahlen. Gründer-Wortlaut zum ersten Showcase: „AI-unterstütztes CMS:
+ * Die Kreativität Ihres Teams und Ihr unschlagbares Angebot perfekt und
+ * selbstgesteuert in Szene setzen … aus WordPress und statischen Templates
+ * oder aufwändiger manueller Pflege wird Pipeline: Design-driven CMS
+ * (Storyblok + Figma) → Consultry Human x AI Workflow; einfacher Transfer
+ * aus WordPress, Typo3 etc.“
+ */
+export const showcases = [
+  {
+    kicker: "Showcase: AI-gestütztes CMS",
+    title: "Ihr Webauftritt, selbstgesteuert.",
+    text: "Aus WordPress, Typo3 oder statischen Templates wird eine Pipeline: Design in Figma, Design-getriebenes CMS, Consultry Human x AI Workflow.",
+    href: "/showcases/webauftritt",
+  },
+  {
+    kicker: "Showcase: Software mit Partnern",
+    title: "Mehrere Software-Partner, ein Standard.",
+    text: "Ein Plattformprojekt, in dem mehrere Partner nach demselben AI-gestützten Entwicklungsprozess liefern.",
+    href: "/leistungen#software",
+  },
+] as const;
+
+export const showcaseWeb = {
+  eyebrow: "Showcase: AI-gestütztes CMS",
+  title: "Ihr Webauftritt, selbstgesteuert.",
+  lede: "Die Kreativität Ihres Teams und Ihr Angebot perfekt in Szene gesetzt, ohne Ticket an eine Agentur. Aus WordPress, Typo3 oder statischen Templates wird eine Pipeline: Design in Figma, Inhalte in einem Design-getriebenen CMS, dazwischen der Consultry Human x AI Workflow.",
+  before: {
+    heading: "Woran Webauftritte heute hängen.",
+    items: [
+      { title: "Pflege per Ticket", text: "Jede Textänderung, jede neue Seite geht an eine Agentur oder an die eine Person im Haus, die das Template kennt." },
+      { title: "Template statt Design", text: "Statische Vorlagen bestimmen, wie Ihr Angebot aussieht. Was nicht ins Raster passt, bleibt weg." },
+      { title: "Wissen im Werkzeug", text: "WordPress oder Typo3 kennt nur, wer es eingerichtet hat. Geht die Person, geht der Zugang zum eigenen Auftritt." },
+    ],
+  },
+  pipeline: {
+    heading: "Die Pipeline: vom Design zur Seite, ohne Umweg.",
+    steps: [
+      { name: "Figma", title: "Design als Quelle", text: "Ihr Team oder Ihre Agentur gestaltet Komponenten, nicht einzelne Seiten. Das Design bleibt die eine Wahrheit." },
+      { name: "Design-getriebenes CMS", title: "Bausteine statt Templates", text: "Jede Komponente aus Figma ist im CMS ein Baustein, etwa in Storyblok. Die Redaktion setzt Seiten zusammen, ohne Entwickler." },
+      { name: "Consultry Human x AI Workflow", title: "AI entwirft, Ihr Team entscheidet", text: "Texte, Varianten und Übersetzungen entstehen aus Ihrem Angebot. Jede Freigabe bleibt bei Menschen." },
+      { name: "Live", title: "Veröffentlicht, wo Sie es entscheiden", text: "Die Seite wird gebaut, abgesichert und veröffentlicht. Schnell, messbar, in der Umgebung Ihrer Wahl." },
+    ],
+  },
+  migration: {
+    heading: "Der Umzug aus WordPress, Typo3 und Co.",
+    items: [
+      { title: "Inhalte übernehmen", text: "Seiten, Medien und Struktur werden in Bausteine übertragen. Nichts wird von Hand nachgebaut, was sich übertragen lässt." },
+      { title: "Auffindbarkeit erhalten", text: "URLs, Weiterleitungen und Metadaten bleiben erhalten. Ihr Auftritt verliert beim Umzug nicht, was er sich aufgebaut hat." },
+      { title: "Redaktion befähigen", text: "Ihr Team pflegt ab dem ersten Tag selbst. Wir bleiben, bis das ohne uns läuft." },
+    ],
+  },
+  after: {
+    heading: "Was Ihr Team danach kann.",
+    items: [
+      "Neue Angebote und Kampagnen selbst in Szene setzen, ohne Ticket.",
+      "Design bleibt konsistent, weil jede Seite aus denselben Bausteinen entsteht.",
+      "AI-Entwürfe für Texte und Varianten nutzen und selbst freigeben.",
+      "Kein Anbieter, der den Zugang zum eigenen Auftritt hält.",
+    ],
+  },
+  cta: { line: "Welches System hält Ihren Auftritt heute fest?", primary: { label: "Webauftritt im Erstgespräch besprechen", href: "/kontakt" } },
+} as const;
+
+/**
  * Nachweise. Zertifizierungen und Partner der bisherigen Website,
  * von den Gründern am 2026-09-17 zur Übernahme freigegeben. Die
  * Zertifizierungen sind Personen-Zertifikate des Gründerteams, keine

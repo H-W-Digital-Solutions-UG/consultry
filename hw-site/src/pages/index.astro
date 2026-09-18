@@ -7,7 +7,7 @@ import Capabilities from "../components/Capabilities.astro";
 import Cta from "../components/Cta.astro";
 import SectionCta from "../components/SectionCta.astro";
 import Proof from "../components/Proof.astro";
-import { promise, sovereignty, software } from "../data/content";
+import { promise, sovereignty, software, showcases } from "../data/content";
 import { company } from "../data/company";
 ---
 
@@ -93,6 +93,18 @@ import { company } from "../data/company";
           </li>
         ))}
       </ol>
+      <ul class="sov__cases">
+        {showcases.map((c) => (
+          <li>
+            <a class="case" href={c.href}>
+              <span class="case__kicker">{c.kicker}</span>
+              <span class="case__title">{c.title}</span>
+              <span class="case__text">{c.text}</span>
+              <span class="case__link">Showcase ansehen<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+            </a>
+          </li>
+        ))}
+      </ul>
       <SectionCta line="Welcher Ablauf hängt bei Ihnen an zu vielen Anbietern?" />
     </div>
   </section>
@@ -311,6 +323,23 @@ import { company } from "../data/company";
   .sov__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); }
   .sov__title { font-size: 1.2rem; }
   .sov__text { color: var(--fg-muted); font-size: 0.98rem; }
+  /* Showcases: zwei verlinkte Karten unter den Punkten */
+  .sov__cases { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; }
+  @media (min-width: 720px) { .sov__cases { grid-template-columns: repeat(2, 1fr); } }
+  .case {
+    display: grid; gap: 8px; align-content: start; height: 100%;
+    padding: 24px 24px 22px;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg);
+    text-decoration: none; color: inherit;
+    transition: border-color 0.2s, transform 0.25s var(--ease-out);
+  }
+  .case:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+  .case__kicker { font-family: var(--font-display); font-size: 0.85rem; font-weight: 500; color: var(--accent); }
+  .case__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
+  .case__text { color: var(--fg-muted); font-size: 0.95rem; }
+  .case__link { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--accent); }
+  .case__link svg { width: 14px; height: 14px; transition: transform 0.2s var(--ease-out); }
+  .case:hover .case__link svg { transform: translateX(3px); }
   .sov__point--win { background: var(--ink); }
   .sov__point--win .sov__n { color: var(--accent-on-ink); }
   .sov__point--win .sov__title { color: var(--fg-on-ink); }

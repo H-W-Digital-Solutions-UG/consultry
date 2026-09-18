@@ -250,6 +250,16 @@ Zielkunden haben in der Regel **keinen AI-Prozess und keine AI-Lösung**. Jede C
 - „Was kostet das, und was bringt es?“ → 59 % der Führungskräfte können den Nutzen nicht beziffern, 60 % fehlt ein Plan (Work Trend Index 2024).
 - „Der Pilot lief. Produktiv wurde er nie.“ → 41 % setzen AI ein, 48 % planen oder diskutieren (Bitkom 2026).
 
+## Messaging-Baustein: Showcases (2026-09-18)
+
+**Kern (Gründer):** Die Souveränitäts-Sektion verlinkt passende Showcases, die zeigen, wie Kontrolle konkret zurückkommt. Showcases beschreiben Aufbauten, wie wir sie liefern: keine Kundennamen, keine Kennzahlen, keine „Ergebnisse“. Gründer-Wortlaut zum ersten Showcase: „AI-unterstütztes CMS: Die Kreativität Ihres Teams und Ihr unschlagbares Angebot perfekt und selbstgesteuert in Szene setzen … aus WordPress und statischen Templates oder aufwändiger manueller Pflege / Pflege durch Dienstleister wird Pipeline: Design-driven CMS (Storyblok + Figma) → Consultry Human x AI Workflow; einfacher Transfer des Webauftritts aus WordPress, Typo3 etc.“ (Gründer schrieben „CRM“; gemeint ist nach Kontext CMS, so umgesetzt.)
+
+**Showcase 1, `/showcases/webauftritt`:** „Ihr Webauftritt, selbstgesteuert.“ Aufbau: 01 Ausgangslage (Pflege per Ticket, Template statt Design, Wissen im Werkzeug), 02 Pipeline (Figma → Design-getriebenes CMS, etwa Storyblok → Consultry Human x AI Workflow → Live, wo der Kunde es entscheidet), 03 Umzug aus WordPress, Typo3 und Co. (Inhalte übernehmen, Auffindbarkeit erhalten, Redaktion befähigen), 04 Was Ihr Team danach kann. CTA „Webauftritt im Erstgespräch besprechen“. „Human x AI Workflow“ ist der Consultry-Begriff; jede Freigabe bleibt bei Menschen.
+
+**Showcase 2:** verlinkt auf die Software-Sektion (`/leistungen#software`, Plattformprojekt mit mehreren Software-Partnern). Wird eine eigene Seite, sobald die Polity-Fakten freigegeben sind.
+
+**Verlinkt aus:** Souveränität (Startseite, zwei Karten „Showcase ansehen“) und Software-Sektion (Sekundär-CTA).
+
 ## Regel: Kein Hosting-Versprechen (2026-09-18)
 
 **Kern (Gründer):** Die Website darf nirgends so klingen, als würde H&W Lösungen selbst hosten oder grundsätzlich beim Kunden betreiben. Wo eine Lösung läuft, entscheidet der Kunde (eigene Cloud, eigenes Rechenzentrum, Anbieter seiner Wahl). H&W baut, integriert, sichert ab, bringt live und befähigt.
@@ -381,6 +391,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v12 (2026-09-18) — Showcase „Webauftritt, selbstgesteuert“ (AI-gestütztes CMS, Pipeline Figma → CMS → Human x AI Workflow, Umzug aus WordPress/Typo3) als Seite; Showcase-Karten unter Souveränität.
 - v11 (2026-09-18) — Zahlen-Sektion verworfen; Zahlenpunkte mit Mini-Charts in die Einwand-Zeilen von „Unser Versprechen“ integriert.
 - v10 (2026-09-18) — Sektion „Die Lage in Zahlen“ mit vier belegten Studienwerten und eigenen Fakten; Regel für Zahlen auf der Website.
 - v9 (2026-09-18) — Einwände gekürzt und mit Senior-Pitch als erstem Einwand, eigenes Zeilen-Design; Souveränität als konkreter Pain auf Position 02; Hero-Beschreibung mit Pain und Win; Baustein Software und Web; Regel „Kein Hosting-Versprechen“ und Abräumen aller Betriebs-/Hosting-Anklänge.

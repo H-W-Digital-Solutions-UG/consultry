@@ -1,0 +1,127 @@
+---
+/**
+ * Showcase: AI-gestütztes CMS. Beschreibt den Aufbau, wie wir ihn liefern
+ * (Figma → Design-getriebenes CMS → Consultry Human x AI Workflow → Live)
+ * und den Umzug aus WordPress, Typo3 und Co. Keine Kundennamen, keine Kennzahlen.
+ */
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import SectionCta from "../../components/SectionCta.astro";
+import Cta from "../../components/Cta.astro";
+import { showcaseWeb as sc } from "../../data/content";
+---
+
+<Base
+  title="Showcase: Ihr Webauftritt, selbstgesteuert"
+  description="AI-gestütztes CMS von H&W Digital Solutions: Design in Figma, Design-getriebenes CMS, Consultry Human x AI Workflow. Umzug aus WordPress, Typo3 und Co."
+>
+  <PageHeader eyebrow={sc.eyebrow} title={sc.title} lede={sc.lede} />
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow" data-n="01">Ausgangslage</p>
+      <h2 class="h">{sc.before.heading}</h2>
+      <ul class="cells">
+        {sc.before.items.map((it, i) => (
+          <li class="cell">
+            <span class="cell__n">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="cell__title">{it.title}</h3>
+            <p class="cell__text">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="container">
+      <p class="eyebrow" data-n="02">Die Pipeline</p>
+      <h2 class="h">{sc.pipeline.heading}</h2>
+      <ol class="flow">
+        {sc.pipeline.steps.map((st, i) => (
+          <li class="flow__step">
+            <span class="flow__n">{String(i + 1).padStart(2, "0")}</span>
+            <span class="flow__name">{st.name}</span>
+            <h3 class="flow__title">{st.title}</h3>
+            <p class="flow__text">{st.text}</p>
+          </li>
+        ))}
+      </ol>
+      <SectionCta line="Welche Bausteine braucht Ihr Angebot?" secondary={{ label: "Software und Web im Detail", href: "/leistungen#software" }} />
+    </div>
+  </section>
+
+  <section class="section section--paper-2">
+    <div class="container">
+      <p class="eyebrow" data-n="03">Der Umzug</p>
+      <h2 class="h">{sc.migration.heading}</h2>
+      <ul class="cells">
+        {sc.migration.items.map((it, i) => (
+          <li class="cell">
+            <span class="cell__n">{String(i + 1).padStart(2, "0")}</span>
+            <h3 class="cell__title">{it.title}</h3>
+            <p class="cell__text">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container after">
+      <div>
+        <p class="eyebrow" data-n="04">Danach</p>
+        <h2 class="h">{sc.after.heading}</h2>
+      </div>
+      <ul class="after__list">
+        {sc.after.items.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+    <div class="container">
+      <SectionCta line={sc.cta.line} primary={sc.cta.primary} secondary={{ label: "Zur Startseite", href: "/" }} />
+    </div>
+  </section>
+
+  <Cta heading="Reden wir über Ihren Auftritt." text="Kostenlos, 30 Minuten, Ihr heutiges System. Wir sagen, was sich übertragen lässt und was Ihr Team danach selbst steuert." />
+</Base>
+
+<style>
+  .h { margin-top: 16px; max-width: 22ch; }
+  .cells {
+    list-style: none; margin: 44px 0 0; padding: 0;
+    display: grid; gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden;
+  }
+  @media (min-width: 720px) { .cells { grid-template-columns: repeat(3, 1fr); } }
+  .cell { background: var(--paper); padding: 26px 24px 28px; display: grid; gap: 10px; align-content: start; }
+  .cell__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent); }
+  .cell__title { font-size: 1.2rem; }
+  .cell__text { margin: 0; color: var(--fg-muted); font-size: 0.98rem; }
+
+  /* Pipeline: vier Stationen mit Verbindungslinie */
+  .flow { list-style: none; margin: 44px 0 0; padding: 0; display: grid; gap: 28px; position: relative; }
+  @media (min-width: 900px) { .flow { grid-template-columns: repeat(4, 1fr); gap: 32px; } }
+  .flow__step { position: relative; display: grid; gap: 8px; align-content: start; padding-top: 22px; }
+  .flow__step::before {
+    content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--accent-on-ink), var(--line-on-ink));
+  }
+  .flow__step::after {
+    content: ""; position: absolute; left: 0; top: -4px; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--accent-on-ink);
+  }
+  .flow__n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--accent-on-ink); }
+  .flow__name { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--fg-on-ink-muted); }
+  .flow__title { font-size: 1.2rem; color: var(--fg-on-ink); }
+  .flow__text { margin: 0; color: var(--fg-on-ink-muted); font-size: 0.96rem; }
+
+  .after { display: grid; gap: 28px; }
+  @media (min-width: 900px) { .after { grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; } }
+  .after__list { list-style: none; margin: 0; padding: 0; display: grid; }
+  .after__list li {
+    padding: 16px 0 16px 28px; position: relative; border-top: 1px solid var(--line);
+    font-family: var(--font-display); font-weight: 500; letter-spacing: -0.005em;
+  }
+  .after__list li:last-child { border-bottom: 1px solid var(--line); }
+  .after__list li::before { content: ""; position: absolute; left: 4px; top: 1.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+</style>
