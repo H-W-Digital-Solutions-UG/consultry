@@ -433,6 +433,7 @@ Konkrete Szenarien dürfen genutzt werden, wenn sie als Beispiel gekennzeichnet 
 
 ## Changelog
 *Newest first. One line per revision: what changed and why.*
+- v45 (2026-09-18) — Hero-Claim optimiert (Gründer: „bitte hier noch optimieren“): „Mit uns wird daraus ein Ablauf, der wirklich Wert schafft.“ Alternativen: „Wir machen daraus einen Ablauf, der wirklich Wert schafft.“, „Mit uns wird daraus endlich ein Ablauf, der Wert schafft.“
 - v44 (2026-09-18) — Hero-Claim im Gründer-Wortlaut: „Mit uns erreichen Sie endlich einen Ablauf, der wirklich Wert schafft.“ (Original mit Gedankenstrich, auf der Site als Komma); Beschreibung gekürzt: „Mit den richtigen Quellen, Regeln und Anbindungen. Wir begleiten Sie, bis es läuft, und Sie holen sich Ihre Souveränität zurück, ohne bei jedem Schritt auf Dienstleister angewiesen zu sein.“
 - v43 (2026-09-18) — Proof-Szene mit Systemmodell (Gründer: Maßschneiderei ist ein Wortspiel, passt nicht zu IT-Consulting): Grundplatte mit fünf Modulen, eines wird gesetzt, Blaupause und Tuschestift; Bildunterschrift „Für Ihren Betrieb geplant und gebaut.“ Verworfen: Architekturmodell (Immobilie).
 - v42 (2026-09-18) — Hero-Beschreibung im Gründer-Wortlaut (Original in Du-Plural, für die Site in die Sie-Form gesetzt): „Mit den richtigen Quellen, Regeln und Anbindungen. Wir begleiten Sie, bis es läuft. Holen Sie sich Ihre Souveränität zurück und setzen Sie Ihre Vision in die Tat um, ohne jedes Mal auf Dienstleister oder Agenturen angewiesen zu sein.“

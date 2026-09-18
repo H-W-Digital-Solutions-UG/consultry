@@ -36,7 +36,9 @@ export const hero = {
   // Claim v3: löst die Headline auf, ohne Abstraktum.
   // Claim v4: die Rolle danach, ohne Parole.
   // Claim v6 (2026-09-18, Gründer-Wortlaut, ohne Gedankenstrich gesetzt).
-  claim: "Mit uns erreichen Sie endlich einen Ablauf, der wirklich Wert schafft.",
+  // Claim v7: Gründer-Richtung („Mit uns erreichen Sie endlich einen Ablauf, der wirklich
+  // Wert schafft“) verdichtet, „daraus“ bindet an die Headline.
+  claim: "Mit uns wird daraus ein Ablauf, der wirklich Wert schafft.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
   // v6: konkret, wo und wie; kein „dort, wo“.
   // v7 (2026-09-18, Gründer-Wortlaut, in die Sie-Form der Site gesetzt).
