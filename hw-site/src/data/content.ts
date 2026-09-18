@@ -35,10 +35,11 @@ export const hero = {
   // englische Motto „From Process to Production.“ war den Gründern zu corporate.
   // Claim v3: löst die Headline auf, ohne Abstraktum.
   // Claim v4: die Rolle danach, ohne Parole.
-  claim: "Wir machen daraus einen Ablauf, auf den sich Ihr ganzer Betrieb verlassen kann.",
+  claim: "Wir machen daraus einen Ablauf, auf den Verlass ist.",
   // v5 (2026-09-18): ein Satz, der Win zum Hook („der eine Ablauf“ statt Meeting-Gerede).
   // v6: konkret, wo und wie; kein „dort, wo“.
-  description: "Mit den richtigen Quellen, Regeln und Anbindungen. Und wir bleiben, bis es läuft.",
+  // v7 (2026-09-18, Gründer-Wortlaut, in die Sie-Form der Site gesetzt).
+  description: "Mit den richtigen Quellen, Regeln und Anbindungen. Wir begleiten Sie, bis es läuft. Holen Sie sich Ihre Souveränität zurück und setzen Sie Ihre Vision in die Tat um, ohne jedes Mal auf Dienstleister oder Agenturen angewiesen zu sein.",
   primaryCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   secondaryCta: { label: "So arbeiten wir", href: "/vorgehen" },
 } as const;
@@ -58,7 +59,9 @@ export const expertise = {
   text: "Erfahrung, Zeit und echtes Interesse an Ihrem Betrieb. So verstehen wir Beratung.",
   // Bildunterschrift der Tischszene (v2, 2026-09-18, Gründer: „Am Tisch, nicht im Ticket“ war
   // das richtige Argument im falschen Muster). Schlichter Satz, kein Kontrast-Slogan.
-  caption: "Sie sitzen mit den Gründern am Tisch.",
+  // v3 (2026-09-18, Gründer: neuer Ansatz statt Tischszene; Motiv Maßschneiderei für
+  // „zugeschnittenes Senior Consulting statt Massengeschäft“).
+  caption: "Zugeschnitten auf Ihren Betrieb.",
   certsLabel: "Zertifikate im Gründerteam.",
   cta: { label: "Das Gründerteam", href: "/unternehmen#team" },
   secondary: { label: "Alle Nachweise", href: "/unternehmen#nachweise" },
