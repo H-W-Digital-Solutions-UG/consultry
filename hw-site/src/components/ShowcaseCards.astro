@@ -2,8 +2,13 @@
 /**
  * Showcase-Karten (Gründer, 2026-09-18: „moderne Glassmorphism-Blog-Cards mit
  * angepasstem Design und spezifisch erzeugtem Bild“). Jede Karte ist ein
- * bildgefülltes Panel im Hero-Stil (Higgsfield, Aubergine und Lavendel), unten
- * ein Glas-Streifen mit Kicker, Titel und Pfeil. Blur nur ab 900 px.
+ * bildgefülltes Panel im Hero-Grundsatz (Gründer, 2026-09-18: matter analoger
+ * Lichtverlauf Flieder → Aubergine, Filmkorn, kein Glow, keine glänzenden
+ * 3D-Objekte) als matte Clay-Szene mit konkretem Motiv: eine Website-Anordnung
+ * aus Browserfenster, Karten und Panels (Website), fünf Bausteine auf einem
+ * Raster mit Verbindungen (Software). Ein rein abstrakter Verlauf war den
+ * Gründern für eine Showcase-Karte zu leer. Unten ein Glas-Streifen mit
+ * Kicker, Titel und Pfeil. Blur nur ab 900 px.
  */
 import { Image } from "astro:assets";
 import { showcases } from "../data/content";
@@ -50,6 +55,7 @@ const pic = (key: string) => files[`../assets/showcases/${key}.webp`]?.default;
   .card:hover, .card:focus-visible { transform: translateY(-3px); box-shadow: 0 1px 0 rgba(21, 4, 43, 0.06), 0 26px 48px -24px rgba(21, 4, 43, 0.55); }
   .card__img {
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    object-position: 50% 22%; /* Motiv liegt oben links, mobil (4:3) bleibt es im Bild */
     transition: transform 0.9s var(--ease-out);
   }
   .card:hover .card__img { transform: scale(1.035); }

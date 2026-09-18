@@ -10,7 +10,7 @@ import PromiseViz from "../components/PromiseViz.astro";
 import Expertise from "../components/Expertise.astro";
 import ShowcaseCards from "../components/ShowcaseCards.astro";
 import Proof from "../components/Proof.astro";
-import { promise, sovereignty, software, showcases } from "../data/content";
+import { promise, sovereignty, software } from "../data/content";
 import { company } from "../data/company";
 ---
 
@@ -49,9 +49,6 @@ import { company } from "../data/company";
                       <circle class="ring__track" cx="20" cy="20" r="16" />
                       <circle class="ring__fill" cx="20" cy="20" r="16" style={`--c: 100.53; --v: ${o.data.series[0].v}`} />
                     </svg>
-                  )}
-                  {o.data.chart === "dots" && (
-                    <span class="dots">{Array.from({ length: o.data.series[0].v }).map((_, k) => <i style={`--k: ${k}`}></i>)}</span>
                   )}
                   {o.data.chart === "bars" && (
                     <span class="bars">{o.data.series.map((sg) => <span class="bars__track"><span class="bars__fill" style={`--w: ${sg.v}%`}></span></span>)}</span>
@@ -321,8 +318,6 @@ import { company } from "../data/company";
   .ring { transform: rotate(-90deg); }
   .ring__track { fill: none; stroke: var(--line); stroke-width: 4; }
   .ring__fill { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: var(--c); stroke-dashoffset: calc(var(--c) * (1 - var(--v) / 100)); }
-  .dots { display: inline-flex; gap: 8px; }
-  .dots i { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
   .bars { display: grid; gap: 8px; width: 260px; }
   .bars__track { display: block; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
   .bars__fill { display: block; height: 100%; width: var(--w); border-radius: 3px; background: var(--accent); }
@@ -364,7 +359,6 @@ import { company } from "../data/company";
   .promise[data-scene="on"] .promise__row.is-in .stack__seg { width: var(--w); }
   .promise[data-scene="on"] .ring__fill { stroke-dashoffset: var(--c); transition: stroke-dashoffset 0.9s var(--ease-out) 0.3s; }
   .promise[data-scene="on"] .promise__row.is-in .ring__fill { stroke-dashoffset: calc(var(--c) * (1 - var(--v) / 100)); }
-  .promise[data-scene="on"] .dots i { transform: scale(0); transition: transform 0.3s var(--ease-out) calc(0.3s + var(--k, 0) * 0.05s); }
   .promise[data-scene="on"] .promise__row.is-in .dots i { transform: none; }
   /* Der Sektions-CTA folgt direkt nach dem Stapel. */
   /* Letztes Band braucht keine Stapelhöhe; der CTA folgt dicht darauf. */
