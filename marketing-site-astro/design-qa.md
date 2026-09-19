@@ -2,7 +2,32 @@
 
 Reviewed locally on 14 September 2026. Preview: http://127.0.0.1:4321/. This is a separate project in `marketing-site-astro`; the existing Next marketing site and React smoke application are retained.
 
-## Current pass — 14 September 2026: cumulative stages and scoped app preview
+## Current pass — 19 September 2026: the gallery never rests between two cards
+
+Founder report: on phones the product cards were hard to operate, and neither phones nor desktop
+may leave the strip resting between two cards.
+
+Cause. The track carried `scroll-snap-type: x proximity` while the cards were aligned `center`, but
+`global.css` anchors the active card at the shell's left edge (`--gallery-anchor: shell`). The
+browser's own snap points and the position the controller computes therefore disagreed, and
+`proximity` let the strip stop wherever momentum ran out. On desktop the vertical scroll-driven mode
+maps page progress onto the track continuously, so stopping anywhere left the cards half way.
+
+Changes. Snapping is now `x mandatory` with `scroll-snap-align: start`, and
+`scroll-padding-inline-start` places the snap edge on the shell inset, mirroring `.shell`
+(`min(1320px, 100% - 112px)`, 64px below 1100px, 40px below 780px). `scroll-snap-stop: always`
+limits one swipe to one card. In vertical mode the controller settles the page onto the nearest
+card 160 ms after scrolling stops, using the same arithmetic as `go()`; it stays out of the way
+outside the runway and remeasures after a resize instead of inverting the anchored mapping.
+
+Measurement, Chromium against the dev server. Phone 390×844: distance from the snap edge is 0px
+when resting and after partial swipes of 140px, 90px and 200px; each swipe advances exactly one
+card (scroll offset 656 → 984 → 1312 → 1640, a step of 328px). Desktop 1440×900 across nine page
+positions inside the runway: largest distance 0px, previously up to 242px. Laptop 1280×800: largest
+distance 1px from sub-pixel rounding. The first card remains reachable at the start of the runway.
+Astro check passes with no errors or warnings.
+
+## Previous pass — 14 September 2026: cumulative stages and scoped app preview
 
 Reached hero arguments now accumulate on the homepage and all five product pages. Phase 3 remains active through the final assembled pose; reverse scrolling unwinds the sequence. All reached connector paths remain visible. Compact screens use three separate rows above the centered artwork.
 

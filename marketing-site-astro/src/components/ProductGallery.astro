@@ -76,7 +76,18 @@ const navigationLabels: Record<string, string> = { brain: 'Gedächtnis', brand: 
     gap: clamp(24px, 4vw, 64px);
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    scroll-snap-type: x proximity;
+    /*
+     * „mandatory“ statt „proximity“: Der Browser muss nach jedem Wisch auf einer
+     * Karte landen. Mit „proximity“ blieb der Streifen zwischen zwei Karten
+     * stehen, wenn der Schwung knapp vor dem Fangpunkt endete.
+     * Der Fangpunkt liegt an der Startkante, nicht in der Mitte, denn die
+     * aktive Karte ruht an der Shell-Kante (siehe --gallery-anchor in
+     * global.css). scroll-padding-inline-start verschiebt ihn genau dorthin;
+     * ohne die Angabe würde der Browser mittig fangen und gegen die
+     * Positionierung im Skript arbeiten.
+     */
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline-start: calc((100% - var(--gallery-card-width)) / 2);
     scrollbar-width: thin;
     scrollbar-color: #796045 transparent;
     padding-block: 4px 22px;
@@ -97,7 +108,9 @@ const navigationLabels: Record<string, string> = { brain: 'Gedächtnis', brand: 
     flex-direction: column;
     color: var(--gallery-paper);
     text-decoration: none;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
+    /* Ein Wisch bewegt genau eine Karte, statt mehrere zu überspringen. */
+    scroll-snap-stop: always;
     border: 0;
     border-radius: 0;
     background: none;

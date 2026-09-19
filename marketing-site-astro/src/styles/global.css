@@ -1162,7 +1162,14 @@ body .product-carousel.product-carousel { --gallery-card-width: min(560px, 56vw)
 body .product-carousel .product-card-copy > p { font-size: 17px !important; line-height: 1.55 !important; max-width: 34ch; }
 /* Active card rests at the shell's left edge with nothing peeking on the left; the following cards
    run past the shell to the viewport's right edge, so no container edge cuts them. */
-body .product-carousel.product-carousel .product-gallery { --gallery-anchor: shell; width: 100vw; margin-left: calc((100% - 100vw) / 2); padding-inline: calc((100vw - 100%) / 2) calc(100vw - var(--gallery-card-width) - (100vw - 100%) / 2); }
+body .product-carousel.product-carousel .product-gallery { --gallery-anchor: shell; width: 100vw; margin-left: calc((100% - 100vw) / 2); padding-inline: calc((100vw - 100%) / 2) calc(100vw - var(--gallery-card-width) - (100vw - 100%) / 2); scroll-padding-inline-start: var(--gallery-shell-inset); }
+/* Der Fangpunkt des Browsers muss auf derselben Kante liegen wie die Ruheposition,
+   die das Skript berechnet, sonst bleibt der Streifen zwischen zwei Karten stehen.
+   Die Werte spiegeln den Rand von .shell: min(1320px, 100% - 112px), ab 1100px
+   100% - 64px, ab 780px 100% - 40px. Wer .shell ändert, ändert beides. */
+body .product-carousel.product-carousel .product-gallery { --gallery-shell-inset: max(56px, calc((100vw - 1320px) / 2)); }
+@media (max-width: 1100px) { body .product-carousel.product-carousel .product-gallery { --gallery-shell-inset: 32px; } }
+@media (max-width: 780px) { body .product-carousel.product-carousel .product-gallery { --gallery-shell-inset: 20px; } }
 /* Cards dissolve as they run out at the left edge and soften as they enter from the right. */
 body .product-carousel.product-carousel .product-gallery { --gallery-bleed: max(56px, calc((100vw - 1320px) / 2)); mask-image: linear-gradient(90deg, transparent 0, #000 var(--gallery-bleed), #000 calc(100% - 140px), transparent 100%); -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--gallery-bleed), #000 calc(100% - 140px), transparent 100%); }
 .product-section, .catalog { overflow-x: clip; }

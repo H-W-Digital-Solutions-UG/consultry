@@ -53,6 +53,7 @@ function mountProductGalleries() {
       let requested: number | undefined;
       let frame = 0;
       let settling: ReturnType<typeof setTimeout> | undefined;
+      let verticalSettling: ReturnType<typeof setTimeout> | undefined;
       let pointerDown = false;
       let focusing = false;
       let width = track.clientWidth;
@@ -216,6 +217,32 @@ function mountProductGalleries() {
           renderVertical();
         });
         if (debug) report("schedule");
+      };
+      // Im senkrechten Modus folgt der Streifen dem Seitenscroll und steht deshalb
+      // beim Anhalten irgendwo zwischen zwei Karten. Sobald das Scrollen ruht,
+      // ziehen wir die Seite auf die Position der nächstgelegenen Karte. Das ist
+      // dieselbe Rechnung wie in go(), nur ausgelöst vom Anhalten statt vom Klick.
+      const settleVertical = () => {
+        if (!vertical || !visible || requested !== undefined) return;
+        const y = window.scrollY;
+        // Vor und hinter der Laufstrecke scrollt die Seite ganz normal weiter.
+        if (y <= runwayStart || y >= runwayStart + runwayLength) return;
+        // Nach einem Fenstergrößenwechsel ist die Zuordnung verschoben; wie in
+        // go() messen wir dann neu, statt die Umkehrfunktion zu raten.
+        if (resizeAnchor) {
+          resizeAnchor = undefined;
+          measureRunway();
+          verticalProgress = progressAt(window.scrollY);
+        }
+        const index = Math.round(verticalProgress * (count - 1));
+        const target = Math.round(runwayStart + runwayLength * index / (count - 1));
+        if (Math.abs(y - target) <= 2) return;
+        window.scrollTo({ top: target, behavior: "smooth" });
+      };
+      const scheduleVerticalSettle = () => {
+        if (!vertical) return;
+        clearTimeout(verticalSettling);
+        verticalSettling = setTimeout(settleVertical, 160);
       };
       const settle = () => {
         if (vertical || pointerDown) return;
@@ -417,7 +444,10 @@ function mountProductGalleries() {
           scheduleVertical();
         } else if (wasVisible) renderVertical();
       }, { rootMargin: "100px 0px" });
-      window.addEventListener("scroll", scheduleVertical, { passive: true, signal: abort.signal });
+      window.addEventListener("scroll", () => {
+        scheduleVertical();
+        scheduleVerticalSettle();
+      }, { passive: true, signal: abort.signal });
       window.addEventListener("resize", () => setMode(), options);
       verticalAllowed.addEventListener("change", () => setMode(), options);
       window.addEventListener("wheel", () => {
@@ -449,6 +479,7 @@ function mountProductGalleries() {
           intersection.disconnect();
           cancelAnimationFrame(frame);
           clearTimeout(settling);
+          clearTimeout(verticalSettling);
         },
         { once: true },
       );
