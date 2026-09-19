@@ -1,0 +1,26 @@
+---
+import UiIcon from "../components/UiIcon.astro";
+import { localeFromPath, localizedPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const link = (path: string) => localizedPath(path, locale);
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SpatialHero from '../components/SpatialHero.astro';
+import ProductGallery from '../components/ProductGallery.astro';
+import DataPaths from '../components/DataPaths.astro';
+import SignupBand from '../components/SignupBand.astro';
+---
+<BaseLayout backdrop={{ src: '/hero/story.mp4', poster: '/hero/story-poster.webp', hold: 0 }} title={t("Consultry | Gemeinsame KI-Arbeit statt Einzelchats")} description={t("Aufgaben, Wissen und KI-Arbeit in einem gemeinsamen Arbeitsraum. Weniger neu erklären, gemeinsam am Ergebnis arbeiten. Jetzt für Early Access anmelden.")}>
+  <main id="inhalt">
+    <SpatialHero variant="brain" sceneVariant="logo" title={t("Ihr arbeitet im Team.")} titleEnd={t("Eure KI aber in Einzelchats.")} lede={t("Ein gemeinsamer Arbeitsraum für Aufgaben, Wissen und KI, in dem ihr am Ergebnis arbeitet statt am Kontext.")} cta="Für Early Access anmelden" secondary="So arbeitet Consultry" sceneHeading={t("Aus einzelnen Chats wird gemeinsame Arbeit.")} aspects={['Weniger neu erklären.', 'Auf Bewährtem aufbauen.', 'Gemeinsam am Ergebnis arbeiten.'].map(t)} details={['Freigegebene Unterlagen und bisherige Entscheidungen sind die Basis.', 'Was funktioniert, wird wieder nutzbar. Mit Spielraum für Neues.', 'Die Beiträge der Agenten landen in einem Stand, den ihr gemeinsam weiterentwickelt.'].map(t)} aspectVisuals={['/hero/hooks/home-ready.svg', '/hero/hooks/home-knowledge.svg', '/hero/hooks/home-progress.svg']} steps={['Gemeinsame Basis', 'Bewährtes nutzen', 'Gemeinsam weiter'].map(t)} carry={0.6} share={0.6} />
+    <section class="section product-section" id="produkt">
+      <div class="shell">
+        <ProductGallery scrollDriven nextHref="#datenwege" nextLabel={t("Weiter zu den Datenwegen")} />
+        <div class="gallery-footer"><a class="text-link" href={link("/produkt")}>{t("Alle Produktbereiche")} <span aria-hidden="true"><UiIcon name="up-right" /></span></a></div>
+      </div>
+    </section>
+    <DataPaths />
+    <SignupBand />
+  </main>
+</BaseLayout>

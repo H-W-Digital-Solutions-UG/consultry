@@ -1,0 +1,97 @@
+---
+import { heroOutcomes, type HeroOutcomeVariant } from '../content/hero-outcomes';
+
+interface Props {
+  variant: HeroOutcomeVariant;
+  id?: string;
+}
+
+const { variant, id } = Astro.props;
+---
+
+<div class="hero-outcome" id={id} aria-live="off">
+  <div class="hero-outcome__phases">
+    {heroOutcomes[variant].map((outcome, phase) => (
+      <div class={`hero-outcome__phase hero-outcome__phase--${phase}`}>
+        <p class="hero-outcome__title">{outcome.title}</p>
+        <p class="hero-outcome__context">{outcome.context}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .hero-outcome {
+    width: min(100%, 360px);
+    min-height: 110px;
+    padding: 0 0 0 18px;
+    border-left: 1px solid #b78c604d;
+    text-align: left;
+  }
+
+  .hero-outcome__eyebrow {
+    margin: 0 0 10px;
+    color: #b89c7c;
+    font: 0.6rem/1.4 var(--font-mono, monospace);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .hero-outcome__phases {
+    display: grid;
+  }
+
+  .hero-outcome__phase {
+    grid-area: 1 / 1;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .hero-outcome__phase--0 {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-outcome__title {
+    margin: 0;
+    color: #e9d6bd;
+    font-size: clamp(1.25rem, 1.65vw, 1.4rem);
+    font-weight: 450;
+    letter-spacing: -0.035em;
+    line-height: 1.22;
+    text-wrap: balance;
+  }
+
+  .hero-outcome__context {
+    margin: 9px 0 0;
+    color: #ab9f8f;
+    font-size: 0.74rem;
+    line-height: 1.6;
+  }
+
+  :global([data-scroll-scene][data-scene-aspect="1"]) .hero-outcome__phase--0,
+  :global([data-scroll-scene][data-scene-aspect="2"]) .hero-outcome__phase--0,
+  :global([data-scroll-scene][data-scene-aspect="3"]) .hero-outcome__phase--0 {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  :global([data-scroll-scene][data-scene-aspect="1"]) .hero-outcome__phase--1,
+  :global([data-scroll-scene][data-scene-aspect="2"]) .hero-outcome__phase--2,
+  :global([data-scroll-scene][data-scene-aspect="3"]) .hero-outcome__phase--3 {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-outcome__phase {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

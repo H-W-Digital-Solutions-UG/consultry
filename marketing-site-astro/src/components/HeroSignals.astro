@@ -1,0 +1,47 @@
+---
+import type { HeroOutcomeVariant } from '../content/hero-outcomes';
+import { localeFromPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const t = useTranslations(localeFromPath(Astro.url.pathname));
+interface Props {
+  variant: HeroOutcomeVariant;
+  aspects: string[];
+  visuals?: string[];
+  steps?: string[];
+  /** One sentence beneath each argument (product pages: the how-steps), building the sequence out. */
+  details?: string[];
+  /** Assembly status beneath the step line: while the arguments build up, and once all three are reached. */
+  status?: { building: string; ready: string };
+  /** Home: a heading for the scene, a quiet workspace preview after the third argument, and one closing line. */
+  heading?: string;
+  workspace?: { tag: string; title: string; text: string; rows: [string, string][] };
+  closing?: string;
+}
+const { aspects, visuals = [], steps = [], details = [], status = { building: t("Aufbau läuft"), ready: t("Bereit.") }, heading, workspace, closing } = Astro.props;
+const label = (index: number) => steps[index] ?? aspects[index].replace(/[.!]$/, '');
+---
+<div class="hero-signals" data-hero-signals>
+  <svg class="hero-signal-lines" data-signal-lines aria-hidden="true">
+    {[1,2,3].map(part => <path data-signal-connection={part} pathLength="1" />)}
+  </svg>
+  <div class="hero-signal-stack">
+  {heading && <h2 class="hero-signal-heading">{heading}</h2>}
+  {aspects.map((aspect, index) => (
+    <article class="hero-signal" data-signal-note={index + 1} data-signal-side="right">
+      {visuals[index] ? <span class="hero-signal-visual" style={`--hook-visual: url('${visuals[index]}')`} aria-hidden="true"><img src={visuals[index]} width="64" height="64" alt="" decoding="async" /></span> : <span class="hero-signal-index" aria-hidden="true">0{index + 1}</span>}
+      <div>
+        <h2>{aspect}</h2>
+        {details[index] && <p>{details[index]}</p>}
+      </div>
+    </article>
+  ))}
+  {workspace && <aside class="hero-workspace" aria-label={workspace.title}>
+    <p class="hero-workspace-title">{workspace.title}<span class="hero-workspace-tag">{workspace.tag}</span></p>
+    <p class="hero-workspace-text">{workspace.text}</p>
+    <ul class="hero-workspace-ui">{workspace.rows.map(([label, state]) => <li><span>{label}</span><span>{state}</span></li>)}</ul>
+  </aside>}
+  </div>
+  <ol class="hero-steps" aria-hidden="true">{aspects.map((_, index) => <li data-step={index + 1}>{label(index)}</li>)}</ol>
+  <p class="hero-status" aria-hidden="true"><span data-status="building">{status.building}<i></i></span><span data-status="ready">{status.ready}</span></p>
+  {closing && <p class="hero-closing">{closing}</p>}
+</div>

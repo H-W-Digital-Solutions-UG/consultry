@@ -1,5 +1,5 @@
 **node_modules**
-**.DS_Store**
+**/.DS_Store
 **/.vscode**
 **/.idea**
 **/_BKP/
@@ -74,7 +74,6 @@ presentation/consultry-hyperframes-second-brain-video/renders/*
 /Consultry APP UI Mockups/
 /Consultry-Hypermock-MotionVid/
 /Motion-Teaser-Video-Consultry/
-/marketing-site-astro/
 
 # Generated caches, test output and editor lock files
 __pycache__/
@@ -83,3 +82,20 @@ smoketests/**/output/
 ~$*
 .vercel
 .env*.local
+
+# Astro marketing site (marketing-site-astro)
+marketing-site-astro/.astro/
+marketing-site-astro/dist/
+marketing-site-astro/node_modules/
+marketing-site-astro/output/
+marketing-site-astro/.vercel/
+marketing-site-astro/.netlify/
+marketing-site-astro/.wrangler/
+marketing-site-astro/.output/
+marketing-site-astro/.turbo/
+marketing-site-astro/.cache/
+marketing-site-astro/test-results/
+marketing-site-astro/playwright-report/
+marketing-site-astro/.env
+marketing-site-astro/.env.*
+!marketing-site-astro/.env.example

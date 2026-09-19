@@ -1,0 +1,94 @@
+---
+import UiIcon from "./UiIcon.astro";
+import { localeFromPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+import { deliveryWorkflows } from '../content/demo-delivery-workflows';
+import { ledgerWorkflows } from '../content/demo-ledger-workflows';
+import { deliveryCanvases } from '../content/demo-delivery-canvas';
+import { ledgerCanvases } from '../content/demo-ledger-canvas';
+import { demoAgents as sourceAgents, demoAgentVoices } from '../content/demo-agent-voices';
+import { translateData } from '../i18n/locale';
+import { englishDemos } from '../i18n/demos';
+import type { DemoVariant } from '../content/demo-workflow-types';
+import '../styles/product-demo.css';
+
+interface Props { variant: DemoVariant; id?: string }
+const { variant, id = `product-demo-${Astro.props.variant}` } = Astro.props;
+const workflow = translateData({ ...deliveryWorkflows, ...ledgerWorkflows }[variant], locale, englishDemos);
+const canvas = translateData({ ...deliveryCanvases, ...ledgerCanvases }[variant], locale, englishDemos);
+const demoAgents = translateData(sourceAgents, locale, englishDemos);
+const panels = workflow.steps;
+const voices = translateData(demoAgentVoices[variant], locale, englishDemos);
+const stateLabel = { done: 'Berücksichtigt', open: 'Noch zu klären', blocked: 'Gesperrt' };
+---
+<section id={id} class="product-demo" data-product-demo data-variant={variant} data-demo-view="current" aria-label={`${workflow.title}: ${t("interaktives Produktbeispiel")}`}>
+  <header class="pd-app-header">
+    <div class="pd-project"><img src="/images/consultry-logo.png" width="20" height="20" alt="" /><span class="pd-crumb">{t("Aufträge")}</span><span class="pd-app-divider" aria-hidden="true"><UiIcon name="chevron-right" /></span><strong>{workflow.title}</strong><span class="pd-draft"><i aria-hidden="true"></i>{t("Beispiel")}</span></div>
+    <span class="pd-example"><span class="pd-mono">{canvas.scope}</span></span>
+  </header>
+  <div class="pd-main">
+    <aside class="pd-prompt-workspace" aria-label={t("Prompt Workspace")}>
+      <details class="pd-prompt-details" open>
+        <summary><span>{t("Was soll ich übernehmen?")}</span><span class="pd-collapse-icon" aria-hidden="true">−</span></summary>
+        <div class="pd-composer">
+          <div class="pd-prompt-field"><span class="pd-eyebrow">{t("Prompt")}</span><h3>{canvas.prompt}</h3></div>
+          <div class="pd-composer-foot"><button class="pd-run" type="button" data-demo-run>{t("Auftrag durchspielen")}<span aria-hidden="true"><UiIcon name="up-right" /></span></button></div>
+        </div>
+      </details>
+      <div class="pd-agent-panels">
+        {panels.map((panel, index) => {
+          const current = voices[index][voices[index].length - 1];
+          const agent = demoAgents[current.agent];
+          return <section class="pd-agent-panel" data-demo-agent-panel={index} data-active={index === 0} aria-hidden={index !== 0} inert={index !== 0} aria-label={`${t("Agentenbeitrag:")} ${panel.label}`}>
+            <div class="pd-agent-heading"><span class="pd-agent-avatar" data-tone={agent.tone} aria-hidden="true">{locale === 'en' ? agent.name[0] : agent.initials}</span><div><strong>{agent.name}</strong><span>{agent.kind === 'system' ? 'system' : 'agent'} · {agent.role}</span></div></div>
+            <p class="pd-agent-text">{current.text}</p>
+            <p class="pd-agent-status"><span data-agent-status="reading">{t("▸ liest Grundlage…")}</span><span data-agent-status="working">{t("▸ bereitet Änderung vor…")}</span><span data-agent-status="result">{t("✓ Beitrag im Canvas")}</span></p>
+          </section>;
+        })}
+      </div>
+    </aside>
+    <div class="pd-canvas pd-result">
+      <span class="pd-viewport-target" data-demo-viewport aria-hidden="true"></span>
+      <header class="pd-canvas-header"><div><span class="pd-canvas-label">{t("Canvas")}</span><h3>{canvas.title}</h3></div><button type="button" class="pd-toggle" data-demo-toggle aria-label={t("Beispielablauf abspielen")}><span aria-hidden="true" data-demo-toggle-icon data-playback-state="play"><UiIcon name="play" /><UiIcon name="pause" /><UiIcon name="replay" /></span><span data-demo-toggle-label>{t("Abspielen")}</span></button></header>
+      <nav class="pd-navigation" aria-label={t("Arbeitsstand ansehen")}>
+        <div class="pd-steps" role="group" aria-label={t("Schritt im Produktbeispiel")} style={`--pd-step-count:${panels.length}`}>
+          {panels.map((panel, index) => <button type="button" data-demo-step={index} data-step-id={panel.id} data-caption={panel.caption} data-duration={panel.duration} aria-pressed={index === 0} aria-controls={`${id}-panel-${index}`}><span class="pd-step-number">{String(index + 1).padStart(2, '0')}</span><span>{panel.label}</span><span class="pd-step-progress" aria-hidden="true"><i /></span></button>)}
+        </div>
+      </nav>
+      <div class="pd-caption"><span class="pd-playback-status" data-demo-status>{t("Arbeitsablauf")}</span><div class="pd-caption-copy"><p data-demo-caption>{panels[0].caption}</p>{panels.map(panel => <span class="pd-caption-measure" aria-hidden="true">{panel.caption}</span>)}</div></div>
+      <article class="pd-artifact" data-kind={canvas.kind} aria-label={canvas.title}>
+        <header class="pd-document-header"><span data-demo-version>{canvas.versions[0]}</span><div class="pd-view-control" role="group" aria-label={t("Arbeitsstände vergleichen")}><button type="button" data-demo-view-button="basis" aria-pressed="false">{t("Ausgangsstand")}</button><button type="button" data-demo-view-button="current" aria-pressed="true">{t("Arbeitsstand")}</button></div></header>
+        <div class="pd-panels">
+          {panels.map((panel, index) => <section id={`${id}-panel-${index}`} class="pd-panel" data-demo-panel={index} data-active={index === 0} data-version={canvas.versions[index]} aria-hidden={index !== 0} inert={index !== 0} aria-label={panel.label}>
+            <span class="pd-focus-target" data-demo-focus aria-hidden="true"></span>
+            <div class="pd-workspace">
+              <div class="pd-document-body">
+                <div class="pd-document-title"><h4 tabindex="-1" data-demo-result-title>{panel.artifact.title}</h4><span class="pd-badge" data-tone={panel.artifact.tone}>{panel.artifact.status}</span></div>
+                <div class="pd-document-blocks">
+                  {panel.artifact.blocks.map((block, blockIndex) => <section class:list={['pd-document-section', {'pd-document-section--revision': !!block.before}]} data-canvas-focus={blockIndex === canvas.focusBlocks[index]} data-system={block.system}>
+                    <h5>{block.label}</h5>
+                    {block.before && <p class="pd-before"><span class="pd-sr-only">{t("Bisher:")} </span><del>{block.before}</del></p>}
+                    {block.text && <p class:list={['pd-document-text', {'pd-after': !!block.before}]}>{block.before && <span class="pd-sr-only">{t("Überarbeitet:")} </span>}{block.text}</p>}
+                    {block.items && <ul class="pd-work-items">{block.items.map(item => <li data-state={item.state}><span class="pd-sr-only">{t(stateLabel[item.state])}: </span><span class="pd-work-state" aria-hidden="true">{item.state === 'done' ? '✓' : item.state === 'blocked' ? '−' : '○'}</span><span>{item.text}</span></li>)}</ul>}
+                  </section>)}
+                </div>
+              </div>
+              <details class="pd-sources">
+                <summary><span>{panel.sourceIds.length} {t(panel.sourceIds.length === 1 ? 'Quelle' : 'Quellen')} {t("& Herleitung")}</span><span aria-hidden="true">+</span></summary>
+                <div class="pd-source-list">{workflow.sources.filter(source => panel.sourceIds.includes(source.id)).map(source => <details class="pd-source-file"><summary><span>{source.title}<small>{source.meta.replace(/^(?:Illustratives Beispiel|Beispieldaten|Sample data) · /, '')}</small></span><span aria-hidden="true">+</span></summary><blockquote>{source.excerpt}</blockquote></details>)}</div>
+              </details>
+              <footer class="pd-review-bar">{index < panels.length - 1 ? <button class="pd-action" type="button" data-demo-advance={index + 1}>{t("Nächsten Stand ansehen")}<span aria-hidden="true"><UiIcon name="right" /></span></button> : <a class="pd-action" data-demo-download download={workflow.download.filename} href={`data:text/plain;charset=utf-8,${encodeURIComponent(workflow.download.text)}`}>{workflow.download.label}<span aria-hidden="true"><UiIcon name="down" /></span></a>}</footer>
+            </div>
+          </section>)}
+        </div>
+      </article>
+      <span class="pd-sr-only" data-demo-announcer aria-live="polite" aria-atomic="true"></span>
+    </div>
+  </div>
+  <footer class="pd-footer"><span class="pd-mono">{t("fiktiv · keine Kundendaten")}</span><span data-demo-count>01 / {String(panels.length).padStart(2, '0')}</span></footer>
+</section>
+<script>
+  import '../scripts/product-demo';
+</script>

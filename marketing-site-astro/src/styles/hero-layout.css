@@ -1,0 +1,124 @@
+/* The smoke-page composition: promise above, useful context and action around
+   one shared square poster/canvas. The renderer owns only the object motion. */
+.home-hero,
+.landing-hero { position: relative; padding-block: 58px 48px; }
+.home-story,
+.landing-story { isolation: isolate; }
+.hero-copy { position: relative; z-index: 2; text-align: center; }
+.hero-copy h1 { max-width: 1000px; margin-inline: auto; font-size: clamp(3.3rem, 6.3vw, 5.75rem); font-weight: 450; line-height: 1.035; letter-spacing: -.063em; }
+.hero-copy h1 > span { display: block; color: inherit; }
+.landing-hero[data-scene-kind="brand"] h1,
+.landing-hero[data-scene-kind="brain"] h1 { font-size: clamp(3.2rem, 5.7vw, 5.2rem); }
+.hero-stage { --scene-art-size: min(48vw, calc(100svh - 240px), 620px); position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr) minmax(0, 1fr); column-gap: 28px; align-items: start; margin-top: 28px; }
+.hero-context,
+.hero-conversion { position: relative; z-index: 2; }
+.hero-context { margin-top: max(0px, calc((var(--scene-art-size) - 280px) / 2)); }
+.hero-conversion { margin-top: max(0px, calc((var(--scene-art-size) - 210px) / 2)); }
+.hero-object-track { min-width: 0; }
+.hero-object { position: relative; }
+.hero-context .hero-lede { color: #e5d8ca; margin: 0; font-size: clamp(1.4rem, 2.1vw, 1.9rem); line-height: 1.25; letter-spacing: -.035em; max-width: 19ch; }
+.hero-art { position: relative; height: var(--scene-art-size); min-width: 0; isolation: isolate; }
+.hero-art::before { content: ''; position: absolute; z-index: -1; inset: 8% -10%; background: radial-gradient(ellipse, #8a482720, transparent 70%); pointer-events: none; }
+/* --scene-carry (0–1) takes the object along after the pinned sequence: it leads the scroll and recedes. */
+.hero-art > div.hero-scene-embed { position: absolute; width: var(--scene-art-size); max-width: none; top: 50%; left: var(--scene-art-x, 50%); transform: translate(-50%, -50%) translateY(calc(var(--scene-carry, 0) * var(--scene-carry-lift, -120px))) scale(calc(1 - var(--scene-carry, 0) * var(--scene-carry-shrink, .16))); }
+.home-hero { --scene-carry-lift: -26svh; --scene-carry-shrink: .42; }
+.hero-conversion .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; margin: 0; }
+/* Pilot access: the brand gradient on the primary action, a light sweep across it once the
+   third argument is reached, and the early-access line as a plain sentence beneath the actions. */
+.hero-conversion-offer { margin: 14px 6px 0; color: #d6c4b0; font-size: .9rem; line-height: 1.5; letter-spacing: 0; }
+.hero-conversion .button { position: relative; overflow: hidden; isolation: isolate; min-height: 60px; padding-inline: 22px; width: 100%; gap: 14px; font-size: .96rem; font-weight: 600; white-space: normal; text-align: left; line-height: 1.35; color: #1d1714; border-color: transparent; background: linear-gradient(120deg, #f4d7a6 0%, #efb083 48%, #d9a7cf 100%); box-shadow: 0 10px 30px #00000040, inset 0 1px 0 #ffffff80; transition: transform 240ms cubic-bezier(.22,1,.36,1), box-shadow 240ms, background 240ms; }
+.hero-conversion .button:hover { border-color: transparent; background: linear-gradient(120deg, #f8e0b8 0%, #f3bc92 48%, #e2b6da 100%); transform: translateY(-1px); box-shadow: 0 14px 34px #00000059, inset 0 1px 0 #ffffff90; }
+.hero-conversion .button span { flex: none; transition: transform 240ms cubic-bezier(.22,1,.36,1); }
+.hero-conversion .button:hover span { transform: translate(2px, -2px); }
+.hero-conversion .button::after { content: ''; position: absolute; z-index: 1; top: -40%; bottom: -40%; left: -30%; width: 40%; background: linear-gradient(105deg, transparent 0%, #ffffff99 50%, transparent 100%); transform: skewX(-18deg) translateX(-160%); pointer-events: none; }
+[data-scene-aspect="3"] .hero-conversion .button::after { animation: hero-cta-sweep 1100ms cubic-bezier(.22,1,.36,1) 320ms 1 both; }
+@keyframes hero-cta-sweep { from { transform: skewX(-18deg) translateX(-160%); } to { transform: skewX(-18deg) translateX(420%); } }
+@media (prefers-reduced-motion: reduce) { .hero-conversion .button::after { animation: none; } }
+.hero-conversion .text-link { padding-inline: 22px; font-size: .86rem; }
+.hero-conversion .proof { font-size: .72rem; line-height: 1.5; margin-top: 24px; gap: 10px; }
+.hero-conversion .proof span { flex: none; }
+.hero-conversion-note { color: #9c9185; font-size: .76rem; line-height: 1.65; margin: 12px 0 0 40px; }
+.aspect-rail { display: grid; list-style: none; gap: 0; margin: 26px 0 0; padding: 0; }
+.aspect-rail li { position: relative; padding: 12px 0 12px 14px; border-left: 1px solid #695342; color: #b8ada1; transition: color 180ms; }
+.aspect-rail h2 { font-size: clamp(1rem, 1.5vw, 1.3rem); line-height: 1.3; letter-spacing: -.03em; text-wrap: pretty; }
+[data-scene-aspect="1"] .aspect-rail li:nth-child(1),
+[data-scene-aspect="2"] .aspect-rail li:nth-child(2),
+[data-scene-aspect="3"] .aspect-rail li:nth-child(3) { color: #f6deca; border-left-color: #d08c69; }
+.hero-baseline { position: relative; z-index: 2; display: flex; justify-content: center; padding-top: 6px; }
+.hero-baseline > div.hero-outcome { width: min(440px, 100%); min-height: 76px; border: 0; padding: 0; text-align: center; }
+.hero-baseline :is(.hero-outcome__title) { font-size: 1.2rem; }
+.hero-baseline .hero-outcome__context { color: #a79889; }
+.landing-hero > .breadcrumb { gap: 10px; margin: -28px 0 20px; min-height: 30px; font-size: .75rem; }
+.demo-next-step { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 27px; }
+.demo-next-step > p { color: var(--muted); font-size: 1rem; }
+/* Pin the object, not the headline. The square stays at the viewport center;
+   its changing caption travels with it through one bounded native scroll arc.
+   Wide layouts only: compact layouts are static (poster, arguments as a list). */
+@media (min-width: 1100px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  [data-immersive] .hero-object-track::after { content: ''; display: block; height: clamp(480px, 72svh, 680px); }
+  /* The home page holds the object longer: its arguments are the whole story. */
+  .home-hero[data-immersive] .hero-object-track::after { height: clamp(760px, 150svh, 1400px); }
+  /* Carry: the object dims as it lifts and shrinks (variables above), so the page takes a
+     receding object along rather than dragging the full mark out of the frame. */
+  .home-hero[data-immersive] .hero-scene-embed { opacity: calc(1 - var(--scene-carry, 0) * .5); }
+  /* Focus: a soft dark halo behind the pinned object keeps the film's skyline from reading
+     through the mark. It arrives with the first argument and leaves with the carry. */
+  .home-hero[data-immersive] .hero-object::before { content: ''; position: absolute; z-index: 0; left: var(--scene-art-x, 50%); top: 50%; width: calc(var(--scene-art-size) * 2.9); height: calc(var(--scene-art-size) * 2.9); translate: -50% -50%; border-radius: 50%; background: radial-gradient(closest-side, #0e0c0be0 0%, #0e0c0bb8 24%, #0e0c0b73 48%, #0e0c0b2e 74%, transparent 100%); opacity: calc(var(--scene-focus, 0) * max(0, 1 - var(--scene-carry, 0) * 1.6)); transition: opacity 700ms ease; pointer-events: none; }
+  .home-hero[data-immersive]:is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) .hero-object { --scene-focus: 1; }
+  /* The gallery meets the receding object: its first card reaches the object's foot as the
+     arguments finish fading, and the object has left the frame before the gallery pins. */
+  body[data-backdrop] #produkt.product-section { position: relative; z-index: 2; margin-top: calc(-1 * clamp(260px, 40svh, 400px)); padding-top: 0; }
+  body[data-backdrop] #produkt.product-section > .shell { padding-top: 0; border-top: 0; }
+  [data-immersive] .hero-object { position: sticky; top: calc((100svh - var(--scene-art-size)) / 2); }
+}
+@media (min-width: 781px) and (min-height: 500px) and (prefers-reduced-motion: no-preference) {
+  [data-immersive] .hero-context { position: sticky; top: calc(50svh - 140px); }
+  [data-immersive] .hero-conversion { position: sticky; top: calc(50svh - 105px); }
+}
+@media (max-width: 1100px) and (min-width: 781px) {
+  .hero-stage { grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr) minmax(0, 1fr); gap: 16px; }
+  .hero-conversion .button { font-size: .75rem; padding-inline: 15px; }
+  .hero-conversion .text-link { font-size: .8rem; padding-inline: 15px; }
+  .hero-conversion .proof { font-size: .65rem; }
+  .hero-conversion-note { margin-left: 0; }
+  .hero-context .hero-lede { font-size: 1.4rem; }
+  .aspect-rail h2 { font-size: 1rem; }
+}
+@media (max-width: 780px) {
+  .home-hero, .landing-hero { padding-block: 46px 40px; }
+  .hero-copy h1, .landing-hero[data-scene-kind] h1 { font-size: clamp(2.5rem, 8.6vw, 4.3rem); max-width: 21ch; }
+  .hero-stage { --scene-art-size: min(460px, calc(100vw - 40px), calc(100svh - 240px)); display: flex; flex-direction: column; margin-top: 26px; gap: 0; }
+  .hero-conversion { order: 1; width: min(400px, 100%); margin: 0 auto; }
+  .hero-conversion .hero-actions { flex-direction: row; align-items: center; justify-content: center; gap: 20px; }
+  .hero-conversion .button { width: auto; gap: 20px; padding-inline: 22px; font-size: .8rem; }
+  .hero-conversion .text-link { width: auto; padding: 0; gap: 12px; font-size: .82rem; }
+  .hero-conversion .proof { justify-content: center; margin-top: 16px; }
+  .hero-conversion-note { text-align: center; margin: 6px 0 0; font-size: .65rem; }
+  .hero-conversion-note br { display: none; }
+  .hero-object-track { order: 2; width: var(--scene-art-size); margin: 8px auto 0; }
+  .hero-art { width: 100%; }
+  .hero-art::before { inset: 8% 0; }
+  .hero-context { order: 3; width: min(520px, 100%); margin: 24px auto 0; }
+  .hero-context .hero-lede { text-align: center; max-width: 26ch; margin-inline: auto; font-size: 1.65rem; }
+  .aspect-rail { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 24px; gap: 16px; }
+  .aspect-rail li { padding: 13px 0 0; border-left: 0; border-top: 1px solid #695342; }
+  .aspect-rail h2 { font-size: .94rem; overflow-wrap: anywhere; hyphens: auto; }
+  [data-scene-aspect="1"] .aspect-rail li:nth-child(1),
+  [data-scene-aspect="2"] .aspect-rail li:nth-child(2),
+  [data-scene-aspect="3"] .aspect-rail li:nth-child(3) { border-top-color: #d08c69; }
+  .hero-baseline { margin-top: 6px; }
+  .hero-baseline .hero-outcome__title { font-size: 1.1rem; }
+  .landing-hero > .breadcrumb { margin-top: -20px; margin-bottom: 20px; }
+  .demo-next-step { align-items: flex-start; flex-direction: column; gap: 8px; }
+}
+@media (max-width: 380px) {
+  .hero-copy h1, .landing-hero[data-scene-kind] h1 { font-size: 2.2rem; }
+  .hero-conversion .hero-actions { gap: 12px; }
+  .hero-conversion .button { padding-inline: 15px; font-size: .7rem; gap: 12px; min-height: 48px; }
+  .hero-conversion .text-link { font-size: .76rem; gap: 6px; }
+  .aspect-rail { gap: 10px; }
+  .aspect-rail h2 { font-size: .84rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-hero[data-immersive], .landing-hero[data-immersive] { padding-bottom: 40px; }
+}

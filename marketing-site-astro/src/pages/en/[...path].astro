@@ -1,0 +1,26 @@
+---
+import Home from '../index.astro';
+import Catalog from '../produkt/index.astro';
+import Product from '../produkt/[slug].astro';
+import About from '../unternehmen.astro';
+import Contact from '../kontakt.astro';
+import Waitlist from '../warteliste.astro';
+import Legal from '../legal/[slug].astro';
+import NotFound from '../404.astro';
+import { products } from '../../content/products';
+import { legalDocuments } from '../../content/legal';
+interface Props { kind: string; product?: typeof products[number]; document?: typeof legalDocuments[number] }
+
+export function getStaticPaths() {
+  return [
+    { params: { path: undefined }, props: { kind: 'home' } },
+    ...['produkt', 'unternehmen', 'kontakt', 'warteliste', '404'].map(path => ({ params: { path }, props: { kind: path } })),
+    ...products.map(product => ({ params: { path: `produkt/${product.slug}` }, props: { kind: 'product', product } })),
+    ...legalDocuments.map(document => ({ params: { path: `legal/${document.slug}` }, props: { kind: 'legal', document } })),
+  ];
+}
+const { kind, product, document } = Astro.props;
+const components = { home: Home, produkt: Catalog, unternehmen: About, kontakt: Contact, warteliste: Waitlist, '404': NotFound };
+const Page = components[kind as keyof typeof components] ?? NotFound;
+---
+{kind === 'product' && product ? <Product product={product} /> : kind === 'legal' && document ? <Legal document={document} /> : <Page />}

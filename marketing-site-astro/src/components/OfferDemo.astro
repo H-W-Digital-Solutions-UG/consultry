@@ -1,0 +1,76 @@
+---
+import UiIcon from "./UiIcon.astro";
+import { localeFromPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+import { createOfferDraft, offerToMarkdown } from '../content/offer-demo';
+import '../styles/product-demo.css';
+import '../styles/offer-demo.css';
+const draft = createOfferDraft({ scope: 'analysis' }, locale);
+---
+<section id="product-demo-brand" class="product-demo offer-demo" data-offer-demo aria-label={t("Interaktive Demo: vom Kundengespräch zum Angebot")}>
+  <template data-offer-item-icon><UiIcon name="up-right" /></template>
+  <header class="pd-app-header">
+    <div class="pd-project od-location"><img src="/images/consultry-logo.png" alt={t("Consultry")} width="20" height="20" /><span>{t("Kunden")} <span class="pd-app-divider" aria-hidden="true"><UiIcon name="chevron-right" /></span> <strong>{t("Lindenwerk · Angebot")}</strong></span></div>
+    <span class="pd-draft od-demo-label">{t("Interaktive Demo · Beispieldaten")}</span>
+  </header>
+  <div class="pd-main od-workspace">
+    <aside class="pd-prompt-workspace od-cowork" aria-label={t("Zusammenarbeit mit Consultry")}>
+      <details class="pd-prompt-details" open>
+        <summary>{t("Arbeitsauftrag")} <span class="pd-collapse-icon" aria-hidden="true">−</span></summary>
+        <div class="pd-composer">
+          <div class="pd-prompt-field od-request"><span class="pd-eyebrow">{t("Dein Auftrag · Beispiel")}</span><p>{t("Ein Angebot für Lindenwerk: aus den Gesprächsnotizen, mit unseren Leistungen und unserer Vorlage.")}</p></div>
+          <div class="od-agent-reply"><p>{t("Der erste Entwurf steht.")}</p><p><strong>{t("Wie weit soll das Angebot gehen?")}</strong></p></div>
+          <form data-offer-form>
+            <fieldset><legend class="od-sr-only">{t("Leistungsumfang auswählen")}</legend>
+              <label class="od-option"><input type="radio" name="offer-scope" value="analysis" checked /><span><strong>{t("Erst Klarheit schaffen")}</strong><small>{t("Analyse + konkreter Maßnahmenplan")}</small></span><span class="od-option-tag">{t("Klein starten")}</span></label>
+              <label class="od-option"><input type="radio" name="offer-scope" value="implementation" /><span><strong>{t("Direkt etwas verbessern")}</strong><small>{t("Analyse + ein Workflow-Pilot")}</small></span></label>
+              <label class="od-option"><input type="radio" name="offer-scope" value="custom" /><span><strong>{t("Anders zuschneiden")}</strong><small>{t("Eigene Ergänzung einbringen")}</small></span></label>
+            </fieldset>
+            <div class="od-note" data-offer-note-wrap hidden><label for="offer-custom-note">{t("Was soll zusätzlich ins Angebot?")}</label><textarea id="offer-custom-note" data-offer-note maxlength="600" rows="3" placeholder={t("Zum Beispiel: einen Übergabe-Workshop für unser Team ergänzen.")} aria-describedby="offer-note-help"></textarea><p id="offer-note-help">{t("Wird wörtlich als offene Ergänzung übernommen. Keine KI-Auswertung.")}</p></div>
+            <button class="pd-run od-apply" type="submit" data-offer-apply disabled>{t("Entwurf aktualisieren")} <span aria-hidden="true"><UiIcon name="up-right" /></span></button>
+          </form>
+        </div>
+      </details>
+      <div class="pd-agent-panels"><section class="pd-agent-panel" data-active="true" aria-label={t("Agentenbeitrag zum Angebotsentwurf")}>
+        <header class="pd-agent-heading"><span class="pd-agent-avatar" aria-hidden="true">{t("C")}</span><div><strong>{t("Consultry")}</strong><span>{t("Agent · Angebotsentwurf")}</span></div></header>
+        <p class="pd-agent-text od-feedback" role="status" aria-live="polite" aria-atomic="true" data-offer-status>{t("Wähle den Umfang. Passe den Entwurf an.")}</p>
+      </section></div>
+      <a class="od-result-link" href="#offer-document" data-offer-result-link hidden>{t("Geänderten Entwurf ansehen")} <span aria-hidden="true"><UiIcon name="down" /></span></a>
+      <button class="od-reset" type="button" data-offer-reset hidden>{t("Beispiel zurücksetzen")}</button>
+      <div class="od-simulation"><p>{t("Lokale Demo. Keine KI-Verarbeitung. Deine Eingabe bleibt hier; nichts wird versendet.")}</p></div>
+      <noscript><p>{t("Du siehst den Analyse-Entwurf. Aktiviere JavaScript, um den Umfang interaktiv zu ändern.")}</p></noscript>
+    </aside>
+    <div class="pd-canvas od-result">
+      <header class="pd-canvas-header"><div><span class="pd-canvas-label">{t("Canvas")}</span><h3>{t("Angebot · Lindenwerk")}</h3></div></header>
+      <article id="offer-document" class="pd-artifact od-document" data-offer-document aria-label={t("Angebotsentwurf für Lindenwerk")}>
+        <div class="pd-document-header od-document-toolbar"><div data-offer-version>{t("v1 ·")} {draft.scopeLabel}</div><span>{t("Entwurf")}</span></div>
+        <header class="od-letterhead"><div class="od-wordmark"><span class="od-monogram" aria-hidden="true">{t("n.")}</span><span>{t("NORDLICHT")}<small>{t("DIGITAL")}</small></span></div><span>{t("ANGEBOT")}<br /><strong>{t("Für Lindenwerk GmbH")}</strong></span></header>
+        <div class="od-document-body">
+          <span class="od-eyebrow">{t("Weniger Handarbeit. Mehr Überblick.")}</span>
+          <h3 data-offer-title>{draft.title}</h3>
+          <p class="od-intro">{t("Euer Team überträgt Aufträge aus E-Mails und Excel ins ERP. Wir klären, was sich vereinfachen lässt und womit ihr sinnvoll anfangt.")}</p>
+          <section class="od-scope-block" aria-label={t("Leistungsumfang")}>
+            <div class="od-section-heading"><h4>{t("Das übernehmen wir")}</h4><span data-offer-scope-label>{draft.scopeLabel}</span></div>
+            <ul class="od-deliverables" data-offer-included>{draft.included.map(item => <li><span aria-hidden="true"><UiIcon name="up-right" /></span><span>{item}</span></li>)}</ul>
+          </section>
+          <div class="od-terms"><div><span>{t("Zeitrahmen")}</span><strong data-offer-duration>{draft.duration}</strong></div><div><span>{t("Investition · Beispielpreis")}</span><strong data-offer-fee>{draft.fee}</strong></div></div>
+          <div class="od-custom-result" data-offer-custom-result hidden><h4>{t("Deine Ergänzung · noch abzustimmen")}</h4><p data-offer-custom-text></p></div>
+          <details class="od-assumptions"><summary>{t("Rahmen & offene Punkte")} <span aria-hidden="true">+</span></summary><p data-offer-assumption>{draft.assumption}</p><ul data-offer-excluded>{draft.excluded.map(item => <li>{item}</li>)}</ul></details>
+          <details class="od-sources" data-offer-sources><summary>{t("Aus eurer Vorarbeit")} <span>{t("3 Grundlagen")} <span aria-hidden="true"><UiIcon name="up-right" /></span></span></summary>
+            <div class="od-source"><h4>{t("Gesprächsnotizen · Lindenwerk")}</h4><blockquote>{t("Sechs Personen im Operations-Team. Aufträge werden aus E-Mails und Excel ins ERP übertragen. Gesucht ist ein bezahlbarer nächster Schritt; die Geschäftsführung entscheidet nächste Woche.")}</blockquote></div>
+            <div class="od-source"><h4>{t("Leistungsprofil · Prozessverbesserung")}</h4><blockquote>{t("Analyse: zwei Workshops, Prozessbild und priorisierter Maßnahmenplan. Optional: ein kleiner Workflow-Pilot mit Test und Übergabe. Ein ERP-Austausch ist nicht enthalten.")}</blockquote></div>
+            <div class="od-source"><h4>{t("Angebotsvorlage · Nordlicht")}</h4><blockquote>{t("Kurzer Einstieg in Kundensprache. Konkrete Ergebnisse, Umfang, Zeitrahmen und Honorar getrennt ausweisen. Annahmen ausdrücklich benennen. Beispielpakete: Analyse 3.200 €, Analyse mit Pilot 7.800 €, jeweils netto.")}</blockquote></div>
+          </details>
+        </div>
+        <footer class="od-paper-footer"><span>{t("Nordlicht · Vorlage „Angebot kompakt“")}</span><span data-offer-document-status>{draft.status}</span></footer>
+        <div class="od-export"><span>{t("Dein aktueller Stand, zum Weiterarbeiten.")}</span><a class="pd-action" data-offer-download download="lindenwerk-angebot-entwurf.md" href={`data:text/markdown;charset=utf-8,${encodeURIComponent(offerToMarkdown(draft, locale))}`}>{t("Entwurf herunterladen")} <span aria-hidden="true"><UiIcon name="down" /></span></a></div>
+      </article>
+    </div>
+  </div>
+  <footer class="pd-footer"><span>{t("Fiktives Beispiel · keine Kundendaten")}</span><span>{t("Auftrag → Angebotsentwurf")}</span></footer>
+</section>
+<script>
+  import '../scripts/offer-demo';
+</script>

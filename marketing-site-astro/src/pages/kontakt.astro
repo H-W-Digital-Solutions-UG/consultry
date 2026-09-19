@@ -1,0 +1,10 @@
+---
+import UiIcon from "../components/UiIcon.astro";
+import { localeFromPath, localizedPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const link = (path: string) => localizedPath(path, locale);
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title={t("Kontakt")}><main id="inhalt"><section class="section shell prose-page"><h1>{t("Was hält dich")}<br /><span>{t("gerade auf?")}</span></h1><p class="hero-lede">{t("Erzähl uns von deiner Arbeit, deinen Fragen oder davon, was du mit Consultry erproben möchtest.")}</p><a class="contact-mail" href="mailto:kontakt@consultry.com">{t("kontakt@consultry.com")} <span aria-hidden="true"><UiIcon name="up-right" /></span></a><div class="prose-grid"><h2>{t("Consultry")}</h2><p>{t("Ein Produkt der H&W Digital Solutions UG.")}<br />{t("Greifswalder Straße 13d · 10405 Berlin")}<br /><a class="text-link" href={link("/legal/impressum")}>{t("Unternehmensangaben")} <span aria-hidden="true"><UiIcon name="up-right" /></span></a></p></div></section></main></BaseLayout>

@@ -1,0 +1,230 @@
+/* One centered scene with connected HTML evidence. Only the optional paths
+   follow projected anchors; text remains normal, selectable document content. */
+.hero-mobile-lede { display: none; }
+.hero-eyebrow { margin-bottom: 14px; color: #c7ac97; font-size: .9rem; line-height: 1.4; letter-spacing: .01em; }
+:is(.home-hero,.landing-hero)[data-immersive] { padding-block: 26px 40px; }
+[data-immersive] .hero-copy h1 { font-size: clamp(2.7rem, min(5.6vw, 7.8svh), 5.4rem); }
+[data-immersive] > .breadcrumb { margin-top: -14px; margin-bottom: 6px; }
+[data-immersive] .hero-stage { --scene-art-size: min(46vw, calc(100svh - 320px), 580px); margin-top: 12px; }
+/* The home mark sits smaller in the opening view; the receding carry keeps its proportions. */
+@media (min-width: 1100px) and (min-height: 650px) { .home-hero[data-immersive] .hero-stage { --scene-art-size: min(40vw, calc(100svh - 360px), 500px); } }
+.hero-stage--connected { display: grid; grid-template-columns: minmax(0, 1fr); }
+.hero-stage--connected .hero-object-track { grid-area: 1 / 1; width: 100%; }
+.hero-stage--connected .hero-art { z-index: 1; }
+.hero-stage--connected .hero-art::before { inset: 6% auto; left: calc(var(--scene-art-x, 50%) - 30%); right: calc(70% - var(--scene-art-x, 50%)); }
+.hero-stage--connected .hero-conversion { grid-area: 1 / 1; justify-self: end; width: 255px; margin-top: max(20%, 94px); }
+.hero-stage--connected .hero-conversion .proof { margin-top: 13px; }
+.hero-stage--connected .hero-conversion .hero-conversion-note { margin-top: 5px; }
+.hero-pin, .hero-lead { display: contents; }
+
+.hero-intro { position: relative; z-index: 2; margin: 0 4px; color: #e5d8ca; font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.5; letter-spacing: -.02em; }
+.hero-signals { position: absolute; inset: 0 0 auto; height: var(--scene-art-size); pointer-events: none; }
+.hero-signal-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; opacity: calc(1 - var(--scene-carry, 0)); }
+.hero-object:not(:has(.hero-scene-embed[data-status="ready"])) .hero-signal-lines { visibility: hidden; }
+.hero-signal-lines path { fill: none; stroke: #d1a07b; stroke-width: 1; vector-effect: non-scaling-stroke; opacity: 0; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 600ms cubic-bezier(.22,1,.36,1), opacity 400ms; }
+/* One right-hand stack for all three arguments; lede and pilot access hold the left. */
+.hero-signal-stack { position: absolute; z-index: 2; right: 0; top: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; width: 22%; max-width: 278px; height: 100%; pointer-events: none; }
+.hero-signal { position: relative; display: flex; gap: 12px; width: 100%; padding-block: 8px; pointer-events: auto; --signal-shift: -26px; transition: opacity 340ms ease, translate 550ms cubic-bezier(.22,1,.36,1); }
+.hero-signal-index { flex: none; display: grid; place-items: center; margin-top: 3px; width: 23px; height: 23px; border-radius: 50%; color: #d6ac89; background: #2b221bc7; font: 11px/1 var(--font-mono); }
+.hero-signal-visual { flex: none; display: block; width: 48px; height: 48px; margin-top: -4px; overflow: hidden; background: #f1e6d8; mask-image: var(--hook-visual); mask-mode: luminance; mask-size: 165% 165%; mask-position: center; mask-repeat: no-repeat; pointer-events: none; }
+/* Luminance masking removes the generated black ground without changing the
+   signed SVG source. It remains clean inside the scroll animation's layers. */
+.hero-signal-visual img { display: block; width: 100%; height: 100%; opacity: 0; }
+.hero-signal h2 { color: #f1e6d8; font-size: clamp(1.35rem, 2.1vw, 1.95rem); line-height: 1.16; letter-spacing: -.045em; text-wrap: pretty; }
+.hero-signal:has(.hero-signal-visual) h2 { font-size: clamp(1.25rem, 1.75vw, 1.6rem); }
+.hero-signal:has(.hero-signal-visual) > div { min-width: 0; }
+/* Product pages: one sentence beneath each argument, so the sequence reads like a build log. */
+.hero-signal p { margin: 6px 0 0; color: #cdbfae; font-size: .95rem; line-height: 1.45; max-width: 30ch; text-wrap: pretty; }
+.hero-signal-stack:has(.hero-signal p) { width: 27%; max-width: 330px; }
+/* Home scene: heading above the arguments, a quiet workspace preview after the third one, and the closing line. */
+.hero-signal-heading { margin: 0 0 6px; color: #f1e6d8; font-size: clamp(1.15rem, 1.5vw, 1.45rem); font-weight: 600; line-height: 1.25; letter-spacing: -.03em; text-wrap: balance; opacity: 0; translate: -14px 0; transition: opacity 400ms ease, translate 550ms cubic-bezier(.22,1,.36,1); }
+:is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) .hero-signal-heading { opacity: 1; translate: 0 0; }
+[data-scroll-scene]:not([data-scene-aspect]) .hero-signal-heading { opacity: 1; translate: none; }
+.hero-workspace { display: grid; gap: 4px; padding-top: 10px; border-top: 1px solid #ffffff1f; opacity: 0; translate: 0 10px; transition: opacity 450ms ease 120ms, translate 600ms cubic-bezier(.22,1,.36,1) 120ms; }
+[data-scene-aspect="3"] .hero-workspace, [data-scroll-scene]:not([data-scene-aspect]) .hero-workspace { opacity: 1; translate: 0 0; }
+.hero-workspace-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; margin: 0; color: #f1e6d8; font-size: 1rem; font-weight: 600; line-height: 1.3; letter-spacing: -.02em; }
+.hero-workspace-tag { color: #a1958a; font: 10.5px/1.4 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+.hero-workspace-text { margin: 0; color: #cdbfae; font-size: .88rem; line-height: 1.38; max-width: 36ch; text-wrap: pretty; }
+.hero-workspace-ui { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 14px; margin: 6px 0 0; padding: 7px 11px; list-style: none; border: 1px solid #ffffff14; border-radius: 10px; background: #15131199; font: 11px/1.5 var(--font-mono); color: #a1958a; }
+.hero-workspace-ui li { display: flex; justify-content: space-between; gap: 8px; white-space: nowrap; }
+.hero-workspace-ui li span:last-child { color: #d9a985; }
+.hero-closing { display: none; }
+/* Assembly status beneath the step line: building while the arguments arrive, ready once all three are reached. */
+.hero-status { display: none; }
+.hero-status span { display: none; }
+.hero-status [data-status="building"] { display: inline; }
+.hero-status [data-status="building"] i::after { content: '...'; display: inline-block; width: 1.4em; text-align: left; animation: hero-status-dots 1.6s steps(1, end) infinite; }
+[data-scene-aspect="3"] .hero-status [data-status="building"] { display: none; }
+[data-scene-aspect="3"] .hero-status [data-status="ready"] { display: inline; color: #d08c69; }
+@keyframes hero-status-dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
+@media (prefers-reduced-motion: reduce) { .hero-status [data-status="building"] i::after { animation: none; } }
+.hero-steps { display: none; }
+/* Reached arguments accumulate; the document shows the latest work state. */
+[data-scene-aspect] .hero-signal { opacity: 0; visibility: hidden; translate: var(--signal-shift) 12px; }
+:is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) [data-signal-note="1"],
+:is([data-scene-aspect="2"], [data-scene-aspect="3"]) [data-signal-note="2"],
+[data-scene-aspect="3"] [data-signal-note="3"] { opacity: 1; visibility: visible; translate: 0 0; }
+:is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) [data-signal-connection="1"],
+:is([data-scene-aspect="2"], [data-scene-aspect="3"]) [data-signal-connection="2"],
+[data-scene-aspect="3"] [data-signal-connection="3"] { opacity: .55; stroke-dashoffset: 0; }
+/* If enhancement is unavailable, keep every argument in normal document flow. */
+[data-scroll-scene]:not([data-scene-aspect]) .hero-signals { position: relative; height: auto; display: flex; gap: 24px; }
+[data-scroll-scene]:not([data-scene-aspect]) .hero-signal-stack { display: contents; }
+[data-scroll-scene]:not([data-scene-aspect]) .hero-signal { position: static; width: 33%; }
+[data-scroll-scene]:not([data-scene-aspect]) .hero-intro { display: none; }
+/* Explainer visual: a schematic product diagram beside the copy. The renders are transparent line
+   art (off-white strokes, copper accents), so the diagram sits directly on the page with no card,
+   edge or rectangle. A soft copper haze lies behind it; its gradient ends fully transparent inside
+   its own box, so no shape or border of the haze can show. */
+.hero-explainer { position: relative; z-index: 2; width: min(560px, 100%); margin: 28px auto 0; padding: 0; }
+.hero-explainer::before { content: ""; position: absolute; z-index: -1; inset: -22% -4% -28% -32%; background: radial-gradient(closest-side at 42% 60%, #b8623f3d 0%, #b8623f24 34%, #b8623f0d 66%, transparent 100%); pointer-events: none; }
+.hero-explainer img { display: block; width: 100%; height: auto; }
+@media (min-width: 1100px) and (min-height: 650px) and (prefers-reduced-motion: no-preference) {
+  [data-immersive] .hero-pin { display: block; position: sticky; top: calc((100svh - var(--scene-art-size)) / 2); }
+  /* Product pages: the object sits in the left half, the three arguments take the right column,
+     so the pinned frame reads as one two-column composition instead of a centred object with
+     an empty left third. The same composition holds on the home page. */
+  :is(.landing-hero, .home-hero)[data-immersive] { --scene-art-x: 36%; }
+  .home-hero .hero-signal-stack { width: 36%; max-width: 440px; gap: 18px; }
+  .home-hero .hero-signal { padding-block: 6px; }
+  .home-hero .hero-signal p { margin-top: 6px; max-width: 30ch; font-size: 1.02rem; line-height: 1.42; }
+  .home-hero .hero-signal:has(.hero-signal-visual) h2 { font-size: clamp(1.45rem, 1.9vw, 1.8rem); }
+  .home-hero .hero-signal-visual { width: 54px; height: 54px; }
+  .landing-hero .hero-signal-stack { width: 36%; max-width: 440px; }
+  .landing-hero .hero-signal h2 { font-size: clamp(1.45rem, 2vw, 1.95rem); }
+  .landing-hero .hero-signal:has(.hero-signal-visual) h2 { font-size: clamp(1.4rem, 1.9vw, 1.8rem); }
+  .landing-hero .hero-signal p { max-width: 34ch; font-size: 1rem; }
+  .landing-hero .hero-signal-visual { width: 54px; height: 54px; }
+  [data-immersive] .hero-pin .hero-object { position: relative; top: auto; }
+  /* Left column: the lede and, below it, the pilot-access card, centred on the object as a
+     group and present from the first frame; the card's glow deepens once the third argument
+     is reached. The three arguments answer from the right. */
+  [data-immersive] .hero-stage--connected .hero-lead { display: flex; position: absolute; z-index: 2; left: 0; top: 50%; translate: 0 -50%; flex-direction: column; width: calc(26% - 12px); max-width: 340px; }
+  /* The lede reads centred under the headline; the left column holds the card alone. */
+  [data-immersive] .hero-stage--connected .hero-intro { display: none; }
+  [data-immersive] .hero-mobile-lede { display: block; max-width: 34ch; margin: 28px auto 0; color: #dcd2c5; font-size: clamp(1.25rem, 1.75vw, 1.6rem); line-height: 1.4; letter-spacing: -.02em; text-align: center; }
+  [data-immersive] .hero-stage--connected .hero-conversion { position: relative; top: auto; translate: none; display: flex; flex-direction: column; width: 100%; margin: 0; padding: 26px 26px 24px; border-radius: 28px; border: 1px solid #ffffff2e; background: linear-gradient(160deg, #ffffff1a 0%, #ffffff08 60%, #ffffff10 100%), #15141380; box-shadow: inset 0 1px 0 #ffffff38, inset 0 -1px 0 #00000059, 0 26px 70px #00000059, 0 0 60px 4px #d08c691f; backdrop-filter: blur(14px) saturate(1.1); -webkit-backdrop-filter: blur(14px) saturate(1.1); text-align: left; }
+  /* The card stays out of the opening view and arrives with the first argument. */
+  [data-immersive] .hero-stage--connected .hero-conversion { transition: opacity 520ms ease, translate 700ms cubic-bezier(.22,1,.36,1), border-color 900ms ease, box-shadow 900ms ease; }
+  [data-scene-aspect="0"] .hero-stage--connected .hero-conversion { opacity: 0; visibility: hidden; translate: 0 18px; pointer-events: none; }
+  [data-scene-aspect="3"] .hero-stage--connected .hero-conversion { border-color: #ffffff47; box-shadow: inset 0 1px 0 #ffffff42, inset 0 -1px 0 #00000059, 0 26px 70px #00000059, 0 0 96px 14px #d08c6942; }
+  .hero-stage--connected .hero-conversion-offer { margin: 14px 4px 0; font-size: .86rem; }
+  .hero-stage--connected .hero-conversion .hero-actions { align-items: stretch; gap: 12px; }
+  .hero-stage--connected .hero-conversion .button { width: 100%; min-height: 64px; padding-inline: 24px; font-size: 1.02rem; }
+  .hero-stage--connected .hero-conversion .text-link { display: inline-flex; min-height: 48px; padding: 0 8px; gap: 12px; font-size: .9rem; }
+  .hero-stage--connected .hero-conversion .proof { justify-content: flex-start; margin-top: 16px; }
+  .hero-stage--connected .hero-conversion-note { margin: 14px 8px 0; font-size: .8rem; line-height: 1.6; }
+  .hero-stage--connected .hero-conversion-note br { display: none; }
+  /* Scroll levels as a subtle step line under the object: three segments, one or two words
+     each, all present from the start; reached segments fill copper, the current one reads light. */
+  .hero-stage--connected .hero-steps { display: flex; position: absolute; z-index: 2; left: var(--scene-art-x, 50%); bottom: -40px; translate: -50% 0; width: var(--scene-art-size); gap: 12px; margin: 0; padding: 0; list-style: none; pointer-events: none; }
+  .hero-stage--connected .hero-status { display: block; position: absolute; z-index: 2; left: var(--scene-art-x, 50%); bottom: -72px; translate: -50% 0; margin: 0; color: #a1958a; font: 11.5px/1.3 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; pointer-events: none; transition: color 450ms ease; }
+  .hero-stage--connected .hero-closing { display: block; position: absolute; z-index: 2; left: var(--scene-art-x, 50%); bottom: -128px; translate: -50% 0; width: min(560px, 100%); margin: 0; color: #d9cfc2; font-size: 1.02rem; line-height: 1.45; text-align: center; text-wrap: balance; opacity: 0; transition: opacity 600ms ease; }
+  [data-scene-aspect="3"] .hero-stage--connected .hero-closing { opacity: 1; }
+  .hero-steps li { position: relative; flex: 1 1 0; min-width: 0; padding-top: 11px; color: #a1958a; font: 11.5px/1.3 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 450ms ease; }
+  .hero-steps li::before, .hero-steps li::after { content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 1px; }
+  .hero-steps li::before { background: #3d352d; }
+  .hero-steps li::after { background: #d08c69; transform: scaleX(0); transform-origin: left; transition: transform 650ms cubic-bezier(.22,1,.36,1); }
+  :is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) .hero-steps [data-step="1"],
+  :is([data-scene-aspect="2"], [data-scene-aspect="3"]) .hero-steps [data-step="2"],
+  [data-scene-aspect="3"] .hero-steps [data-step="3"] { color: #c9a283; }
+  :is([data-scene-aspect="1"], [data-scene-aspect="2"], [data-scene-aspect="3"]) .hero-steps [data-step="1"]::after,
+  :is([data-scene-aspect="2"], [data-scene-aspect="3"]) .hero-steps [data-step="2"]::after,
+  [data-scene-aspect="3"] .hero-steps [data-step="3"]::after { transform: scaleX(1); }
+  [data-scene-aspect="1"] .hero-steps [data-step="1"], [data-scene-aspect="2"] .hero-steps [data-step="2"], [data-scene-aspect="3"] .hero-steps [data-step="3"] { color: #f1e6d8; }
+  /* Home: the opening view is copy and call to action alone; the object waits in the next zone
+     and builds up from the first scrolled pixel until it rests in the pinned frame. */
+  [data-immersive] .hero-copy { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100svh - 150px); padding-bottom: 6svh; }
+  [data-immersive] .hero-copy .hero-conversion { position: static; width: min(640px, 100%); margin: 44px auto 0; padding: 0; text-align: center; }
+  [data-immersive] .hero-copy .hero-conversion-offer { margin: 24px auto 0; font-size: 1rem; text-align: center; }
+  [data-immersive] .hero-copy .hero-actions { flex-direction: row; justify-content: center; align-items: center; gap: 34px; }
+  [data-immersive] .hero-copy .hero-conversion :is(.button, .text-link) { width: auto; }
+  [data-immersive] .hero-copy .button { min-height: 64px; padding-inline: 32px; font-size: 1.06rem; }
+  [data-immersive] .hero-copy .hero-conversion .text-link { font-size: 1rem; }
+  [data-immersive] .hero-stage { margin-top: 0; }
+  /* Product pages: copy and call to action on the left, the explainer visual on the right. */
+  [data-immersive] .hero-copy--split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(32px, 4vw, 64px); text-align: left; }
+  [data-immersive] .hero-copy--split h1 { margin-inline: 0; }
+  [data-immersive] .hero-copy--split .hero-mobile-lede { margin: 18px 0 0; text-align: left; }
+  .home-hero[data-immersive] .hero-mobile-lede { max-width: 40ch; }
+  [data-immersive] .hero-copy--split .hero-conversion { margin: 28px 0 0; text-align: left; }
+  [data-immersive] .hero-copy--split .hero-actions { justify-content: flex-start; }
+  [data-immersive] .hero-copy--split .hero-conversion-offer { margin-inline: 0; text-align: left; }
+  [data-immersive] .hero-copy--split .hero-explainer { margin: 0; width: 100%; max-width: 660px; justify-self: end; }
+  /* Home story: once the arguments are done, they and the actions fade while the
+     object recedes upward and the product gallery rises beneath it. */
+  .home-hero .hero-signal-stack, .home-hero .hero-steps, .home-hero .hero-lead, .home-hero .hero-signal-lines, .home-hero .hero-status, .home-hero .hero-closing { opacity: calc(1 - var(--scene-carry, 0) * 2.2); }
+  .home-hero .hero-lead[data-faded="true"] { visibility: hidden; }
+  /* Flat viewports: keep both columns inside the object height. */
+  @media (max-height: 760px) { .hero-signal p, .hero-workspace-text { display: none; } .hero-signal-stack { gap: 10px; } .hero-stage--connected .hero-conversion .proof { margin-top: 12px; } }
+  /* Keep the direct demo shortcut below the primary action in the pinned column. */
+}
+/* Compact layouts (phones, small tablets, flat windows) are static. The poster stands for the
+   object: no WebGL, no pinned scroll story (see the matching query in hero-scene.ts). The three
+   arguments follow the object as a plain list with their sentences, all visible from the start. */
+@media (max-width: 1099px), (max-height: 649px) {
+  [data-immersive] .hero-stage { --scene-art-size: min(62vw, 300px); margin-top: 0; }
+  .hero-mobile-lede { display: block; max-width: 34ch; margin: 18px auto 0; color: #d2c6b8; font-size: 1.12rem; line-height: 1.45; letter-spacing: -.015em; text-wrap: pretty; }
+  /* Actions sit clear of the lede and stack, so each is a full touch target. */
+  [data-immersive] .hero-copy .hero-conversion { order: 0; width: min(420px, 100%); margin: 28px auto 0; }
+  [data-immersive] .hero-copy .hero-actions { flex-direction: column; align-items: center; gap: 6px; }
+  [data-immersive] .hero-copy .button { width: 100%; min-height: 58px; justify-content: space-between; padding-inline: 24px; font-size: 1rem; }
+  [data-immersive] .hero-copy .text-link { min-height: 48px; align-items: center; font-size: .98rem; }
+  [data-immersive] .hero-copy .hero-conversion-offer { margin: 6px auto 0; font-size: .95rem; text-align: center; }
+  .hero-intro { display: none; }
+  .hero-stage--connected { display: flex; flex-direction: column; }
+  .hero-stage--connected .hero-object-track { display: flex; flex-direction: column; width: 100%; order: 1; margin-top: 0; }
+  .hero-stage--connected .hero-object-track::after { display: none; }
+  .hero-stage--connected .hero-object { order: 1; margin-top: 0; }
+  .hero-stage--connected .hero-art { width: 100%; }
+  .hero-stage--connected .hero-signals { position: static; width: min(520px, 100%); height: auto; margin: 8px auto 0; transform: none; pointer-events: auto; }
+  .hero-signal-lines { display: none; }
+  .hero-signal-stack, .hero-signal-stack:has(.hero-signal p) { position: static; display: grid; gap: 22px; width: 100%; max-width: none; height: auto; pointer-events: auto; }
+  .hero-signal, [data-scene-aspect] .hero-signal { position: relative; width: 100%; max-width: none; left: auto !important; right: auto !important; top: auto !important; justify-content: start; gap: 14px; padding: 0; opacity: 1; visibility: visible; translate: none; transition: none; --signal-shift: 0px !important; }
+  .hero-signal-heading { margin: 0 0 2px; font-size: 1.35rem; line-height: 1.22; opacity: 1; translate: none; transition: none; }
+  .hero-signal h2, .hero-signal:has(.hero-signal-visual) h2 { font-size: 1.22rem; line-height: 1.25; }
+  .hero-signal p { display: block; margin-top: 5px; max-width: none; font-size: 1rem; line-height: 1.5; }
+  .hero-signal-index { margin-top: 2px; }
+  .hero-signal-visual { width: 40px; height: 40px; margin-top: -2px; }
+  .hero-workspace { opacity: 1; translate: none; transition: none; }
+  [data-scroll-scene]:not([data-scene-aspect]) .hero-signals { position: static; transform: none; width: 100%; gap: 20px; }
+  [data-scroll-scene]:not([data-scene-aspect]) .hero-signal { grid-area: auto; }
+}
+/* Phones: the schematic explainer would shrink its labels below legibility, so the copy and the
+   object carry the opening; the diagram returns from tablet width on. */
+@media (max-width: 699px) { .hero-explainer { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-stage--connected { display: flex; flex-direction: column; }
+  .hero-stage--connected .hero-object-track { display: flex; flex-direction: column; width: 100%; }
+  .hero-stage--connected .hero-signals { position: static; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; height: auto; width: 100%; transform: none; }
+  .hero-signal-stack { display: contents; }
+  .hero-stage--connected .hero-signal { position: static; grid-area: auto; width: 100%; max-width: none; visibility: visible; opacity: 1; translate: none; transition: none; }
+  .hero-signal-lines, .hero-intro { display: none; }
+  .hero-mobile-lede { display: block; max-width: 32ch; margin: 20px auto; }
+  .hero-stage--connected .hero-conversion { position: static; width: min(400px,100%); margin: 25px auto; order: -1; }
+}
+@media (max-width: 780px) {
+  .hero-stage--connected .hero-conversion .hero-actions { flex-wrap: wrap; gap: 14px; }
+  .hero-stage--connected .hero-conversion .button { padding-inline: 18px; font-size: .75rem; gap: 14px; }
+  .hero-stage--connected .hero-conversion .text-link { padding: 0; font-size: .8rem; gap: 8px; }
+  [data-immersive] .hero-stage { --scene-art-size: min(64vw, 280px); }
+  [data-immersive] .hero-copy h1 { font-size: clamp(2.2rem, 8.6vw, 4.3rem); }
+  .hero-mobile-lede { margin-top: 14px; font-size: 1.06rem; }
+  .hero-stage--connected .hero-conversion { margin-bottom: 12px; }
+  .hero-stage--connected .hero-object-track { margin-top: 0; }
+  .hero-signal h2, .hero-signal:has(.hero-signal-visual) h2 { font-size: 1.15rem; }
+}
+@media (max-width: 380px) {
+  .hero-stage--connected .hero-conversion .hero-actions { gap: 10px; }
+  .hero-stage--connected .hero-conversion .button { padding-inline: 12px; font-size: .68rem; gap: 10px; }
+  .hero-stage--connected .hero-conversion .text-link { font-size: .76rem; }
+}
+@media (max-height: 620px) {
+  [data-immersive] .hero-object { position: relative; top: auto; }
+  [data-immersive] .hero-object-track::after { display: none; }
+  .hero-stage--connected .hero-signals { position: relative; top: auto; bottom: auto; left: auto; right: auto; transform: none; margin: 18px auto; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 600px) {
+  .hero-stage--connected .hero-signals { grid-template-columns: 1fr; }
+  .hero-stage--connected .hero-signal { justify-content: start; }
+}

@@ -1,0 +1,77 @@
+---
+import { sceneArtwork, type SceneVariant } from '../lib/scene/variants';
+interface Props {
+  variant: SceneVariant;
+  class?: string;
+  /** Optional decorative markers; matching arguments belong in ordinary HTML. */
+  annotated?: boolean;
+  /** Set false for secondary, below-the-fold scenes. */
+  priority?: boolean;
+}
+
+const { variant, class: className, annotated = false, priority = true } = Astro.props;
+const artwork = sceneArtwork(variant);
+---
+
+<div
+  class:list={['hero-scene-embed', className]}
+  data-hero-scene={variant}
+  data-variant={variant}
+  data-status="poster"
+  aria-hidden="true"
+>
+  <div class="hero-scene-embed__visual">
+    <span class="hero-scene-embed__ground" />
+    <div class="hero-scene-embed__poster">
+      <img
+        src={`/hero/${artwork}-720.webp`}
+        srcset={`/hero/${artwork}-480.webp 480w, /hero/${artwork}-720.webp 720w`}
+        sizes="(min-width: 1024px) 640px, (min-width: 640px) 560px, 100vw"
+        alt=""
+        width="720"
+        height="720"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : 'auto'}
+        decoding="async"
+      />
+    </div>
+    <div class="hero-scene-embed__stage" data-scene-stage />
+    {annotated && (
+      <div class="hero-scene-embed__annotations">
+        {[1, 2, 3].map((part) => <span class={`hero-scene-embed__annotation hero-scene-embed__annotation--${part}`}>0{part}</span>)}
+      </div>
+    )}
+  </div>
+</div>
+
+<script>
+  import { mountHeroScenes } from '../scripts/hero-scene';
+  mountHeroScenes();
+</script>
+
+<style>
+  .hero-scene-embed { width: 100%; aspect-ratio: 1; pointer-events: none; }
+  /* The square source image and canvas fill one square viewport. Neither side
+     performs its own fitting, and the artwork uses the full available column. */
+  .hero-scene-embed__visual { position: relative; width: 100%; height: 100%; aspect-ratio: 1; }
+  .hero-scene-embed__ground { position: absolute; inset: 73% 10% 5%; border: 1px solid #d2a67538; border-radius: 50%; background: radial-gradient(ellipse, #bd795c16, transparent 70%); box-shadow: 0 0 0 22px #d2a67507; opacity: calc(var(--scene-depth, 0) * .8 * (1 - var(--scene-carry, 0))); transform: scale(calc(.84 + var(--scene-depth, 0) * .16)); pointer-events: none; }
+  .hero-scene-embed__poster, .hero-scene-embed__stage { position: absolute; inset: 0; }
+  .hero-scene-embed__poster { opacity: 1; }
+  .hero-scene-embed__poster img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .hero-scene-embed__stage :global(canvas) { display: block; width: 100%; height: 100%; touch-action: auto; pointer-events: none; }
+  .hero-scene-embed__stage { opacity: 0; }
+  /* Both frames share the exact camera pose. An atomic swap avoids ghosting. */
+  .hero-scene-embed[data-status="ready"] .hero-scene-embed__stage { opacity: 1; }
+  .hero-scene-embed[data-status="ready"] .hero-scene-embed__poster { opacity: 0; }
+  .hero-scene-embed__annotations { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+  .hero-scene-embed[data-status="ready"] .hero-scene-embed__annotations { opacity: var(--scene-reveal, 0); }
+  .hero-scene-embed__annotation { position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #efc39280; border-radius: 50%; background: #261d19e8; color: #f2d3b1; font: 10px/1 var(--font-mono, monospace); box-shadow: 0 2px 8px #00000026; }
+  .hero-scene-embed__annotation--1 { transform: translate3d(var(--part-1-x, 0px), var(--part-1-y, 0px), 0) translate(-50%, -50%); }
+  .hero-scene-embed__annotation--2 { transform: translate3d(var(--part-2-x, 0px), var(--part-2-y, 0px), 0) translate(-50%, -50%); }
+  .hero-scene-embed__annotation--3 { transform: translate3d(var(--part-3-x, 0px), var(--part-3-y, 0px), 0) translate(-50%, -50%); }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scene-embed[data-status="ready"] .hero-scene-embed__stage { opacity: 0; }
+    .hero-scene-embed[data-status="ready"] .hero-scene-embed__poster { opacity: 1; }
+    .hero-scene-embed__annotations, .hero-scene-embed__ground { display: none; }
+  }
+</style>

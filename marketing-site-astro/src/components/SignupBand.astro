@@ -1,0 +1,30 @@
+---
+import { localeFromPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+import WaitlistForm from './WaitlistForm.astro';
+interface Props { title?: string; text?: string; source?: string; heading?: 'h1' | 'h2' }
+const { title = 'Was hält dich gerade auf?', text = 'Lass uns Consultry an deiner Aufgabe erproben. Melde dich für eine der nächsten Runden an.', source = Astro.url.pathname, heading: Heading = 'h2' } = Astro.props;
+---
+<section class="signup-section signup-chapter section" id="warteliste" data-backdrop-end>
+  <div class="shell">
+    <header class="signup-chapter-heading">
+      <Heading class="signup-chapter-title">{t(title)}</Heading>
+    </header>
+    <WaitlistForm source={source} id="waitlist-form" />
+  </div>
+</section>
+
+<style>
+  .signup-chapter { background: #151413; border-top: 0; }
+  .signup-chapter-heading { margin-bottom: 3rem; }
+  .signup-chapter-title { max-width: 19ch; overflow-wrap: break-word; font-size: clamp(2.7rem, 5.4vw, 5rem); line-height: 1.035; letter-spacing: -.06em; color: #f6f2ed; }
+  @media (max-width: 900px) {
+    .signup-chapter-title { max-width: 21ch; }
+  }
+  @media (max-width: 620px) {
+    .signup-chapter-heading { margin-bottom: 2rem; }
+    .signup-chapter-title { font-size: clamp(2.2rem, 9.2vw, 3.5rem); }
+  }
+</style>

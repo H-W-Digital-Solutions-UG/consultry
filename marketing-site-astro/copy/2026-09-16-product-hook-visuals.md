@@ -1,0 +1,24 @@
+# Product hook visuals · 2026-09-16
+
+Generated with Higgsfield Recraft V4.1 (`vector`, 1:1, palette `#F1E6D8`, black background). Original SVG files retain their C2PA metadata. CSS luminance masks remove the black ground at render time; no image edits or extra client JavaScript are needed. Three distinct assets per product, shared by German and English routes. Existing homepage assets and layout remain unchanged.
+
+## Source mapping
+
+| File | Concept | Original source |
+| --- | --- | --- |
+| `public/hero/hooks/brain-knowledge.svg` | A single sculptural seed-kernel built from three interlocking rounded loops, a quiet central opening. Connected knowledge ready to use. No human brain outline. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000644_b38189a2-b93c-477f-823d-1c96afc301f4.svg) |
+| `public/hero/hooks/brain-changes.svg` | Two softly rounded document layers slightly offset, with one small circular satellite at their upper right. Change made visible. One cohesive compact symbol. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000644_fa104c49-7c81-4a0f-9db2-6108701a0c2e.svg) |
+| `public/hero/hooks/brain-reuse.svg` | A simple curled seed unfurling into two rounded leaves above a horizontal foundation. Earlier work becoming new possibilities. No arrow or recycle sign. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000644_8b40ab14-4585-47de-9c8c-3be4c075a476.svg) |
+| `public/hero/hooks/brand-templates.svg` | Three softly rounded sheets nestled in exact alignment, the front sheet with one generous rectangular cut-out. Prepared templates fitting together. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000644_42de56dd-d7eb-4b45-bb7f-4e54c603ca96.svg) |
+| `public/hero/hooks/brand-voice.svg` | Three organic upright ribbons of unequal heights forming one distinctive flowing voice-wave, unified at the base. Your own voice, not a microphone. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000644_ab68e6a1-0432-4c64-a1fa-8b259b7ceaa6.svg) |
+| `public/hero/hooks/brand-result.svg` | One folded rounded sheet resolving into a clean diamond facet in its upper right corner. A refined finished result. No checkmark or sparkle. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000644_73dde157-399b-4b5b-9e9a-f94e2731642b.svg) |
+| `public/hero/hooks/ledger-together.svg` | Three rounded comma-like bodies arranged as a cohesive rotating triskelion around an open center. Three collaborating agents, not robots. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000653_b43aa611-190a-4116-bbc3-f8f343d8e207.svg) |
+| `public/hero/hooks/ledger-task.svg` | Three short soft orbit segments converging visually around one solid rounded square nucleus. Shared task and focus, no arrows. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000652_0d4e5039-d755-4038-ac26-687205f86d43.svg) |
+| `public/hero/hooks/ledger-overview.svg` | One generous open orbit cradling three separated round nodes, seen front-on as a balanced sculpture. Clear overview of active work, not an eye. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000652_b3401bd8-58c4-4dbd-876d-37b9b8ffbf38.svg) |
+| `public/hero/hooks/access-control.svg` | Three short horizontal rounded channels, each with one large inset round control at a different position, fused into a single sculptural emblem. Delegated permissions. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000652_014d6c57-6429-4c88-b5df-642fe75a64ba.svg) |
+| `public/hero/hooks/access-freedom.svg` | One organic small seed suspended inside a wide open rounded arch with a clear gap. Freedom to work inside a generous boundary, not a padlock. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000652_6ba37b6f-0f75-4f10-bb71-64dcfd657404.svg) |
+| `public/hero/hooks/access-rules.svg` | Two offset rounded doorway shapes framing a single small solid disk at the center. A controlled passage through clear boundaries. No shield or checkmark. | [Higgsfield SVG](https://d8j0ntlcm91z4.cloudfront.net/user_3FzsYdCdBfAkYDKu4B9yS7EnaIk/hf_20260916_000652_cd4107b9-acf1-40d1-8f26-63513f714a06.svg) |
+
+## Display
+
+Icons appear next to the full hook in the existing desktop, mobile and reduced-motion layout. The separate compact step labels stay unchanged. All icons are decorative and excluded from screen-reader output; their associated text carries the meaning. No additional layout stylesheet is needed.

@@ -1,0 +1,11 @@
+---
+import { localeFromPath, localizedPath } from '../../i18n/locale';
+import { useTranslations } from '../../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const link = (path: string) => localizedPath(path, locale);
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import SignupBand from '../../components/SignupBand.astro';
+---
+<BaseLayout title={t("Produkt · Mehr Power. Für deine Arbeit.")}><main id="inhalt"><section class="section catalog shell"><a class="breadcrumb" href={link("/")}>{t("Consultry / Produkt")}</a><h1>{t("Mehr Power.")}<br /><span>{t("Für deine Arbeit.")}</span></h1><p class="hero-lede">{t("Entdecke unsere Module und wie sie gemeinsam deine KI-Arbeit voranbringen.")}</p><ProductGallery scrollDriven nextHref="#waitlist-form" nextLabel={t("Weiter zur Anmeldung")} /></section><SignupBand /></main></BaseLayout>

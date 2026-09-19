@@ -1,0 +1,29 @@
+---
+import UiIcon from "../../components/UiIcon.astro";
+import { localeFromPath, localizedPath } from '../../i18n/locale';
+import { useTranslations } from '../../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const link = (path: string) => localizedPath(path, locale);
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SpatialHero from '../../components/SpatialHero.astro';
+import ProductDemo from '../../components/ProductDemo.astro';
+import OfferDemo from '../../components/OfferDemo.astro';
+import SignupBand from '../../components/SignupBand.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { products } from '../../content/products';
+import { hookVisualsFor } from '../../content/product-hook-visuals';
+import { translateData } from '../../i18n/locale';
+import { englishProducts } from '../../i18n/products';
+export function getStaticPaths() { return products.map(product => ({ params:{slug:product.slug}, props:{product} })); }
+const product = translateData(Astro.props.product, locale, englishProducts);
+const c = product.content;
+---
+<BaseLayout title={c.meta.title} description={c.meta.description} minimal>
+  <main id="inhalt">
+    <SpatialHero variant={c.variant} title={c.hero.title} titleEnd={c.hero.titleEnd} lede={c.hero.lede} aspects={product.aspects} aspectVisuals={hookVisualsFor(product.slug)} steps={product.steps} details={c.how.steps.map(step => step.text)} explainer={product.explainer} productLabel={product.label} cta={c.hero.cta} secondary={c.hero.secondary} />
+    <section class="section demo-section landing-demo" id="produktflaeche"><div class="shell"><SectionHeading description={c.how.lede ?? t('Ein Beispiel zum Durchspielen.')}>{c.how.title}</SectionHeading>{c.variant === 'brand' ? <OfferDemo /> : <ProductDemo variant={c.variant} />}<div class="demo-next-step"><p>{t("Was möchtest du damit weiterbringen?")}</p><a class="text-link" data-waitlist-link href="#waitlist-form">{c.hero.cta} <span aria-hidden="true"><UiIcon name="up-right" /></span></a></div></div></section>
+    <section class="section context-section"><div class="shell"><div class="context-layout"><div data-reveal><h2>{c.problem.title}</h2><p class="section-copy">{c.problem.lede}</p></div><div class="boundaries"><h3>{c.boundaries.title}</h3>{c.boundaries.items.map((item) => <details><summary>{item.claim}</summary><p>{item.limit}</p></details>)}<p class="boundaries-crosslink"><a class="text-link" href={link('/#datenwege')}>{t("Zu den Datenwegen")} <span aria-hidden="true"><UiIcon name="up-right" /></span></a></p></div></div></div></section>
+    <SignupBand title={c.band.title} text={c.band.text} source={link(`/produkt/${product.slug}`)} />
+  </main>
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+import UiIcon from "./UiIcon.astro";
+import { localeFromPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+interface Props { home: boolean; variant: string; cta?: string; secondary?: string }
+const { home, variant, cta = 'Early Access sichern', secondary = home ? 'Arbeitsweise entdecken' : 'Beispiel erleben' } = Astro.props;
+---
+<div class="hero-conversion">
+  <div class="hero-actions">
+    <a class="button" data-waitlist-link href="#waitlist-form">{t(cta)}<span aria-hidden="true"><UiIcon name="up-right" /></span></a>
+    <a class="text-link" href={home ? '#produkt' : `#product-demo-${variant}`}>{t(secondary)}<span aria-hidden="true"><UiIcon name="down" /></span></a>
+  </div>
+  <p class="hero-conversion-offer">{t("Verpasse nicht den Early-Access-Rabatt.")}</p>
+</div>

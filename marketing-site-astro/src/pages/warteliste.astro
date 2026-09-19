@@ -1,0 +1,11 @@
+---
+import UiIcon from "../components/UiIcon.astro";
+import { localeFromPath, localizedPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const link = (path: string) => localizedPath(path, locale);
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SignupBand from '../components/SignupBand.astro';
+---
+<BaseLayout title={t("Early Access sichern · Consultry erproben")}><main id="inhalt" class="standalone-signup"><SignupBand heading="h1" /><div class="shell"><a class="text-link" href={link("/produkt")}>{t("Zuerst die Arbeitsweise entdecken")} <span aria-hidden="true"><UiIcon name="up-right" /></span></a></div></main></BaseLayout>

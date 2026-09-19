@@ -1,0 +1,12 @@
+/copy/
+/scripts/
+/output/
+dist/
+.astro/
+design-qa.md
+README.md
+.playwright-cli
+.env
+.env.*
+!.env.example
+src/**/*.test.mjs

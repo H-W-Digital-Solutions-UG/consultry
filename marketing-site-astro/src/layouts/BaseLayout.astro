@@ -1,0 +1,70 @@
+---
+import UiIcon from "../components/UiIcon.astro";
+import { localeFromPath, localizedPath } from '../i18n/locale';
+import { useTranslations } from '../i18n/ui';
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const link = (path: string) => localizedPath(path, locale);
+import { products, productPath, siteOrigin, indexable } from '../content/products';
+import { translateData } from '../i18n/locale';
+import { englishProducts } from '../i18n/products';
+import { hookVisualsFor } from '../content/product-hook-visuals';
+import '../styles/global.css';
+import '../styles/hero-layout.css';
+import '../styles/hero-signals.css';
+import StoryBackdrop from '../components/StoryBackdrop.astro';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+interface Props { title: string; description?: string; path?: string; minimal?: boolean; /** Fixed scroll-scrubbed backdrop behind a translucent page (home). */ backdrop?: { src: string; poster: string; mode?: 'story' | 'hero'; hold?: number } }
+const { title, description = 'Dein Arbeitsraum mit KI. Nutze deine Vorarbeit für Angebote, Analysen und Pläne. Weniger neu erklären, weniger nacharbeiten. Jetzt für die Erprobung vormerken.', path = Astro.url.pathname, minimal = false , backdrop } = Astro.props;
+const canonical = new URL(link(path), siteOrigin).href;
+const basePath = localizedPath(path, 'de');
+// Product menu: the four modules with their first hook visual, translated like the pages.
+const navProducts = products.map(product => ({ ...translateData({ slug: product.slug, label: product.label, summary: product.summary }, locale, englishProducts), icon: hookVisualsFor(product.slug)[0] }));
+---
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={t(description)} />
+    <meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="de" href={new URL(localizedPath(path, 'de'), siteOrigin).href} />
+    <link rel="alternate" hreflang="en" href={new URL(localizedPath(path, 'en'), siteOrigin).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(localizedPath(path, 'de'), siteOrigin).href} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" /><meta property="og:locale" content={locale === 'en' ? 'en_GB' : 'de_DE'} />
+    <meta property="og:title" content={t(title)} /><meta property="og:description" content={t(description)} />
+    <meta property="og:url" content={canonical} /><meta property="og:image" content={`${siteOrigin}/hero/brain-scene-720.webp`} />
+    <title>{t(title).includes('Consultry') ? t(title) : `${t(title)} · Consultry`}</title>
+  </head>
+  <body data-backdrop={backdrop ? (backdrop.mode ?? 'story') : undefined}>
+    {backdrop && <StoryBackdrop src={backdrop.src} poster={backdrop.poster} mode={backdrop.mode} hold={backdrop.hold} />}
+    <a class="skip-link" href="#inhalt">{t("Zum Inhalt")}</a>
+    <header class="site-nav">
+      <div class="nav-bar"><div class="nav-inner">
+        <a class="wordmark" href={link("/")} aria-label={t("Consultry Startseite")}><img src="/images/consultry-logo.png" alt="" width="30" height="30" />{t("Consultry")}</a>
+        <nav class="desktop-nav" aria-label={t("Hauptnavigation")}><div class="nav-product"><a href={link("/produkt")} aria-current={basePath.startsWith('/produkt') ? 'page' : undefined}>{t("Produkt")}<span class="nav-caret" aria-hidden="true"><UiIcon name="chevron-right" /></span></a><div class="nav-menu" aria-label={t("Produktbereiche")}><ul class="nav-menu-list">{navProducts.map(product => <li><a href={link(productPath(product.slug))} aria-current={basePath === productPath(product.slug) ? 'page' : undefined}><span class="nav-menu-icon" style={`--nav-icon: url('${product.icon}')`} aria-hidden="true"></span><span><strong>{product.label}</strong><small>{product.summary}</small></span></a></li>)}</ul><a class="nav-menu-all" href={link("/produkt")}>{t("Alle Produktbereiche")}<span aria-hidden="true"><UiIcon name="up-right" /></span></a></div></div><a href={link("/unternehmen")} aria-current={basePath === '/unternehmen' ? 'page' : undefined}>{t("Über Consultry")}</a><a href={link("/kontakt")}>{t("Kontakt")}</a></nav>
+        <a class="nav-cta" data-waitlist-link href={minimal ? '#waitlist-form' : link('/warteliste#waitlist-form')}><span>{t("Early Access sichern")}</span><span class="nav-cta-badge" aria-hidden="true"><UiIcon name="up-right" /></span></a>
+        <LanguageSwitcher />
+        <details class="mobile-menu"><summary aria-label={t("Menü öffnen")}>{t("Menü")}<span aria-hidden="true">+</span></summary><nav aria-label={t("Mobile Navigation")}><a href={link("/produkt")}>{t("Produkt entdecken")}</a><div class="mobile-menu-sub">{navProducts.map(product => <a href={link(productPath(product.slug))}>{product.label}</a>)}</div><a href={link("/unternehmen")}>{t("Über Consultry")}</a><a href={link("/kontakt")}>{t("Kontakt")}</a><a data-waitlist-link href={link('/warteliste#waitlist-form')}>{t("Early Access sichern")}</a></nav></details>
+      </div></div>
+    </header>
+    <script>
+      // The floating bar firms up once the page has scrolled a little, like the live site.
+      const bar = document.querySelector('.site-nav');
+      const syncScrolled = () => bar?.toggleAttribute('data-scrolled', window.scrollY > 24);
+      syncScrolled();
+      addEventListener('scroll', syncScrolled, { passive: true });
+    </script>
+    <slot />
+    <footer class:list={['site-footer', { 'site-footer--minimal': minimal }]}>
+      <div class="shell">
+        {!minimal && <div class="footer-top"><div><a class="wordmark" href={link("/")}>{t("Consultry")}</a><p>{t("Deine Arbeit geht weiter.")}<br />{t("Dein Wissen kommt mit.")}</p></div><nav aria-label={t("Produktbereiche")}>{products.map(p => <a href={link(`/produkt/${p.slug}`)}>{t(p.label)}</a>)}</nav><nav aria-label={t("Unternehmen")}><a href={link("/unternehmen")}>{t("Über Consultry")}</a><a href={link("/kontakt")}>{t("Kontakt")}</a><a data-waitlist-link href={link("/warteliste")}>{t("Early Access sichern")}</a></nav></div>}
+        <div class="footer-bottom"><span>{t("© 2026 H&W Digital Solutions UG")}</span><nav aria-label={t("Rechtliches")}><a href={link("/legal/impressum")}>{t("Impressum")}</a><a href={link("/legal/datenschutz")}>{t("Datenschutz")}</a></nav></div>
+      </div>
+    </footer>
+    <script>import '../scripts/waitlist';</script>
+  </body>
+</html>

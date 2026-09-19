@@ -1,0 +1,39 @@
+---
+/** Fixed, scroll-scrubbed backdrop: the page's own scroll walks toward the light.
+ *  mode "story" (home): opening, pause while the object holds focus, play-out after it left.
+ *  mode "hero" (product pages): same three movements with a shorter opening, and a stronger
+ *  veil that keeps the film a quiet ground beneath the demo. */
+interface Props { src: string; poster: string; mode?: 'story' | 'hero'; /** Seconds into the clip for the resting first frame. */ hold?: number }
+const { src, poster, mode = 'story', hold = 1.5 } = Astro.props;
+---
+<div class="story-backdrop" data-story-backdrop data-src={src} data-mode={mode} data-hold={hold} data-status="poster" aria-hidden="true">
+  <img class="story-backdrop__poster" src={poster} alt="" width="1280" height="720" decoding="async" fetchpriority="low" />
+  <video class="story-backdrop__video" muted playsinline preload="none" tabindex="-1"></video>
+  <span class="story-backdrop__veil"></span>
+  <span class="story-backdrop__dim" data-backdrop-dim></span>
+</div>
+<script>
+  import { mountStoryBackdrops } from '../scripts/story-backdrop';
+  mountStoryBackdrops();
+</script>
+<style>
+  .story-backdrop { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: #0d0b09; pointer-events: none; }
+  /* --story-progress (0–1) adds a slow push-in on top of the scrubbed frames, so the walk toward the light reads clearly while scrolling. */
+  .story-backdrop__poster, .story-backdrop__video { position: absolute; inset: -8% 0 0; width: 100%; height: 108%; object-fit: cover; transform: scale(calc(1 + var(--story-progress, 0) * .08)) translateY(calc(var(--story-progress, 0) * -2%)); transform-origin: 50% 62%; transition: opacity 900ms ease; will-change: transform; }
+  .story-backdrop__video { opacity: 0; }
+  .story-backdrop[data-status="ready"] .story-backdrop__video { opacity: 1; }
+  .story-backdrop[data-status="ready"] .story-backdrop__poster { opacity: 0; }
+  /* Keep copy legible: dark at the top and bottom, the threshold glows through the middle. */
+  /* The source films are dark already: the veil only seats the navigation and the page foot,
+     the middle stays open so the film reads behind text, object and glass cards. */
+  .story-backdrop__veil { position: absolute; inset: 0; background: linear-gradient(to bottom, #100e0c 0%, #100e0c73 12%, #100e0c14 34%, #100e0c14 72%, #100e0cb3 100%); }
+  /* Whole-frame dimming while the hero object holds the focus: the scroll controller sets the
+     opacity (in with the first argument, out with the carry), so copy and hooks stay legible
+     over the film without a card behind them. */
+  .story-backdrop__dim { position: absolute; inset: 0; background: #0d0b0a; opacity: 0; transition: opacity 700ms ease; }
+  /* Product pages: quieter ground beneath a short page with a demo. */
+  /* Tone is baked into the encodes (no per-frame CSS filter on a full-viewport video). */
+  .story-backdrop[data-mode="hero"] .story-backdrop__poster, .story-backdrop[data-mode="hero"] .story-backdrop__video { transform: scale(calc(1 + var(--story-progress, 0) * .06)) translateY(calc(var(--story-progress, 0) * -1.5%)); }
+  .story-backdrop[data-mode="hero"] .story-backdrop__veil { background: linear-gradient(to bottom, #100e0c 0%, #100e0c80 14%, #100e0c33 40%, #100e0c59 70%, #100e0cd9 100%); }
+  @media (prefers-reduced-motion: reduce) { .story-backdrop__video { display: none; } .story-backdrop__poster { opacity: 1 !important; } }
+</style>

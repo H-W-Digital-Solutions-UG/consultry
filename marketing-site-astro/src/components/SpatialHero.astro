@@ -1,0 +1,67 @@
+---
+import UiIcon from "./UiIcon.astro";
+import { localeFromPath, localizedPath } from '../i18n/locale';
+const locale = localeFromPath(Astro.url.pathname);
+const link = (path: string) => localizedPath(path, locale);
+import HeroScene from './HeroScene.astro';
+import HeroSignals from './HeroSignals.astro';
+import HeroConversion from './HeroConversion.astro';
+import type { HeroOutcomeVariant } from '../content/hero-outcomes';
+import type { SceneVariant } from '../lib/scene/variants';
+import type { Explainer } from '../content/products';
+interface Props {
+  variant: HeroOutcomeVariant;
+  /** Homepage mark can differ from the product example explained beside it. */
+  sceneVariant?: SceneVariant;
+  title: string;
+  titleEnd: string;
+  lede: string;
+  aspects: string[];
+  /** Optional decorative artwork paired with each hook; shared by both locales. */
+  aspectVisuals?: string[];
+  productLabel?: string;
+  /** Accepted for compatibility; eyebrows above the headline are no longer rendered. */
+  eyebrow?: string;
+  /** Optional homepage audience, without restoring product-page eyebrows. */
+  audience?: string;
+  /** One or two words per scroll level for the step line under the object. */
+  steps?: string[];
+  /** One sentence beneath each argument; product pages pass their how-steps. */
+  details?: string[];
+  /** Home: heading of the scene, the quiet workspace preview after the third argument, and the closing line. */
+  sceneHeading?: string;
+  workspace?: { tag: string; title: string; text: string; rows: [string, string][] };
+  closing?: string;
+  /** Product pages: one core function beside the copy, shown as a visual. */
+  explainer?: Explainer;
+  cta?: string;
+  secondary?: string;
+  /** Multiplies the carry distance and 3D turn after the pinned sequence (home: 0.6, a gentle turn only; the home carry distance comes from the pinned range). */
+  carry?: number;
+  /** Share of the pinned range used by the three arguments; the rest recedes the object while the product gallery rises beneath it (home: 0.6). */
+  share?: number;
+}
+const { variant, sceneVariant = variant, title, titleEnd, lede, aspects, aspectVisuals, productLabel, audience, cta, secondary, carry, share, steps, details, explainer, sceneHeading, workspace, closing } = Astro.props;
+const home = !productLabel;
+---
+<section class:list={['shell', home ? 'home-hero' : 'landing-hero']} data-immersive="true" data-scroll-scene data-scene-kind={variant} data-scene-aspect="0" data-scene-carry={carry} data-scene-share={share} data-scene-early="true">
+  {!home && <a class="breadcrumb" href={link("/produkt")}><span aria-hidden="true"><UiIcon name="left" /></span> {productLabel}</a>}
+  <div class={home ? 'home-story' : 'landing-story'}>
+    <header class:list={['hero-copy', { 'hero-copy--split': !!explainer }]}>
+      <div class="hero-copy-text">{home && audience && <p class="hero-eyebrow">{audience}</p>}<h1>{title.trim()}{' '}<span>{titleEnd}</span></h1><p class="hero-mobile-lede">{lede}</p><HeroConversion home={home} variant={variant} cta={cta} secondary={secondary} /></div>
+      {explainer && <figure class="hero-explainer">
+        <img src={explainer.image} srcset={`${explainer.image} 840w, ${explainer.image.replace(/\.webp$/, "-2x.webp")} 1500w`} sizes="(min-width: 1100px) 40vw, 90vw" alt="" width="840" height="672" loading="eager" decoding="async" fetchpriority="high" />
+      </figure>}
+    </header>
+    <div class="hero-stage hero-stage--connected">
+      <div class="hero-object-track" data-scene-focus-track>
+        <div class="hero-pin" data-scene-focus>
+        <div class="hero-object" data-scene-focus>
+          <div class="hero-art"><HeroScene variant={sceneVariant} annotated /></div>
+          <HeroSignals variant={variant} aspects={aspects} visuals={aspectVisuals} steps={steps} details={details} heading={sceneHeading} workspace={workspace} closing={closing} />
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+import { localeFromPath, localizedPath, locales } from '../i18n/locale';
+const locale = localeFromPath(Astro.url.pathname);
+---
+<nav class="language-switcher" aria-label={locale === 'de' ? 'Sprache wählen' : 'Choose language'}>
+  {locales.map(language => <a
+    href={localizedPath(Astro.url.pathname, language)}
+    lang={language}
+    hreflang={language}
+    data-language-link
+    aria-label={language === 'de' ? 'Deutsch' : 'English'}
+    aria-current={locale === language ? 'true' : undefined}
+  >{language.toUpperCase()}</a>)}
+</nav>
+<script>
+  // Native links work without JS. Preserve the current section and query when
+  // switching; language never depends on cookies or browser-language redirects.
+  document.querySelectorAll<HTMLAnchorElement>('[data-language-link]').forEach(link => {
+    const update = () => {
+      const target = new URL(link.href);
+      target.search = location.search;
+      target.hash = location.hash;
+      link.href = target.href;
+    };
+    update();
+    link.addEventListener('click', update);
+  });
+</script>
+<style>
+  .language-switcher { display: inline-flex; flex: none; align-items: center; gap: 2px; padding: 3px; border: 1px solid #ffffff35; border-radius: 999px; background: #15141380; }
+  .language-switcher a { display: grid; place-items: center; min-width: 36px; min-height: 36px; border-radius: 999px; color: #c8bfb5; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-decoration: none; }
+  .language-switcher a[aria-current] { background: #e9dbc2; color: #211c17; }
+  .language-switcher a:hover { color: #fff8ef; background: #ffffff20; }
+  .language-switcher a[aria-current]:hover { background: #f3e8d4; color: #211c17; }
+  .language-switcher a:focus-visible { outline: 2px solid #dfb79e; outline-offset: 3px; }
+  @media (max-width: 620px) { .language-switcher a { min-width: 32px; min-height: 36px; } }
+</style>
